@@ -9,7 +9,11 @@
   "dependencies": {
     "react": "16.8.3",
     "react-native": "0.59.8",
+<<<<<<< HEAD
+    "react-native-cli": "^2.0.1"
+=======
     "react-navigation": "^2.0.4"
+>>>>>>> 24b053b5a7eadfea6a85d6e1cf50b2f2fd1727b3
   },
   "devDependencies": {
     "@babel/core": "7.4.5",
