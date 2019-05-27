@@ -11,6 +11,9 @@ class Mainmenu extends Component {
     gotoLetters = () => {
         this.props.navigation.navigate('letters');
     }
+    gotoNumbers = () => {
+        this.props.navigation.navigate('numbers');
+    }
 
     render() {
         return (
@@ -19,7 +22,7 @@ class Mainmenu extends Component {
             >
                 <View style={styles.menuContainer}>
                     <MenuItem itemImage={require('./images/Icon_Letter.png')} goto={this.gotoLetters} />
-                    <MenuItem itemImage={require('./images/Icon_Number.png')} />
+                    <MenuItem itemImage={require('./images/Icon_Number.png')} goto={this.gotoNumbers}/>
                     <MenuItem itemImage={require('./images/Flalok.png')} />
                     <MenuItem itemImage={require('./images/Games.png')} />
                     <MenuItem itemImage={require('./images/CultureandArts.png')} />

@@ -5,6 +5,7 @@ import HomePage from './screens/HomePage';
 import MainMenu from './screens/MainMenu';
 import LetterScreen from './screens/Letters/letterScreen';
 import PageAScreen from './screens/Letters/PageAScreen';
+import Numbers from './screens/Numbers/NumbersScreen';
 
 const RootStack = StackNavigator(
   {
@@ -12,9 +13,10 @@ const RootStack = StackNavigator(
     mainMenu: MainMenu,
     letters: LetterScreen,
     pageAScreen: PageAScreen,
+    numbers: Numbers,
   },
   {
-    initialRouteName: 'home',
+    initialRouteName: 'numbers',
   }
 );
 
