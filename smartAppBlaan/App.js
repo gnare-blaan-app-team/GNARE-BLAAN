@@ -1,16 +1,13 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import { StatusBar } from 'react-native';
+import HomePage from './screens/HomePage';
+import MainMenu from './screens/MainMenu';
 
 const RootStack = StackNavigator(
   {
-    home: Menuscreen,
-    main: Mainmenu,
-    letters: Letters,
-    pageA: PageA,
-    pageB: PageB,
-    pageD: PageD,
-    pageE: PageE,
+    home: HomePage,
+    mainMenu: MainMenu
   },
   {
     initialRouteName: 'home',
