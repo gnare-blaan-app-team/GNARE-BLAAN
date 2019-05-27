@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, Image, StyleSheet, ImageBackground, TouchableHighlight } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
-class pageH extends Component {
+class PageH extends Component {
     static navigationOptions = {
         header: null,
     }
@@ -25,7 +25,7 @@ class pageH extends Component {
                 </View>
                 <Image
                     style={styles.main}
-                    source={require('./lettersImage/H(1).png')}
+                    source={require('./lettersImage/H_(1).png')}
                 ></Image>
             </ImageBackground>
         )
@@ -59,4 +59,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default withNavigation(pageH);
+export default withNavigation(PageH);

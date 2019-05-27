@@ -9,7 +9,7 @@ class Letters extends Component {
     }
 
     gotoPageA = () => {
-        this.props.navigation.navigate('pageAScreen');
+        this.props.navigation.navigate('pageA');
     }
     gotoPageB = () => {
         this.props.navigation.navigate('pageB');
@@ -72,45 +72,24 @@ class Letters extends Component {
                 source={require('../images/BG.jpg')}
             >
                 <View style={styles.menuContainer}>
-<<<<<<< HEAD
-                    <MenuItem itemImage={require('./letters/a.png')} goto={this.gotoPageA} />
-                    <MenuItem itemImage={require('./letters/b.png')} goto={this.gotoPageB} />
-                    <MenuItem itemImage={require('./letters/d.png')} goto={this.gotoPageD} />
-                    <MenuItem itemImage={require('./letters/e.png')} goto={this.gotoPageE} />
-                    <MenuItem itemImage={require('./letters/f.png')} goto={this.gotoPageF} />
-                    <MenuItem itemImage={require('./letters/g.png')} goto={this.gotoPageG} />
-                    <MenuItem itemImage={require('./letters/h.png')} goto={this.gotoPageH} />
-                    <MenuItem itemImage={require('./letters/i.png')} goto={this.gotoPageI} />
-                    <MenuItem itemImage={require('./letters/k.png')} goto={this.gotoPageK} />
-                    <MenuItem itemImage={require('./letters/l.png')} goto={this.gotoPageL} />
-                    <MenuItem itemImage={require('./letters/m.png')} goto={this.gotoPageM} />
-                    <MenuItem itemImage={require('./letters/n.png')} goto={this.gotoPageN} />
-                    <MenuItem itemImage={require('./letters/o.png')} goto={this.gotoPageO} />
-                    <MenuItem itemImage={require('./letters/s.png')} goto={this.gotoPageS} />
-                    <MenuItem itemImage={require('./letters/t.png')} goto={this.gotoPageT} />
-                    <MenuItem itemImage={require('./letters/u.png')} goto={this.gotoPageU} />
-                    <MenuItem itemImage={require('./letters/w.png')} goto={this.gotoPageW} />
-                    <MenuItem itemImage={require('./letters/y.png')} goto={this.gotoPageY} />
-=======
                     <MenuItem itemImage={require('./lettersImage/a.png')} goto={this.gotoPageA} />
                     <MenuItem itemImage={require('./lettersImage/b.png')} goto={this.gotoPageB} />
                     <MenuItem itemImage={require('./lettersImage/d.png')} goto={this.gotoPageD} />
-                    <MenuItem itemImage={require('./lettersImage/e.png')} goto={this.gotoPageE} />
-                    <MenuItem itemImage={require('./lettersImage/f.png')} />
-                    <MenuItem itemImage={require('./lettersImage/g.png')} />
-                    <MenuItem itemImage={require('./lettersImage/h.png')} />
-                    <MenuItem itemImage={require('./lettersImage/i.png')} />
-                    <MenuItem itemImage={require('./lettersImage/k.png')} />
-                    <MenuItem itemImage={require('./lettersImage/l.png')} />
-                    <MenuItem itemImage={require('./lettersImage/m.png')} />
-                    <MenuItem itemImage={require('./lettersImage/n.png')} />
-                    <MenuItem itemImage={require('./lettersImage/o.png')} />
-                    <MenuItem itemImage={require('./lettersImage/s.png')} />
-                    <MenuItem itemImage={require('./lettersImage/t.png')} />
-                    <MenuItem itemImage={require('./lettersImage/u.png')} />
-                    <MenuItem itemImage={require('./lettersImage/w.png')} />
-                    <MenuItem itemImage={require('./lettersImage/y.png')} />
->>>>>>> 6275a5def9f6623b5b7c05030a26a05624c20a81
+                    <MenuItem itemImage={require('./lettersImage/e_.png')} goto={this.gotoPageE} />
+                    <MenuItem itemImage={require('./lettersImage/f.png')} goto={this.gotoPageF} />
+                    <MenuItem itemImage={require('./lettersImage/g.png')} goto={this.gotoPageG} />
+                    <MenuItem itemImage={require('./lettersImage/h.png')} goto={this.gotoPageH} />
+                    <MenuItem itemImage={require('./lettersImage/i.png')} goto={this.gotoPageI} />
+                    <MenuItem itemImage={require('./lettersImage/k.png')} goto={this.gotoPageK} />
+                    <MenuItem itemImage={require('./lettersImage/l.png')} goto={this.gotoPageL} />
+                    <MenuItem itemImage={require('./lettersImage/m.png')} goto={this.gotoPageM} />
+                    <MenuItem itemImage={require('./lettersImage/n.png')} goto={this.gotoPageN} />
+                    <MenuItem itemImage={require('./lettersImage/o.png')} goto={this.gotoPageO} />
+                    <MenuItem itemImage={require('./lettersImage/s.png')} goto={this.gotoPageS} />
+                    <MenuItem itemImage={require('./lettersImage/t.png')} goto={this.gotoPageT} />
+                    <MenuItem itemImage={require('./lettersImage/u.png')} goto={this.gotoPageU} />
+                    <MenuItem itemImage={require('./lettersImage/w.png')} goto={this.gotoPageW} />
+                    <MenuItem itemImage={require('./lettersImage/y.png')} goto={this.gotoPageY} />
                 </View>
             </ImageBackground>
         )

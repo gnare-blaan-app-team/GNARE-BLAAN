@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, Image, StyleSheet, ImageBackground, TouchableHighlight } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
-class pageD extends Component {
+class PageD extends Component {
     static navigationOptions = {
         header: null,
     }
@@ -59,4 +59,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default withNavigation(pageD);
+export default withNavigation(PageD);
