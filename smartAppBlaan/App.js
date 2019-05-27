@@ -1,15 +1,15 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
-import HomeScreen from './HomeScreen'
-import MainMenuScreen from './MainMenuScreen'
+import HomePage from './screens/HomePage'
+import MainMenu from './screens/MainMenu'
 
 const RootStack = StackNavigator(
   {
     Home: {
-      screen: HomeScreen,
+      screen: HomePage,
     },
-    MainMenu: {
-      screen: MainMenuScreen,
+    mainMenu: {
+      screen: MainMenu,
     },
   },
   {
