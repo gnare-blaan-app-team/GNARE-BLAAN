@@ -1,26 +1,24 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
-import { StatusBar } from 'react-native';
+import HomeScreen from './HomeScreen'
+import MainMenuScreen from './MainMenuScreen'
 
 const RootStack = StackNavigator(
   {
-    home: Menuscreen,
-    main: Mainmenu,
-    letters: Letters,
-    pageA: PageA,
-    pageB: PageB,
-    pageD: PageD,
-    pageE: PageE,
+    Home: {
+      screen: HomeScreen,
+    },
+    MainMenu: {
+      screen: MainMenuScreen,
+    },
   },
   {
-    initialRouteName: 'home',
+    initialRouteName: 'Home',
   }
 );
 
 export default class App extends React.Component {
-  componentDidMount() {
-    StatusBar.setHidden(true);
-  }
+
   render() {
     return (
       <RootStack />
