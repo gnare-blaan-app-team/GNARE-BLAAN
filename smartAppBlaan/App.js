@@ -4,15 +4,17 @@ import { StatusBar } from 'react-native';
 import HomePage from './screens/HomePage';
 import MainMenu from './screens/MainMenu';
 import LetterScreen from './screens/Letters/letterScreen';
+import PageAScreen from './screens/Letters/PageAScreen';
 
 const RootStack = StackNavigator(
   {
     home: HomePage,
     mainMenu: MainMenu,
     letters: LetterScreen,
+    pageAScreen: PageAScreen,
   },
   {
-    initialRouteName: 'letters',
+    initialRouteName: 'home',
   }
 );
 

@@ -9,7 +9,7 @@ class Letters extends Component {
     }
 
     gotoPageA = () => {
-        this.props.navigation.navigate('pageA');
+        this.props.navigation.navigate('pageAScreen');
     }
     gotoPageB = () => {
         this.props.navigation.navigate('pageB');
