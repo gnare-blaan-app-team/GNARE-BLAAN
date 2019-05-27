@@ -29,24 +29,24 @@ class Letters extends Component {
                 source={require('../images/BG.jpg')}
             >
                 <View style={styles.menuContainer}>
-                    <MenuItem itemImage={require('./letters/a.png')} goto={this.gotoPageA} />
-                    <MenuItem itemImage={require('./letters/b.png')} goto={this.gotoPageB} />
-                    <MenuItem itemImage={require('./letters/d.png')} goto={this.gotoPageD} />
-                    <MenuItem itemImage={require('./letters/e.png')} goto={this.gotoPageE} />
-                    <MenuItem itemImage={require('./letters/f.png')} />
-                    <MenuItem itemImage={require('./letters/g.png')} />
-                    <MenuItem itemImage={require('./letters/h.png')} />
-                    <MenuItem itemImage={require('./letters/i.png')} />
-                    <MenuItem itemImage={require('./letters/k.png')} />
-                    <MenuItem itemImage={require('./letters/l.png')} />
-                    <MenuItem itemImage={require('./letters/m.png')} />
-                    <MenuItem itemImage={require('./letters/n.png')} />
-                    <MenuItem itemImage={require('./letters/o.png')} />
-                    <MenuItem itemImage={require('./letters/s.png')} />
-                    <MenuItem itemImage={require('./letters/t.png')} />
-                    <MenuItem itemImage={require('./letters/u.png')} />
-                    <MenuItem itemImage={require('./letters/w.png')} />
-                    <MenuItem itemImage={require('./letters/y.png')} />
+                    <MenuItem itemImage={require('./lettersImage/a.png')} goto={this.gotoPageA} />
+                    <MenuItem itemImage={require('./lettersImage/b.png')} goto={this.gotoPageB} />
+                    <MenuItem itemImage={require('./lettersImage/d.png')} goto={this.gotoPageD} />
+                    <MenuItem itemImage={require('./lettersImage/e.png')} goto={this.gotoPageE} />
+                    <MenuItem itemImage={require('./lettersImage/f.png')} />
+                    <MenuItem itemImage={require('./lettersImage/g.png')} />
+                    <MenuItem itemImage={require('./lettersImage/h.png')} />
+                    <MenuItem itemImage={require('./lettersImage/i.png')} />
+                    <MenuItem itemImage={require('./lettersImage/k.png')} />
+                    <MenuItem itemImage={require('./lettersImage/l.png')} />
+                    <MenuItem itemImage={require('./lettersImage/m.png')} />
+                    <MenuItem itemImage={require('./lettersImage/n.png')} />
+                    <MenuItem itemImage={require('./lettersImage/o.png')} />
+                    <MenuItem itemImage={require('./lettersImage/s.png')} />
+                    <MenuItem itemImage={require('./lettersImage/t.png')} />
+                    <MenuItem itemImage={require('./lettersImage/u.png')} />
+                    <MenuItem itemImage={require('./lettersImage/w.png')} />
+                    <MenuItem itemImage={require('./lettersImage/y.png')} />
                 </View>
             </ImageBackground>
         )
