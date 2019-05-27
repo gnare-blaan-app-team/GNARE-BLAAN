@@ -4,6 +4,7 @@ import { StatusBar } from 'react-native';
 import HomePage from './screens/HomePage';
 import MainMenu from './screens/MainMenu';
 import LetterScreen from './screens/Letters/letterScreen';
+import PageAScreen from './screens/Letters/PageAScreen';
 
 import LetterScreen from './screens/Letters/pageAScreen';
 import LetterScreen from './screens/Letters/pageBScreen';
@@ -29,6 +30,7 @@ const RootStack = StackNavigator(
     home: HomePage,
     mainMenu: MainMenu,
     letters: LetterScreen,
+<<<<<<< HEAD
     pageA: pageAScreen,
     pageB: pageBScreen,
     pageD: pageDScreen,
@@ -47,9 +49,12 @@ const RootStack = StackNavigator(
     pageU: pageUScreen,
     pageW: pageWScreen,
     pageY: pageYScreen,
+=======
+    pageAScreen: PageAScreen,
+>>>>>>> 6275a5def9f6623b5b7c05030a26a05624c20a81
   },
   {
-    initialRouteName: 'letters',
+    initialRouteName: 'home',
   }
 );
 
