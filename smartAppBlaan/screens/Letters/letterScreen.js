@@ -75,23 +75,6 @@ class Letters extends Component {
                     <MenuItem itemImage={require('./lettersImage/a.png')} goto={this.gotoPageA} />
                     <MenuItem itemImage={require('./lettersImage/b.png')} goto={this.gotoPageB} />
                     <MenuItem itemImage={require('./lettersImage/d.png')} goto={this.gotoPageD} />
-<<<<<<< HEAD
-                    <MenuItem itemImage={require('./lettersImage/e.png')} goto={this.gotoPageE} />
-                    <MenuItem itemImage={require('./lettersImage/f.png')} />
-                    <MenuItem itemImage={require('./lettersImage/g.png')} />
-                    <MenuItem itemImage={require('./lettersImage/h.png')} />
-                    <MenuItem itemImage={require('./lettersImage/i.png')} />
-                    <MenuItem itemImage={require('./lettersImage/k.png')} />
-                    <MenuItem itemImage={require('./lettersImage/l.png')} />
-                    <MenuItem itemImage={require('./lettersImage/m.png')} />
-                    <MenuItem itemImage={require('./lettersImage/n.png')} />
-                    <MenuItem itemImage={require('./lettersImage/o.png')} />
-                    <MenuItem itemImage={require('./lettersImage/s.png')} />
-                    <MenuItem itemImage={require('./lettersImage/t.png')} />
-                    <MenuItem itemImage={require('./lettersImage/u.png')} />
-                    <MenuItem itemImage={require('./lettersImage/w.png')} />
-                    <MenuItem itemImage={require('./lettersImage/y.png')} />
-=======
                     <MenuItem itemImage={require('./lettersImage/e_.png')} goto={this.gotoPageE} />
                     <MenuItem itemImage={require('./lettersImage/f.png')} goto={this.gotoPageF} />
                     <MenuItem itemImage={require('./lettersImage/g.png')} goto={this.gotoPageG} />
@@ -107,7 +90,6 @@ class Letters extends Component {
                     <MenuItem itemImage={require('./lettersImage/u.png')} goto={this.gotoPageU} />
                     <MenuItem itemImage={require('./lettersImage/w.png')} goto={this.gotoPageW} />
                     <MenuItem itemImage={require('./lettersImage/y.png')} goto={this.gotoPageY} />
->>>>>>> 6d5e216e59c73975eaf7abcdc2ada4fc7822e9dc
                 </View>
             </ImageBackground>
         )
