@@ -16,6 +16,7 @@ class PageA extends Component {
     back = () => {
         this.props.navigation.navigate('letters');
     }
+
     render() {
         return (
             <ImageBackground style={styles.image}
