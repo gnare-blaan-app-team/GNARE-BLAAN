@@ -32,8 +32,6 @@ class PageA extends Component {
     handleBackPress = () => {
         this.hello.pause(); 
     }
-   
-
 
     render() {
         return (
