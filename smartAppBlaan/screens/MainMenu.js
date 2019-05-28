@@ -44,11 +44,10 @@ const styles = StyleSheet.create({
     },
     menuContainer: {
         position: 'relative',
-        right: '11%',
-        top: '15%',
-        transform: [{ rotate: '90deg' }],
-        width: '160%',
-        height: '50%',
+        top:'9%',
+        left:'22%',
+        width: '98%',
+        height: '80%',
         flexDirection: 'row',
         flexWrap: 'wrap',
     }

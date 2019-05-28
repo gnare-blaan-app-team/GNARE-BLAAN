@@ -1,21 +1,38 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, ImageBackground, TouchableHighlight } from 'react-native';
+import { Text, View, Image, StyleSheet, ImageBackground, TouchableHighlight, BackHandler } from 'react-native';
 import { withNavigation } from 'react-navigation';
+import Sound from 'react-native-sound';
 
 class PageB extends Component {
     static navigationOptions = {
         header: null,
     }
 
-    goHome = () => {
-        this.props.navigation.navigate('main');
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            pause: true,
+        };
     }
-    next = () => {
-        this.props.navigation.navigate('pageD');
+
+    componentDidMount() {
+        this.hello = new Sound('letter_b.mp3', Sound.MAIN_BUNDLE, (error) => {
+            if (error) {
+                console.log('failed to load the sound', error);
+                return;
+            } else {
+                this.hello.play();
+            }
+            BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+        });
     }
-    back = () => {
-        this.props.navigation.navigate('letters');
+
+
+    handleBackPress = () => {
+        this.hello.pause();
     }
+
     render() {
         return (
             <ImageBackground style={styles.image}
@@ -39,10 +56,10 @@ const styles = StyleSheet.create({
         position: 'absolute',
     },
     black: {
-        top: '15%',
+        top: '24%',
         left: '15%',
-        width: '61%',
-        height: '35%',
+        width: '35%',
+        height: '61%',
         backgroundColor: 'black',
         opacity: 0.2,
     },

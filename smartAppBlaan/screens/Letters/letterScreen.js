@@ -98,11 +98,10 @@ class Letters extends Component {
 const styles = StyleSheet.create({
     menuContainer: {
         position: 'relative',
-        transform: [{ rotate: '90deg' }],
-        top: '3%',
-        right: '10%',
-        width: '133%',
-        height: '45%',
+        top:'1%',
+        left:'9%',
+        width: '83%',
+        height: '60%',
         flexDirection: 'row',
         flexWrap: 'wrap',
     },

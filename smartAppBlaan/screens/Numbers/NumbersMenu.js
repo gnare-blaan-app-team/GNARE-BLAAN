@@ -25,11 +25,11 @@ class MenuItem extends Component {
 const styles = StyleSheet.create({
     menuItem: {
         width: '15%',
-        height: '25%',
-        padding:1,
+        height: '52%',
+        padding: 2,
     },
     image: {
-        width: '100%',
+        width: '80%',
         height: '100%',
     }
 

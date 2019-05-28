@@ -29,10 +29,10 @@ const styles = StyleSheet.create({
         position: 'absolute',
     },
     black: {
-        top: '15%',
+        top: '24%',
         left: '15%',
-        width: '61%',
-        height: '35%',
+        width: '35%',
+        height: '61%',
         backgroundColor: 'black',
         opacity: 0.2,
     },

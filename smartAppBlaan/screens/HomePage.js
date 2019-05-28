@@ -39,13 +39,12 @@ const styles = StyleSheet.create({
     },
 
     container: {
-        transform: [{ rotate: '90deg' }],
         flex: 1,
         alignItems: 'center',
         justifyContent:'center',
         position: 'absolute',
-        top: '48%',
-        left: '5%',
+        top: '80%',
+        left: '46%',
         
     },
 })
