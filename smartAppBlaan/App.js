@@ -4,56 +4,55 @@ import { StatusBar } from 'react-native';
 import HomePage from './screens/HomePage';
 import MainMenu from './screens/MainMenu';
 import LetterScreen from './screens/Letters/letterScreen';
-import PageAScreen from './screens/Letters/PageAScreen';
 import Numbers from './screens/Numbers/NumbersScreen';
 
-import LetterScreen from './screens/Letters/pageAScreen';
-import LetterScreen from './screens/Letters/pageBScreen';
-import LetterScreen from './screens/Letters/pageDScreen';
-import LetterScreen from './screens/Letters/pageEScreen';
-import LetterScreen from './screens/Letters/pageFScreen';
-import LetterScreen from './screens/Letters/pageGScreen';
-import LetterScreen from './screens/Letters/pageHScreen';
-import LetterScreen from './screens/Letters/pageIScreen';
-import LetterScreen from './screens/Letters/pageKScreen';
-import LetterScreen from './screens/Letters/pageLScreen';
-import LetterScreen from './screens/Letters/pageMScreen';
-import LetterScreen from './screens/Letters/pageNScreen';
-import LetterScreen from './screens/Letters/pageOScreen';
-import LetterScreen from './screens/Letters/pageSScreen';
-import LetterScreen from './screens/Letters/pageTScreen';
-import LetterScreen from './screens/Letters/pageUScreen';
-import LetterScreen from './screens/Letters/pageWScreen';
-import LetterScreen from './screens/Letters/pageYScreen';
+import PageA from './screens/Letters/pageAScreen';
+import PageB from './screens/Letters/pageBScreen';
+import PageD from './screens/Letters/pageDScreen';
+import PageE from './screens/Letters/pageEScreen';
+import PageF from './screens/Letters/pageFScreen';
+import PageG from './screens/Letters/pageGScreen';
+import PageH from './screens/Letters/pageHScreen';
+import PageI from './screens/Letters/pageIScreen';
+import PageK from './screens/Letters/pageKScreen';
+import PageL from './screens/Letters/pageLScreen';
+import PageM from './screens/Letters/pageMScreen';
+import PageN from './screens/Letters/pageNScreen';
+import PageO from './screens/Letters/pageOScreen';
+import PageS from './screens/Letters/pageSScreen';
+import PageT from './screens/Letters/pageTScreen';
+import PageU from './screens/Letters/pageUScreen';
+import PageW from './screens/Letters/pageWScreen';
+import PageY from './screens/Letters/pageYScreen';
 
 const RootStack = StackNavigator(
   {
     home: HomePage,
     mainMenu: MainMenu,
     letters: LetterScreen,
-    pageA: pageAScreen,
-    pageB: pageBScreen,
-    pageD: pageDScreen,
-    pageE: pageEScreen,
-    pageF: pageFScreen,
-    pageG: pageGScreen,
-    pageH: pageHScreen,
-    pageI: pageIScreen,
-    pageK: pageKScreen,
-    pageL: pageLScreen,
-    pageM: pageMScreen,
-    pageN: pageNScreen,
-    pageO: pageOScreen,
-    pageS: pageSScreen,
-    pageT: pageTScreen,
-    pageU: pageUScreen,
-    pageW: pageWScreen,
-    pageY: pageYScreen,
-    pageAScreen: PageAScreen,
-    numbers: Numbers,
+    pageA: PageA,
+    pageB: PageB,
+    pageD: PageD,
+    pageE: PageE,
+    pageF: PageF,
+    pageG: PageG,
+    pageH: PageH,
+    pageI: PageI,
+    pageK: PageK,
+    pageL: PageL,
+    pageM: PageM,
+    pageN: PageN,
+    pageO: PageO,
+    pageS: PageS,
+    pageT: PageT,
+    pageU: PageU,
+    pageW: PageW,
+    pageY: PageY,
+    
+    numbers: Numbers
   },
   {
-    initialRouteName: 'numbers',
+    initialRouteName: 'letters',
   }
 );
 
