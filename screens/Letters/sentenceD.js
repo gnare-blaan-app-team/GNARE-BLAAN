@@ -36,10 +36,9 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     container:{
-        position:'absolute',
-        right:'25%',
-        width:'38%',
-        height:'25%'
+        top: '-5%',
+        width:'25%',
+        height:'35%'
     }
 })
 

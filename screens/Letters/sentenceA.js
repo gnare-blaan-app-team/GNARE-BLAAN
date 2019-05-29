@@ -35,11 +35,10 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
-    container:{
-        position:'absolute',
-        right:'25%',
-        width:'35%',
-        height:'25%'
+    container:{   
+        top: '-5%',
+        width:'25%',
+        height:'35%'
     }
 })
 
