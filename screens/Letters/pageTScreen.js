@@ -17,12 +17,24 @@ class PageT extends Component {
     }
 
     componentDidMount() {
-        this.hello = new Sound('letter_t.mp3', Sound.MAIN_BUNDLE, (error) => {
+        this.letter_play_t = new Sound('letter_play_t.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);
                 return;
-            } else {
-                this.hello.play();
+            }
+            BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+        });
+        this.wordplay_t = new Sound('word_play_t.mp3', Sound.MAIN_BUNDLE, (error) => {
+            if (error) {
+                console.log('failed to load the sound', error);
+                return;
+            }
+            BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+        });
+        this.mute = new Sound('mute.mp3', Sound.MAIN_BUNDLE, (error) => {
+            if (error) {
+                console.log('failed to load the sound', error);
+                return;
             }
             BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
         });
@@ -30,13 +42,33 @@ class PageT extends Component {
 
 
     handleBackPress = () => {
-        this.hello.pause();
-    }
-    gotoSentenceA = () => {
-        this.hello.pause();
-        this.props.navigation.navigate('sentenceT');
+        this.letter_play_t.pause();
+        this.wordplay_t.pause();
     }
 
+    playAsound = () => {
+        this.wordplay_t.stop(() => {
+            this.mute.play();
+        });
+        this.letter_play_t.play();
+    }
+
+    playAsound_2 = () => {
+        this.letter_play_t.stop(() => {
+            this.mute.play();
+        });
+        this.wordplay_t.play();
+    }
+
+    gotoSentenceT = () => {
+        this.props.navigation.navigate('sentenceT');
+        this.letter_play_t.stop(() => {
+            this.mute.play();
+        });
+        this.wordplay_t.stop(() => {
+            this.mute.play();
+        });
+    }
     render() {
         return (
             <ImageBackground style={styles.image}
@@ -49,10 +81,26 @@ class PageT extends Component {
                     source={require('./lettersImage/T_(1).png')}
                 ></Image>
                 <View style={styles.sentenceIconContainer}>
-                    <TouchableOpacity onPress={this.gotoSentenceA}>
+                    <TouchableOpacity onPress={this.gotoSentenceT}>
                         <Image
                         source={require('./lettersImage/Letters_Info_Icon.png')}
                         style={styles.sentenceIcon}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.A_Speaker_Container}>
+                    <TouchableOpacity onPress={this.playAsound}>
+                        <Image
+                            source={require('./lettersImage/Speaker_icon.png')}
+                            style={styles.A_Speaker}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.A_Speaker_Container_2}>
+                    <TouchableOpacity onPress={this.playAsound_2}>
+                        <Image
+                            source={require('./lettersImage/Speaker_icon.png')}
+                            style={styles.A_Speaker_2}
                         ></Image>
                     </TouchableOpacity>
                 </View>
@@ -93,6 +141,24 @@ const styles = StyleSheet.create({
     sentenceIcon:{
         width:'8%',
         height:'52%'
+    },
+    A_Speaker_Container: {
+        position: 'absolute',
+        left: '42%',
+        top: '27%',
+    },
+    A_Speaker: {
+        height: 35,
+        width: 35
+    },
+    A_Speaker_Container_2: {
+        position: 'absolute',
+        left: '80%',
+        top: '27%',
+    },
+    A_Speaker_2: {
+        height: 35,
+        width: 35
     }
 })
 
