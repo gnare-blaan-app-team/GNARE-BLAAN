@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, ImageBackground, TouchableHighlight,BackHandler } from 'react-native';
+import { Text, View, Image, StyleSheet, ImageBackground, TouchableHighlight,BackHandler, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
 
@@ -32,6 +32,11 @@ class PageW extends Component {
     handleBackPress = () => {
         this.hello.pause();
     }
+    gotoSentenceA = () => {
+        this.hello.pause();
+        this.props.navigation.navigate('sentenceW');
+    }
+
     render() {
         return (
             <ImageBackground style={styles.image}
@@ -43,6 +48,14 @@ class PageW extends Component {
                     style={styles.main}
                     source={require('./lettersImage/W_(1).png')}
                 ></Image>
+                <View style={styles.sentenceIconContainer}>
+                    <TouchableOpacity onPress={this.gotoSentenceA}>
+                        <Image
+                        source={require('./lettersImage/Letters_Info_Icon.png')}
+                        style={styles.sentenceIcon}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
             </ImageBackground>
         )
     }
@@ -73,6 +86,14 @@ const styles = StyleSheet.create({
         height: '100%',
         position: 'absolute',
     },
+    sentenceIconContainer:{
+        left:'85%',
+        top:'18%'
+    },
+    sentenceIcon:{
+        width:'8%',
+        height:'52%'
+    }
 })
 
 export default withNavigation(PageW);

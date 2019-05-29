@@ -34,6 +34,7 @@ class PageA extends Component {
     }
 
     gotoSentenceA = () => {
+        this.hello.pause();
         this.props.navigation.navigate('sentenceA');
     }
 

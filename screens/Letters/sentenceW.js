@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     container:{
         top: '-5%',
         width:'25%',
-        height:'40%'
+        height:'35%'
     }
 })
 
