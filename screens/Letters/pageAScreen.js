@@ -26,21 +26,27 @@ class PageA extends Component {
             }
             BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
         }); 
-        this.A = new Sound('letter_play_a.mp3', Sound.MAIN_BUNDLE, (error) => {
+        this.letter_play_a = new Sound('letter_play_a.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);
                 return;
-            } else {
-                this.hello.play();
-            }
+            } 
             BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
-        });  
+        });
+        this.wordplay_a = new Sound('word_play_a.mp3', Sound.MAIN_BUNDLE, (error) => {
+            if (error) {
+                console.log('failed to load the sound', error);
+                return;
+            } 
+            BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+        });   
     }    
 
 
     handleBackPress = () => {
         this.hello.pause(); 
-        this.A.play();
+        this.letter_play_a.pause();
+        this.wordplay_a.pause();
     }
 
     gotoSentenceA = () => {
@@ -49,8 +55,15 @@ class PageA extends Component {
     }
 
     playAsound = () => {
-        this.A.play();
+        this.letter_play_a.play();
         this.hello.pause();
+        this.wordplay_a.pause();
+    }
+
+    playAsound_2 = () => {
+        this.wordplay_a.play();
+        this.hello.pause();
+        this.letter_play_a.pause();
     }
 
     render() {
@@ -77,6 +90,14 @@ class PageA extends Component {
                         <Image
                             source={require('./lettersImage/Speaker_icon.png')}
                             style={styles.A_Speaker}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.A_Speaker_Container_2}>
+                    <TouchableOpacity onPress={this.playAsound_2}>
+                        <Image
+                            source={require('./lettersImage/Speaker_icon.png')}
+                            style={styles.A_Speaker_2}
                         ></Image>
                     </TouchableOpacity>
                 </View>
@@ -121,6 +142,15 @@ const styles = StyleSheet.create({
     A_Speaker:{
          height: 35, 
          width: 35 
+    },
+    A_Speaker_Container_2: {
+        position: 'absolute',
+        left: '80%',
+        top: '27%',
+    },
+    A_Speaker_2: {
+        height: 35,
+        width: 35
     }
 })
 
