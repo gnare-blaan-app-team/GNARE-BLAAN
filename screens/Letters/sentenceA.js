@@ -31,6 +31,7 @@ class SentenceA extends Component {
                     <Text style={styles.sentence}>Pinapakain ko ang manok.</Text>
                     <Text style={styles.sentence}>I feed the chicken.</Text>
                 </View>
+
             </ImageBackground>
         )
     }
@@ -41,38 +42,42 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         position: 'absolute',
-        justifyContent:'center',
-        alignItems:'center',
     },
     main: {
         position: 'absolute',
         width: '100%',
         height: '100%',
     },
-    container:{   
+    container:{
+        left: '37.5%',
+        top: '23%',   
         width:'25%',
         height:'35%'
     },
     black: {
         top: '57%',
+        left: '12.7%',
         position:'absolute',
         width: '75%',
         height: '30%',
         backgroundColor: 'black',
         opacity: 0.2,
     },
+    labelcontainer: {
+        position: 'absolute',
+        top: '60%',
+        left: '15%'
+    }, 
     label: {
-        color: 'white', 
-        left: '-30%',
-        top: '15%',
-    },
-    sentence: {
-        top: '93%',
-        left: '-10%',
-        color: 'white',
+        color: 'white'
     },
     sentencecontainer: {
         position: 'absolute',
+        top: '60%',
+        left: '30%'
+    },
+    sentence: {
+        color: 'white'
     }
 
 })
