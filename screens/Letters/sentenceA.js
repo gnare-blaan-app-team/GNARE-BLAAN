@@ -69,15 +69,17 @@ const styles = StyleSheet.create({
         left: '20%'
     }, 
     label: {
-        color: 'white'
+        color: 'white',
+        fontSize: 18
     },
     sentencecontainer: {
         position: 'absolute',
         top: '60%',
-        left: '30%'
+        left: '35%'
     },
     sentence: {
-        color: 'white'
+        color: 'white',
+        fontSize:18
     }
 
 })
