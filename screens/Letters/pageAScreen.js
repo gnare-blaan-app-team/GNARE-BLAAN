@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Text, View, Image, StyleSheet, ImageBackground, Button, BackHandler, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
+
+Sound.setCategory('Playback');
  
 class PageA extends Component {
     static navigationOptions = {
@@ -12,20 +14,12 @@ class PageA extends Component {
         super(props)
 
         this.state = {
-            pause: true,
+            pause: false,
+            stop: true,
         };
     }
 
     componentDidMount() {
-        this.hello = new Sound('letter_a.mp3', Sound.MAIN_BUNDLE, (error) => {
-            if (error) {
-                console.log('failed to load the sound', error);
-                return;
-            }else{
-                this.hello.play(); 
-            }
-            BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
-        }); 
         this.letter_play_a = new Sound('letter_play_a.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);
@@ -39,31 +33,38 @@ class PageA extends Component {
                 return;
             } 
             BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+        }); 
+        this.mute = new Sound('mute.mp3', Sound.MAIN_BUNDLE, (error) => {
+            if (error) {
+                console.log('failed to load the sound', error);
+                return;
+            }
+            BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
         });   
     }    
 
 
-    handleBackPress = () => {
-        this.hello.pause(); 
+    handleBackPress = () => { 
         this.letter_play_a.pause();
         this.wordplay_a.pause();
     }
 
     gotoSentenceA = () => {
-        this.hello.pause();
         this.props.navigation.navigate('sentenceA');
     }
 
     playAsound = () => {
+        this.wordplay_a.stop(() => {
+            this.mute.play();
+        });
         this.letter_play_a.play();
-        this.hello.pause();
-        this.wordplay_a.pause();
     }
 
     playAsound_2 = () => {
+        this.letter_play_a.stop(() => {
+            this.mute.play();
+        });
         this.wordplay_a.play();
-        this.hello.pause();
-        this.letter_play_a.pause();
     }
 
     render() {
