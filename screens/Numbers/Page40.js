@@ -1,11 +1,38 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, ImageBackground, TouchableHighlight } from 'react-native';
+import { Text, View, Image, StyleSheet, ImageBackground, TouchableHighlight, BackHandler} from 'react-native';
 import { withNavigation } from 'react-navigation';
+import Sound from 'react-native-sound';
 
 class Page40 extends Component {
     static navigationOptions = {
         header: null,
     }
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            pause: true,
+        };
+    }
+
+    componentDidMount() {
+        this.hello = new Sound('number_40.mp3', Sound.MAIN_BUNDLE, (error) => {
+            if (error) {
+                console.log('failed to load the sound', error);
+                return;
+            } else {
+                this.hello.play();
+            }
+            BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+        });
+    }
+
+
+    handleBackPress = () => {
+        this.hello.pause();
+    }
+
     render() {
         return (
             <ImageBackground style={styles.image}
