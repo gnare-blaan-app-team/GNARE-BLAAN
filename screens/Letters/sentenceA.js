@@ -56,9 +56,9 @@ const styles = StyleSheet.create({
     },
     black: {
         top: '57%',
-        left: '12.7%',
+        left: '15%',
         position:'absolute',
-        width:'75%',
+        width: '70%',
         height: '30%',
         backgroundColor: 'black',
         opacity: 0.2,
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     labelcontainer: {
         position: 'absolute',
         top: '60%',
-        left: '15%'
+        left: '20%'
     }, 
     label: {
         color: 'white'
