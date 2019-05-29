@@ -34,13 +34,6 @@ class PageA extends Component {
             }
             BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
         });
-        this.mute = new Sound('mute.mp3', Sound.MAIN_BUNDLE, (error) => {
-            if (error) {
-                console.log('failed to load the sound', error);
-                return;
-            }
-            BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
-        });
     }
 
 
@@ -51,6 +44,8 @@ class PageA extends Component {
 
     gotoSentenceA = () => {
         this.props.navigation.navigate('sentenceA');
+        this.letter_play_a.pause();
+        this.wordplay_a.pause();
     }
 
     playAsound = () => {
