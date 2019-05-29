@@ -25,17 +25,32 @@ class PageA extends Component {
                 this.hello.play(); 
             }
             BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+        }); 
+        this.A = new Sound('letter_play_a.mp3', Sound.MAIN_BUNDLE, (error) => {
+            if (error) {
+                console.log('failed to load the sound', error);
+                return;
+            } else {
+                this.hello.play();
+            }
+            BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
         });  
     }    
 
 
     handleBackPress = () => {
         this.hello.pause(); 
+        this.A.play();
     }
 
     gotoSentenceA = () => {
         this.hello.pause();
         this.props.navigation.navigate('sentenceA');
+    }
+
+    playAsound = () => {
+        this.A.play();
+        this.hello.pause();
     }
 
     render() {
@@ -54,6 +69,14 @@ class PageA extends Component {
                         <Image
                         source={require('./lettersImage/Letters_Info_Icon.png')}
                         style={styles.sentenceIcon}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.A_Speaker_Container}>
+                    <TouchableOpacity onPress={this.playAsound}>
+                        <Image
+                            source={require('./lettersImage/Speaker_icon.png')}
+                            style={styles.A_Speaker}
                         ></Image>
                     </TouchableOpacity>
                 </View>
@@ -82,12 +105,22 @@ const styles = StyleSheet.create({
         position: 'absolute',
     },
     sentenceIconContainer:{
+        position: 'absolute',
         left:'85%',
-        top:'18%'
+        top:'80%',
     },
     sentenceIcon:{
-        width:'8%',
-        height:'52%'
+        width:54,
+        height:54
+    },
+    A_Speaker_Container:{
+        position:'absolute',
+        left:'42%',
+        top:'27%',
+    },
+    A_Speaker:{
+         height: 35, 
+         width: 35 
     }
 })
 
