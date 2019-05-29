@@ -18,6 +18,19 @@ class SentenceA extends Component {
                         source={require('./sentenceImage/sentenceA.png')}
                     ></Image>
                 </View>
+                <View style={styles.black}>
+                
+                </View> 
+                <View style={styles.labelcontainer}>
+                    <Text style={styles.label}>Blaan:</Text>
+                    <Text style={styles.label}>Filipino:</Text>
+                    <Text style={styles.label}>English:</Text>
+                </View>
+                <View style={styles.sentencecontainer}>
+                    <Text style={styles.sentence}>Fankaan gu anuk.</Text>
+                    <Text style={styles.sentence}>Pinapakain ko ang manok.</Text>
+                    <Text style={styles.sentence}>I feed the chicken.</Text>
+                </View>
             </ImageBackground>
         )
     }
@@ -32,14 +45,36 @@ const styles = StyleSheet.create({
         alignItems:'center',
     },
     main: {
+        position: 'absolute',
         width: '100%',
         height: '100%',
     },
     container:{   
-        top: '-5%',
         width:'25%',
         height:'35%'
+    },
+    black: {
+        top: '57%',
+        position:'absolute',
+        width: '75%',
+        height: '30%',
+        backgroundColor: 'black',
+        opacity: 0.2,
+    },
+    label: {
+        color: 'white', 
+        left: '-30%',
+        top: '15%',
+    },
+    sentence: {
+        top: '93%',
+        left: '-10%',
+        color: 'white',
+    },
+    sentencecontainer: {
+        position: 'absolute',
     }
+
 })
 
 export default withNavigation(SentenceA);
