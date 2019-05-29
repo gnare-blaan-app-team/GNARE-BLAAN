@@ -4,7 +4,7 @@ import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
 
 Sound.setCategory('Playback');
- 
+
 class PageA extends Component {
     static navigationOptions = {
         header: null,
@@ -24,27 +24,27 @@ class PageA extends Component {
             if (error) {
                 console.log('failed to load the sound', error);
                 return;
-            } 
+            }
             BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
         });
         this.wordplay_a = new Sound('word_play_a.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);
                 return;
-            } 
+            }
             BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
-        }); 
+        });
         this.mute = new Sound('mute.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);
                 return;
             }
             BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
-        });   
-    }    
+        });
+    }
 
 
-    handleBackPress = () => { 
+    handleBackPress = () => {
         this.letter_play_a.pause();
         this.wordplay_a.pause();
     }
@@ -81,8 +81,8 @@ class PageA extends Component {
                 <View style={styles.sentenceIconContainer}>
                     <TouchableOpacity onPress={this.gotoSentenceA}>
                         <Image
-                        source={require('./lettersImage/Letters_Info_Icon.png')}
-                        style={styles.sentenceIcon}
+                            source={require('./lettersImage/Letters_Info_Icon.png')}
+                            style={styles.sentenceIcon}
                         ></Image>
                     </TouchableOpacity>
                 </View>
@@ -126,23 +126,23 @@ const styles = StyleSheet.create({
         height: '100%',
         position: 'absolute',
     },
-    sentenceIconContainer:{
+    sentenceIconContainer: {
         position: 'absolute',
-        left:'85%',
-        top:'80%',
+        left: '85%',
+        top: '80%',
     },
-    sentenceIcon:{
-        width:54,
-        height:54
+    sentenceIcon: {
+        width: 54,
+        height: 54
     },
-    A_Speaker_Container:{
-        position:'absolute',
-        left:'42%',
-        top:'27%',
+    A_Speaker_Container: {
+        position: 'absolute',
+        left: '42%',
+        top: '27%',
     },
-    A_Speaker:{
-         height: 35, 
-         width: 35 
+    A_Speaker: {
+        height: 35,
+        width: 35
     },
     A_Speaker_Container_2: {
         position: 'absolute',
