@@ -160,7 +160,7 @@ const RootStack = StackNavigator(
 
   },
   {
-    initialRouteName: 'home',
+    initialRouteName: 'sentenceA',
   }
 );
 
