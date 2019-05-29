@@ -49,6 +49,27 @@ import Page300 from './screens/Numbers/Page300';
 import Page400 from './screens/Numbers/Page400';
 import Page500 from './screens/Numbers/Page500';
 import Page1000 from './screens/Numbers/Page1000';
+
+import SentenceA from './screens/Letters/sentenceA';
+import SentenceB from './screens/Letters/sentenceB';
+import SentenceD from './screens/Letters/sentenceD';
+import SentenceE from './screens/Letters/sentenceE';
+import SentenceF from './screens/Letters/sentenceF';
+import SentenceG from './screens/Letters/sentenceG';
+import SentenceH from './screens/Letters/sentenceH';
+import SentenceI from './screens/Letters/sentenceI';
+import SentenceK from './screens/Letters/sentenceK';
+import SentenceL from './screens/Letters/sentenceL';
+import SentenceM from './screens/Letters/sentenceM';
+import SentenceN from './screens/Letters/sentenceN';
+import SentenceO from './screens/Letters/sentenceO';
+import SentenceS from './screens/Letters/sentenceS';
+import SentenceT from './screens/Letters/sentenceT';
+import SentenceU from './screens/Letters/sentenceU';
+import SentenceW from './screens/Letters/sentenceW';
+import SentenceY from './screens/Letters/sentenceY';
+
+
 const RootStack = StackNavigator(
   {
     home: HomePage,
@@ -96,10 +117,30 @@ const RootStack = StackNavigator(
     page400: Page400,
     page500: Page500,
     page1000: Page1000,
+
+    sentenceA: SentenceA,
+    sentenceB: SentenceB,
+    sentenceD: SentenceD,
+    sentenceE: SentenceE,
+    sentenceF: SentenceF,
+    sentenceG: SentenceG,
+    sentenceH: SentenceH,
+    sentenceI: SentenceI,
+    sentenceK: SentenceK,
+    sentenceL: SentenceL,
+    sentenceM: SentenceM,
+    sentenceN: SentenceN,
+    sentenceO: SentenceO,
+    sentenceS: SentenceS,
+    sentenceT: SentenceT,
+    sentenceU: SentenceU,
+    sentenceW: SentenceW,
+    sentenceY: SentenceY,
+
     numbers: Numbers
   },
   {
-    initialRouteName: 'home',
+    initialRouteName: 'sentenceH',
   }
 );
 
