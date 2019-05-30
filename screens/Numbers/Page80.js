@@ -9,6 +9,7 @@ class Page80 extends Component {
     }
 
     componentDidMount() {
+        this.forceUpdate();
         this.number80 = new Sound('number_80.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);

@@ -9,6 +9,7 @@ class PageL extends Component {
     }
 
     componentDidMount() {
+        this.forceUpdate();
         this.letter_play_l= new Sound('letter_play_l.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);
@@ -36,6 +37,7 @@ class PageL extends Component {
     handleBackPress = () => {
         this.letter_play_l.pause();
         this.wordplay_l.pause();
+        
     }
 
     playAsound = () => {

@@ -11,6 +11,7 @@ class SentenceF extends Component {
     }
 
     componentDidMount() {
+        this.forceUpdate();
         this.letter_sentence_f = new Sound('sentence_letter_f.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);

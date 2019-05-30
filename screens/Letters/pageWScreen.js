@@ -9,6 +9,7 @@ class PageW extends Component {
     }
 
     componentDidMount() {
+        this.forceUpdate();
         this.letter_play_w = new Sound('letter_play_w.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);

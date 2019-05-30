@@ -9,6 +9,7 @@ class PageG extends Component {
     }
 
     componentDidMount() {
+        this.forceUpdate();
         this.letter_play_g = new Sound('letter_play_g.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);
