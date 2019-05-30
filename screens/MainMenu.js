@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, TouchableOpacity , ImageBackground } from 'react-native';
+import { View, StyleSheet, ImageBackground } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import MenuItem from './MenuItem';
 
@@ -15,6 +15,10 @@ class Mainmenu extends Component {
         this.props.navigation.navigate('numbers');
     }
 
+    gotoFlalok = () => {
+        this.props.navigation.navigate('flalok');
+    }
+
     render() {
         return (
             <ImageBackground style={styles.image}
@@ -23,7 +27,7 @@ class Mainmenu extends Component {
                 <View style={styles.menuContainer}>
                     <MenuItem itemImage={require('./images/Icon_Letter.png')} goto={this.gotoLetters} />
                     <MenuItem itemImage={require('./images/Icon_Number.png')} goto={this.gotoNumbers}/>
-                    <MenuItem itemImage={require('./images/Flalok.png')} />
+                    <MenuItem itemImage={require('./images/Flalok.png')} goto={this.gotoFlalok} />
                     <MenuItem itemImage={require('./images/Games.png')} />
                     <MenuItem itemImage={require('./images/CultureandArts.png')} />
                     <MenuItem itemImage={require('./images/Vocabulary.png')} />

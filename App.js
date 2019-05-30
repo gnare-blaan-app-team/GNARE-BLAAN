@@ -1,10 +1,19 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import { StatusBar } from 'react-native';
+
 import HomePage from './screens/HomePage';
 import MainMenu from './screens/MainMenu';
 import LetterScreen from './screens/Letters/letterScreen';
 import Numbers from './screens/Numbers/NumbersScreen';
+
+import FlalokStoryMenu from './screens/Flalok/FlalokStoryMenu';
+import Story1Screen from './screens/Flalok/Story1Screen';
+import Story2Screen from './screens/Flalok/Story2Screen';
+import Story3Screen from './screens/Flalok/Story3Screen';
+import Story4Screen from './screens/Flalok/Story4Screen';
+import Story5Screen from './screens/Flalok/Story5Screen';
+import Story6Screen from './screens/Flalok/Story6Screen';
 
 import PageA from './screens/Letters/pageAScreen';
 import PageB from './screens/Letters/pageBScreen';
@@ -75,6 +84,16 @@ const RootStack = StackNavigator(
     home: HomePage,
     mainMenu: MainMenu,
     letters: LetterScreen,
+
+    flalok: FlalokStoryMenu,
+    story1: Story1Screen,
+    story2: Story2Screen,
+    story3: Story3Screen,
+    story4: Story4Screen,
+    story5: Story5Screen,
+    story6: Story6Screen,
+
+
     pageA: PageA,
     pageB: PageB,
     pageD: PageD,
@@ -138,9 +157,10 @@ const RootStack = StackNavigator(
     sentenceY: SentenceY,
 
     numbers: Numbers
+
   },
   {
-    initialRouteName: 'home',
+    initialRouteName: 'mainMenu',
   }
 );
 
