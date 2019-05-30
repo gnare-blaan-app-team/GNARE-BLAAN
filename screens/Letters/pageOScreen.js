@@ -8,14 +8,6 @@ class PageO extends Component {
         header: null,
     }
 
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            pause: true,
-        };
-    }
-
     componentDidMount() {
         this.letter_play_o = new Sound('letter_play_o.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {

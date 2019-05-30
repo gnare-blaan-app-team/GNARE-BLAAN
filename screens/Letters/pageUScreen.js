@@ -8,14 +8,6 @@ class PageU extends Component {
         header: null,
     }
 
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            pause: true,
-        };
-    }
-
     componentDidMount() {
         this.letter_play_u = new Sound('letter_play_u.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
