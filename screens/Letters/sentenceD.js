@@ -10,14 +10,8 @@ class SentenceD extends Component {
     render() {
         return (
             <ImageBackground style={styles.image}
-                source={require('../images/BG.jpg')}
+                source={require('../images/sentenceD.png')}
             >
-                <View style={styles.container}>
-                    <Image
-                        style={styles.main}
-                        source={require('./sentenceImage/sentenceD.png')}
-                    ></Image>
-                </View>
             </ImageBackground>
         )
     }
@@ -28,17 +22,11 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         position: 'absolute',
-        justifyContent:'center',
-        alignItems:'center',
     },
     main: {
+        position: 'absolute',
         width: '100%',
         height: '100%',
-    },
-    container:{
-        top: '-5%',
-        width:'25%',
-        height:'35%'
     }
 })
 

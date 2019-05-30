@@ -10,14 +10,8 @@ class SentenceS extends Component {
     render() {
         return (
             <ImageBackground style={styles.image}
-                source={require('../images/BG.jpg')}
+                source={require('../images/sentenceS.png')}
             >
-                <View style={styles.container}>
-                    <Image
-                        style={styles.main}
-                        source={require('./sentenceImage/sentenceS.png')}
-                    ></Image>
-                </View>
             </ImageBackground>
         )
     }
@@ -34,11 +28,6 @@ const styles = StyleSheet.create({
     main: {
         width: '100%',
         height: '100%',
-    },
-    container:{
-        top: '-5%',
-        width:'25%',
-        height:'35%'
     }
 })
 
