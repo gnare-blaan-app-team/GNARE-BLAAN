@@ -63,6 +63,10 @@ class PageH extends Component {
         });
     }
 
+    gotoMainMenu = () => {
+        this.props.navigation.navigate('mainMenu');
+    }
+
     render() {
         return (
             <ImageBackground style={styles.image}
@@ -95,6 +99,14 @@ class PageH extends Component {
                         <Image
                             source={require('./lettersImage/Speaker_icon.png')}
                             style={styles.A_Speaker_2}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.homeContainer}>
+                    <TouchableOpacity onPress={this.gotoMainMenu}>
+                        <Image
+                            source={require('./lettersImage/Home_icon.png')}
+                            style={styles.home}
                         ></Image>
                     </TouchableOpacity>
                 </View>
@@ -153,6 +165,15 @@ const styles = StyleSheet.create({
     A_Speaker_2: {
         height: 35,
         width: 35
+    },
+    homeContainer: {
+        position: 'absolute',
+        left: '88%',
+        top: '-2%',
+    },
+    home: {
+        height: 100,
+        width: 62
     }
 })
 
