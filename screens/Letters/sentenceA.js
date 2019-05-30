@@ -19,18 +19,13 @@ class SentenceA extends Component {
                     ></Image>
                 </View>
                 <View style={styles.black}>
-                
+                    <View style={styles.labelcontainer}>
+                        <Text style={styles.label}>Blaan:    Fankaan gu anuk.</Text>
+                        <Text style={styles.label}>Filipino: Pinapakain ko ang manok.</Text>
+                        <Text style={styles.label}>English: I feed the chicken.</Text>
+                    </View>
                 </View> 
-                <View style={styles.labelcontainer}>
-                    <Text style={styles.label}>Blaan:</Text>
-                    <Text style={styles.label}>Filipino:</Text>
-                    <Text style={styles.label}>English:</Text>
-                </View>
-                <View style={styles.sentencecontainer}>
-                    <Text style={styles.sentence}>Fankaan gu anuk.</Text>
-                    <Text style={styles.sentence}>Pinapakain ko ang manok.</Text>
-                    <Text style={styles.sentence}>I feed the chicken.</Text>
-                </View>
+                
 
             </ImageBackground>
         )
@@ -43,6 +38,7 @@ const styles = StyleSheet.create({
         height: '100%',
         position: 'absolute',
     },
+    
     main: {
         position: 'absolute',
         width: '100%',
@@ -60,8 +56,8 @@ const styles = StyleSheet.create({
         position:'absolute',
         width: '70%',
         height: '30%',
-        backgroundColor: 'black',
-        opacity: 0.2,
+        backgroundColor: 'rgba(0,0,0, 0.2)',
+        //opacity: 0.2,
     },
     labelcontainer: {
         position: 'absolute',
