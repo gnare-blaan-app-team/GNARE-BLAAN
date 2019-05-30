@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, ImageBackground, TouchableHighlight, BackHandler } from 'react-native';
+import { Text, View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
 
@@ -8,21 +8,20 @@ class Page5 extends Component {
         header: null,
     }
 
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            pause: true,
-        };
-    }
 
     componentDidMount() {
-        this.hello = new Sound('number_5.mp3', Sound.MAIN_BUNDLE, (error) => {
+        this.forceUpdate();
+        this.number5 = new Sound('number_5.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);
                 return;
-            } else {
-                this.hello.play();
+            }
+            BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+        });
+        this.mute = new Sound('mute.mp3', Sound.MAIN_BUNDLE, (error) => {
+            if (error) {
+                console.log('failed to load the sound', error);
+                return;
             }
             BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
         });
@@ -30,7 +29,11 @@ class Page5 extends Component {
 
 
     handleBackPress = () => {
-        this.hello.pause();
+        this.number5.pause();
+    }
+
+    playAsound_2 = () => {
+        this.number5.play();
     }
 
     render() {
@@ -44,6 +47,14 @@ class Page5 extends Component {
                     style={styles.main}
                     source={require('./numbersImage/5(1).png')}
                 ></Image>
+                <View style={styles.A_Speaker_Container_2}>
+                    <TouchableOpacity onPress={this.playAsound_2}>
+                        <Image
+                            source={require('./numbersImage/Speaker_icon.png')}
+                            style={styles.A_Speaker_2}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
             </ImageBackground>
         )
     }
@@ -74,6 +85,15 @@ const styles = StyleSheet.create({
         height: '100%',
         position: 'absolute',
     },
+    A_Speaker_Container_2: {
+        position: 'absolute',
+        left: '80%',
+        top: '27%',
+    },
+    A_Speaker_2: {
+        height: 35,
+        width: 35
+    }
 })
 
 export default withNavigation(Page5);

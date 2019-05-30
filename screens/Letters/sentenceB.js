@@ -1,22 +1,46 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, ImageBackground, TouchableHighlight } from 'react-native';
+import { Text, View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler } from 'react-native';
 import { withNavigation } from 'react-navigation';
+import Sound from 'react-native-sound';
+
+Sound.setCategory('Playback');
 
 class SentenceB extends Component {
     static navigationOptions = {
         header: null,
     }
 
+    componentDidMount() {
+        this.forceUpdate();
+        this.letter_sentence_b = new Sound('sentence_letter_b.mp3', Sound.MAIN_BUNDLE, (error) => {
+            if (error) {
+                console.log('failed to load the sound', error);
+                return;
+            }
+            BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+        });
+    }
+
+    playAsound_2 = () => {
+        this.letter_sentence_b.play();
+    }
+
+    handleBackPress = () => {
+        this.letter_sentence_b.pause();
+    }
+
     render() {
         return (
             <ImageBackground style={styles.image}
-                source={require('../images/BG.jpg')}
+                source={require('../images/sentenceB.png')}
             >
-                <View style={styles.container}>
-                    <Image
-                        style={styles.main}
-                        source={require('./sentenceImage/sentenceB.png')}
-                    ></Image>
+                <View style={styles.A_Speaker_Container_2}>
+                    <TouchableOpacity onPress={this.playAsound_2}>
+                        <Image
+                            source={require('./lettersImage/Speaker_icon.png')}
+                            style={styles.A_Speaker_2}
+                        ></Image>
+                    </TouchableOpacity>
                 </View>
             </ImageBackground>
         )
@@ -28,17 +52,20 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         position: 'absolute',
-        justifyContent:'center',
-        alignItems:'center',
     },
     main: {
+        position: 'absolute',
         width: '100%',
         height: '100%',
     },
-    container:{
-        top: '-5%',
-        width:'25%',
-        height:'35%'
+    A_Speaker_Container_2: {
+        position: 'absolute',
+        left: '80%',
+        top: '27%',
+    },
+    A_Speaker_2: {
+        height: 35,
+        width: 35
     }
 })
 

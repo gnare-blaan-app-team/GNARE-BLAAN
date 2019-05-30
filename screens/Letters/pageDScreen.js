@@ -8,21 +8,26 @@ class PageD extends Component {
         header: null,
     }
 
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            pause: true,
-        };
-    }
-
-    componentDidMount() {
-        this.hello = new Sound('letter_d.mp3', Sound.MAIN_BUNDLE, (error) => {
+     componentDidMount() {
+         this.forceUpdate();
+        this.letter_play_d = new Sound('letter_play_d.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);
                 return;
-            } else {
-                this.hello.play();
+            }
+            BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+        });
+        this.wordplay_d = new Sound('word_play_d.mp3', Sound.MAIN_BUNDLE, (error) => {
+            if (error) {
+                console.log('failed to load the sound', error);
+                return;
+            }
+            BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+        });
+        this.mute = new Sound('mute.mp3', Sound.MAIN_BUNDLE, (error) => {
+            if (error) {
+                console.log('failed to load the sound', error);
+                return;
             }
             BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
         });
@@ -30,11 +35,32 @@ class PageD extends Component {
 
 
     handleBackPress = () => {
-        this.hello.pause();
+        this.letter_play_d.pause();
+        this.wordplay_d.pause();
     }
-    gotoSentenceA = () => {
-        this.hello.pause();
+
+    playAsound = () => {
+        this.wordplay_d.stop(() => {
+            this.mute.play();
+        });
+        this.letter_play_d.play();
+    }
+
+    playAsound_2 = () => {
+        this.letter_play_d.stop(() => {
+            this.mute.play();
+        });
+        this.wordplay_d.play();
+    }
+
+    gotoSentenceD = () => {
         this.props.navigation.navigate('sentenceD');
+        this.letter_play_d.stop(() => {
+            this.mute.play();
+        });
+        this.wordplay_d.stop(() => {
+            this.mute.play();
+        });
     }
     
     render() {
@@ -49,10 +75,26 @@ class PageD extends Component {
                     source={require('./lettersImage/D(1).png')}
                 ></Image>
                 <View style={styles.sentenceIconContainer}>
-                    <TouchableOpacity onPress={this.gotoSentenceA}>
+                    <TouchableOpacity onPress={this.gotoSentenceD}>
                         <Image
                         source={require('./lettersImage/Letters_Info_Icon.png')}
                         style={styles.sentenceIcon}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.A_Speaker_Container}>
+                    <TouchableOpacity onPress={this.playAsound}>
+                        <Image
+                            source={require('./lettersImage/Speaker_icon.png')}
+                            style={styles.A_Speaker}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.A_Speaker_Container_2}>
+                    <TouchableOpacity onPress={this.playAsound_2}>
+                        <Image
+                            source={require('./lettersImage/Speaker_icon.png')}
+                            style={styles.A_Speaker_2}
                         ></Image>
                     </TouchableOpacity>
                 </View>
@@ -93,6 +135,24 @@ const styles = StyleSheet.create({
     sentenceIcon:{
         width:'8%',
         height:'52%'
+    },
+    A_Speaker_Container: {
+        position: 'absolute',
+        left: '42%',
+        top: '27%',
+    },
+    A_Speaker: {
+        height: 35,
+        width: 35
+    },
+    A_Speaker_Container_2: {
+        position: 'absolute',
+        left: '80%',
+        top: '27%',
+    },
+    A_Speaker_2: {
+        height: 35,
+        width: 35
     }
 })
 
