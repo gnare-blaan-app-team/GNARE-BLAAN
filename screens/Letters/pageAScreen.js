@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, Image, StyleSheet, ImageBackground, Button, BackHandler, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 Sound.setCategory('Playback');
 
@@ -73,6 +74,10 @@ class PageA extends Component {
         this.props.navigation.navigate('mainMenu');
     }
 
+    gotoNextPage = () => {
+        this.props.navigation.navigate('pageB');
+    }
+
     render() {
         return (
             <ImageBackground style={styles.image}
@@ -124,6 +129,14 @@ class PageA extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
+                <View style={styles.nextContainer}>
+                    <TouchableOpacity onPress={this.gotoNextPage}>
+                        <Image
+                            source={require('./lettersImage/Next_Icon.png')}
+                            style={styles.next}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
             </ImageBackground>
         )
     }
@@ -131,15 +144,15 @@ class PageA extends Component {
 const styles = StyleSheet.create({
     image: {
         flex: 1,
-        width: '100%',
-        height: '100%',
+        width: wp('100%'),
+        height: hp('100%'),
         position: 'absolute',
     },
     black: {
         top: '24%',
         left: '15%',
-        width: '35%',
-        height: '61%',
+        width: wp('35%'),
+        height: hp('61%'),
         backgroundColor: 'black',
         opacity: 0.2,
     },
@@ -154,8 +167,8 @@ const styles = StyleSheet.create({
         top: '80%',
     },
     sentenceIcon: {
-        width: 54,
-        height: 54
+        width: wp('9%'),
+        height: hp('16%')
     },
     A_Speaker_Container: {
         position: 'absolute',
@@ -163,8 +176,8 @@ const styles = StyleSheet.create({
         top: '27%',
     },
     A_Speaker: {
-        height: 35,
-        width: 35
+        width: wp('6'),
+        height: hp('10%')
     },
     A_Speaker_Container_2: {
         position: 'absolute',
@@ -172,8 +185,8 @@ const styles = StyleSheet.create({
         top: '27%',
     },
     A_Speaker_2: {
-        height: 35,
-        width: 35
+        width: wp('6'),
+        height: hp('10%')
     },
     pencilContainer: {
         position: 'absolute',
@@ -181,19 +194,27 @@ const styles = StyleSheet.create({
         top: '23%',
     },
     pencil: {
-        height: 100,
-        width: 50
+        width: wp('8%'),
+        height: hp('25%')
     },
     homeContainer: {
         position: 'absolute',
-        left: '88%',
+        left: '85%',
         top: '-2%',
     },
     home: {
-        height: 100,
-        width: 62
+        width: wp('14%'),
+        height: hp('28%')
+    },
+    nextContainer: {
+        position: 'absolute',
+        left: '85%',
+        top: '40%',
+    },
+    next: {
+        width: wp('9'),
+        height: hp('16%')
     }
-
 })
 
 export default withNavigation(PageA);
