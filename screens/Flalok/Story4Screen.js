@@ -1,49 +1,85 @@
 import React,{Component} from 'react';
-import { StyleSheet, ImageBackground, Text, View, Image} from 'react-native';
+import { StyleSheet, ImageBackground, View, TouchableWithoutFeedback} from 'react-native';
 import { withNavigation } from 'react-navigation';
+import Video from 'react-native-video';
+import Story1_EN from './flalokVideos/Story1_EN.mp4';
+import Story4_FL from './flalokVideos/Story4_FL.mp4';
 
-class Story4Screen extends Component {
+ class Story4Screen extends Component<Props> {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            repeat: false,
+            rate: 1,
+            volume: 1,
+            muted: false,
+            resizeMode: 'contain',
+            duration: 0.0,
+            progress: 0.0,
+            currentTime: 0.0,
+            paused: true,
+            rateText: '1.0',
+            pausedText: 'Play',
+            hideControls: false,
+            toPlay: 'EN',
+        };
+    }
+
     static navigationOptions = {
         header:null,
     }
 
-    gotoStory4 = () => {
-        this.prop.nagivation.navigate('story4');
-    }
+    
 
     render(){
         return(
            <ImageBackground style={styles.image} source={require('./flalokImages/Flalok_BG.jpg')}>
 
                 <View style={styles.container}>
-                    <View style={styles.row}>
-                        <Image style={styles.itemSize} source={require('./flalokImages/Story4.png')} goto={this.gotoStory4}/>
-                    </View>
-                    <View style={styles.row}>
-                    </View>
+                    <TouchableWithoutFeedback onPress={() => this.setState({paused: !this.state.paused, toPlay: 'EN'})}>
+                        <Video ref={(ref: Video) => {this.video = ref}}
+                            source={Story4_FL}
+                            repeat={this.state.repeat}
+                            rate={this.state.rate}
+                            volume={this.state.volume}
+                            muted={this.state.muted}
+                            resizeMode={this.state.resizeMode}
+                            paused={this.state.paused}
+                            onLoad={this.onLoad}
+                            onProgress={this.onProgress}
+                            onEnd={this.onEnd}
+                            onPress={this.onPress}
+                            style={styles.backgroundVideo}
+                        />
+                    </TouchableWithoutFeedback>
                 </View>
+                
            </ImageBackground>
         );
     }
 }
 
 const styles = StyleSheet.create({
+
+    backgroundVideo: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        width: '100%',
+        height: '100%',
+        padding: 10,
+    },
+
     image: {
         flex: 1,
         width: '100%',
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-    },
-
-    row: {
-        position: 'relative',
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'row',
-        width: '100%',
-        height: '50%',
     },
 
     itemSize: {
@@ -55,11 +91,15 @@ const styles = StyleSheet.create({
     },
 
     container: {
-        position: 'absolute',
-        top: '10%',
-        left: '10%',
-        width: '80%',
-        height: '90%',
+        borderWidth: 5,
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+        borderColor: 'black',
+        width: '100%',
+        height: '100%',
+        flexDirection: 'row',
+    },
+    contain: {
+        flexDirection: 'column',
     }
 })
 

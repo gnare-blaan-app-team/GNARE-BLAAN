@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
         height: hp('100%'),
         position: 'absolute',
     },
+    
     main: {
         position: 'absolute',
         width: wp('100%'),
