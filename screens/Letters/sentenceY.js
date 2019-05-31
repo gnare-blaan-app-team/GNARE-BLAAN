@@ -32,7 +32,7 @@ class SentenceY extends Component {
     render() {
         return (
             <ImageBackground style={styles.image}
-                source={require('../images/sentenceY.png')}
+                source={require('./lettersImage/sentenceY.png')}
             >
                 <View style={styles.A_Speaker_Container_2}>
                     <TouchableOpacity onPress={this.playAsound_2}>

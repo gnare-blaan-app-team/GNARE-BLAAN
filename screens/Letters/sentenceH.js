@@ -33,7 +33,7 @@ class SentenceH extends Component {
     render() {
         return (
             <ImageBackground style={styles.image}
-                source={require('../images/sentenceH.png')}
+                source={require('./lettersImage/sentenceH.png')}
             >
                 <View style={styles.A_Speaker_Container_2}>
                     <TouchableOpacity onPress={this.playAsound_2}>

@@ -78,6 +78,31 @@ import SentenceU from './screens/Letters/sentenceU';
 import SentenceW from './screens/Letters/sentenceW';
 import SentenceY from './screens/Letters/sentenceY';
 
+import Sentence1 from './screens/Numbers/sentence1';
+import Sentence2 from './screens/Numbers/sentence2';
+import Sentence3 from './screens/Numbers/sentence3';
+import Sentence4 from './screens/Numbers/sentence4';
+import Sentence5 from './screens/Numbers/sentence5';
+import Sentence6 from './screens/Numbers/sentence6';
+import Sentence7 from './screens/Numbers/sentence7';
+import Sentence8 from './screens/Numbers/sentence8';
+import Sentence9 from './screens/Numbers/sentence9';
+import Sentence10 from './screens/Numbers/sentence10';
+import Sentence20 from './screens/Numbers/sentence20';
+import Sentence30 from './screens/Numbers/sentence30';
+import Sentence40 from './screens/Numbers/sentence40';
+import Sentence50 from './screens/Numbers/sentence50';
+import Sentence60 from './screens/Numbers/sentence60';
+import Sentence70 from './screens/Numbers/sentence70';
+import Sentence80 from './screens/Numbers/sentence80';
+import Sentence90 from './screens/Numbers/sentence90';
+import Sentence100 from './screens/Numbers/sentence100';
+import Sentence200 from './screens/Numbers/sentence200';
+import Sentence300 from './screens/Numbers/sentence300';
+import Sentence400 from './screens/Numbers/sentence400';
+import Sentence500 from './screens/Numbers/sentence500';
+import Sentence1000 from './screens/Numbers/sentence1000';
+
 import TracingA from './screens/Letters/TracingA';
 
 
@@ -158,6 +183,31 @@ const RootStack = StackNavigator(
     sentenceW: SentenceW,
     sentenceY: SentenceY,
 
+    sentence1: Sentence1,
+    sentence2: Sentence2,
+    sentence3: Sentence3,
+    sentence4: Sentence4,
+    sentence5: Sentence5,
+    sentence6: Sentence6,
+    sentence7: Sentence7,
+    sentence8: Sentence8,
+    sentence9: Sentence9,
+    sentence10: Sentence10,
+    sentence20: Sentence20,
+    sentence30: Sentence30,
+    sentence40: Sentence40,
+    sentence50: Sentence50,
+    sentence60: Sentence60,
+    sentence70: Sentence70,
+    sentence80: Sentence80,
+    sentence90: Sentence90,
+    sentence100: Sentence100,
+    sentence200: Sentence200,
+    sentence300: Sentence300,
+    sentence400: Sentence400,
+    sentence500: Sentence500,
+    sentence1000: Sentence1000,
+
     tracingA: TracingA,
 
     numbers: Numbers
@@ -165,11 +215,7 @@ const RootStack = StackNavigator(
 
   },
   {
-<<<<<<< HEAD
     initialRouteName: 'home',
-=======
-    initialRouteName: 'pageA',
->>>>>>> 8a213234262eb4619918e1eebd028bfc33c585a3
   }
 );
 

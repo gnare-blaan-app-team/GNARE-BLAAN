@@ -34,7 +34,7 @@ class SentenceA extends Component {
     render() {
         return (
             <ImageBackground style={styles.image}
-                source={require('../images/sentenceA.png')}
+                source={require('./lettersImage/sentenceA.png')}
             >
                 <View style={styles.A_Speaker_Container_2}>
                     <TouchableOpacity onPress={this.playAsound_2}>
