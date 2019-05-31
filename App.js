@@ -165,11 +165,7 @@ const RootStack = StackNavigator(
 
   },
   {
-<<<<<<< HEAD
     initialRouteName: 'home',
-=======
-    initialRouteName: 'pageA',
->>>>>>> 8a213234262eb4619918e1eebd028bfc33c585a3
   }
 );
 
