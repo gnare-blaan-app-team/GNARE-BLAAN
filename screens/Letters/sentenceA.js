@@ -43,18 +43,6 @@ class SentenceA extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-<<<<<<< HEAD
-                <View style={styles.black}>
-                    <View style={styles.labelcontainer}>
-                        <Text style={styles.label}>Blaan:    Fankaan gu anuk.</Text>
-                        <Text style={styles.label}>Filipino: Pinapakain ko ang manok.</Text>
-                        <Text style={styles.label}>English: I feed the chicken.</Text>
-                    </View>
-                </View> 
-                
-
-=======
->>>>>>> 9cc3918a7742ac8a5b804ff99e2fb60e5b562fc6
             </ImageBackground>
         )
     }
@@ -72,35 +60,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
-<<<<<<< HEAD
-    container:{
-        left: '37.5%',
-        top: '23%',   
-        width:'25%',
-        height:'35%'
-    },
-    black: {
-        top: '57%',
-        left: '15%',
-        position:'absolute',
-        width: '70%',
-        height: '30%',
-        backgroundColor: 'rgba(0,0,0, 0.2)',
-        //opacity: 0.2,
-    },
-    labelcontainer: {
-        position: 'absolute',
-        top: '60%',
-        left: '20%'
-    }, 
-    label: {
-        color: 'white',
-        fontSize: 18
-    },
-    sentencecontainer: {
-=======
     A_Speaker_Container_2: {
->>>>>>> 9cc3918a7742ac8a5b804ff99e2fb60e5b562fc6
         position: 'absolute',
         left: '80%',
         top: '27%',
