@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 Sound.setCategory('Playback');
 
@@ -49,15 +50,14 @@ class SentenceO extends Component {
 const styles = StyleSheet.create({
     image: {
         flex: 1,
-        width: '100%',
-        height: '100%',
+        width: wp('100%'),
+        height: hp('100%'),
         position: 'absolute',
-        justifyContent:'center',
-        alignItems:'center',
     },
     main: {
-        width: '100%',
-        height: '100%',
+        position: 'absolute',
+        width: wp('100%'),
+        height: hp('100%'),
     },
     A_Speaker_Container_2: {
         position: 'absolute',
@@ -65,9 +65,9 @@ const styles = StyleSheet.create({
         top: '27%',
     },
     A_Speaker_2: {
-        height: 35,
-        width: 35
-    }
+        width: wp('6%'),
+        height: hp('11%')
+    },
 })
 
 export default withNavigation(SentenceO);
