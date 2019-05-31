@@ -11,7 +11,7 @@ class TracingA extends Component {
     render() {
         return (
             <ImageBackground style={styles.image}
-                source={require('./lettersImage/lettertracing_a.gif')}
+                source={require('./lettersImage/letter_A.gif')}
             >
             </ImageBackground>
         )

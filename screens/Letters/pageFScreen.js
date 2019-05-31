@@ -44,14 +44,23 @@ class PageF extends Component {
         this.wordplay_f.stop(() => {
             this.mute.play();
         });
-        this.letter_play_f.play();
+        if (this.letter_play_f.play()) {
+            this.letter_play_f.stop(() => {
+                this.letter_play_f.play()
+            });
+        }
+
     }
 
     playAsound_2 = () => {
         this.letter_play_f.stop(() => {
             this.mute.play();
         });
-        this.wordplay_f.play();
+        if (this.wordplay_f.play()) {
+            this.wordplay_f.stop(() => {
+                this.wordplay_f.play()
+            });
+        }
     }
 
     gotoSentenceF = () => {
@@ -66,27 +75,41 @@ class PageF extends Component {
 
     gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
+        this.letter_play_f.pause();
+        this.wordplay_f.pause();
     }
 
     gotoNextPage = () => {
         this.props.navigation.navigate('pageG');
+        this.letter_play_f.pause();
+        this.wordplay_f.pause();
+    }
+
+    goBack = () => {
+        this.props.navigation.navigate('letters');
+        this.letter_play_f.pause();
+        this.wordplay_f.pause();
+    }
+
+    goPrev = () => {
+        this.props.navigation.navigate('pageE');
+        this.letter_play_f.pause();
+        this.wordplay_f.pause();
+    }
+
+    gotoTracingF = () => {
+        this.props.navigation.navigate('tracingF');
     }
 
     render() {
         return (
             <ImageBackground style={styles.image}
-                source={require('../images/BG.jpg')}
+                source={require('./lettersImage/LetterF.png')}
             >
-                <View style={styles.black}>
-                </View>
-                <Image
-                    style={styles.main}
-                    source={require('./lettersImage/F_(1).png')}
-                ></Image>
                 <View style={styles.sentenceIconContainer}>
                     <TouchableOpacity onPress={this.gotoSentenceF}>
                         <Image
-                        source={require('./lettersImage/Letters_Info_Icon.png')}
+                        source={require('../images/Letters_Info_Icon.png')}
                         style={styles.sentenceIcon}
                         ></Image>
                     </TouchableOpacity>
@@ -94,7 +117,7 @@ class PageF extends Component {
                 <View style={styles.A_Speaker_Container}>
                     <TouchableOpacity onPress={this.playAsound}>
                         <Image
-                            source={require('./lettersImage/Speaker_icon.png')}
+                            source={require('../images/Speaker_icon.png')}
                             style={styles.A_Speaker}
                         ></Image>
                     </TouchableOpacity>
@@ -102,15 +125,23 @@ class PageF extends Component {
                 <View style={styles.A_Speaker_Container_2}>
                     <TouchableOpacity onPress={this.playAsound_2}>
                         <Image
-                            source={require('./lettersImage/Speaker_icon.png')}
+                            source={require('../images/Speaker_icon.png')}
                             style={styles.A_Speaker_2}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.pencilContainer}>
+                    <TouchableOpacity onPress={this.gotoTracingF}>
+                        <Image
+                            source={require('../images/Pencil_icon.png')}
+                            style={styles.pencil}
                         ></Image>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.homeContainer}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Image
-                            source={require('./lettersImage/Home_icon.png')}
+                            source={require('../images/Home_icon.png')}
                             style={styles.home}
                         ></Image>
                     </TouchableOpacity>
@@ -118,8 +149,24 @@ class PageF extends Component {
                 <View style={styles.nextContainer}>
                     <TouchableOpacity onPress={this.gotoNextPage}>
                         <Image
-                            source={require('./lettersImage/Next_Icon.png')}
+                            source={require('../images/Next_Icon.png')}
                             style={styles.next}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.backContainer}>
+                    <TouchableOpacity onPress={this.goBack}>
+                        <Image
+                            source={require('../images/Back_icon.png')}
+                            style={styles.back}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.prevContainer}>
+                    <TouchableOpacity onPress={this.goPrev}>
+                        <Image
+                            source={require('../images/Prev_Icon.png')}
+                            style={styles.prev}
                         ></Image>
                     </TouchableOpacity>
                 </View>
@@ -134,27 +181,14 @@ const styles = StyleSheet.create({
         height: hp('100%'),
         position: 'absolute',
     },
-    black: {
-        top: '24%',
-        left: '15%',
-        width: wp('35%'),
-        height: hp('61%'),
-        backgroundColor: 'black',
-        opacity: 0.2,
-    },
-    main: {
-        width: '100%',
-        height: '100%',
-        position: 'absolute',
-    },
     sentenceIconContainer: {
         position: 'absolute',
-        left: '85%',
-        top: '80%',
+        left: '83%',
+        top: '73%',
     },
     sentenceIcon: {
-        width: wp('9%'),
-        height: hp('16%')
+        width: wp('14%'),
+        height: hp('28%')
     },
     A_Speaker_Container: {
         position: 'absolute',
@@ -162,8 +196,8 @@ const styles = StyleSheet.create({
         top: '27%',
     },
     A_Speaker: {
-        width: wp('6%'),
-        height: hp('11%')
+        width: wp('6'),
+        height: hp('10%')
     },
     A_Speaker_Container_2: {
         position: 'absolute',
@@ -171,8 +205,8 @@ const styles = StyleSheet.create({
         top: '27%',
     },
     A_Speaker_2: {
-        width: wp('6%'),
-        height: hp('11%')
+        width: wp('6'),
+        height: hp('10%')
     },
     pencilContainer: {
         position: 'absolute',
@@ -194,12 +228,30 @@ const styles = StyleSheet.create({
     },
     nextContainer: {
         position: 'absolute',
-        left: '85%',
+        left: '83%',
         top: '40%',
     },
     next: {
-        width: wp('9%'),
-        height: hp('16%')
+        width: wp('14%'),
+        height: hp('28%')
+    },
+    backContainer: {
+        position: 'absolute',
+        left: '1%',
+        top: '-2%',
+    },
+    back: {
+        width: wp('14%'),
+        height: hp('28%')
+    },
+    prevContainer: {
+        position: 'absolute',
+        left: '2%',
+        top: '40%',
+    },
+    prev: {
+        width: wp('14%'),
+        height: hp('28%')
     }
 })
 

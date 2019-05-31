@@ -30,16 +30,32 @@ class SentenceE extends Component {
         this.letter_sentence_e.pause();
     }
 
+
+    goBack = () => {
+        this.letter_sentence_e.pause();
+        const { goBack } = this.props.navigation;
+        goBack();
+    }
+
+
     render() {
         return (
             <ImageBackground style={styles.image}
-                source={require('../images/sentenceE.png')}
+                source={require('./lettersImage/sentenceE.png')}
             >
                 <View style={styles.A_Speaker_Container_2}>
                     <TouchableOpacity onPress={this.playAsound_2}>
                         <Image
-                            source={require('./lettersImage/Speaker_icon.png')}
+                            source={require('../images/Speaker_icon.png')}
                             style={styles.A_Speaker_2}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.backContainer}>
+                    <TouchableOpacity onPress={this.goBack}>
+                        <Image
+                            source={require('../images/Back_icon.png')}
+                            style={styles.back}
                         ></Image>
                     </TouchableOpacity>
                 </View>
@@ -68,6 +84,15 @@ const styles = StyleSheet.create({
         width: wp('6%'),
         height: hp('11%')
     },
+    backContainer: {
+        position: 'absolute',
+        left: '1%',
+        top: '-2%',
+    },
+    back: {
+        width: wp('14%'),
+        height: hp('28%')
+    }
 })
 
 export default withNavigation(SentenceE);
