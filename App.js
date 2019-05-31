@@ -79,7 +79,23 @@ import SentenceW from './screens/Letters/sentenceW';
 import SentenceY from './screens/Letters/sentenceY';
 
 import TracingA from './screens/Letters/TracingA';
-
+import TracingB from './screens/Letters/TracingB';
+import TracingD from './screens/Letters/TracingD';
+import TracingE from './screens/Letters/TracingE';
+import TracingF from './screens/Letters/TracingF';
+import TracingG from './screens/Letters/TracingG';
+import TracingH from './screens/Letters/TracingH';
+import TracingI from './screens/Letters/TracingI';
+import TracingK from './screens/Letters/TracingK';
+import TracingL from './screens/Letters/TracingL';
+import TracingM from './screens/Letters/TracingM';
+import TracingN from './screens/Letters/TracingN';
+import TracingO from './screens/Letters/TracingO';
+import TracingS from './screens/Letters/TracingS';
+import TracingT from './screens/Letters/TracingT';
+import TracingU from './screens/Letters/TracingU';
+import TracingW from './screens/Letters/TracingW';
+import TracingY from './screens/Letters/TracingY';
 
 const RootStack = StackNavigator(
   {
@@ -157,15 +173,32 @@ const RootStack = StackNavigator(
     sentenceU: SentenceU,
     sentenceW: SentenceW,
     sentenceY: SentenceY,
-
+  
     tracingA: TracingA,
+    tracingB: TracingB,
+    tracingD: TracingD,
+    tracingE: TracingE,
+    tracingF: TracingF,
+    tracingG: TracingG,
+    tracingH: TracingH,
+    tracingI: TracingI,
+    tracingK: TracingK,
+    tracingL: TracingL,
+    tracingM: TracingM,
+    tracingN: TracingN,
+    tracingO: TracingO,
+    tracingS: TracingS,
+    tracingT: TracingT,
+    tracingU: TracingU,
+    tracingW: TracingW,
+    tracingY: TracingY,
 
     numbers: Numbers
 
 
   },
   {
-    initialRouteName: 'pageA',
+    initialRouteName: 'letters',
   }
 );
 
