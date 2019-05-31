@@ -78,6 +78,8 @@ import SentenceU from './screens/Letters/sentenceU';
 import SentenceW from './screens/Letters/sentenceW';
 import SentenceY from './screens/Letters/sentenceY';
 
+import TracingA from './screens/Letters/TracingA';
+
 
 const RootStack = StackNavigator(
   {
@@ -156,11 +158,18 @@ const RootStack = StackNavigator(
     sentenceW: SentenceW,
     sentenceY: SentenceY,
 
+    tracingA: TracingA,
+
     numbers: Numbers
+
 
   },
   {
+<<<<<<< HEAD
     initialRouteName: 'home',
+=======
+    initialRouteName: 'pageA',
+>>>>>>> 8a213234262eb4619918e1eebd028bfc33c585a3
   }
 );
 
