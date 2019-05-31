@@ -26,7 +26,7 @@ class FlalokStoryMenu extends Component {
     gotoStory5 = () => {
         this.props.nagivation.navigate('story5');
     }
-
+                                                                                                                                                                              
     gotoStory6 = () => {
         this.props.nagivation.navigate('story6');
     }
@@ -55,7 +55,7 @@ class FlalokStoryMenu extends Component {
                             </TouchableHighlight>
                         </View>
                     </View>
-                    <View style={styles.row}>
+                    <View style={styles.row1}>
                         <View style={styles.itemSize} >
                             <TouchableHighlight  onPress={() => this.props.navigation.navigate('story4')} >
                                 <Image style={styles.imageSize} source={require('./flalokImages/Story4.png')} />
@@ -95,6 +95,16 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         width: '100%',
         height: '50%',
+    },
+
+    row1: {
+        position: 'relative',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        width: '100%',
+        height: '35%',
     },
 
     itemSize: {

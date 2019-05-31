@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 class Page10 extends Component {
     static navigationOptions = {
@@ -34,6 +35,9 @@ class Page10 extends Component {
     playAsound_2 = () => {
         this.number10.play();
     }
+    gotoSentence10 = () => {
+        this.props.navigation.navigate('sentence10');
+    }
 
 
     render() {
@@ -52,6 +56,14 @@ class Page10 extends Component {
                         <Image
                             source={require('./numbersImage/Speaker_icon.png')}
                             style={styles.A_Speaker_2}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.sentenceIconContainer}>
+                    <TouchableOpacity onPress={this.gotoSentence10}>
+                        <Image
+                            source={require('./numbersImage/Letters_Info_Icon.png')}
+                            style={styles.sentenceIcon}
                         ></Image>
                     </TouchableOpacity>
                 </View>
@@ -93,6 +105,15 @@ const styles = StyleSheet.create({
     A_Speaker_2: {
         height: 35,
         width: 35
+    },
+    sentenceIconContainer: {
+        position: 'absolute',
+        left: '85%',
+        top: '80%',
+    },
+    sentenceIcon: {
+        width: wp('9%'),
+        height: hp('16%')
     }
 })
 
