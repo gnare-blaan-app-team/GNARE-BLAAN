@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
-import { StyleSheet, ImageBackground, TouchableHighlight, View, Image} from 'react-native';
+import { StyleSheet, ImageBackground, TouchableHighlight, TouchableOpacity, View, Image} from 'react-native';
 import { withNavigation } from 'react-navigation';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 
 class FlalokStoryMenu extends Component {
     static navigationOptions = {
@@ -31,6 +33,10 @@ class FlalokStoryMenu extends Component {
         this.props.nagivation.navigate('story6');
     }
 
+    gotoMainMenu = () => {
+        this.props.navigation.navigate('mainMenu');
+    }
+
     render(){
         return(
            <ImageBackground style={styles.image} source={require('./flalokImages/Flalok_BG.jpg')}>
@@ -38,40 +44,50 @@ class FlalokStoryMenu extends Component {
                 <View style={styles.container}>
                     <View style={styles.row}>
                         <View style={styles.itemSize} >
-                            <TouchableHighlight  onPress={() => this.props.navigation.navigate('story1')} >
+                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('story1')} >
                                 <Image style={styles.imageSize} source={require('./flalokImages/Story1.png')} />
-                            </TouchableHighlight>
+                            </TouchableOpacity>
                         </View>
 
                         <View style={styles.itemSize} >
-                            <TouchableHighlight  onPress={() => this.props.navigation.navigate('story2')} >
+                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('story2')} >
                                 <Image style={styles.imageSize} source={require('./flalokImages/Story2.png')} />
-                            </TouchableHighlight>
+                            </TouchableOpacity>
                         </View>
 
                         <View style={styles.itemSize} >
-                            <TouchableHighlight  onPress={() => this.props.navigation.navigate('story3')} >
+                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('story3')} >
                                 <Image style={styles.imageSize} source={require('./flalokImages/Story3.png')} />
-                            </TouchableHighlight>
+                            </TouchableOpacity>
                         </View>
                     </View>
                     <View style={styles.row1}>
                         <View style={styles.itemSize} >
-                            <TouchableHighlight  onPress={() => this.props.navigation.navigate('story4')} >
+                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('story4')} >
                                 <Image style={styles.imageSize} source={require('./flalokImages/Story4.png')} />
-                            </TouchableHighlight>
+                            </TouchableOpacity>
                         </View>
                         <View style={styles.itemSize} >
-                            <TouchableHighlight  onPress={() => this.props.navigation.navigate('story5')} >
+                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('story5')} >
                                 <Image style={styles.imageSize} source={require('./flalokImages/Story5.png')} />
-                            </TouchableHighlight>
+                            </TouchableOpacity>
                         </View>
                         <View style={styles.itemSize} >
-                            <TouchableHighlight  onPress={() => this.props.navigation.navigate('story6')} >
+                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('story6')} >
                                 <Image style={styles.imageSize} source={require('./flalokImages/Story6.png')} />
-                            </TouchableHighlight>
+                            </TouchableOpacity>
                         </View>
                     </View>
+                </View>
+
+                
+                <View style={styles.homeContainer}>
+                    <TouchableOpacity onPress={this.gotoMainMenu}>
+                        <Image
+                            source={require('./flalokImages/Home_icon.png')}
+                            style={styles.home}
+                        ></Image>
+                    </TouchableOpacity>
                 </View>
            </ImageBackground>
         );
@@ -101,22 +117,22 @@ const styles = StyleSheet.create({
         position: 'relative',
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
         flexDirection: 'row',
         width: '100%',
         height: '35%',
     },
 
     itemSize: {
-        margin: 10,
+        margin: 5,
         marginBottom: 0,
-        width: '30%',
-        height: '35%',
+        width: '35%',
+        height: '40%',
     },
 
     imageSize: {
         width: '100%',
         height: '100%',
+        resizeMode: 'contain',
     },
 
     container: {
@@ -125,7 +141,17 @@ const styles = StyleSheet.create({
         left: '10%',
         width: '80%',
         height: '90%',
-    }
+    },
+
+    homeContainer: {
+        position: 'absolute',
+        left: '85%',
+        top: '-2%',
+    },
+    home: {
+        width: wp('14%'),
+        height: hp('28%')
+    },
 })
 
 export default withNavigation(FlalokStoryMenu);

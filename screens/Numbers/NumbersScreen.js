@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, ImageBackground, TouchableHighlight } from 'react-native';
+import { View, Image, StyleSheet, ImageBackground, TouchableOpacity} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import MenuItem from './NumbersMenu';
 
-class Letters extends Component {
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
+class NumberScreen extends Component {
     static navigationOptions = {
         header: null,
     }
@@ -80,6 +82,10 @@ class Letters extends Component {
     gotoPage1000 = () => {
         this.props.navigation.navigate('page1000');
     }
+
+    gotoMainMenu = () => {
+        this.props.navigation.navigate('mainMenu');
+    }
     render() {
         return (
             <ImageBackground style={styles.image}
@@ -111,6 +117,15 @@ class Letters extends Component {
                     <MenuItem itemImage={require('./numbersImage/500.png')} goto={this.gotoPage500} />
                     <MenuItem itemImage={require('./numbersImage/1000.png')} goto={this.gotoPage1000} />
                 </View>
+
+                <View style={styles.homeContainer}>
+                    <TouchableOpacity onPress={this.gotoMainMenu}>
+                        <Image
+                            source={require('./numbersImage/Home_icon.png')}
+                            style={styles.home}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
             </ImageBackground>
         )
     }
@@ -132,6 +147,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    homeContainer: {
+        position: 'absolute',
+        left: '85%',
+        top: '-2%',
+    },
+    home: {
+        width: wp('14%'),
+        height: hp('28%')
+    },
 })
 
-export default withNavigation(Letters);
+export default withNavigation(NumberScreen);

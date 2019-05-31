@@ -1,9 +1,11 @@
 import React,{Component} from 'react';
-import { StyleSheet, ImageBackground, View, TouchableWithoutFeedback} from 'react-native';
+import { StyleSheet, ImageBackground, View, Image, TouchableWithoutFeedback, TouchableOpacity} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Video from 'react-native-video';
 import Story1_EN from './flalokVideos/Story1_EN.mp4';
 import Story1_FL from './flalokVideos/Story1_FL.mp4';
+
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
  class Story1Screen extends Component<Props> {
 
@@ -31,6 +33,9 @@ import Story1_FL from './flalokVideos/Story1_FL.mp4';
         header:null,
     }
 
+    gotoMainMenu = () => {
+        this.props.navigation.navigate('mainMenu');
+    }
     
 
     render(){
@@ -56,6 +61,14 @@ import Story1_FL from './flalokVideos/Story1_FL.mp4';
                     </TouchableWithoutFeedback>
                 </View>
                 
+                <View style={styles.homeContainer}>
+                    <TouchableOpacity onPress={this.gotoMainMenu}>
+                        <Image
+                            source={require('./flalokImages/Home_icon.png')}
+                            style={styles.home}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
            </ImageBackground>
         );
     }
@@ -100,7 +113,17 @@ const styles = StyleSheet.create({
     },
     contain: {
         flexDirection: 'column',
-    }
+    },
+
+    homeContainer: {
+        position: 'absolute',
+        left: '85%',
+        top: '-2%',
+    },
+    home: {
+        width: wp('14%'),
+        height: hp('28%')
+    },
 })
 
 export default withNavigation(Story1Screen);
