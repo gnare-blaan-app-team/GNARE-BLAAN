@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler } from 'react-native';
+import { View, Image, ImageBackground, TouchableOpacity, BackHandler } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet';
 
 Sound.setCategory('Playback');
 
@@ -73,47 +73,5 @@ class SentenceY extends Component {
         )
     }
 }
-const styles = StyleSheet.create({
-    image: {
-        flex: 1,
-        width: '100%',
-        height: '100%',
-        position: 'absolute',
-        justifyContent:'center',
-        alignItems:'center',
-    },
-    main: {
-        width: '100%',
-        height: '100%',
-    },
-    A_Speaker_Container_2: {
-        position: 'absolute',
-        left: '80%',
-        top: '27%',
-    },
-    A_Speaker_2: {
-        height: 35,
-        width: 35
-    },
-    backContainer: {
-        position: 'absolute',
-        left: '1%',
-        top: '-2%',
-    },
-    back: {
-        width: wp('14%'),
-        height: hp('28%')
-    },
-
-    homeContainer: {
-        position: 'absolute',
-        left: '85%',
-        top: '-2%',
-    },
-    home: {
-        width: wp('14%'),
-        height: hp('28%')
-    },
-})
 
 export default withNavigation(SentenceY);

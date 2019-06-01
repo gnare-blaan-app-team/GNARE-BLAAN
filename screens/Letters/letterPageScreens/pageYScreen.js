@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, ImageBackground, TouchableHighlight, BackHandler, TouchableOpacity} from 'react-native';
+import { View, Image, ImageBackground, BackHandler, TouchableOpacity} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet';
 
 class PageY extends Component {
     static navigationOptions = {
@@ -174,87 +174,5 @@ class PageY extends Component {
         )
     }
 }
-const styles = StyleSheet.create({
-    image: {
-        flex: 1,
-        width: wp('100%'),
-        height: hp('100%'),
-        position: 'absolute',
-    },
-    sentenceIconContainer: {
-        position: 'absolute',
-        left: '83%',
-        top: '73%',
-    },
-    sentenceIcon: {
-        width: wp('14%'),
-        height: hp('28%')
-    },
-    A_Speaker_Container: {
-        position: 'absolute',
-        left: '42%',
-        top: '27%',
-    },
-    A_Speaker: {
-        width: wp('6'),
-        height: hp('10%')
-    },
-    A_Speaker_Container_2: {
-        position: 'absolute',
-        left: '80%',
-        top: '27%',
-    },
-    A_Speaker_2: {
-        width: wp('6'),
-        height: hp('10%')
-    },
-    pencilContainer: {
-        position: 'absolute',
-        left: '11%',
-        top: '23%',
-    },
-    pencil: {
-        width: wp('8%'),
-        height: hp('25%'),
-        resizeMode: 'contain',
-    },
-    homeContainer: {
-        position: 'absolute',
-        left: '85%',
-        top: '-2%',
-    },
-    home: {
-        width: wp('14%'),
-        height: hp('28%')
-    },
-    nextContainer: {
-        position: 'absolute',
-        left: '83%',
-        top: '40%',
-    },
-    next: {
-        width: wp('14%'),
-        height: hp('28%')
-    },
-    
-    backContainer: {
-        position: 'absolute',
-        left: '1%',
-        top: '-2%',
-    },
-    back: {
-        width: wp('14%'),
-        height: hp('28%')
-    },
-    prevContainer: {
-        position: 'absolute',
-        left: '2%',
-        top: '40%',
-    },
-    prev: {
-        width: wp('14%'),
-        height: hp('28%')
-    }
-})
 
 export default withNavigation(PageY);

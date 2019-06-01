@@ -39,6 +39,14 @@ class Page2 extends Component {
         this.props.navigation.navigate('sentence2');
     }
 
+    goBack = () => {
+        this.props.navigation.navigate('numbers');
+    }
+
+    gotoMainMenu = () => {
+        this.props.navigation.navigate('mainMenu');
+    }
+
     render() {
         return (
             <ImageBackground style={styles.image}
@@ -63,6 +71,23 @@ class Page2 extends Component {
                         <Image
                             source={require('../numbersImage/Letters_Info_Icon.png')}
                             style={styles.sentenceIcon}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={styles.backContainer}>
+                    <TouchableOpacity onPress={this.goBack}>
+                        <Image
+                            source={require('../../images/Back_icon.png')}
+                            style={styles.back}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.homeContainer}>
+                    <TouchableOpacity onPress={this.gotoMainMenu}>
+                        <Image
+                            source={require('../../images/Home_icon.png')}
+                            style={styles.home}
                         ></Image>
                     </TouchableOpacity>
                 </View>
@@ -105,6 +130,28 @@ const styles = StyleSheet.create({
         height: 35,
         width: 35
     },
+
+    backContainer: {
+        position: 'absolute',
+         left: '1%',
+         top: '-2%',
+    },
+
+    back: {
+        width: wp('14%'),
+        height: hp('28%')
+    },
+
+    homeContainer: {
+        position: 'absolute',
+        left: '85%',
+        top: '-2%',
+    },
+    home: {
+        width: wp('14%'),
+        height: hp('28%')
+    },
+
     sentenceIconContainer: {
         position: 'absolute',
         left: '85%',

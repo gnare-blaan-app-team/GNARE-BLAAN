@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler } from 'react-native';
+import { View, Image, ImageBackground, TouchableOpacity, BackHandler } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet';
 
 Sound.setCategory('Playback');
 
@@ -74,46 +74,5 @@ class SentenceL extends Component {
         )
     }
 }
-const styles = StyleSheet.create({
-    image: {
-        flex: 1,
-        width: wp('100%'),
-        height: hp('100%'),
-        position: 'absolute',
-    },
-    main: {
-        position: 'absolute',
-        width: wp('100%'),
-        height: hp('100%'),
-    },
-    A_Speaker_Container_2: {
-        position: 'absolute',
-        left: '80%',
-        top: '27%',
-    },
-    A_Speaker_2: {
-        width: wp('6%'),
-        height: hp('11%')
-    },
-    backContainer: {
-        position: 'absolute',
-        left: '1%',
-        top: '-2%',
-    },
-    back: {
-        width: wp('14%'),
-        height: hp('28%')
-    },
-
-    homeContainer: {
-        position: 'absolute',
-        left: '85%',
-        top: '-2%',
-    },
-    home: {
-        width: wp('14%'),
-        height: hp('28%')
-    },
-})
 
 export default withNavigation(SentenceL);

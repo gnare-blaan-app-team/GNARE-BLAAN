@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, ImageBackground, TouchableHighlight,BackHandler, TouchableOpacity } from 'react-native';
+import { View, Image, ImageBackground, BackHandler, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
 class PageN extends Component {
     static navigationOptions = {
@@ -103,70 +103,70 @@ class PageN extends Component {
 
     render() {
         return (
-            <ImageBackground style={styles.image}
+            <ImageBackground style={globalStyleSheet.image}
                 source={require('../lettersImage/LetterN.png')}
             >
-                <View style={styles.sentenceIconContainer}>
+                <View style={globalStyleSheet.sentenceIconContainer}>
                     <TouchableOpacity onPress={this.gotoSentenceN}>
                         <Image
                         source={require('../../images/Letters_Info_Icon.png')}
-                        style={styles.sentenceIcon}
+                        style={globalStyleSheet.sentenceIcon}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.A_Speaker_Container}>
+                <View style={globalStyleSheet.A_Speaker_Container}>
                     <TouchableOpacity onPress={this.playAsound}>
                         <Image
                             source={require('../../images/Speaker_icon.png')}
-                            style={styles.A_Speaker}
+                            style={globalStyleSheet.A_Speaker}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.A_Speaker_Container_2}>
+                <View style={globalStyleSheet.A_Speaker_Container_2}>
                     <TouchableOpacity onPress={this.playAsound_2}>
                         <Image
                             source={require('../../images/Speaker_icon.png')}
-                            style={styles.A_Speaker_2}
+                            style={globalStyleSheet.A_Speaker_2}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.pencilContainer}>
+                <View style={globalStyleSheet.pencilContainer}>
                     <TouchableOpacity onPress={this.gotoTracingN}>
                         <Image
                             source={require('../../images/Pencil_icon.png')}
-                            style={styles.pencil}
+                            style={globalStyleSheet.pencil}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.homeContainer}>
+                <View style={globalStyleSheet.homeContainer}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Image
                             source={require('../../images/Home_icon.png')}
-                            style={styles.home}
+                            style={globalStyleSheet.home}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.nextContainer}>
+                <View style={globalStyleSheet.nextContainer}>
                     <TouchableOpacity onPress={this.gotoNextPage}>
                         <Image
                             source={require('../../images/Next_Icon.png')}
-                            style={styles.next}
+                            style={globalStyleSheet.next}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                 <View style={styles.backContainer}>
+                 <View style={globalStyleSheet.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
                             source={require('../../images/Back_icon.png')}
-                            style={styles.back}
+                            style={globalStyleSheet.back}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.prevContainer}>
+                <View style={globalStyleSheet.prevContainer}>
                     <TouchableOpacity onPress={this.goPrev}>
                         <Image
                             source={require('../../images/Prev_Icon.png')}
-                            style={styles.prev}
+                            style={globalStyleSheet.prev}
                         ></Image>
                     </TouchableOpacity>
                 </View>
@@ -174,86 +174,5 @@ class PageN extends Component {
         )
     }
 }
-const styles = StyleSheet.create({
-    image: {
-        flex: 1,
-        width: wp('100%'),
-        height: hp('100%'),
-        position: 'absolute',
-    },
-    sentenceIconContainer: {
-        position: 'absolute',
-        left: '83%',
-        top: '73%',
-    },
-    sentenceIcon: {
-        width: wp('14%'),
-        height: hp('28%')
-    },
-    A_Speaker_Container: {
-        position: 'absolute',
-        left: '42%',
-        top: '27%',
-    },
-    A_Speaker: {
-        width: wp('6'),
-        height: hp('10%')
-    },
-    A_Speaker_Container_2: {
-        position: 'absolute',
-        left: '80%',
-        top: '27%',
-    },
-    A_Speaker_2: {
-        width: wp('6'),
-        height: hp('10%')
-    },
-    pencilContainer: {
-        position: 'absolute',
-        left: '11%',
-        top: '23%',
-    },
-    pencil: {
-        width: wp('8%'),
-        height: hp('25%'),
-        resizeMode: 'contain',
-    },
-    homeContainer: {
-        position: 'absolute',
-        left: '85%',
-        top: '-2%',
-    },
-    home: {
-        width: wp('14%'),
-        height: hp('28%')
-    },
-    nextContainer: {
-        position: 'absolute',
-        left: '83%',
-        top: '40%',
-    },
-    next: {
-        width: wp('14%'),
-        height: hp('28%')
-    },
-    backContainer: {
-        position: 'absolute',
-        left: '1%',
-        top: '-2%',
-    },
-    back: {
-        width: wp('14%'),
-        height: hp('28%')
-    },
-    prevContainer: {
-        position: 'absolute',
-        left: '2%',
-        top: '40%',
-    },
-    prev: {
-        width: wp('14%'),
-        height: hp('28%')
-    }
-})
 
 export default withNavigation(PageN);

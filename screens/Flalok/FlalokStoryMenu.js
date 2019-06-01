@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { StyleSheet, ImageBackground, TouchableHighlight, TouchableOpacity, View, Image} from 'react-native';
+import { StyleSheet, ImageBackground, TouchableOpacity, View, Image} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 

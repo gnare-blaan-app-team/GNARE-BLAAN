@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler } from 'react-native';
+import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {globalStyleSheet} from '../../globalStyleSheet//globalStyleSheet';
 
 class Page1 extends Component {
     static navigationOptions = {
@@ -40,9 +40,17 @@ class Page1 extends Component {
         this.props.navigation.navigate('sentence1');
     }
 
+    goBack = () => {
+        this.props.navigation.navigate('numbers');
+    }
+
+    gotoMainMenu = () => {
+        this.props.navigation.navigate('mainMenu');
+    }
+
     render() {
         return (
-            <ImageBackground style={styles.image}
+            <ImageBackground style={globalStyleSheet.image}
                 source={require('../../images/BG.jpg')}
             >
                 <View style={styles.black}>
@@ -51,19 +59,36 @@ class Page1 extends Component {
                     style={styles.main}
                     source={require('../numbersImage/1(1).png')}
                 ></Image>
-                <View style={styles.A_Speaker_Container_2}>
+                <View style={globalStyleSheet.A_Speaker_Container_2}>
                     <TouchableOpacity onPress={this.playAsound_2}>
                         <Image
                             source={require('../numbersImage/Speaker_icon.png')}
-                            style={styles.A_Speaker_2}
+                            style={globalStyleSheet.A_Speaker_2}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.sentenceIconContainer}>
+                <View style={globalStyleSheet.sentenceIconContainer}>
                     <TouchableOpacity onPress={this.gotoSentence1}>
                         <Image
                             source={require('../numbersImage/Letters_Info_Icon.png')}
-                            style={styles.sentenceIcon}
+                            style={globalStyleSheet.sentenceIcon}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={globalStyleSheet.backContainer}>
+                    <TouchableOpacity onPress={this.goBack}>
+                        <Image
+                            source={require('../../images/Back_icon.png')}
+                            style={globalStyleSheet.back}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.homeContainer}>
+                    <TouchableOpacity onPress={this.gotoMainMenu}>
+                        <Image
+                            source={require('../../images/Home_icon.png')}
+                            style={globalStyleSheet.home}
                         ></Image>
                     </TouchableOpacity>
                 </View>
@@ -72,49 +97,12 @@ class Page1 extends Component {
     }
 }
 const styles = StyleSheet.create({
-    image: {
-        flex: 1,
-        width: '100%',
-        height: '100%',
-        position: 'absolute',
-    },
-    black: {
-        top: '24%',
-        left: '15%',
-        width: '35%',
-        height: '61%',
-        backgroundColor: 'black',
-        opacity: 0.2,
-    },
-    pencil: {
-        width: '30%',
-        height: '6%',
-        bottom: '22%',
-        left: '51%'
-    },
+
     main: {
         width: '100%',
         height: '100%',
         position: 'absolute',
     },
-    A_Speaker_Container_2: {
-        position: 'absolute',
-        left: '80%',
-        top: '27%',
-    },
-    A_Speaker_2: {
-        height: 35,
-        width: 35
-    },
-    sentenceIconContainer: {
-        position: 'absolute',
-        left: '85%',
-        top: '80%',
-    },
-    sentenceIcon: {
-        width: wp('9%'),
-        height: hp('16%')
-    }
 })
 
 export default withNavigation(Page1);

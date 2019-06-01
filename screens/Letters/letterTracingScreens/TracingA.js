@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, ImageBackground } from 'react-native';
+import { View, Image, ImageBackground } from 'react-native';
 import { withNavigation } from 'react-navigation';
-
+import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet';
 
 class TracingA extends Component {
     static navigationOptions = {
@@ -17,13 +17,5 @@ class TracingA extends Component {
         )
     }
 }
-const styles = StyleSheet.create({
-    image: {
-        flex: 1,
-        width: '100%',
-        height: '100%',
-        position: 'absolute',
-    },
-})
 
 export default withNavigation(TracingA);

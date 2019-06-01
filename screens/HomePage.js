@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { Text, View, Image, StyleSheet, Button, ImageBackground} from 'react-native';
+import { View, StyleSheet, Button, ImageBackground} from 'react-native';
 import { withNavigation } from 'react-navigation';
 
 class Menuscreen extends Component{
