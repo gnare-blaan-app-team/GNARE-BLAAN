@@ -25,6 +25,10 @@ class Mainmenu extends Component {
         this.props.navigation.navigate('home');
     }
 
+    goBack = () => {
+        this.props.navigation.navigate('home');
+    }
+
     render() {
         return (
             <ImageBackground style={styles.image}
@@ -37,6 +41,15 @@ class Mainmenu extends Component {
                     <MenuItem itemImage={require('./images/Games.png')} />
                     <MenuItem itemImage={require('./images/CultureandArts.png')} />
                     <MenuItem itemImage={require('./images/Vocabulary.png')} />
+                </View>
+
+                <View style={styles.backContainer}>
+                    <TouchableOpacity onPress={this.goBack}>
+                        <Image
+                            source={require('./images/Back_icon.png')}
+                            style={styles.back}
+                        ></Image>
+                    </TouchableOpacity>
                 </View>
 
                 <View style={styles.homeContainer}>
@@ -69,6 +82,16 @@ const styles = StyleSheet.create({
         height: '80%',
         flexDirection: 'row',
         flexWrap: 'wrap',
+    },
+
+    backContainer: {
+        position: 'absolute',
+        left: '1%',
+        top: '-2%',
+    },
+    back: {
+        width: wp('14%'),
+        height: hp('28%')
     },
 
     homeContainer: {

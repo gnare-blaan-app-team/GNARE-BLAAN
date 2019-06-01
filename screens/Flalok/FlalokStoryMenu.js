@@ -37,6 +37,10 @@ class FlalokStoryMenu extends Component {
         this.props.navigation.navigate('mainMenu');
     }
 
+    goBack = () => {
+        this.props.navigation.navigate('mainMenu');
+    }
+
     render(){
         return(
            <ImageBackground style={styles.image} source={require('./flalokImages/Flalok_BG.jpg')}>
@@ -81,10 +85,19 @@ class FlalokStoryMenu extends Component {
                 </View>
 
                 
+                <View style={styles.backContainer}>
+                    <TouchableOpacity onPress={this.goBack}>
+                        <Image
+                            source={require('../images/Back_icon.png')}
+                            style={styles.back}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+
                 <View style={styles.homeContainer}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Image
-                            source={require('./flalokImages/Home_icon.png')}
+                            source={require('../images/Home_icon.png')}
                             style={styles.home}
                         ></Image>
                     </TouchableOpacity>
@@ -141,6 +154,16 @@ const styles = StyleSheet.create({
         left: '10%',
         width: '80%',
         height: '90%',
+    },
+
+    backContainer: {
+        position: 'absolute',
+         left: '1%',
+         top: '-2%',
+    },
+    back: {
+        width: wp('14%'),
+        height: hp('28%')
     },
 
     homeContainer: {

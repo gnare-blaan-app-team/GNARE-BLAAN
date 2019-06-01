@@ -86,6 +86,11 @@ class NumberScreen extends Component {
     gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
     }
+
+    goBack = () => {
+        this.props.navigation.navigate('mainMenu');
+    }
+
     render() {
         return (
             <ImageBackground style={styles.image}
@@ -118,10 +123,19 @@ class NumberScreen extends Component {
                     <MenuItem itemImage={require('./numbersImage/1000.png')} goto={this.gotoPage1000} />
                 </View>
 
+                <View style={styles.backContainer}>
+                    <TouchableOpacity onPress={this.goBack}>
+                        <Image
+                            source={require('../images/Back_icon.png')}
+                            style={styles.back}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+
                 <View style={styles.homeContainer}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Image
-                            source={require('./numbersImage/Home_icon.png')}
+                            source={require('../images/Home_icon.png')}
                             style={styles.home}
                         ></Image>
                     </TouchableOpacity>
@@ -147,6 +161,17 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+
+    backContainer: {
+        position: 'absolute',
+         left: '1%',
+         top: '-2%',
+    },
+    back: {
+        width: wp('14%'),
+        height: hp('28%')
+    },
+
     homeContainer: {
         position: 'absolute',
         left: '85%',

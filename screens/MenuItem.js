@@ -27,10 +27,12 @@ const styles = StyleSheet.create({
         width: '26%',
         height: '39%',
         padding: 2,
+        resizeMode: 'contain',
     },
     image: {
         width: '90%',
         height: '90%',
+        resizeMode: 'contain',
     }
 
 })

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, ImageBackground, TouchableHighlight } from 'react-native';
+import { Text, View, Image, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import MenuItem from './LettersMenu';
+
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 class Letters extends Component {
     static navigationOptions = {
@@ -66,6 +68,15 @@ class Letters extends Component {
     goHome = () => {
         this.props.navigation.navigate('main');
     }
+
+    gotoMainMenu = () => {
+        this.props.navigation.navigate('mainMenu');
+    }
+
+    goBack = () => {
+        this.props.navigation.navigate('mainMenu');
+    }
+    
     render() {
         return (
             <ImageBackground style={styles.image}
@@ -91,6 +102,24 @@ class Letters extends Component {
                     <MenuItem itemImage={require('./lettersImage/w.png')} goto={this.gotoPageW} />
                     <MenuItem itemImage={require('./lettersImage/y.png')} goto={this.gotoPageY} />
                 </View>
+
+                <View style={styles.backContainer}>
+                    <TouchableOpacity onPress={this.goBack}>
+                        <Image
+                            source={require('../images/Back_icon.png')}
+                            style={styles.back}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={styles.homeContainer}>
+                    <TouchableOpacity onPress={this.gotoMainMenu}>
+                        <Image
+                            source={require('../images/Home_icon.png')}
+                            style={styles.home}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
             </ImageBackground>
         )
     }
@@ -111,6 +140,26 @@ const styles = StyleSheet.create({
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+
+    backContainer: {
+        position: 'absolute',
+         left: '1%',
+         top: '-2%',
+    },
+    back: {
+        width: wp('14%'),
+        height: hp('28%')
+    },
+
+    homeContainer: {
+        position: 'absolute',
+        left: '85%',
+        top: '-2%',
+    },
+    home: {
+        width: wp('14%'),
+        height: hp('28%')
     },
 })
 
