@@ -3,7 +3,7 @@ import { View, StyleSheet, ImageBackground, Image, TouchableOpacity } from 'reac
 import { withNavigation } from 'react-navigation';
 import MenuItem from './MenuItem';
 
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js';
 
 class Mainmenu extends Component {
     static navigationOptions = {
@@ -65,44 +65,5 @@ class Mainmenu extends Component {
         )
     }
 }
-
-const styles = StyleSheet.create({
-    image: {
-        flex: 1,
-        width: '100%',
-        height: '100%',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    menuContainer: {
-        position: 'relative',
-        top:'9%',
-        left:'22%',
-        width: '98%',
-        height: '80%',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-    },
-
-    backContainer: {
-        position: 'absolute',
-        left: '1%',
-        top: '-2%',
-    },
-    back: {
-        width: wp('14%'),
-        height: hp('28%')
-    },
-
-    homeContainer: {
-        position: 'absolute',
-        left: '85%',
-        top: '-2%',
-    },
-    home: {
-        width: wp('14%'),
-        height: hp('28%')
-    },
-})
 
 export default withNavigation(Mainmenu);

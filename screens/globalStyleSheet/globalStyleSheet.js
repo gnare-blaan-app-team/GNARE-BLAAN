@@ -6,9 +6,8 @@ export const globalStyleSheet = {
     // Image Background
     image: {
         flex: 1,
-        width: wp('100%'),
-        height: hp('100%'),
-        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 
     // Pencil
@@ -27,22 +26,24 @@ export const globalStyleSheet = {
     backContainer: {
         position: 'absolute',
          left: '1%',
-         top: '-2%',
+         top: '-1%',
     },
     back: {
-        width: wp('14%'),
-        height: hp('28%'),
+        width: wp('15%'),
+        height: hp('30%'),
+        resizeMode: 'contain',
     },
 
     // Home Icon
     homeContainer: {
         position: 'absolute',
         left: '85%',
-        top: '-2%',
+        top: '-1%',
     },
     home: {
-        width: wp('14%'),
-        height: hp('28%'),
+        width: wp('15%'),
+        height: hp('30%'),
+        resizeMode: 'contain',
     },
 
     // Sentence Icon
@@ -54,6 +55,7 @@ export const globalStyleSheet = {
     sentenceIcon: {
         width: wp('14%'),
         height: hp('28%'),
+        resizeMode: 'contain',
     },
 
 
@@ -76,6 +78,7 @@ export const globalStyleSheet = {
     A_Speaker: {
         width: wp('6'),
         height: hp('10%'),
+        resizeMode: 'contain',
     },
 
     // Speaker 2 Icon
@@ -87,6 +90,7 @@ export const globalStyleSheet = {
     A_Speaker_2: {
         height: 35,
         width: 35,
+        resizeMode: 'contain',
     },
 
     // Next icon (Right Side)
@@ -96,8 +100,9 @@ export const globalStyleSheet = {
         top: '40%',
     },
     next: {
-        width: wp('14%'),
-        height: hp('28%'),
+        width: wp('15%'),
+        height: hp('30%'),
+        resizeMode: 'contain',
     },
 
     // Prev Icon (Left side)
@@ -109,6 +114,7 @@ export const globalStyleSheet = {
     prev: {
         width: wp('14%'),
         height: hp('28%'),
+        resizeMode: 'contain',
     },
 
     // Flalok, Rows
@@ -158,17 +164,85 @@ export const globalStyleSheet = {
         justifyContent: 'center',
         alignItems: 'center',
     },
-    thumbnail: {
+    thumbnailContainer: {
         width: '35%',
+        height: '100%',
+    },
+    thumbnail: {
+        width: '100%',
         height: '100%',
         resizeMode: 'contain',
     },
     storiesContainer: {
         //backgroundColor: 'rgba(0, 0, 0, 0.2)',
         width: '100%',
-        height: '60%',
+        height: '50%',
         justifyContent: 'center',
         flexDirection: 'row',
+    },
+    storyTitleContainer: {
+        width: '25%',
+        height: '5%',
+        marginBottom: '10%',
+    },
+    storyTitle: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'contain',
+    },
+
+    // Main Menu Container
+    menuContainer: {
+        position: 'relative',
+        top:'9%',
+        left:'22%',
+        width: '98%',
+        height: '80%',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+    },
+
+    // Letter Menu Container
+    menuLetterContainer: {
+        position: 'relative',
+        top:'1%',
+        left:'9%',
+        width: '83%',
+        height: '60%',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+    },
+
+    // Number Menu Container
+    menuNumberContainer: {
+        position: 'relative',
+        bottom:'6%',
+        left: '9%',
+        width: '83%',
+        height: '32%',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+    },
+
+    // Story Video
+    backgroundVideo: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        width: '100%',
+        height: '100%',
+    },
+
+    // Story Video Container
+    storyVideoContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgb(0, 0, 0)',
     },
 };
 

@@ -3,7 +3,7 @@ import { Text, View, Image, StyleSheet, ImageBackground, TouchableOpacity } from
 import { withNavigation } from 'react-navigation';
 import MenuItem from './LettersMenu';
 
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 
 class Letters extends Component {
     static navigationOptions = {
@@ -82,7 +82,7 @@ class Letters extends Component {
             <ImageBackground style={styles.image}
                 source={require('../images/BG.jpg')}
             >
-                <View style={styles.menuContainer}>
+                <View style={styles.menuLetterContainer}>
                     <MenuItem itemImage={require('./lettersImage/a.png')} goto={this.gotoPageA} />
                     <MenuItem itemImage={require('./lettersImage/b.png')} goto={this.gotoPageB} />
                     <MenuItem itemImage={require('./lettersImage/d.png')} goto={this.gotoPageD} />
@@ -124,43 +124,5 @@ class Letters extends Component {
         )
     }
 }
-const styles = StyleSheet.create({
-    menuContainer: {
-        position: 'relative',
-        top:'1%',
-        left:'9%',
-        width: '83%',
-        height: '60%',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-    },
-    image: {
-        flex: 1,
-        width: '100%',
-        height: '100%',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-
-    backContainer: {
-        position: 'absolute',
-         left: '1%',
-         top: '-2%',
-    },
-    back: {
-        width: wp('14%'),
-        height: hp('28%')
-    },
-
-    homeContainer: {
-        position: 'absolute',
-        left: '85%',
-        top: '-2%',
-    },
-    home: {
-        width: wp('14%'),
-        height: hp('28%')
-    },
-})
 
 export default withNavigation(Letters);
