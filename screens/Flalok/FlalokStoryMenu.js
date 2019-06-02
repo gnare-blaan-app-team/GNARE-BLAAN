@@ -1,8 +1,17 @@
 import React,{Component} from 'react';
-import { StyleSheet, ImageBackground, TouchableOpacity, View, Image} from 'react-native';
+import { ImageBackground, TouchableOpacity, View, Image} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 
+import Back_icon from '../images/Back_icon.png';
+import Home_icon from '../images/Home_icon.png';
+import Story1 from './flalokImages/Story1.png';
+import Story2 from './flalokImages/Story2.png';
+import Story3 from './flalokImages/Story3.png';
+import Story4 from './flalokImages/Story4.png';
+import Story5 from './flalokImages/Story5.png';
+import Story6 from './flalokImages/Story6.png';
+import Flalok_BG from './flalokImages/Flalok_BG.jpg';
 
 class FlalokStoryMenu extends Component {
     static navigationOptions = {
@@ -43,42 +52,42 @@ class FlalokStoryMenu extends Component {
 
     render(){
         return(
-           <ImageBackground style={styles.image} source={require('./flalokImages/Flalok_BG.jpg')}>
+           <ImageBackground style={styles.image} source={Flalok_BG}>
 
                 <View style={styles.FlalokContainer}>
                     <View style={styles.row}>
                         <View style={styles.itemSize} >
                             <TouchableOpacity  onPress={() => this.props.navigation.navigate('story1')} >
-                                <Image style={styles.imageSizeStoryMenu} source={require('./flalokImages/Story1.png')} />
+                                <Image style={styles.imageSizeStoryMenu} source={Story1} />
                             </TouchableOpacity>
                         </View>
 
                         <View style={styles.itemSize} >
                             <TouchableOpacity  onPress={() => this.props.navigation.navigate('story2')} >
-                                <Image style={styles.imageSizeStoryMenu} source={require('./flalokImages/Story2.png')} />
+                                <Image style={styles.imageSizeStoryMenu} source={Story2} />
                             </TouchableOpacity>
                         </View>
 
                         <View style={styles.itemSize} >
                             <TouchableOpacity  onPress={() => this.props.navigation.navigate('story3')} >
-                                <Image style={styles.imageSizeStoryMenu} source={require('./flalokImages/Story3.png')} />
+                                <Image style={styles.imageSizeStoryMenu} source={Story3} />
                             </TouchableOpacity>
                         </View>
                     </View>
                     <View style={styles.row1}>
                         <View style={styles.itemSize} >
                             <TouchableOpacity  onPress={() => this.props.navigation.navigate('story4')} >
-                                <Image style={styles.imageSizeStoryMenu} source={require('./flalokImages/Story4.png')} />
+                                <Image style={styles.imageSizeStoryMenu} source={Story4} />
                             </TouchableOpacity>
                         </View>
                         <View style={styles.itemSize} >
                             <TouchableOpacity  onPress={() => this.props.navigation.navigate('story5')} >
-                                <Image style={styles.imageSizeStoryMenu} source={require('./flalokImages/Story5.png')} />
+                                <Image style={styles.imageSizeStoryMenu} source={Story5} />
                             </TouchableOpacity>
                         </View>
                         <View style={styles.itemSize} >
                             <TouchableOpacity  onPress={() => this.props.navigation.navigate('story6')} >
-                                <Image style={styles.imageSizeStoryMenu} source={require('./flalokImages/Story6.png')} />
+                                <Image style={styles.imageSizeStoryMenu} source={Story6} />
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -88,7 +97,7 @@ class FlalokStoryMenu extends Component {
                 <View style={styles.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
-                            source={require('../images/Back_icon.png')}
+                            source={Back_icon}
                             style={styles.back}
                         ></Image>
                     </TouchableOpacity>
@@ -97,7 +106,7 @@ class FlalokStoryMenu extends Component {
                 <View style={styles.homeContainer}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Image
-                            source={require('../images/Home_icon.png')}
+                            source={Home_icon}
                             style={styles.home}
                         ></Image>
                     </TouchableOpacity>

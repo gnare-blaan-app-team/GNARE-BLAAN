@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ImageBackground, Image, TouchableOpacity } from 'react-native';
+import { View, ImageBackground, Image, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import MenuItem from './MenuItem';
 
