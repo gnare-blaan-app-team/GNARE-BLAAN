@@ -3,6 +3,9 @@ import { Text, View, Image, StyleSheet, ImageBackground, Button, BackHandler, To
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import Video from 'react-native-video';
+import Story1_EN from './lettersImage/sample.mp4';
+
 
 Sound.setCategory('Playback');
 
@@ -11,8 +14,29 @@ class PageA extends Component {
         header: null,
     }
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            repeat: false,
+            rate: 1,
+            volume: 1,
+            muted: false,
+            resizeMode: 'contain',
+            duration: 0.0,
+            progress: 0.0,
+            currentTime: 0.0,
+            paused: false,
+            rateText: '1.0',
+            pausedText: 'Play',
+            hideControls: false,
+            toPlay: 'EN',
+        };
+    }
+
     componentDidMount() {
         this.forceUpdate();
+        this.setState({ paused: true, toPlay: 'EN' })
         this.letter_play_a = new Sound('letter_play_a.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);
@@ -36,10 +60,10 @@ class PageA extends Component {
         });
     }
 
-
     handleBackPress = () => {
         this.letter_play_a.pause();
         this.wordplay_a.pause();
+        this.setState({ paused: true, toPlay: 'EN' })
     }
 
     playAsound = () => {
@@ -54,14 +78,20 @@ class PageA extends Component {
     }
 
     playAsound_2 = () => {
+        
+        this.setState({ paused: false, toPlay: 'EN' })
+        this.video.seek(1)
         this.letter_play_a.stop(() => {
             this.mute.play();
         });
         if (this.wordplay_a.play()) {
             this.wordplay_a.stop(() => {
+                this.setState({ paused: false, toPlay: 'EN' })
+        
                 this.wordplay_a.play()
             });
         }
+        
     }
 
     gotoSentenceA = () => {
@@ -125,7 +155,24 @@ class PageA extends Component {
                             source={require('../images/Speaker_icon.png')}
                             style={styles.A_Speaker_2}
                         ></Image>
+                       
                     </TouchableOpacity>
+                </View>
+                <View style={styles.A_Speaker_Container_2}>
+                    <Video ref={(ref: Video) => { this.video = ref }}
+                        source={Story1_EN}
+                        repeat={this.state.repeat}
+                        rate={this.state.rate}
+                        volume={this.state.volume}
+                        muted={this.state.muted}
+                        resizeMode={this.state.resizeMode}
+                        paused={this.state.paused}
+                        onLoad={this.onLoad}
+                        onProgress={this.onProgress}
+                        onEnd={this.onEnd}
+
+                        style={{ width: 100, height: 100, position: 'absolute', left: -200, }}
+                    />
                 </View>
                 <View style={styles.pencilContainer}>
                     <TouchableOpacity onPress={this.gotoTracingA}>
