@@ -128,6 +128,9 @@ const RootStack = StackNavigator(
     mainMenu: MainMenu,
     letters: LetterScreen,
 
+
+    // Flalok Stories
+
     flalok: FlalokStoryMenu,
     story1: Story1Screen,
     story2: Story2Screen,
@@ -136,6 +139,9 @@ const RootStack = StackNavigator(
     story5: Story5Screen,
     story6: Story6Screen,
 
+
+
+    // Page Letter
 
     pageA: PageA,
     pageB: PageB,
@@ -155,6 +161,11 @@ const RootStack = StackNavigator(
     pageU: PageU,
     pageW: PageW,
     pageY: PageY,
+
+
+
+    // Page Number
+
     page1: Page1,
     page2: Page2,
     page3: Page3,
@@ -180,6 +191,9 @@ const RootStack = StackNavigator(
     page500: Page500,
     page1000: Page1000,
 
+
+    // Letter Sentence
+
     sentenceA: SentenceA,
     sentenceB: SentenceB,
     sentenceD: SentenceD,
@@ -198,6 +212,10 @@ const RootStack = StackNavigator(
     sentenceU: SentenceU,
     sentenceW: SentenceW,
     sentenceY: SentenceY,
+
+
+
+    // Number Sentence
 
     sentence1: Sentence1,
     sentence2: Sentence2,
@@ -224,6 +242,9 @@ const RootStack = StackNavigator(
     sentence500: Sentence500,
     sentence1000: Sentence1000,
 
+
+    // Letter Tracing
+
     tracingA: TracingA,
     tracingB: TracingB,
     tracingD: TracingD,
@@ -244,8 +265,6 @@ const RootStack = StackNavigator(
     tracingY: TracingY,
 
     numbers: Numbers
-
-
   },
   {
     initialRouteName: 'home',
