@@ -10,7 +10,7 @@ import PencilIcon from '../../images/Pencil_icon.png';
 import NextIcon from '../../images/Next_Icon.png';
 import GoBackIcon from '../../images/Back_icon.png';
 import HomeIcon from '../../images/Home_icon.png';
-import GlowA from '../lettersImage/lettersGlow/glowA.mp4';
+import GlowA from '../lettersGlow/glow-A.mp4';
 import ImageA from '../lettersImage/a.png';
 
 
