@@ -1,62 +1,94 @@
-import React,{Component} from 'react';
-import { ImageBackground, Modal, View, Image, TouchableOpacity, TouchableWithoutFeedback} from 'react-native';
-import { withNavigation } from 'react-navigation';
-import Video from 'react-native-video';
+import React, { Component } from "react";
+import { StyleSheet, Text, View, Image, TouchableWithoutFeedback, TouchableOpacity} from "react-native";
 
-import Story2_EN from '../flalokVideos/Story2_EN.mp4';
+import Video from "react-native-video";
+import ProgressBar from "react-native-progress/Bar";
+import { withNavigation } from 'react-navigation'; 
+import Icon from "react-native-vector-icons/FontAwesome";
+
 import Story2_FL from '../flalokVideos/Story2_FL.mp4';
-import Story2 from '../flalokImages/Story2.png';
-import Story2_FL_THUMBNAIL from '../flalokImages/Story2_FL_THUMBNAIL.png';
-import Story2_EN_THUMBNAIL from '../flalokImages/Story2_EN_THUMBNAIL.png';
+import Story2_EN from '../flalokVideos/Story2_EN.mp4';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
-import Flalok_BG from '../flalokImages/Flalok_BG.jpg';
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js';
 
+function secondsToTime(time) {
+    return ~~(time / 60) + ":" + (time % 60 < 10 ? "0" : "") + time % 60;
+}
 
- class Story2Screen extends Component {
+let toggleProgress = 0;
 
-        constructor() {
-            super();
-
-            this.state = {
-                showModal: false,
-                videoFile: Story2_FL,
-
-                repeat: false,
-                rate: 1,
-                volume: 1,
-                muted: false,
-                resizeMode: 'contain',
-                duration: 0.0,
-                progress: 0.0,
-                currentTime: 0.0,
-                paused: false,
-                rateText: '1.0',
-                pausedText: 'Play',
-                hideControls: false,
-            };
+class Story2Screen extends Component {
+    
+    constructor () {
+        super();
+        this.state = {
+            changeVideo: false,
+            videoFile: Story2_FL,
+    
+            controlHide: -100,
+    
+            progressHeight: 48,
+            paused: false,
+            progress: 0,
+            duration: 0,
+            muted: false,
+            volume: 1,
+        };
     }
+
+    
 
     static navigationOptions = {
         header:null,
     }
 
-    onLoad = (data) => {
-        this.setState({duration: data.duration});
-    }
+    handleMainButtonTouch = () => {
+        if (this.state.progress >= 1) {
+            this.player.seek(0);
+        }
 
-    onPress=(data) => {
-        this.setState({currentTime: data.currentTime});
-    }
+        this.setState(state => {
+        return {
+            paused: !state.paused,
+        };
+        });
+    };
 
-    onEnd = () => {
-        this.setState({showModal: false});
-    }
+    handleProgressPress = e => {
+        const position = e.nativeEvent.locationX;
+        const progress = (position / 250) * this.state.duration;
+        const isPlaying = !this.state.paused;
+        
+        this.player.seek(progress);
+    };
 
-    gotoMainMenu = () => {
-        this.props.navigation.navigate('mainMenu');
+    handleProgress = progress => {
+        this.setState({
+            progress: progress.currentTime / this.state.duration,
+        });
+    };
+
+    handleEnd = () => {
+        this.setState({ paused: true });
+    };
+
+    handleLoad = meta => {
+        this.setState({
+        duration: meta.duration,
+        });
+    };
+
+    handleLoadStart = () => {
+        this.setState({
+            progress: toggleProgress,
+        });
+    };
+
+
+    changeSubtitle = () => {
+        
     }
 
     goBack = () => {
@@ -64,36 +96,67 @@ import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleShee
     }
     
 
-    render(){
-        return(
-           <ImageBackground style={styles.imageStoryScreen} source={Flalok_BG}>
+    render() {
 
-                <View style={styles.storyTitleContainer}>
-                    <Image style={styles.storyTitle} source={Story2} />
+        return (
+            <View style={videoStyle.container}>
+                <TouchableWithoutFeedback onPress={() => {
+                    this.setState({
+                        controlHide: this.state.controlHide == 0 ? -100 : 0,
+                    })
+                }}>
+                    <Video
+                        paused={this.state.paused}
+                        source={this.state.videoFile}
+                        
+                        style={{ width: "100%", height: '100%' }}
+                        resizeMode="contain"
+                        volume={this.state.volume}
+                        muted={this.state.muted}
+                        onLoad={this.handleLoad}
+                        onProgress={this.handleProgress}
+                        onEnd={this.handleEnd}
+                        onLoadStart={this.handleLoadStart}
+                        ref={ref => {
+                        this.player = ref;
+                        }}
+                    />
+                </TouchableWithoutFeedback>
+
+                <View style={{backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    height: 45,
+                    left: 0,
+                    bottom: this.state.controlHide,
+                    right: 0,
+                    position: "absolute",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-around",
+                    paddingHorizontal: 10,}}>
+
+                <TouchableWithoutFeedback onPress={this.handleMainButtonTouch}>
+                    <Icon name={!this.state.paused ? "pause" : "play"} size={30} color="#FFF" />
+                </TouchableWithoutFeedback>
+
+                <TouchableWithoutFeedback onPress={this.handleProgressPress}>
+                    <View>
+                        <ProgressBar
+                        progress={this.state.progress}
+                        color="#FFF"
+                        unfilledColor="rgba(255,255,255,.5)"
+                        borderColor="#FFF"
+                        width={250}
+                        height={20}
+                        />
+                    </View>
+                </TouchableWithoutFeedback>
+
+                    <Text style={videoStyle.duration}>
+                        {secondsToTime(Math.floor(this.state.progress * this.state.duration))}
+                    </Text>
                 </View>
 
-                <View style={styles.storiesContainer}>
-                    <View style={styles.thumbnailContainer}>
-                        <TouchableOpacity onPress={()=>{this.setState({
-                                    showModal: true, 
-                                    videoFile: Story2_FL,
-                        })}}>
-                            
-                            <Image source={Story2_FL_THUMBNAIL}  style={styles.thumbnail}/>
-                        </TouchableOpacity>
-                    </View>
-
-                    <View style={styles.thumbnailContainer}>
-                        <TouchableOpacity onPress={()=>{this.setState({
-                                    showModal: true, 
-                                    videoFile: Story2_EN,
-                        })}}>
-                            <Image source={Story2_EN_THUMBNAIL}  style={styles.thumbnail}/>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-                
-                <View style={styles.backContainer}>
+                <View style={{position: 'absolute', top: this.state.controlHide, left: 0}}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
                             source={Back_icon}
@@ -102,51 +165,43 @@ import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleShee
                     </TouchableOpacity>
                 </View>
 
+                <View style={{position: 'absolute', top: this.state.controlHide, left: '85%'}}>
+                    <TouchableOpacity onPress={() => {
+                        //toggleProgress = this.state.progress;
+                        this.setState({
+                            videoFile: this.state.videoFile == Story2_FL ? Story2_EN : Story2_FL,
+                        });
 
-                <View style={styles.homeContainer}>
-                    <TouchableOpacity onPress={this.gotoMainMenu}>
+                        this.handleProgressPress;
+                    }}>
                         <Image
                             source={Home_icon}
                             style={styles.home}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-
-                <Modal animationType={'slide'} visible={this.state.showModal}>
-                   
-                    <View style={styles.storyVideoContainer}>
-                        <TouchableWithoutFeedback onPress={() => this.setState({paused: !this.state.paused})}>
-                            <Video ref={(ref) => {this.video = ref}}
-                                source={this.state.videoFile}
-                                repeat={this.state.repeat}
-                                rate={this.state.rate}
-                                volume={this.state.volume}
-                                muted={this.state.muted}
-                                resizeMode={'contain'}
-                                paused={this.state.paused}
-                                onLoad={this.onLoad}
-                                onProgress={this.onProgress}
-                                onEnd={this.onEnd}
-                                onPress={this.onPress}
-                                style={styles.backgroundVideo}
-                            />
-                        </TouchableWithoutFeedback>
-                    </View>
-
-                     <View style={{position: 'absolute'}}>
-                        <TouchableOpacity onPress={()=>{this.setState({showModal: false})}}>
-                            <Image
-                                source={Back_icon}
-                                style={styles.back}
-                            ></Image>
-                        </TouchableOpacity>
-                    </View>
-                
-                </Modal>
-           </ImageBackground>
-
+            </View>
         );
     }
-}
+    }
+
+const videoStyle = StyleSheet.create({
+    container: {
+        flex: 1,
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'black',
+    },
+    controls: {
+        
+    },
+    mainButton: {
+        marginRight: 15,
+    },
+    duration: {
+        color: "#FFF",
+        marginLeft: 15,
+    },
+});
 
 export default withNavigation(Story2Screen);

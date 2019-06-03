@@ -6,8 +6,11 @@ export const globalStyleSheet = {
     // Image Background
     image: {
         flex: 1,
+        width: '100%',
+        height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
+        resizeMode: 'contain',
     },
 
     // Pencil
@@ -151,7 +154,7 @@ export const globalStyleSheet = {
     },
     FlalokContainer: {
         position: 'absolute',
-        top: '10%',
+        top: '20%',
         left: '10%',
         width: '80%',
         height: '90%',

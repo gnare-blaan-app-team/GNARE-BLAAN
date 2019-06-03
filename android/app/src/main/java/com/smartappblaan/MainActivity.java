@@ -6,7 +6,7 @@ import android.view.View;
 
 public class MainActivity extends ReactActivity {
 
-     @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         hideNavigationBar();
