@@ -41,7 +41,7 @@ class PageA extends Component {
             hideControls: false,
             hideWidth:100,
             hideHeight:100
-            
+
         };
         this.video = null;
         this.onEnd = this._onEnd.bind(this);
@@ -108,7 +108,7 @@ class PageA extends Component {
                 this.wordplay_a.play()
             });
         }
-        
+
     }
 
     gotoSentenceA = () => {
@@ -124,7 +124,7 @@ class PageA extends Component {
     gotoTracingA = () => {
         this.props.navigation.navigate('tracingA');
     }
-    
+
     gotoNextPage = () => {
         this.props.navigation.navigate('pageB');
         this.letter_play_a.pause();
@@ -143,7 +143,7 @@ class PageA extends Component {
         this.wordplay_a.pause();
     }
 
-    
+
 
     render() {
         return (
@@ -172,7 +172,7 @@ class PageA extends Component {
                             source={SpeakerIcon}
                             style={styles.A_Speaker_2}
                         ></Image>
-                       
+
                     </TouchableOpacity>
                 </View>
                 <View style={styles.VideoContainer}>
@@ -200,7 +200,7 @@ class PageA extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                
+
                 <View style={styles.nextContainer}>
                     <TouchableOpacity onPress={this.gotoNextPage}>
                         <Image
@@ -209,7 +209,7 @@ class PageA extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                
+
                 <View style={styles.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
