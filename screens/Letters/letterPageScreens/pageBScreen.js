@@ -3,6 +3,14 @@ import { View, Image, ImageBackground, BackHandler, TouchableOpacity } from 'rea
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
+import LetterBackground from '../lettersImage/LetterB.png';
+import SentenceIcon from '../../images/Letters_Info_Icon.png';
+import SpeakerIcon from '../../images/Speaker_icon.png';
+import PencilIcon from '../../images/Pencil_icon.png';
+import NextIcon from '../../images/Next_Icon.png';
+import GoBackIcon from '../../images/Back_icon.png';
+import HomeIcon from '../../images/Home_icon.png';
+import PrevIcon from '../../images/Prev_Icon.png';
 
 class PageB extends Component {
     static navigationOptions = {
@@ -103,12 +111,12 @@ class PageB extends Component {
     render() {
         return (
             <ImageBackground style={globalStyleSheet.image}
-                source={require('../lettersImage/LetterB.png')}
+                source={LetterBackground}
             >
                 <View style={globalStyleSheet.sentenceIconContainer}>
                     <TouchableOpacity onPress={this.gotoSentenceB}>
                         <Image
-                        source={require('../../images/Letters_Info_Icon.png')}
+                        source={SentenceIcon}
                         style={globalStyleSheet.sentenceIcon}
                         ></Image>
                     </TouchableOpacity>
@@ -117,7 +125,7 @@ class PageB extends Component {
                 <View style={globalStyleSheet.A_Speaker_Container}>
                     <TouchableOpacity onPress={this.playAsound}>
                         <Image
-                            source={require('../../images/Speaker_icon.png')}
+                            source={SpeakerIcon}
                             style={globalStyleSheet.A_Speaker}
                         ></Image>
                     </TouchableOpacity>
@@ -126,7 +134,7 @@ class PageB extends Component {
                 <View style={globalStyleSheet.A_Speaker_Container_2}>
                     <TouchableOpacity onPress={this.playAsound_2}>
                         <Image
-                            source={require('../../images/Speaker_icon.png')}
+                            source={SpeakerIcon}
                             style={globalStyleSheet.A_Speaker_2}
                         ></Image>
                     </TouchableOpacity>
@@ -135,7 +143,7 @@ class PageB extends Component {
                 <View style={globalStyleSheet.pencilContainer}>
                     <TouchableOpacity onPress={this.gotoTracingB}>
                         <Image
-                            source={require('../../images/Pencil_icon.png')}
+                            source={PencilIcon}
                             style={globalStyleSheet.pencil}
                         ></Image>
                     </TouchableOpacity>
@@ -144,7 +152,7 @@ class PageB extends Component {
                 <View style={globalStyleSheet.homeContainer}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Image
-                            source={require('../../images/Home_icon.png')}
+                            source={HomeIcon}
                             style={globalStyleSheet.home}
                         ></Image>
                     </TouchableOpacity>
@@ -153,7 +161,7 @@ class PageB extends Component {
                 <View style={globalStyleSheet.nextContainer}>
                     <TouchableOpacity onPress={this.gotoNextPage}>
                         <Image
-                            source={require('../../images/Next_Icon.png')}
+                            source={NextIcon}
                             style={globalStyleSheet.next}
                         ></Image>
                     </TouchableOpacity>
@@ -162,7 +170,7 @@ class PageB extends Component {
                 <View style={globalStyleSheet.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
-                            source={require('../../images/Back_icon.png')}
+                            source={GoBackIcon}
                             style={globalStyleSheet.back}
                         ></Image>
                     </TouchableOpacity>
@@ -171,7 +179,7 @@ class PageB extends Component {
                 <View style={globalStyleSheet.prevContainer}>
                     <TouchableOpacity onPress={this.goPrev}>
                         <Image
-                            source={require('../../images/Prev_Icon.png')}
+                            source={PrevIcon}
                             style={globalStyleSheet.prev}
                         ></Image>
                     </TouchableOpacity>

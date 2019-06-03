@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import { View, StyleSheet, Button, ImageBackground} from 'react-native';
 import { withNavigation } from 'react-navigation';
+import HomepageBackground from './images/GnareMain.gif';
 
 class Menuscreen extends Component{
     static navigationOptions = {
@@ -15,7 +16,7 @@ class Menuscreen extends Component{
         return(
            <ImageBackground
            style={styles.image}
-           source={require('./images/GnareMain.gif')}
+           source={HomepageBackground}
            >
             <View style={styles.container}>
             <Button

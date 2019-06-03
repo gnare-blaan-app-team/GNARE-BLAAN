@@ -2,7 +2,15 @@ import React, { Component } from 'react';
 import { View, Image, ImageBackground, BackHandler, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
-import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet';
+import { globalStyleSheet } from '../../globalStyleSheet/globalStyleSheet';
+import LetterBackground from '../lettersImage/LetterW.png';
+import SentenceIcon from '../../images/Letters_Info_Icon.png';
+import SpeakerIcon from '../../images/Speaker_icon.png';
+import PencilIcon from '../../images/Pencil_icon.png';
+import NextIcon from '../../images/Next_Icon.png';
+import GoBackIcon from '../../images/Back_icon.png';
+import HomeIcon from '../../images/Home_icon.png';
+import PrevIcon from '../../images/Prev_Icon.png';
 
 class PageW extends Component {
     static navigationOptions = {
@@ -103,70 +111,77 @@ class PageW extends Component {
 
     render() {
         return (
-            <ImageBackground style={styles.image}
-                source={require('../lettersImage/LetterW.png')}
+            <ImageBackground style={globalStyleSheet.image}
+                source={LetterBackground}
             >
-                <View style={styles.sentenceIconContainer}>
+                <View style={globalStyleSheet.sentenceIconContainer}>
                     <TouchableOpacity onPress={this.gotoSentenceW}>
                         <Image
-                        source={require('../../images/Letters_Info_Icon.png')}
-                        style={styles.sentenceIcon}
+                            source={SentenceIcon}
+                            style={globalStyleSheet.sentenceIcon}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.A_Speaker_Container}>
+
+                <View style={globalStyleSheet.A_Speaker_Container}>
                     <TouchableOpacity onPress={this.playAsound}>
                         <Image
-                            source={require('../../images/Speaker_icon.png')}
-                            style={styles.A_Speaker}
+                            source={SpeakerIcon}
+                            style={globalStyleSheet.A_Speaker}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.A_Speaker_Container_2}>
+
+                <View style={globalStyleSheet.A_Speaker_Container_2}>
                     <TouchableOpacity onPress={this.playAsound_2}>
                         <Image
-                            source={require('../../images/Speaker_icon.png')}
-                            style={styles.A_Speaker_2}
+                            source={SpeakerIcon}
+                            style={globalStyleSheet.A_Speaker_2}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.pencilContainer}>
+
+                <View style={globalStyleSheet.pencilContainer}>
                     <TouchableOpacity onPress={this.gotoTracingW}>
                         <Image
-                            source={require('../../images/Pencil_icon.png')}
-                            style={styles.pencil}
+                            source={PencilIcon}
+                            style={globalStyleSheet.pencil}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.homeContainer}>
+
+                <View style={globalStyleSheet.homeContainer}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Image
-                            source={require('../../images/Home_icon.png')}
-                            style={styles.home}
+                            source={HomeIcon}
+                            style={globalStyleSheet.home}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.nextContainer}>
+
+                <View style={globalStyleSheet.nextContainer}>
                     <TouchableOpacity onPress={this.gotoNextPage}>
                         <Image
-                            source={require('../../images/Next_Icon.png')}
-                            style={styles.next}
+                            source={NextIcon}
+                            style={globalStyleSheet.next}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.backContainer}>
+
+                <View style={globalStyleSheet.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
-                            source={require('../../images/Back_icon.png')}
-                            style={styles.back}
+                            source={GoBackIcon}
+                            style={globalStyleSheet.back}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.prevContainer}>
+
+                <View style={globalStyleSheet.prevContainer}>
                     <TouchableOpacity onPress={this.goPrev}>
                         <Image
-                            source={require('../../images/Prev_Icon.png')}
-                            style={styles.prev}
+                            source={PrevIcon}
+                            style={globalStyleSheet.prev}
                         ></Image>
                     </TouchableOpacity>
                 </View>

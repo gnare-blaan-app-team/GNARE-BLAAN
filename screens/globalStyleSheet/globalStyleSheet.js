@@ -93,8 +93,8 @@ export const globalStyleSheet = {
         top: '27%',
     },
     A_Speaker_2: {
-        height: 35,
-        width: 35,
+        width: wp('6'),
+        height: hp('10%'),
         resizeMode: 'contain',
     },
 
