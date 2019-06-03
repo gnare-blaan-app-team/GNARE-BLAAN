@@ -68,6 +68,11 @@ export const globalStyleSheet = {
         backgroundColor: 'black',
         opacity: 0.2,
     },
+    main: {
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+    },
 
     // Speaker 1 Icon
     A_Speaker_Container: {
