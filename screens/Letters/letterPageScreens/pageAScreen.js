@@ -3,7 +3,6 @@ import { View, Image, ImageBackground, BackHandler, TouchableOpacity } from 'rea
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
 import Video from 'react-native-video';
-import Story1_EN from '../lettersImage/sample.mp4';
 import LetterBackground from '../lettersImage/LetterA.png';
 import SentenceIcon from '../../images/Letters_Info_Icon.png';
 import SpeakerIcon from '../../images/Speaker_icon.png';
@@ -11,6 +10,8 @@ import PencilIcon from '../../images/Pencil_icon.png';
 import NextIcon from '../../images/Next_Icon.png';
 import GoBackIcon from '../../images/Back_icon.png';
 import HomeIcon from '../../images/Home_icon.png';
+import GlowA from '../lettersImage/lettersGlow/glowA.mp4';
+import ImageA from '../lettersImage/a.png';
 
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet';
@@ -38,8 +39,12 @@ class PageA extends Component {
             rateText: '1.0',
             pausedText: 'Play',
             hideControls: false,
-            toPlay: 'EN',
+            hideWidth:100,
+            hideHeight:100
+            
         };
+        this.video = null;
+        this.onEnd = this._onEnd.bind(this);
     }
 
     componentDidMount() {
@@ -85,17 +90,21 @@ class PageA extends Component {
         }
     }
 
+    _onEnd() {
+        let state = this.state;
+        state.paused = true;
+        this.setState(state);
+      //  setTimeout(() => this.video.seek(0.0));
+    }
+
     playAsound_2 = () => {
-        
         this.setState({ paused: false, toPlay: 'EN' })
-        this.video.seek(1)
+        this.setState({hideWidth:0,hideHeight:0})
         this.letter_play_a.stop(() => {
             this.mute.play();
         });
         if (this.wordplay_a.play()) {
             this.wordplay_a.stop(() => {
-                this.setState({ paused: false, toPlay: 'EN' })
-        
                 this.wordplay_a.play()
             });
         }
@@ -116,8 +125,6 @@ class PageA extends Component {
         this.props.navigation.navigate('tracingA');
     }
     
-    
-
     gotoNextPage = () => {
         this.props.navigation.navigate('pageB');
         this.letter_play_a.pause();
@@ -168,9 +175,10 @@ class PageA extends Component {
                        
                     </TouchableOpacity>
                 </View>
-                <View style={styles.A_Speaker_Container_2}>
-                    <Video ref={(ref: Video) => { this.video = ref }}
-                        source={Story1_EN}
+                <View style={styles.VideoContainer}>
+                    <Video ref={(ref) => { this.video = ref }}
+                        source={GlowA}
+                        onLoad={() => this.setState({ showThumbnail: false })}
                         repeat={this.state.repeat}
                         rate={this.state.rate}
                         volume={this.state.volume}
@@ -180,9 +188,9 @@ class PageA extends Component {
                         onLoad={this.onLoad}
                         onProgress={this.onProgress}
                         onEnd={this.onEnd}
-
-                        style={{ width: 100, height: 100, position: 'absolute', left: -200, }}
+                        style={styles.Glow}
                     />
+                    <Image source={ImageA} style={{ width: this.state.hideWidth, height: this.state.hideHeight, position: 'absolute', left: -200,}}/>
                 </View>
                 <View style={styles.pencilContainer}>
                     <TouchableOpacity onPress={this.gotoTracingA}>

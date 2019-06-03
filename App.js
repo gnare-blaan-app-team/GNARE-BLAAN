@@ -267,7 +267,7 @@ const RootStack = StackNavigator(
     numbers: Numbers
   },
   {
-    initialRouteName: 'home',
+    initialRouteName: 'pageA',
   }
 );
 

@@ -244,5 +244,17 @@ export const globalStyleSheet = {
         height: '100%',
         backgroundColor: 'rgb(0, 0, 0)',
     },
+    //Glow video
+    Glow:{
+        width: wp('40%'), 
+        height: hp('40%'), 
+        position: 'absolute', 
+        left: '-35%',
+    },
+    //Glow container
+    VideoContainer:{
+        left: '40%', 
+        top: '-20%'
+    }
 };
 

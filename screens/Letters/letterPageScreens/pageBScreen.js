@@ -11,6 +11,8 @@ import NextIcon from '../../images/Next_Icon.png';
 import GoBackIcon from '../../images/Back_icon.png';
 import HomeIcon from '../../images/Home_icon.png';
 import PrevIcon from '../../images/Prev_Icon.png';
+import GlowA from '../lettersGlow/glow-A.mp4';
+import ImageA from '../lettersImage/a.png';
 
 class PageB extends Component {
     static navigationOptions = {
@@ -139,7 +141,23 @@ class PageB extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-
+                <View style={styles.VideoContainer}>
+                    <Video ref={(ref: Video) => { this.video = ref }}
+                        source={GlowA}
+                        onLoad={() => this.setState({ showThumbnail: false })}
+                        repeat={this.state.repeat}
+                        rate={this.state.rate}
+                        volume={this.state.volume}
+                        muted={this.state.muted}
+                        resizeMode={this.state.resizeMode}
+                        paused={this.state.paused}
+                        onLoad={this.onLoad}
+                        onProgress={this.onProgress}
+                        onEnd={this.onEnd}
+                        style={styles.Glow}
+                    />
+                    <Image source={ImageA} style={{ width: this.state.hideWidth, height: this.state.hideHeight, position: 'absolute', left: -200, }} />
+                </View>
                 <View style={globalStyleSheet.pencilContainer}>
                     <TouchableOpacity onPress={this.gotoTracingB}>
                         <Image

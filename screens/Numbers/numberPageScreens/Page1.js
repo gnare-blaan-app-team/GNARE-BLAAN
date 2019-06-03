@@ -3,6 +3,12 @@ import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
 import {globalStyleSheet} from '../../globalStyleSheet//globalStyleSheet';
+import SentenceIcon from '../../images/Letters_Info_Icon.png';
+import SpeakerIcon from '../../images/Speaker_icon.png';
+import PencilIcon from '../../images/Pencil_icon.png';
+import NextIcon from '../../images/Next_Icon.png';
+import GoBackIcon from '../../images/Back_icon.png';
+import HomeIcon from '../../images/Home_icon.png';
 
 class Page1 extends Component {
     static navigationOptions = {
@@ -62,7 +68,7 @@ class Page1 extends Component {
                 <View style={globalStyleSheet.A_Speaker_Container_2}>
                     <TouchableOpacity onPress={this.playAsound_2}>
                         <Image
-                            source={require('../numbersImage/Speaker_icon.png')}
+                            source={SpeakerIcon}
                             style={globalStyleSheet.A_Speaker_2}
                         ></Image>
                     </TouchableOpacity>
@@ -70,7 +76,7 @@ class Page1 extends Component {
                 <View style={globalStyleSheet.sentenceIconContainer}>
                     <TouchableOpacity onPress={this.gotoSentence1}>
                         <Image
-                            source={require('../numbersImage/Letters_Info_Icon.png')}
+                            source={SentenceIcon}
                             style={globalStyleSheet.sentenceIcon}
                         ></Image>
                     </TouchableOpacity>
@@ -79,7 +85,7 @@ class Page1 extends Component {
                 <View style={globalStyleSheet.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
-                            source={require('../../images/Back_icon.png')}
+                            source={GoBackIcon}
                             style={globalStyleSheet.back}
                         ></Image>
                     </TouchableOpacity>
@@ -87,7 +93,7 @@ class Page1 extends Component {
                 <View style={globalStyleSheet.homeContainer}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Image
-                            source={require('../../images/Home_icon.png')}
+                            source={HomeIcon}
                             style={globalStyleSheet.home}
                         ></Image>
                     </TouchableOpacity>
