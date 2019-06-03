@@ -71,6 +71,11 @@ export const globalStyleSheet = {
         backgroundColor: 'black',
         opacity: 0.2,
     },
+    main: {
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+    },
 
     // Speaker 1 Icon
     A_Speaker_Container: {
@@ -91,8 +96,8 @@ export const globalStyleSheet = {
         top: '27%',
     },
     A_Speaker_2: {
-        height: 35,
-        width: 35,
+        width: wp('6'),
+        height: hp('10%'),
         resizeMode: 'contain',
     },
 
@@ -247,5 +252,17 @@ export const globalStyleSheet = {
         height: '100%',
         backgroundColor: 'rgb(0, 0, 0)',
     },
+    //Glow video
+    Glow:{
+        width: wp('40%'), 
+        height: hp('40%'), 
+        position: 'absolute', 
+        left: '-35%',
+    },
+    //Glow container
+    VideoContainer:{
+        left: '40%', 
+        top: '-20%'
+    }
 };
 

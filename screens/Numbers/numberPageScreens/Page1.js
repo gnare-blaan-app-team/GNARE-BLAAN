@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
-import {globalStyleSheet} from '../../globalStyleSheet//globalStyleSheet';
+import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
+
+import number1 from '../numberBackground/number1.png';
+import Speaker_icon from '../numbersImage/Speaker_icon.png';
+import Letters_Info_Icon from '../../images/Letters_Info_Icon.png';
+import Back_icon from '../../images/Back_icon.png';
+import Home_icon from '../../images/Home_icon.png';
 
 class Page1 extends Component {
     static navigationOptions = {
@@ -51,18 +57,12 @@ class Page1 extends Component {
     render() {
         return (
             <ImageBackground style={globalStyleSheet.image}
-                source={require('../../images/BG.jpg')}
+                source={number1}
             >
-                <View style={styles.black}>
-                </View>
-                <Image
-                    style={styles.main}
-                    source={require('../numbersImage/1(1).png')}
-                ></Image>
                 <View style={globalStyleSheet.A_Speaker_Container_2}>
                     <TouchableOpacity onPress={this.playAsound_2}>
                         <Image
-                            source={require('../numbersImage/Speaker_icon.png')}
+                            source={Speaker_icon}
                             style={globalStyleSheet.A_Speaker_2}
                         ></Image>
                     </TouchableOpacity>
@@ -70,16 +70,15 @@ class Page1 extends Component {
                 <View style={globalStyleSheet.sentenceIconContainer}>
                     <TouchableOpacity onPress={this.gotoSentence1}>
                         <Image
-                            source={require('../numbersImage/Letters_Info_Icon.png')}
+                            source={Letters_Info_Icon}
                             style={globalStyleSheet.sentenceIcon}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-
                 <View style={globalStyleSheet.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
-                            source={require('../../images/Back_icon.png')}
+                            source={Back_icon}
                             style={globalStyleSheet.back}
                         ></Image>
                     </TouchableOpacity>
@@ -87,7 +86,7 @@ class Page1 extends Component {
                 <View style={globalStyleSheet.homeContainer}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Image
-                            source={require('../../images/Home_icon.png')}
+                            source={Home_icon}
                             style={globalStyleSheet.home}
                         ></Image>
                     </TouchableOpacity>
@@ -96,13 +95,5 @@ class Page1 extends Component {
         )
     }
 }
-const styles = StyleSheet.create({
-
-    main: {
-        width: '100%',
-        height: '100%',
-        position: 'absolute',
-    },
-})
 
 export default withNavigation(Page1);

@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import { View, Image, ImageBackground, BackHandler, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
+import Video from 'react-native-video';
+import LetterBackground from '../lettersImage/LetterA.png';
+import SentenceIcon from '../../images/Letters_Info_Icon.png';
+import SpeakerIcon from '../../images/Speaker_icon.png';
+import PencilIcon from '../../images/Pencil_icon.png';
+import NextIcon from '../../images/Next_Icon.png';
+import GoBackIcon from '../../images/Back_icon.png';
+import HomeIcon from '../../images/Home_icon.png';
+import GlowA from '../lettersGlow/glow-A.mp4';
+import ImageA from '../lettersImage/a.png';
+
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet';
 
@@ -12,8 +23,33 @@ class PageA extends Component {
         header: null,
     }
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            repeat: false,
+            rate: 1,
+            volume: 1,
+            muted: false,
+            resizeMode: 'contain',
+            duration: 0.0,
+            progress: 0.0,
+            currentTime: 0.0,
+            paused: false,
+            rateText: '1.0',
+            pausedText: 'Play',
+            hideControls: false,
+            hideWidth:100,
+            hideHeight:100
+
+        };
+        this.video = null;
+        this.onEnd = this._onEnd.bind(this);
+    }
+
     componentDidMount() {
         this.forceUpdate();
+        this.setState({ paused: true, toPlay: 'EN' })
         this.letter_play_a = new Sound('letter_play_a.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);
@@ -37,10 +73,10 @@ class PageA extends Component {
         });
     }
 
-
     handleBackPress = () => {
         this.letter_play_a.pause();
         this.wordplay_a.pause();
+        this.setState({ paused: true, toPlay: 'EN' })
     }
 
     playAsound = () => {
@@ -54,7 +90,16 @@ class PageA extends Component {
         }
     }
 
+    _onEnd() {
+        let state = this.state;
+        state.paused = true;
+        this.setState(state);
+      //  setTimeout(() => this.video.seek(0.0));
+    }
+
     playAsound_2 = () => {
+        this.setState({ paused: false, toPlay: 'EN' })
+        this.setState({hideWidth:0,hideHeight:0})
         this.letter_play_a.stop(() => {
             this.mute.play();
         });
@@ -63,6 +108,7 @@ class PageA extends Component {
                 this.wordplay_a.play()
             });
         }
+
     }
 
     gotoSentenceA = () => {
@@ -78,8 +124,6 @@ class PageA extends Component {
     gotoTracingA = () => {
         this.props.navigation.navigate('tracingA');
     }
-    
-    
 
     gotoNextPage = () => {
         this.props.navigation.navigate('pageB');
@@ -99,17 +143,17 @@ class PageA extends Component {
         this.wordplay_a.pause();
     }
 
-    
+
 
     render() {
         return (
             <ImageBackground style={styles.image}
-                source={require('../lettersImage/LetterA.png')}
+                source={LetterBackground}
             >
                 <View style={styles.sentenceIconContainer}>
                     <TouchableOpacity onPress={this.gotoSentenceA}>
                         <Image
-                            source={require('../../images/Letters_Info_Icon.png')}
+                            source={SentenceIcon}
                             style={styles.sentenceIcon}
                         ></Image>
                     </TouchableOpacity>
@@ -117,7 +161,7 @@ class PageA extends Component {
                 <View style={styles.A_Speaker_Container}>
                     <TouchableOpacity onPress={this.playAsound}>
                         <Image
-                            source={require('../../images/Speaker_icon.png')}
+                            source={SpeakerIcon}
                             style={styles.A_Speaker}
                         ></Image>
                     </TouchableOpacity>
@@ -125,33 +169,51 @@ class PageA extends Component {
                 <View style={styles.A_Speaker_Container_2}>
                     <TouchableOpacity onPress={this.playAsound_2}>
                         <Image
-                            source={require('../../images/Speaker_icon.png')}
+                            source={SpeakerIcon}
                             style={styles.A_Speaker_2}
                         ></Image>
+
                     </TouchableOpacity>
+                </View>
+                <View style={styles.VideoContainer}>
+                    <Video ref={(ref) => { this.video = ref }}
+                        source={GlowA}
+                        onLoad={() => this.setState({ showThumbnail: false })}
+                        repeat={this.state.repeat}
+                        rate={this.state.rate}
+                        volume={this.state.volume}
+                        muted={this.state.muted}
+                        resizeMode={this.state.resizeMode}
+                        paused={this.state.paused}
+                        onLoad={this.onLoad}
+                        onProgress={this.onProgress}
+                        onEnd={this.onEnd}
+                        style={styles.Glow}
+                    />
+                    <Image source={ImageA} style={{ width: this.state.hideWidth, height: this.state.hideHeight, position: 'absolute', left: -200,}}/>
                 </View>
                 <View style={styles.pencilContainer}>
                     <TouchableOpacity onPress={this.gotoTracingA}>
                         <Image
-                        source={require('../../images/Pencil_icon.png')}
+                        source={PencilIcon}
                             style={styles.pencil}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                
+
                 <View style={styles.nextContainer}>
                     <TouchableOpacity onPress={this.gotoNextPage}>
                         <Image
-                            source={require('../../images/Next_Icon.png')}
+                            source={NextIcon}
                             style={styles.next}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                
+
                 <View style={styles.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
-                            source={require('../../images/Back_icon.png')}
+                            source={GoBackIcon}
                             style={styles.back}
                         ></Image>
                     </TouchableOpacity>
@@ -159,7 +221,7 @@ class PageA extends Component {
                 <View style={styles.homeContainer}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Image
-                            source={require('../../images/Home_icon.png')}
+                            source={HomeIcon}
                             style={styles.home}
                         ></Image>
                     </TouchableOpacity>
