@@ -3,6 +3,9 @@ import { Text, View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackH
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import Back_icon from '../../images/Back_icon.png';
+import Home_icon from '../../images/Home_icon.png';
+import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
 Sound.setCategory('Playback');
 
@@ -29,7 +32,13 @@ class Sentence1 extends Component {
     handleBackPress = () => {
         this.letter_sentence_a.pause();
     }
+    goBack = () => {
+        this.props.navigation.navigate('numbers');
+    }
 
+    gotoMainMenu = () => {
+        this.props.navigation.navigate('mainMenu');
+    }
 
     render() {
         return (
@@ -41,6 +50,22 @@ class Sentence1 extends Component {
                         <Image
                             source={require('../numbersImage/Speaker_icon.png')}
                             style={styles.A_Speaker_2}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.backContainer}>
+                    <TouchableOpacity onPress={this.goBack}>
+                        <Image
+                            source={Back_icon}
+                            style={globalStyleSheet.back}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.homeContainer}>
+                    <TouchableOpacity onPress={this.gotoMainMenu}>
+                        <Image
+                            source={Home_icon}
+                            style={globalStyleSheet.home}
                         ></Image>
                     </TouchableOpacity>
                 </View>

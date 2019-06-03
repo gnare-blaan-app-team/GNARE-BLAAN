@@ -141,7 +141,7 @@ class PageB extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.VideoContainer}>
+                <View style={globalStyleSheet.VideoContainer}>
                     <Video ref={(ref: Video) => { this.video = ref }}
                         source={GlowA}
                         onLoad={() => this.setState({ showThumbnail: false })}
