@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, ImageBackground, TouchableHighlight } from 'react-native';
+import { Text, View, Image, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import MenuItem from './LettersMenu';
+
+import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 
 class Letters extends Component {
     static navigationOptions = {
@@ -66,12 +68,21 @@ class Letters extends Component {
     goHome = () => {
         this.props.navigation.navigate('main');
     }
+
+    gotoMainMenu = () => {
+        this.props.navigation.navigate('mainMenu');
+    }
+
+    goBack = () => {
+        this.props.navigation.navigate('mainMenu');
+    }
+    
     render() {
         return (
             <ImageBackground style={styles.image}
                 source={require('../images/BG.jpg')}
             >
-                <View style={styles.menuContainer}>
+                <View style={styles.menuLetterContainer}>
                     <MenuItem itemImage={require('./lettersImage/a.png')} goto={this.gotoPageA} />
                     <MenuItem itemImage={require('./lettersImage/b.png')} goto={this.gotoPageB} />
                     <MenuItem itemImage={require('./lettersImage/d.png')} goto={this.gotoPageD} />
@@ -91,27 +102,27 @@ class Letters extends Component {
                     <MenuItem itemImage={require('./lettersImage/w.png')} goto={this.gotoPageW} />
                     <MenuItem itemImage={require('./lettersImage/y.png')} goto={this.gotoPageY} />
                 </View>
+
+                <View style={styles.backContainer}>
+                    <TouchableOpacity onPress={this.goBack}>
+                        <Image
+                            source={require('../images/Back_icon.png')}
+                            style={styles.back}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={styles.homeContainer}>
+                    <TouchableOpacity onPress={this.gotoMainMenu}>
+                        <Image
+                            source={require('../images/Home_icon.png')}
+                            style={styles.home}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
             </ImageBackground>
         )
     }
 }
-const styles = StyleSheet.create({
-    menuContainer: {
-        position: 'relative',
-        top:'1%',
-        left:'9%',
-        width: '83%',
-        height: '60%',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-    },
-    image: {
-        flex: 1,
-        width: '100%',
-        height: '100%',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-})
 
 export default withNavigation(Letters);

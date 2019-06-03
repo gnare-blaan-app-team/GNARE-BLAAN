@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ImageBackground, Image, TouchableOpacity } from 'react-native';
+import { View, ImageBackground, Image, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import MenuItem from './MenuItem';
 
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js';
 
 class Mainmenu extends Component {
     static navigationOptions = {
@@ -25,6 +25,10 @@ class Mainmenu extends Component {
         this.props.navigation.navigate('home');
     }
 
+    goBack = () => {
+        this.props.navigation.navigate('home');
+    }
+
     render() {
         return (
             <ImageBackground style={styles.image}
@@ -37,6 +41,15 @@ class Mainmenu extends Component {
                     <MenuItem itemImage={require('./images/Games.png')} />
                     <MenuItem itemImage={require('./images/CultureandArts.png')} />
                     <MenuItem itemImage={require('./images/Vocabulary.png')} />
+                </View>
+
+                <View style={styles.backContainer}>
+                    <TouchableOpacity onPress={this.goBack}>
+                        <Image
+                            source={require('./images/Back_icon.png')}
+                            style={styles.back}
+                        ></Image>
+                    </TouchableOpacity>
                 </View>
 
                 <View style={styles.homeContainer}>
@@ -52,34 +65,5 @@ class Mainmenu extends Component {
         )
     }
 }
-
-const styles = StyleSheet.create({
-    image: {
-        flex: 1,
-        width: '100%',
-        height: '100%',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    menuContainer: {
-        position: 'relative',
-        top:'9%',
-        left:'22%',
-        width: '98%',
-        height: '80%',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-    },
-
-    homeContainer: {
-        position: 'absolute',
-        left: '85%',
-        top: '-2%',
-    },
-    home: {
-        width: wp('14%'),
-        height: hp('28%')
-    },
-})
 
 export default withNavigation(Mainmenu);

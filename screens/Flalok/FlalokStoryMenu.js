@@ -1,8 +1,17 @@
 import React,{Component} from 'react';
-import { StyleSheet, ImageBackground, TouchableHighlight, TouchableOpacity, View, Image} from 'react-native';
+import { ImageBackground, TouchableOpacity, View, Image} from 'react-native';
 import { withNavigation } from 'react-navigation';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 
+import Back_icon from '../images/Back_icon.png';
+import Home_icon from '../images/Home_icon.png';
+import Story1 from './flalokImages/Story1.png';
+import Story2 from './flalokImages/Story2.png';
+import Story3 from './flalokImages/Story3.png';
+import Story4 from './flalokImages/Story4.png';
+import Story5 from './flalokImages/Story5.png';
+import Story6 from './flalokImages/Story6.png';
+import Flalok_BG from './flalokImages/Flalok_BG.jpg';
 
 class FlalokStoryMenu extends Component {
     static navigationOptions = {
@@ -37,54 +46,67 @@ class FlalokStoryMenu extends Component {
         this.props.navigation.navigate('mainMenu');
     }
 
+    goBack = () => {
+        this.props.navigation.navigate('mainMenu');
+    }
+
     render(){
         return(
-           <ImageBackground style={styles.image} source={require('./flalokImages/Flalok_BG.jpg')}>
+           <ImageBackground style={styles.image} source={Flalok_BG}>
 
-                <View style={styles.container}>
+                <View style={styles.FlalokContainer}>
                     <View style={styles.row}>
                         <View style={styles.itemSize} >
                             <TouchableOpacity  onPress={() => this.props.navigation.navigate('story1')} >
-                                <Image style={styles.imageSize} source={require('./flalokImages/Story1.png')} />
+                                <Image style={styles.imageSizeStoryMenu} source={Story1} />
                             </TouchableOpacity>
                         </View>
 
                         <View style={styles.itemSize} >
                             <TouchableOpacity  onPress={() => this.props.navigation.navigate('story2')} >
-                                <Image style={styles.imageSize} source={require('./flalokImages/Story2.png')} />
+                                <Image style={styles.imageSizeStoryMenu} source={Story2} />
                             </TouchableOpacity>
                         </View>
 
                         <View style={styles.itemSize} >
                             <TouchableOpacity  onPress={() => this.props.navigation.navigate('story3')} >
-                                <Image style={styles.imageSize} source={require('./flalokImages/Story3.png')} />
+                                <Image style={styles.imageSizeStoryMenu} source={Story3} />
                             </TouchableOpacity>
                         </View>
                     </View>
                     <View style={styles.row1}>
                         <View style={styles.itemSize} >
                             <TouchableOpacity  onPress={() => this.props.navigation.navigate('story4')} >
-                                <Image style={styles.imageSize} source={require('./flalokImages/Story4.png')} />
+                                <Image style={styles.imageSizeStoryMenu} source={Story4} />
                             </TouchableOpacity>
                         </View>
                         <View style={styles.itemSize} >
                             <TouchableOpacity  onPress={() => this.props.navigation.navigate('story5')} >
-                                <Image style={styles.imageSize} source={require('./flalokImages/Story5.png')} />
+                                <Image style={styles.imageSizeStoryMenu} source={Story5} />
                             </TouchableOpacity>
                         </View>
                         <View style={styles.itemSize} >
                             <TouchableOpacity  onPress={() => this.props.navigation.navigate('story6')} >
-                                <Image style={styles.imageSize} source={require('./flalokImages/Story6.png')} />
+                                <Image style={styles.imageSizeStoryMenu} source={Story6} />
                             </TouchableOpacity>
                         </View>
                     </View>
                 </View>
 
                 
+                <View style={styles.backContainer}>
+                    <TouchableOpacity onPress={this.goBack}>
+                        <Image
+                            source={Back_icon}
+                            style={styles.back}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+
                 <View style={styles.homeContainer}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Image
-                            source={require('./flalokImages/Home_icon.png')}
+                            source={Home_icon}
                             style={styles.home}
                         ></Image>
                     </TouchableOpacity>
@@ -94,64 +116,6 @@ class FlalokStoryMenu extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    image: {
-        flex: 1,
-        width: '100%',
-        height: '100%',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
 
-    row: {
-        position: 'relative',
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'row',
-        width: '100%',
-        height: '50%',
-    },
-
-    row1: {
-        position: 'relative',
-        flex: 1,
-        justifyContent: 'center',
-        flexDirection: 'row',
-        width: '100%',
-        height: '35%',
-    },
-
-    itemSize: {
-        margin: 5,
-        marginBottom: 0,
-        width: '35%',
-        height: '40%',
-    },
-
-    imageSize: {
-        width: '100%',
-        height: '100%',
-        resizeMode: 'contain',
-    },
-
-    container: {
-        position: 'absolute',
-        top: '10%',
-        left: '10%',
-        width: '80%',
-        height: '90%',
-    },
-
-    homeContainer: {
-        position: 'absolute',
-        left: '85%',
-        top: '-2%',
-    },
-    home: {
-        width: wp('14%'),
-        height: hp('28%')
-    },
-})
 
 export default withNavigation(FlalokStoryMenu);

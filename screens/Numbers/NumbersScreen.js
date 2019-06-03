@@ -3,7 +3,7 @@ import { View, Image, StyleSheet, ImageBackground, TouchableOpacity} from 'react
 import { withNavigation } from 'react-navigation';
 import MenuItem from './NumbersMenu';
 
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 
 class NumberScreen extends Component {
     static navigationOptions = {
@@ -86,12 +86,17 @@ class NumberScreen extends Component {
     gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
     }
+
+    goBack = () => {
+        this.props.navigation.navigate('mainMenu');
+    }
+
     render() {
         return (
             <ImageBackground style={styles.image}
                 source={require('../images/BG.jpg')}
             >
-                <View style={styles.menuContainer}>
+                <View style={styles.menuNumberContainer}>
                     <MenuItem itemImage={require('./numbersImage/1.png')} goto={this.gotoPage1} />
                     <MenuItem itemImage={require('./numbersImage/2.png')} goto={this.gotoPage2} />
                     <MenuItem itemImage={require('./numbersImage/3.png')} goto={this.gotoPage3} />
@@ -118,10 +123,19 @@ class NumberScreen extends Component {
                     <MenuItem itemImage={require('./numbersImage/1000.png')} goto={this.gotoPage1000} />
                 </View>
 
+                <View style={styles.backContainer}>
+                    <TouchableOpacity onPress={this.goBack}>
+                        <Image
+                            source={require('../images/Back_icon.png')}
+                            style={styles.back}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+
                 <View style={styles.homeContainer}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Image
-                            source={require('./numbersImage/Home_icon.png')}
+                            source={require('../images/Home_icon.png')}
                             style={styles.home}
                         ></Image>
                     </TouchableOpacity>
@@ -130,32 +144,5 @@ class NumberScreen extends Component {
         )
     }
 }
-const styles = StyleSheet.create({
-    menuContainer: {
-        position: 'relative',
-        bottom:'6%',
-        left: '9%',
-        width: '83%',
-        height: '32%',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-    },
-    image: {
-        flex: 1,
-        width: '100%',
-        height: '100%',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    homeContainer: {
-        position: 'absolute',
-        left: '85%',
-        top: '-2%',
-    },
-    home: {
-        width: wp('14%'),
-        height: hp('28%')
-    },
-})
 
 export default withNavigation(NumberScreen);
