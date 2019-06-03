@@ -6,7 +6,7 @@ import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
 import number6 from '../numberBackground/number6.png';
 import Speaker_icon from '../numbersImage/Speaker_icon.png';
-import Letters_Info_Icon from '../numbersImage/Letters_Info_Icon.png';
+import Letters_Info_Icon from '../../images/Letters_Info_Icon.png';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
 
