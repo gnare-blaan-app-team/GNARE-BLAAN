@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, ImageBackground, TouchableOpacity,BackHandler } from 'react-native';
+import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
+
+import number4 from '../numberBackground/number4.png';
+import Speaker_icon from '../numbersImage/Speaker_icon.png';
+import Letters_Info_Icon from '../numbersImage/Letters_Info_Icon.png';
+import Back_icon from '../../images/Back_icon.png';
+import Home_icon from '../../images/Home_icon.png';
 
 class Page4 extends Component {
     static navigationOptions = {
@@ -58,45 +64,38 @@ class Page4 extends Component {
 
     render() {
         return (
-            <ImageBackground style={styles.image}
-                source={require('../../images/BG.jpg')}
+            <ImageBackground style={globalStyleSheet.image}
+                source={number4}
             >
-                <View style={styles.black}>
-                </View>
-                <Image
-                    style={styles.main}
-                    source={require('../numbersImage/4(1).png')}
-                ></Image>
-                <View style={styles.A_Speaker_Container_2}>
+                <View style={globalStyleSheet.A_Speaker_Container_2}>
                     <TouchableOpacity onPress={this.playAsound_2}>
                         <Image
-                            source={require('../numbersImage/Speaker_icon.png')}
-                            style={styles.A_Speaker_2}
+                            source={Speaker_icon}
+                            style={globalStyleSheet.A_Speaker_2}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.sentenceIconContainer}>
+                <View style={globalStyleSheet.sentenceIconContainer}>
                     <TouchableOpacity onPress={this.gotoSentence4}>
                         <Image
-                            source={require('../numbersImage/Letters_Info_Icon.png')}
-                            style={styles.sentenceIcon}
+                            source={Letters_Info_Icon}
+                            style={globalStyleSheet.sentenceIcon}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-
-                <View style={styles.backContainer}>
+                <View style={globalStyleSheet.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
-                            source={require('../../images/Back_icon.png')}
-                            style={styles.back}
+                            source={Back_icon}
+                            style={globalStyleSheet.back}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.homeContainer}>
+                <View style={globalStyleSheet.homeContainer}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Image
-                            source={require('../../images/Home_icon.png')}
-                            style={styles.home}
+                            source={Home_icon}
+                            style={globalStyleSheet.home}
                         ></Image>
                     </TouchableOpacity>
                 </View>
@@ -104,72 +103,5 @@ class Page4 extends Component {
         )
     }
 }
-const styles = StyleSheet.create({
-    image: {
-        flex: 1,
-        width: '100%',
-        height: '100%',
-        position: 'absolute',
-    },
-    black: {
-        top: '24%',
-        left: '15%',
-        width: '35%',
-        height: '61%',
-        backgroundColor: 'black',
-        opacity: 0.2,
-    },
-    pencil: {
-        width: '30%',
-        height: '6%',
-        bottom: '22%',
-        left: '51%'
-    },
-    main: {
-        width: '100%',
-        height: '100%',
-        position: 'absolute',
-    },
-    A_Speaker_Container_2: {
-        position: 'absolute',
-        left: '80%',
-        top: '27%',
-    },
-    A_Speaker_2: {
-        height: 35,
-        width: 35
-    },
-
-    backContainer: {
-        position: 'absolute',
-         left: '1%',
-         top: '-2%',
-    },
-
-    back: {
-        width: wp('14%'),
-        height: hp('28%')
-    },
-
-    homeContainer: {
-        position: 'absolute',
-        left: '85%',
-        top: '-2%',
-    },
-    home: {
-        width: wp('14%'),
-        height: hp('28%')
-    },
-
-    sentenceIconContainer: {
-        position: 'absolute',
-        left: '85%',
-        top: '80%',
-    },
-    sentenceIcon: {
-        width: wp('9%'),
-        height: hp('16%')
-    }
-})
 
 export default withNavigation(Page4);
