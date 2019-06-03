@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { Text, View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
+import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
+import SentenceBG1 from '../numbersImage/sentence1.png';
+import Speaker_icon from '../numbersImage/Speaker_icon.png';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
-import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
 Sound.setCategory('Playback');
 
@@ -33,23 +35,24 @@ class Sentence1 extends Component {
         this.letter_sentence_a.pause();
     }
     goBack = () => {
-        this.props.navigation.navigate('numbers');
+        this.props.navigation.navigate('page1');
     }
 
     gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
     }
 
+
     render() {
         return (
-            <ImageBackground style={styles.image}
-                source={require('../numbersImage/sentence1.png')}
+            <ImageBackground style={globalStyleSheet.image}
+                source={SentenceBG1}
             >
-                <View style={styles.A_Speaker_Container_2}>
+                <View style={globalStyleSheet.A_Speaker_Container_2}>
                     <TouchableOpacity onPress={this.playAsound_2}>
                         <Image
-                            source={require('../numbersImage/Speaker_icon.png')}
-                            style={styles.A_Speaker_2}
+                            source={Speaker_icon}
+                            style={globalStyleSheet.A_Speaker_2}
                         ></Image>
                     </TouchableOpacity>
                 </View>
@@ -73,27 +76,5 @@ class Sentence1 extends Component {
         )
     }
 }
-const styles = StyleSheet.create({
-    image: {
-        flex: 1,
-        width: wp('100%'),
-        height: hp('100%'),
-        position: 'absolute',
-    },
-    main: {
-        position: 'absolute',
-        width: wp('100%'),
-        height: hp('100%'),
-    },
-    A_Speaker_Container_2: {
-        position: 'absolute',
-        left: '80%',
-        top: '27%',
-    },
-    A_Speaker_2: {
-        width: wp('6%'),
-        height: hp('11%')
-    },
-})
 
 export default withNavigation(Sentence1);
