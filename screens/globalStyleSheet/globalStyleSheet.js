@@ -251,15 +251,14 @@ export const globalStyleSheet = {
     },
     //Glow video
     Glow:{
-        width: wp('40%'), 
-        height: hp('40%'), 
-        position: 'absolute', 
-        left: '-35%',
+        width: wp('24%'), 
+        height: hp('30%'), 
     },
     //Glow container
     VideoContainer:{
-        left: '40%', 
-        top: '-20%'
+        top: '35%',
+        left: '60%', 
+        position:'absolute',
     }
 };
 
