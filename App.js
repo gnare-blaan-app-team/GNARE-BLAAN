@@ -142,6 +142,10 @@ import TracingU from './screens/Letters/letterTracingScreens/TracingU';
 import TracingW from './screens/Letters/letterTracingScreens/TracingW';
 import TracingY from './screens/Letters/letterTracingScreens/TracingY';
 
+// Vocabularies
+
+import Tatay from './screens/Vocabulary/vocabulary1/tatay'
+
 
 // Screen Navigation
 
@@ -286,6 +290,10 @@ const RootStack = StackNavigator(
     tracingU: TracingU,
     tracingW: TracingW,
     tracingY: TracingY,
+
+    // Vocabularies
+
+    tatay: Tatay,
 
     numbers: Numbers
   },
