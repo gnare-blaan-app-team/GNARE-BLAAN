@@ -125,6 +125,23 @@ export const globalStyleSheet = {
         resizeMode: 'contain',
     },
 
+    //HomePage Container
+    HomePageContainer: {
+        position: 'absolute',
+        top: '80%',
+        left: '10%',
+        width: '80%',
+        height: '20%',
+    },
+
+    //HomePage Items
+    HomePageItems: {
+        margin: 5,
+        marginBottom: 0,
+        width: '25%',
+        height: '40%',
+    },
+
     // Flalok, Rows
     row: {
         position: 'relative',
@@ -165,6 +182,14 @@ export const globalStyleSheet = {
         height: '90%',
     },
 
+    // Culture and Arts Container
+    CultureandArtsContainer: {
+        position: 'absolute',
+        top: '20%',
+        left: '10%',
+        width: '80%',
+        height: '70%',
+    },
 
     // Stories image, container, Thumbnails
     imageStoryScreen: {

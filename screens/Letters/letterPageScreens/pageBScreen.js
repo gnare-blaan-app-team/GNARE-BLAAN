@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Image, ImageBackground, BackHandler, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
+import Video from 'react-native-video';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 import LetterBackground from '../lettersImage/LetterB.png';
 import SentenceIcon from '../../images/Letters_Info_Icon.png';
@@ -142,7 +143,7 @@ class PageB extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.VideoContainer}>
-                    <Video ref={(ref: Video) => { this.video = ref }}
+                    <Video ref={(ref) => { this.video = ref }}
                         source={GlowA}
                         onLoad={() => this.setState({ showThumbnail: false })}
                         repeat={this.state.repeat}

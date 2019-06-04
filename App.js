@@ -143,6 +143,13 @@ import TracingU from './screens/Letters/letterTracingScreens/TracingU';
 import TracingW from './screens/Letters/letterTracingScreens/TracingW';
 import TracingY from './screens/Letters/letterTracingScreens/TracingY';
 
+// Vocabularies
+
+import Tatay from './screens/Vocabulary/vocabulary1/tatay'
+
+// Culture and Arts Import
+
+import cultureandartsMain from './screens/CultureandArts/cultureandartsMain';
 
 // Screen Navigation
 
@@ -289,10 +296,18 @@ const RootStack = StackNavigator(
     tracingW: TracingW,
     tracingY: TracingY,
 
-    numbers: Numbers
+    numbers: Numbers,
+
+    //Vocabularies
+
+    tatay: Tatay,
+
+    //Culture and Arts
+    cultureandarts: cultureandartsMain
+
   },
   {
-    initialRouteName: 'home',
+    initialRouteName: 'mainMenu',
   }
 );
 
