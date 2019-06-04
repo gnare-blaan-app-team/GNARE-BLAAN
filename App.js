@@ -146,6 +146,9 @@ import TracingY from './screens/Letters/letterTracingScreens/TracingY';
 
 import Tatay from './screens/Vocabulary/vocabulary1/tatay'
 
+// Culture and Arts Import
+
+import cultureandartsMain from './screens/CultureandArts/cultureandartsMain';
 
 // Screen Navigation
 
@@ -291,14 +294,18 @@ const RootStack = StackNavigator(
     tracingW: TracingW,
     tracingY: TracingY,
 
-    // Vocabularies
+    numbers: Numbers,
+
+    //Vocabularies
 
     tatay: Tatay,
 
-    numbers: Numbers
+    //Culture and Arts
+    cultureandarts: cultureandartsMain
+
   },
   {
-    initialRouteName: 'home',
+    initialRouteName: 'mainMenu',
   }
 );
 
