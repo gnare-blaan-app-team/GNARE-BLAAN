@@ -4,7 +4,7 @@ import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
 
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
-import SentenceBG500 from '../numbersImage/sentence500.png';
+import SentenceBG500 from '../numbersImage/sentence1000.png';
 import Speaker_icon from '../numbersImage/Speaker_icon.png';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
@@ -34,7 +34,7 @@ class Sentence500 extends Component {
         this.letter_sentence_a.pause();
     }
     goBack = () => {
-        this.props.navigation.navigate('page500');
+        this.props.navigation.navigate('page1000');
     }
     gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
