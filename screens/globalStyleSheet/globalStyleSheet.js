@@ -13,6 +13,12 @@ export const globalStyleSheet = {
         resizeMode: 'contain',
     },
 
+    //test Container
+    container: {
+        flex: 1, 
+        justifyContent: "center",
+    },
+    
     // Pencil
     pencilContainer: {
         position: 'absolute',

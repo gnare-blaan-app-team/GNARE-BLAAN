@@ -32,7 +32,7 @@ class prayersScreen extends Component {
                 <View style={styles.CultureandArtsContainer}>
                     <View style={styles.row}>
                         <View style={styles.itemSize} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
+                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('dasalbagomatulogPlay')} >
                                 <Image style={styles.imageSizeStoryMenu} source={DasalBagoMatulog_icon} />
                             </TouchableOpacity>
                         </View>
