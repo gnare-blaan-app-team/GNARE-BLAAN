@@ -519,7 +519,7 @@ const RootStack = StackNavigator(
   },
 
   {
-    initialRouteName: 'vocabularyMenu',
+    initialRouteName: 'home',
   }
   
 );
