@@ -4,12 +4,12 @@ import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
-import TatayBG from './vocabulary1Images/tatay.png';
+import FishBG from './vocabulary3Images/fish.png';
 import Speaker_icon from '../../images/Speaker_icon.png';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
 
-class Tatay extends Component {
+class Fish extends Component {
     static navigationOptions = {
         header: null,
     }
@@ -52,7 +52,7 @@ class Tatay extends Component {
     render() {
         return (
             <ImageBackground style={globalStyleSheet.image}
-                source={TatayBG}
+                source={FishBG}
             >
                 <View style={globalStyleSheet.A_Speaker_Container_2}>
                     <TouchableOpacity onPress={this.playAsound_2}>
@@ -83,4 +83,4 @@ class Tatay extends Component {
     }
 }
 
-export default withNavigation(Tatay);
+export default withNavigation(Fish);

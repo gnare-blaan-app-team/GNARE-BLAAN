@@ -144,7 +144,83 @@ import TracingY from './screens/Letters/letterTracingScreens/TracingY';
 
 // Vocabularies
 
-import Tatay from './screens/Vocabulary/vocabulary1/tatay'
+import Tatay from './screens/Vocabulary/vocabulary1/tatay';
+
+//Vocabulary3
+import Basket from './screens/Vocabulary/vocabulary3/basket';
+import Crab from './screens/Vocabulary/vocabulary3/crab';
+import Eel from './screens/Vocabulary/vocabulary3/eel';
+import Fish from './screens/Vocabulary/vocabulary3/fish';
+import Fishnet from './screens/Vocabulary/vocabulary3/fishnet';
+import Sea from './screens/Vocabulary/vocabulary3/sea';
+import Seashore from './screens/Vocabulary/vocabulary3/seashore';
+import Shrimp from './screens/Vocabulary/vocabulary3/shrimp';
+
+//Vocabulary4
+import Bamboo from './screens/Vocabulary/vocabulary4/bamboo';
+import Bolo from './screens/Vocabulary/vocabulary4/bolo';
+import Carabao from './screens/Vocabulary/vocabulary4/carabao';
+import Chicken from './screens/Vocabulary/vocabulary4/chicken';
+import Corn from './screens/Vocabulary/vocabulary4/corn';
+import Cow from './screens/Vocabulary/vocabulary4/cow';
+import Goat from './screens/Vocabulary/vocabulary4/goat';
+import Pig from './screens/Vocabulary/vocabulary4/pig';
+import Plow from './screens/Vocabulary/vocabulary4/plow';
+import Rice from './screens/Vocabulary/vocabulary4/rice';
+import Sweetpotato from './screens/Vocabulary/vocabulary4/sweetpotato';
+
+//Vocabulary5
+import Ax from './screens/Vocabulary/vocabulary5/ax';
+import Bow from './screens/Vocabulary/vocabulary5/bow';
+import Hawk from './screens/Vocabulary/vocabulary5/hawk';
+import Hornbill from './screens/Vocabulary/vocabulary5/hornbill';
+import Mountain from './screens/Vocabulary/vocabulary5/mountain';
+import River from './screens/Vocabulary/vocabulary5/river';
+import Salamander from './screens/Vocabulary/vocabulary5/salamander';
+import Spear from './screens/Vocabulary/vocabulary5/spear';
+import Tree from './screens/Vocabulary/vocabulary5/tree';
+import Waterfall from './screens/Vocabulary/vocabulary5/waterfall';
+
+//Vocabulary6
+import Bedroom from './screens/Vocabulary/vocabulary6/bedroom';
+import Door from './screens/Vocabulary/vocabulary6/door';
+import Floor from './screens/Vocabulary/vocabulary6/floor';
+import House from './screens/Vocabulary/vocabulary6/house';
+import Kitchen from './screens/Vocabulary/vocabulary6/kitchen';
+import Ladder from './screens/Vocabulary/vocabulary6/ladder';
+import Roof from './screens/Vocabulary/vocabulary6/roof';
+import Wall from './screens/Vocabulary/vocabulary6/wall';
+import Window from './screens/Vocabulary/vocabulary6/window';
+
+//Vocabulary7
+import Cup from './screens/Vocabulary/vocabulary7/cup';
+import Pot from './screens/Vocabulary/vocabulary7/pot';
+import Firewood from './screens/Vocabulary/vocabulary7/firewood';
+import Kettle from './screens/Vocabulary/vocabulary7/kettle';
+import Knife from './screens/Vocabulary/vocabulary7/knife';
+import Laddle from './screens/Vocabulary/vocabulary7/laddle';
+import Mortar from './screens/Vocabulary/vocabulary7/mortar';
+import Plate from './screens/Vocabulary/vocabulary7/plate';
+import Spoon from './screens/Vocabulary/vocabulary7/spoon';
+import Stove from './screens/Vocabulary/vocabulary7/stove';
+import Tray from './screens/Vocabulary/vocabulary7/tray';
+
+//Vocabulary8
+import Afternoon from './screens/Vocabulary/vocabulary8/afternoon';
+import Cloud from './screens/Vocabulary/vocabulary8/cloud';
+import Evening from './screens/Vocabulary/vocabulary8/evening';
+import Goodbye from './screens/Vocabulary/vocabulary8/goodbye';
+import Moon from './screens/Vocabulary/vocabulary8/moon';
+import Morning from './screens/Vocabulary/vocabulary8/morning';
+import Star from './screens/Vocabulary/vocabulary8/star';
+import Sun from './screens/Vocabulary/vocabulary8/sun';
+
+//Vocabulary9
+import January from './screens/Vocabulary/vocabulary9/january';
+import April from './screens/Vocabulary/vocabulary9/april';
+import August from './screens/Vocabulary/vocabulary9/august';
+
+
 
 // Culture and Arts Import
 
@@ -299,6 +375,83 @@ const RootStack = StackNavigator(
     //Vocabularies
 
     tatay: Tatay,
+
+    //Vocabulary 3
+    basket: Basket,
+    crab: Crab,
+    eel: Eel,
+    fish: Fish,
+    fishnet: Fishnet,
+    sea: Sea,
+    seashore: Seashore,
+    shrimp: Shrimp,
+
+    //Vocabulary4
+    bamboo: Bamboo,
+    bolo: Bolo,
+    carabao: Carabao,
+    chicken: Chicken,
+    corn: Corn,
+    cow: Cow,
+    goat: Goat,
+    pig: Pig,
+    plow: Plow,
+    rice: Rice,
+    sweetpotato: Sweetpotato,
+
+    //Vocabulary5
+    ax: Ax,
+    bow: Bow,
+    hawk: Hawk,
+    hornbill: Hornbill,
+    mountain: Mountain,
+    river: River,
+    salamander: Salamander,
+    spear: Spear,
+    tree: Tree,
+    waterfall: Waterfall,
+
+    //Vocabulary6
+    bedroom: Bedroom,
+    door: Door,
+    floor: Floor,
+    house: House,
+    kitchen: Kitchen,
+    ladder: Ladder,
+    roof: Roof,
+    wall: Wall,
+    window: Window,
+
+    //Vocabulary7
+    cup: Cup,
+    firewood: Firewood,
+    kettle: Kettle,
+    knife: Knife,
+    laddle: Laddle,
+    mortar: Mortar,
+    plate: Plate,
+    pot: Pot,
+    spoon: Spoon,
+    stove: Stove,
+    tray: Tray,
+
+    //Vocabulary8
+    afternoon: Afternoon,
+    cloud: Cloud,
+    evening: Evening,
+    goodbye: Goodbye,
+    moon: Moon,
+    morning: Morning,
+    star: Star,
+    sun: Sun,
+    
+    //Vocabulary9
+    january: January,
+    april: April,
+    august: August,
+
+    
+    
 
     //Culture and Arts
     cultureandarts: cultureandartsMain
