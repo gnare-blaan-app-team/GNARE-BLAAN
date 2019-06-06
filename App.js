@@ -14,6 +14,7 @@ import Numbers from './screens/Numbers/NumbersScreen';
 // Flalok Stories Import
 
 import FlalokStoryMenu from './screens/Flalok/FlalokStoryMenu';
+import EndStoryScreen from './screens/Flalok/EndStoryScreen';
 import Story1Screen from './screens/Flalok/flalokStoryScreens/Story1Screen';
 import Story2Screen from './screens/Flalok/flalokStoryScreens/Story2Screen';
 import Story3Screen from './screens/Flalok/flalokStoryScreens/Story3Screen';
@@ -168,6 +169,7 @@ const RootStack = StackNavigator(
     // Flalok Stories
 
     flalok: FlalokStoryMenu,
+    endstory: EndStoryScreen,
     story1: Story1Screen,
     story2: Story2Screen,
     story3: Story3Screen,
