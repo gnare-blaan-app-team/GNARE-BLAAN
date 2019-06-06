@@ -9,6 +9,9 @@ import Speaker_icon from '../numbersImage/Speaker_icon.png';
 import Letters_Info_Icon from '../../images/Letters_Info_Icon.png';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
+import PencilIcon from '../../images/Pencil_icon.png';
+import NextIcon from '../../images/Next_Icon.png';
+import PrevIcon from '../../images/Prev_Icon.png';
 
 class Page70 extends Component {
     static navigationOptions = {
@@ -17,7 +20,7 @@ class Page70 extends Component {
 
     componentDidMount() {
         this.forceUpdate();
-        this.number70 = new Sound('number_70.mp3', Sound.MAIN_BUNDLE, (error) => {
+        this.number60 = new Sound('number_70.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);
                 return;
@@ -41,7 +44,7 @@ class Page70 extends Component {
     playAsound_2 = () => {
         this.number70.play();
     }
-    gotoSentence70 = () => {
+    gotoSentence60 = () => {
         this.props.navigation.navigate('sentence70');
     }
     goBack = () => {
@@ -49,6 +52,22 @@ class Page70 extends Component {
     }
     gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
+    }
+
+    gotoTracingB = () => {
+        this.props.navigation.navigate('tracingB');
+    }
+
+    gotoNextPage = () => {
+        this.props.navigation.navigate('page80');
+        this.letter_play_a.pause();
+        this.wordplay_a.pause();
+    }
+
+    goPrev = () => {
+        this.props.navigation.navigate('page60');
+        this.letter_play_b.pause();
+        this.wordplay_b.pause();
     }
 
     render() {
@@ -85,6 +104,30 @@ class Page70 extends Component {
                         <Image
                             source={Home_icon}
                             style={globalStyleSheet.home}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.pencilContainer}>
+                    <TouchableOpacity onPress={this.gotoTracingB}>
+                        <Image
+                            source={PencilIcon}
+                            style={globalStyleSheet.pencil}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.prevContainer}>
+                    <TouchableOpacity onPress={this.goPrev}>
+                        <Image
+                            source={PrevIcon}
+                            style={globalStyleSheet.prev}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.nextContainer}>
+                    <TouchableOpacity onPress={this.gotoNextPage}>
+                        <Image
+                            source={NextIcon}
+                            style={globalStyleSheet.next}
                         ></Image>
                     </TouchableOpacity>
                 </View>
