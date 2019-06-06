@@ -10,6 +10,7 @@ import LetterScreen from './screens/Letters/letterScreen';
 import Numbers from './screens/Numbers/NumbersScreen';
 
 
+
 // Flalok Stories Import
 
 import FlalokStoryMenu from './screens/Flalok/FlalokStoryMenu';
@@ -145,6 +146,11 @@ import TracingY from './screens/Letters/letterTracingScreens/TracingY';
 // Vocabularies
 
 import Tatay from './screens/Vocabulary/vocabulary1/tatay'
+import Nanay from './screens/Vocabulary/vocabulary1/nanay'
+import Kaito from './screens/Vocabulary/vocabulary1/kaito'
+import Kaibe from './screens/Vocabulary/vocabulary1/kaibe'
+import Lola from './screens/Vocabulary/vocabulary1/lola'
+import Lolo from './screens/Vocabulary/vocabulary1/lolo'
 
 // Culture and Arts Import
 
@@ -298,14 +304,21 @@ const RootStack = StackNavigator(
 
     //Vocabularies
 
+    //Vocabulary 1
     tatay: Tatay,
+    nanay: Nanay,
+    kaito: Kaito,
+    kaibe: Kaibe,
+    lola: Lola,
+    lolo: Lolo,
+    //Vocabulary 2
 
     //Culture and Arts
     cultureandarts: cultureandartsMain
 
   },
   {
-    initialRouteName: 'mainMenu',
+    initialRouteName: 'lolo',
   }
 );
 
