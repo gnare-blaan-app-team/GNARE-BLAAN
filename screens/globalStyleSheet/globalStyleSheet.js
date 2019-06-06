@@ -29,11 +29,11 @@ export const globalStyleSheet = {
     backContainer: {
         position: 'absolute',
          left: '1%',
-         top: '-1%',
+         top: '-2%',
     },
     back: {
-        width: wp('15%'),
-        height: hp('30%'),
+        width: wp('14%'),
+        height: hp('28%'),
         resizeMode: 'contain',
     },
 
@@ -41,11 +41,11 @@ export const globalStyleSheet = {
     homeContainer: {
         position: 'absolute',
         left: '85%',
-        top: '-1%',
+        top: '-2%',
     },
     home: {
-        width: wp('15%'),
-        height: hp('30%'),
+        width: wp('14%'),
+        height: hp('28%'),
         resizeMode: 'contain',
     },
 
@@ -140,6 +140,17 @@ export const globalStyleSheet = {
         marginBottom: 0,
         width: '25%',
         height: '40%',
+    },
+
+    //HomePage Touch
+    HomeTouch: {
+        position: 'relative',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        width: '100%',
+        height: '60%',
     },
 
     // Flalok, Rows

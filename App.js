@@ -10,9 +10,11 @@ import LetterScreen from './screens/Letters/letterScreen';
 import Numbers from './screens/Numbers/NumbersScreen';
 
 
+
 // Flalok Stories Import
 
 import FlalokStoryMenu from './screens/Flalok/FlalokStoryMenu';
+import EndStoryScreen from './screens/Flalok/EndStoryScreen';
 import Story1Screen from './screens/Flalok/flalokStoryScreens/Story1Screen';
 import Story2Screen from './screens/Flalok/flalokStoryScreens/Story2Screen';
 import Story3Screen from './screens/Flalok/flalokStoryScreens/Story3Screen';
@@ -144,7 +146,13 @@ import TracingY from './screens/Letters/letterTracingScreens/TracingY';
 
 // Vocabularies
 
-import Tatay from './screens/Vocabulary/vocabulary1/tatay';
+//Vocabulary1
+import Tatay from './screens/Vocabulary/vocabulary1/tatay'
+import Nanay from './screens/Vocabulary/vocabulary1/nanay'
+import Kaito from './screens/Vocabulary/vocabulary1/kaito'
+import Kaibe from './screens/Vocabulary/vocabulary1/kaibe'
+import Lola from './screens/Vocabulary/vocabulary1/lola'
+import Lolo from './screens/Vocabulary/vocabulary1/lolo'
 
 //Vocabulary3
 import Basket from './screens/Vocabulary/vocabulary3/basket';
@@ -222,9 +230,13 @@ import August from './screens/Vocabulary/vocabulary9/august';
 
 
 
+
 // Culture and Arts Import
 
 import cultureandartsMain from './screens/CultureandArts/cultureandartsMain';
+import Chants_Screen from './screens/CultureandArts/cultureandartsScreens/chantsScreen';
+import Kastifun_Screen from './screens/CultureandArts/cultureandartsScreens/kastifunScreen';
+import Prayers_Screen from './screens/CultureandArts/cultureandartsScreens/prayersScreen';
 
 // Screen Navigation
 
@@ -238,6 +250,7 @@ const RootStack = StackNavigator(
     // Flalok Stories
 
     flalok: FlalokStoryMenu,
+    endstory: EndStoryScreen,
     story1: Story1Screen,
     story2: Story2Screen,
     story3: Story3Screen,
@@ -374,7 +387,14 @@ const RootStack = StackNavigator(
 
     //Vocabularies
 
+    //Vocabulary 1
     tatay: Tatay,
+    nanay: Nanay,
+    kaito: Kaito,
+    kaibe: Kaibe,
+    lola: Lola,
+    lolo: Lolo,
+    //Vocabulary 2
 
     //Vocabulary 3
     basket: Basket,
@@ -454,12 +474,17 @@ const RootStack = StackNavigator(
     
 
     //Culture and Arts
-    cultureandarts: cultureandartsMain
+    cultureandarts: cultureandartsMain,
+    chantsScreen: Chants_Screen,
+    kastifunScreen: Kastifun_Screen,
+    prayersScreen: Prayers_Screen
 
   },
+
   {
-    initialRouteName: 'mainMenu',
+    initialRouteName: 'home',
   }
+  
 );
 
 export default class App extends React.Component {
