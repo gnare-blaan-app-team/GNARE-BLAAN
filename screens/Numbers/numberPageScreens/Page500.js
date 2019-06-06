@@ -9,6 +9,9 @@ import Speaker_icon from '../numbersImage/Speaker_icon.png';
 import Letters_Info_Icon from '../../images/Letters_Info_Icon.png';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
+import PencilIcon from '../../images/Pencil_icon.png';
+import NextIcon from '../../images/Next_Icon.png';
+import PrevIcon from '../../images/Prev_Icon.png';
 
 class Page500 extends Component {
     static navigationOptions = {
@@ -51,6 +54,23 @@ class Page500 extends Component {
         this.props.navigation.navigate('mainMenu');
     }
 
+    gotoTracingB = () => {
+        this.props.navigation.navigate('tracingB');
+    }
+
+    gotoNextPage = () => {
+        this.props.navigation.navigate('page1000');
+        this.letter_play_a.pause();
+        this.wordplay_a.pause();
+    }
+
+    goPrev = () => {
+        this.props.navigation.navigate('page500');
+        this.letter_play_b.pause();
+        this.wordplay_b.pause();
+    }
+
+
     render() {
         return (
             <ImageBackground style={globalStyleSheet.image}
@@ -85,6 +105,30 @@ class Page500 extends Component {
                         <Image
                             source={Home_icon}
                             style={globalStyleSheet.home}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.pencilContainer}>
+                    <TouchableOpacity onPress={this.gotoTracingB}>
+                        <Image
+                            source={PencilIcon}
+                            style={globalStyleSheet.pencil}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.prevContainer}>
+                    <TouchableOpacity onPress={this.goPrev}>
+                        <Image
+                            source={PrevIcon}
+                            style={globalStyleSheet.prev}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.nextContainer}>
+                    <TouchableOpacity onPress={this.gotoNextPage}>
+                        <Image
+                            source={NextIcon}
+                            style={globalStyleSheet.next}
                         ></Image>
                     </TouchableOpacity>
                 </View>

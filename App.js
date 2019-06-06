@@ -320,7 +320,7 @@ const RootStack = StackNavigator(
 
   },
   {
-    initialRouteName: 'lolo',
+    initialRouteName: 'home',
   }
 );
 
