@@ -127,7 +127,7 @@ class PageT extends Component {
     }
 
     gotoNextPage = () => {
-        this.props.navigation.navigate('pageU');
+        this.props.navigation.push('pageU');
         this.letter_play_t.pause();
         this.wordplay_t.pause();
     }
@@ -139,7 +139,7 @@ class PageT extends Component {
     }
 
     goPrev = () => {
-        this.props.navigation.navigate('pageS');
+        this.props.navigation.push('pageS');
         this.letter_play_t.pause();
         this.wordplay_t.pause();
     }

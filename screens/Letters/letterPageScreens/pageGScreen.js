@@ -14,7 +14,7 @@ import GoBackIcon from '../../images/Back_icon.png';
 import HomeIcon from '../../images/Home_icon.png';
 import PrevIcon from '../../images/Prev_Icon.png';
 import ImageGlow from '../lettersGlow/glow-G.mp4';
-import FrontImage from '../lettersImage/glow-E.png';
+import FrontImage from '../lettersImage/glow-G.png';
 
 class PageG extends Component {
     static navigationOptions = {
@@ -46,7 +46,6 @@ class PageG extends Component {
     }
 
     componentDidMount() {
-        this.forceUpdate();
         this.setState({ paused: false, toPlay: 'EN' })
         this.letter_play_g = new Sound('letter_play_g.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
@@ -127,7 +126,7 @@ class PageG extends Component {
     }
 
     gotoNextPage = () => {
-        this.props.navigation.navigate('pageH');
+        this.props.navigation.push('pageH');
         this.letter_play_g.pause();
         this.wordplay_g.pause();
     }
@@ -139,7 +138,7 @@ class PageG extends Component {
     }
 
     goPrev = () => {
-        this.props.navigation.navigate('pageF');
+        this.props.navigation.push('pageF');
         this.letter_play_g.pause();
         this.wordplay_g.pause();
     }

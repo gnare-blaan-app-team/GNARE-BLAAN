@@ -50,6 +50,8 @@ class FlalokStoryMenu extends Component {
         this.props.navigation.navigate('mainMenu');
     }
 
+    
+
     render(){
         return(
            <ImageBackground style={styles.image} source={Flalok_BG}>

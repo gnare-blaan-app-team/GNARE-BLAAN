@@ -14,8 +14,7 @@ import HomeIcon from '../../images/Home_icon.png';
 import ImageGlow from '../lettersGlow/glow-A.mp4';
 import FrontImage from '../lettersImage/glow-A.png';
 
-
-import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet';
+import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
 Sound.setCategory('Playback');
 
@@ -42,15 +41,12 @@ class PageA extends Component {
             hideControls: false,
             hideWidth: wp('21%'),
             hideHeight: hp('30%'),
-    
-            
         };
         this.video = null;
         this.onEnd = this._onEnd.bind(this);
     }
 
     componentDidMount() {
-        this.forceUpdate();
         this.setState({ paused: false, toPlay: 'EN' })
         this.letter_play_a = new Sound('letter_play_a.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
@@ -119,15 +115,15 @@ class PageA extends Component {
         });
         this.wordplay_a.stop(() => {
             this.mute.play();
-        });
+        }); 
     }
 
-    gotoTracingA = () => {
+    gotoTracingA = () => { 
         this.props.navigation.navigate('tracingA');
     }
-    
+
     gotoNextPage = () => {
-        this.props.navigation.navigate('pageB');
+        this.props.navigation.push('pageB');
         this.letter_play_a.pause();
         this.wordplay_a.pause();
     }
@@ -144,39 +140,40 @@ class PageA extends Component {
         this.wordplay_a.pause();
     }
 
-    
+
 
     render() {
         return (
-            <ImageBackground style={styles.image}
+            <ImageBackground style={globalStyleSheet.image}
                 source={LetterBackground}
             >
-                <View style={styles.sentenceIconContainer}>
+                <View style={globalStyleSheet.sentenceIconContainer}>
                     <TouchableOpacity onPress={this.gotoSentenceA}>
                         <Image
                             source={SentenceIcon}
-                            style={styles.sentenceIcon}
+                            style={globalStyleSheet.sentenceIcon}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.A_Speaker_Container}>
+
+                <View style={globalStyleSheet.A_Speaker_Container}>
                     <TouchableOpacity onPress={this.playAsound}>
                         <Image
                             source={SpeakerIcon}
-                            style={styles.A_Speaker}
+                            style={globalStyleSheet.A_Speaker}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.A_Speaker_Container_2}>
+
+                <View style={globalStyleSheet.A_Speaker_Container_2}>
                     <TouchableOpacity onPress={this.playAsound_2}>
                         <Image
                             source={SpeakerIcon}
-                            style={styles.A_Speaker_2}
+                            style={globalStyleSheet.A_Speaker_2}
                         ></Image>
-                       
                     </TouchableOpacity>
                 </View>
-                <View style={styles.VideoContainer}>
+                <View style={globalStyleSheet.VideoContainer}>
                     <Video ref={(ref) => { this.video = ref }}
                         source={ImageGlow}
                         onLoad={() => this.setState({ showThumbnail: false })}
@@ -189,41 +186,42 @@ class PageA extends Component {
                         onLoad={this.onLoad}
                         onProgress={this.onProgress}
                         onEnd={this.onEnd}
-                        style={styles.Glow}
+                        style={globalStyleSheet.Glow}
                     />
                     <Image source={FrontImage} style={{ width: this.state.hideWidth, height: this.state.hideHeight,position:'absolute',left:'5.80%'}} />
                 </View>
-                <View style={styles.pencilContainer}>
+                <View style={globalStyleSheet.pencilContainer}>
                     <TouchableOpacity onPress={this.gotoTracingA}>
                         <Image
-                        source={PencilIcon}
-                            style={styles.pencil}
+                            source={PencilIcon}
+                            style={globalStyleSheet.pencil}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                
-                <View style={styles.nextContainer}>
-                    <TouchableOpacity onPress={this.gotoNextPage}>
-                        <Image
-                            source={NextIcon}
-                            style={styles.next}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
-                
-                <View style={styles.backContainer}>
-                    <TouchableOpacity onPress={this.goBack}>
-                        <Image
-                            source={GoBackIcon}
-                            style={styles.back}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.homeContainer}>
+
+                <View style={globalStyleSheet.homeContainer}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Image
                             source={HomeIcon}
-                            style={styles.home}
+                            style={globalStyleSheet.home}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={globalStyleSheet.nextContainer}>
+                    <TouchableOpacity onPress={this.gotoNextPage}>
+                        <Image
+                            source={NextIcon}
+                            style={globalStyleSheet.next}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={globalStyleSheet.backContainer}>
+                    <TouchableOpacity onPress={this.goBack}>
+                        <Image
+                            source={GoBackIcon}
+                            style={globalStyleSheet.back}
                         ></Image>
                     </TouchableOpacity>
                 </View>

@@ -14,8 +14,16 @@ import HomeIcon from '../../images/Home_icon.png';
 import ImageGlow from '../lettersGlow/glow-B.mp4';
 import FrontImage from '../lettersImage/glow-B.png';
 import PrevIcon from '../../images/Prev_Icon.png';
+import SentenceNavigator from '../../NavigationMenu/SentenceNavigator';
+import BackNavigator from '../../NavigationMenu/BackNavigator';
+import NextNavigator from '../../NavigationMenu/NextNavigator';
+import HomeNavigator from '../../NavigationMenu/HomeNavigator';
+import Speaker1 from '../../NavigationMenu/Speaker1';
+import Speaker2 from '../../NavigationMenu/Speaker2';
+import PencilNavigator from '../../NavigationMenu/PencilNavigator';
+import PrevNavigator from '../../NavigationMenu/PrevNavigator';
 
-import { globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet';
+import { globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
 Sound.setCategory('Playback');
 
@@ -49,7 +57,6 @@ class PageB extends Component {
     }
 
     componentDidMount() {
-        this.forceUpdate();
         this.setState({ paused: false, toPlay: 'EN' })
         this.letter_play_b = new Sound('letter_play_b.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
@@ -111,8 +118,8 @@ class PageB extends Component {
         this.setState({ hideWidth: 0, hideHeight: 0 })
     }
 
-    gotoSentenceA = () => {
-        this.props.navigation.navigate('sentenceA');
+    gotoSentenceB = () => {
+        this.props.navigation.navigate('sentenceB');
         this.letter_play_b.stop(() => {
             this.mute.play();
         });
@@ -126,7 +133,7 @@ class PageB extends Component {
     }
 
     gotoNextPage = () => {
-        this.props.navigation.navigate('pageD');
+        this.props.navigation.push('pageD');
         this.letter_play_b.pause();
         this.wordplay_b.pause();
     }
@@ -144,7 +151,7 @@ class PageB extends Component {
     }
 
     goPrev = () => {
-        this.props.navigation.navigate('pageA');
+        this.props.navigation.push('pageA');
         this.letter_play_b.pause();
         this.wordplay_b.pause();
     }
@@ -153,35 +160,36 @@ class PageB extends Component {
 
     render() {
         return (
-            <ImageBackground style={styles.image}
+            <ImageBackground style={globalStyleSheet.image}
                 source={LetterBackground}
             >
-                <View style={styles.sentenceIconContainer}>
+                <View style={globalStyleSheet.sentenceIconContainer}>
                     <TouchableOpacity onPress={this.gotoSentenceB}>
                         <Image
                             source={SentenceIcon}
-                            style={styles.sentenceIcon}
+                            style={globalStyleSheet.sentenceIcon}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.A_Speaker_Container}>
+
+                <View style={globalStyleSheet.A_Speaker_Container}>
                     <TouchableOpacity onPress={this.playAsound}>
                         <Image
                             source={SpeakerIcon}
-                            style={styles.A_Speaker}
+                            style={globalStyleSheet.A_Speaker}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.A_Speaker_Container_2}>
+
+                <View style={globalStyleSheet.A_Speaker_Container_2}>
                     <TouchableOpacity onPress={this.playAsound_2}>
                         <Image
                             source={SpeakerIcon}
-                            style={styles.A_Speaker_2}
+                            style={globalStyleSheet.A_Speaker_2}
                         ></Image>
-
                     </TouchableOpacity>
                 </View>
-                <View style={styles.VideoContainer}>
+                <View style={globalStyleSheet.VideoContainer}>
                     <Video ref={(ref) => { this.video = ref }}
                         source={ImageGlow}
                         onLoad={() => this.setState({ showThumbnail: false })}
@@ -194,49 +202,51 @@ class PageB extends Component {
                         onLoad={this.onLoad}
                         onProgress={this.onProgress}
                         onEnd={this.onEnd}
-                        style={styles.Glow}
+                        style={globalStyleSheet.Glow}
                     />
                     <Image source={FrontImage} style={{ width: this.state.hideWidth, height: this.state.hideHeight, position: 'absolute', left: '5.80%' }} />
                 </View>
-                <View style={styles.pencilContainer}>
+                <View style={globalStyleSheet.pencilContainer}>
                     <TouchableOpacity onPress={this.gotoTracingB}>
                         <Image
                             source={PencilIcon}
-                            style={styles.pencil}
+                            style={globalStyleSheet.pencil}
                         ></Image>
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.nextContainer}>
-                    <TouchableOpacity onPress={this.gotoNextPage}>
-                        <Image
-                            source={NextIcon}
-                            style={styles.next}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
-
-                <View style={styles.backContainer}>
-                    <TouchableOpacity onPress={this.goBack}>
-                        <Image
-                            source={GoBackIcon}
-                            style={styles.back}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.homeContainer}>
+                <View style={globalStyleSheet.homeContainer}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Image
                             source={HomeIcon}
-                            style={styles.home}
+                            style={globalStyleSheet.home}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.prevContainer}>
+
+                <View style={globalStyleSheet.nextContainer}>
+                    <TouchableOpacity onPress={this.gotoNextPage}>
+                        <Image
+                            source={NextIcon}
+                            style={globalStyleSheet.next}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={globalStyleSheet.backContainer}>
+                    <TouchableOpacity onPress={this.goBack}>
+                        <Image
+                            source={GoBackIcon}
+                            style={globalStyleSheet.back}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={globalStyleSheet.prevContainer}>
                     <TouchableOpacity onPress={this.goPrev}>
                         <Image
                             source={PrevIcon}
-                            style={styles.prev}
+                            style={globalStyleSheet.prev}
                         ></Image>
                     </TouchableOpacity>
                 </View>

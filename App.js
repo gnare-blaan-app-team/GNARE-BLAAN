@@ -1,11 +1,15 @@
-import React from 'react';
-import { StackNavigator } from 'react-navigation';
-import { StatusBar } from 'react-native';
-
-import HomePage from './screens/HomePage';
+import React from "react";
+import { createStackNavigator, createAppContainer,createSwitchNavigator } from "react-navigation";
+import { useScreens } from 'react-native-screens';
+import HomeScreen from './screens/HomePage';
 import MainMenu from './screens/MainMenu';
 import LetterScreen from './screens/Letters/letterScreen';
 import Numbers from './screens/Numbers/NumbersScreen';
+import { Animated, Easing, Platform } from 'react-native';
+import { fromLeft, zoomOut, zoomIn, flipX, fromRight } from 'react-navigation-transitions';
+import { Router, Scene } from 'react-native-router-flux'
+
+// Flalok Stories Import
 
 import FlalokStoryMenu from './screens/Flalok/FlalokStoryMenu';
 import Story1Screen from './screens/Flalok/flalokStoryScreens/Story1Screen';
@@ -14,6 +18,9 @@ import Story3Screen from './screens/Flalok/flalokStoryScreens/Story3Screen';
 import Story4Screen from './screens/Flalok/flalokStoryScreens/Story4Screen';
 import Story5Screen from './screens/Flalok/flalokStoryScreens/Story5Screen';
 import Story6Screen from './screens/Flalok/flalokStoryScreens/Story6Screen';
+
+
+// Letter Page Import
 
 import PageA from './screens/Letters/letterPageScreens/pageAScreen';
 import PageB from './screens/Letters/letterPageScreens/pageBScreen';
@@ -33,6 +40,9 @@ import PageT from './screens/Letters/letterPageScreens/pageTScreen';
 import PageU from './screens/Letters/letterPageScreens/pageUScreen';
 import PageW from './screens/Letters/letterPageScreens/pageWScreen';
 import PageY from './screens/Letters/letterPageScreens/pageYScreen';
+
+
+// Number Page Import
 
 import Page1 from './screens/Numbers/numberPageScreens/Page1';
 import Page2 from './screens/Numbers/numberPageScreens/Page2';
@@ -59,6 +69,9 @@ import Page400 from './screens/Numbers/numberPageScreens/Page400';
 import Page500 from './screens/Numbers/numberPageScreens/Page500';
 import Page1000 from './screens/Numbers/numberPageScreens/Page1000';
 
+
+// Letter Sentence Import
+
 import SentenceA from './screens/Letters/letterSentenceScreens/sentenceA';
 import SentenceB from './screens/Letters/letterSentenceScreens/sentenceB';
 import SentenceD from './screens/Letters/letterSentenceScreens/sentenceD';
@@ -77,6 +90,9 @@ import SentenceT from './screens/Letters/letterSentenceScreens/sentenceT';
 import SentenceU from './screens/Letters/letterSentenceScreens/sentenceU';
 import SentenceW from './screens/Letters/letterSentenceScreens/sentenceW';
 import SentenceY from './screens/Letters/letterSentenceScreens/sentenceY';
+
+
+// Number Sentence Import 
 
 import Sentence1 from './screens/Numbers/numberSentenceScreens/sentence1';
 import Sentence2 from './screens/Numbers/numberSentenceScreens/sentence2';
@@ -103,6 +119,9 @@ import Sentence400 from './screens/Numbers/numberSentenceScreens/sentence400';
 import Sentence500 from './screens/Numbers/numberSentenceScreens/sentence500';
 import Sentence1000 from './screens/Numbers/numberSentenceScreens/sentence1000';
 
+
+// Letter Tracing Import
+
 import TracingA from './screens/Letters/letterTracingScreens/TracingA';
 import TracingB from './screens/Letters/letterTracingScreens/TracingB';
 import TracingD from './screens/Letters/letterTracingScreens/TracingD';
@@ -122,14 +141,82 @@ import TracingU from './screens/Letters/letterTracingScreens/TracingU';
 import TracingW from './screens/Letters/letterTracingScreens/TracingW';
 import TracingY from './screens/Letters/letterTracingScreens/TracingY';
 
-const RootStack = StackNavigator(
-  {
-    home: HomePage,
+const handleCustomTransition = ({ scenes }) => {
+  const prevScene = scenes[scenes.length - 2];
+  const nextScene = scenes[scenes.length - 1];
+
+  // Custom transitions go there
+  if (prevScene
+    && prevScene.route.routeName === 'home'
+    && nextScene.route.routeName === 'mainMenu') {
+    return zoomOut();
+  } else if (nextScene.route.routeName === 'letters') {
+    return zoomIn();
+  } else if (nextScene.route.routeName === 'pageA') {
+    return fromRight();
+  } else if ( nextScene.route.routeName === 'pageB') {
+    return fromRight();
+  }
+  else if (nextScene.route.routeName === 'pageD') {
+    return fromRight();
+  }
+  else if (nextScene.route.routeName === 'pageE') {
+    return fromRight();
+  }
+  else if ( nextScene.route.routeName === 'pageF') {
+    return fromRight();
+  }
+  else if (nextScene.route.routeName === 'pageG') {
+    return fromRight();
+  }
+  else if ( nextScene.route.routeName === 'pageH') {
+    return fromRight();
+  }
+  else if (nextScene.route.routeName === 'pageI') {
+    return fromRight();
+  }
+  else if (nextScene.route.routeName === 'pageK') {
+    return fromRight();
+  }
+  else if (nextScene.route.routeName === 'pageL') {
+    return fromRight();
+  }
+  else if ( nextScene.route.routeName === 'pageM') {
+    return fromRight();
+  }
+  else if (nextScene.route.routeName === 'pageN') {
+    return fromRight();
+  }
+  else if (nextScene.route.routeName === 'pageO') {
+    return fromRight();
+  }
+  else if (nextScene.route.routeName === 'pageS') {
+    return fromRight();
+  }
+  else if ( nextScene.route.routeName === 'pageT') {
+    return fromRight();
+  }
+  else if (nextScene.route.routeName === 'pageU') {
+    return fromRight();
+  }
+  else if (nextScene.route.routeName === 'pageW') {
+    return fromRight();
+  }
+  else if (nextScene.route.routeName === 'pageY') {
+    return fromRight();
+  }
+  return fromLeft();
+}
+
+
+useScreens();
+
+
+const AppNavigator = createStackNavigator(
+{
+    home: HomeScreen,
     mainMenu: MainMenu,
     letters: LetterScreen,
-
-
-    // Flalok Stories
 
     flalok: FlalokStoryMenu,
     story1: Story1Screen,
@@ -265,19 +352,15 @@ const RootStack = StackNavigator(
     tracingY: TracingY,
 
     numbers: Numbers
-  },
-  {
-    initialRouteName: 'home',
-  }
-);
-
-export default class App extends React.Component {
-  componentDidMount() {
-    StatusBar.setHidden(true);
-  }
-  render() {
-    return (
-      <RootStack />
-    )
-  }
+},
+{
+  initialRouteName:"home",
+  transitionConfig: (nav) => handleCustomTransition(nav),
+  mode: 'card',
+  cardStyle: {
+    backgroundColor: "transperent"
 }
+}
+);
+  
+export default createAppContainer(AppNavigator);

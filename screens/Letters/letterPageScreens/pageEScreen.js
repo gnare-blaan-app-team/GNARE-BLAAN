@@ -15,6 +15,14 @@ import HomeIcon from '../../images/Home_icon.png';
 import PrevIcon from '../../images/Prev_Icon.png';
 import ImageGlow from '../lettersGlow/glow-E.mp4';
 import FrontImage from '../lettersImage/glow-E.png';
+import SentenceNavigator from '../../NavigationMenu/SentenceNavigator';
+import BackNavigator from '../../NavigationMenu/BackNavigator';
+import NextNavigator from '../../NavigationMenu/NextNavigator';
+import HomeNavigator from '../../NavigationMenu/HomeNavigator';
+import Speaker1 from '../../NavigationMenu/Speaker1';
+import Speaker2 from '../../NavigationMenu/Speaker2';
+import PencilNavigator from '../../NavigationMenu/PencilNavigator';
+import PrevNavigator from '../../NavigationMenu/PrevNavigator';
 
 class PageE extends Component {
     static navigationOptions = {
@@ -46,7 +54,6 @@ class PageE extends Component {
     }
     
     componentDidMount() {
-        this.forceUpdate();
         this.setState({ paused: false, toPlay: 'EN' })
         this.letter_play_e = new Sound('letter_play_e.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
@@ -126,7 +133,7 @@ class PageE extends Component {
     }
 
     gotoNextPage = () => {
-        this.props.navigation.navigate('pageF');
+        this.props.navigation.push('pageF');
         this.letter_play_e.pause();
         this.wordplay_e.pause();
     }
@@ -138,7 +145,7 @@ class PageE extends Component {
     }
 
     goPrev = () => {
-        this.props.navigation.navigate('pageD');
+        this.props.navigation.push('pageD');
         this.letter_play_e.pause();
         this.wordplay_e.pause();
     }

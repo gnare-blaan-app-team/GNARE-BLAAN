@@ -112,7 +112,7 @@ class PageK extends Component {
     }
 
     gotoSentenceK = () => {
-        this.props.navigation.navigate('sentenceK');
+        this.props.navigation.push('sentenceK');
         this.letter_play_k.stop(() => {
             this.mute.play();
         });
@@ -128,7 +128,7 @@ class PageK extends Component {
     }
 
     gotoNextPage = () => {
-        this.props.navigation.navigate('pageL');
+        this.props.navigation.push('pageL');
         this.letter_play_k.pause();
         this.wordplay_k.pause();
     }

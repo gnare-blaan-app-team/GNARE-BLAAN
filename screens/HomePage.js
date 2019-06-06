@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { View, StyleSheet, Button, ImageBackground} from 'react-native';
+import { View, StyleSheet, Button, ImageBackground, StatusBar} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import HomepageBackground from './images/GnareMain.gif';
 
@@ -13,6 +13,7 @@ class Menuscreen extends Component{
     }
 
     render(){
+      StatusBar.setHidden(true);
         return(
            <ImageBackground
            style={styles.image}

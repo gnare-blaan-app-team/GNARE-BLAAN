@@ -14,6 +14,15 @@ import HomeIcon from '../../images/Home_icon.png';
 import PrevIcon from '../../images/Prev_Icon.png';
 import ImageGlow from '../lettersGlow/glow-D.mp4';
 import FrontImage from '../lettersImage/glow-D.png';
+import SentenceNavigator from '../../NavigationMenu/SentenceNavigator';
+import BackNavigator from '../../NavigationMenu/BackNavigator';
+import NextNavigator from '../../NavigationMenu/NextNavigator';
+import HomeNavigator from '../../NavigationMenu/HomeNavigator';
+import Speaker1 from '../../NavigationMenu/Speaker1';
+import Speaker2 from '../../NavigationMenu/Speaker2';
+import PencilNavigator from '../../NavigationMenu/PencilNavigator';
+import PrevNavigator from '../../NavigationMenu/PrevNavigator';
+
 
 
 import { globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
@@ -48,7 +57,6 @@ class PageD extends Component {
     }
 
      componentDidMount() {
-         this.forceUpdate();
          this.setState({ paused: false, toPlay: 'EN' })
         this.letter_play_d = new Sound('letter_play_d.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
@@ -129,7 +137,7 @@ class PageD extends Component {
     }
 
     gotoNextPage = () => {
-        this.props.navigation.navigate('pageE');
+        this.props.navigation.push('pageE');
         this.letter_play_d.pause();
         this.wordplay_d.pause();
     }
@@ -141,7 +149,7 @@ class PageD extends Component {
     }
     
     goPrev = () => {
-        this.props.navigation.navigate('pageB');
+        this.props.navigation.push('pageB');
         this.letter_play_d.pause();
         this.wordplay_d.pause();
     }
