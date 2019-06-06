@@ -145,6 +145,7 @@ import TracingW from './screens/Letters/letterTracingScreens/TracingW';
 import TracingY from './screens/Letters/letterTracingScreens/TracingY';
 
 // Vocabularies
+import VocabularyMenu from './screens/Vocabulary/vocabularyMenu';
 
 //Vocabulary1
 import Tatay from './screens/Vocabulary/vocabulary1/tatay'
@@ -404,6 +405,7 @@ const RootStack = StackNavigator(
     numbers: Numbers,
 
     //Vocabularies
+    vocabularyMenu: VocabularyMenu,
 
     //Vocabulary 1
     tatay: Tatay,
@@ -517,7 +519,7 @@ const RootStack = StackNavigator(
   },
 
   {
-    initialRouteName: 'home',
+    initialRouteName: 'vocabularyMenu',
   }
   
 );
