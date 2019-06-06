@@ -42,10 +42,12 @@ class Lola extends Component {
     }
 
     goBack = () => {
+        this.vocab1_lola.pause();
         this.props.navigation.navigate('vocabularyMenu');
     }
 
     gotoMainMenu = () => {
+        this.vocab1_lola.pause();
         this.props.navigation.navigate('mainMenu');
     }
 
