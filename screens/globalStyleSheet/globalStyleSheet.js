@@ -13,7 +13,7 @@ export const globalStyleSheet = {
         resizeMode: 'contain',
     },
 
-    //test Container
+    //test Container for Prayers - DasalBagoMatulog
     container: {
         flex: 1, 
         justifyContent: "center",
@@ -206,6 +206,38 @@ export const globalStyleSheet = {
         left: '10%',
         width: '80%',
         height: '70%',
+    },
+
+    // Vocabulary Menu and list
+    VocabularyContainer: {
+        position: 'absolute',
+        top: '20%',
+        left: '10%',
+        width: '100%',
+        height: '100%',
+    },
+    VocabularyItemSize: {
+        margin: 10,
+        marginBottom: 0,
+        width: '100%',
+        height: '100%',
+    },
+    VocabularyRow: {
+        position: 'relative',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        width: '100%',
+        height: '50%',
+    },
+    VocabularyRow1: {
+        position: 'relative',
+        flex: 1,
+        justifyContent: 'center',
+        flexDirection: 'row',
+        width: '100%',
+        height: '35%',
     },
 
     // Stories image, container, Thumbnails
