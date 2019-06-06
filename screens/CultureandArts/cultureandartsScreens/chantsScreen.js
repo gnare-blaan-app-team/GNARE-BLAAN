@@ -1,17 +1,17 @@
 import React,{Component} from 'react';
 import { ImageBackground, TouchableOpacity, View, Image} from 'react-native';
 import { withNavigation } from 'react-navigation';
-import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
+import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js';
 
-import Back_icon from '../images/Back_icon.png';
-import Home_icon from '../images/Home_icon.png';
-import Chants_icon from './cultureandartsImages/Chants.png';
-import Kastifun_icon from './cultureandartsImages/Kastifun.png';
-import Prayers_icon from './cultureandartsImages/Prayers.png';
-import cultureandarts_BG from './cultureandartsImages/cultureandarts_BG.jpg';
+import Back_icon from '../../images/Back_icon.png';
+import Home_icon from '../../images/Home_icon.png';
+import Chant1_icon from '../cultureandartsImages/Chant1.png';
+import Chant2_icon from '../cultureandartsImages/Chant2.png';
+import Chant3_icon from '../cultureandartsImages/Chant3.png';
+import cultureandarts_BG from '../cultureandartsImages/cultureandarts_BG.jpg';
 
 
-class cultureandartsMain extends Component {
+class chantsScreen extends Component {
     static navigationOptions = {
         header:null,
     }
@@ -21,7 +21,7 @@ class cultureandartsMain extends Component {
     }
 
     goBack = () => {
-        this.props.navigation.navigate('mainMenu');
+        this.props.navigation.navigate('cultureandarts');
     }
 
     
@@ -29,30 +29,28 @@ class cultureandartsMain extends Component {
     render(){
         return(
            <ImageBackground style={styles.image} source={cultureandarts_BG} blurRadius={1}>
-                <View style={styles.CultureandArtsContainer}>
+               <View style={styles.CultureandArtsContainer}>
                     <View style={styles.row}>
                         <View style={styles.itemSize} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('chantsScreen')} >
-                                <Image style={styles.imageSizeStoryMenu} source={Chants_icon} />
+                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
+                                <Image style={styles.imageSizeStoryMenu} source={Chant1_icon} />
                             </TouchableOpacity>
                         </View>
 
                         <View style={styles.itemSize} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('prayersScreen')} >
-                                <Image style={styles.imageSizeStoryMenu} source={Prayers_icon} />
+                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
+                                <Image style={styles.imageSizeStoryMenu} source={Chant2_icon} />
                             </TouchableOpacity>
                         </View>
-                    </View>
 
-                    <View style={styles.row1}>
                         <View style={styles.itemSize} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('kastifunScreen')} >
-                                <Image style={styles.imageSizeStoryMenu} source={Kastifun_icon} />
+                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
+                                <Image style={styles.imageSizeStoryMenu} source={Chant3_icon} />
                             </TouchableOpacity>
                         </View>
                     </View>
                 </View>
-                
+
                 <View style={styles.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
@@ -77,4 +75,4 @@ class cultureandartsMain extends Component {
 
 
 
-export default withNavigation(cultureandartsMain);
+export default withNavigation(chantsScreen);
