@@ -156,6 +156,9 @@ import Lolo from './screens/Vocabulary/vocabulary1/lolo'
 // Culture and Arts Import
 
 import cultureandartsMain from './screens/CultureandArts/cultureandartsMain';
+import Chants_Screen from './screens/CultureandArts/cultureandartsScreens/chantsScreen';
+import Kastifun_Screen from './screens/CultureandArts/cultureandartsScreens/kastifunScreen';
+import Prayers_Screen from './screens/CultureandArts/cultureandartsScreens/prayersScreen';
 
 // Screen Navigation
 
@@ -316,12 +319,17 @@ const RootStack = StackNavigator(
     //Vocabulary 2
 
     //Culture and Arts
-    cultureandarts: cultureandartsMain
+    cultureandarts: cultureandartsMain,
+    chantsScreen: Chants_Screen,
+    kastifunScreen: Kastifun_Screen,
+    prayersScreen: Prayers_Screen
 
   },
+
   {
     initialRouteName: 'home',
   }
+  
 );
 
 export default class App extends React.Component {

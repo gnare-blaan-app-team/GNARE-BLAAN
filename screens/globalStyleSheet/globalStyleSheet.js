@@ -142,6 +142,17 @@ export const globalStyleSheet = {
         height: '40%',
     },
 
+    //HomePage Touch
+    HomeTouch: {
+        position: 'relative',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        width: '100%',
+        height: '60%',
+    },
+
     // Flalok, Rows
     row: {
         position: 'relative',
