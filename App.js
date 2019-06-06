@@ -581,11 +581,7 @@ const RootStack = StackNavigator(
   },
 
   {
-<<<<<<< HEAD
-    initialRouteName: 'skirt',
-=======
-    initialRouteName: 'vocabularyMenu',
->>>>>>> 1cd618f460301acc51521986b06f249b4cf46700
+    initialRouteName: 'lola',
   }
   
 );
