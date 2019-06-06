@@ -154,6 +154,23 @@ import Kaibe from './screens/Vocabulary/vocabulary1/kaibe'
 import Lola from './screens/Vocabulary/vocabulary1/lola'
 import Lolo from './screens/Vocabulary/vocabulary1/lolo'
 
+//Vocabulary2
+import Balikat from './screens/Vocabulary/vocabulary2/balikat'
+import Baywang from './screens/Vocabulary/vocabulary2/baywang'
+import Binti from './screens/Vocabulary/vocabulary2/binti'
+import Buhok from './screens/Vocabulary/vocabulary2/buhok'
+import Bunganga from './screens/Vocabulary/vocabulary2/bunganga'
+import Daliri from './screens/Vocabulary/vocabulary2/daliri'
+import Dibdib from './screens/Vocabulary/vocabulary2/dibdib'
+import Ilong from './screens/Vocabulary/vocabulary2/ilong'
+import Kamay from './screens/Vocabulary/vocabulary2/kamay'
+import Leeg from './screens/Vocabulary/vocabulary2/leeg'
+import Mata from './screens/Vocabulary/vocabulary2/mata'
+import Paa from './screens/Vocabulary/vocabulary2/paa'
+import Tainga from './screens/Vocabulary/vocabulary2/tainga'
+import Tuhod from './screens/Vocabulary/vocabulary2/tuhod'
+import Ulo from './screens/Vocabulary/vocabulary2/ulo'
+
 //Vocabulary3
 import Basket from './screens/Vocabulary/vocabulary3/basket';
 import Crab from './screens/Vocabulary/vocabulary3/crab';
@@ -395,7 +412,23 @@ const RootStack = StackNavigator(
     kaibe: Kaibe,
     lola: Lola,
     lolo: Lolo,
+
     //Vocabulary 2
+    balikat: Balikat,
+    baywang: Baywang,
+    binti: Binti,
+    buhok: Buhok,
+    bunganga: Bunganga,
+    daliri: Daliri,
+    dibdib: Dibdib,
+    ilong: Ilong,
+    kamay: Kamay,
+    leeg: Leeg,
+    mata: Mata,
+    paa: Paa,
+    tainga: Tainga,
+    tuhod: Tuhod,
+    ulo: Ulo,
 
     //Vocabulary 3
     basket: Basket,
