@@ -4,6 +4,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
 import Video from 'react-native-video';
+import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 import LetterBackground from '../lettersImage/LetterB.png';
 import SentenceIcon from '../../images/Letters_Info_Icon.png';
 import SpeakerIcon from '../../images/Speaker_icon.png';
@@ -14,16 +15,6 @@ import HomeIcon from '../../images/Home_icon.png';
 import ImageGlow from '../lettersGlow/glow-B.mp4';
 import FrontImage from '../lettersImage/glow-B.png';
 import PrevIcon from '../../images/Prev_Icon.png';
-import SentenceNavigator from '../../NavigationMenu/SentenceNavigator';
-import BackNavigator from '../../NavigationMenu/BackNavigator';
-import NextNavigator from '../../NavigationMenu/NextNavigator';
-import HomeNavigator from '../../NavigationMenu/HomeNavigator';
-import Speaker1 from '../../NavigationMenu/Speaker1';
-import Speaker2 from '../../NavigationMenu/Speaker2';
-import PencilNavigator from '../../NavigationMenu/PencilNavigator';
-import PrevNavigator from '../../NavigationMenu/PrevNavigator';
-
-import { globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
 Sound.setCategory('Playback');
 

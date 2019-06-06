@@ -13,8 +13,13 @@ class Mainmenu extends Component {
     gotoLetters = () => {
         this.props.navigation.navigate('letters');
     }
+
     gotoNumbers = () => {
         this.props.navigation.navigate('numbers');
+    }
+
+    gotoVocabulary = () => {
+        this.props.navigation.navigate('vocabularyMenu');
     }
 
     gotoFlalok = () => {
@@ -23,6 +28,10 @@ class Mainmenu extends Component {
 
     gotoMainMenu = () => {
         this.props.navigation.navigate('home');
+    }
+
+    gotoCultureandArts = () => {
+        this.props.navigation.navigate('cultureandarts');
     }
 
     goBack = () => {
@@ -40,8 +49,8 @@ class Mainmenu extends Component {
                     <MenuItem itemImage={require('./images/Icon_Number.png')} goto={this.gotoNumbers}/>
                     <MenuItem itemImage={require('./images/Flalok.png')} goto={this.gotoFlalok} />
                     <MenuItem itemImage={require('./images/Games.png')} />
-                    <MenuItem itemImage={require('./images/CultureandArts.png')} />
-                    <MenuItem itemImage={require('./images/Vocabulary.png')} />
+                    <MenuItem itemImage={require('./images/CultureandArts.png')} goto={this.gotoCultureandArts} />
+                    <MenuItem itemImage={require('./images/Vocabulary.png')} goto={this.gotoVocabulary}/>
                 </View>
 
                 <View style={styles.backContainer}>

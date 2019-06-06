@@ -13,6 +13,12 @@ export const globalStyleSheet = {
         resizeMode: 'contain',
     },
 
+    //test Container for Prayers - DasalBagoMatulog
+    container: {
+        flex: 1, 
+        justifyContent: "center",
+    },
+    
     // Pencil
     pencilContainer: {
         position: 'absolute',
@@ -29,11 +35,11 @@ export const globalStyleSheet = {
     backContainer: {
         position: 'absolute',
          left: '1%',
-         top: '-1%',
+         top: '-2%',
     },
     back: {
-        width: wp('15%'),
-        height: hp('30%'),
+        width: wp('14%'),
+        height: hp('28%'),
         resizeMode: 'contain',
     },
 
@@ -41,11 +47,11 @@ export const globalStyleSheet = {
     homeContainer: {
         position: 'absolute',
         left: '85%',
-        top: '-1%',
+        top: '-2%',
     },
     home: {
-        width: wp('15%'),
-        height: hp('30%'),
+        width: wp('14%'),
+        height: hp('28%'),
         resizeMode: 'contain',
     },
 
@@ -125,6 +131,34 @@ export const globalStyleSheet = {
         resizeMode: 'contain',
     },
 
+    //HomePage Container
+    HomePageContainer: {
+        position: 'absolute',
+        top: '80%',
+        left: '10%',
+        width: '80%',
+        height: '20%',
+    },
+
+    //HomePage Items
+    HomePageItems: {
+        margin: 5,
+        marginBottom: 0,
+        width: '25%',
+        height: '40%',
+    },
+
+    //HomePage Touch
+    HomeTouch: {
+        position: 'relative',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        width: '100%',
+        height: '60%',
+    },
+
     // Flalok, Rows
     row: {
         position: 'relative',
@@ -165,6 +199,46 @@ export const globalStyleSheet = {
         height: '90%',
     },
 
+    // Culture and Arts Container
+    CultureandArtsContainer: {
+        position: 'absolute',
+        top: '20%',
+        left: '10%',
+        width: '80%',
+        height: '70%',
+    },
+
+    // Vocabulary Menu and list
+    VocabularyContainer: {
+        position: 'absolute',
+        top: '20%',
+        left: '10%',
+        width: '100%',
+        height: '100%',
+    },
+    VocabularyItemSize: {
+        margin: 10,
+        marginBottom: 0,
+        width: '100%',
+        height: '100%',
+    },
+    VocabularyRow: {
+        position: 'relative',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        width: '100%',
+        height: '50%',
+    },
+    VocabularyRow1: {
+        position: 'relative',
+        flex: 1,
+        justifyContent: 'center',
+        flexDirection: 'row',
+        width: '100%',
+        height: '35%',
+    },
 
     // Stories image, container, Thumbnails
     imageStoryScreen: {
