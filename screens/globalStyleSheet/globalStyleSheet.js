@@ -29,11 +29,11 @@ export const globalStyleSheet = {
     backContainer: {
         position: 'absolute',
          left: '1%',
-         top: '-1%',
+         top: '-2%',
     },
     back: {
-        width: wp('15%'),
-        height: hp('30%'),
+        width: wp('14%'),
+        height: hp('28%'),
         resizeMode: 'contain',
     },
 
@@ -41,11 +41,11 @@ export const globalStyleSheet = {
     homeContainer: {
         position: 'absolute',
         left: '85%',
-        top: '-1%',
+        top: '-2%',
     },
     home: {
-        width: wp('15%'),
-        height: hp('30%'),
+        width: wp('14%'),
+        height: hp('28%'),
         resizeMode: 'contain',
     },
 

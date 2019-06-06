@@ -10,9 +10,11 @@ import LetterScreen from './screens/Letters/letterScreen';
 import Numbers from './screens/Numbers/NumbersScreen';
 
 
+
 // Flalok Stories Import
 
 import FlalokStoryMenu from './screens/Flalok/FlalokStoryMenu';
+import EndStoryScreen from './screens/Flalok/EndStoryScreen';
 import Story1Screen from './screens/Flalok/flalokStoryScreens/Story1Screen';
 import Story2Screen from './screens/Flalok/flalokStoryScreens/Story2Screen';
 import Story3Screen from './screens/Flalok/flalokStoryScreens/Story3Screen';
@@ -142,6 +144,15 @@ import TracingU from './screens/Letters/letterTracingScreens/TracingU';
 import TracingW from './screens/Letters/letterTracingScreens/TracingW';
 import TracingY from './screens/Letters/letterTracingScreens/TracingY';
 
+// Vocabularies
+
+import Tatay from './screens/Vocabulary/vocabulary1/tatay'
+import Nanay from './screens/Vocabulary/vocabulary1/nanay'
+import Kaito from './screens/Vocabulary/vocabulary1/kaito'
+import Kaibe from './screens/Vocabulary/vocabulary1/kaibe'
+import Lola from './screens/Vocabulary/vocabulary1/lola'
+import Lolo from './screens/Vocabulary/vocabulary1/lolo'
+
 // Culture and Arts Import
 
 import cultureandartsMain from './screens/CultureandArts/cultureandartsMain';
@@ -161,6 +172,7 @@ const RootStack = StackNavigator(
     // Flalok Stories
 
     flalok: FlalokStoryMenu,
+    endstory: EndStoryScreen,
     story1: Story1Screen,
     story2: Story2Screen,
     story3: Story3Screen,
@@ -295,6 +307,17 @@ const RootStack = StackNavigator(
 
     numbers: Numbers,
 
+    //Vocabularies
+
+    //Vocabulary 1
+    tatay: Tatay,
+    nanay: Nanay,
+    kaito: Kaito,
+    kaibe: Kaibe,
+    lola: Lola,
+    lolo: Lolo,
+    //Vocabulary 2
+
     //Culture and Arts
     cultureandarts: cultureandartsMain,
     chantsScreen: Chants_Screen,
@@ -304,7 +327,7 @@ const RootStack = StackNavigator(
   },
 
   {
-    initialRouteName: 'mainMenu',
+    initialRouteName: 'lolo',
   }
   
 );

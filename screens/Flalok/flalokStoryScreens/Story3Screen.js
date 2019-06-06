@@ -38,8 +38,6 @@ class Story3Screen extends Component {
         };
     }
 
-    
-
     static navigationOptions = {
         header:null,
     }
@@ -57,12 +55,26 @@ class Story3Screen extends Component {
     };
 
     handleProgressPress = e => {
-        const position = e.nativeEvent.locationX;
-        const progress = (position / 250) * this.state.duration;
-        const isPlaying = !this.state.paused;
         
+        let position = e.nativeEvent.locationX;
+        let progress = (position / 250) * this.state.duration;
         this.player.seek(progress);
     };
+
+    handleBackward = () => {
+
+        const currentProgress = this.state.progress * this.state.duration;
+        const backward = currentProgress - 10;
+        this.player.seek(backward);
+    }
+
+    handleForward = () => {
+        
+        const currentProgress = this.state.progress * this.state.duration;
+        const forward = currentProgress + 10;
+        this.player.seek(forward);
+    }
+
 
     handleProgress = progress => {
         this.setState({
@@ -72,24 +84,14 @@ class Story3Screen extends Component {
 
     handleEnd = () => {
         this.setState({ paused: true });
+        this.props.navigation.navigate('endstory');
     };
 
     handleLoad = meta => {
         this.setState({
-        duration: meta.duration,
+            duration: meta.duration,
         });
     };
-
-    handleLoadStart = () => {
-        this.setState({
-            progress: toggleProgress,
-        });
-    };
-
-
-    changeSubtitle = () => {
-        
-    }
 
     goBack = () => {
         this.props.navigation.navigate('flalok');
@@ -131,25 +133,35 @@ class Story3Screen extends Component {
                     position: "absolute",
                     flexDirection: "row",
                     alignItems: "center",
-                    justifyContent: "space-around",
+                    justifyContent: "center",
                     paddingHorizontal: 10,}}>
 
-                <TouchableWithoutFeedback onPress={this.handleMainButtonTouch}>
-                    <Icon name={!this.state.paused ? "pause" : "play"} size={30} color="#FFF" />
-                </TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback onPress={this.handleMainButtonTouch}>
+                        <Icon name={!this.state.paused ? "pause" : "play"} size={30} color="#FFF" />
+                    </TouchableWithoutFeedback>
 
-                <TouchableWithoutFeedback onPress={this.handleProgressPress}>
-                    <View>
-                        <ProgressBar
-                        progress={this.state.progress}
-                        color="#FFF"
-                        unfilledColor="rgba(255,255,255,.5)"
-                        borderColor="#FFF"
-                        width={250}
-                        height={20}
-                        />
+                    <View style={{marginRight: '3%', marginLeft: '18%'}}>
+                        <TouchableWithoutFeedback onPress={this.handleBackward}>
+                            <Icon name={"backward"} size={25} color="#FFF" />
+                        </TouchableWithoutFeedback>
                     </View>
-                </TouchableWithoutFeedback>
+                    <View style={{marginRight: '2%', marginLeft: '2%'}}>
+                        <TouchableWithoutFeedback onPress={this.handleProgressPress}>
+                                <ProgressBar
+                                    progress={this.state.progress}
+                                    color="#FFF"
+                                    unfilledColor="rgba(255,255,255,.5)"
+                                    borderColor="#FFF"
+                                    width={250}
+                                    height={20}
+                                />
+                        </TouchableWithoutFeedback>
+                    </View>
+                    <View style={{marginRight: '18%', marginLeft: '3%'}}>
+                        <TouchableWithoutFeedback onPress={this.handleForward}>
+                            <Icon name={"forward"} size={25} color="#FFF" />
+                        </TouchableWithoutFeedback>
+                    </View>
 
                     <Text style={videoStyle.duration}>
                         {secondsToTime(Math.floor(this.state.progress * this.state.duration))}
@@ -192,6 +204,12 @@ const videoStyle = StyleSheet.create({
         height: '100%',
         backgroundColor: 'black',
     },
+
+    margin: {
+        marginRight: 15,
+        marginLeft: 15,
+    },
+
     controls: {
         
     },
