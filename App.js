@@ -159,6 +159,7 @@ import cultureandartsMain from './screens/CultureandArts/cultureandartsMain';
 import Chants_Screen from './screens/CultureandArts/cultureandartsScreens/chantsScreen';
 import Kastifun_Screen from './screens/CultureandArts/cultureandartsScreens/kastifunScreen';
 import Prayers_Screen from './screens/CultureandArts/cultureandartsScreens/prayersScreen';
+import DasalBagoMatulogPlay from './screens/CultureandArts/cultureandartsScreens/prayers/DasalBagoMatulogPlay';
 
 // Screen Navigation
 
@@ -322,12 +323,13 @@ const RootStack = StackNavigator(
     cultureandarts: cultureandartsMain,
     chantsScreen: Chants_Screen,
     kastifunScreen: Kastifun_Screen,
-    prayersScreen: Prayers_Screen
+    prayersScreen: Prayers_Screen,
+    dasalbagomatulogPlay: DasalBagoMatulogPlay
 
   },
 
   {
-    initialRouteName: 'lolo',
+    initialRouteName: 'home',
   }
   
 );
