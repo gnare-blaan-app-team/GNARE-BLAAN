@@ -25,7 +25,7 @@ class EndStoryScreen extends Component {
 
         return (
             <ImageBackground style={styles.image} source={flalokAfterStory_BG}>
-
+            
                 <View style={styles.container}>
                     <View style={styles.imageTab}>
                         <TouchableOpacity onPress={this.gotoMainMenu}>

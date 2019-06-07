@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import { ImageBackground, TouchableOpacity, View, Image} from 'react-native';
 import { withNavigation } from 'react-navigation';
+
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 
 import Back_icon from '../images/Back_icon.png';
@@ -19,76 +20,74 @@ class FlalokStoryMenu extends Component {
     }
 
     gotoStory1 = () => {
-        this.props.nagivation.navigate('story1');
+        this.props.navigation.push('story1');
     }
 
     gotoStory2 = () => {
-        this.props.nagivation.navigate('story2');
+        this.props.navigation.push('story2');
     }
 
     gotoStory3 = () => {
-        this.props.nagivation.navigate('story3');
+        this.props.navigation.push('story3');
     }
 
     gotoStory4 = () => {
-        this.props.nagivation.navigate('story4');
+        this.props.navigation.push('story4');
     }
 
     gotoStory5 = () => {
-        this.props.nagivation.navigate('story5');
+        this.props.navigation.push('story5');
     }
                                                                                                                                                                               
     gotoStory6 = () => {
-        this.props.nagivation.navigate('story6');
+        this.props.navigation.push('story6');
     }
 
     gotoMainMenu = () => {
-        this.props.navigation.navigate('mainMenu');
+        this.props.navigation.push('mainMenu');
     }
 
     goBack = () => {
-        this.props.navigation.navigate('mainMenu');
+        this.props.navigation.push('mainMenu');
     }
-
-    
 
     render(){
         return(
-           <ImageBackground style={styles.image} source={Flalok_BG}>
+           <ImageBackground style={styles.image} source={Flalok_BG} blurRadius={1}>
 
                 <View style={styles.FlalokContainer}>
                     <View style={styles.row}>
                         <View style={styles.itemSize} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('story1')} >
+                            <TouchableOpacity  onPress={this.gotoStory1} >
                                 <Image style={styles.imageSizeStoryMenu} source={Story1} />
                             </TouchableOpacity>
                         </View>
 
                         <View style={styles.itemSize} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('story2')} >
+                            <TouchableOpacity  onPress={this.gotoStory2} >
                                 <Image style={styles.imageSizeStoryMenu} source={Story2} />
                             </TouchableOpacity>
                         </View>
 
                         <View style={styles.itemSize} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('story3')} >
+                            <TouchableOpacity  onPress={this.gotoStory3} >
                                 <Image style={styles.imageSizeStoryMenu} source={Story3} />
                             </TouchableOpacity>
                         </View>
                     </View>
                     <View style={styles.row1}>
                         <View style={styles.itemSize} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('story4')} >
+                            <TouchableOpacity  onPress={this.gotoStory4} >
                                 <Image style={styles.imageSizeStoryMenu} source={Story4} />
                             </TouchableOpacity>
                         </View>
                         <View style={styles.itemSize} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('story5')} >
+                            <TouchableOpacity  onPress={this.gotoStory5} >
                                 <Image style={styles.imageSizeStoryMenu} source={Story5} />
                             </TouchableOpacity>
                         </View>
                         <View style={styles.itemSize} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('story6')} >
+                            <TouchableOpacity  onPress={this.gotoStory6} >
                                 <Image style={styles.imageSizeStoryMenu} source={Story6} />
                             </TouchableOpacity>
                         </View>
@@ -117,7 +116,6 @@ class FlalokStoryMenu extends Component {
         );
     }
 }
-
 
 
 export default withNavigation(FlalokStoryMenu);

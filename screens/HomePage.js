@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { ImageBackground, TouchableOpacity, View, Image} from 'react-native';
+import { ImageBackground, TouchableOpacity, View, Text, Image} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js';
 
@@ -8,10 +8,28 @@ import About_icon from "./images/Icon_About.png";
 import Like_icon from "./images/Icon_Like.png";
 import Share_icon from "./images/Icon_Share.png";
 
-class Menuscreen extends Component{
+class Homescreen extends Component{
     static navigationOptions = {
         header:null,
     }
+
+    constructor() {
+        super();
+
+        this.state = {
+            change: HomepageBackground,
+        }
+
+    }
+
+    /*
+        changeBG = () => {
+            //alert("sda");
+            this.setState({
+                change: this.state.change == HomepageBackground ? About_icon : HomepageBackground,
+            });
+        }
+    */
 
     gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
@@ -19,8 +37,15 @@ class Menuscreen extends Component{
 
     render(){
         return(
-           <ImageBackground style={styles.image} source={HomepageBackground} onPress={this.gotoMainMenu}>
-            <View style={styles.HomePageContainer}>
+           <ImageBackground style={styles.image} source={HomepageBackground}>
+                <View style={{position: 'absolute', width: '100%', height: '100%'}}>
+                    <TouchableOpacity onPress={this.gotoMainMenu}>
+                        <Text style={{width: '100%', height: '100%'}}>
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+                
+                <View style={styles.HomePageContainer}>
                     
                     <View style={styles.row}>
                         <View style={styles.HomePageItems} >
@@ -48,4 +73,4 @@ class Menuscreen extends Component{
 }
 
 
-export default withNavigation(Menuscreen);
+export default withNavigation(Homescreen);
