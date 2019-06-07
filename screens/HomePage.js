@@ -1,5 +1,9 @@
 import React,{Component} from 'react';
+<<<<<<< HEAD
 import { ImageBackground, TouchableOpacity, View, Text, Image} from 'react-native';
+=======
+import { ImageBackground, TouchableOpacity, View, Image, Text} from 'react-native';
+>>>>>>> 1c77438fbc3bde06ad28347ec4b216748cd2c14d
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js';
 
@@ -38,6 +42,7 @@ class Homescreen extends Component{
     render(){
         return(
            <ImageBackground style={styles.image} source={HomepageBackground}>
+<<<<<<< HEAD
                 <View style={{position: 'absolute', width: '100%', height: '100%'}}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Text style={{width: '100%', height: '100%'}}>
@@ -52,21 +57,37 @@ class Homescreen extends Component{
                             <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
                                 <Image style={styles.imageSizeStoryMenu} source={Like_icon} />
                             </TouchableOpacity>
-                        </View>
-
-                        <View style={styles.HomePageItems} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
-                                <Image style={styles.imageSizeStoryMenu} source={Share_icon} />
-                            </TouchableOpacity>
-                        </View>
-
-                        <View style={styles.HomePageItems} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
-                                <Image style={styles.imageSizeStoryMenu} source={About_icon} />
-                            </TouchableOpacity>
-                        </View>
+=======
+               <View style={{position: "absolute", width:"100%", height:"100%"}}>
+                   <TouchableOpacity  onPress={this.gotoMainMenu}>
+                       <Text style={{width:"100%", height:"100%"}}></Text>
+                    </TouchableOpacity>
                     </View>
-                </View>
+                    <View style={styles.HomePageContainer}>
+                        <View style={styles.Hometouch}>
+                            <TouchableOpacity  onPress={this.gotoMainMenu} />
+>>>>>>> 1c77438fbc3bde06ad28347ec4b216748cd2c14d
+                        </View>
+                        <View style={styles.row}>
+                            <View style={styles.HomePageItems} >
+                                <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
+                                    <Image style={styles.imageSizeStoryMenu} source={Like_icon} />
+                                </TouchableOpacity>
+                            </View>
+
+                            <View style={styles.HomePageItems} >
+                                <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
+                                    <Image style={styles.imageSizeStoryMenu} source={Share_icon} />
+                                </TouchableOpacity>
+                            </View>
+
+                            <View style={styles.HomePageItems} >
+                                <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
+                                    <Image style={styles.imageSizeStoryMenu} source={About_icon} />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </View>    
            </ImageBackground>
         );
     }

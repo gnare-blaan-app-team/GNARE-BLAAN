@@ -10,6 +10,7 @@ import Kastifun_icon from './cultureandartsImages/Kastifun.png';
 import Prayers_icon from './cultureandartsImages/Prayers.png';
 import cultureandarts_BG from './cultureandartsImages/cultureandarts_BG.jpg';
 
+
 class cultureandartsMain extends Component {
     static navigationOptions = {
         header:null,
@@ -31,13 +32,13 @@ class cultureandartsMain extends Component {
                 <View style={styles.CultureandArtsContainer}>
                     <View style={styles.row}>
                         <View style={styles.itemSize} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
+                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('chantsScreen')} >
                                 <Image style={styles.imageSizeStoryMenu} source={Chants_icon} />
                             </TouchableOpacity>
                         </View>
 
                         <View style={styles.itemSize} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
+                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('prayersScreen')} >
                                 <Image style={styles.imageSizeStoryMenu} source={Prayers_icon} />
                             </TouchableOpacity>
                         </View>
@@ -45,7 +46,7 @@ class cultureandartsMain extends Component {
 
                     <View style={styles.row1}>
                         <View style={styles.itemSize} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
+                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('kastifunScreen')} >
                                 <Image style={styles.imageSizeStoryMenu} source={Kastifun_icon} />
                             </TouchableOpacity>
                         </View>

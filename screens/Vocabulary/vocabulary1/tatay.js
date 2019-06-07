@@ -4,7 +4,7 @@ import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
-import TatayBG from '../vocabulary1Images/tatay.png';
+import TatayBG from './vocabulary1Images/tatay.png';
 import Speaker_icon from '../../images/Speaker_icon.png';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
