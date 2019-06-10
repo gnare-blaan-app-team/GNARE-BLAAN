@@ -23,7 +23,7 @@ class Homescreen extends Component{
     }
 
     /*
-        changeBG = () => {
+        ch angeBG = () => {
             //alert("sda");
             this.setState({
                 change: this.state.change == HomepageBackground ? About_icon : HomepageBackground,

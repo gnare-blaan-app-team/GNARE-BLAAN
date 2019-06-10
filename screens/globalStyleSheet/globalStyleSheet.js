@@ -347,6 +347,12 @@ export const globalStyleSheet = {
     VideoContainer:{
         left: '40%', 
         top: '-20%'
-    }
+    },
+    //vocab container
+    vocabContainer:{
+        position: 'absolute',
+        top: '10%',
+        justifyContent: 'center',
+    },
 };
 

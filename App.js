@@ -148,6 +148,7 @@ import TracingY from './screens/Letters/letterTracingScreens/TracingY';
 import VocabularyMenu from './screens/Vocabulary/vocabularyMenu';
 
 //Vocabulary1
+import Vocabulary1 from './screens/Vocabulary/vocabulary1/vocabulary1'
 import Tatay from './screens/Vocabulary/vocabulary1/tatay'
 import Nanay from './screens/Vocabulary/vocabulary1/nanay'
 import Kaito from './screens/Vocabulary/vocabulary1/kaito'
@@ -440,6 +441,7 @@ const RootStack = StackNavigator(
     vocabularyMenu: VocabularyMenu,
 
     //Vocabulary 1
+    vocabulary1: Vocabulary1,
     tatay: Tatay,
     nanay: Nanay,
     kaito: Kaito,
@@ -573,6 +575,8 @@ const RootStack = StackNavigator(
     tlayong: Tlayong,
 
     
+  
+
     //Culture and Arts
     cultureandarts: cultureandartsMain,
     chantsScreen: Chants_Screen,
