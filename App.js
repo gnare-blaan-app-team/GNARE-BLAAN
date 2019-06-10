@@ -15,6 +15,7 @@ import Numbers from './screens/Numbers/NumbersScreen';
 
 import FlalokStoryMenu from './screens/Flalok/FlalokStoryMenu';
 import EndStoryScreen from './screens/Flalok/EndStoryScreen';
+import Story from './screens/Flalok/flalokStoryScreens/Story';
 import Story1Screen from './screens/Flalok/flalokStoryScreens/Story1Screen';
 import Story2Screen from './screens/Flalok/flalokStoryScreens/Story2Screen';
 import Story3Screen from './screens/Flalok/flalokStoryScreens/Story3Screen';
@@ -261,22 +262,22 @@ import DasalBagoMatulogPlay from './screens/CultureandArts/cultureandartsScreens
 
 const RootStack = StackNavigator(
   {
-    home: HomePage,
-    mainMenu: MainMenu,
-    letters: LetterScreen,
 
+    home: HomePage,
+    letters: LetterScreen,
+    mainMenu: MainMenu,
 
     // Flalok Stories
 
     flalok: FlalokStoryMenu,
     endstory: EndStoryScreen,
+    story: Story,
     story1: Story1Screen,
     story2: Story2Screen,
     story3: Story3Screen,
     story4: Story4Screen,
     story5: Story5Screen,
     story6: Story6Screen,
-
 
 
     // Page Letter
@@ -511,10 +512,13 @@ const RootStack = StackNavigator(
 
     //Culture and Arts
     cultureandarts: cultureandartsMain,
+<<<<<<< HEAD
+=======
     chantsScreen: Chants_Screen,
     kastifunScreen: Kastifun_Screen,
     prayersScreen: Prayers_Screen,
     dasalbagomatulogPlay: DasalBagoMatulogPlay
+>>>>>>> 1c77438fbc3bde06ad28347ec4b216748cd2c14d
 
   },
 
@@ -535,6 +539,6 @@ export default class App extends React.Component {
   render() {
     return (
       <RootStack />
-    )
+    );
   }
 }

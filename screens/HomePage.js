@@ -1,5 +1,9 @@
 import React,{Component} from 'react';
+<<<<<<< HEAD
+import { ImageBackground, TouchableOpacity, View, Text, Image} from 'react-native';
+=======
 import { ImageBackground, TouchableOpacity, View, Image, Text} from 'react-native';
+>>>>>>> 1c77438fbc3bde06ad28347ec4b216748cd2c14d
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js';
 
@@ -8,10 +12,28 @@ import About_icon from "./images/Icon_About.png";
 import Like_icon from "./images/Icon_Like.png";
 import Share_icon from "./images/Icon_Share.png";
 
-class Menuscreen extends Component{
+class Homescreen extends Component{
     static navigationOptions = {
         header:null,
     }
+
+    constructor() {
+        super();
+
+        this.state = {
+            change: HomepageBackground,
+        }
+
+    }
+
+    /*
+        changeBG = () => {
+            //alert("sda");
+            this.setState({
+                change: this.state.change == HomepageBackground ? About_icon : HomepageBackground,
+            });
+        }
+    */
 
     gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
@@ -20,6 +42,22 @@ class Menuscreen extends Component{
     render(){
         return(
            <ImageBackground style={styles.image} source={HomepageBackground}>
+<<<<<<< HEAD
+                <View style={{position: 'absolute', width: '100%', height: '100%'}}>
+                    <TouchableOpacity onPress={this.gotoMainMenu}>
+                        <Text style={{width: '100%', height: '100%'}}>
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+                
+                <View style={styles.HomePageContainer}>
+                    
+                    <View style={styles.row}>
+                        <View style={styles.HomePageItems} >
+                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
+                                <Image style={styles.imageSizeStoryMenu} source={Like_icon} />
+                            </TouchableOpacity>
+=======
                <View style={{position: "absolute", width:"100%", height:"100%"}}>
                    <TouchableOpacity  onPress={this.gotoMainMenu}>
                        <Text style={{width:"100%", height:"100%"}}></Text>
@@ -28,6 +66,7 @@ class Menuscreen extends Component{
                     <View style={styles.HomePageContainer}>
                         <View style={styles.Hometouch}>
                             <TouchableOpacity  onPress={this.gotoMainMenu} />
+>>>>>>> 1c77438fbc3bde06ad28347ec4b216748cd2c14d
                         </View>
                         <View style={styles.row}>
                             <View style={styles.HomePageItems} >
@@ -55,4 +94,4 @@ class Menuscreen extends Component{
 }
 
 
-export default withNavigation(Menuscreen);
+export default withNavigation(Homescreen);
