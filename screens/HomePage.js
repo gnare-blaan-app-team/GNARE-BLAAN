@@ -1,11 +1,8 @@
 import React,{Component} from 'react';
-<<<<<<< HEAD
-import { ImageBackground, TouchableOpacity, View, Text, Image} from 'react-native';
-=======
-import { ImageBackground, TouchableOpacity, View, Image, Text} from 'react-native';
->>>>>>> 1c77438fbc3bde06ad28347ec4b216748cd2c14d
+import { ImageBackground, TouchableOpacity, View, Image, Text, Linking} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js';
+import Sound from 'react-native-sound';
 
 import HomepageBackground from './images/GnareMain.gif';
 import About_icon from "./images/Icon_About.png";
@@ -34,6 +31,16 @@ class Homescreen extends Component{
             });
         }
     */
+   
+   componentDidMount() {
+    const bg = new Sound('blaanbg.mp3', Sound.MAIN_BUNDLE, (error) => {
+        if (error) {
+          console.log('failed to load the sound', error);
+          return;
+        }
+        bg.play()
+      });
+   }
 
     gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
@@ -42,22 +49,6 @@ class Homescreen extends Component{
     render(){
         return(
            <ImageBackground style={styles.image} source={HomepageBackground}>
-<<<<<<< HEAD
-                <View style={{position: 'absolute', width: '100%', height: '100%'}}>
-                    <TouchableOpacity onPress={this.gotoMainMenu}>
-                        <Text style={{width: '100%', height: '100%'}}>
-                        </Text>
-                    </TouchableOpacity>
-                </View>
-                
-                <View style={styles.HomePageContainer}>
-                    
-                    <View style={styles.row}>
-                        <View style={styles.HomePageItems} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
-                                <Image style={styles.imageSizeStoryMenu} source={Like_icon} />
-                            </TouchableOpacity>
-=======
                <View style={{position: "absolute", width:"100%", height:"100%"}}>
                    <TouchableOpacity  onPress={this.gotoMainMenu}>
                        <Text style={{width:"100%", height:"100%"}}></Text>
@@ -66,17 +57,16 @@ class Homescreen extends Component{
                     <View style={styles.HomePageContainer}>
                         <View style={styles.Hometouch}>
                             <TouchableOpacity  onPress={this.gotoMainMenu} />
->>>>>>> 1c77438fbc3bde06ad28347ec4b216748cd2c14d
                         </View>
                         <View style={styles.row}>
                             <View style={styles.HomePageItems} >
-                                <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
+                                <TouchableOpacity  onPress={ ()=>{ Linking.openURL('https://google.com')}} >
                                     <Image style={styles.imageSizeStoryMenu} source={Like_icon} />
                                 </TouchableOpacity>
                             </View>
 
                             <View style={styles.HomePageItems} >
-                                <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
+                                <TouchableOpacity  onPress={ ()=>{ Linking.openURL('https://google.com')}} >
                                     <Image style={styles.imageSizeStoryMenu} source={Share_icon} />
                                 </TouchableOpacity>
                             </View>
@@ -89,7 +79,9 @@ class Homescreen extends Component{
                         </View>
                     </View>    
            </ImageBackground>
+           
         );
+        
     }
 }
 

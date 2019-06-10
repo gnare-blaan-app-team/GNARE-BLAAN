@@ -574,22 +574,15 @@ const RootStack = StackNavigator(
     
     //Culture and Arts
     cultureandarts: cultureandartsMain,
-<<<<<<< HEAD
-=======
     chantsScreen: Chants_Screen,
     kastifunScreen: Kastifun_Screen,
     prayersScreen: Prayers_Screen,
     dasalbagomatulogPlay: DasalBagoMatulogPlay
->>>>>>> 1c77438fbc3bde06ad28347ec4b216748cd2c14d
 
   },
 
   {
-<<<<<<< HEAD
     initialRouteName: 'home',
-=======
-    initialRouteName: 'lola',
->>>>>>> 1c77438fbc3bde06ad28347ec4b216748cd2c14d
   }
   
 );

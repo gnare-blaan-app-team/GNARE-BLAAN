@@ -77,6 +77,8 @@ class Letters extends Component {
         this.props.navigation.navigate('mainMenu');
     }
     
+    
+
     render() {
         return (
             <ImageBackground style={styles.image}
