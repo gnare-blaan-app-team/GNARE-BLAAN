@@ -519,7 +519,11 @@ const RootStack = StackNavigator(
   },
 
   {
+<<<<<<< HEAD
     initialRouteName: 'home',
+=======
+    initialRouteName: 'lola',
+>>>>>>> 1c77438fbc3bde06ad28347ec4b216748cd2c14d
   }
   
 );

@@ -239,6 +239,16 @@ export const globalStyleSheet = {
         width: '100%',
         height: '35%',
     },
+    VocabBackContainer: {
+        position: 'absolute',
+         left: '79%',
+         top: '72%',
+    },
+    VocabBack: {
+        width: wp('14%'),
+        height: hp('28%'),
+        resizeMode: 'contain',
+    },
 
     // Stories image, container, Thumbnails
     imageStoryScreen: {
