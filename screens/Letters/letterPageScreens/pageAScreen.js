@@ -126,7 +126,7 @@ class PageA extends Component {
     }
 
     gotoNextPage = () => {
-        this.props.navigation.navigate('pageB');
+        this.props.navigation.push('pageB');
         this.letter_play_a.pause();
         this.wordplay_a.pause();
     }

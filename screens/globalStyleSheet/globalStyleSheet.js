@@ -58,7 +58,7 @@ export const globalStyleSheet = {
     // Sentence Icon
     sentenceIconContainer: {
         position: 'absolute',
-        left: '83%',
+        left: '85%',
         top: '73%',
     },
     sentenceIcon: {
@@ -114,20 +114,20 @@ export const globalStyleSheet = {
         top: '40%',
     },
     next: {
-        width: wp('15%'),
-        height: hp('30%'),
+        width: wp('12%'),
+        height: hp('24%'),
         resizeMode: 'contain',
     },
 
     // Prev Icon (Left side)
     prevContainer: {
         position: 'absolute',
-        left: '2%',
+        left: '5%',
         top: '40%',
     },
     prev: {
-        width: wp('14%'),
-        height: hp('28%'),
+        width: wp('12%'),
+        height: hp('24%'),
         resizeMode: 'contain',
     },
 

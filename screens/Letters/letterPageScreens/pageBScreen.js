@@ -20,6 +20,30 @@ class PageB extends Component {
         header: null,
     }
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            repeat: false,
+            rate: 1,
+            volume: 1,
+            muted: false,
+            resizeMode: 'contain',
+            duration: 0.0,
+            progress: 0.0,
+            currentTime: 0.0,
+            paused: false,
+            rateText: '1.0',
+            pausedText: 'Play',
+            hideControls: false,
+            hideWidth:100,
+            hideHeight:100
+
+        };
+        this.video = null;
+        this.onEnd = this._onEnd.bind(this);
+    }
+
     componentDidMount() {
         this.forceUpdate();
         this.letter_play_b = new Sound('letter_play_b.mp3', Sound.MAIN_BUNDLE, (error) => {
@@ -94,7 +118,7 @@ class PageB extends Component {
         this.wordplay_b.pause();
     }
     gotoNextPage = () => {
-        this.props.navigation.navigate('pageD');
+        this.props.navigation.push('pageD');
         this.letter_play_b.pause();
         this.wordplay_b.pause();
     }
@@ -106,9 +130,16 @@ class PageB extends Component {
     }
 
     goPrev = () => {
-        this.props.navigation.navigate('pageA');
+        this.props.navigation.pop();
         this.letter_play_b.pause();
         this.wordplay_b.pause();
+    }
+
+    _onEnd() {
+        let state = this.state;
+        state.paused = true;
+        this.setState(state);
+      //  setTimeout(() => this.video.seek(0.0));
     }
 
     render() {
@@ -155,7 +186,7 @@ class PageB extends Component {
                         onLoad={this.onLoad}
                         onProgress={this.onProgress}
                         onEnd={this.onEnd}
-                        style={styles.Glow}
+                        style={globalStyleSheet.Glow}
                     />
                     <Image source={ImageA} style={{ width: this.state.hideWidth, height: this.state.hideHeight, position: 'absolute', left: -200, }} />
                 </View>

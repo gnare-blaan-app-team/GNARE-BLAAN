@@ -15,6 +15,7 @@ import Numbers from './screens/Numbers/NumbersScreen';
 
 import FlalokStoryMenu from './screens/Flalok/FlalokStoryMenu';
 import EndStoryScreen from './screens/Flalok/EndStoryScreen';
+import Story from './screens/Flalok/flalokStoryScreens/Story';
 import Story1Screen from './screens/Flalok/flalokStoryScreens/Story1Screen';
 import Story2Screen from './screens/Flalok/flalokStoryScreens/Story2Screen';
 import Story3Screen from './screens/Flalok/flalokStoryScreens/Story3Screen';
@@ -244,41 +245,11 @@ import Sun from './screens/Vocabulary/vocabulary8/sun';
 
 //Vocabulary9
 import January from './screens/Vocabulary/vocabulary9/january';
-import February from './screens/Vocabulary/vocabulary9/february';
-import March from './screens/Vocabulary/vocabulary9/march';
 import April from './screens/Vocabulary/vocabulary9/april';
-import May from './screens/Vocabulary/vocabulary9/may';
-import June from './screens/Vocabulary/vocabulary9/june';
-import July from './screens/Vocabulary/vocabulary9/july';
 import August from './screens/Vocabulary/vocabulary9/august';
-import September from './screens/Vocabulary/vocabulary9/september';
-import October from './screens/Vocabulary/vocabulary9/october';
-import November from './screens/Vocabulary/vocabulary9/november';
-import December from './screens/Vocabulary/vocabulary9/december';
-import Monday from './screens/Vocabulary/vocabulary9/monday';
-import Tuesday from './screens/Vocabulary/vocabulary9/tuesday';
-import Wednesday from './screens/Vocabulary/vocabulary9/wednesday';
-import Thursday from './screens/Vocabulary/vocabulary9/thursday';
-import Friday from './screens/Vocabulary/vocabulary9/friday';
-import Saturday from './screens/Vocabulary/vocabulary9/saturday';
-import Sunday from './screens/Vocabulary/vocabulary9/sunday';
 
-//Vocabulary10
-import BambooGuitar from './screens/Vocabulary/vocabulary10/bambooGuitar';
-import Blouse from './screens/Vocabulary/vocabulary10/blouse';
-import Comb from './screens/Vocabulary/vocabulary10/comb';
-import Earrings from './screens/Vocabulary/vocabulary10/earrings';
-import Galing from './screens/Vocabulary/vocabulary10/galing';
-import Gong from './screens/Vocabulary/vocabulary10/gong';
-import Guitar from './screens/Vocabulary/vocabulary10/guitar';
-import Headcover from './screens/Vocabulary/vocabulary10/headcover';
-import Kulintang from './screens/Vocabulary/vocabulary10/kulintang';
-import Logdrum from './screens/Vocabulary/vocabulary10/logdrum';
-import Necklace from './screens/Vocabulary/vocabulary10/necklace';
-import Pants from './screens/Vocabulary/vocabulary10/pants';
-import Saul from './screens/Vocabulary/vocabulary10/saul';
-import Skirt from './screens/Vocabulary/vocabulary10/skirt';
-import Tlayong from './screens/Vocabulary/vocabulary10/tlayong';
+
+
 
 // Culture and Arts Import
 
@@ -288,27 +259,26 @@ import Kastifun_Screen from './screens/CultureandArts/cultureandartsScreens/kast
 import Prayers_Screen from './screens/CultureandArts/cultureandartsScreens/prayersScreen';
 import DasalBagoMatulogPlay from './screens/CultureandArts/cultureandartsScreens/prayers/DasalBagoMatulogPlay';
 
-
 // Screen Navigation
 
 const RootStack = StackNavigator(
   {
-    home: HomePage,
-    mainMenu: MainMenu,
-    letters: LetterScreen,
 
+    home: HomePage,
+    letters: LetterScreen,
+    mainMenu: MainMenu,
 
     // Flalok Stories
 
     flalok: FlalokStoryMenu,
     endstory: EndStoryScreen,
+    story: Story,
     story1: Story1Screen,
     story2: Story2Screen,
     story3: Story3Screen,
     story4: Story4Screen,
     story5: Story5Screen,
     story6: Story6Screen,
-
 
 
     // Page Letter
@@ -536,54 +506,34 @@ const RootStack = StackNavigator(
     
     //Vocabulary9
     january: January,
-    february: February,
-    march: March,
     april: April,
-    may: May,
-    june: June,
-    july: July,
     august: August,
-    september: September,
-    october: October,
-    november: November,
-    december: December,
-    monday: Monday,
-    tuesday: Tuesday,
-    wednesday: Wednesday,
-    thursday: Thursday,
-    friday: Friday,
-    saturday: Saturday,
-    sunday: Sunday,
-
-    //Vocabulary10
-    bambooGuitar: BambooGuitar,
-    blouse: Blouse,
-    comb: Comb,
-    earrings: Earrings,
-    galing: Galing,
-    gong: Gong,
-    guitar: Guitar,
-    headcover: Headcover,
-    kulintang: Kulintang,
-    logdrum: Logdrum,
-    necklace: Necklace,
-    pants: Pants,
-    saul: Saul,
-    skirt: Skirt,
-    tlayong: Tlayong,
 
     
+    
+
     //Culture and Arts
     cultureandarts: cultureandartsMain,
+<<<<<<< HEAD
+=======
     chantsScreen: Chants_Screen,
     kastifunScreen: Kastifun_Screen,
     prayersScreen: Prayers_Screen,
     dasalbagomatulogPlay: DasalBagoMatulogPlay
+>>>>>>> 1c77438fbc3bde06ad28347ec4b216748cd2c14d
 
   },
 
   {
+<<<<<<< HEAD
     initialRouteName: 'farmland',
+=======
+<<<<<<< HEAD
+    initialRouteName: 'home',
+=======
+    initialRouteName: 'lola',
+>>>>>>> 1c77438fbc3bde06ad28347ec4b216748cd2c14d
+>>>>>>> 87167e6ff45a6398fae8b6084aea66e17e832ec2
   }
   
 );
@@ -595,6 +545,6 @@ export default class App extends React.Component {
   render() {
     return (
       <RootStack />
-    )
+    );
   }
 }
