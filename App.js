@@ -149,6 +149,7 @@ import TracingY from './screens/Letters/letterTracingScreens/TracingY';
 import VocabularyMenu from './screens/Vocabulary/vocabularyMenu';
 
 //Vocabulary1
+import Vocabulary1 from './screens/Vocabulary/vocabulary1/vocabulary1'
 import Tatay from './screens/Vocabulary/vocabulary1/tatay'
 import Nanay from './screens/Vocabulary/vocabulary1/nanay'
 import Kaito from './screens/Vocabulary/vocabulary1/kaito'
@@ -262,22 +263,22 @@ import DasalBagoMatulogPlay from './screens/CultureandArts/cultureandartsScreens
 
 const RootStack = StackNavigator(
   {
-
     home: HomePage,
-    letters: LetterScreen,
     mainMenu: MainMenu,
+    letters: LetterScreen,
+
 
     // Flalok Stories
 
     flalok: FlalokStoryMenu,
     endstory: EndStoryScreen,
-    story: Story,
     story1: Story1Screen,
     story2: Story2Screen,
     story3: Story3Screen,
     story4: Story4Screen,
     story5: Story5Screen,
     story6: Story6Screen,
+
 
 
     // Page Letter
@@ -409,6 +410,7 @@ const RootStack = StackNavigator(
     vocabularyMenu: VocabularyMenu,
 
     //Vocabulary 1
+    vocabulary1: Vocabulary1,
     tatay: Tatay,
     nanay: Nanay,
     kaito: Kaito,
@@ -508,26 +510,19 @@ const RootStack = StackNavigator(
     august: August,
 
     
-    
+  
 
     //Culture and Arts
     cultureandarts: cultureandartsMain,
-<<<<<<< HEAD
-=======
     chantsScreen: Chants_Screen,
     kastifunScreen: Kastifun_Screen,
     prayersScreen: Prayers_Screen,
     dasalbagomatulogPlay: DasalBagoMatulogPlay
->>>>>>> 1c77438fbc3bde06ad28347ec4b216748cd2c14d
 
   },
 
   {
-<<<<<<< HEAD
     initialRouteName: 'home',
-=======
-    initialRouteName: 'lola',
->>>>>>> 1c77438fbc3bde06ad28347ec4b216748cd2c14d
   }
   
 );
@@ -539,6 +534,6 @@ export default class App extends React.Component {
   render() {
     return (
       <RootStack />
-    );
+    )
   }
 }
