@@ -10,12 +10,10 @@ import LetterScreen from './screens/Letters/letterScreen';
 import Numbers from './screens/Numbers/NumbersScreen';
 
 
-
 // Flalok Stories Import
 
 import FlalokStoryMenu from './screens/Flalok/FlalokStoryMenu';
 import EndStoryScreen from './screens/Flalok/EndStoryScreen';
-import Story from './screens/Flalok/flalokStoryScreens/Story';
 import Story1Screen from './screens/Flalok/flalokStoryScreens/Story1Screen';
 import Story2Screen from './screens/Flalok/flalokStoryScreens/Story2Screen';
 import Story3Screen from './screens/Flalok/flalokStoryScreens/Story3Screen';
@@ -302,7 +300,6 @@ const RootStack = StackNavigator(
 
     flalok: FlalokStoryMenu,
     endstory: EndStoryScreen,
-    story: Story,
     story1: Story1Screen,
     story2: Story2Screen,
     story3: Story3Screen,
@@ -574,22 +571,15 @@ const RootStack = StackNavigator(
     
     //Culture and Arts
     cultureandarts: cultureandartsMain,
-<<<<<<< HEAD
-=======
     chantsScreen: Chants_Screen,
     kastifunScreen: Kastifun_Screen,
     prayersScreen: Prayers_Screen,
     dasalbagomatulogPlay: DasalBagoMatulogPlay
->>>>>>> 1c77438fbc3bde06ad28347ec4b216748cd2c14d
 
   },
 
   {
-<<<<<<< HEAD
     initialRouteName: 'home',
-=======
-    initialRouteName: 'lola',
->>>>>>> 1c77438fbc3bde06ad28347ec4b216748cd2c14d
   }
   
 );

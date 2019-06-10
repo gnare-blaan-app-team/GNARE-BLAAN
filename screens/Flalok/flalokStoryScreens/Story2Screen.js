@@ -11,6 +11,9 @@ import Story2_EN from '../flalokVideos/Story2_EN.mp4';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
 
+import SwapENG from '../flalokImages/SwapENG.png';
+import SwapFIL from '../flalokImages/SwapFIL.png';
+
 import NextStory from '../flalokImages/NextStory.png';
 import Prayer from '../flalokImages/Prayer.png';
 import Vocabulary from '../flalokImages/Vocabulary.png';
@@ -22,6 +25,7 @@ function secondsToTime(time) {
     return ~~(time / 60) + ":" + (time % 60 < 10 ? "0" : "") + time % 60;
 }
 
+
 class Story2Screen extends Component {
     
     constructor () {
@@ -31,12 +35,15 @@ class Story2Screen extends Component {
             videoFile: Story2_FL,
             opacityVideo: 1,
             opacityNext: 0,
-            hideVideo: -1200,
-            hideTabs: '-100%',
-            hideHome: '-100%',
+            hideVideo: '-1200%',
+            hideTabs: '-1000%',
+            hideHome: '-1000%',
 
-            controlHide: -1000,
-    
+            subtitle: ' Filipino',
+            hideSub: '-1000%',
+
+            controlHide: '-1000%',
+            
             progressHeight: 48,
             paused: false,
             progress: 0,
@@ -107,15 +114,15 @@ class Story2Screen extends Component {
 
 
     gotoNextStory = () => {
-        this.props.navigation.navigate('story3');
+        this.props.navigation.navigate('story2');
     }
 
     gotoVocabulary = () => {
-        this.props.navigation.navigate('story3');
+        this.props.navigation.navigate('vocabularyMenu');
     }
 
     gotoPrayers = () => {
-        this.props.navigation.navigate('cultureandarts');
+        this.props.navigation.navigate('prayersScreen');
     }
     
 
@@ -123,10 +130,12 @@ class Story2Screen extends Component {
 
         return (
             <View style={videoStyle.container}>
+                
                 <View style={{opacity: this.state.opacityVideo}}>
                     <TouchableWithoutFeedback onPress={() => {
                         this.setState({
                             controlHide: this.state.controlHide == 0 ? -1000 : 0,
+                            hideSub: this.state.hideSub == '-1000%'  ? '3%' : '-1000%',
                         })
                     }}>
                         <Video
@@ -147,8 +156,24 @@ class Story2Screen extends Component {
                         />
                     </TouchableWithoutFeedback>
 
+                    <View style={{position: 'absolute', justifyContent: 'center', top: this.state.controlHide, alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.5)', width: '100%', height: '15%'}}>
+                        <Text style={{color: 'white', fontSize: 25}}>Story 2</Text>
+                    </View>
+
+                    <View style={{position: 'absolute', top: this.state.hideSub, left: '88%', height: '10%', justifyContent: 'center', alignItems: 'center'}}>
+                        <TouchableOpacity onPress={()=> {
+                            this.setState({
+                                videoFile: this.state.videoFile == Story2_FL ? Story2_EN : Story2_FL,
+                                subtitle: this.state.subtitle == ' Filipino' ? ' English' : ' Filipino',
+                            });
+                            this.handleProgressPress;
+                        }}>
+                            <Text style={{color: 'white', borderWidth: 2, borderColor: 'white', borderRadius: 5, padding: 3, fontSize: 18}}>{this.state.subtitle}</Text>
+                        </TouchableOpacity>
+                    </View>
+
                     <View style={{backgroundColor: "rgba(0, 0, 0, 0.5)",
-                        height: 45,
+                        height: '15%',
                         left: 0,
                         bottom: this.state.controlHide,
                         right: 0,
@@ -195,22 +220,6 @@ class Story2Screen extends Component {
                             <Image
                                 source={Back_icon}
                                 style={styles.back}
-                            ></Image>
-                        </TouchableOpacity>
-                    </View>
-
-                    <View style={{position: 'absolute', top: this.state.controlHide, left: '85%'}}>
-                        <TouchableOpacity onPress={() => {
-                            //toggleProgress = this.state.progress;
-                            this.setState({
-                                videoFile: this.state.videoFile == Story2_FL ? Story2_EN : Story2_FL,
-                            });
-
-                            this.handleProgressPress;
-                        }}>
-                            <Image
-                                source={Home_icon}
-                                style={styles.home}
                             ></Image>
                         </TouchableOpacity>
                     </View>
