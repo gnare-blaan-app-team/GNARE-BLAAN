@@ -189,6 +189,7 @@ import Carabao from './screens/Vocabulary/vocabulary4/carabao';
 import Chicken from './screens/Vocabulary/vocabulary4/chicken';
 import Corn from './screens/Vocabulary/vocabulary4/corn';
 import Cow from './screens/Vocabulary/vocabulary4/cow';
+import Farmland from './screens/Vocabulary/vocabulary4/farmland';
 import Goat from './screens/Vocabulary/vocabulary4/goat';
 import Pig from './screens/Vocabulary/vocabulary4/pig';
 import Plow from './screens/Vocabulary/vocabulary4/plow';
@@ -480,6 +481,7 @@ const RootStack = StackNavigator(
     chicken: Chicken,
     corn: Corn,
     cow: Cow,
+    farmland: Farmland,
     goat: Goat,
     pig: Pig,
     plow: Plow,
@@ -581,7 +583,7 @@ const RootStack = StackNavigator(
   },
 
   {
-    initialRouteName: 'lola',
+    initialRouteName: 'farmland',
   }
   
 );
