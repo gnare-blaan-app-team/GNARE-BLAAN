@@ -12,14 +12,27 @@ import Home_icon from '../../images/Home_icon.png';
 import PencilIcon from '../../images/Pencil_icon.png';
 import NextIcon from '../../images/Next_Icon.png';
 import PrevIcon from '../../images/Prev_Icon.png';
+import * as Animatable from 'react-native-animatable';
 
 class Page3 extends Component {
     static navigationOptions = {
         header: null,
     }
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            Transition: "slideInLeft",
+            prevTrans: '',
+        }
+    }
+
     componentDidMount() {
         this.forceUpdate();
+        var show = this.state.prevTrans;
+        if (show == 'slideInRight') {
+            this.setState({ Transition: 'slideInRight' })
+        }
         this.number3 = new Sound('number_3.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);
@@ -45,35 +58,41 @@ class Page3 extends Component {
         this.number3.play();
     }
     gotoSentence3 = () => {
-        this.props.navigation.navigate('sentence3');
+        this.props.navigation.replace('sentence3');
+        this.number3.pause();
     }
 
     goBack = () => {
-        this.props.navigation.navigate('numbers');
+        this.props.navigation.replace('numbers');
+        this.number3.pause();
     }
 
     gotoMainMenu = () => {
-        this.props.navigation.navigate('mainMenu');
+        this.props.navigation.replace('mainMenu');
+        this.number3.pause();
     }
 
     gotoTracingB = () => {
-        this.props.navigation.navigate('tracingB');
+        this.props.navigation.replace('tracingB');
+        this.number3.pause();
     }
 
     gotoNextPage = () => {
-        this.props.navigation.navigate('page4');
-        this.letter_play_a.pause();
-        this.wordplay_a.pause();
+        this.props.navigation.replace('page4');
+        this.number3.pause();
     }
 
     goPrev = () => {
-        this.props.navigation.navigate('page2');
-        this.letter_play_b.pause();
-        this.wordplay_b.pause();
+        this.props.navigation.replace('page2', { prevTransition: 'slideInRight', });
+        this.number3.pause();
     }
 
     render() {
+        const { navigation } = this.props;
+        const itemId = navigation.getParam('prevTransition', 'NO-ID');
+        this.state.prevTrans = itemId;
         return (
+            <Animatable.View animation={this.state.Transition} style={globalStyleSheet.image2}>
             <ImageBackground style={globalStyleSheet.image}
                 source={number3}
             >
@@ -134,6 +153,7 @@ class Page3 extends Component {
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
+            </Animatable.View>
         )
     }
 }

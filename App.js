@@ -6,9 +6,6 @@ import MainMenu from './screens/MainMenu';
 import LetterScreen from './screens/Letters/letterScreen';
 import Numbers from './screens/Numbers/NumbersScreen';
 import { Animated, Easing, Platform } from 'react-native';
-import { fromLeft, zoomOut, zoomIn, flipX, fromRight } from 'react-navigation-transitions';
-import { Router, Scene } from 'react-native-router-flux'
-
 
 // Flalok Stories Import
 
@@ -143,72 +140,6 @@ import TracingU from './screens/Letters/letterTracingScreens/TracingU';
 import TracingW from './screens/Letters/letterTracingScreens/TracingW';
 import TracingY from './screens/Letters/letterTracingScreens/TracingY';
 
-const handleCustomTransition = ({ scenes }) => {
-  const prevScene = scenes[scenes.length - 2];
-  const nextScene = scenes[scenes.length - 1];
-
-  // Custom transitions go there
-  if (prevScene
-    && prevScene.route.routeName === 'home'
-    && nextScene.route.routeName === 'mainMenu') {
-    return zoomOut();
-  } else if (nextScene.route.routeName === 'letters') {
-    return zoomIn();
-  } else if (nextScene.route.routeName === 'pageA') {
-    return fromRight();
-  } else if ( nextScene.route.routeName === 'pageB') {
-    return fromRight();
-  }
-  else if (nextScene.route.routeName === 'pageD') {
-    return fromRight();
-  }
-  else if (nextScene.route.routeName === 'pageE') {
-    return fromRight();
-  }
-  else if ( nextScene.route.routeName === 'pageF') {
-    return fromRight();
-  }
-  else if (nextScene.route.routeName === 'pageG') {
-    return fromRight();
-  }
-  else if ( nextScene.route.routeName === 'pageH') {
-    return fromRight();
-  }
-  else if (nextScene.route.routeName === 'pageI') {
-    return fromRight();
-  }
-  else if (nextScene.route.routeName === 'pageK') {
-    return fromRight();
-  }
-  else if (nextScene.route.routeName === 'pageL') {
-    return fromRight();
-  }
-  else if ( nextScene.route.routeName === 'pageM') {
-    return fromRight();
-  }
-  else if (nextScene.route.routeName === 'pageN') {
-    return fromRight();
-  }
-  else if (nextScene.route.routeName === 'pageO') {
-    return fromRight();
-  }
-  else if (nextScene.route.routeName === 'pageS') {
-    return fromRight();
-  }
-  else if ( nextScene.route.routeName === 'pageT') {
-    return fromRight();
-  }
-  else if (nextScene.route.routeName === 'pageU') {
-    return fromRight();
-  }
-  else if (nextScene.route.routeName === 'pageW') {
-    return fromRight();
-  }
-  else if (nextScene.route.routeName === 'pageY') {
-    return fromRight();
-  }
-  return fromLeft();
-}
 // Vocabularies
 import VocabularyMenu from './screens/Vocabulary/vocabularyMenu';
 
@@ -420,7 +351,7 @@ const AppNavigator = createStackNavigator(
     page100: Page100,
     page200: Page200,
     page300: Page300,
-    page400: Page400,
+    page400: Page400, 
     page500: Page500,
     page1000: Page1000,
 
@@ -641,8 +572,7 @@ const AppNavigator = createStackNavigator(
     dasalbagomatulogPlay: DasalBagoMatulogPlay
 },
 {
-  initialRouteName:"home",
-  transitionConfig: (nav) => handleCustomTransition(nav),
+  initialRouteName:"tracingA",
   mode: 'card',
   cardStyle: {
     backgroundColor: "transperent"

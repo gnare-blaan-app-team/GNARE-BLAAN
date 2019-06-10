@@ -11,7 +11,7 @@ class NumberScreen extends Component {
     }
 
     gotoPage1 = () => {
-        this.props.navigation.navigate('page1');
+        this.props.navigation.replace('page1');
     }
     gotoPage2 = () => {
         this.props.navigation.navigate('page2');
