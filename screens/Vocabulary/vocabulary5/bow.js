@@ -16,7 +16,7 @@ class Bow extends Component {
 
     componentDidMount() {
         this.forceUpdate();
-        this.number1 = new Sound('number_1.mp3', Sound.MAIN_BUNDLE, (error) => {
+        this.vocab5_bow = new Sound('vocab5_bow.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);
                 return;
@@ -34,18 +34,20 @@ class Bow extends Component {
 
 
     handleBackPress = () => {
-        this.number1.pause();
+        this.vocab5_bow.pause();
     }
 
-    playAsound_2 = () => {
-        this.number1.play();
+    playBowsound = () => {
+        this.vocab5_bow.play();
     }
 
     goBack = () => {
-        this.props.navigation.navigate('numbers');
+        this.vocab5_bow.pause();
+        this.props.navigation.navigate('vocabularyMenu');
     }
 
     gotoMainMenu = () => {
+        this.vocab5_bow.pause();
         this.props.navigation.navigate('mainMenu');
     }
 
@@ -55,18 +57,18 @@ class Bow extends Component {
                 source={BowBG}
             >
                 <View style={globalStyleSheet.A_Speaker_Container_2}>
-                    <TouchableOpacity onPress={this.playAsound_2}>
+                    <TouchableOpacity onPress={this.playBowsound}>
                         <Image
                             source={Speaker_icon}
                             style={globalStyleSheet.A_Speaker_2}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={globalStyleSheet.backContainer}>
+                <View style={globalStyleSheet.VocabBackContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
                             source={Back_icon}
-                            style={globalStyleSheet.back}
+                            style={globalStyleSheet.VocabBack}
                         ></Image>
                     </TouchableOpacity>
                 </View>

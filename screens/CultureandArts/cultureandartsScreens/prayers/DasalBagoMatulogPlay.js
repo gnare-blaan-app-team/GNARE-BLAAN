@@ -9,7 +9,7 @@ export default class DasalBagoMatulogPlay extends Component {
 render(){
 return(
 <View style={styles.container}>
-      <Video source={{DasalBagoMatulogVideo}}   // Can be a URL or a localfile.
+      <Video source={DasalBagoMatulogVideo}   // Can be a URL or a localfile.
        ref={(ref) => {
          this.player = ref
        }}                                      // Store reference

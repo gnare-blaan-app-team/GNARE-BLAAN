@@ -16,7 +16,7 @@ class Sun extends Component {
 
     componentDidMount() {
         this.forceUpdate();
-        this.number1 = new Sound('number_1.mp3', Sound.MAIN_BUNDLE, (error) => {
+        this.vocab8_sun = new Sound('vocab8_sun.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);
                 return;
@@ -34,18 +34,20 @@ class Sun extends Component {
 
 
     handleBackPress = () => {
-        this.number1.pause();
+        this.vocab8_sun.pause();
     }
 
-    playAsound_2 = () => {
-        this.number1.play();
+    playSunsound = () => {
+        this.vocab8_sun.play();
     }
 
     goBack = () => {
-        this.props.navigation.navigate('numbers');
+        this.vocab8_sun.pause();
+        this.props.navigation.navigate('vocabularyMenu');
     }
 
     gotoMainMenu = () => {
+        this.vocab8_sun.pause();
         this.props.navigation.navigate('mainMenu');
     }
 
@@ -55,18 +57,18 @@ class Sun extends Component {
                 source={SunBG}
             >
                 <View style={globalStyleSheet.A_Speaker_Container_2}>
-                    <TouchableOpacity onPress={this.playAsound_2}>
+                    <TouchableOpacity onPress={this.playSunsound}>
                         <Image
                             source={Speaker_icon}
                             style={globalStyleSheet.A_Speaker_2}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={globalStyleSheet.backContainer}>
+                <View style={globalStyleSheet.VocabBackContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
                             source={Back_icon}
-                            style={globalStyleSheet.back}
+                            style={globalStyleSheet.VocabBack}
                         ></Image>
                     </TouchableOpacity>
                 </View>

@@ -16,7 +16,7 @@ class Eel extends Component {
 
     componentDidMount() {
         this.forceUpdate();
-        this.number1 = new Sound('number_1.mp3', Sound.MAIN_BUNDLE, (error) => {
+        this.vocab3_eel = new Sound('vocab3_eel.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);
                 return;
@@ -34,18 +34,20 @@ class Eel extends Component {
 
 
     handleBackPress = () => {
-        this.number1.pause();
+        this.vocab3_eel.pause();
     }
 
-    playAsound_2 = () => {
-        this.number1.play();
+    playEelsound = () => {
+        this.vocab3_eel.play();
     }
 
     goBack = () => {
-        this.props.navigation.navigate('numbers');
+        this.vocab3_eel.pause();
+        this.props.navigation.navigate('vocabularyMenu');
     }
 
     gotoMainMenu = () => {
+        this.vocab3_eel.pause();
         this.props.navigation.navigate('mainMenu');
     }
 
@@ -55,18 +57,18 @@ class Eel extends Component {
                 source={EelBG}
             >
                 <View style={globalStyleSheet.A_Speaker_Container_2}>
-                    <TouchableOpacity onPress={this.playAsound_2}>
+                    <TouchableOpacity onPress={this.playEelsound}>
                         <Image
                             source={Speaker_icon}
                             style={globalStyleSheet.A_Speaker_2}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={globalStyleSheet.backContainer}>
+                <View style={globalStyleSheet.VocabBackContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
                             source={Back_icon}
-                            style={globalStyleSheet.back}
+                            style={globalStyleSheet.VocabBack}
                         ></Image>
                     </TouchableOpacity>
                 </View>
