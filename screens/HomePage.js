@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { ImageBackground, TouchableOpacity, View, Image, Text, Linking} from 'react-native';
+import { ImageBackground, TouchableOpacity, View, Image, Text} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js';
 import Sound from 'react-native-sound';
