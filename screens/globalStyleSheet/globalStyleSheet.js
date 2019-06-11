@@ -368,7 +368,7 @@ export const globalStyleSheet = {
     //vocab container
     vocabContainer:{
         position: 'absolute',
-        top: '10%',
+        top: '15%',
         justifyContent: 'center',
     },
 };
