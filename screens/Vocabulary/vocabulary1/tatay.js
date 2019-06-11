@@ -43,7 +43,7 @@ class Tatay extends Component {
 
     goBack = () => {
         this.vocab1_tatay.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary1');
     }
 
     gotoMainMenu = () => {

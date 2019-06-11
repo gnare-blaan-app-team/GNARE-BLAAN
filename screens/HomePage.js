@@ -32,9 +32,22 @@ class Homescreen extends Component{
         }
     */
    
+<<<<<<< HEAD
    componentDidMount() {
     
    }
+=======
+//    componentDidMount() {
+//     const bg = new Sound('blaanbg.mp3', Sound.MAIN_BUNDLE, (error) => {
+//         if (error) {
+//           console.log('failed to load the sound', error);
+//           return;
+//         }
+//         bg.play()
+//       });
+//    }
+   
+>>>>>>> 18080426cb2b8e04d66f9802bf798106d136f67f
 
     gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
