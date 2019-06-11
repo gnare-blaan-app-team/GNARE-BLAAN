@@ -7,7 +7,6 @@ import Sound from 'react-native-sound';
 
 import GoBackIcon from '../images/Back_icon.png';
 import HomeIcon from '../images/Home_icon.png';
-import Video from 'react-native-video';
 import GlowA from './lettersGlow/GlowA.gif';
 import Glow_A from './lettersGlow/GlowA.png';
 
@@ -64,18 +63,18 @@ const showPrev ='5%';
 const showNext = '83%';
 const showPencil = '18%';
 const showGlow = '20%';
-const showSpeaker = '20%';
+const showSpeaker = '25%';
 const showSentence = '73%';
 
 Sound.setCategory('Playback');
 const soundList = ['a', 'b', 'd', 'e', 'f', 'g', 'h', 'i', 'k', 'l', 'm', 'n', 'o', 's', 't',
                     'u', 'w', 'y',];
 
+
 const letterBGList = [LetterA, LetterB, LetterD, LetterE, LetterF, LetterG, LetterH, LetterI, LetterK, LetterL, LetterM, LetterN,
     LetterO, LetterS, LetterT, LetterU, LetterW, LetterY];
 
-const sentenceBGList = [sentenceA, sentenceB, sentenceD, sentenceE, sentenceF, sentenceG, sentenceH, sentenceI,
-    sentenceK, sentenceL, sentenceM, sentenceN, sentenceO, sentenceS, sentenceT, sentenceU, sentenceW, sentenceY];
+
 
 const glowGIFList = [GlowA];
 const glowPicList = [Glow_A];
@@ -83,6 +82,7 @@ const glowPicList = [Glow_A];
 class Letters extends Component {
     static navigationOptions = {
         header: null,
+        cardStyle: {backgroundColor: 'transperent'},
     }
 
     constructor() {
@@ -102,37 +102,23 @@ class Letters extends Component {
             wordPlay: 0,
             glow: Glow_A,
             prevBG: imageMainBG,
-        },
-
-        this.soundLetterArray = new Array(18);
-        this.soundWordArray = new Array(18);
-        this.soundSentenceArray = new Array(18);
-        for(i = 0; i < 18; i++) {
-            this.soundLetterArray[i] = new Sound('letter_play_' + soundList[i] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    console.log('failed to load the sound', error);
-                    return;
-                }
-                BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
-            });
-            this.soundWordArray[i] = new Sound('word_play_' + soundList[i] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    alert('failed to load the sound', error);
-                    return;
-                }
-                BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
-            });
-            this.soundSentenceArray[i] = new Sound('sentence_letter_' + soundList[i] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    alert('failed to load the sound', error);
-                    return;
-                }
-                BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
-            });
+            letterSoundPlay: null,
+            wordSoundPlay: null,
+            sentenceSoundPlay: null,
+            showBackground: '-1000',
         }
+    }
+
+    componentDidMount() {
+        this.sentenceBGList = [require('./lettersImage/sentence' + 'A' + '.png'), require('./lettersImage/sentenceB.png'), require('./lettersImage/sentenceD.png'), 
+            require('./lettersImage/sentenceE.png'), require('./lettersImage/sentenceF.png'), require('./lettersImage/sentenceG.png'), require('./lettersImage/sentenceH.png'),
+            require('./lettersImage/sentenceI.png'), require('./lettersImage/sentenceK.png'), require('./lettersImage/sentenceL.png'), require('./lettersImage/sentenceM.png'),
+            require('./lettersImage/sentenceN.png'), require('./lettersImage/sentenceO.png'), require('./lettersImage/sentenceS.png'), require('./lettersImage/sentenceT.png'),
+            require('./lettersImage/sentenceU.png'), require('./lettersImage/sentenceW.png'), require('./lettersImage/sentenceY.png')];
+
         this.mute = new Sound('mute.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
-                console.log('failed to load the sound', error);
+                alert('failed to load the sound', error);
                 return;
             }
             BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
@@ -148,7 +134,25 @@ class Letters extends Component {
                         speakerHide: imageBG == imageMainBG ? hideLeft : showSpeaker,
                         sentenceHide: imageBG == imageMainBG ? hideRight : showSentence,
                         pencilHide: imageBG == imageMainBG ? hideLeft : showPencil,
-                        letterPlay: soundPlay, wordPlay: soundPlay});
+                        letterPlay: soundPlay, wordPlay: soundPlay, letterSoundPlay: new Sound('letter_play_' + soundList[soundPlay] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+                            if (error) {
+                                console.log('failed to load the sound', error);
+                                return;
+                            }
+                            BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+                        }), wordSoundPlay: new Sound('word_play_' + soundList[soundPlay] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+                            if (error) {
+                                console.log('failed to load the sound', error);
+                                return;
+                            }
+                            BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+                        }), sentenceSoundPlay: new Sound('sentence_letter_' + soundList[soundPlay] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+                            if (error) {
+                                console.log('failed to load the sound', error);
+                                return;
+                            }
+                            BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+                        }), });
     }
 
     sentencePage = () => {
@@ -156,48 +160,64 @@ class Letters extends Component {
         this.handleBackPress();
 
         this.setState({menuLetterHide: '-1000%', 
-                        imageBackground: sentenceBGList[letterIndex], 
+                        imageBackground: this.sentenceBGList[letterIndex], 
                         prevHide: hideLeft, nextHide: hideRight,
                         glowHide: hideLeft, speakerHide: hideLeft,
                         speaker2Hide: showSpeaker, sentenceHide: hideRight,
-                        pencilHide: hideLeft, prevBG: sentenceBGList[letterIndex]});
+                        pencilHide: hideLeft, prevBG: this.sentenceBGList[letterIndex]});
     }
-
     
     handleBackPress = () => {
-        this.soundLetterArray[this.state.letterPlay].stop();
-        this.soundWordArray[this.state.wordPlay].stop();
+        const soundLetter = this.state.letterSoundPlay;
+        const soundWord = this.state.wordSoundPlay;
+        const soundSentence = this.state.sentenceSoundPlay;
+
+        if((soundLetter != null && soundWord != null) && soundSentence != null) {
+            soundLetter.stop();
+            soundWord.stop();
+            soundSentence.stop();
+        }
     }
 
     playLetterSound = () => {
-        this.soundLetterArray[this.state.letterPlay].stop(() => {
+        const soundLetter = this.state.letterSoundPlay;
+        const soundWord = this.state.wordSoundPlay;
+        const soundSentence = this.state.sentenceSoundPlay;
+
+        soundLetter.stop(() => {
             this.mute.play();
         });
-        this.soundSentenceArray[this.state.letterPlay].stop();
-        this.soundWordArray[this.state.wordPlay].stop();
-        this.soundLetterArray[this.state.letterPlay].stop();
-        this.soundLetterArray[this.state.letterPlay].play();
+        soundSentence.stop();
+        soundWord.stop();
+        soundLetter.stop();
+        soundLetter.play();
     }
 
     playSentenceSound = () => {
-        this.soundSentenceArray[this.state.letterPlay].stop(() => {
+        const soundLetter = this.state.letterSoundPlay;
+        const soundWord = this.state.wordSoundPlay;
+        const soundSentence = this.state.sentenceSoundPlay;
+        soundSentence.stop(() => {
             this.mute.play();
         });
-        this.soundWordArray[this.state.wordPlay].stop();
-        this.soundLetterArray[this.state.letterPlay].stop();
-        this.soundSentenceArray[this.state.letterPlay].stop();
-        this.soundSentenceArray[this.state.letterPlay].play();
+        soundWord.stop();
+        soundLetter.stop();
+        soundSentence.stop();
+        soundSentence.play();
     }
 
     playWordSound = () => {
+        const soundLetter = this.state.letterSoundPlay;
+        const soundWord = this.state.wordSoundPlay;
+        const soundSentence = this.state.sentenceSoundPlay;
         this.setState({glow: this.state.glow == GlowA ? Glow_A : GlowA});
-        this.soundWordArray[this.state.wordPlay].stop(() => {
+        soundWord.stop(() => {
             this.mute.play();
         });
-        this.soundSentenceArray[this.state.letterPlay].stop();
-        this.soundLetterArray[this.state.letterPlay].stop();
-        this.soundWordArray[this.state.wordPlay].stop();
-        this.soundWordArray[this.state.wordPlay].play();
+        soundSentence.stop();
+        soundLetter.stop();
+        soundWord.stop();
+        soundWord.play();
 
         setTimeout(() => {
             this.setState({glow: this.state.glow == GlowA ? Glow_A : GlowA});
@@ -213,14 +233,21 @@ class Letters extends Component {
     }
 
     gotoMainMenu = () => {
-        this.soundLetterArray[this.state.letterPlay].stop();
-        this.soundWordArray[this.state.wordPlay].stop();
+        const soundLetter = this.state.letterSoundPlay;
+        const soundWord = this.state.wordSoundPlay;
+        const soundSentence = this.state.sentenceSoundPlay;
+        soundLetter.stop();
+        soundWord.stop();
+        soundSentence.stop();
         this.props.navigation.navigate('mainMenu');
     }
 
     goNext = () => {
-        this.soundLetterArray[this.state.letterPlay].stop();
-        this.soundWordArray[this.state.wordPlay].stop();
+        const soundLetter = this.state.letterSoundPlay;
+        const soundWord = this.state.wordSoundPlay;
+
+        soundLetter.stop();
+        soundWord.stop();
         let letterNum = this.state.letterPlay;
         let nextPage = letterNum + 1;
         let nextBG = letterBGList[nextPage];
@@ -233,8 +260,11 @@ class Letters extends Component {
     }
     
     goPrev = () => {
-        this.soundLetterArray[this.state.letterPlay].stop();
-        this.soundWordArray[this.state.wordPlay].stop();
+        const soundLetter = this.state.letterSoundPlay;
+        const soundWord = this.state.wordSoundPlay;
+
+        soundLetter.stop();
+        soundWord.stop();
         const letterNum = this.state.letterPlay;
         const prevPage = letterNum - 1;
         const prevBG = letterBGList[prevPage];
@@ -247,8 +277,12 @@ class Letters extends Component {
     }
 
     goBack = () => {
-        if(this.state.prevBG == sentenceBGList[this.state.letterPlay]) {
-            this.soundSentenceArray[this.state.letterPlay].stop();
+        const soundLetter = this.state.letterSoundPlay;
+        const soundWord = this.state.wordSoundPlay;
+        const soundSentence = this.state.sentenceSoundPlay;
+        
+        if(this.state.prevBG == this.sentenceBGList[this.state.letterPlay]) {
+            soundSentence.stop();
             this.setState({menuLetterHide: '-1000%', 
                     imageBackground: letterBGList[this.state.letterPlay],
                     prevHide: letterBGList[this.state.letterPlay] == LetterA ? hideLeft : showPrev,
@@ -260,15 +294,13 @@ class Letters extends Component {
                     speaker2Hide: hideLeft, prevBG: letterBGList[this.state.letterPlay]});
                 
         } else {
-            this.soundLetterArray[this.state.letterPlay].stop();
-            this.soundWordArray[this.state.wordPlay].stop();
+            this.handleBackPress();
             if(this.state.imageBackground == imageMainBG) {
-                for(i = 0; i < 18; i++) {
-                    this.soundLetterArray[i].release();
-                    this.soundWordArray[i].release();
-                    this.soundSentenceArray[i].release();
+                if((soundLetter != null && soundWord != null) && soundSentence != null) {
+                    soundLetter.release();
+                    soundWord.release();
+                    soundSentence.release();
                 }
-                
                 this.props.navigation.navigate('mainMenu');
             } else {
                 this.setState({menuLetterHide: '20%', imageBackground: imageMainBG,
@@ -289,7 +321,121 @@ class Letters extends Component {
     render() {
         return (
             
-            <ImageBackground style={styles.image} source={this.state.imageBackground} >
+            <View style={{width: '100%', height: '100%'}}>
+
+                <View style={{position: 'absolute', top: this.state.imageBackground == sentenceY ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={sentenceY} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == sentenceW ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={sentenceW} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == sentenceU ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={sentenceU} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == sentenceT ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={sentenceT} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == sentenceS ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={sentenceS} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == sentenceO ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={sentenceO} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == sentenceN ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={sentenceN} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == sentenceM ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={sentenceM} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == sentenceL ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={sentenceL} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == sentenceK ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={sentenceK} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == sentenceI ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={sentenceI} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == sentenceH ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={sentenceH} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == sentenceG ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={sentenceG} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == sentenceF ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={sentenceF} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == sentenceE ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={sentenceE} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == sentenceD ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={sentenceD} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == sentenceB ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={sentenceB} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == sentenceA ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={sentenceA} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+
+
+                <View style={{position: 'absolute', top: this.state.imageBackground == LetterY ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={LetterY} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == LetterW ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={LetterW} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == LetterU ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={LetterU} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == LetterT ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={LetterT} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == LetterS ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={LetterS} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == LetterO ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={LetterO} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == LetterN ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={LetterN} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == LetterM ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={LetterM} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == LetterL ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={LetterL} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == LetterK ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={LetterK} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == LetterI ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={LetterI} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == LetterH ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={LetterH} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == LetterG ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={LetterG} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == LetterF ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={LetterF} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == LetterE ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={LetterE} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == LetterD ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={LetterD} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == LetterB ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={LetterB} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == LetterA ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={LetterA} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
+                <View style={{position: 'absolute', top: this.state.imageBackground == imageMainBG ? '0%' : '-1000%', width: '100%', height: '100%'}}>
+                    <Image source={imageMainBG} style={{width: '100%', height: '100%', resizeMode: 'stretch'}} />
+                </View>
 
                 {/* Start of Page Letters Code Part */}
                 {/* Sentence Button */}
@@ -425,7 +571,7 @@ class Letters extends Component {
                         <Image source={HomeIcon} style={styles.home}></Image>
                     </TouchableOpacity>
                 </View>
-            </ImageBackground>
+            </View>
         )
     }
 }
