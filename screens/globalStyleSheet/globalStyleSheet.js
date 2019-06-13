@@ -37,12 +37,14 @@ export const globalStyleSheet = {
     // Back Button Icon
     backContainer: {
         position: 'absolute',
-         left: '1%',
-         top: '-2%',
+        left: '1%',
+        top: '-2%',
+        width: '14%',
+        height: '28%',
     },
     back: {
-        width: wp('14%'),
-        height: hp('28%'),
+        width: '100%',
+        height: '100%',
         resizeMode: 'contain',
     },
 
@@ -362,7 +364,6 @@ export const globalStyleSheet = {
 
     //Glow container
     VideoContainer:{
-<<<<<<< HEAD
         position: 'absolute',
         left: '52%',
         top: '20%',
@@ -375,11 +376,6 @@ export const globalStyleSheet = {
         resizeMode: 'contain'
     },
     
-=======
-        left: '40%', 
-        top: '-20%'
-    },
->>>>>>> 18080426cb2b8e04d66f9802bf798106d136f67f
     //vocab container
     vocabContainer:{
         position: 'absolute',

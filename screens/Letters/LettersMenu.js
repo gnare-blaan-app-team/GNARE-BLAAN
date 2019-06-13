@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Text, View, Image, StyleSheet, TouchableOpacity , ImageBackground } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
-
 class MenuItem extends Component {
     static navigationOptions = {
         header: null,
@@ -34,6 +33,6 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
     }
 
-})
+});
 
 export default withNavigation(MenuItem);

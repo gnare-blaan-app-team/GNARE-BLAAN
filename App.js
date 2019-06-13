@@ -523,6 +523,7 @@ const RootStack = StackNavigator(
 
   {
     initialRouteName: 'home',
+    cardStyle: {backgroundColor: 'transperent', shadowColor: 'transperent'},
   }
   
 );
