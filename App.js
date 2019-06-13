@@ -94,7 +94,7 @@ import SentenceW from './screens/Letters/letterSentenceScreens/sentenceW';
 import SentenceY from './screens/Letters/letterSentenceScreens/sentenceY';
 
 
-// Number Sentence Import 
+// Number Sentence Import
 
 import Sentence1 from './screens/Numbers/numberSentenceScreens/sentence1';
 import Sentence2 from './screens/Numbers/numberSentenceScreens/sentence2';
@@ -280,7 +280,7 @@ const RootStack = StackNavigator(
 
 
 
-    // Page Letter  
+    // Page Letter
 
     pageA: PageA,
     pageB: PageB,
@@ -503,14 +503,14 @@ const RootStack = StackNavigator(
     morning: Morning,
     star: Star,
     sun: Sun,
-    
+
     //Vocabulary9
     january: January,
     april: April,
     august: August,
 
-    
-  
+
+
 
     //Culture and Arts
     cultureandarts: cultureandartsMain,
@@ -525,7 +525,7 @@ const RootStack = StackNavigator(
     initialRouteName: 'home',
     cardStyle: {backgroundColor: 'transperent', shadowColor: 'transperent'},
   }
-  
+
 );
 
 export default class App extends React.Component {
