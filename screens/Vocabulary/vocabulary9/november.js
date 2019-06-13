@@ -16,7 +16,7 @@ class November extends Component {
 
     componentDidMount() {
         this.forceUpdate();
-        this.number1 = new Sound('number_1.mp3', Sound.MAIN_BUNDLE, (error) => {
+        this.vocab9_november = new Sound('vocab9_november.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);
                 return;
@@ -34,18 +34,20 @@ class November extends Component {
 
 
     handleBackPress = () => {
-        this.number1.pause();
+        this.vocab9_november.pause();
     }
 
-    playAsound_2 = () => {
-        this.number1.play();
+    playNovembersound = () => {
+        this.vocab9_november.play();
     }
 
     goBack = () => {
-        this.props.navigation.navigate('numbers');
+        this.vocab9_november.pause();
+        this.props.navigation.navigate('vocabularyMenu');
     }
 
     gotoMainMenu = () => {
+        this.vocab9_november.pause();
         this.props.navigation.navigate('mainMenu');
     }
 
@@ -55,18 +57,18 @@ class November extends Component {
                 source={NovemberBG}
             >
                 <View style={globalStyleSheet.A_Speaker_Container_2}>
-                    <TouchableOpacity onPress={this.playAsound_2}>
+                    <TouchableOpacity onPress={this.playNovembersound}>
                         <Image
                             source={Speaker_icon}
                             style={globalStyleSheet.A_Speaker_2}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={globalStyleSheet.backContainer}>
+                <View style={globalStyleSheet.VocabBackContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
                             source={Back_icon}
-                            style={globalStyleSheet.back}
+                            style={globalStyleSheet.VocabBack}
                         ></Image>
                     </TouchableOpacity>
                 </View>

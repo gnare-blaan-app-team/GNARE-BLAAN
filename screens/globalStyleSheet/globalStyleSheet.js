@@ -5,6 +5,7 @@ export const globalStyleSheet = {
 
     // Image Background
     image: {
+        position: 'absolute',
         flex: 1,
         width: '100%',
         height: '100%',
@@ -31,8 +32,10 @@ export const globalStyleSheet = {
     // Pencil
     pencilContainer: {
         position: 'absolute',
-        left: '11%',
-        top: '23%',
+        left: '10%',
+        top: '18%',
+        width: '9%',
+        height: '24%',
     },
     pencil: {
         width: wp('8%'),
@@ -57,22 +60,34 @@ export const globalStyleSheet = {
         position: 'absolute',
         left: '85%',
         top: '-2%',
+        width: '14%',
+        height: '28%',
     },
     home: {
-        width: wp('14%'),
-        height: hp('28%'),
+        width: '100%',
+        height: '100%',
         resizeMode: 'contain',
     },
 
     // Sentence Icon
     sentenceIconContainer: {
         position: 'absolute',
-        left: '83%',
+        left: '80%',
         top: '73%',
+        width: '14%',
+        height: '28%',
     },
     sentenceIcon: {
-        width: wp('14%'),
-        height: hp('28%'),
+        width: '100%',
+        height: '100%',
+        resizeMode: 'contain',
+    },
+
+
+    // Contain Image
+    containImage: {
+        width: '100%',
+        height: '100%',
         resizeMode: 'contain',
     },
 
@@ -96,11 +111,13 @@ export const globalStyleSheet = {
     A_Speaker_Container: {
         position: 'absolute',
         left: '42%',
-        top: '27%',
+        top: '20%',
+        width: '6%',
+        height: '10%',
     },
     A_Speaker: {
-        width: wp('6'),
-        height: hp('10%'),
+        width: '100%',
+        height: '100%',
         resizeMode: 'contain',
     },
 
@@ -108,11 +125,13 @@ export const globalStyleSheet = {
     A_Speaker_Container_2: {
         position: 'absolute',
         left: '80%',
-        top: '27%',
+        top: '20%',
+        width: '6%',
+        height: '10%',
     },
     A_Speaker_2: {
-        width: wp('6'),
-        height: hp('10%'),
+        width: '100%',
+        height: '100%',
         resizeMode: 'contain',
     },
 
@@ -120,23 +139,27 @@ export const globalStyleSheet = {
     nextContainer: {
         position: 'absolute',
         left: '83%',
-        top: '40%',
+        top: '45%',
+        width: '12%',
+        height: '24%',
     },
     next: {
-        width: wp('15%'),
-        height: hp('30%'),
+        width: '100%',
+        height: '100%',
         resizeMode: 'contain',
     },
 
     // Prev Icon (Left side)
     prevContainer: {
         position: 'absolute',
-        left: '2%',
+        left: '5%',
         top: '40%',
+        width: '12%',
+        height: '24%',
     },
     prev: {
-        width: wp('14%'),
-        height: hp('28%'),
+        width: '100%',
+        height: '100%',
         resizeMode: 'contain',
     },
 
@@ -302,6 +325,16 @@ export const globalStyleSheet = {
         flexDirection: 'row',
         flexWrap: 'wrap',
     },
+    VmenuContainer: {
+        justifyContent:'center',
+        position: 'relative',
+        top: '9%',
+        left: '5%',
+        width: '98%',
+        height: '80%',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+    },
 
     // Letter Menu Container
     menuLetterContainer: {
@@ -345,16 +378,18 @@ export const globalStyleSheet = {
         height: '100%',
         backgroundColor: 'rgb(0, 0, 0)',
     },
-    //Glow video
-    Glow:{
-        width: wp('24%'), 
-        height: hp('30%'), 
-    },
+
     //Glow container
     VideoContainer:{
-        top: '35%',
-        left: '60%', 
-        position:'absolute',
-    }
+        left: '40%', 
+        top: '-20%'
+    },
+    //vocab container
+    vocabContainer:{
+        position: 'absolute',
+        top: '10%',
+        justifyContent: 'center',
+    },
+
 };
 

@@ -148,7 +148,6 @@ class PageB extends Component {
     }
 
 
-
     render() {
         return (
             <ImageBackground style={globalStyleSheet.image}

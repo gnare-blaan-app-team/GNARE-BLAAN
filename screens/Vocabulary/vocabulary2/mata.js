@@ -16,7 +16,7 @@ class Mata extends Component {
 
     componentDidMount() {
         this.forceUpdate();
-        this.number1 = new Sound('number_1.mp3', Sound.MAIN_BUNDLE, (error) => {
+        this.vocab2_mata = new Sound('vocab2_mata.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);
                 return;
@@ -34,18 +34,22 @@ class Mata extends Component {
 
 
     handleBackPress = () => {
-        this.number1.pause();
+        this.vocab2_mata.pause();
     }
 
-    playAsound_2 = () => {
-        this.number1.play();
+    playMatasound = () => {
+        this.vocab2_mata.play();
     }
 
     goBack = () => {
-        this.props.navigation.navigate('numbers');
+        this.vocab2_mata.pause();
+        this.props.navigation.navigate('vocabulary2', {
+            show: 'show',
+        });
     }
 
     gotoMainMenu = () => {
+        this.vocab2_mata.pause();
         this.props.navigation.navigate('mainMenu');
     }
 
@@ -55,18 +59,18 @@ class Mata extends Component {
                 source={MataBG}
             >
                 <View style={globalStyleSheet.A_Speaker_Container_2}>
-                    <TouchableOpacity onPress={this.playAsound_2}>
+                    <TouchableOpacity onPress={this.playMatasound}>
                         <Image
                             source={Speaker_icon}
                             style={globalStyleSheet.A_Speaker_2}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={globalStyleSheet.backContainer}>
+                <View style={globalStyleSheet.VocabBackContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
                             source={Back_icon}
-                            style={globalStyleSheet.back}
+                            style={globalStyleSheet.VocabBack}
                         ></Image>
                     </TouchableOpacity>
                 </View>

@@ -2,16 +2,37 @@ import React,{Component} from 'react';
 import { ImageBackground, TouchableOpacity, View, Image, Text, StatusBar} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js';
+import Sound from 'react-native-sound';
 
 import HomepageBackground from './images/GnareMain.gif';
 import About_icon from "./images/Icon_About.png";
 import Like_icon from "./images/Icon_Like.png";
 import Share_icon from "./images/Icon_Share.png";
 
-class Menuscreen extends Component{
+class Homescreen extends Component{
     static navigationOptions = {
         header:null,
     }
+
+    constructor() {
+        super();
+
+        this.state = {
+            change: HomepageBackground,
+        }
+
+    }
+
+    /*
+        changeBG = () => {
+            //alert("sda");
+            this.setState({
+                change: this.state.change == HomepageBackground ? About_icon : HomepageBackground,
+            });
+        }
+    */
+   
+   
 
     gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
@@ -32,13 +53,13 @@ class Menuscreen extends Component{
                         </View>
                         <View style={styles.row}>
                             <View style={styles.HomePageItems} >
-                                <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
+                                <TouchableOpacity  onPress={ ()=>{ Linking.openURL('https://google.com')}} >
                                     <Image style={styles.imageSizeStoryMenu} source={Like_icon} />
                                 </TouchableOpacity>
                             </View>
 
                             <View style={styles.HomePageItems} >
-                                <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
+                                <TouchableOpacity  onPress={ ()=>{ Linking.openURL('https://google.com')}} >
                                     <Image style={styles.imageSizeStoryMenu} source={Share_icon} />
                                 </TouchableOpacity>
                             </View>
@@ -51,9 +72,11 @@ class Menuscreen extends Component{
                         </View>
                     </View>    
            </ImageBackground>
+           
         );
+        
     }
 }
 
 
-export default withNavigation(Menuscreen);
+export default withNavigation(Homescreen);

@@ -4,7 +4,7 @@ import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
 
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
-import SentenceBG7 from '../../images/BG.jpg';
+import SentenceBG7 from '../numbersImage/sentence1.png';
 import Speaker_icon from '../numbersImage/Speaker_icon.png';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
