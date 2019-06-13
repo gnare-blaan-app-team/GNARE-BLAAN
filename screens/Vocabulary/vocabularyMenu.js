@@ -31,6 +31,10 @@ class vocabularyMenu extends Component {
         this.props.navigation.navigate('mainMenu');
     }
 
+    gotoVocab1 = () => {
+        this.props.navigation.navigate('vocabulary1');
+    }
+
     
 
     render(){
@@ -39,7 +43,7 @@ class vocabularyMenu extends Component {
                 <View style={{position: 'absolute', top: '18%', width: '100%', height: '80%'}}>
                     <View style={{width: '100%', height: '30%', flexDirection: 'row', marginBottom: '2%', justifyContent: 'center'}}>
                         <View style={{width: '25%', height: '100%'}}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={this.gotoVocab1}>
                                 <Image style={{width: '100%', height: '100%', resizeMode: 'contain'}} source={MembersFamily_icon} />
                             </TouchableOpacity>
                         </View>

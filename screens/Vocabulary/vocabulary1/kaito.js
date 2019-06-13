@@ -43,7 +43,7 @@ class Kaito extends Component {
 
     goBack = () => {
         this.vocab1_brother.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary1');
     }
 
     gotoMainMenu = () => {

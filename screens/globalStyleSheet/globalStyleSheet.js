@@ -362,13 +362,28 @@ export const globalStyleSheet = {
 
     //Glow container
     VideoContainer:{
+<<<<<<< HEAD
+        position: 'absolute',
+        left: '52%',
+        top: '20%',
+        width: '25%',
+        height: '25%',
+    },
+    Glow:{
+        width: '100%',
+        height: '100%',
+        resizeMode: 'contain'
+    },
+    
+=======
         left: '40%', 
         top: '-20%'
     },
+>>>>>>> 18080426cb2b8e04d66f9802bf798106d136f67f
     //vocab container
     vocabContainer:{
         position: 'absolute',
-        top: '10%',
+        top: '15%',
         justifyContent: 'center',
     },
 };

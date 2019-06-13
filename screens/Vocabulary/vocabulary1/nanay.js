@@ -43,7 +43,7 @@ class Nanay extends Component {
 
     goBack = () => {
         this.vocab1_nanay.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary1');
     }
 
     gotoMainMenu = () => {
