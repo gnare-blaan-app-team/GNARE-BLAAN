@@ -43,7 +43,7 @@ class Bow extends Component {
 
     goBack = () => {
         this.vocab5_bow.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary5');
     }
 
     gotoMainMenu = () => {

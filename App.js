@@ -197,6 +197,7 @@ import Rice from './screens/Vocabulary/vocabulary4/rice';
 import Sweetpotato from './screens/Vocabulary/vocabulary4/sweetpotato';
 
 //Vocabulary5
+import Vocabulary5 from './screens/Vocabulary/vocabulary5/vocabulary5'
 import Ax from './screens/Vocabulary/vocabulary5/ax';
 import Bow from './screens/Vocabulary/vocabulary5/bow';
 import Hawk from './screens/Vocabulary/vocabulary5/hawk';
@@ -459,6 +460,7 @@ const RootStack = StackNavigator(
     sweetpotato: Sweetpotato,
 
     //Vocabulary5
+    vocabulary5: Vocabulary5,
     ax: Ax,
     bow: Bow,
     hawk: Hawk,

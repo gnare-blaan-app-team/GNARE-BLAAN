@@ -43,7 +43,7 @@ class Spear extends Component {
 
     goBack = () => {
         this.vocab5_spear.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary5');
     }
 
     gotoMainMenu = () => {
