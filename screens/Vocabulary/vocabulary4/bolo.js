@@ -43,7 +43,7 @@ class Bolo extends Component {
 
     goBack = () => {
         this.vocab4_bolo.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary4');
     }
 
     gotoMainMenu = () => {

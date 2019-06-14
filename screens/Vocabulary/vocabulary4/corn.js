@@ -43,7 +43,7 @@ class Corn extends Component {
 
     goBack = () => {
         this.vocab4_corn.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary4');
     }
 
     gotoMainMenu = () => {

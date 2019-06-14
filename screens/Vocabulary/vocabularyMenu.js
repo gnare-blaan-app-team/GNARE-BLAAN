@@ -26,9 +26,14 @@ class vocabularyMenu extends Component {
     gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
     }
-
     goBack = () => {
         this.props.navigation.navigate('mainMenu');
+    }
+    gotoVocab3 = () => {
+        this.props.navigation.navigate('vocabulary3');
+    }
+    gotoVocab4 = () => {
+        this.props.navigation.navigate('vocabulary4');
     }
 
     
@@ -49,12 +54,12 @@ class vocabularyMenu extends Component {
                             </TouchableOpacity>
                         </View>
                         <View style={{width: '25%', height: '100%'}}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={this.gotoVocab3}>
                                 <Image style={{width: '100%', height: '100%', resizeMode: 'contain'}} source={FishingTools_icon} />
                             </TouchableOpacity>
                         </View>
                         <View style={{width: '25%', height: '100%'}}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={this.gotoVocab4}>
                                 <Image style={{width: '100%', height: '100%', resizeMode: 'contain'}} source={FarmingTools_icon} />
                             </TouchableOpacity>
                         </View>

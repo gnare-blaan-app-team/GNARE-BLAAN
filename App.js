@@ -174,6 +174,7 @@ import Tuhod from './screens/Vocabulary/vocabulary2/tuhod'
 import Ulo from './screens/Vocabulary/vocabulary2/ulo'
 
 //Vocabulary3
+import Vocabulary3 from './screens/Vocabulary/vocabulary3/vocabulary3';
 import Basket from './screens/Vocabulary/vocabulary3/basket';
 import Crab from './screens/Vocabulary/vocabulary3/crab';
 import Eel from './screens/Vocabulary/vocabulary3/eel';
@@ -184,6 +185,7 @@ import Seashore from './screens/Vocabulary/vocabulary3/seashore';
 import Shrimp from './screens/Vocabulary/vocabulary3/shrimp';
 
 //Vocabulary4
+import Vocabulary4 from './screens/Vocabulary/vocabulary4/vocabulary4';
 import Bamboo from './screens/Vocabulary/vocabulary4/bamboo';
 import Bolo from './screens/Vocabulary/vocabulary4/bolo';
 import Carabao from './screens/Vocabulary/vocabulary4/carabao';
@@ -467,6 +469,7 @@ const RootStack = StackNavigator(
     ulo: Ulo,
 
     //Vocabulary 3
+    vocabulary3: Vocabulary3,
     basket: Basket,
     crab: Crab,
     eel: Eel,
@@ -477,6 +480,7 @@ const RootStack = StackNavigator(
     shrimp: Shrimp,
 
     //Vocabulary4
+    vocabulary4: Vocabulary4,
     bamboo: Bamboo,
     bolo: Bolo,
     carabao: Carabao,
@@ -587,7 +591,7 @@ const RootStack = StackNavigator(
   },
 
   {
-    initialRouteName: 'home',
+    initialRouteName: 'vocabulary4',
   }
   
 );
