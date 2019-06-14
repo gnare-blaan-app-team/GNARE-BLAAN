@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, StyleSheet, ImageBackground, BackHandler, TouchableOpacity } from 'react-native';
+import { View, Image, StyleSheet, ImageBackground, BackHandler, TouchableOpacity, Text} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import MenuItem from './LettersMenu';
 
@@ -394,7 +394,7 @@ class Letters extends Component {
                 <View style={{flexDirection: 'column', position: 'absolute', top: this.state.skipVideo, width: '100%', height: '100%', backgroundColor: 'black'}}>
                     <Video
                             paused={this.state.paused}
-                            source={require('../Flalok/flalokVideos/Story1_EN.mp4')}
+                        source={require('./lettersVideo/Letter_Intro.mp4')}
                             style={{ width: "100%", height: '100%' }}
                             resizeMode="stretch"
                             volume={1}
@@ -410,7 +410,7 @@ class Letters extends Component {
 
                 <View style={{position: 'absolute', top: this.state.hideSkipBtn, left: '1%', width: '14%', height: '28%'}}>
                     <TouchableOpacity onPress={this.skipIntroVideo}>
-                        <Image source={GoBackIcon} style={styles.back}></Image>
+                        <Text style={styles.skip}>Skip video. . .</Text>
                     </TouchableOpacity>
                 </View>
 

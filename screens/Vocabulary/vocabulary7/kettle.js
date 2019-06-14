@@ -43,7 +43,7 @@ class Kettle extends Component {
 
     goBack = () => {
         this.vocab7_kettle.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary7');
     }
 
     gotoMainMenu = () => {

@@ -43,7 +43,7 @@ class Stove extends Component {
 
     goBack = () => {
         this.vocab7_stove.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary7');
     }
 
     gotoMainMenu = () => {

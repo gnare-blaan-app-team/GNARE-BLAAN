@@ -1,14 +1,11 @@
-import React from 'react';
-import { StackNavigator } from 'react-navigation';
-import { StatusBar } from 'react-native';
-
-// Home, Mainmenu Import
-
-import HomePage from './screens/HomePage';
+import React from "react";
+import { createStackNavigator, createAppContainer,createSwitchNavigator } from "react-navigation";
+import { useScreens } from 'react-native-screens';
+import HomeScreen from './screens/HomePage';
 import MainMenu from './screens/MainMenu';
 import LetterScreen from './screens/Letters/letterScreen';
 import Numbers from './screens/Numbers/NumbersScreen';
-
+import { Animated, Easing, Platform } from 'react-native';
 
 // Flalok Stories Import
 
@@ -156,6 +153,7 @@ import Lola from './screens/Vocabulary/vocabulary1/lola'
 import Lolo from './screens/Vocabulary/vocabulary1/lolo'
 
 //Vocabulary2
+import Vocabulary2 from './screens/Vocabulary/vocabulary2/vocabulary2';
 import Balikat from './screens/Vocabulary/vocabulary2/balikat'
 import Baywang from './screens/Vocabulary/vocabulary2/baywang'
 import Binti from './screens/Vocabulary/vocabulary2/binti'
@@ -199,6 +197,7 @@ import Rice from './screens/Vocabulary/vocabulary4/rice';
 import Sweetpotato from './screens/Vocabulary/vocabulary4/sweetpotato';
 
 //Vocabulary5
+import Vocabulary5 from './screens/Vocabulary/vocabulary5/vocabulary5'
 import Ax from './screens/Vocabulary/vocabulary5/ax';
 import Bow from './screens/Vocabulary/vocabulary5/bow';
 import Hawk from './screens/Vocabulary/vocabulary5/hawk';
@@ -222,6 +221,7 @@ import Wall from './screens/Vocabulary/vocabulary6/wall';
 import Window from './screens/Vocabulary/vocabulary6/window';
 
 //Vocabulary7
+import Vocabulary7 from './screens/Vocabulary/vocabulary7/vocabulary7';
 import Cup from './screens/Vocabulary/vocabulary7/cup';
 import Pot from './screens/Vocabulary/vocabulary7/pot';
 import Firewood from './screens/Vocabulary/vocabulary7/firewood';
@@ -245,6 +245,7 @@ import Star from './screens/Vocabulary/vocabulary8/star';
 import Sun from './screens/Vocabulary/vocabulary8/sun';
 
 //Vocabulary9
+import Vocabulary9 from './screens/Vocabulary/vocabulary9/vocabulary9'
 import January from './screens/Vocabulary/vocabulary9/january';
 import February from './screens/Vocabulary/vocabulary9/february';
 import March from './screens/Vocabulary/vocabulary9/march';
@@ -291,16 +292,15 @@ import Prayers_Screen from './screens/CultureandArts/cultureandartsScreens/praye
 import DasalBagoMatulogPlay from './screens/CultureandArts/cultureandartsScreens/prayers/DasalBagoMatulogPlay';
 
 
-// Screen Navigation
+useScreens();
 
-const RootStack = StackNavigator(
-  {
-    home: HomePage,
+
+const AppNavigator = createStackNavigator(
+{
+    home: HomeScreen,
     mainMenu: MainMenu,
     letters: LetterScreen,
-
-
-    // Flalok Stories
+    numbers: Numbers,
 
     flalok: FlalokStoryMenu,
     endstory: EndStoryScreen,
@@ -359,7 +359,7 @@ const RootStack = StackNavigator(
     page100: Page100,
     page200: Page200,
     page300: Page300,
-    page400: Page400,
+    page400: Page400, 
     page500: Page500,
     page1000: Page1000,
 
@@ -436,8 +436,6 @@ const RootStack = StackNavigator(
     tracingW: TracingW,
     tracingY: TracingY,
 
-    numbers: Numbers,
-
     //Vocabularies
     vocabularyMenu: VocabularyMenu,
 
@@ -451,6 +449,7 @@ const RootStack = StackNavigator(
     lolo: Lolo,
 
     //Vocabulary 2
+    vocabulary2: Vocabulary2,
     balikat: Balikat,
     baywang: Baywang,
     binti: Binti,
@@ -494,6 +493,7 @@ const RootStack = StackNavigator(
     sweetpotato: Sweetpotato,
 
     //Vocabulary5
+    vocabulary5: Vocabulary5,
     ax: Ax,
     bow: Bow,
     hawk: Hawk,
@@ -517,6 +517,7 @@ const RootStack = StackNavigator(
     window: Window,
 
     //Vocabulary7
+    vocabulary7: Vocabulary7,
     cup: Cup,
     firewood: Firewood,
     kettle: Kettle,
@@ -540,6 +541,7 @@ const RootStack = StackNavigator(
     sun: Sun,
 
     //Vocabulary9
+    vocabulary9: Vocabulary9,
     january: January,
     february: February,
     march: March,
@@ -578,15 +580,12 @@ const RootStack = StackNavigator(
     tlayong: Tlayong,
 
 
-
-
     //Culture and Arts
     cultureandarts: cultureandartsMain,
     chantsScreen: Chants_Screen,
     kastifunScreen: Kastifun_Screen,
     prayersScreen: Prayers_Screen,
     dasalbagomatulogPlay: DasalBagoMatulogPlay
-
   },
 
   {
@@ -606,3 +605,5 @@ export default class App extends React.Component {
     )
   }
 }
+
+export default createAppContainer(AppNavigator);

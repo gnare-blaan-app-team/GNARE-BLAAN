@@ -58,8 +58,20 @@
 		13AE8A6C8ED9447AB5AA707A /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E24D46A7F96A4314B2CC5E21 /* Octicons.ttf */; };
 		87ED5B99FF15428180DC139C /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9FF27952787E4CAEAF5E9752 /* SimpleLineIcons.ttf */; };
 		B10F9B37F92B46DE81277A0B /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70D3258C10C64B7990B7FAF2 /* Zocial.ttf */; };
+<<<<<<< HEAD
+		86346E4F9EAD4AAF82FCB8B5 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9529D041D28048AABA78A32E /* libRNGestureHandler.a */; };
+		3F954014F8544DC285B56F62 /* libRNGestureHandler-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC018C93F24D4C928CAA5F2C /* libRNGestureHandler-tvOS.a */; };
+		8AB848A920864FC89683B182 /* libRNScreens.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FC585E1AFB4E10A2477E10 /* libRNScreens.a */; };
+		6A47090AA2B7457D9E25EEFB /* libRNSketchCanvas.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CE1D3B0F85F4CA2A7A0EA72 /* libRNSketchCanvas.a */; };
+		9FA3CD5708AB483193ABDEE9 /* libRNSketch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE1C87B9467422EB19493E9 /* libRNSketch.a */; };
+		F4ACBC457D844FC8B6FCFDAA /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D3A8D5B65E4BDB83DB0CD7 /* libRNSVG.a */; };
+		6AA8FB1CCEA542D998F6E1B4 /* libRNSVG-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 995C3B5834C9485DA2B7F009 /* libRNSVG-tvOS.a */; };
+		DC5978C77B844EBA89A16D3C /* libRNSketchView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D593ECE929344EC9A210CA95 /* libRNSketchView.a */; };
+		9515F8F250BE4EFCBE7AB087 /* libRSSignatureCapture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4136EC41EA9D4ABF9171683F /* libRSSignatureCapture.a */; };
+=======
 		9BFAE5C7353246299268D726 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F47154BF1B9948C189AFB1F0 /* libRNGestureHandler.a */; };
 		950F6DF6A286450D9706CBE0 /* libRNGestureHandler-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 535EAA21CD2E4F46893D4226 /* libRNGestureHandler-tvOS.a */; };
+>>>>>>> e60340366d330b2417ee81998d1597e9a846804d
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -389,9 +401,28 @@
 		E24D46A7F96A4314B2CC5E21 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		9FF27952787E4CAEAF5E9752 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		70D3258C10C64B7990B7FAF2 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+<<<<<<< HEAD
+		CA5646E83C88458E8F16D875 /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; name = "RNGestureHandler.xcodeproj"; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		9529D041D28048AABA78A32E /* libRNGestureHandler.a */ = {isa = PBXFileReference; name = "libRNGestureHandler.a"; path = "libRNGestureHandler.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		EC018C93F24D4C928CAA5F2C /* libRNGestureHandler-tvOS.a */ = {isa = PBXFileReference; name = "libRNGestureHandler-tvOS.a"; path = "libRNGestureHandler-tvOS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		B94086A7B7544F8987FA2089 /* RNScreens.xcodeproj */ = {isa = PBXFileReference; name = "RNScreens.xcodeproj"; path = "../node_modules/react-native-screens/ios/RNScreens.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		58FC585E1AFB4E10A2477E10 /* libRNScreens.a */ = {isa = PBXFileReference; name = "libRNScreens.a"; path = "libRNScreens.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		A6A57A8DF44A4239AA55BD59 /* RNSketchCanvas.xcodeproj */ = {isa = PBXFileReference; name = "RNSketchCanvas.xcodeproj"; path = "../node_modules/@terrylinla/react-native-sketch-canvas/ios/RNSketchCanvas/RNSketchCanvas.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		6CE1D3B0F85F4CA2A7A0EA72 /* libRNSketchCanvas.a */ = {isa = PBXFileReference; name = "libRNSketchCanvas.a"; path = "libRNSketchCanvas.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		9BA5CB645ACB40BD9DA88C38 /* RNSketch.xcodeproj */ = {isa = PBXFileReference; name = "RNSketch.xcodeproj"; path = "../node_modules/react-native-sketch/RNSketch.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		FCE1C87B9467422EB19493E9 /* libRNSketch.a */ = {isa = PBXFileReference; name = "libRNSketch.a"; path = "libRNSketch.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		2C1E3A6E77984C10A4785A2C /* RNSVG.xcodeproj */ = {isa = PBXFileReference; name = "RNSVG.xcodeproj"; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		10D3A8D5B65E4BDB83DB0CD7 /* libRNSVG.a */ = {isa = PBXFileReference; name = "libRNSVG.a"; path = "libRNSVG.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		995C3B5834C9485DA2B7F009 /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; name = "libRNSVG-tvOS.a"; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		8CEA60B3A5774712893128EB /* RNSketchView.xcodeproj */ = {isa = PBXFileReference; name = "RNSketchView.xcodeproj"; path = "../node_modules/react-native-sketch-draw/ios/RNSketchView.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		D593ECE929344EC9A210CA95 /* libRNSketchView.a */ = {isa = PBXFileReference; name = "libRNSketchView.a"; path = "libRNSketchView.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		E072D13A67B44C7DAD0C1A53 /* RSSignatureCapture.xcodeproj */ = {isa = PBXFileReference; name = "RSSignatureCapture.xcodeproj"; path = "../node_modules/react-native-signature-capture/ios/RSSignatureCapture.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		4136EC41EA9D4ABF9171683F /* libRSSignatureCapture.a */ = {isa = PBXFileReference; name = "libRSSignatureCapture.a"; path = "libRSSignatureCapture.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+=======
 		8510F6C31FBA4847BFBD1709 /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; name = "RNGestureHandler.xcodeproj"; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		F47154BF1B9948C189AFB1F0 /* libRNGestureHandler.a */ = {isa = PBXFileReference; name = "libRNGestureHandler.a"; path = "libRNGestureHandler.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		535EAA21CD2E4F46893D4226 /* libRNGestureHandler-tvOS.a */ = {isa = PBXFileReference; name = "libRNGestureHandler-tvOS.a"; path = "libRNGestureHandler-tvOS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+>>>>>>> e60340366d330b2417ee81998d1597e9a846804d
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -423,7 +454,17 @@
 				2AF07D9E745942899BB27E25 /* libRNSound.a in Frameworks */,
 				66CF0E3C720A4C3A80D5DC41 /* libRCTVideo.a in Frameworks */,
 				0255ABA27F8445E7B1C61176 /* libRNVectorIcons.a in Frameworks */,
+<<<<<<< HEAD
+				86346E4F9EAD4AAF82FCB8B5 /* libRNGestureHandler.a in Frameworks */,
+				8AB848A920864FC89683B182 /* libRNScreens.a in Frameworks */,
+				6A47090AA2B7457D9E25EEFB /* libRNSketchCanvas.a in Frameworks */,
+				9FA3CD5708AB483193ABDEE9 /* libRNSketch.a in Frameworks */,
+				F4ACBC457D844FC8B6FCFDAA /* libRNSVG.a in Frameworks */,
+				DC5978C77B844EBA89A16D3C /* libRNSketchView.a in Frameworks */,
+				9515F8F250BE4EFCBE7AB087 /* libRSSignatureCapture.a in Frameworks */,
+=======
 				9BFAE5C7353246299268D726 /* libRNGestureHandler.a in Frameworks */,
+>>>>>>> e60340366d330b2417ee81998d1597e9a846804d
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,7 +482,12 @@
 				2D02E4C71E0B4AEC006451C7 /* libRCTText-tvOS.a in Frameworks */,
 				2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */,
 				A625242EE88E4E5B9999696C /* libRNVectorIcons-tvOS.a in Frameworks */,
+<<<<<<< HEAD
+				3F954014F8544DC285B56F62 /* libRNGestureHandler-tvOS.a in Frameworks */,
+				6AA8FB1CCEA542D998F6E1B4 /* libRNSVG-tvOS.a in Frameworks */,
+=======
 				950F6DF6A286450D9706CBE0 /* libRNGestureHandler-tvOS.a in Frameworks */,
+>>>>>>> e60340366d330b2417ee81998d1597e9a846804d
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,7 +664,17 @@
 				405870957842434FB36377D4 /* RNSound.xcodeproj */,
 				41B4EBFCB6A84E28A147A4A6 /* RCTVideo.xcodeproj */,
 				046F2858B8A94E149A8FF37F /* RNVectorIcons.xcodeproj */,
+<<<<<<< HEAD
+				CA5646E83C88458E8F16D875 /* RNGestureHandler.xcodeproj */,
+				B94086A7B7544F8987FA2089 /* RNScreens.xcodeproj */,
+				A6A57A8DF44A4239AA55BD59 /* RNSketchCanvas.xcodeproj */,
+				9BA5CB645ACB40BD9DA88C38 /* RNSketch.xcodeproj */,
+				2C1E3A6E77984C10A4785A2C /* RNSVG.xcodeproj */,
+				8CEA60B3A5774712893128EB /* RNSketchView.xcodeproj */,
+				E072D13A67B44C7DAD0C1A53 /* RSSignatureCapture.xcodeproj */,
+=======
 				8510F6C31FBA4847BFBD1709 /* RNGestureHandler.xcodeproj */,
+>>>>>>> e60340366d330b2417ee81998d1597e9a846804d
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1291,6 +1347,16 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+<<<<<<< HEAD
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+=======
+>>>>>>> e60340366d330b2417ee81998d1597e9a846804d
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1298,6 +1364,15 @@
 					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
+<<<<<<< HEAD
+					"$(SRCROOT)\..\node_modules\react-native-screens\ios",
+					"$(SRCROOT)\..\node_modules\@terrylinla\react-native-sketch-canvas\ios\RNSketchCanvas/**",
+					"$(SRCROOT)\..\node_modules\react-native-sketch\RNSketch",
+					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-sketch-draw\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-signature-capture\ios/**",
+=======
+>>>>>>> e60340366d330b2417ee81998d1597e9a846804d
 				);
 			};
 			name = Debug;
@@ -1325,6 +1400,16 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+<<<<<<< HEAD
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+=======
+>>>>>>> e60340366d330b2417ee81998d1597e9a846804d
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1332,6 +1417,15 @@
 					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
+<<<<<<< HEAD
+					"$(SRCROOT)\..\node_modules\react-native-screens\ios",
+					"$(SRCROOT)\..\node_modules\@terrylinla\react-native-sketch-canvas\ios\RNSketchCanvas/**",
+					"$(SRCROOT)\..\node_modules\react-native-sketch\RNSketch",
+					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-sketch-draw\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-signature-capture\ios/**",
+=======
+>>>>>>> e60340366d330b2417ee81998d1597e9a846804d
 				);
 			};
 			name = Release;
@@ -1358,6 +1452,15 @@
 					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
+<<<<<<< HEAD
+					"$(SRCROOT)\..\node_modules\react-native-screens\ios",
+					"$(SRCROOT)\..\node_modules\@terrylinla\react-native-sketch-canvas\ios\RNSketchCanvas/**",
+					"$(SRCROOT)\..\node_modules\react-native-sketch\RNSketch",
+					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-sketch-draw\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-signature-capture\ios/**",
+=======
+>>>>>>> e60340366d330b2417ee81998d1597e9a846804d
 				);
 			};
 			name = Debug;
@@ -1383,6 +1486,15 @@
 					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
+<<<<<<< HEAD
+					"$(SRCROOT)\..\node_modules\react-native-screens\ios",
+					"$(SRCROOT)\..\node_modules\@terrylinla\react-native-sketch-canvas\ios\RNSketchCanvas/**",
+					"$(SRCROOT)\..\node_modules\react-native-sketch\RNSketch",
+					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-sketch-draw\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-signature-capture\ios/**",
+=======
+>>>>>>> e60340366d330b2417ee81998d1597e9a846804d
 				);
 			};
 			name = Release;
@@ -1418,6 +1530,16 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+<<<<<<< HEAD
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+=======
+>>>>>>> e60340366d330b2417ee81998d1597e9a846804d
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1425,6 +1547,15 @@
 					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
+<<<<<<< HEAD
+					"$(SRCROOT)\..\node_modules\react-native-screens\ios",
+					"$(SRCROOT)\..\node_modules\@terrylinla\react-native-sketch-canvas\ios\RNSketchCanvas/**",
+					"$(SRCROOT)\..\node_modules\react-native-sketch\RNSketch",
+					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-sketch-draw\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-signature-capture\ios/**",
+=======
+>>>>>>> e60340366d330b2417ee81998d1597e9a846804d
 				);
 			};
 			name = Debug;
@@ -1460,6 +1591,16 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+<<<<<<< HEAD
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+=======
+>>>>>>> e60340366d330b2417ee81998d1597e9a846804d
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1467,6 +1608,15 @@
 					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
+<<<<<<< HEAD
+					"$(SRCROOT)\..\node_modules\react-native-screens\ios",
+					"$(SRCROOT)\..\node_modules\@terrylinla\react-native-sketch-canvas\ios\RNSketchCanvas/**",
+					"$(SRCROOT)\..\node_modules\react-native-sketch\RNSketch",
+					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-sketch-draw\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-signature-capture\ios/**",
+=======
+>>>>>>> e60340366d330b2417ee81998d1597e9a846804d
 				);
 			};
 			name = Release;
@@ -1501,6 +1651,16 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+<<<<<<< HEAD
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+=======
+>>>>>>> e60340366d330b2417ee81998d1597e9a846804d
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1508,6 +1668,15 @@
 					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
+<<<<<<< HEAD
+					"$(SRCROOT)\..\node_modules\react-native-screens\ios",
+					"$(SRCROOT)\..\node_modules\@terrylinla\react-native-sketch-canvas\ios\RNSketchCanvas/**",
+					"$(SRCROOT)\..\node_modules\react-native-sketch\RNSketch",
+					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-sketch-draw\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-signature-capture\ios/**",
+=======
+>>>>>>> e60340366d330b2417ee81998d1597e9a846804d
 				);
 			};
 			name = Debug;
@@ -1542,6 +1711,16 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+<<<<<<< HEAD
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+=======
+>>>>>>> e60340366d330b2417ee81998d1597e9a846804d
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1549,6 +1728,15 @@
 					"$(SRCROOT)\..\node_modules\react-native-video\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
+<<<<<<< HEAD
+					"$(SRCROOT)\..\node_modules\react-native-screens\ios",
+					"$(SRCROOT)\..\node_modules\@terrylinla\react-native-sketch-canvas\ios\RNSketchCanvas/**",
+					"$(SRCROOT)\..\node_modules\react-native-sketch\RNSketch",
+					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-sketch-draw\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-signature-capture\ios/**",
+=======
+>>>>>>> e60340366d330b2417ee81998d1597e9a846804d
 				);
 			};
 			name = Release;

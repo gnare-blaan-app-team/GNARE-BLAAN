@@ -45,28 +45,30 @@ class Page7 extends Component {
         this.number7.play();
     }
     gotoSentence7 = () => {
-        this.props.navigation.navigate('sentence7');
+        this.props.navigation.replace('sentence7');
+        this.number7.pause();
     }
     goBack = () => {
-        this.props.navigation.navigate('numbers');
+        this.props.navigation.replace('numbers');
+        this.number7.pause();
     }
     gotoMainMenu = () => {
-        this.props.navigation.navigate('mainMenu');
+        this.props.navigation.replace('mainMenu');
+        this.number7.pause();
     }
     gotoTracingB = () => {
-        this.props.navigation.navigate('tracingB');
+        this.props.navigation.replace('tracingB');
+        this.number7.pause();
     }
 
     gotoNextPage = () => {
-        this.props.navigation.navigate('page8');
-        this.letter_play_a.pause();
-        this.wordplay_a.pause();
+        this.props.navigation.replace('page8');
+        this.number7.pause();
     }
 
     goPrev = () => {
-        this.props.navigation.navigate('page6');
-        this.letter_play_b.pause();
-        this.wordplay_b.pause();
+        this.props.navigation.replace('page6');
+        this.number7.pause();
     }
 
     render() {

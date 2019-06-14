@@ -43,7 +43,7 @@ class Mortar extends Component {
 
     goBack = () => {
         this.vocab7_mortar.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary7');
     }
 
     gotoMainMenu = () => {

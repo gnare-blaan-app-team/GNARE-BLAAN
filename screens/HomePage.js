@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { ImageBackground, TouchableOpacity, View, Image, Text} from 'react-native';
+import { ImageBackground, TouchableOpacity, View, Image, Text, StatusBar} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js';
 import Sound from 'react-native-sound';
@@ -22,9 +22,10 @@ class Homescreen extends Component{
         }
 
     }
+<<<<<<< HEAD
 
     /*
-        ch angeBG = () => {
+        changeBG = () => {
             //alert("sda");
             this.setState({
                 change: this.state.change == HomepageBackground ? About_icon : HomepageBackground,
@@ -44,10 +45,17 @@ class Homescreen extends Component{
    
 
     gotoMainMenu = () => {
+=======
+   
+      gotoMainMenu = () => {
+>>>>>>> fb2153a4a1355691cae3df667829a48a792c22c6
         this.props.navigation.navigate('mainMenu');
     }
 
+
+
     render(){
+      StatusBar.setHidden(true);
         return(
            <ImageBackground style={styles.image} source={HomepageBackground}>
                <View style={{position: "absolute", width:"100%", height:"100%"}}>
