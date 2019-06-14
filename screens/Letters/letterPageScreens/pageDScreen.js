@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { View, Image, ImageBackground, BackHandler, TouchableOpacity } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { withNavigation } from 'react-navigation';
 import Sound from 'react-native-sound';
-import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
+import Video from 'react-native-video';
 import LetterBackground from '../lettersImage/LetterD.png';
 import SentenceIcon from '../../images/Letters_Info_Icon.png';
 import SpeakerIcon from '../../images/Speaker_icon.png';
@@ -11,15 +12,52 @@ import NextIcon from '../../images/Next_Icon.png';
 import GoBackIcon from '../../images/Back_icon.png';
 import HomeIcon from '../../images/Home_icon.png';
 import PrevIcon from '../../images/Prev_Icon.png';
+import ImageGlow from '../lettersGlow/glow-D.mp4';
+import FrontImage from '../lettersImage/glow-D.png';
+import SentenceNavigator from '../../NavigationMenu/SentenceNavigator';
+import BackNavigator from '../../NavigationMenu/BackNavigator';
+import NextNavigator from '../../NavigationMenu/NextNavigator';
+import HomeNavigator from '../../NavigationMenu/HomeNavigator';
+import Speaker1 from '../../NavigationMenu/Speaker1';
+import Speaker2 from '../../NavigationMenu/Speaker2';
+import PencilNavigator from '../../NavigationMenu/PencilNavigator';
+import PrevNavigator from '../../NavigationMenu/PrevNavigator';
 
+
+
+import { globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
 class PageD extends Component {
     static navigationOptions = {
         header: null,
     }
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            repeat: false,
+            rate: 1,
+            volume: 1,
+            muted: false,
+            resizeMode: 'contain',
+            duration: 0.0,
+            progress: 0.0,
+            currentTime: 0.0,
+            paused: false,
+            rateText: '1.0',
+            pausedText: 'Play',
+            hideControls: false,
+            hideWidth: wp('21%'),
+            hideHeight: hp('30%'),
+
+        };
+        this.video = null;
+        this.onEnd = this._onEnd.bind(this);
+    }
+
      componentDidMount() {
-         this.forceUpdate();
+         this.setState({ paused: false, toPlay: 'EN' })
         this.letter_play_d = new Sound('letter_play_d.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);
@@ -47,6 +85,7 @@ class PageD extends Component {
     handleBackPress = () => {
         this.letter_play_d.pause();
         this.wordplay_d.pause();
+        this.setState({ paused: true, toPlay: 'EN' })
     }
 
     playAsound = () => {
@@ -61,7 +100,15 @@ class PageD extends Component {
 
     }
 
+    _onEnd() {
+        let state = this.state;
+        state.paused = true;
+        this.setState(state);
+        //setTimeout(() => this.video.seek(0.0));
+    }
+
     playAsound_2 = () => {
+        this.setState({ paused: false, toPlay: 'EN' })
         this.letter_play_d.stop(() => {
             this.mute.play();
         });
@@ -70,6 +117,7 @@ class PageD extends Component {
                 this.wordplay_d.play()
             });
         }
+        this.setState({ hideWidth: 0, hideHeight: 0 })
     }
 
     gotoSentenceD = () => {
@@ -89,7 +137,7 @@ class PageD extends Component {
     }
 
     gotoNextPage = () => {
-        this.props.navigation.navigate('pageE');
+        this.props.navigation.push('pageE');
         this.letter_play_d.pause();
         this.wordplay_d.pause();
     }
@@ -101,7 +149,7 @@ class PageD extends Component {
     }
     
     goPrev = () => {
-        this.props.navigation.navigate('pageB');
+        this.props.navigation.push('pageB');
         this.letter_play_d.pause();
         this.wordplay_d.pause();
     }
@@ -141,7 +189,23 @@ class PageD extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-
+                <View style={globalStyleSheet.VideoContainer}>
+                    <Video ref={(ref) => { this.video = ref }}
+                        source={ImageGlow}
+                        onLoad={() => this.setState({ showThumbnail: false })}
+                        repeat={this.state.repeat}
+                        rate={this.state.rate}
+                        volume={this.state.volume}
+                        muted={this.state.muted}
+                        resizeMode={this.state.resizeMode}
+                        paused={this.state.paused}
+                        onLoad={this.onLoad}
+                        onProgress={this.onProgress}
+                        onEnd={this.onEnd}
+                        style={globalStyleSheet.Glow}
+                    />
+                    <Image source={FrontImage} style={{ width: this.state.hideWidth, height: this.state.hideHeight, position: 'absolute', left: '5.80%' }} />
+                </View>
                 <View style={globalStyleSheet.pencilContainer}>
                     <TouchableOpacity onPress={this.gotoTracingD}>
                         <Image

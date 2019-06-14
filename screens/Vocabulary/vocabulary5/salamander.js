@@ -43,7 +43,7 @@ class Salamander extends Component {
 
     goBack = () => {
         this.vocab5_salamander.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary5');
     }
 
     gotoMainMenu = () => {

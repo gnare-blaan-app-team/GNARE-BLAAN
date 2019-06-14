@@ -43,7 +43,7 @@ class Seashore extends Component {
 
     goBack = () => {
         this.vocab3_seashore.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary3');
     }
 
     gotoMainMenu = () => {

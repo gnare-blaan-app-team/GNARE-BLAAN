@@ -43,7 +43,9 @@ class Mata extends Component {
 
     goBack = () => {
         this.vocab2_mata.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary2', {
+            show: 'show',
+        });
     }
 
     gotoMainMenu = () => {
