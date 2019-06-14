@@ -32,8 +32,7 @@ class SentenceA extends Component {
 
     goBack = () => {
         this.letter_sentence_a.pause();
-        const { goBack } = this.props.navigation;
-        goBack();
+        this.props.navigation.push('pageA');
     }
 
     gotoMainMenu = () => {

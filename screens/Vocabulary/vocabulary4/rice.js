@@ -43,7 +43,7 @@ class Rice extends Component {
 
     goBack = () => {
         this.vocab4_rice.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary4');
     }
 
     gotoMainMenu = () => {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ImageBackground, Image, TouchableOpacity } from 'react-native';
+import { View, ImageBackground, Image, TouchableOpacity, StatusBar,  } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import MenuItem from './MenuItem';
 
@@ -9,6 +9,11 @@ class Mainmenu extends Component {
     static navigationOptions = {
         header: null,
     }
+
+    constructor(props) {
+        super(props);
+    }
+
 
     gotoLetters = () => {
         this.props.navigation.navigate('letters');
@@ -39,6 +44,7 @@ class Mainmenu extends Component {
     }
 
     render() {
+        StatusBar.setHidden(true);
         return (
             <ImageBackground style={styles.image}
                 source={require('./images/BG.jpg')}
@@ -70,7 +76,6 @@ class Mainmenu extends Component {
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
-
         )
     }
 }

@@ -14,6 +14,15 @@ export const globalStyleSheet = {
         resizeMode: 'contain',
     },
 
+    image2: {
+        flex: 1,
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        resizeMode: 'contain',
+    },
+
     //test Container for Prayers - DasalBagoMatulog
     container: {
         flex: 1, 
@@ -37,13 +46,22 @@ export const globalStyleSheet = {
     // Back Button Icon
     backContainer: {
         position: 'absolute',
-         left: '1%',
-         top: '-2%',
+        left: '1%',
+        top: '-2%',
+        width: '14%',
+        height: '28%',
     },
     back: {
-        width: wp('14%'),
-        height: hp('28%'),
+        width: '100%',
+        height: '100%',
         resizeMode: 'contain',
+    },
+    skip: {
+        width:'100%',
+        top:'20%',
+        left:'15%',
+        fontSize:24,
+        color:'white'
     },
 
     // Home Icon
@@ -316,6 +334,16 @@ export const globalStyleSheet = {
         flexDirection: 'row',
         flexWrap: 'wrap',
     },
+    VmenuContainer: {
+        justifyContent:'center',
+        position: 'relative',
+        top: '9%',
+        left: '5%',
+        width: '98%',
+        height: '80%',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+    },
 
     // Letter Menu Container
     menuLetterContainer: {
@@ -362,9 +390,21 @@ export const globalStyleSheet = {
 
     //Glow container
     VideoContainer:{
-        left: '40%', 
-        top: '-20%'
+        position: 'absolute',
+        left: '52%',
+        top: '20%',
+        width: '25%',
+        height: '25%',
     },
+    Glow:{
+        width: '100%',
+        height: '100%',
+        resizeMode: 'contain'
+    },
+    //     left: '40%', 
+    //     top: '-20%'
+    // },
+
     //vocab container
     vocabContainer:{
         position: 'absolute',

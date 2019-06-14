@@ -45,29 +45,31 @@ class Page80 extends Component {
         this.number80.play();
     }
     gotoSentence80 = () => {
-        this.props.navigation.navigate('sentence80');
+        this.props.navigation.replace('sentence80');
+        this.number80.pause();
     }
     goBack = () => {
-        this.props.navigation.navigate('numbers');
+        this.props.navigation.replace('numbers');
+        this.number80.pause();
     }
     gotoMainMenu = () => {
-        this.props.navigation.navigate('mainMenu');
+        this.props.navigation.replace('mainMenu');
+        this.number80.pause();
     }
 
     gotoTracingB = () => {
-        this.props.navigation.navigate('tracingB');
+        this.props.navigation.replace('tracingB');
+        this.number80.pause();
     }
 
     gotoNextPage = () => {
-        this.props.navigation.navigate('page90');
-        this.letter_play_a.pause();
-        this.wordplay_a.pause();
+        this.props.navigation.replace('page90');
+        this.number80.pause();
     }
 
     goPrev = () => {
-        this.props.navigation.navigate('page70');
-        this.letter_play_b.pause();
-        this.wordplay_b.pause();
+        this.props.navigation.replace('page70');
+        this.number80.pause();
     }
 
     render() {
