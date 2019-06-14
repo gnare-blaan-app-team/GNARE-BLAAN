@@ -43,6 +43,7 @@ class Story1Screen extends Component {
             hideSub: '-1000%',
 
             controlHide: '-1000%',
+            vidSkip: '-1000%',
             
             progressHeight: 48,
             paused: false,
@@ -72,7 +73,7 @@ class Story1Screen extends Component {
     handleProgressPress = e => {
         
         let position = e.nativeEvent.locationX;
-        let progress = (position / 250) * this.state.duration;
+        let progress = (position / 300) * this.state.duration;
         this.player.seek(progress);
     };
 
@@ -124,6 +125,14 @@ class Story1Screen extends Component {
     gotoPrayers = () => {
         this.props.navigation.navigate('prayersScreen');
     }
+
+    hideControl = () => {
+        this.setState({
+            controlHide: this.state.controlHide == 0 ? -1000 : 0,
+            vidSkip: this.state.vidSkip == '-2%' ? '-1000%' : '-2%',
+            hideSub: this.state.hideSub == '-1000%'  ? '3%' : '-1000%',
+        })
+    }
     
 
     render() {
@@ -132,18 +141,13 @@ class Story1Screen extends Component {
             <View style={videoStyle.container}>
                 
                 <View style={{opacity: this.state.opacityVideo}}>
-                    <TouchableWithoutFeedback onPress={() => {
-                        this.setState({
-                            controlHide: this.state.controlHide == 0 ? -1000 : 0,
-                            hideSub: this.state.hideSub == '-1000%'  ? '3%' : '-1000%',
-                        })
-                    }}>
+                    <TouchableWithoutFeedback onPress={this.hideControl}>
                         <Video
                             paused={this.state.paused}
                             source={this.state.videoFile}
                             
                             style={{ width: "100%", height: '100%' }}
-                            resizeMode="contain"
+                            resizeMode="stretch"
                             volume={this.state.volume}
                             muted={this.state.muted}
                             onLoad={this.handleLoad}
@@ -156,7 +160,7 @@ class Story1Screen extends Component {
                         />
                     </TouchableWithoutFeedback>
 
-                    <View style={{position: 'absolute', justifyContent: 'center', top: this.state.controlHide, alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.5)', width: '100%', height: '15%'}}>
+                    <View style={{position: 'absolute', justifyContent: 'center', top: this.state.controlHide, alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.8)', width: '100%', height: '15%'}}>
                         <Text style={{color: 'white', fontSize: 25}}>Story 1</Text>
                     </View>
 
@@ -172,7 +176,7 @@ class Story1Screen extends Component {
                         </TouchableOpacity>
                     </View>
 
-                    <View style={{backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    <View style={{backgroundColor: "rgba(0, 0, 0, 0.8)",
                         height: '15%',
                         left: 0,
                         bottom: this.state.controlHide,
@@ -187,7 +191,7 @@ class Story1Screen extends Component {
                             <Icon name={!this.state.paused ? "pause" : "play"} size={30} color="#FFF" />
                         </TouchableWithoutFeedback>
 
-                        <View style={{marginRight: '3%', marginLeft: '18%'}}>
+                        <View style={{marginRight: '3%', marginLeft: '15%'}}>
                             <TouchableWithoutFeedback onPress={this.handleBackward}>
                                 <Icon name={"backward"} size={25} color="#FFF" />
                             </TouchableWithoutFeedback>
@@ -199,12 +203,12 @@ class Story1Screen extends Component {
                                         color="#FFF"
                                         unfilledColor="rgba(255,255,255,.5)"
                                         borderColor="#FFF"
-                                        width={250}
+                                        width={300}
                                         height={20}
                                     />
                             </TouchableWithoutFeedback>
                         </View>
-                        <View style={{marginRight: '18%', marginLeft: '3%'}}>
+                        <View style={{marginRight: '15%', marginLeft: '3%'}}>
                             <TouchableWithoutFeedback onPress={this.handleForward}>
                                 <Icon name={"forward"} size={25} color="#FFF" />
                             </TouchableWithoutFeedback>
@@ -215,7 +219,9 @@ class Story1Screen extends Component {
                         </Text>
                     </View>
 
-                    <View style={{position: 'absolute', top: this.state.controlHide, left: 0}}>
+                    <View style={{position: 'absolute', 
+                                top: this.state.vidSkip,
+                                left: '1%', width: '14%', height: '28%',}}>
                         <TouchableOpacity onPress={this.goBack}>
                             <Image
                                 source={Back_icon}
@@ -255,15 +261,14 @@ class Story1Screen extends Component {
                         </View>
                     </View>
 
-
-                    <View style={{position: 'absolute', left: '85%', top: this.state.hideHome,}}>
+                    <View style={{position: 'absolute', width: '14%', height: '28%', left: '85%', top: this.state.hideHome,}}>
                         <TouchableOpacity onPress={this.gotoMainMenu}>
                             <Image
                                 source={Home_icon}
                                 style={styles.home}
                             ></Image>
                         </TouchableOpacity>
-                    </View>         
+                    </View>
             </View>
         );
     }

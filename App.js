@@ -1,14 +1,11 @@
-import React from 'react';
-import { StackNavigator } from 'react-navigation';
-import { StatusBar } from 'react-native';
-
-// Home, Mainmenu Import
-
-import HomePage from './screens/HomePage';
+import React from "react";
+import { createStackNavigator, createAppContainer,createSwitchNavigator } from "react-navigation";
+import { useScreens } from 'react-native-screens';
+import HomeScreen from './screens/HomePage';
 import MainMenu from './screens/MainMenu';
 import LetterScreen from './screens/Letters/letterScreen';
 import Numbers from './screens/Numbers/NumbersScreen';
-
+import { Animated, Easing, Platform } from 'react-native';
 
 // Flalok Stories Import
 
@@ -156,6 +153,7 @@ import Lola from './screens/Vocabulary/vocabulary1/lola'
 import Lolo from './screens/Vocabulary/vocabulary1/lolo'
 
 //Vocabulary2
+import Vocabulary2 from './screens/Vocabulary/vocabulary2/vocabulary2';
 import Balikat from './screens/Vocabulary/vocabulary2/balikat'
 import Baywang from './screens/Vocabulary/vocabulary2/baywang'
 import Binti from './screens/Vocabulary/vocabulary2/binti'
@@ -173,6 +171,7 @@ import Tuhod from './screens/Vocabulary/vocabulary2/tuhod'
 import Ulo from './screens/Vocabulary/vocabulary2/ulo'
 
 //Vocabulary3
+import Vocabulary3 from './screens/Vocabulary/vocabulary3/vocabulary3';
 import Basket from './screens/Vocabulary/vocabulary3/basket';
 import Crab from './screens/Vocabulary/vocabulary3/crab';
 import Eel from './screens/Vocabulary/vocabulary3/eel';
@@ -183,6 +182,7 @@ import Seashore from './screens/Vocabulary/vocabulary3/seashore';
 import Shrimp from './screens/Vocabulary/vocabulary3/shrimp';
 
 //Vocabulary4
+import Vocabulary4 from './screens/Vocabulary/vocabulary4/vocabulary4';
 import Bamboo from './screens/Vocabulary/vocabulary4/bamboo';
 import Bolo from './screens/Vocabulary/vocabulary4/bolo';
 import Carabao from './screens/Vocabulary/vocabulary4/carabao';
@@ -197,6 +197,7 @@ import Rice from './screens/Vocabulary/vocabulary4/rice';
 import Sweetpotato from './screens/Vocabulary/vocabulary4/sweetpotato';
 
 //Vocabulary5
+import Vocabulary5 from './screens/Vocabulary/vocabulary5/vocabulary5'
 import Ax from './screens/Vocabulary/vocabulary5/ax';
 import Bow from './screens/Vocabulary/vocabulary5/bow';
 import Hawk from './screens/Vocabulary/vocabulary5/hawk';
@@ -265,7 +266,26 @@ import Friday from './screens/Vocabulary/vocabulary9/friday';
 import Saturday from './screens/Vocabulary/vocabulary9/saturday';
 import Sunday from './screens/Vocabulary/vocabulary9/sunday';
 
+<<<<<<< HEAD
 
+=======
+//Vocabulary10
+import BambooGuitar from './screens/Vocabulary/vocabulary10/bambooGuitar';
+import Blouse from './screens/Vocabulary/vocabulary10/blouse';
+import Comb from './screens/Vocabulary/vocabulary10/comb';
+import Earrings from './screens/Vocabulary/vocabulary10/earrings';
+import Galing from './screens/Vocabulary/vocabulary10/galing';
+import Gong from './screens/Vocabulary/vocabulary10/gong';
+import Guitar from './screens/Vocabulary/vocabulary10/guitar';
+import Headcover from './screens/Vocabulary/vocabulary10/headcover';
+import Kulintang from './screens/Vocabulary/vocabulary10/kulintang';
+import Logdrum from './screens/Vocabulary/vocabulary10/logdrum';
+import Necklace from './screens/Vocabulary/vocabulary10/necklace';
+import Pants from './screens/Vocabulary/vocabulary10/pants';
+import Saul from './screens/Vocabulary/vocabulary10/saul';
+import Skirt from './screens/Vocabulary/vocabulary10/skirt';
+import Tlayong from './screens/Vocabulary/vocabulary10/tlayong';
+>>>>>>> 41916ef890afd3d619b8efcbd20c9fa64cbf6dc8
 
 // Culture and Arts Import
 
@@ -275,16 +295,16 @@ import Kastifun_Screen from './screens/CultureandArts/cultureandartsScreens/kast
 import Prayers_Screen from './screens/CultureandArts/cultureandartsScreens/prayersScreen';
 import DasalBagoMatulogPlay from './screens/CultureandArts/cultureandartsScreens/prayers/DasalBagoMatulogPlay';
 
-// Screen Navigation
 
-const RootStack = StackNavigator(
-  {
-    home: HomePage,
+useScreens();
+
+
+const AppNavigator = createStackNavigator(
+{
+    home: HomeScreen,
     mainMenu: MainMenu,
     letters: LetterScreen,
-
-
-    // Flalok Stories
+    numbers: Numbers,
 
     flalok: FlalokStoryMenu,
     endstory: EndStoryScreen,
@@ -343,7 +363,7 @@ const RootStack = StackNavigator(
     page100: Page100,
     page200: Page200,
     page300: Page300,
-    page400: Page400,
+    page400: Page400, 
     page500: Page500,
     page1000: Page1000,
 
@@ -420,8 +440,6 @@ const RootStack = StackNavigator(
     tracingW: TracingW,
     tracingY: TracingY,
 
-    numbers: Numbers,
-
     //Vocabularies
     vocabularyMenu: VocabularyMenu,
 
@@ -435,6 +453,7 @@ const RootStack = StackNavigator(
     lolo: Lolo,
 
     //Vocabulary 2
+    vocabulary2: Vocabulary2,
     balikat: Balikat,
     baywang: Baywang,
     binti: Binti,
@@ -452,6 +471,7 @@ const RootStack = StackNavigator(
     ulo: Ulo,
 
     //Vocabulary 3
+    vocabulary3: Vocabulary3,
     basket: Basket,
     crab: Crab,
     eel: Eel,
@@ -462,6 +482,7 @@ const RootStack = StackNavigator(
     shrimp: Shrimp,
 
     //Vocabulary4
+    vocabulary4: Vocabulary4,
     bamboo: Bamboo,
     bolo: Bolo,
     carabao: Carabao,
@@ -476,6 +497,7 @@ const RootStack = StackNavigator(
     sweetpotato: Sweetpotato,
 
     //Vocabulary5
+    vocabulary5: Vocabulary5,
     ax: Ax,
     bow: Bow,
     hawk: Hawk,
@@ -544,7 +566,26 @@ const RootStack = StackNavigator(
     saturday: Saturday,
     sunday: Sunday,
 
+<<<<<<< HEAD
 
+=======
+    //Vocabulary10
+    bambooGuitar: BambooGuitar,
+    blouse: Blouse,
+    comb: Comb,
+    earrings: Earrings,
+    galing: Galing,
+    gong: Gong,
+    guitar: Guitar,
+    headcover: Headcover,
+    kulintang: Kulintang,
+    logdrum: Logdrum,
+    necklace: Necklace,
+    pants: Pants,
+    saul: Saul,
+    skirt: Skirt,
+    tlayong: Tlayong,
+>>>>>>> 41916ef890afd3d619b8efcbd20c9fa64cbf6dc8
 
 
     //Culture and Arts
@@ -553,6 +594,7 @@ const RootStack = StackNavigator(
     kastifunScreen: Kastifun_Screen,
     prayersScreen: Prayers_Screen,
     dasalbagomatulogPlay: DasalBagoMatulogPlay
+<<<<<<< HEAD
 
   },
 
@@ -571,4 +613,16 @@ export default class App extends React.Component {
       <RootStack />
     )
   }
+=======
+},
+{
+  initialRouteName:"home",
+  mode: 'card',
+  cardStyle: {
+    backgroundColor: "transperent"
+>>>>>>> 41916ef890afd3d619b8efcbd20c9fa64cbf6dc8
 }
+}
+);
+  
+export default createAppContainer(AppNavigator);

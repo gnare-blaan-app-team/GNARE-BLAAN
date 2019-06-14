@@ -45,29 +45,31 @@ class Page1000 extends Component {
         this.number1000.play();
     }
     gotoSentence1000 = () => {
-        this.props.navigation.navigate('sentence1000');
+        this.props.navigation.replace('sentence1000');
+        this.number1000.pause();
     }
     goBack = () => {
-        this.props.navigation.navigate('numbers');
+        this.props.navigation.replace('numbers');
+        this.number1000.pause();
     }
     gotoMainMenu = () => {
-        this.props.navigation.navigate('mainMenu');
+        this.props.navigation.replace('mainMenu');
+        this.number1000.pause();
     }
 
     goPrev = () => {
-        this.props.navigation.navigate('page500');
-        this.letter_play_b.pause();
-        this.wordplay_b.pause();
+        this.props.navigation.replace('page500');
+        this.number1000.pause();
     }
 
     gotoNextPage = () => {
-        this.props.navigation.navigate('page1');
-        this.letter_play_a.pause();
-        this.wordplay_a.pause();
+        this.props.navigation.replace('page1');
+        this.number1000.pause();
     }
 
     gotoTracingB = () => {
-        this.props.navigation.navigate('tracingB');
+        this.props.navigation.replace('tracingB');
+        this.number1000.pause();
     }
 
     render() {

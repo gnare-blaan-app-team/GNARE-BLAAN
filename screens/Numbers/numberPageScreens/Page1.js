@@ -12,16 +12,29 @@ import Home_icon from '../../images/Home_icon.png';
 import PencilIcon from '../../images/Pencil_icon.png';
 import NextIcon from '../../images/Next_Icon.png';
 import GoBackIcon from '../../images/Back_icon.png';
-import PrevIcon from '../../images/Prev_Icon.png';
+import * as Animatable from 'react-native-animatable';
+
 
 class Page1 extends Component {
     static navigationOptions = {
         header: null,
     }
 
+    constructor(props){
+        super(props);
+        this.state={
+            Transition: "slideInLeft",
+            prevTrans:'',
+        }
+    }
+
     componentDidMount() {
         this.forceUpdate();
-        this.number1 = new Sound('number_1.mp3', Sound.MAIN_BUNDLE, (error) => {
+        var show = this.state.prevTrans;
+        if (show == 'slideInRight'){
+            this.setState({ Transition:'slideInRight'})
+        }
+        this.play_number1 = new Sound('number_1.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
                 console.log('failed to load the sound', error);
                 return;
@@ -39,46 +52,49 @@ class Page1 extends Component {
 
 
     handleBackPress = () => {
-        this.number1.pause();
+        this.play_number1.pause();
     }
 
     playAsound_2 = () => {
-        this.number1.play();
+        this.play_number1.play();
     }
 
     gotoSentence1 = () => {
-        this.props.navigation.navigate('sentence1');
+        this.props.navigation.replace('sentence1');
+        this.play_number1.pause();
     }
 
     goBack = () => {
-        this.props.navigation.navigate('numbers');
+        this.props.navigation.replace('numbers', { prevTransition: 'slideInRight', });
+        this.play_number1.pause();
     }
 
     gotoMainMenu = () => {
-        this.props.navigation.navigate('mainMenu');
+        this.props.navigation.replace('mainMenu');
+        this.play_number1.pause();
     }
 
     gotoTracingB = () => {
-        this.props.navigation.navigate('tracingB');
+        this.props.navigation.replace('tracingB');
+        this.play_number1.pause();
     }
 
     gotoNextPage = () => {
-        this.props.navigation.navigate('page2');
-        this.letter_play_a.pause();
-        this.wordplay_a.pause();
+        this.props.navigation.replace('page2');
+        this.play_number1.pause();
     }
 
-    goPrev = () => {
-        this.props.navigation.navigate('page1000');
-        this.letter_play_b.pause();
-        this.wordplay_b.pause();
-    }
 
     render() {
+        const { navigation } = this.props;
+        const itemId = navigation.getParam('prevTransition', 'NO-ID');
+        this.state.prevTrans = itemId;
         return (
+        <Animatable.View animation={this.state.Transition} style={globalStyleSheet.image2}>
             <ImageBackground style={globalStyleSheet.image}
                 source={number1}
             >
+                
                 <View style={globalStyleSheet.A_Speaker_Container_2}>
                     <TouchableOpacity onPress={this.playAsound_2}>
                         <Image
@@ -137,14 +153,6 @@ class Page1 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={globalStyleSheet.prevContainer}>
-                    <TouchableOpacity onPress={this.goPrev}>
-                        <Image
-                            source={PrevIcon}
-                            style={globalStyleSheet.prev}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
                 <View style={globalStyleSheet.pencilContainer}>
                     <TouchableOpacity onPress={this.gotoTracingB}>
                         <Image
@@ -153,7 +161,9 @@ class Page1 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
+                
             </ImageBackground>
+            </Animatable.View>
         )
     }
 }

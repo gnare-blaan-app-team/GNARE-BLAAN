@@ -43,7 +43,7 @@ class Sea extends Component {
 
     goBack = () => {
         this.vocab3_sea.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary3');
     }
 
     gotoMainMenu = () => {
