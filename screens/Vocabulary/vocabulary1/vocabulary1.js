@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler } from 'react-native';
+import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler, Text } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
@@ -7,7 +7,7 @@ import Vocab1BG from './vocabulary1Images/vocab1.png';
 import LolaAsset from './vocabulary1Images/lolaAsset.png';
 import LoloAsset from './vocabulary1Images/loloAsset.png';
 import TatayAsset from './vocabulary1Images/tatayAsset.png';
-import NanayAsset from './vocabulary1Images/motherAsset.png';
+import NanayAsset from './vocabulary1Images/nanayAsset.png';
 import KaibeAsset from './vocabulary1Images/kaibeAsset.png';
 import KaitoAsset from './vocabulary1Images/kaitoAsset.png';
 import Back_icon from '../../images/Back_icon.png';
@@ -26,7 +26,7 @@ class Vocabulary1 extends Component {
     }
 
     goBack = () => {
-        this.props.navigation.navigate('numbers');
+        this.props.navigation.navigate('vocabularyMenu');
     }
     gotoLola = () => {
         this.props.navigation.navigate('lola');
@@ -48,7 +48,7 @@ class Vocabulary1 extends Component {
     }
 
     render() {
-        
+
         return (
             <ImageBackground style={globalStyleSheet.image}
                 source={Vocab1BG}
@@ -69,98 +69,120 @@ class Vocabulary1 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={globalStyleSheet.vocabContainer}>
-                    <TouchableOpacity onPress={this.gotoLola}>
-                        <Image
-                            source={LolaAsset}
-                            style={styles.lolaStyle}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
-                <View style={globalStyleSheet.vocabContainer}>
-                    <TouchableOpacity onPress={this.gotoLolo}>
-                        <Image
-                            source={LoloAsset}
-                            style={styles.loloStyle}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
-                <View style={globalStyleSheet.vocabContainer}>
-                    <TouchableOpacity onPress={this.gotoTatay}>
-                        <Image
-                            source={TatayAsset}
-                            style={styles.tatayStyle}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
-                <View style={globalStyleSheet.vocabContainer}>
-                    <TouchableOpacity onPress={this.gotoNanay}>
-                        <Image
-                            source={NanayAsset}
-                            style={styles.nanayStyle}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
-                <View style={globalStyleSheet.vocabContainer}>
-                    <TouchableOpacity onPress={this.gotoKaibe}>
-                        <Image
-                            source={KaibeAsset}
-                            style={styles.kaibeStyle}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
-                <View style={globalStyleSheet.vocabContainer}>
-                    <TouchableOpacity onPress={this.KaitoNanay}>
-                        <Image
-                            source={KaitoAsset}
-                            style={styles.kaitoStyle}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
+
+
+
+                  <View style={styles.tatayImage}>
+                      <TouchableOpacity onPress={this.gotoTatay}>
+                          <Image
+                              source={TatayAsset}
+                          ></Image>
+                      </TouchableOpacity>
+                  </View>
+
+                  <View style={styles.nanayImage}>
+                      <TouchableOpacity onPress={this.gotoNanay}>
+                          <Image
+                              source={NanayAsset}
+                          ></Image>
+                      </TouchableOpacity>
+                  </View>
+
+                    <View style={styles.loloImage}>
+                        <TouchableOpacity onPress={this.gotoLolo}>
+                            <Image
+                                source={LoloAsset}
+                            ></Image>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style={styles.lolaImage}>
+                        <TouchableOpacity onPress={this.gotoLola}>
+                            <Image
+                                source={LolaAsset}
+                            ></Image>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style={styles.kaitoImage}>
+                        <TouchableOpacity onPress={this.gotoKaito}>
+                            <Image
+                                source={KaitoAsset}
+                            ></Image>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style={styles.kaibeImage}>
+                        <TouchableOpacity onPress={this.gotoKaibe}>
+                            <Image
+                                source={KaibeAsset}
+                            ></Image>
+                        </TouchableOpacity>
+                    </View>
+
+
+
+
             </ImageBackground>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    lolaStyle: {
-        position: 'absolute',
-        right: '80%',
-        width: wp('50%'),
-        height: hp('80%'), 
-        resizeMode: 'contain', 
+
+
+    // familyAssets: {
+    //   margin: 5,
+    //   marginBottom: 0,
+    // },
+
+    lolaImage: {
+      position: 'absolute',
+      left: '20%',
     },
-    loloStyle: {
-        position: 'absolute',
-        right: '80%',
-        width: wp('50%'),
-        height: hp('80%'), 
-        resizeMode: 'contain', 
+
+    loloImage: {
+      position: 'absolute',
+      left: '27%',
+      top: '18%',
+      width: '11%',
+      resizeMode: 'cover',
     },
-    tatayStyle: {
-        position: 'absolute',
-        width: wp('50%'),
-        height: hp('80%'),
-        resizeMode: 'contain', 
+
+    tatayImage: {
+      position: 'absolute',
+      left: '32%',
+      top: '17%',
+      width: '18%',
+      resizeMode: 'cover',
     },
-    nanayStyle: {
-        position: 'absolute',
-        width: wp('50%'),
-        height: hp('80%'),  
-        resizeMode: 'contain',
+
+    nanayImage: {
+      position: 'absolute',
+      left: '45%',
+      top: '21%',
     },
-    kaibeStyle: {
-        position: 'absolute',
-        width: wp('50%'),
-        height: hp('80%'),  
-        resizeMode: 'contain',
+
+    kaibeImage: {
+      position: 'absolute',
+      left: '53%',
+      top: '32%',
     },
-    kaitoStyle: {
-        position: 'absolute',
-        width: wp('50%'),
-        height: hp('80%'),  
-        resizeMode: 'contain',
-    }
+
+    kaitoImage: {
+      position: 'absolute',
+      left: '60%',
+      top: '32%',
+    },
+
+
+
+
+
+    // loloImage: {
+    //   top: 10,
+    //   left: 50,
+    // },
 });
 
 export default withNavigation(Vocabulary1);

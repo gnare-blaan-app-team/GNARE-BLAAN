@@ -52,14 +52,14 @@ class PageA extends Component {
         this.setState({ paused: true, toPlay: 'EN' })
         this.letter_play_a = new Sound('letter_play_a.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
-                console.log('failed to load the sound', error);
+                alert('failed to load the sound', error);
                 return;
             }
             BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
         });
         this.wordplay_a = new Sound('word_play_a.mp3', Sound.MAIN_BUNDLE, (error) => {
             if (error) {
-                console.log('failed to load the sound', error);
+                alert('failed to load the sound', error);
                 return;
             }
             BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);

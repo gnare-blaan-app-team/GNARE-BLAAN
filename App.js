@@ -10,7 +10,6 @@ import LetterScreen from './screens/Letters/letterScreen';
 import Numbers from './screens/Numbers/NumbersScreen';
 
 
-
 // Flalok Stories Import
 
 import FlalokStoryMenu from './screens/Flalok/FlalokStoryMenu';
@@ -95,7 +94,7 @@ import SentenceW from './screens/Letters/letterSentenceScreens/sentenceW';
 import SentenceY from './screens/Letters/letterSentenceScreens/sentenceY';
 
 
-// Number Sentence Import 
+// Number Sentence Import
 
 import Sentence1 from './screens/Numbers/numberSentenceScreens/sentence1';
 import Sentence2 from './screens/Numbers/numberSentenceScreens/sentence2';
@@ -539,7 +538,7 @@ const RootStack = StackNavigator(
     morning: Morning,
     star: Star,
     sun: Sun,
-    
+
     //Vocabulary9
     january: January,
     february: February,
@@ -578,8 +577,8 @@ const RootStack = StackNavigator(
     skirt: Skirt,
     tlayong: Tlayong,
 
-    
-  
+
+
 
     //Culture and Arts
     cultureandarts: cultureandartsMain,
@@ -591,9 +590,10 @@ const RootStack = StackNavigator(
   },
 
   {
-    initialRouteName: 'vocabulary4',
+    initialRouteName: 'home',
+    cardStyle: {backgroundColor: 'transperent', shadowColor: 'transperent'},
   }
-  
+
 );
 
 export default class App extends React.Component {
