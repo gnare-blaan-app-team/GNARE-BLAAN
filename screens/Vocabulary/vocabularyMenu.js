@@ -35,7 +35,13 @@ class vocabularyMenu extends Component {
         this.props.navigation.navigate('vocabulary1');
     }
 
-    
+    gotoVocab7 = () => {
+        this.props.navigation.navigate('vocabulary7');
+    }
+
+    gotoVocab9 = () => {
+        this.props.navigation.navigate('vocabulary9');
+    }
 
     render(){
         return(
@@ -75,7 +81,7 @@ class vocabularyMenu extends Component {
                             </TouchableOpacity>
                         </View>
                         <View style={{width: '25%', height: '100%'}}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={this.gotoVocab7}>
                                 <Image style={{width: '100%', height: '100%', resizeMode: 'contain'}} source={KitchenUtensils_icon} />
                             </TouchableOpacity>
                         </View>
@@ -87,7 +93,7 @@ class vocabularyMenu extends Component {
                     </View>
                     <View style={{width: '100%', height: '30%', flexDirection: 'row', marginBottom: 5, justifyContent: 'center'}}>
                         <View style={{width: '25%', height: '100%'}}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={this.gotoVocab9}>
                                 <Image style={{width: '100%', height: '100%', resizeMode: 'contain'}} source={Calendar_icon} />
                             </TouchableOpacity>
                         </View>

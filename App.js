@@ -220,6 +220,7 @@ import Wall from './screens/Vocabulary/vocabulary6/wall';
 import Window from './screens/Vocabulary/vocabulary6/window';
 
 //Vocabulary7
+import Vocabulary7 from './screens/Vocabulary/vocabulary7/vocabulary7';
 import Cup from './screens/Vocabulary/vocabulary7/cup';
 import Pot from './screens/Vocabulary/vocabulary7/pot';
 import Firewood from './screens/Vocabulary/vocabulary7/firewood';
@@ -243,10 +244,26 @@ import Star from './screens/Vocabulary/vocabulary8/star';
 import Sun from './screens/Vocabulary/vocabulary8/sun';
 
 //Vocabulary9
+import Vocabulary9 from './screens/Vocabulary/vocabulary9/vocabulary9'
 import January from './screens/Vocabulary/vocabulary9/january';
+import February from './screens/Vocabulary/vocabulary9/february';
+import March from './screens/Vocabulary/vocabulary9/march';
 import April from './screens/Vocabulary/vocabulary9/april';
+import May from './screens/Vocabulary/vocabulary9/may';
+import June from './screens/Vocabulary/vocabulary9/june';
+import July from './screens/Vocabulary/vocabulary9/july';
 import August from './screens/Vocabulary/vocabulary9/august';
-
+import September from './screens/Vocabulary/vocabulary9/september';
+import October from './screens/Vocabulary/vocabulary9/october';
+import November from './screens/Vocabulary/vocabulary9/november';
+import December from './screens/Vocabulary/vocabulary9/december';
+import Monday from './screens/Vocabulary/vocabulary9/monday';
+import Tuesday from './screens/Vocabulary/vocabulary9/tuesday';
+import Wednesday from './screens/Vocabulary/vocabulary9/wednesday';
+import Thursday from './screens/Vocabulary/vocabulary9/thursday';
+import Friday from './screens/Vocabulary/vocabulary9/friday';
+import Saturday from './screens/Vocabulary/vocabulary9/saturday';
+import Sunday from './screens/Vocabulary/vocabulary9/sunday';
 
 
 
@@ -482,6 +499,7 @@ const RootStack = StackNavigator(
     window: Window,
 
     //Vocabulary7
+    vocabulary7: Vocabulary7,
     cup: Cup,
     firewood: Firewood,
     kettle: Kettle,
@@ -505,9 +523,26 @@ const RootStack = StackNavigator(
     sun: Sun,
 
     //Vocabulary9
+    vocabulary9: Vocabulary9,
     january: January,
+    february: February,
+    march: March,
     april: April,
+    may: May,
+    june: June,
+    july: July,
     august: August,
+    september: September,
+    october: October,
+    november: November,
+    december: December,
+    monday: Monday,
+    tuesday: Tuesday,
+    wednesday: Wednesday,
+    thursday: Thursday,
+    friday: Friday,
+    saturday: Saturday,
+    sunday: Sunday,
 
 
 
@@ -522,7 +557,7 @@ const RootStack = StackNavigator(
   },
 
   {
-    initialRouteName: 'home',
+    initialRouteName: 'vocabulary1',
   }
 
 );

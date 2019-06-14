@@ -3,7 +3,7 @@ import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
-import Vocab1BG from './vocabulary1Images/vocab1.png';
+import Vocab1BG from './vocabulary1Images/FamilyMemBG.png';
 import LolaAsset from './vocabulary1Images/lolaAsset.png';
 import LoloAsset from './vocabulary1Images/loloAsset.png';
 import TatayAsset from './vocabulary1Images/tatayAsset.png';
@@ -20,6 +20,9 @@ class Vocabulary1 extends Component {
         header: null,
     }
 
+    gotoMainMenu = () => {
+      this.props.navigation.navigate('mainMenu');
+    }
 
     handleBackPress = () => {
         this.number1.pause();
@@ -72,50 +75,56 @@ class Vocabulary1 extends Component {
 
 
 
-                  <View style={styles.tatayImage}>
+                  <View style={styles.tatayBorder}>
                       <TouchableOpacity onPress={this.gotoTatay}>
                           <Image
                               source={TatayAsset}
+                              style={styles.tatayImage}
                           ></Image>
                       </TouchableOpacity>
                   </View>
 
-                  <View style={styles.nanayImage}>
+                  <View style={styles.nanayBorder}>
                       <TouchableOpacity onPress={this.gotoNanay}>
                           <Image
                               source={NanayAsset}
+                              style={styles.nanayImage}
                           ></Image>
                       </TouchableOpacity>
                   </View>
 
-                    <View style={styles.loloImage}>
+                    <View style={styles.loloBorder}>
                         <TouchableOpacity onPress={this.gotoLolo}>
                             <Image
                                 source={LoloAsset}
+                                style={styles.loloImage}
                             ></Image>
                         </TouchableOpacity>
                     </View>
 
-                    <View style={styles.lolaImage}>
+                    <View style={styles.lolaBorder}>
                         <TouchableOpacity onPress={this.gotoLola}>
                             <Image
                                 source={LolaAsset}
+                                style={styles.lolaImage}
                             ></Image>
                         </TouchableOpacity>
                     </View>
 
-                    <View style={styles.kaitoImage}>
+                    <View style={styles.kaitoBorder}>
                         <TouchableOpacity onPress={this.gotoKaito}>
                             <Image
                                 source={KaitoAsset}
+                                style={styles.kaitoImage}
                             ></Image>
                         </TouchableOpacity>
                     </View>
 
-                    <View style={styles.kaibeImage}>
+                    <View style={styles.kaibeBorder}>
                         <TouchableOpacity onPress={this.gotoKaibe}>
                             <Image
                                 source={KaibeAsset}
+                                style={styles.kaibeImage}
                             ></Image>
                         </TouchableOpacity>
                     </View>
@@ -136,44 +145,75 @@ const styles = StyleSheet.create({
     //   marginBottom: 0,
     // },
 
-    lolaImage: {
+    lolaBorder: {
       position: 'absolute',
-      left: '20%',
+      left: '25%',
+      top: '25%',
     },
+      lolaImage: {
+        height: hp('66%'),
+        width: wp('12%'),
+        resizeMode: 'contain',
+      },
 
-    loloImage: {
+    loloBorder: {
       position: 'absolute',
-      left: '27%',
-      top: '18%',
+      left: '32%',
+      top: '23%',
       width: '11%',
       resizeMode: 'cover',
     },
+      loloImage: {
+        height: hp('68%'),
+        width: wp('14%'),
+        resizeMode: 'contain',
+      },
 
-    tatayImage: {
+    tatayBorder: {
       position: 'absolute',
-      left: '32%',
-      top: '17%',
+      left: '37%',
+      top: '22%',
       width: '18%',
       resizeMode: 'cover',
     },
+      tatayImage: {
+        height: hp('70%'),
+        width: wp('40%'),
+        resizeMode: 'contain',
+      },
 
-    nanayImage: {
+    nanayBorder: {
       position: 'absolute',
-      left: '45%',
-      top: '21%',
+      left: '50%',
+      top: '26%',
     },
+      nanayImage: {
+        height: hp('66%'),
+        width: wp('12%'),
+        resizeMode: 'contain',
+      },
 
-    kaibeImage: {
+    kaibeBorder: {
       position: 'absolute',
-      left: '53%',
-      top: '32%',
+      left: '58%',
+      top: '37%',
     },
+      kaibeImage: {
+        height: hp('54%'),
+        width: wp('11%'),
+        resizeMode: 'contain',
+      },
 
-    kaitoImage: {
+    kaitoBorder: {
       position: 'absolute',
-      left: '60%',
-      top: '32%',
+      left: '65%',
+      top: '37%',
     },
+      kaitoImage: {
+        height: hp('54%'),
+        width: wp('11%'),
+        resizeMode: 'contain',
+      },
 
 
 
