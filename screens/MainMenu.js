@@ -12,18 +12,10 @@ class Mainmenu extends Component {
         header: null,
     }
 
-<<<<<<< HEAD
     componentWillMount() {
         Homescreen.stopBGSound;
     }
 
-=======
-    constructor(props) {
-        super(props);
-    }
-
-
->>>>>>> d301b5aeb3a389c1bc7543b81c8448231b33a4fd
     gotoLetters = () => {
         this.props.navigation.navigate('letters');
     }
@@ -37,12 +29,10 @@ class Mainmenu extends Component {
     }
 
     gotoFlalok = () => {
-       // this.bg.stop();
         this.props.navigation.navigate('flalok');
     }
 
     gotoMainMenu = () => {
-       // this.bg.stop();
         this.props.navigation.navigate('home');
     }
 

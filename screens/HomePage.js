@@ -14,49 +14,9 @@ class Homescreen extends Component{
     static navigationOptions = {
         header:null,
     }
-
-<<<<<<< HEAD
-=======
-    constructor() {
-        super();
-
-        this.state = {
-            change: HomepageBackground,
-        }
-
-    }
-<<<<<<< HEAD
-
-    /*
-        changeBG = () => {
-            //alert("sda");
-            this.setState({
-                change: this.state.change == HomepageBackground ? About_icon : HomepageBackground,
-            });
-        }
-    */
-   
-//    componentDidMount() {
-//     const bg = new Sound('blaanbg.mp3', Sound.MAIN_BUNDLE, (error) => {
-//         if (error) {
-//           console.log('failed to load the sound', error);
-//           return;
-//         }
-//         bg.play()
-//       });
-//    }
-   
-
->>>>>>> d301b5aeb3a389c1bc7543b81c8448231b33a4fd
-    gotoMainMenu = () => {
-=======
-   
       gotoMainMenu = () => {
->>>>>>> fb2153a4a1355691cae3df667829a48a792c22c6
         this.props.navigation.navigate('mainMenu');
     }
-
-
 
     render(){
       StatusBar.setHidden(true);
