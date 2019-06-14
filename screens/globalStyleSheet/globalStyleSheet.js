@@ -364,7 +364,6 @@ export const globalStyleSheet = {
 
     //Glow container
     VideoContainer:{
-<<<<<<< HEAD
         position: 'absolute',
         left: '52%',
         top: '20%',
@@ -374,14 +373,9 @@ export const globalStyleSheet = {
     Glow:{
         width: '100%',
         height: '100%',
-        resizeMode: 'contain'
+        resizeMode: 'contain',
     },
     
-=======
-        left: '40%', 
-        top: '-20%'
-    },
->>>>>>> 8bcb96dd706e608c698e2f106828d9132a70186a
     //vocab container
     vocabContainer:{
         position: 'absolute',
