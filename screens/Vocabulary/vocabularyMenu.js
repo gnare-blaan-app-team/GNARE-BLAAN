@@ -39,10 +39,16 @@ class vocabularyMenu extends Component {
         this.props.navigation.navigate('mainMenu');
     }
     vocabulary1 = () => {
-        this.props.navigation.replace('vocabulary1');
+        this.props.navigation.navigate('vocabulary1');
     }
     vocabulary2 = () => {
-        this.props.navigation.replace('vocabulary2');
+        this.props.navigation.navigate('vocabulary2');
+    }
+    vocabulary3 = () => {
+        this.props.navigation.navigate('vocabulary3');
+    }
+    vocabulary4 = () => {
+        this.props.navigation.navigate('vocabulary4');
     }
     goBack = () => {
         this.props.navigation.navigate('mainMenu');
@@ -78,8 +84,8 @@ class vocabularyMenu extends Component {
                     }}>
                     <VocabularyItem itemImage={MembersFamily_icon} goto={this.vocabulary1} />
                     <VocabularyItem itemImage={BodyParts_icon} goto={this.vocabulary2} />
-                    <VocabularyItem itemImage={FishingTools_icon} goto={this.gotoLetters} />
-                    <VocabularyItem itemImage={FarmingTools_icon} goto={this.gotoLetters} />
+                    <VocabularyItem itemImage={FishingTools_icon} goto={this.vocabulary3} />
+                    <VocabularyItem itemImage={FarmingTools_icon} goto={this.vocabulary4} />
                     <VocabularyItem itemImage={Mountains_icon} goto={this.gotoLetters} />
                 </View>
                 <View style={{

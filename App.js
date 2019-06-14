@@ -171,6 +171,7 @@ import Tuhod from './screens/Vocabulary/vocabulary2/tuhod'
 import Ulo from './screens/Vocabulary/vocabulary2/ulo'
 
 //Vocabulary3
+import Vocabulary3 from './screens/Vocabulary/vocabulary3/vocabulary3';
 import Basket from './screens/Vocabulary/vocabulary3/basket';
 import Crab from './screens/Vocabulary/vocabulary3/crab';
 import Eel from './screens/Vocabulary/vocabulary3/eel';
@@ -181,6 +182,7 @@ import Seashore from './screens/Vocabulary/vocabulary3/seashore';
 import Shrimp from './screens/Vocabulary/vocabulary3/shrimp';
 
 //Vocabulary4
+import Vocabulary4 from './screens/Vocabulary/vocabulary4/vocabulary4';
 import Bamboo from './screens/Vocabulary/vocabulary4/bamboo';
 import Bolo from './screens/Vocabulary/vocabulary4/bolo';
 import Carabao from './screens/Vocabulary/vocabulary4/carabao';
@@ -242,11 +244,41 @@ import Sun from './screens/Vocabulary/vocabulary8/sun';
 
 //Vocabulary9
 import January from './screens/Vocabulary/vocabulary9/january';
+import February from './screens/Vocabulary/vocabulary9/february';
+import March from './screens/Vocabulary/vocabulary9/march';
 import April from './screens/Vocabulary/vocabulary9/april';
+import May from './screens/Vocabulary/vocabulary9/may';
+import June from './screens/Vocabulary/vocabulary9/june';
+import July from './screens/Vocabulary/vocabulary9/july';
 import August from './screens/Vocabulary/vocabulary9/august';
+import September from './screens/Vocabulary/vocabulary9/september';
+import October from './screens/Vocabulary/vocabulary9/october';
+import November from './screens/Vocabulary/vocabulary9/november';
+import December from './screens/Vocabulary/vocabulary9/december';
+import Monday from './screens/Vocabulary/vocabulary9/monday';
+import Tuesday from './screens/Vocabulary/vocabulary9/tuesday';
+import Wednesday from './screens/Vocabulary/vocabulary9/wednesday';
+import Thursday from './screens/Vocabulary/vocabulary9/thursday';
+import Friday from './screens/Vocabulary/vocabulary9/friday';
+import Saturday from './screens/Vocabulary/vocabulary9/saturday';
+import Sunday from './screens/Vocabulary/vocabulary9/sunday';
 
-
-
+//Vocabulary10
+import BambooGuitar from './screens/Vocabulary/vocabulary10/bambooGuitar';
+import Blouse from './screens/Vocabulary/vocabulary10/blouse';
+import Comb from './screens/Vocabulary/vocabulary10/comb';
+import Earrings from './screens/Vocabulary/vocabulary10/earrings';
+import Galing from './screens/Vocabulary/vocabulary10/galing';
+import Gong from './screens/Vocabulary/vocabulary10/gong';
+import Guitar from './screens/Vocabulary/vocabulary10/guitar';
+import Headcover from './screens/Vocabulary/vocabulary10/headcover';
+import Kulintang from './screens/Vocabulary/vocabulary10/kulintang';
+import Logdrum from './screens/Vocabulary/vocabulary10/logdrum';
+import Necklace from './screens/Vocabulary/vocabulary10/necklace';
+import Pants from './screens/Vocabulary/vocabulary10/pants';
+import Saul from './screens/Vocabulary/vocabulary10/saul';
+import Skirt from './screens/Vocabulary/vocabulary10/skirt';
+import Tlayong from './screens/Vocabulary/vocabulary10/tlayong';
 
 // Culture and Arts Import
 
@@ -432,6 +464,7 @@ const AppNavigator = createStackNavigator(
     ulo: Ulo,
 
     //Vocabulary 3
+    vocabulary3: Vocabulary3,
     basket: Basket,
     crab: Crab,
     eel: Eel,
@@ -442,6 +475,7 @@ const AppNavigator = createStackNavigator(
     shrimp: Shrimp,
 
     //Vocabulary4
+    vocabulary4: Vocabulary4,
     bamboo: Bamboo,
     bolo: Bolo,
     carabao: Carabao,
@@ -503,8 +537,41 @@ const AppNavigator = createStackNavigator(
 
     //Vocabulary9
     january: January,
+    february: February,
+    march: March,
     april: April,
+    may: May,
+    june: June,
+    july: July,
     august: August,
+    september: September,
+    october: October,
+    november: November,
+    december: December,
+    monday: Monday,
+    tuesday: Tuesday,
+    wednesday: Wednesday,
+    thursday: Thursday,
+    friday: Friday,
+    saturday: Saturday,
+    sunday: Sunday,
+
+    //Vocabulary10
+    bambooGuitar: BambooGuitar,
+    blouse: Blouse,
+    comb: Comb,
+    earrings: Earrings,
+    galing: Galing,
+    gong: Gong,
+    guitar: Guitar,
+    headcover: Headcover,
+    kulintang: Kulintang,
+    logdrum: Logdrum,
+    necklace: Necklace,
+    pants: Pants,
+    saul: Saul,
+    skirt: Skirt,
+    tlayong: Tlayong,
 
 
     //Culture and Arts

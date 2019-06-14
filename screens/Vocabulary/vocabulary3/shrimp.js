@@ -43,7 +43,7 @@ class Shrimp extends Component {
 
     goBack = () => {
         this.vocab3_shrimp.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary3');
     }
 
     gotoMainMenu = () => {
