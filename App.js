@@ -590,7 +590,7 @@ const RootStack = StackNavigator(
   },
 
   {
-    initialRouteName: 'home',
+    initialRouteName: 'vocabulary3',
     cardStyle: {backgroundColor: 'transperent', shadowColor: 'transperent'},
   }
 

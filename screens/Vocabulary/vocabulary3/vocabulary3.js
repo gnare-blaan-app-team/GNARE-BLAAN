@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler } from 'react-native';
+import { View, Image, Text, StyleSheet, ImageBackground, TouchableOpacity, BackHandler } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
@@ -123,6 +123,8 @@ class Vocabulary3 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
+                <View style={styles.containerStyle}>
+                </View>
                 <View style={styles.fishnetStyle}>
                     <TouchableOpacity onPress={this.gotoFishnet}>
                         <Image
@@ -156,8 +158,10 @@ const styles = StyleSheet.create({
     basketStyle:{
         position: 'absolute',
         top: '21%',
-        left: '72%',
+        left: '73%',
         justifyContent: 'center',
+        width: '14%',
+        height: '17%',
     },
     basketImage: {
         width: wp('15%'),
@@ -166,9 +170,11 @@ const styles = StyleSheet.create({
     },
     eelStyle:{
         position: 'absolute',
-        top: '58%',
+        top: '60%',
         left: '45%',
         justifyContent: 'center',
+        width: '17%',
+        height: '18%',
     },
     eelImage: {
         width: wp('18%'),
@@ -177,9 +183,11 @@ const styles = StyleSheet.create({
     },
     fishStyle:{
         position: 'absolute',
-        top: '55%',
+        top: '56%',
         left: '15%',
         justifyContent: 'center',
+        width: '26%',
+        height: '27%',
     },
     fishImage: {
         width: wp('30%'),
@@ -188,9 +196,11 @@ const styles = StyleSheet.create({
     },
     fishnetStyle:{
         position: 'absolute',
-        top: '23%',
-        left: '20%',
+        top: '27%',
+        left: '19%',
         justifyContent: 'center',
+        width: '14%',
+        height: '12%',
     },
     fishnetImage: {
         width: wp('15%'),
@@ -199,8 +209,11 @@ const styles = StyleSheet.create({
     },
     seaStyle:{
         position: 'absolute',
-        top: '-1.75%',
+        top: '30%',
+        left: '12.75%',
         justifyContent: 'center',
+        width: '75%',
+        height: '29%',
     },
     seaImage: {
         width: wp('80%'),
@@ -209,9 +222,11 @@ const styles = StyleSheet.create({
     },
     shrimpStyle:{
         position: 'absolute',
-        top: '55%',
-        left: '68%',
+        top: '61%',
+        left: '66%',
         justifyContent: 'center',
+        width: '20%',
+        height: '20%',
     },
     shrimpImage: {
         width: wp('20%'),
@@ -221,25 +236,38 @@ const styles = StyleSheet.create({
     crabStyle:{
         position: 'absolute',
         top: '27%',
-        left: '55%',
+        left: '62%',
         justifyContent: 'center',
+        height: '12%',
     },
     crabImage: {
-        width: wp('15%'),
+        width: wp('8%'),
         height: hp('12%'), 
-        resizeMode: 'contain', 
+        resizeMode: 'contain',  
     },
     seashoreStyle:{
         position: 'absolute',
-        top: '19%',
-        left: '46%',
-        justifyContent: 'center',
+        top: '25.5%',
+        left: '53.5%',
+        // borderWidth: 0.5,
+        // borderColor: 'red',
+        height: '19%',
     },
     seashoreImage: {
-        width: wp('53%'),
+        top: '-18%',
+        width: wp('36%'),
         height: hp('34%'), 
         resizeMode: 'contain', 
     }, 
+    containerStyle: {
+        position: 'absolute',
+        top: '29%',
+        left: '13%',
+        width: '13%',
+        height: '14%',
+        // borderWidth: 0.5,
+        // borderColor: 'red',
+    },
 });
 
 export default withNavigation(Vocabulary3);
