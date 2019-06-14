@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, ImageBackground, Image, TouchableOpacity, StatusBar,  } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import MenuItem from './MenuItem';
-import * as Animatable from 'react-native-animatable';
 
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js';
 
@@ -13,11 +12,8 @@ class Mainmenu extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            Transition: "bounceInDown",
-            prevTrans: '',
-        }
     }
+
 
     gotoLetters = () => {
         this.props.navigation.navigate('letters');
@@ -50,7 +46,6 @@ class Mainmenu extends Component {
     render() {
         StatusBar.setHidden(true);
         return (
-            <Animatable.View animation={this.state.Transition} style={styles.image2}>
             <ImageBackground style={styles.image}
                 source={require('./images/BG.jpg')}
             >
@@ -81,8 +76,6 @@ class Mainmenu extends Component {
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
-            </Animatable.View>
-
         )
     }
 }

@@ -22,21 +22,12 @@ class Homescreen extends Component{
         }
 
     }
-
-    /*
-        changeBG = () => {
-            //alert("sda");
-            this.setState({
-                change: this.state.change == HomepageBackground ? About_icon : HomepageBackground,
-            });
-        }
-    */
    
-   
-
-    gotoMainMenu = () => {
+      gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
     }
+
+
 
     render(){
       StatusBar.setHidden(true);

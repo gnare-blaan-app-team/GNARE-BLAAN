@@ -91,7 +91,7 @@ import SentenceW from './screens/Letters/letterSentenceScreens/sentenceW';
 import SentenceY from './screens/Letters/letterSentenceScreens/sentenceY';
 
 
-// Number Sentence Import 
+// Number Sentence Import
 
 import Sentence1 from './screens/Numbers/numberSentenceScreens/sentence1';
 import Sentence2 from './screens/Numbers/numberSentenceScreens/sentence2';
@@ -278,7 +278,7 @@ const AppNavigator = createStackNavigator(
 
 
 
-    // Page Letter  
+    // Page Letter
 
     pageA: PageA,
     pageB: PageB,
@@ -515,7 +515,7 @@ const AppNavigator = createStackNavigator(
     dasalbagomatulogPlay: DasalBagoMatulogPlay
 },
 {
-  initialRouteName:"vocabulary2",
+  initialRouteName:"home",
   mode: 'card',
   cardStyle: {
     backgroundColor: "transperent"

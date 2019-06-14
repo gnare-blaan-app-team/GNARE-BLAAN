@@ -15,9 +15,9 @@ import KitchenUtensils_icon from './vocabularyMenuImages/V7.png';
 import GreetingsHeavenlyBodies_icon from './vocabularyMenuImages/V8.png';
 import Calendar_icon from './vocabularyMenuImages/V9.png';
 import Kastifun_icon from './vocabularyMenuImages/V10-11.png';
-import vocabulary_BG from './vocabularyMenuImages/vocabulary_BG.jpg';
 import VocabularyItem from './vocabularyItem';
 import NextIcon from '../images/Next_Icon.png';
+import PrevIcon from '../images/Prev_Icon.png';
 
 
 class vocabularyMenu extends Component {
@@ -29,7 +29,9 @@ class vocabularyMenu extends Component {
         super(props);
         this.state = {
             top2:'1000%',
-            top1:'20%'
+            top1:'20%',
+            nextTop: '45%',
+            prevTop:'1000%',
         }
     }
 
@@ -49,11 +51,21 @@ class vocabularyMenu extends Component {
         this.setState({
             top1:'1000%',
             top2: '20%',
+            nextTop:'1000%',
+            prevTop: '40%',
+        })
+    }
+    goPrev = () => {
+        this.setState({
+            top2: '1000%',
+            top1: '20%',
+            prevTop: '1000%',
+            nextTop: '40%',
         })
     }
     render(){
         return(
-           <ImageBackground style={styles.image} source={vocabulary_BG} blurRadius={1}>
+                <ImageBackground style={styles.image} source={require('../images/Flalok_BG.jpg')}>
                 <View style={{
                     justifyContent: 'center',
                     position: 'absolute',
@@ -94,7 +106,12 @@ class vocabularyMenu extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.nextContainer}>
+                <View style={{
+                    position: 'absolute',
+                    left: '83%',
+                    top: this.state.nextTop,
+                    width: '12%',
+                    height: '24%',}}>
                     <TouchableOpacity onPress={this.gotoNextPage}>
                         <Image
                             source={NextIcon}
@@ -107,6 +124,19 @@ class vocabularyMenu extends Component {
                         <Image
                             source={Home_icon}
                             style={styles.home}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={{
+                    position: 'absolute',
+                    left: '5%',
+                    top: this.state.prevTop,
+                    width: '12%',
+                    height: '24%',}}>
+                    <TouchableOpacity onPress={this.goPrev}>
+                        <Image
+                            source={PrevIcon}
+                            style={styles.prev}
                         ></Image>
                     </TouchableOpacity>
                 </View>

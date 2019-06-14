@@ -43,6 +43,7 @@ class Story4Screen extends Component {
             hideSub: '-1000%',
 
             controlHide: '-1000%',
+            vidSkip: '-1000%',
             
             progressHeight: 48,
             paused: false,
@@ -124,6 +125,14 @@ class Story4Screen extends Component {
     gotoPrayers = () => {
         this.props.navigation.navigate('prayersScreen');
     }
+
+    hideControl = () => {
+        this.setState({
+            controlHide: this.state.controlHide == 0 ? -1000 : 0,
+            vidSkip: this.state.vidSkip == '-2%' ? '-1000%' : '-2%',
+            hideSub: this.state.hideSub == '-1000%'  ? '3%' : '-1000%',
+        })
+    }
     
 
     render() {
@@ -132,18 +141,13 @@ class Story4Screen extends Component {
             <View style={videoStyle.container}>
                 
                 <View style={{opacity: this.state.opacityVideo}}>
-                    <TouchableWithoutFeedback onPress={() => {
-                        this.setState({
-                            controlHide: this.state.controlHide == 0 ? -1000 : 0,
-                            hideSub: this.state.hideSub == '-1000%'  ? '3%' : '-1000%',
-                        })
-                    }}>
+                    <TouchableWithoutFeedback onPress={this.hideControl}>
                         <Video
                             paused={this.state.paused}
                             source={this.state.videoFile}
                             
                             style={{ width: "100%", height: '100%' }}
-                            resizeMode="contain"
+                            resizeMode="stretch"
                             volume={this.state.volume}
                             muted={this.state.muted}
                             onLoad={this.handleLoad}
@@ -215,7 +219,9 @@ class Story4Screen extends Component {
                         </Text>
                     </View>
 
-                    <View style={{position: 'absolute', top: this.state.controlHide, left: 0}}>
+                    <View style={{position: 'absolute', 
+                                top: this.state.vidSkip,
+                                left: '1%', width: '14%', height: '28%',}}>
                         <TouchableOpacity onPress={this.goBack}>
                             <Image
                                 source={Back_icon}
