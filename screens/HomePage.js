@@ -10,56 +10,21 @@ import Like_icon from "./images/Icon_Like.png";
 import Share_icon from "./images/Icon_Share.png";
 
 class Homescreen extends Component{
+
     static navigationOptions = {
         header:null,
     }
 
-    constructor() {
-        super();
-
-        this.state = {
-            change: HomepageBackground,
-        }
-
-    }
-<<<<<<< HEAD
-
-    /*
-        changeBG = () => {
-            //alert("sda");
-            this.setState({
-                change: this.state.change == HomepageBackground ? About_icon : HomepageBackground,
-            });
-        }
-    */
-   
-//    componentDidMount() {
-//     const bg = new Sound('blaanbg.mp3', Sound.MAIN_BUNDLE, (error) => {
-//         if (error) {
-//           console.log('failed to load the sound', error);
-//           return;
-//         }
-//         bg.play()
-//       });
-//    }
-   
-
     gotoMainMenu = () => {
-=======
-   
-      gotoMainMenu = () => {
->>>>>>> fb2153a4a1355691cae3df667829a48a792c22c6
         this.props.navigation.navigate('mainMenu');
     }
-
-
 
     render(){
       StatusBar.setHidden(true);
         return(
-           <ImageBackground style={styles.image} source={HomepageBackground}>
-               <View style={{position: "absolute", width:"100%", height:"100%"}}>
-                   <TouchableOpacity  onPress={this.gotoMainMenu}>
+            <ImageBackground style={styles.image} source={HomepageBackground}>
+                <View style={{position: "absolute", width:"100%", height:"100%"}}>
+                    <TouchableOpacity  onPress={this.gotoMainMenu}>
                        <Text style={{width:"100%", height:"100%"}}></Text>
                     </TouchableOpacity>
                     </View>
@@ -86,11 +51,9 @@ class Homescreen extends Component{
                                 </TouchableOpacity>
                             </View>
                         </View>
-                    </View>    
-           </ImageBackground>
-           
+                    </View>
+            </ImageBackground>
         );
-        
     }
 }
 

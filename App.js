@@ -1,5 +1,5 @@
 import React from "react";
-import { createStackNavigator, createAppContainer,createSwitchNavigator } from "react-navigation";
+import { createStackNavigator} from "react-navigation";
 import { useScreens } from 'react-native-screens';
 import HomeScreen from './screens/HomePage';
 import MainMenu from './screens/MainMenu';
@@ -295,7 +295,7 @@ import DasalBagoMatulogPlay from './screens/CultureandArts/cultureandartsScreens
 useScreens();
 
 
-const AppNavigator = createStackNavigator(
+export default AppNavigator = createStackNavigator(
 {
     home: HomeScreen,
     mainMenu: MainMenu,
@@ -587,23 +587,12 @@ const AppNavigator = createStackNavigator(
     prayersScreen: Prayers_Screen,
     dasalbagomatulogPlay: DasalBagoMatulogPlay
   },
-
-  {
-    initialRouteName: 'vocabulary3',
-    cardStyle: {backgroundColor: 'transperent', shadowColor: 'transperent'},
-  }
-
+{
+  initialRouteName:"home",
+  mode: 'card',
+  cardStyle: {
+    backgroundColor:"transperent"
+}
+}
 );
 
-export default class App extends React.Component {
-  componentDidMount() {
-    StatusBar.setHidden(true);
-  }
-  render() {
-    return (
-      <RootStack />
-    )
-  }
-}
-
-export default createAppContainer(AppNavigator);

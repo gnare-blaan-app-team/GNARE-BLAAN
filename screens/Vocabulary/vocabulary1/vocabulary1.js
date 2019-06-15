@@ -3,7 +3,7 @@ import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
-import Vocab1BG from './vocabulary1Images/FamilyMemBG.png';
+import Vocab1BG from '../../images/FamilyMemBG.png';
 import LolaAsset from './vocabulary1Images/lolaAsset.png';
 import LoloAsset from './vocabulary1Images/loloAsset.png';
 import TatayAsset from './vocabulary1Images/tatayAsset.png';

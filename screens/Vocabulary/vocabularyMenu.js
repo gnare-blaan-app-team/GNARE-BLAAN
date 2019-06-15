@@ -50,6 +50,15 @@ class vocabularyMenu extends Component {
     vocabulary4 = () => {
         this.props.navigation.navigate('vocabulary4');
     }
+    vocabulary5 = () => {
+        this.props.navigation.navigate('vocabulary5');
+    }
+    vocabulary6 = () => {
+        this.props.navigation.navigate('vocabulary6');
+    }
+    vocabulary7 = () => {
+        this.props.navigation.navigate('vocabulary7');
+    }
     goBack = () => {
         this.props.navigation.navigate('mainMenu');
     }
@@ -69,77 +78,6 @@ class vocabularyMenu extends Component {
             nextTop: '40%',
         })
     }
-<<<<<<< HEAD
-
-    gotoVocab7 = () => {
-        this.props.navigation.navigate('vocabulary7');
-    }
-
-    gotoVocab9 = () => {
-        this.props.navigation.navigate('vocabulary9');
-    }
-
-    render(){
-        return(
-           <ImageBackground style={styles.image} source={vocabulary_BG} blurRadius={1}>
-                <View style={{position: 'absolute', top: '18%', width: '100%', height: '80%'}}>
-                    <View style={{width: '100%', height: '30%', flexDirection: 'row', marginBottom: '2%', justifyContent: 'center'}}>
-                        <View style={{width: '25%', height: '100%'}}>
-                            <TouchableOpacity onPress={this.gotoVocab1}>
-                                <Image style={{width: '100%', height: '100%', resizeMode: 'contain'}} source={MembersFamily_icon} />
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{width: '25%', height: '100%'}}>
-                            <TouchableOpacity>
-                                <Image style={{width: '100%', height: '100%', resizeMode: 'contain'}} source={BodyParts_icon} />
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{width: '25%', height: '100%'}}>
-                            <TouchableOpacity>
-                                <Image style={{width: '100%', height: '100%', resizeMode: 'contain'}} source={FishingTools_icon} />
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{width: '25%', height: '100%'}}>
-                            <TouchableOpacity>
-                                <Image style={{width: '100%', height: '100%', resizeMode: 'contain'}} source={FarmingTools_icon} />
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                    <View style={{width: '100%', height: '30%', flexDirection: 'row', marginBottom: '2%', justifyContent: 'center'}}>
-                        <View style={{width: '25%', height: '100%'}}>
-                            <TouchableOpacity>
-                                <Image style={{width: '100%', height: '100%', resizeMode: 'contain'}} source={Mountains_icon} />
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{width: '25%', height: '100%'}}>
-                            <TouchableOpacity>
-                                <Image style={{width: '100%', height: '100%', resizeMode: 'contain'}} source={HouseParts_icon} />
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{width: '25%', height: '100%'}}>
-                            <TouchableOpacity onPress={this.gotoVocab7}>
-                                <Image style={{width: '100%', height: '100%', resizeMode: 'contain'}} source={KitchenUtensils_icon} />
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{width: '25%', height: '100%'}}>
-                            <TouchableOpacity>
-                                <Image style={{width: '100%', height: '100%', resizeMode: 'contain'}} source={GreetingsHeavenlyBodies_icon} />
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                    <View style={{width: '100%', height: '30%', flexDirection: 'row', marginBottom: 5, justifyContent: 'center'}}>
-                        <View style={{width: '25%', height: '100%'}}>
-                            <TouchableOpacity onPress={this.gotoVocab9}>
-                                <Image style={{width: '100%', height: '100%', resizeMode: 'contain'}} source={Calendar_icon} />
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{width: '25%', height: '100%'}}>
-                            <TouchableOpacity>
-                                <Image style={{width: '100%', height: '100%', resizeMode: 'contain'}} source={Kastifun_icon} />
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-=======
     render(){
         return(
                 <ImageBackground style={styles.image} source={require('../images/Flalok_BG.jpg')}>
@@ -157,8 +95,7 @@ class vocabularyMenu extends Component {
                     <VocabularyItem itemImage={BodyParts_icon} goto={this.vocabulary2} />
                     <VocabularyItem itemImage={FishingTools_icon} goto={this.vocabulary3} />
                     <VocabularyItem itemImage={FarmingTools_icon} goto={this.vocabulary4} />
-                    <VocabularyItem itemImage={Mountains_icon} goto={this.gotoLetters} />
->>>>>>> 41916ef890afd3d619b8efcbd20c9fa64cbf6dc8
+                    <VocabularyItem itemImage={Mountains_icon} goto={this.vocabulary5} />
                 </View>
                 <View style={{
                     justifyContent: 'center',
@@ -170,8 +107,8 @@ class vocabularyMenu extends Component {
                     flexDirection: 'row',
                     flexWrap: 'wrap',
                     }}>
-                    <VocabularyItem itemImage={HouseParts_icon} goto={this.vocabulary1} />
-                    <VocabularyItem itemImage={KitchenUtensils_icon} goto={this.gotoLetters} />
+                    <VocabularyItem itemImage={HouseParts_icon} goto={this.vocabulary6} />
+                    <VocabularyItem itemImage={KitchenUtensils_icon} goto={this.vocabulary7} />
                     <VocabularyItem itemImage={GreetingsHeavenlyBodies_icon} goto={this.gotoLetters} />
                     <VocabularyItem itemImage={Calendar_icon} goto={this.gotoLetters} />
                     <VocabularyItem itemImage={Kastifun_icon} goto={this.gotoLetters} />

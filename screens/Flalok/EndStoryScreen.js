@@ -15,6 +15,7 @@ class EndStoryScreen extends Component {
 
     static navigationOptions = {
         header:null,
+        cardStyle: {backgroundColor: 'transperent'},
     }
     
     gotoMainMenu = () => {
