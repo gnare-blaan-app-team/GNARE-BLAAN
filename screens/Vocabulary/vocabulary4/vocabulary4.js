@@ -304,6 +304,8 @@ const styles = StyleSheet.create({
         top: '63%',
         left: '66%',
         justifyContent: 'center',
+        width: '22%',
+        height: '28%',
     },
     plowImage: {
         width: wp('25%'),
@@ -315,6 +317,9 @@ const styles = StyleSheet.create({
         top: '60%',
         left: '12.5%',
         justifyContent: 'center',
+        height: '30%',
+        borderWidth: 0.5,
+        borderColor: 'red',
     },
     riceImage: {
         width: wp('31%'),

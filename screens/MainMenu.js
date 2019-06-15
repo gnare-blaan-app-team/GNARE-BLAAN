@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { View, ImageBackground, Image, TouchableOpacity, StatusBar,  } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import MenuItem from './MenuItem';
+import Homescreen from './HomePage';
+import Sound from 'react-native-sound';
 
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js';
 
@@ -10,10 +12,9 @@ class Mainmenu extends Component {
         header: null,
     }
 
-    constructor(props) {
-        super(props);
+    componentWillMount() {
+        Homescreen.stopBGSound;
     }
-
 
     gotoLetters = () => {
         this.props.navigation.navigate('letters');

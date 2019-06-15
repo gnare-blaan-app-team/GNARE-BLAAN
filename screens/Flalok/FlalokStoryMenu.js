@@ -17,6 +17,7 @@ import MenuItem from '../MenuItem';
 class FlalokStoryMenu extends Component {
     static navigationOptions = {
         header:null,
+        cardStyle: {backgroundColor: 'transperent'},
     }
 
     gotoStory1 = () => {
@@ -57,12 +58,12 @@ class FlalokStoryMenu extends Component {
                 source={require('../images/Flalok_BG.jpg')}
                 >
                     <View style={styles.menuContainer}>
-                        <MenuItem itemImage={Story1} goto={this.gotoLetters} />
-                        <MenuItem itemImage={Story2} goto={this.gotoNumbers} />
-                        <MenuItem itemImage={Story3} goto={this.gotoFlalok} />
-                        <MenuItem itemImage={Story4} />
-                        <MenuItem itemImage={Story5} goto={this.gotoCultureandArts} />
-                        <MenuItem itemImage={Story6} goto={this.gotoVocabulary} />
+                        <MenuItem itemImage={Story1} goto={this.gotoStory1} />
+                        <MenuItem itemImage={Story2} goto={this.gotoStory2} />
+                        <MenuItem itemImage={Story3} goto={this.gotoStory3} />
+                        <MenuItem itemImage={Story4} goto={this.gotoStory4} />
+                        <MenuItem itemImage={Story5} goto={this.gotoStory5} />
+                        <MenuItem itemImage={Story6} goto={this.gotoStory6} />
                     </View>
 
                     <View style={styles.backContainer}>

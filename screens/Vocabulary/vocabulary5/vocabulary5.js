@@ -32,7 +32,7 @@ class Vocabulary5 extends Component {
     }
 
     goBack = () => {
-        this.props.navigation.navigate('numbers');
+        this.props.navigation.navigate('vocabularyMenu');
     }
     
     gotoTree = () => {
