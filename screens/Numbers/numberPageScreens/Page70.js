@@ -13,6 +13,7 @@ import PencilIcon from '../../images/Pencil_icon.png';
 import NextIcon from '../../images/Next_Icon.png';
 import PrevIcon from '../../images/Prev_Icon.png';
 
+
 class Page70 extends Component {
     static navigationOptions = {
         header: null,
@@ -45,29 +46,31 @@ class Page70 extends Component {
         this.number70.play();
     }
     gotoSentence60 = () => {
-        this.props.navigation.navigate('sentence70');
+        this.props.navigation.replace('sentence70');
+        this.number70.pause();
     }
     goBack = () => {
-        this.props.navigation.navigate('numbers');
+        this.props.navigation.replace('numbers');
+        this.number70.pause();
     }
     gotoMainMenu = () => {
-        this.props.navigation.navigate('mainMenu');
+        this.props.navigation.replace('mainMenu');
+        this.number70.pause();
     }
 
     gotoTracingB = () => {
-        this.props.navigation.navigate('tracingB');
+        this.props.navigation.replace('tracingB');
+        this.number70.pause();
     }
 
     gotoNextPage = () => {
-        this.props.navigation.navigate('page80');
-        this.letter_play_a.pause();
-        this.wordplay_a.pause();
+        this.props.navigation.replace('page80');
+        this.number70.pause();
     }
 
     goPrev = () => {
-        this.props.navigation.navigate('page60');
-        this.letter_play_b.pause();
-        this.wordplay_b.pause();
+        this.props.navigation.replace('page60');
+        this.number70.pause();
     }
 
     render() {

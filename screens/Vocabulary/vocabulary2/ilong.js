@@ -43,7 +43,9 @@ class Ilong extends Component {
 
     goBack = () => {
         this.vocab2_ilong.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary2', {
+            show: 'show',
+        });
     }
 
     gotoMainMenu = () => {

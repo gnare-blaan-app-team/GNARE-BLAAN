@@ -43,7 +43,7 @@ class Hawk extends Component {
 
     goBack = () => {
         this.vocab5_hawk.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary5');
     }
 
     gotoMainMenu = () => {

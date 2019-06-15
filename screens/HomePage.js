@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { ImageBackground, TouchableOpacity, View, Image, Text} from 'react-native';
+import { ImageBackground, TouchableOpacity, View, Image, Text, StatusBar} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js';
 import Sound from 'react-native-sound';
@@ -20,6 +20,7 @@ class Homescreen extends Component{
     }
 
     render(){
+      StatusBar.setHidden(true);
         return(
             <ImageBackground style={styles.image} source={HomepageBackground}>
                 <View style={{position: "absolute", width:"100%", height:"100%"}}>

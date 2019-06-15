@@ -43,9 +43,9 @@ class Bamboo extends Component {
 
     goBack = () => {
         this.vocab4_bamboo.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary4');
     }
-
+    
     gotoMainMenu = () => {
         this.vocab4_bamboo.pause();
         this.props.navigation.navigate('mainMenu');

@@ -43,7 +43,7 @@ class Knife extends Component {
 
     goBack = () => {
         this.vocab7_knife.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary7');
     }
 
     gotoMainMenu = () => {

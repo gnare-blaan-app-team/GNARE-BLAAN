@@ -24,7 +24,7 @@ class prayersScreen extends Component {
         this.props.navigation.navigate('cultureandarts');
     }
 
-    
+
 
     render(){
         return(
@@ -32,7 +32,7 @@ class prayersScreen extends Component {
                 <View style={styles.CultureandArtsContainer}>
                     <View style={styles.row}>
                         <View style={styles.itemSize} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('dasalbagomatulogPlay')} >
+                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
                                 <Image style={styles.imageSizeStoryMenu} source={DasalBagoMatulog_icon} />
                             </TouchableOpacity>
                         </View>

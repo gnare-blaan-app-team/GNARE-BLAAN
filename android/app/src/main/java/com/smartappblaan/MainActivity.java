@@ -1,15 +1,15 @@
 package com.smartappblaan;
 
-import com.facebook.react.ReactActivity;
+import android.os.Bundle;
+import com.facebook.react.ReactFragmentActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity extends ReactActivity {
+public class MainActivity extends ReactFragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        hideNavigationBar();
+        super.onCreate(null);
     }
 
     @Override
@@ -35,4 +35,5 @@ public class MainActivity extends ReactActivity {
     protected String getMainComponentName() {
         return "smartAppBlaan";
     }
+
 }

@@ -43,7 +43,7 @@ class River extends Component {
 
     goBack = () => {
         this.vocab5_river.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary5');
     }
 
     gotoMainMenu = () => {

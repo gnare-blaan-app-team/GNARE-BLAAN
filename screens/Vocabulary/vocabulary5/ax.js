@@ -43,7 +43,7 @@ class Ax extends Component {
 
     goBack = () => {
         this.vocab5_ax.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary5');
     }
 
     gotoMainMenu = () => {

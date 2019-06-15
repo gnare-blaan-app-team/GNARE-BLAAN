@@ -42,7 +42,10 @@ class Balikat extends Component {
     }
 
     goBack = () => {
-        this.props.navigation.navigate('vocabularyMenu');
+        this.vocab2_balikat.pause();
+        this.props.navigation.navigate('vocabulary2', {
+            show: 'show',
+        });
     }
 
     gotoMainMenu = () => {

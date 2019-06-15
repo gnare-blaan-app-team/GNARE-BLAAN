@@ -43,7 +43,9 @@ class Tainga extends Component {
 
     goBack = () => {
         this.vocab2_tainga.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary2', {
+            show: 'show',
+        });
     }
 
     gotoMainMenu = () => {

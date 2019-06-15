@@ -15,7 +15,6 @@ class MenuItem extends Component {
                         style={styles.image}
                     />
                 </TouchableOpacity >
-
             </View>
         )
     }
