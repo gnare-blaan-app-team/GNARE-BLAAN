@@ -17,6 +17,7 @@ import Flalok_BG from './flalokImages/Flalok_BG.jpg';
 class FlalokStoryMenu extends Component {
     static navigationOptions = {
         header:null,
+        cardStyle: {backgroundColor: 'transperent'},
     }
 
     gotoStory1 = () => {

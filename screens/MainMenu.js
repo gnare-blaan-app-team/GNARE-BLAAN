@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import { View, ImageBackground, Image, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import MenuItem from './MenuItem';
+import Homescreen from './HomePage';
+import Sound from 'react-native-sound';
 
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js';
 
 class Mainmenu extends Component {
     static navigationOptions = {
         header: null,
+    }
+
+    componentWillMount() {
+        Homescreen.stopBGSound;
     }
 
     gotoLetters = () => {
@@ -23,10 +29,12 @@ class Mainmenu extends Component {
     }
 
     gotoFlalok = () => {
+       // this.bg.stop();
         this.props.navigation.navigate('flalok');
     }
 
     gotoMainMenu = () => {
+       // this.bg.stop();
         this.props.navigation.navigate('home');
     }
 

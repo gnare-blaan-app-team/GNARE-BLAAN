@@ -3,7 +3,7 @@ package com.smartappblaan;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.thebylito.navigationbarcolor.NavigationBarColorPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
 import com.brentvatne.react.ReactVideoPackage;
 import com.zmxv.RNSound.RNSoundPackage;
 import com.facebook.react.ReactNativeHost;
@@ -26,7 +26,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new NavigationBarColorPackage(),
+            new VectorIconsPackage(),
             new ReactVideoPackage(),
             new RNSoundPackage()
       );
