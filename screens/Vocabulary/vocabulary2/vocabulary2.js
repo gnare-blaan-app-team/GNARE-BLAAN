@@ -3,7 +3,7 @@ import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler
 import { withNavigation } from 'react-navigation';
 import { globalStyleSheet } from '../../globalStyleSheet/globalStyleSheet'
 import * as Animatable from 'react-native-animatable';
-import BG from './vocabulary2Images/boy.png';
+import BG from '../../images/boy.png';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
 

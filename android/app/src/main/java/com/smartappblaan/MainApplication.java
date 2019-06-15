@@ -6,7 +6,6 @@ import com.facebook.react.ReactApplication;
 import com.horcrux.svg.SvgPackage;
 import com.terrylinla.rnsketchcanvas.SketchCanvasPackage;
 import com.swmansion.rnscreens.RNScreensPackage;
-import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.thebylito.navigationbarcolor.NavigationBarColorPackage;
 import com.brentvatne.react.ReactVideoPackage;
 import com.zmxv.RNSound.RNSoundPackage;
@@ -34,7 +33,6 @@ public class MainApplication extends Application implements ReactApplication {
             new SvgPackage(),
             new SketchCanvasPackage(),
             new RNScreensPackage(),
-            new RNGestureHandlerPackage(),
             new NavigationBarColorPackage(),
             new ReactVideoPackage(),
             new RNSoundPackage()

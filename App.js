@@ -1,5 +1,5 @@
 import React from "react";
-import { createStackNavigator, createAppContainer,createSwitchNavigator } from "react-navigation";
+import { createStackNavigator} from "react-navigation";
 import { useScreens } from 'react-native-screens';
 import HomeScreen from './screens/HomePage';
 import MainMenu from './screens/MainMenu';
@@ -266,9 +266,6 @@ import Friday from './screens/Vocabulary/vocabulary9/friday';
 import Saturday from './screens/Vocabulary/vocabulary9/saturday';
 import Sunday from './screens/Vocabulary/vocabulary9/sunday';
 
-<<<<<<< HEAD
-
-=======
 //Vocabulary10
 import BambooGuitar from './screens/Vocabulary/vocabulary10/bambooGuitar';
 import Blouse from './screens/Vocabulary/vocabulary10/blouse';
@@ -285,7 +282,6 @@ import Pants from './screens/Vocabulary/vocabulary10/pants';
 import Saul from './screens/Vocabulary/vocabulary10/saul';
 import Skirt from './screens/Vocabulary/vocabulary10/skirt';
 import Tlayong from './screens/Vocabulary/vocabulary10/tlayong';
->>>>>>> 41916ef890afd3d619b8efcbd20c9fa64cbf6dc8
 
 // Culture and Arts Import
 
@@ -299,7 +295,7 @@ import DasalBagoMatulogPlay from './screens/CultureandArts/cultureandartsScreens
 useScreens();
 
 
-const AppNavigator = createStackNavigator(
+export default AppNavigator = createStackNavigator(
 {
     home: HomeScreen,
     mainMenu: MainMenu,
@@ -566,9 +562,6 @@ const AppNavigator = createStackNavigator(
     saturday: Saturday,
     sunday: Sunday,
 
-<<<<<<< HEAD
-
-=======
     //Vocabulary10
     bambooGuitar: BambooGuitar,
     blouse: Blouse,
@@ -585,7 +578,6 @@ const AppNavigator = createStackNavigator(
     saul: Saul,
     skirt: Skirt,
     tlayong: Tlayong,
->>>>>>> 41916ef890afd3d619b8efcbd20c9fa64cbf6dc8
 
 
     //Culture and Arts
@@ -594,35 +586,13 @@ const AppNavigator = createStackNavigator(
     kastifunScreen: Kastifun_Screen,
     prayersScreen: Prayers_Screen,
     dasalbagomatulogPlay: DasalBagoMatulogPlay
-<<<<<<< HEAD
-
   },
-
-  {
-    initialRouteName: 'vocabulary1',
-  }
-
-);
-
-export default class App extends React.Component {
-  componentDidMount() {
-    StatusBar.setHidden(true);
-  }
-  render() {
-    return (
-      <RootStack />
-    )
-  }
-=======
-},
 {
   initialRouteName:"home",
   mode: 'card',
   cardStyle: {
-    backgroundColor: "transperent"
->>>>>>> 41916ef890afd3d619b8efcbd20c9fa64cbf6dc8
+    backgroundColor:"transperent"
 }
 }
 );
-  
-export default createAppContainer(AppNavigator);
+
