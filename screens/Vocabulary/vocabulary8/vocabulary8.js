@@ -181,15 +181,15 @@ const styles = StyleSheet.create({
 
     haponStyle: {
         position: 'absolute',
-        top: hp('19%'),
-        left: wp('10.5%'),
+        top: hp('22%'),
+        left: wp('10.8%'),
         height: hp('44.5%'),
         width: wp('20%')
     },
 
     umagaStyle: {
         position: 'absolute',
-        top: hp('19%'),
+        top: hp('22%'),
         left: wp('23%'),
         height: hp('26%'),
         width: wp('50%')
@@ -197,15 +197,15 @@ const styles = StyleSheet.create({
 
     gabiStyle: {
         position: 'absolute',
-        top: hp('19%'),
-        right: wp('10%'),
-        height: hp('40.5%'),
-        width: wp('25%')
+        top: hp('22.5%'),
+        right: wp('8%'),
+        height: hp('42.5%'),
+        width: wp('29%'),
     },
 
     sunStyle: {
         position: 'absolute',
-        top: hp('19%'),
+        top: hp('22%'),
         left: wp('45%'),
         height: hp('10%'),
         width: wp('7%')
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
 
     cloudStyle: {
         position: 'absolute',
-        top: hp('27%'),
+        top: hp('30%'),
         left: wp('34%'),
         height: hp('13%'),
         width: wp('33%')
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
     moonStyle: {
         position: 'absolute',
         top: hp('25%'),
-        right: wp('17%'),
+        right: wp('14%'),
         height: hp('10%'),
         width: wp('6%')
     },
