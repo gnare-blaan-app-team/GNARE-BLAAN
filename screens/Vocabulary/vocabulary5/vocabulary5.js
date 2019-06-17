@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
     mountainStyle: {
         position: 'absolute',
         width: '60%',
-        left: '10.5%',
+        left: '11.5%',
         height: '35%',
     },
     mountainImage: {
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: '19%',
         width: '20%',
-        left: '10.5%',
+        left: '11.5%',
         height: '65%',
     },
     treeImage: {
@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: '19%',
         width: '24%',
-        right: '10%',
+        right: '11%',
         height: '65%',
     },
     fallsImage: {
@@ -235,7 +235,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: '48.5%',
         width: '45%',
-        right: '10%',
+        right: '11%',
         height: '40%',
     },
     ilogImage: {
