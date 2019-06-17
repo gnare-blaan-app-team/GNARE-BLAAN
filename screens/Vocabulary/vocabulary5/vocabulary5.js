@@ -32,9 +32,9 @@ class Vocabulary5 extends Component {
     }
 
     goBack = () => {
-        this.props.navigation.navigate('numbers');
+        this.props.navigation.navigate('vocabularyMenu');
     }
-    
+
     gotoTree = () => {
         this.props.navigation.navigate('tree');
     }
@@ -62,7 +62,7 @@ class Vocabulary5 extends Component {
     gotoSalamander = () => {
         this.props.navigation.navigate('salamander');
     }
-    
+
     gotoAxe = () => {
         this.props.navigation.navigate('ax');
     }
@@ -74,7 +74,7 @@ class Vocabulary5 extends Component {
 
 
     render() {
-        
+
         return (
             <ImageBackground style={globalStyleSheet.image}
                 source={Vocab5BG}
@@ -185,7 +185,7 @@ class Vocabulary5 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                
+
             </ImageBackground>
         )
     }
@@ -196,8 +196,8 @@ const styles = StyleSheet.create({
     mountainStyle: {
         position: 'absolute',
         width: '60%',
-        left: '10.5%',
-        height: '35%',  
+        left: '11.5%',
+        height: '35%',
     },
     mountainImage: {
         width: '100%',
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: '19%',
         width: '20%',
-        left: '10.5%',
+        left: '11.5%',
         height: '65%',
     },
     treeImage: {
@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: '19%',
         width: '24%',
-        right: '10%',
+        right: '11%',
         height: '65%',
     },
     fallsImage: {
@@ -235,7 +235,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: '48.5%',
         width: '45%',
-        right: '10%',
+        right: '11%',
         height: '40%',
     },
     ilogImage: {
@@ -263,7 +263,7 @@ const styles = StyleSheet.create({
         width: '12%',
         left: '17%',
         height: '23%',
-        transform: [{ rotate: '12deg' }]
+        transform: [{ rotate: '12deg' }],
     },
     bowImage: {
         width: '100%',
@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
         width: '3%',
         left: '38%',
         height: '40%',
-        transform: [{ rotate: '64deg' }]
+        transform: [{ rotate: '64deg' }],
     },
     spearImage: {
         width: '100%',

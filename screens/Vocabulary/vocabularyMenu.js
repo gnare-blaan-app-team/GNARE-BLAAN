@@ -50,6 +50,19 @@ class vocabularyMenu extends Component {
     vocabulary4 = () => {
         this.props.navigation.navigate('vocabulary4');
     }
+    vocabulary5 = () => {
+        this.props.navigation.navigate('vocabulary5');
+    }
+    vocabulary6 = () => {
+        this.props.navigation.navigate('vocabulary6');
+    }
+    vocabulary7 = () => {
+        this.props.navigation.navigate('vocabulary7');
+    }
+    vocabulary9 = () => {
+        this.props.navigation.navigate('vocabulary9');
+    }
+
     goBack = () => {
         this.props.navigation.navigate('mainMenu');
     }
@@ -86,7 +99,7 @@ class vocabularyMenu extends Component {
                     <VocabularyItem itemImage={BodyParts_icon} goto={this.vocabulary2} />
                     <VocabularyItem itemImage={FishingTools_icon} goto={this.vocabulary3} />
                     <VocabularyItem itemImage={FarmingTools_icon} goto={this.vocabulary4} />
-                    <VocabularyItem itemImage={Mountains_icon} goto={this.gotoLetters} />
+                    <VocabularyItem itemImage={Mountains_icon} goto={this.vocabulary5} />
                 </View>
                 <View style={{
                     justifyContent: 'center',
@@ -98,12 +111,12 @@ class vocabularyMenu extends Component {
                     flexDirection: 'row',
                     flexWrap: 'wrap',
                     }}>
-                    <VocabularyItem itemImage={HouseParts_icon} goto={this.vocabulary1} />
-                    <VocabularyItem itemImage={KitchenUtensils_icon} goto={this.gotoLetters} />
+                    <VocabularyItem itemImage={HouseParts_icon} goto={this.vocabulary6} />
+                    <VocabularyItem itemImage={KitchenUtensils_icon} goto={this.vocabulary7} />
                     <VocabularyItem itemImage={GreetingsHeavenlyBodies_icon} goto={this.gotoLetters} />
-                    <VocabularyItem itemImage={Calendar_icon} goto={this.gotoLetters} />
+                    <VocabularyItem itemImage={Calendar_icon} goto={this.vocabulary9} />
                     <VocabularyItem itemImage={Kastifun_icon} goto={this.gotoLetters} />
-                </View> 
+                </View>
                 <View style={styles.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image

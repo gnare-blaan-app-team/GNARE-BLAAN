@@ -43,7 +43,7 @@ class Spoon extends Component {
 
     goBack = () => {
         this.vocab7_spoon.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary7');
     }
 
     gotoMainMenu = () => {

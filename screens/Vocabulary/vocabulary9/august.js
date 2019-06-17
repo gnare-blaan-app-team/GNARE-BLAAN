@@ -43,7 +43,7 @@ class August extends Component {
 
     goBack = () => {
         this.vocab9_august.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('augustScreen');
     }
 
     gotoMainMenu = () => {

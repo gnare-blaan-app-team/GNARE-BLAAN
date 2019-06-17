@@ -162,8 +162,10 @@ class Letters extends Component {
     }
 
     componentWillMount() {
+
         this.objectGlow = null;
         this.glow1 = null;
+        this.bgSound = null;
 
         this.arrayLetterSound = new Array(18);
         this.arrayWordSound = new Array(18);
@@ -232,6 +234,9 @@ class Letters extends Component {
             this.setState({glow: Glow_A});
             this.setState({glow: GlowA});
         }, 6800);
+
+        this.bgSound = setTimeout(()=> {
+        }, 20000);
     }
 
     stopGlow = () => {
@@ -240,6 +245,7 @@ class Letters extends Component {
 //            this.setState({glow: Glow_A});
             clearTimeout(this.glow1);
             clearTimeout(this.objectGlow);
+            clearTimeout(this.bgSound);
         }
     }
 

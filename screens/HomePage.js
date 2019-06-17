@@ -10,31 +10,21 @@ import Like_icon from "./images/Icon_Like.png";
 import Share_icon from "./images/Icon_Share.png";
 
 class Homescreen extends Component{
+
     static navigationOptions = {
         header:null,
     }
 
-    constructor() {
-        super();
-
-        this.state = {
-            change: HomepageBackground,
-        }
-
-    }
-   
-      gotoMainMenu = () => {
+    gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
     }
-
-
 
     render(){
       StatusBar.setHidden(true);
         return(
-           <ImageBackground style={styles.image} source={HomepageBackground}>
-               <View style={{position: "absolute", width:"100%", height:"100%"}}>
-                   <TouchableOpacity  onPress={this.gotoMainMenu}>
+            <ImageBackground style={styles.image} source={HomepageBackground}>
+                <View style={{position: "absolute", width:"100%", height:"100%"}}>
+                    <TouchableOpacity  onPress={this.gotoMainMenu}>
                        <Text style={{width:"100%", height:"100%"}}></Text>
                     </TouchableOpacity>
                     </View>
@@ -61,11 +51,9 @@ class Homescreen extends Component{
                                 </TouchableOpacity>
                             </View>
                         </View>
-                    </View>    
-           </ImageBackground>
-           
+                    </View>
+            </ImageBackground>
         );
-        
     }
 }
 
