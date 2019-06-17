@@ -183,23 +183,24 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: hp('22%'),
         left: wp('10.8%'),
-        height: hp('44.5%'),
-        width: wp('20%')
+        height: hp('46.5%'),
+        width: wp('21%'),
     },
 
     umagaStyle: {
         position: 'absolute',
-        top: hp('22%'),
+        top: hp('20.7%'),
         left: wp('23%'),
-        height: hp('26%'),
-        width: wp('50%')
+        height: hp('27.8%'),
+        width: wp('50%'),
+
     },
 
     gabiStyle: {
         position: 'absolute',
-        top: hp('22.5%'),
-        right: wp('8%'),
-        height: hp('42.5%'),
+        top: hp('20.5%'),
+        right: wp('8.5%'),
+        height: hp('43.5%'),
         width: wp('29%'),
     },
 
@@ -221,10 +222,11 @@ const styles = StyleSheet.create({
 
     goodbyeStyle: {
         position: 'absolute',
-        top: hp('43%'),
+        top: hp('55%'),
         left: wp('45%'),
         height: hp('40%'),
-        width: wp('25%')
+        width: wp('25%'),
+
     },
 
     moonStyle: {
