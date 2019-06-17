@@ -160,14 +160,7 @@ class Vocabulary4 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.chickenStyle}>
-                    <TouchableOpacity onPress={this.gotoChicken}>
-                        <Image
-                            source={ChickenAsset}
-                            style={styles.chickenImage}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
+
                 <View style={styles.cornStyle}>
                     <TouchableOpacity onPress={this.gotoCorn}>
                         <Image
@@ -176,6 +169,16 @@ class Vocabulary4 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
+
+                <View style={styles.chickenStyle}>
+                    <TouchableOpacity onPress={this.gotoChicken}>
+                        <Image
+                            source={ChickenAsset}
+                            style={styles.chickenImage}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+
                 <View style={styles.plowStyle}>
                     <TouchableOpacity onPress={this.gotoPlow}>
                         <Image
@@ -234,13 +237,11 @@ const styles = StyleSheet.create({
     chickenStyle:{
         position: 'absolute',
         top: '59%',
-        left: '23%',
+        left: '30%',
         justifyContent: 'center',
-        height: 60,
-        width: 90,
     },
     chickenImage: {
-        width: wp('23%'),
+        width: wp('7%'),
         height: hp('14%'),
         resizeMode: 'contain',
     },
@@ -268,8 +269,8 @@ const styles = StyleSheet.create({
     },
     farmlandStyle:{
         position: 'absolute',
-        top: '35%',
-        left: '46.5%',
+        top: '36%',
+        left: '45.5%',
         justifyContent: 'center',
     },
     farmlandImage: {
@@ -282,8 +283,6 @@ const styles = StyleSheet.create({
         top: '60%',
         left: '37%',
         justifyContent: 'center',
-        borderWidth: 0.5,
-        borderColor: 'red',
     },
     goatImage: {
         width: wp('10%'),
@@ -316,16 +315,13 @@ const styles = StyleSheet.create({
     },
     riceStyle:{
         position: 'absolute',
-        top: '60%',
-        left: '12.5%',
+        top: '64.4%',
+        left: '11.3%',
         justifyContent: 'center',
-        height: '30%',
-        borderWidth: 0.5,
-        borderColor: 'red',
     },
     riceImage: {
-        width: wp('31%'),
-        height: hp('34%'),
+        width: wp('29.4%'),
+        height: hp('27.5%'),
         resizeMode: 'contain',
     },
     sweetpotatoStyle:{
