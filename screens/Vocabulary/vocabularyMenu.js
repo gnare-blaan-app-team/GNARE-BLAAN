@@ -51,19 +51,19 @@ class vocabularyMenu extends Component {
         this.props.navigation.navigate('vocabulary4');
     }
     vocabulary5 = () => {
-        this.props.navigation.navigate('vocabulary5');
+        this.props.navigation.push('vocabulary5');
     }
     vocabulary6 = () => {
-        this.props.navigation.navigate('vocabulary6');
+        this.props.navigation.push('vocabulary6');
     }
     vocabulary7 = () => {
-        this.props.navigation.navigate('vocabulary7');
+        this.props.navigation.push('vocabulary7');
     }
     vocabulary8 = () => {
-        this.props.navigation.navigate('vocabulary8');
+        this.props.navigation.push('vocabulary8');
     }
     vocabulary9 = () => {
-        this.props.navigation.navigate('vocabulary9');
+        this.props.navigation.push('vocabulary9');
     }
 
     goBack = () => {
