@@ -181,10 +181,10 @@ const styles = StyleSheet.create({
 
     haponStyle: {
         position: 'absolute',
-        top: hp('22%'),
-        left: wp('10.8%'),
-        height: hp('46.5%'),
-        width: wp('21%'),
+        top: hp('20.7%'),
+        left: wp('6.5%'),
+        height: hp('48%'),
+        width: wp('30%'),
     },
 
     umagaStyle: {
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
 
     gabiStyle: {
         position: 'absolute',
-        top: hp('20.5%'),
+        top: hp('20.7%'),
         right: wp('8.5%'),
         height: hp('43.5%'),
         width: wp('29%'),
