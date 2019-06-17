@@ -75,7 +75,7 @@ class Vocabulary4 extends Component {
     }
 
     render() {
-        
+
         return (
             <ImageBackground style={globalStyleSheet.image}
                 source={Vocab4BG}
@@ -206,8 +206,8 @@ const styles = StyleSheet.create({
     },
     bambooImage: {
         width: wp('19%'),
-        height: hp('29%'), 
-        resizeMode: 'contain', 
+        height: hp('29%'),
+        resizeMode: 'contain',
     },
     boloStyle:{
         position: 'absolute',
@@ -217,8 +217,8 @@ const styles = StyleSheet.create({
     },
     boloImage: {
         width: wp('16%'),
-        height: hp('9%'), 
-        resizeMode: 'contain', 
+        height: hp('9%'),
+        resizeMode: 'contain',
     },
     carabaoStyle:{
         position: 'absolute',
@@ -228,8 +228,8 @@ const styles = StyleSheet.create({
     },
     carabaoImage: {
         width: wp('19%'),
-        height: hp('22%'), 
-        resizeMode: 'contain', 
+        height: hp('22%'),
+        resizeMode: 'contain',
     },
     chickenStyle:{
         position: 'absolute',
@@ -241,8 +241,8 @@ const styles = StyleSheet.create({
     },
     chickenImage: {
         width: wp('23%'),
-        height: hp('14%'), 
-        resizeMode: 'contain', 
+        height: hp('14%'),
+        resizeMode: 'contain',
     },
     cornStyle:{
         position: 'absolute',
@@ -252,8 +252,8 @@ const styles = StyleSheet.create({
     },
     cornImage: {
         width: wp('12%'),
-        height: hp('13%'), 
-        resizeMode: 'contain', 
+        height: hp('13%'),
+        resizeMode: 'contain',
     },
     cowStyle:{
         position: 'absolute',
@@ -264,7 +264,7 @@ const styles = StyleSheet.create({
     cowImage: {
         width: wp('20%'),
         height: hp('24%'),
-        resizeMode: 'contain', 
+        resizeMode: 'contain',
     },
     farmlandStyle:{
         position: 'absolute',
@@ -275,18 +275,20 @@ const styles = StyleSheet.create({
     farmlandImage: {
         width: wp('41%'),
         height: hp('44%'),
-        resizeMode: 'contain', 
+        resizeMode: 'contain',
     },
     goatStyle:{
         position: 'absolute',
         top: '60%',
-        left: '31%',
+        left: '37%',
         justifyContent: 'center',
+        borderWidth: 0.5,
+        borderColor: 'red',
     },
     goatImage: {
-        width: wp('20%'),
+        width: wp('10%'),
         height: hp('20%'),
-        resizeMode: 'contain', 
+        resizeMode: 'contain',
     },
     pigStyle:{
         position: 'absolute',
@@ -297,7 +299,7 @@ const styles = StyleSheet.create({
     pigImage: {
         width: wp('17%'),
         height: hp('25%'),
-        resizeMode: 'contain', 
+        resizeMode: 'contain',
     },
     plowStyle:{
         position: 'absolute',
@@ -310,7 +312,7 @@ const styles = StyleSheet.create({
     plowImage: {
         width: wp('25%'),
         height: hp('28%'),
-        resizeMode: 'contain', 
+        resizeMode: 'contain',
     },
     riceStyle:{
         position: 'absolute',
@@ -324,7 +326,7 @@ const styles = StyleSheet.create({
     riceImage: {
         width: wp('31%'),
         height: hp('34%'),
-        resizeMode: 'contain', 
+        resizeMode: 'contain',
     },
     sweetpotatoStyle:{
         position: 'absolute',
@@ -334,8 +336,8 @@ const styles = StyleSheet.create({
     },
     sweetpotatoImage: {
         width: wp('15%'),
-        height: hp('15%'), 
-        resizeMode: 'contain', 
+        height: hp('15%'),
+        resizeMode: 'contain',
     },
 });
 

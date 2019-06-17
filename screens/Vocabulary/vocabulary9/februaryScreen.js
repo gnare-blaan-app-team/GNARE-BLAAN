@@ -8,13 +8,13 @@ import Vocab9BG from './vocabulary9Images/calendarBG.png';
 
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
-import januaryAsset from './vocabulary9Images/item_january.png'
+import februaryAsset from './vocabulary9Images/item_february.png'
 import NextIcon from '../../images/Next_Icon.png';
 import PrevIcon from '../../images/Prev_Icon.png';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-class Vocabulary9 extends Component {
+class februaryScreen extends Component {
     static navigationOptions = {
         header: null,
     }
@@ -31,16 +31,16 @@ class Vocabulary9 extends Component {
         this.props.navigation.navigate('vocabularyMenu');
     }
 
-    gotoJanuary = () => {
-        this.props.navigation.navigate('january');
+    gotoFebruary = () => {
+        this.props.navigation.navigate('february');
     }
 
     gotoNextPage = () => {
-        this.props.navigation.navigate('februaryScreen');
+        this.props.navigation.navigate('marchScreen');
     }
 
     goPrev = () => {
-        this.props.navigation.navigate('decemberScreen');
+        this.props.navigation.navigate('vocabulary9');
     }
 
     gotoSunday = () => {
@@ -94,9 +94,9 @@ class Vocabulary9 extends Component {
                 </View>
 
                 <View style={styles.calendarBorder}>
-                    <TouchableOpacity onPress={this.gotoJanuary}>
+                    <TouchableOpacity onPress={this.gotoFebruary}>
                         <Image
-                            source={januaryAsset}
+                            source={februaryAsset}
                             style={styles.calendarImage}
                         ></Image>
                     </TouchableOpacity>
@@ -185,4 +185,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default withNavigation(Vocabulary9);
+export default withNavigation(februaryScreen);

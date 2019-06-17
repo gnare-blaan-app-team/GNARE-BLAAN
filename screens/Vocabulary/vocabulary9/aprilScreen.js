@@ -8,13 +8,13 @@ import Vocab9BG from './vocabulary9Images/calendarBG.png';
 
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
-import januaryAsset from './vocabulary9Images/item_january.png'
+import aprilAsset from './vocabulary9Images/item_april.png'
 import NextIcon from '../../images/Next_Icon.png';
 import PrevIcon from '../../images/Prev_Icon.png';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-class Vocabulary9 extends Component {
+class aprilScreen extends Component {
     static navigationOptions = {
         header: null,
     }
@@ -31,16 +31,16 @@ class Vocabulary9 extends Component {
         this.props.navigation.navigate('vocabularyMenu');
     }
 
-    gotoJanuary = () => {
-        this.props.navigation.navigate('january');
+    gotoapril = () => {
+        this.props.navigation.navigate('april');
     }
 
     gotoNextPage = () => {
-        this.props.navigation.navigate('februaryScreen');
+        this.props.navigation.navigate('mayScreen');
     }
 
     goPrev = () => {
-        this.props.navigation.navigate('decemberScreen');
+        this.props.navigation.navigate('marchScreen');
     }
 
     gotoSunday = () => {
@@ -94,15 +94,13 @@ class Vocabulary9 extends Component {
                 </View>
 
                 <View style={styles.calendarBorder}>
-                    <TouchableOpacity onPress={this.gotoJanuary}>
+                    <TouchableOpacity onPress={this.gotoapril}>
                         <Image
-                            source={januaryAsset}
+                            source={aprilAsset}
                             style={styles.calendarImage}
                         ></Image>
                     </TouchableOpacity>
                 </View>
-
-
 
                 <View style={{position: "absolute", height: hp('6%'), width: wp('5.65%'), left: '31.3%', top: '46%'}}>
                     <TouchableOpacity  onPress={this.gotoSunday}>
@@ -115,6 +113,8 @@ class Vocabulary9 extends Component {
                        <Text style={{width:"100%", height:"100%"}}></Text>
                     </TouchableOpacity>
                 </View>
+
+
 
                 <View style={{position: "absolute", height: hp('6%'), width: wp('5.65%'), left: '42.3%', top: '46%'}}>
                     <TouchableOpacity  onPress={this.gotoTuesday}>
@@ -185,4 +185,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default withNavigation(Vocabulary9);
+export default withNavigation(aprilScreen);

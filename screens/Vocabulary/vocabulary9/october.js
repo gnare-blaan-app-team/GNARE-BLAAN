@@ -43,7 +43,7 @@ class October extends Component {
 
     goBack = () => {
         this.vocab9_october.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('octoberScreen');
     }
 
     gotoMainMenu = () => {

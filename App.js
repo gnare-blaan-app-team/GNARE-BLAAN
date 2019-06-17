@@ -245,7 +245,19 @@ import Star from './screens/Vocabulary/vocabulary8/star';
 import Sun from './screens/Vocabulary/vocabulary8/sun';
 
 //Vocabulary9
-import Vocabulary9 from './screens/Vocabulary/vocabulary9/vocabulary9'
+import Vocabulary9 from './screens/Vocabulary/vocabulary9/vocabulary9';
+import FebruaryScreen from './screens/Vocabulary/vocabulary9/februaryScreen';
+import MarchScreen from './screens/Vocabulary/vocabulary9/marchScreen';
+import AprilScreen from './screens/Vocabulary/vocabulary9/aprilScreen';
+import MayScreen from './screens/Vocabulary/vocabulary9/mayScreen';
+import JuneScreen from './screens/Vocabulary/vocabulary9/juneScreen';
+import JulyScreen from './screens/Vocabulary/vocabulary9/julyScreen';
+import AugustScreen from './screens//Vocabulary/vocabulary9/augustScreen';
+import SeptemberScreen from './screens//Vocabulary/vocabulary9/septemberScreen';
+import OctoberScreen from './screens//Vocabulary/vocabulary9/octoberScreen';
+import NovemberScreen from './screens//Vocabulary/vocabulary9/novemberScreen';
+import DecemberScreen from './screens//Vocabulary/vocabulary9/decemberScreen';
+
 import January from './screens/Vocabulary/vocabulary9/january';
 import February from './screens/Vocabulary/vocabulary9/february';
 import March from './screens/Vocabulary/vocabulary9/march';
@@ -359,7 +371,7 @@ export default AppNavigator = createStackNavigator(
     page100: Page100,
     page200: Page200,
     page300: Page300,
-    page400: Page400, 
+    page400: Page400,
     page500: Page500,
     page1000: Page1000,
 
@@ -542,6 +554,18 @@ export default AppNavigator = createStackNavigator(
 
     //Vocabulary9
     vocabulary9: Vocabulary9,
+    februaryScreen: FebruaryScreen,
+    marchScreen: MarchScreen,
+    aprilScreen: AprilScreen,
+    mayScreen: MayScreen,
+    juneScreen: JuneScreen,
+    julyScreen: JulyScreen,
+    augustScreen: AugustScreen,
+    septemberScreen: SeptemberScreen,
+    octoberScreen: OctoberScreen,
+    novemberScreen: NovemberScreen,
+    decemberScreen: DecemberScreen,
+
     january: January,
     february: February,
     march: March,
@@ -595,4 +619,3 @@ export default AppNavigator = createStackNavigator(
 }
 }
 );
-

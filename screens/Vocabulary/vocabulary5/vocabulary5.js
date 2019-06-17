@@ -34,7 +34,7 @@ class Vocabulary5 extends Component {
     goBack = () => {
         this.props.navigation.navigate('vocabularyMenu');
     }
-    
+
     gotoTree = () => {
         this.props.navigation.navigate('tree');
     }
@@ -62,7 +62,7 @@ class Vocabulary5 extends Component {
     gotoSalamander = () => {
         this.props.navigation.navigate('salamander');
     }
-    
+
     gotoAxe = () => {
         this.props.navigation.navigate('ax');
     }
@@ -74,7 +74,7 @@ class Vocabulary5 extends Component {
 
 
     render() {
-        
+
         return (
             <ImageBackground style={globalStyleSheet.image}
                 source={Vocab5BG}
@@ -185,7 +185,7 @@ class Vocabulary5 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                
+
             </ImageBackground>
         )
     }
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         width: '60%',
         left: '10.5%',
-        height: '35%',  
+        height: '35%',
     },
     mountainImage: {
         width: '100%',
@@ -263,7 +263,7 @@ const styles = StyleSheet.create({
         width: '12%',
         left: '17%',
         height: '23%',
-        transform: [{ rotate: '12deg' }]
+        transform: [{ rotate: '12deg' }],
     },
     bowImage: {
         width: '100%',
@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
         width: '3%',
         left: '38%',
         height: '40%',
-        transform: [{ rotate: '64deg' }]
+        transform: [{ rotate: '64deg' }],
     },
     spearImage: {
         width: '100%',

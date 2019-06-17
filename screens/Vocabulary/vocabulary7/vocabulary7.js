@@ -109,10 +109,11 @@ class Vocabulary7 extends Component {
 
 
 
-                <View style={styles.trayImage}>
+                <View style={styles.trayBorder}>
                     <TouchableOpacity onPress={this.gotoTray}>
                         <Image
                             source={bilaoAsset}
+                            style={styles.trayImage}
                         ></Image>
                     </TouchableOpacity>
                 </View>
@@ -171,18 +172,20 @@ class Vocabulary7 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.knifeImage}>
+                <View style={styles.knifeBorder}>
                     <TouchableOpacity onPress={this.gotoKnife}>
                         <Image
                             source={kutsilyoAsset}
+                            style={styles.knifeImage}
                         ></Image>
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.mortarImage}>
+                <View style={styles.mortarBorder}>
                     <TouchableOpacity onPress={this.gotoMortar}>
                         <Image
                             source={bayuhanAsset}
+                            style={styles.mortarImage}
                         ></Image>
                     </TouchableOpacity>
                 </View>
@@ -216,17 +219,29 @@ class Vocabulary7 extends Component {
 const styles = StyleSheet.create({
 
 
-    mortarImage: {
+    mortarBorder: {
       position: 'absolute',
       left: '12%',
       top: '55%',
     },
+      mortarImage: {
+        height: hp('18%'),
+        width: wp('13%'),
+        resizeMode: 'contain',
+      },
 
-    trayImage: {
+
+    trayBorder: {
       position: 'absolute',
-      left: '14.6%',
+      left: '16%',
       top: '21%',
     },
+      trayImage: {
+        height: hp('23%'),
+        width: wp('13%'),
+        resizeMode: 'contain',
+      },
+
 
     potBorder: {
       position: 'absolute',
@@ -235,71 +250,75 @@ const styles = StyleSheet.create({
     },
 
       potImage: {
-        height: 70,
-        width: 95,
+        height: hp('13%'),
+        width: wp('10%'),
         resizeMode: 'contain',
       },
 
     cupBorder: {
       position: 'absolute',
-      left: '63%',
+      left: '65%',
       top: '38%',
     },
 
       cupImage: {
-        height: 50,
+        height: hp('10%'),
+        width: wp('6%'),
         resizeMode: 'contain',
       },
 
     firewoodBorder: {
       position: 'absolute',
-      left: '27%',
-      top: '58.3%',
+      left: '28.8%',
+      top: '58.6%',
     },
-
       firewoodImage: {
-        height: 180,
+        height: hp('31%'),
+        width: wp('33%'),
         resizeMode: 'contain',
       },
 
     kettleBorder: {
       position: 'absolute',
-      left: '80.2%',
+      left: '79%',
       top: '53%',
     },
-
         kettleImage: {
-          height: 90,
-          width: 90,
+          height: hp('13%'),
+          width: wp('9%'),
           resizeMode: 'contain',
         },
 
-    knifeImage: {
+    knifeBorder: {
       position: 'absolute',
       left: '15%',
       top: '67%',
     },
+      knifeImage: {
+        height: hp('15%'),
+        width: wp('20%'),
+        resizeMode: 'contain',
+      },
 
     plateBorder: {
       position: 'absolute',
       left: '73%',
-      top: '45%',
+      top: '43%',
     },
-
       plateImage: {
-        height: 100,
-        width: 120,
+        height: hp('18%'),
+        width: wp('13%'),
         resizeMode: 'contain',
       },
 
     sandokBorder: {
       position: 'absolute',
-      left: '73%',
+      left: '72%',
       top: '20%',
     },
-
       sandokImage: {
-        height: 100,
+        height: hp('20%'),
+        width: wp('8%'),
         resizeMode: 'contain',
       },
 
@@ -308,22 +327,21 @@ const styles = StyleSheet.create({
       left: '66%',
       top: '49%',
     },
-
       spoonImage: {
-        height: 80,
-        width: 70,
+        height: hp('15%'),
+        width: wp('7%'),
         resizeMode: 'contain',
       },
 
     stoveBorder: {
       position: 'absolute',
       left: '38%',
-      top: '38%',
+      top: '36%',
     },
 
       stoveImage: {
-        height: 110,
-        width: 160,
+        height: hp('22%'),
+        width: wp('17%'),
         resizeMode: 'contain',
       },
 
