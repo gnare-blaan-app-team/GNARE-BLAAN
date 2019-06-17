@@ -117,7 +117,7 @@ class NumberScreen extends Component {
         // Component State
     constructor() {
         super();
-        
+
         this.state = {
 
             //Background State
@@ -171,7 +171,7 @@ class NumberScreen extends Component {
     };
 
     skipIntroVideo = () => {
-        this.setState({skipVideo: '-1000%', paused: true, 
+        this.setState({skipVideo: '-1000%', paused: true,
         hideSkipBtn: '-1000%', vidSource: null, menuLetterHide: '22%',
         hideNavButton: '-2%'});
     }
@@ -193,7 +193,7 @@ class NumberScreen extends Component {
 
     changeBackground = (imageBG, soundPlay) => {
         this.stopGlow();
-        this.setState({menuLetterHide: imageBG == imageMainBG ? '22%' : '-1000%', 
+        this.setState({menuLetterHide: imageBG == imageMainBG ? '22%' : '-1000%',
                         prevHide: imageBG == Number1 ? hideLeft : showPrev,
                         imageBackground: imageBG,
                         nextHide: imageBG == imageMainBG ? hideRight : showNext,
@@ -226,14 +226,14 @@ class NumberScreen extends Component {
     sentencePage = () => {
         const letterIndex = this.state.letterPlay;
         this.stopGlow();
-        this.setState({menuLetterHide: '-1000%', 
-                        imageBackground: sentenceNumberBGList[letterIndex], 
+        this.setState({menuLetterHide: '-1000%',
+                        imageBackground: sentenceNumberBGList[letterIndex],
                         prevHide: hideLeft, nextHide: hideRight,
                         glowHide: hideLeft, speakerHide: hideLeft,
                         speaker2Hide: showSpeaker, sentenceHide: hideRight,
                         pencilHide: hideLeft, prevBG: sentenceNumberBGList[letterIndex]});
     }
-    
+
     handleBackPress = () => {
         this.arrayNumberSound = null;
     }
@@ -241,7 +241,7 @@ class NumberScreen extends Component {
     playWordSound = () => {
         this.stopGlow();
         const soundWord = this.arrayNumberSound[this.state.letterPlay];
-        
+
         if(soundWord != null) {
             setTimeout(()=>{
                 soundWord.play();
@@ -283,7 +283,7 @@ class NumberScreen extends Component {
             this.arrayNumberSound[this.state.letterPlay].stop();
         }
     }
-    
+
     goPrev = () => {
         const letterNum = this.state.letterPlay;
         const prevPage = letterNum - 1;
@@ -301,7 +301,7 @@ class NumberScreen extends Component {
     goBack = () => {
         if(this.state.prevBG == sentenceNumberBGList[this.state.letterPlay]) {
             this.stopGlow();
-            this.setState({menuLetterHide: '-1000%', 
+            this.setState({menuLetterHide: '-1000%',
                     imageBackground: numberBGList[this.state.letterPlay],
                     prevHide: numberBGList[this.state.letterPlay] == Number1 ? hideLeft : showPrev,
                     pencilHide: showPencil,
@@ -310,7 +310,7 @@ class NumberScreen extends Component {
                     sentenceHide: showSentence,
                     nextHide: showNext,
                     speaker2Hide: hideLeft, prevBG: numberBGList[this.state.letterPlay]});
-                
+
         } else {
             if(this.state.imageBackground == imageMainBG) {
                 this.stopGlow();
@@ -332,9 +332,11 @@ class NumberScreen extends Component {
 
     render() {
         return (
-            
-            <ImageBackground source={imageMainBG} style={{flex: 1, width: '100%', height: '100%', resizeMode: 'stretch'}}>
 
+            <ImageBackground source={imageMainBG} style={{flex: 1, width: '100%', height: '100%', resizeMode: 'stretch'}}>
+                <View style={{position: 'absolute', top: '0%', width: '100%', height: '100%'}}>
+                    <Image source={imageMainBG} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
+                </View>
                 <View style={{position: 'absolute', top: this.state.hideLetterBG, width: '100%', height: '100%'}}>
                     <Image source={this.state.imageBackground} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
                 </View>
@@ -409,7 +411,7 @@ class NumberScreen extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                    
+
                  {/* Prev Button */}
                 <View style={{position: 'absolute', left: this.state.prevHide, top: '40%', width: '12%', height: '24%',}}>
                     <TouchableOpacity onPress={this.goPrev}>
@@ -432,7 +434,7 @@ class NumberScreen extends Component {
                 {/* End of Page Letters Code Part */}
 
 
-                
+
                 {/* Start of Letters Enum Code Part */}
                 <View style={{position: 'absolute', top: this.state.menuLetterHide, left: '15%', width: '83%', height: '32%', flexDirection: 'row', flexWrap: 'wrap',}}>
                     <MenuItem itemImage={require('./numbersImage/1.png')} goto={() => {
