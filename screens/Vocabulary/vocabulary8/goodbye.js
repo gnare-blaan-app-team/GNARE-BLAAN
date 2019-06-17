@@ -43,7 +43,7 @@ class Goodbye extends Component {
 
     goBack = () => {
         this.vocab8_goodbye.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary8');
     }
 
     gotoMainMenu = () => {
