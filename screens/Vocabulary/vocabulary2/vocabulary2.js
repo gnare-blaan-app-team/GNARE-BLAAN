@@ -57,7 +57,7 @@ class vocabulary2 extends Component {
             image3Width: wp('0%'),
             View3Left: '300%',
             view3Top: '19%',
-            boyTop:'1%',
+            boyTop:'3%',
             stillView:'',
         }
     }
