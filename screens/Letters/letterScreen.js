@@ -8,7 +8,7 @@ import Video from "react-native-video";
 
 import GoBackIcon from '../images/Back_icon.png';
 import HomeIcon from '../images/Home_icon.png';
-import GlowA from './lettersGlow/GlowA.gif';
+import GlowA from './lettersGlow/glow-Atry.gif';
 import Glow_A from './lettersGlow/Glow_A.png';
 
     // Letter Components Imports

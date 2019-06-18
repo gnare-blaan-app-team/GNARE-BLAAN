@@ -43,7 +43,7 @@ class Floor extends Component {
 
     goBack = () => {
         this.vocab6_floor.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary6');
     }
 
     gotoMainMenu = () => {
