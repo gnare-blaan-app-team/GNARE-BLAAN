@@ -280,6 +280,8 @@ import Saturday from './screens/Vocabulary/vocabulary9/saturday';
 import Sunday from './screens/Vocabulary/vocabulary9/sunday';
 
 //Vocabulary10
+import Vocabulary10 from './screens/Vocabulary/vocabulary10/vocabulary10';
+
 import BambooGuitar from './screens/Vocabulary/vocabulary10/bambooGuitar';
 import Blouse from './screens/Vocabulary/vocabulary10/blouse';
 import Comb from './screens/Vocabulary/vocabulary10/comb';
@@ -589,6 +591,8 @@ export default AppNavigator = createStackNavigator(
     sunday: Sunday,
 
     //Vocabulary10
+    vocabulary10: Vocabulary10,
+
     bambooGuitar: BambooGuitar,
     blouse: Blouse,
     comb: Comb,
@@ -614,7 +618,7 @@ export default AppNavigator = createStackNavigator(
     dasalbagomatulogPlay: DasalBagoMatulogPlay
   },
 {
-    initialRouteName:"home",
+    initialRouteName:"vocabulary10",
   mode: 'card',
   cardStyle: {
     backgroundColor:"transperent"
