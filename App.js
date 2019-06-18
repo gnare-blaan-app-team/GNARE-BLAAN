@@ -620,11 +620,9 @@ export default AppNavigator = createStackNavigator(
     dasalbagomatulogPlay: DasalBagoMatulogPlay
   },
 {
-<<<<<<< HEAD
-    initialRouteName:"vocabulary10",
-=======
-  initialRouteName:"vocabulary2",
->>>>>>> 147e8d6644fca1ddac9571a4d8eff6e7b4781a2b
+
+  initialRouteName:"home",
+
   mode: 'card',
   cardStyle: {
     backgroundColor:"transperent"
