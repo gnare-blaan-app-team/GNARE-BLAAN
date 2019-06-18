@@ -210,6 +210,7 @@ import Tree from './screens/Vocabulary/vocabulary5/tree';
 import Waterfall from './screens/Vocabulary/vocabulary5/waterfall';
 
 //Vocabulary6
+import Vocabulary6 from './screens/Vocabulary/vocabulary6/vocabulary6'
 import Bedroom from './screens/Vocabulary/vocabulary6/bedroom';
 import Door from './screens/Vocabulary/vocabulary6/door';
 import Floor from './screens/Vocabulary/vocabulary6/floor';
@@ -521,6 +522,7 @@ export default AppNavigator = createStackNavigator(
     waterfall: Waterfall,
 
     //Vocabulary6
+    vocabulary6: Vocabulary6,
     bedroom: Bedroom,
     door: Door,
     floor: Floor,
@@ -618,7 +620,11 @@ export default AppNavigator = createStackNavigator(
     dasalbagomatulogPlay: DasalBagoMatulogPlay
   },
 {
+<<<<<<< HEAD
     initialRouteName:"vocabulary10",
+=======
+  initialRouteName:"vocabulary2",
+>>>>>>> 147e8d6644fca1ddac9571a4d8eff6e7b4781a2b
   mode: 'card',
   cardStyle: {
     backgroundColor:"transperent"
