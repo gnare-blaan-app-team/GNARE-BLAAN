@@ -29,10 +29,12 @@ class Mainmenu extends Component {
     }
 
     gotoFlalok = () => {
+       // this.bg.stop();
         this.props.navigation.navigate('flalok');
     }
 
     gotoMainMenu = () => {
+       // this.bg.stop();
         this.props.navigation.navigate('home');
     }
 

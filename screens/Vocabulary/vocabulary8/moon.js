@@ -43,7 +43,7 @@ class Moon extends Component {
 
     goBack = () => {
         this.vocab8_moon.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary8');
     }
 
     gotoMainMenu = () => {

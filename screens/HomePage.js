@@ -15,16 +15,7 @@ class Homescreen extends Component{
         header:null,
     }
 
-    constructor() {
-        super();
-
-        this.state = {
-            change: HomepageBackground,
-        }
-
-    }
-   
-      gotoMainMenu = () => {
+    gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
     }
 

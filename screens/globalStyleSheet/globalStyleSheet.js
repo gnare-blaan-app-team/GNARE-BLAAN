@@ -25,10 +25,10 @@ export const globalStyleSheet = {
 
     //test Container for Prayers - DasalBagoMatulog
     container: {
-        flex: 1, 
+        flex: 1,
         justifyContent: "center",
     },
-    
+
     // Pencil
     pencilContainer: {
         position: 'absolute',
@@ -148,7 +148,7 @@ export const globalStyleSheet = {
     nextContainer: {
         position: 'absolute',
         left: '83%',
-        top: '45%',
+        top: '40%',
         width: '12%',
         height: '24%',
     },
@@ -390,14 +390,18 @@ export const globalStyleSheet = {
 
     //Glow container
     VideoContainer:{
-        left: '40%', 
-        top: '-20%'
+        position: 'absolute',
+        left: '52%',
+        top: '20%',
+        width: '25%',
+        height: '25%',
     },
     Glow:{
         width: '100%',
         height: '100%',
         resizeMode: 'contain',
     },
+
     //vocab container
     vocabContainer:{
         position: 'absolute',
@@ -405,4 +409,3 @@ export const globalStyleSheet = {
         justifyContent: 'center',
     },
 };
-

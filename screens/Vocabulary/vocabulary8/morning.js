@@ -43,7 +43,7 @@ class Morning extends Component {
 
     goBack = () => {
         this.vocab8_morning.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary8');
     }
 
     gotoMainMenu = () => {

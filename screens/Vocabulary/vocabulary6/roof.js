@@ -43,7 +43,7 @@ class Roof extends Component {
 
     goBack = () => {
         this.vocab6_roof.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary6');
     }
 
     gotoMainMenu = () => {

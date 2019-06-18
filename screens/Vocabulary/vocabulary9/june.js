@@ -43,7 +43,7 @@ class June extends Component {
 
     goBack = () => {
         this.vocab9_june.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('juneScreen');
     }
 
     gotoMainMenu = () => {
