@@ -43,7 +43,7 @@ class Thursday extends Component {
 
     goBack = () => {
         this.vocab9_thursday.pause();
-        this.props.navigation.navigate('vocabulary9');
+        this.props.navigation.goBack();
     }
 
     gotoMainMenu = () => {
