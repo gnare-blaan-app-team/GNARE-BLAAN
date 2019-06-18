@@ -73,6 +73,30 @@ class Vocabulary10 extends Component {
         this.props.navigation.navigate('blouse');
     }
 
+    gotoSkirt = () => {
+        this.props.navigation.navigate('skirt');
+    }
+
+    gotoComb = () => {
+        this.props.navigation.navigate('comb');
+    }
+
+    gotoNecklace = () => {
+        this.props.navigation.navigate('necklace');
+    }
+
+    gotoHeadcover = () => {
+        this.props.navigation.navigate('headcover');
+    }
+
+    gotoGaling = () => {
+        this.props.navigation.navigate('galing');
+    }
+
+    gotoTlayong = () => {
+        this.props.navigation.navigate('tlayong');
+    }
+
 
     render() {
 
@@ -177,20 +201,56 @@ class Vocabulary10 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={{position: "absolute", height: hp('22%'), width: wp('10.5%'), left: '35.5%', top: '33.5%', borderWidth: 0.5, borderColor: 'red'}}>
+                <View style={{position: "absolute", height: hp('22%'), width: wp('10.5%'), left: '35.5%', top: '33.5%'}}>
                     <TouchableOpacity  onPress={this.gotoSaul}>
                        <Text style={{width:"100%", height:"100%"}}></Text>
                     </TouchableOpacity>
                 </View>
 
-                <View style={{position: "absolute", height: hp('18%'), width: wp('8%'), left: '37.5%', top: '53.5%', borderWidth: 0.5, borderColor: 'red'}}>
+                <View style={{position: "absolute", height: hp('18%'), width: wp('8%'), left: '37.5%', top: '53.5%'}}>
                     <TouchableOpacity  onPress={this.gotoPants}>
                        <Text style={{width:"100%", height:"100%"}}></Text>
                     </TouchableOpacity>
                 </View>
 
-                <View style={{position: "absolute", height: hp('15%'), width: wp('7%'), left: '46.5%', top: '45.5%', borderWidth: 0.5, borderColor: 'pink'}}>
+                <View style={{position: "absolute", height: hp('15%'), width: wp('7%'), left: '46.5%', top: '45.5%'}}>
                     <TouchableOpacity  onPress={this.gotoBlouse}>
+                       <Text style={{width:"100%", height:"100%"}}></Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{position: "absolute", height: hp('30%'), width: wp('9%'), left: '53.5%', top: '50.5%'}}>
+                    <TouchableOpacity  onPress={this.gotoSkirt}>
+                       <Text style={{width:"100%", height:"100%"}}></Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{position: "absolute", height: hp('6%'), width: wp('5%'), left: '47.3%', top: '34.5%'}}>
+                    <TouchableOpacity  onPress={this.gotoComb}>
+                       <Text style={{width:"100%", height:"100%"}}></Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{position: "absolute", height: hp('6%'), width: wp('3%'), left: '40.5%', top: '38%'}}>
+                    <TouchableOpacity  onPress={this.gotoNecklace}>
+                       <Text style={{width:"100%", height:"100%"}}></Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{position: "absolute", height: hp('6.5%'), width: wp('5.5%'), left: '39.5%', top: '23%'}}>
+                    <TouchableOpacity  onPress={this.gotoHeadcover}>
+                       <Text style={{width:"100%", height:"100%"}}></Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{position: "absolute", height: hp('3.5%'), width: wp('7.5%'), left: '38%', top: '51.5%'}}>
+                    <TouchableOpacity  onPress={this.gotoGaling}>
+                       <Text style={{width:"100%", height:"100%"}}></Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{position: "absolute", height: hp('8%'), width: wp('9%'), left: '53.5%', top: '48.5%'}}>
+                    <TouchableOpacity  onPress={this.gotoTlayong}>
                        <Text style={{width:"100%", height:"100%"}}></Text>
                     </TouchableOpacity>
                 </View>
@@ -240,7 +300,6 @@ const styles = StyleSheet.create({
       position: 'absolute',
       left: '15%',
       top: '70%',
-      borderWidth: 0.5,
       height: '11%',
       width: '22%',
       resizeMode: 'cover',
@@ -257,7 +316,6 @@ const styles = StyleSheet.create({
       position: 'absolute',
       left: '15%',
       top: '32%',
-      borderWidth: 0.5,
       height: '38%',
       width: '18%',
       resizeMode: 'cover',
@@ -274,7 +332,6 @@ const styles = StyleSheet.create({
       position: 'absolute',
       left: '73%',
       top: '55%',
-      borderWidth: 0.5,
       height: '13%',
       width: '9%',
       resizeMode: 'cover',
@@ -291,7 +348,6 @@ const styles = StyleSheet.create({
       position: 'absolute',
       left: '64%',
       top: '70%',
-      borderWidth: 0.5,
       resizeMode: 'cover',
       transform: [{ rotate: '30deg' }],
       width: '23%',
