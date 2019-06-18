@@ -43,7 +43,7 @@ class Necklace extends Component {
 
     goBack = () => {
         this.vocab10_necklace.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary10');
     }
 
     gotoMainMenu = () => {

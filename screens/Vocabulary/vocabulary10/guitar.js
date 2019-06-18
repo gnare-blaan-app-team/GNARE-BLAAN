@@ -43,7 +43,7 @@ class Guitar extends Component {
 
     goBack = () => {
         this.vocab10_guitar.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary10');
     }
 
     gotoMainMenu = () => {

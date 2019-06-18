@@ -43,7 +43,7 @@ class Comb extends Component {
 
     goBack = () => {
         this.vocab10_comb.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary10');
     }
 
     gotoMainMenu = () => {

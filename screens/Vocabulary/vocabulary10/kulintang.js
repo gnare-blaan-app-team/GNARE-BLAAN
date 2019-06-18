@@ -43,7 +43,7 @@ class Kulintang extends Component {
 
     goBack = () => {
         this.vocab10_kulintang.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary10');
     }
 
     gotoMainMenu = () => {
