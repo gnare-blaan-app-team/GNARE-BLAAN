@@ -139,14 +139,6 @@ class Vocabulary8 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.moonStyle}>
-                    <TouchableOpacity onPress={this.gotoMoon}>
-                        <Image
-                            source={Moon}
-                            style={styles.Image}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
 
                 <View style={styles.starStyle}>
                     <TouchableOpacity onPress={this.gotoStar}>
@@ -156,6 +148,16 @@ class Vocabulary8 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
+
+                <View style={styles.moonStyle}>
+                    <TouchableOpacity onPress={this.gotoMoon}>
+                        <Image
+                            source={Moon}
+                            style={styles.Image}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+
 
                 <View style={styles.cloudStyle}>
                     <TouchableOpacity onPress={this.gotoCloud}>
