@@ -31,9 +31,9 @@ class Vocabulary8 extends Component {
     }
 
     goBack = () => {
-        this.props.navigation.navigate('numbers');
+        this.props.navigation.navigate('vocabularyMenu');
     }
-    
+
     gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
     }
@@ -72,7 +72,7 @@ class Vocabulary8 extends Component {
 
 
     render() {
-        
+
         return (
             <ImageBackground style={globalStyleSheet.image}
                 source={Vocab8BG}
@@ -165,7 +165,7 @@ class Vocabulary8 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                
+
             </ImageBackground>
         )
     }
@@ -176,63 +176,65 @@ const styles = StyleSheet.create({
     Image: {
         width: '100%',
         height: '100%',
-        resizeMode: 'stretch'
+        resizeMode: 'contain',
     },
 
     haponStyle: {
         position: 'absolute',
-        top: hp('19%'),
-        left: wp('10.5%'),
-        height: hp('44.5%'),
-        width: wp('20%')
+        top: hp('20.7%'),
+        left: wp('6.5%'),
+        height: hp('48%'),
+        width: wp('30%'),
     },
-    
+
     umagaStyle: {
         position: 'absolute',
-        top: hp('19%'),
+        top: hp('20.7%'),
         left: wp('23%'),
-        height: hp('26%'),
-        width: wp('50%') 
+        height: hp('27.8%'),
+        width: wp('50%'),
+
     },
 
     gabiStyle: {
         position: 'absolute',
-        top: hp('19%'),
-        right: wp('10%'),
-        height: hp('40.5%'),
-        width: wp('25%') 
+        top: hp('20.7%'),
+        right: wp('8.5%'),
+        height: hp('43.5%'),
+        width: wp('29%'),
     },
 
     sunStyle: {
         position: 'absolute',
-        top: hp('19%'),
+        top: hp('22%'),
         left: wp('45%'),
         height: hp('10%'),
-        width: wp('7%') 
+        width: wp('7%')
     },
 
     cloudStyle: {
         position: 'absolute',
-        top: hp('27%'),
+        top: hp('30%'),
         left: wp('34%'),
         height: hp('13%'),
-        width: wp('33%') 
+        width: wp('33%')
     },
 
     goodbyeStyle: {
         position: 'absolute',
-        top: hp('43%'),
+        top: hp('55%'),
         left: wp('45%'),
         height: hp('40%'),
-        width: wp('25%') 
+        width: wp('25%'),
+
     },
 
     moonStyle: {
         position: 'absolute',
         top: hp('25%'),
-        right: wp('17%'),
+        right: wp('14%'),
         height: hp('10%'),
-        width: wp('6%') 
+        width: wp('6%')
     },
 
     starStyle: {
@@ -240,9 +242,9 @@ const styles = StyleSheet.create({
         top: hp('30%'),
         right: wp('15%'),
         height: hp('10%'),
-        width: wp('30%') 
+        width: wp('30%')
     }
-    
+
 });
 
 export default withNavigation(Vocabulary8);

@@ -235,7 +235,7 @@ import Stove from './screens/Vocabulary/vocabulary7/stove';
 import Tray from './screens/Vocabulary/vocabulary7/tray';
 
 //Vocabulary8
-import Vocabulary8 from './screens/Vocabulary/vocabulary8/vocabulary8'
+import Vocabulary8 from './screens/Vocabulary/vocabulary8/vocabulary8';
 import Afternoon from './screens/Vocabulary/vocabulary8/afternoon';
 import Cloud from './screens/Vocabulary/vocabulary8/cloud';
 import Evening from './screens/Vocabulary/vocabulary8/evening';
@@ -614,7 +614,7 @@ export default AppNavigator = createStackNavigator(
     dasalbagomatulogPlay: DasalBagoMatulogPlay
   },
 {
-  initialRouteName:"home",
+    initialRouteName:"home",
   mode: 'card',
   cardStyle: {
     backgroundColor:"transperent"

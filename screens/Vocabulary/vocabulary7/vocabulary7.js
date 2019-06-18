@@ -269,12 +269,12 @@ const styles = StyleSheet.create({
 
     firewoodBorder: {
       position: 'absolute',
-      left: '28.8%',
-      top: '58.6%',
+      left: '28.4%',
+      top: '59%',
     },
       firewoodImage: {
-        height: hp('31%'),
-        width: wp('33%'),
+        height: hp('32%'),
+        width: wp('34%'),
         resizeMode: 'contain',
       },
 
