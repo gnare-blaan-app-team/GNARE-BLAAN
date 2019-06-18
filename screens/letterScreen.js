@@ -5,9 +5,15 @@ import MenuItem from './LettersMenu';
 
 import Sound from 'react-native-sound';
 
+<<<<<<< HEAD:screens/letterScreen.js
 import GoBackIcon from './images/Back_icon.png';
 import HomeIcon from './images/Home_icon.png';
 import GlowA from './lettersGlow/GlowA.gif';
+=======
+import GoBackIcon from '../images/Back_icon.png';
+import HomeIcon from '../images/Home_icon.png';
+import GlowA from './lettersGlow/glow-Atry.gif';
+>>>>>>> b39742827272e835af0ea0753cd9ec45f69248e9:screens/Letters/letterScreen.js
 import Glow_A from './lettersGlow/Glow_A.png';
 
     // Letter Components Imports
@@ -101,7 +107,7 @@ class Letters extends Component {
         // Component State
     constructor() {
         super();
-        
+
         this.state = {
 
             //Background State
@@ -123,7 +129,48 @@ class Letters extends Component {
             glow: Glow_A,
             hideLetterBG: '0%',
             prevBG: imageMainBG,
+<<<<<<< HEAD:screens/letterScreen.js
         },
+=======
+            prevSound: 0,
+            showBackground: '-1000%',
+
+            // Video State
+            paused: false,
+            progress: 0,
+            duration: 0,
+            skipVideo: 0,
+            hideSkipBtn: '-2%',
+            vidSource: null,
+            hideNavButton: '-1000%',
+        }
+    }
+
+    handleProgress = progress => {
+        this.setState({
+            progress: progress.currentTime / this.state.duration,
+        });
+    };
+
+    handleEnd = () => {
+        this.setState({ paused: true, skipVideo: '-1000%', hideSkipBtn: '-1000%', vidSource: null});
+        //his.props.navigation.navigate('endstory');
+    };
+
+    handleLoad = meta => {
+        this.setState({
+            duration: meta.duration,
+        });
+    };
+
+    skipIntroVideo = () => {
+        this.setState({skipVideo: '-1000%', paused: true,
+        hideSkipBtn: '-1000%', vidSource: null, menuLetterHide: '20%',
+        hideNavButton: '-2%'});
+    }
+
+    componentWillMount() {
+>>>>>>> b39742827272e835af0ea0753cd9ec45f69248e9:screens/Letters/letterScreen.js
 
         // Sounds
         this.letterSound = null;
@@ -137,8 +184,13 @@ class Letters extends Component {
     }
 
     changeBackground = (imageBG, soundPlay) => {
+<<<<<<< HEAD:screens/letterScreen.js
         this.stopAutoPlaySound();
         this.setState({menuLetterHide: imageBG == imageMainBG ? '22%' : '-1000%', 
+=======
+        this.stopGlow();
+        this.setState({menuLetterHide: imageBG == imageMainBG ? '20%' : '-1000%',
+>>>>>>> b39742827272e835af0ea0753cd9ec45f69248e9:screens/Letters/letterScreen.js
                         prevHide: imageBG == LetterA ? hideLeft : showPrev,
                         imageBackground: imageBG,
                         nextHide: imageBG == imageMainBG ? hideRight : showNext,
@@ -154,6 +206,7 @@ class Letters extends Component {
     autoPlaySound = () => {
         this.releaseSounds();
         this.objectGlow = setTimeout(()=> {
+<<<<<<< HEAD:screens/letterScreen.js
             this.letterSound = new Sound('letter_play_' + soundList[this.state.indexSound] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
@@ -163,6 +216,13 @@ class Letters extends Component {
                 }});   
         }, 200);
         
+=======
+            if(this.arrayLetterSound[this.state.letterPlay] != null) {
+                this.arrayLetterSound[this.state.letterPlay].play();
+            }
+        }, 500);
+
+>>>>>>> b39742827272e835af0ea0753cd9ec45f69248e9:screens/Letters/letterScreen.js
         this.glow1 = setTimeout(() => {
             this.wordSound = new Sound('word_play_' + soundList[this.state.indexSound] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
@@ -186,10 +246,17 @@ class Letters extends Component {
     }
 
     sentencePage = () => {
+<<<<<<< HEAD:screens/letterScreen.js
         const letterIndex = this.state.indexSound;
         this.stopAutoPlaySound();
         this.setState({menuLetterHide: '-1000%', 
                         imageBackground: sentenceBGList[letterIndex], 
+=======
+        const letterIndex = this.state.letterPlay;
+        this.stopGlow();
+        this.setState({menuLetterHide: '-1000%',
+                        imageBackground: sentenceBGList[letterIndex],
+>>>>>>> b39742827272e835af0ea0753cd9ec45f69248e9:screens/Letters/letterScreen.js
                         prevHide: hideLeft, nextHide: hideRight,
                         glowHide: hideLeft, speakerHide: hideLeft,
                         speaker2Hide: showSpeaker, sentenceHide: hideRight,
@@ -198,7 +265,7 @@ class Letters extends Component {
             this.playSentenceSound();
         }, 500);
     }
-    
+
     handleBackPress = () => {
         if(this.timeoutSound != null) {
             clearTimeout(this.timeoutSound);
@@ -237,11 +304,22 @@ class Letters extends Component {
     }
 
     playSentenceSound = () => {
+<<<<<<< HEAD:screens/letterScreen.js
         if(this.sentenceSound != null) {
             this.sentenceSound.release();
         }
         if(this.timeoutSound != null) {
             clearTimeout(this.timeoutSound);
+=======
+        this.stopSounds();
+
+        const soundSentence = this.arraySentenceSound[this.state.letterPlay];
+
+        if(soundSentence != null) {
+            setTimeout(()=>{
+                soundSentence.play();
+            }, 200);
+>>>>>>> b39742827272e835af0ea0753cd9ec45f69248e9:screens/Letters/letterScreen.js
         }
         this.stopAutoPlaySound();
         this.sentenceSound = new Sound('sentence_letter_' + soundList[this.state.indexSound] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
@@ -254,8 +332,18 @@ class Letters extends Component {
     }
 
     playWordSound = () => {
+<<<<<<< HEAD:screens/letterScreen.js
         if(this.wordSound != null) {
             this.wordSound.release();
+=======
+        this.stopGlow();
+        const soundWord = this.arrayWordSound[this.state.letterPlay];
+
+        if(soundWord != null) {
+            setTimeout(()=>{
+                soundWord.play();
+            }), 200;
+>>>>>>> b39742827272e835af0ea0753cd9ec45f69248e9:screens/Letters/letterScreen.js
         }
         this.stopAutoPlaySound();
         this.wordSound = new Sound('word_play_' + soundList[this.state.indexSound] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
@@ -309,7 +397,7 @@ class Letters extends Component {
             clearTimeout(this.timeoutSound);
         }
     }
-    
+
     goPrev = () => {
         const letterNum = this.state.indexSound;
         const prevPage = letterNum - 1;
@@ -324,6 +412,7 @@ class Letters extends Component {
     }
 
     goBack = () => {
+<<<<<<< HEAD:screens/letterScreen.js
         if(this.state.prevBG == sentenceBGList[this.state.indexSound]) {
             this.stopAutoPlaySound();
             if(this.timeoutSound != null) {
@@ -332,13 +421,25 @@ class Letters extends Component {
             this.setState({menuLetterHide: '-1000%', 
                     imageBackground: letterBGList[this.state.indexSound],
                     prevHide: letterBGList[this.state.indexSound] == LetterA ? hideLeft : showPrev,
+=======
+        if(this.state.prevBG == sentenceBGList[this.state.letterPlay]) {
+            this.stopGlow();
+            this.setState({menuLetterHide: '-1000%',
+                    imageBackground: letterBGList[this.state.letterPlay],
+                    prevHide: letterBGList[this.state.letterPlay] == LetterA ? hideLeft : showPrev,
+>>>>>>> b39742827272e835af0ea0753cd9ec45f69248e9:screens/Letters/letterScreen.js
                     pencilHide: showPencil,
                     glowHide: showGlow,
                     speakerHide: showSpeaker,
                     sentenceHide: showSentence,
                     nextHide: showNext,
+<<<<<<< HEAD:screens/letterScreen.js
                     speaker2Hide: hideLeft, prevBG: letterBGList[this.state.indexSound]});
                 
+=======
+                    speaker2Hide: hideLeft, prevBG: letterBGList[this.state.letterPlay]});
+
+>>>>>>> b39742827272e835af0ea0753cd9ec45f69248e9:screens/Letters/letterScreen.js
         } else {
             if(this.state.imageBackground == imageMainBG) {
                 this.handleBackPress();
@@ -359,9 +460,11 @@ class Letters extends Component {
 
     render() {
         return (
-            
-            <ImageBackground source={imageMainBG} style={{flex: 1, width: '100%', height: '100%', resizeMode: 'stretch'}}>
 
+            <ImageBackground source={imageMainBG} style={{flex: 1, width: '100%', height: '100%', resizeMode: 'stretch'}}>
+                <View style={{position: 'absolute', top: '0%', width: '100%', height: '100%'}}>
+                    <Image source={imageMainBG} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
+                </View>
                 <View style={{position: 'absolute', top: this.state.hideLetterBG, width: '100%', height: '100%'}}>
                     <Image source={this.state.imageBackground} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
                 </View>
@@ -423,7 +526,7 @@ class Letters extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                    
+
                  {/* Prev Button */}
                 <View style={{position: 'absolute', left: this.state.prevHide, top: '40%', width: '12%', height: '24%',}}>
                     <TouchableOpacity onPress={this.goPrev}>
@@ -446,7 +549,7 @@ class Letters extends Component {
                 {/* End of Page Letters Code Part */}
 
 
-                
+
                 {/* Start of Letters Enum Code Part */}
                 <View style={{position: 'absolute', top: this.state.menuLetterHide, left: '15%', width: '80%', height: '60%', flexDirection: 'row', flexWrap: 'wrap',}}>
                     <MenuItem itemImage={require('./lettersImage/a.png')} goto={() => {

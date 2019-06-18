@@ -43,7 +43,7 @@ class Wall extends Component {
 
     goBack = () => {
         this.vocab6_wall.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary6');
     }
 
     gotoMainMenu = () => {

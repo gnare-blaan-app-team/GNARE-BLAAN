@@ -43,7 +43,7 @@ class April extends Component {
 
     goBack = () => {
         this.vocab9_april.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('aprilScreen');
     }
 
     gotoMainMenu = () => {

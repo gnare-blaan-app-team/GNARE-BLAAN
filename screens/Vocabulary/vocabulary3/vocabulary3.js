@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, Text, StyleSheet, ImageBackground, TouchableOpacity, BackHandler } from 'react-native';
+import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler, Text } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
@@ -57,12 +57,12 @@ class Vocabulary3 extends Component {
     gotoShrimp = () => {
         this.props.navigation.navigate('shrimp');
     }
-   
-    
-    
+
+
+
 
     render() {
-        
+
         return (
             <ImageBackground style={globalStyleSheet.image}
                 source={Vocab3BG}
@@ -125,6 +125,19 @@ class Vocabulary3 extends Component {
                 </View>
                 <View style={styles.containerStyle}>
                 </View>
+
+                <View style={{position: "absolute", height: hp('17%'), width: wp('30%'), left: '11.3%', top: '26%'}}>
+                    <TouchableOpacity  onPress={this.gotoSeashore}>
+                       <Text style={{width:"100%", height:"100%"}}></Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{position: "absolute", height: hp('15%'), width: wp('10%'), left: '79%', top: '40%'}}>
+                    <TouchableOpacity  onPress={this.gotoSeashore}>
+                       <Text style={{width:"100%", height:"100%"}}></Text>
+                    </TouchableOpacity>
+                </View>
+
                 <View style={styles.fishnetStyle}>
                     <TouchableOpacity onPress={this.gotoFishnet}>
                         <Image
@@ -165,8 +178,8 @@ const styles = StyleSheet.create({
     },
     basketImage: {
         width: wp('15%'),
-        height: hp('20%'), 
-        resizeMode: 'contain', 
+        height: hp('20%'),
+        resizeMode: 'contain',
     },
     eelStyle:{
         position: 'absolute',
@@ -178,8 +191,8 @@ const styles = StyleSheet.create({
     },
     eelImage: {
         width: wp('18%'),
-        height: hp('25%'), 
-        resizeMode: 'contain', 
+        height: hp('25%'),
+        resizeMode: 'contain',
     },
     fishStyle:{
         position: 'absolute',
@@ -191,8 +204,8 @@ const styles = StyleSheet.create({
     },
     fishImage: {
         width: wp('30%'),
-        height: hp('30%'), 
-        resizeMode: 'contain', 
+        height: hp('30%'),
+        resizeMode: 'contain',
     },
     fishnetStyle:{
         position: 'absolute',
@@ -204,21 +217,19 @@ const styles = StyleSheet.create({
     },
     fishnetImage: {
         width: wp('15%'),
-        height: hp('20%'), 
-        resizeMode: 'contain', 
+        height: hp('20%'),
+        resizeMode: 'contain',
     },
     seaStyle:{
         position: 'absolute',
         top: '30%',
-        left: '12.75%',
+        left: '11%',
         justifyContent: 'center',
-        width: '75%',
-        height: '29%',
     },
     seaImage: {
         width: wp('80%'),
-        height: hp('92%'), 
-        resizeMode: 'contain', 
+        height: hp('31%'),
+        resizeMode: 'contain',
     },
     shrimpStyle:{
         position: 'absolute',
@@ -230,8 +241,8 @@ const styles = StyleSheet.create({
     },
     shrimpImage: {
         width: wp('20%'),
-        height: hp('30%'), 
-        resizeMode: 'contain', 
+        height: hp('30%'),
+        resizeMode: 'contain',
     },
     crabStyle:{
         position: 'absolute',
@@ -242,23 +253,21 @@ const styles = StyleSheet.create({
     },
     crabImage: {
         width: wp('8%'),
-        height: hp('12%'), 
-        resizeMode: 'contain',  
+        height: hp('12%'),
+        resizeMode: 'contain',
     },
     seashoreStyle:{
         position: 'absolute',
         top: '25.5%',
-        left: '53.5%',
-        // borderWidth: 0.5,
-        // borderColor: 'red',
-        height: '19%',
+        left: '53%',
+        height: '15%',
     },
     seashoreImage: {
         top: '-18%',
-        width: wp('36%'),
-        height: hp('34%'), 
-        resizeMode: 'contain', 
-    }, 
+        width: wp('37%'),
+        height: hp('37%'),
+        resizeMode: 'contain',
+    },
     containerStyle: {
         position: 'absolute',
         top: '29%',

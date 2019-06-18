@@ -89,6 +89,7 @@ import Tree from './screens/Vocabulary/vocabulary5/tree';
 import Waterfall from './screens/Vocabulary/vocabulary5/waterfall';
 
 //Vocabulary6
+import Vocabulary6 from './screens/Vocabulary/vocabulary6/vocabulary6'
 import Bedroom from './screens/Vocabulary/vocabulary6/bedroom';
 import Door from './screens/Vocabulary/vocabulary6/door';
 import Floor from './screens/Vocabulary/vocabulary6/floor';
@@ -114,6 +115,7 @@ import Stove from './screens/Vocabulary/vocabulary7/stove';
 import Tray from './screens/Vocabulary/vocabulary7/tray';
 
 //Vocabulary8
+import Vocabulary8 from './screens/Vocabulary/vocabulary8/vocabulary8';
 import Afternoon from './screens/Vocabulary/vocabulary8/afternoon';
 import Cloud from './screens/Vocabulary/vocabulary8/cloud';
 import Evening from './screens/Vocabulary/vocabulary8/evening';
@@ -124,7 +126,19 @@ import Star from './screens/Vocabulary/vocabulary8/star';
 import Sun from './screens/Vocabulary/vocabulary8/sun';
 
 //Vocabulary9
-import Vocabulary9 from './screens/Vocabulary/vocabulary9/vocabulary9'
+import Vocabulary9 from './screens/Vocabulary/vocabulary9/vocabulary9';
+import FebruaryScreen from './screens/Vocabulary/vocabulary9/februaryScreen';
+import MarchScreen from './screens/Vocabulary/vocabulary9/marchScreen';
+import AprilScreen from './screens/Vocabulary/vocabulary9/aprilScreen';
+import MayScreen from './screens/Vocabulary/vocabulary9/mayScreen';
+import JuneScreen from './screens/Vocabulary/vocabulary9/juneScreen';
+import JulyScreen from './screens/Vocabulary/vocabulary9/julyScreen';
+import AugustScreen from './screens//Vocabulary/vocabulary9/augustScreen';
+import SeptemberScreen from './screens//Vocabulary/vocabulary9/septemberScreen';
+import OctoberScreen from './screens//Vocabulary/vocabulary9/octoberScreen';
+import NovemberScreen from './screens//Vocabulary/vocabulary9/novemberScreen';
+import DecemberScreen from './screens//Vocabulary/vocabulary9/decemberScreen';
+
 import January from './screens/Vocabulary/vocabulary9/january';
 import February from './screens/Vocabulary/vocabulary9/february';
 import March from './screens/Vocabulary/vocabulary9/march';
@@ -146,6 +160,8 @@ import Saturday from './screens/Vocabulary/vocabulary9/saturday';
 import Sunday from './screens/Vocabulary/vocabulary9/sunday';
 
 //Vocabulary10
+import Vocabulary10 from './screens/Vocabulary/vocabulary10/vocabulary10';
+
 import BambooGuitar from './screens/Vocabulary/vocabulary10/bambooGuitar';
 import Blouse from './screens/Vocabulary/vocabulary10/blouse';
 import Comb from './screens/Vocabulary/vocabulary10/comb';
@@ -211,6 +227,134 @@ export default AppNavigator = createStackNavigator(
     story5: Story5Screen,
     story6: Story6Screen,
 
+<<<<<<< HEAD
+=======
+
+
+    // Page Letter
+
+    pageA: PageA,
+    pageB: PageB,
+    pageD: PageD,
+    pageE: PageE,
+    pageF: PageF,
+    pageG: PageG,
+    pageH: PageH,
+    pageI: PageI,
+    pageK: PageK,
+    pageL: PageL,
+    pageM: PageM,
+    pageN: PageN,
+    pageO: PageO,
+    pageS: PageS,
+    pageT: PageT,
+    pageU: PageU,
+    pageW: PageW,
+    pageY: PageY,
+
+
+
+    // Page Number
+
+    page1: Page1,
+    page2: Page2,
+    page3: Page3,
+    page4: Page4,
+    page5: Page5,
+    page6: Page6,
+    page7: Page7,
+    page8: Page8,
+    page9: Page9,
+    page10: Page10,
+    page20: Page20,
+    page30: Page30,
+    page40: Page40,
+    page50: Page50,
+    page60: Page60,
+    page70: Page70,
+    page80: Page80,
+    page90: Page90,
+    page100: Page100,
+    page200: Page200,
+    page300: Page300,
+    page400: Page400,
+    page500: Page500,
+    page1000: Page1000,
+
+
+    // Letter Sentence
+
+    sentenceA: SentenceA,
+    sentenceB: SentenceB,
+    sentenceD: SentenceD,
+    sentenceE: SentenceE,
+    sentenceF: SentenceF,
+    sentenceG: SentenceG,
+    sentenceH: SentenceH,
+    sentenceI: SentenceI,
+    sentenceK: SentenceK,
+    sentenceL: SentenceL,
+    sentenceM: SentenceM,
+    sentenceN: SentenceN,
+    sentenceO: SentenceO,
+    sentenceS: SentenceS,
+    sentenceT: SentenceT,
+    sentenceU: SentenceU,
+    sentenceW: SentenceW,
+    sentenceY: SentenceY,
+
+
+
+    // Number Sentence
+
+    sentence1: Sentence1,
+    sentence2: Sentence2,
+    sentence3: Sentence3,
+    sentence4: Sentence4,
+    sentence5: Sentence5,
+    sentence6: Sentence6,
+    sentence7: Sentence7,
+    sentence8: Sentence8,
+    sentence9: Sentence9,
+    sentence10: Sentence10,
+    sentence20: Sentence20,
+    sentence30: Sentence30,
+    sentence40: Sentence40,
+    sentence50: Sentence50,
+    sentence60: Sentence60,
+    sentence70: Sentence70,
+    sentence80: Sentence80,
+    sentence90: Sentence90,
+    sentence100: Sentence100,
+    sentence200: Sentence200,
+    sentence300: Sentence300,
+    sentence400: Sentence400,
+    sentence500: Sentence500,
+    sentence1000: Sentence1000,
+
+
+    // Letter Tracing
+
+    tracingA: TracingA,
+    tracingB: TracingB,
+    tracingD: TracingD,
+    tracingE: TracingE,
+    tracingF: TracingF,
+    tracingG: TracingG,
+    tracingH: TracingH,
+    tracingI: TracingI,
+    tracingK: TracingK,
+    tracingL: TracingL,
+    tracingM: TracingM,
+    tracingN: TracingN,
+    tracingO: TracingO,
+    tracingS: TracingS,
+    tracingT: TracingT,
+    tracingU: TracingU,
+    tracingW: TracingW,
+    tracingY: TracingY,
+
+>>>>>>> b39742827272e835af0ea0753cd9ec45f69248e9
     //Vocabularies
     vocabularyMenu: VocabularyMenu,
 
@@ -281,6 +425,7 @@ export default AppNavigator = createStackNavigator(
     waterfall: Waterfall,
 
     //Vocabulary6
+    vocabulary6: Vocabulary6,
     bedroom: Bedroom,
     door: Door,
     floor: Floor,
@@ -306,6 +451,7 @@ export default AppNavigator = createStackNavigator(
     tray: Tray,
 
     //Vocabulary8
+    vocabulary8: Vocabulary8,
     afternoon: Afternoon,
     cloud: Cloud,
     evening: Evening,
@@ -317,6 +463,18 @@ export default AppNavigator = createStackNavigator(
 
     //Vocabulary9
     vocabulary9: Vocabulary9,
+    februaryScreen: FebruaryScreen,
+    marchScreen: MarchScreen,
+    aprilScreen: AprilScreen,
+    mayScreen: MayScreen,
+    juneScreen: JuneScreen,
+    julyScreen: JulyScreen,
+    augustScreen: AugustScreen,
+    septemberScreen: SeptemberScreen,
+    octoberScreen: OctoberScreen,
+    novemberScreen: NovemberScreen,
+    decemberScreen: DecemberScreen,
+
     january: January,
     february: February,
     march: March,
@@ -338,6 +496,8 @@ export default AppNavigator = createStackNavigator(
     sunday: Sunday,
 
     //Vocabulary10
+    vocabulary10: Vocabulary10,
+
     bambooGuitar: BambooGuitar,
     blouse: Blouse,
     comb: Comb,
@@ -363,11 +523,12 @@ export default AppNavigator = createStackNavigator(
     dasalbagomatulogPlay: DasalBagoMatulogPlay
   },
 {
+
   initialRouteName:"home",
+
   mode: 'card',
   cardStyle: {
     backgroundColor:"transperent"
 }
 }
 );
-
