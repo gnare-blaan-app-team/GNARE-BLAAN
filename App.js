@@ -154,21 +154,6 @@ import Lolo from './screens/Vocabulary/vocabulary1/lolo'
 
 //Vocabulary2
 import Vocabulary2 from './screens/Vocabulary/vocabulary2/vocabulary2';
-import Balikat from './screens/Vocabulary/vocabulary2/balikat'
-import Baywang from './screens/Vocabulary/vocabulary2/baywang'
-import Binti from './screens/Vocabulary/vocabulary2/binti'
-import Buhok from './screens/Vocabulary/vocabulary2/buhok'
-import Bunganga from './screens/Vocabulary/vocabulary2/bunganga'
-import Daliri from './screens/Vocabulary/vocabulary2/daliri'
-import Dibdib from './screens/Vocabulary/vocabulary2/dibdib'
-import Ilong from './screens/Vocabulary/vocabulary2/ilong'
-import Kamay from './screens/Vocabulary/vocabulary2/kamay'
-import Leeg from './screens/Vocabulary/vocabulary2/leeg'
-import Mata from './screens/Vocabulary/vocabulary2/mata'
-import Paa from './screens/Vocabulary/vocabulary2/paa'
-import Tainga from './screens/Vocabulary/vocabulary2/tainga'
-import Tuhod from './screens/Vocabulary/vocabulary2/tuhod'
-import Ulo from './screens/Vocabulary/vocabulary2/ulo'
 
 //Vocabulary3
 import Vocabulary3 from './screens/Vocabulary/vocabulary3/vocabulary3';
@@ -466,22 +451,7 @@ export default AppNavigator = createStackNavigator(
 
     //Vocabulary 2
     vocabulary2: Vocabulary2,
-    balikat: Balikat,
-    baywang: Baywang,
-    binti: Binti,
-    buhok: Buhok,
-    bunganga: Bunganga,
-    daliri: Daliri,
-    dibdib: Dibdib,
-    ilong: Ilong,
-    kamay: Kamay,
-    leeg: Leeg,
-    mata: Mata,
-    paa: Paa,
-    tainga: Tainga,
-    tuhod: Tuhod,
-    ulo: Ulo,
-
+    
     //Vocabulary 3
     vocabulary3: Vocabulary3,
     basket: Basket,
@@ -621,7 +591,7 @@ export default AppNavigator = createStackNavigator(
   },
 {
 
-  initialRouteName:"vocabulary2",
+  initialRouteName:"vocabulary9",
 
   mode: 'card',
   cardStyle: {
