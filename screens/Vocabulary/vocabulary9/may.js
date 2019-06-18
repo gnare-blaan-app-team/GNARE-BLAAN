@@ -43,7 +43,7 @@ class May extends Component {
 
     goBack = () => {
         this.vocab9_may.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('mayScreen');
     }
 
     gotoMainMenu = () => {

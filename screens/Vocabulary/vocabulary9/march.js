@@ -43,7 +43,7 @@ class March extends Component {
 
     goBack = () => {
         this.vocab9_march.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('marchScreen');
     }
 
     gotoMainMenu = () => {
