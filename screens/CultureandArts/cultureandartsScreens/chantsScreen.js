@@ -8,8 +8,7 @@ import Home_icon from '../../images/Home_icon.png';
 import Chant1_icon from '../cultureandartsImages/Chant1.png';
 import Chant2_icon from '../cultureandartsImages/Chant2.png';
 import Chant3_icon from '../cultureandartsImages/Chant3.png';
-import cultureandarts_BG from '../cultureandartsImages/cultureandarts_BG.jpg';
-
+import cultureandarts_BG from '../../images/Flalok_BG.jpg';
 
 class chantsScreen extends Component {
     static navigationOptions = {

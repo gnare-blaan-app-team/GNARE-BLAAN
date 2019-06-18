@@ -5,7 +5,7 @@ import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleShee
 
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
-import cultureandarts_BG from '../cultureandartsImages/cultureandarts_BG.jpg';
+import cultureandarts_BG from '../../images/Flalok_BG.jpg';
 
 
 class kastifunScreen extends Component {

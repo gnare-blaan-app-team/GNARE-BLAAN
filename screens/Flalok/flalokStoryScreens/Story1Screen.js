@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Image, TouchableWithoutFeedback, TouchableOpacity} from "react-native";
+import { StyleSheet, Text, View, Image, ImageBackground, TouchableWithoutFeedback, TouchableOpacity} from "react-native";
 
 import Video from "react-native-video";
 import ProgressBar from "react-native-progress/Bar";
@@ -38,6 +38,7 @@ class Story1Screen extends Component {
             hideVideo: '-1200%',
             hideTabs: '-1000%',
             hideHome: '-1000%',
+            hideStory: '0%',
 
             subtitle: ' Filipino',
             hideSub: '-1000%',
@@ -99,7 +100,9 @@ class Story1Screen extends Component {
     };
 
     handleEnd = () => {
-        this.setState({ paused: true, opacityVideo: 0, opacityNext: 1, hideVideo: 0, hideTabs: '15%', hideHome: '-2%'});
+        this.setState({ paused: true, opacityVideo: 0, opacityNext: 1, 
+                    hideVideo: 0, hideTabs: '15%', hideHome: '-2%',
+                    hideStory: '-1000%'});
         //his.props.navigation.navigate('endstory');
     };
 
@@ -110,7 +113,11 @@ class Story1Screen extends Component {
     };
 
     goBack = () => {
-        this.props.navigation.pop();
+        this.props.navigation.navigate('flalok');
+    }
+
+    gotoMainMenu = () => {
+        this.props.navigation.navigate('mainMenu');
     }
 
 
@@ -138,9 +145,9 @@ class Story1Screen extends Component {
     render() {
 
         return (
-            <View style={videoStyle.container}>
+            <ImageBackground style={videoStyle.container}>
                 
-                <View style={{opacity: this.state.opacityVideo}}>
+                <View style={{position: 'absolute', width: '100%', height: '100%', top: this.state.hideStory, opacity: this.state.opacityVideo}}>
                     <TouchableWithoutFeedback onPress={this.hideControl}>
                         <Video
                             paused={this.state.paused}
@@ -230,9 +237,18 @@ class Story1Screen extends Component {
                         </TouchableOpacity>
                     </View>
                 </View>
-                
+
                 <Image source={flalokAfterStory_BG} style={{position: 'absolute', top: this.state.hideVideo, opacity: this.state.opacityNext, width: '100%', height: '100%'}} />
+                    <View style={{position: 'absolute', width: '14%', height: '28%', left: '85%', top: this.state.hideHome,}}>
+                        <TouchableOpacity onPress={this.gotoMainMenu}>
+                            <Image
+                                source={Home_icon}
+                                style={styles.home}
+                            ></Image>
+                        </TouchableOpacity>
+                    </View>
                     <View style={{position: 'absolute', top: this.state.hideTabs, left: '45%', width: '40%', height: '60%',}}>
+                        
                         <View style={EndStyles.imageTab}>
                             <TouchableOpacity onPress={this.gotoNextStory}>
                                 <Image
@@ -260,16 +276,7 @@ class Story1Screen extends Component {
                             </TouchableOpacity>
                         </View>
                     </View>
-
-                    <View style={{position: 'absolute', width: '14%', height: '28%', left: '85%', top: this.state.hideHome,}}>
-                        <TouchableOpacity onPress={this.gotoMainMenu}>
-                            <Image
-                                source={Home_icon}
-                                style={styles.home}
-                            ></Image>
-                        </TouchableOpacity>
-                    </View>
-            </View>
+            </ImageBackground>
         );
     }
     }
