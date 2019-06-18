@@ -46,14 +46,14 @@ export const globalStyleSheet = {
     // Back Button Icon
     backContainer: {
         position: 'absolute',
-        left: '1%',
-        top: '-2%',
+        left: '2%',
+        top: '3%',
         width: '14%',
         height: '28%',
     },
     back: {
-        width: '100%',
-        height: '100%',
+        width: '75%',
+        height: '75%',
         resizeMode: 'contain',
     },
     skip: {
@@ -68,13 +68,13 @@ export const globalStyleSheet = {
     homeContainer: {
         position: 'absolute',
         left: '85%',
-        top: '-2%',
+        top: '3%',
         width: '14%',
         height: '28%',
     },
     home: {
-        width: '100%',
-        height: '100%',
+        width: '75%',
+        height: '75%',
         resizeMode: 'contain',
     },
 
@@ -87,8 +87,8 @@ export const globalStyleSheet = {
         height: '28%',
     },
     sentenceIcon: {
-        width: '100%',
-        height: '100%',
+        width: '75%',
+        height: '75%',
         resizeMode: 'contain',
     },
 
@@ -153,8 +153,8 @@ export const globalStyleSheet = {
         height: '24%',
     },
     next: {
-        width: '100%',
-        height: '100%',
+        width: '75%',
+        height: '75%',
         resizeMode: 'contain',
     },
 
@@ -167,8 +167,8 @@ export const globalStyleSheet = {
         height: '24%',
     },
     prev: {
-        width: '100%',
-        height: '100%',
+        width: '75%',
+        height: '75%',
         resizeMode: 'contain',
     },
 

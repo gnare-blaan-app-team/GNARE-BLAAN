@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler, Text } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
-
 import Vocab9BG from './vocabulary9Images/calendarBG.png';
-
-
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
-import marchAsset from './vocabulary9Images/item_march.png'
+import marchAsset from './vocabulary9Images/Item_march.png'
 import NextIcon from '../../images/Next_Icon.png';
 import PrevIcon from '../../images/Prev_Icon.png';
 
