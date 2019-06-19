@@ -270,7 +270,7 @@ const styles = StyleSheet.create({
     firewoodBorder: {
       position: 'absolute',
       left: '28.4%',
-      top: '59%',
+      top: '58%',
     },
       firewoodImage: {
         height: hp('32%'),

@@ -246,6 +246,15 @@ class Vocabulary5 extends Component {
         })
     }
 
+<<<<<<< HEAD
+    gotoIlog = () => {
+        this.props.navigation.navigate('river');
+    }
+
+
+
+=======
+>>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     render() {
 
         return (
@@ -435,36 +444,114 @@ class Vocabulary5 extends Component {
 }
 
 const styles = StyleSheet.create({
+<<<<<<< HEAD
+
+    mountainStyle: {
+        position: 'absolute',
+        width: '60%',
+        left: '12.6%',
+        height: '35%',
+    },
+=======
+>>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     mountainImage: {
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
     },
+<<<<<<< HEAD
+
+    treeStyle: {
+        position: 'absolute',
+        top: '19%',
+        width: '20%',
+        left: '12.7%',
+        height: '65%',
+    },
+=======
+>>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     treeImage: {
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
     },
+<<<<<<< HEAD
+
+    fallsStyle: {
+        position: 'absolute',
+        top: '19%',
+        width: '24%',
+        right: '12.5%',
+        height: '65%',
+    },
+=======
+>>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     fallsImage: {
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
     },
+<<<<<<< HEAD
+
+    ilogStyle: {
+        position: 'absolute',
+        top: '48%',
+        width: '45%',
+        right: '12.5%',
+        height: '40%',
+    },
+=======
+>>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     ilogImage: {
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
     },
+<<<<<<< HEAD
+
+    lawinStyle: {
+        position: 'absolute',
+        top: '19%',
+        width: '12%',
+        left: '16%',
+        height: '32%',
+    },
+=======
+>>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     lawinImage: {
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
     },
+<<<<<<< HEAD
+
+    bowStyle: {
+        position: 'absolute',
+        top: '66%',
+        width: '12%',
+        left: '20%',
+        height: '23%',
+        transform: [{ rotate: '12deg' }],
+    },
+=======
+>>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     bowImage: {
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
     },
+<<<<<<< HEAD
+
+    spearStyle: {
+        position: 'absolute',
+        top: '56%',
+        width: '3%',
+        left: '36%',
+        height: '40%',
+        transform: [{ rotate: '64deg' }],
+    },
+=======
+>>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     spearImage: {
         width: '100%',
         height: '100%',

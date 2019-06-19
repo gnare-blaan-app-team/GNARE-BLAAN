@@ -13,6 +13,15 @@ class GameMenu extends Component {
     static navigationOptions = {
         header: null,
     }
+
+    gotoDadBatak = () => {
+        this.props.navigation.navigate('dadbatak')
+    }
+
+    gotoDadSe = () => {
+        this.props.navigation.navigate('dadse')
+    }
+
     render() {
         return (
             <ImageBackground
@@ -27,18 +36,22 @@ class GameMenu extends Component {
                     </Image>
                 </View>
                 <View style={styles.DadBatakStyle}>
-                    <Image
-                        source={DadBatak}
-                        style={styles.image}
-                    >
-                    </Image>
+                    <TouchableOpacity onPress={this.gotoDadBatak}>
+                        <Image
+                            source={DadBatak}
+                            style={styles.image}
+                        >
+                        </Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.DadSeStyle}>
-                    <Image
-                        source={DadSe}
-                        style={styles.image}
-                    >
-                    </Image>
+                    <TouchableOpacity onPress={this.gotoDadSe}>
+                        <Image
+                            source={DadSe}
+                            style={styles.image}
+                        >
+                        </Image>
+                    </TouchableOpacity>
                 </View>
             </ImageBackground>
         )
