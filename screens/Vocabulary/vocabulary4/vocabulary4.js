@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler } from 'react-native';
+import { View, Image, StyleSheet, ImageBackground, TouchableOpacity,  } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
@@ -241,8 +241,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         height: 60,
         width: 90,
-        borderWidth: 0.5,
-        borderColor: 'red',
 
     },
     chickenImage: {

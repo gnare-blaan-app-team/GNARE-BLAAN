@@ -21,7 +21,9 @@ import Fingers from './vocabulary2Images/daliri.png';
 import Legs from './vocabulary2Images/binti.png';
 import Knees from './vocabulary2Images/tuhod.png';
 import Toes from './vocabulary2Images/paa.png';
+import SpeakerIcon from '../../images/Speaker_icon.png';
 
+const partList=[Head,Eyes]
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
@@ -32,7 +34,7 @@ class vocabulary2 extends Component {
 
     constructor(props) {
         super(props);
-        this.moveAnimation = new Animated.ValueXY({ x: 100, y: 100 })
+        this.moveAnimation = new Animated.ValueXY({ x: 400, y: 100 })
         this.state = {
             BackgroundImage: BG,
             view1Height: hp('0%'),
@@ -57,8 +59,11 @@ class vocabulary2 extends Component {
             image3Width: wp('0%'),
             View3Left: '300%',
             view3Top: '19%',
-            boyTop:'1%',
+            boyTop:'22%',
+            boyLeft:'40%',
             stillView:'',
+            speakerTop:'1000%',
+            clearBackground:'goVocabMenu',
         }
     }
 
@@ -70,6 +75,8 @@ class vocabulary2 extends Component {
             toValue: 1,
         }).start()
         this.setState({
+            boyTop: '22%',
+            boyLeft: '20%',
             view2Top: '1000%',
             View2Left: '1000%',
             view3Top: '1000%',
@@ -96,6 +103,8 @@ class vocabulary2 extends Component {
             toValue: 1,
         }).start()
         this.setState({
+            boyTop: '22%',
+            boyLeft: '20%',
             view1Top: '1000%',
             View1Left: '1000%',
             view3Top: '1000%',
@@ -120,6 +129,8 @@ class vocabulary2 extends Component {
             toValue: 1,
         }).start()
         this.setState({
+            boyTop: '22%',
+            boyLeft: '20%',
             view1Height: hp('0%'),
             view1Width: wp('0%'),
             view1Top: '1000%',
@@ -132,8 +143,8 @@ class vocabulary2 extends Component {
             view3Width: wp('50%'),
             image3Height:400,
             image3Width: 200,
-            view3Top: '15%',
-            View3Left: '40%',
+            view3Top: '20%',
+            View3Left: '35%',
         })
 
     }
@@ -145,44 +156,12 @@ class vocabulary2 extends Component {
          }).start()
     }
 
-    componentDidMount(){
-        if(this.state.show == 'show'){
-            Animated.spring(this.moveAnimation, {
-                toValue: { x: 200, y: 100 }
-            }).start()
-            Animated.spring(this.animatedValue, {
-                toValue: 1,
-            }).start()
-            this.setState({
-                view1Height: hp('80%'),
-                view1Width: wp('50%'),
-                image1Height: hp('80%'),
-                image1Width: wp('70%'),
-                View1Left: '40%',
-            })
-
-        }
-
-    }
     goBack = () => {
-        if(this.state.BackgroundImage == 185){
+        const clear = this.state.clearBackground;
+        if (clear == 'goVocabMenu'){
             this.props.navigation.navigate('vocabularyMenu')
         }
-        if (this.state.BackgroundImage == 186 || 
-            this.state.BackgroundImage == 187 || 
-            this.state.BackgroundImage == 188 ||
-            this.state.BackgroundImage == 189 ||
-            this.state.BackgroundImage == 190 ||
-            this.state.BackgroundImage == 191 ||
-            this.state.BackgroundImage == 192 ||
-            this.state.BackgroundImage == 193 ||
-            this.state.BackgroundImage == 194 ||
-            this.state.BackgroundImage == 195 ||
-            this.state.BackgroundImage == 196 ||
-            this.state.BackgroundImage == 197 ||
-            this.state.BackgroundImage == 198 ||
-            this.state.BackgroundImage == 199 ||
-            this.state.BackgroundImage == 200){
+        if (clear == 'clear'){
             Animated.spring(this.animatedValue, {
                 toValue: 1,
             }).start()
@@ -192,6 +171,7 @@ class vocabulary2 extends Component {
                     view1Width: wp('50%'),
                     View1Left: '40%',
                     view1Top: '19%',
+                    clearBackground:'goVocabMenu',
                 })
             }
             if (this.state.stillView == 'View2') {
@@ -200,6 +180,7 @@ class vocabulary2 extends Component {
                     view2Width: wp('50%'),
                     View2Left: '40%',
                     view2Top: '19%',
+                    clearBackground: 'goVocabMenu',
                 })
             }
             if (this.state.stillView == 'View3') {
@@ -208,11 +189,14 @@ class vocabulary2 extends Component {
                     view3Width: wp('50%'),
                     View3Left: '40%',
                     view3Top: '19%',
+                    clearBackground: 'goVocabMenu',
                 })
             }
             this.setState({
                 BackgroundImage: BG, 
-                boyTop: '1%',
+                boyTop: '22%',
+                boyLeft: '20%',
+                speakerTop:'1000%',
             })
             Animated.spring(this.moveAnimation, {
                 toValue: { x: 200, y: 100 }
@@ -229,8 +213,10 @@ class vocabulary2 extends Component {
             view1Top: '1000%',
             view2Top: '1000%',
             view3Top: '1000%',
-            boyTop: '2%',
-            stillView:'View1'
+            boyTop: '1000%',
+            stillView:'View1',
+            speakerTop:'20%',
+            clearBackground: 'clear'
         })
     }
 
@@ -243,8 +229,10 @@ class vocabulary2 extends Component {
             view1Top: '1000%',
             view2Top: '1000%',
             view3Top: '1000%',
-            boyTop: '2%',
-            stillView: 'View1'
+            stillView: 'View1',
+            boyTop: '1000%',
+            speakerTop: '20%',
+            clearBackground: 'clear',
         })
     }
 
@@ -257,8 +245,10 @@ class vocabulary2 extends Component {
             view1Top: '1000%',
             view2Top: '1000%',
             view3Top: '1000%',
-            boyTop: '2%',
-            stillView: 'View1'
+            stillView: 'View1',
+            boyTop: '1000%',
+            speakerTop:'20%',
+            clearBackground: 'clear',
         })
     }
 
@@ -271,8 +261,10 @@ class vocabulary2 extends Component {
             view1Top: '1000%',
             view2Top: '1000%',
             view3Top: '1000%',
-            boyTop: '2%',
-            stillView: 'View1'
+            stillView: 'View1',
+            boyTop: '1000%',
+            speakerTop: '20%',
+            clearBackground: 'clear',
         })
     }
 
@@ -285,8 +277,10 @@ class vocabulary2 extends Component {
             view1Top: '1000%',
             view2Top: '1000%',
             view3Top: '1000%',
-            boyTop: '2%',
-            stillView: 'View1'
+            stillView: 'View1',
+            boyTop: '1000%',
+            speakerTop: '20%',
+            clearBackground: 'clear',
         })
     }
     gotoEars = () => {
@@ -298,8 +292,10 @@ class vocabulary2 extends Component {
             view1Top: '1000%',
             view2Top: '1000%',
             view3Top: '1000%',
-            boyTop: '2%',
-            stillView: 'View1'
+            stillView: 'View1',
+            boyTop: '1000%',
+            speakerTop: '20%',
+            clearBackground: 'clear',
         })
     }
     gotoHead = () => {
@@ -307,12 +303,15 @@ class vocabulary2 extends Component {
             toValue: { x: -1000, y: 100 }
         }).start()
         this.setState({
-            BackgroundImage: Head,
+            BackgroundImage: partList[0],
             view1Top: '1000%',
             view2Top: '1000%',
             view3Top: '1000%',
             boyTop:'2%',
-            stillView: 'View1'
+            stillView: 'View1',
+            boyTop: '1000%',
+            speakerTop: '20%',
+            clearBackground:'clear',   
         })
     }
     gotoBalikat = () => {
@@ -324,8 +323,10 @@ class vocabulary2 extends Component {
             view1Top: '1000%',
             view2Top: '1000%',
             view3Top: '1000%',
-            boyTop: '2%',
-            stillView: 'View2'
+            stillView: 'View2',
+            boyTop: '1000%',
+            speakerTop: '20%',
+            clearBackground: 'clear',
         })
     }
     gotoDibdib = () => {
@@ -337,8 +338,10 @@ class vocabulary2 extends Component {
             view1Top: '1000%',
             view2Top: '1000%',
             view3Top: '1000%',
-            boyTop: '2%',
-            stillView: 'View2'
+            stillView: 'View2',
+            boyTop: '1000%',
+            speakerTop: '20%',
+             clearBackground:'clear',
         })
     }
      gotoKamay = () => {
@@ -350,8 +353,10 @@ class vocabulary2 extends Component {
              view1Top: '1000%',
              view2Top: '1000%',
              view3Top: '1000%',
-             boyTop: '2%',
-             stillView: 'View2'
+             stillView: 'View2',
+             boyTop: '1000%',
+             speakerTop: '20%',
+              clearBackground:'clear',
          })
     }
     gotoBaywang = () => {
@@ -364,7 +369,10 @@ class vocabulary2 extends Component {
             view2Top: '1000%',
             view3Top: '1000%',
             boyTop: '2%',
-            stillView: 'View3'
+            stillView: 'View3',
+            boyTop: '1000%',
+            speakerTop: '20%',
+            clearBackground: 'clear',
         })
     }
     gotoDaliri = () => {
@@ -376,8 +384,10 @@ class vocabulary2 extends Component {
             view1Top: '1000%',
             view2Top: '1000%',
             view3Top: '1000%',
-            boyTop: '2%',
-            stillView: 'View2'
+            stillView: 'View2',
+            boyTop: '1000%',
+            speakerTop: '20%',
+             clearBackground:'clear',
         })
     }
     gotoBinti = () => {
@@ -389,8 +399,10 @@ class vocabulary2 extends Component {
             view1Top: '1000%',
             view2Top: '1000%',
             view3Top: '1000%',
-            boyTop: '2%',
-            stillView: 'View3'
+            stillView: 'View3',
+            boyTop: '1000%',
+            speakerTop: '20%',
+            clearBackground: 'clear',
         })
     }
     gotoTuhod = () => {
@@ -402,8 +414,10 @@ class vocabulary2 extends Component {
             view1Top: '1000%',
             view2Top: '1000%',
             view3Top: '1000%',
-            boyTop: '2%',
-            stillView: 'View3'
+            stillView: 'View3',
+            boyTop: '1000%',
+            speakerTop:'20%',
+             clearBackground:'clear',
         })
     }
     gotoPaa = () => {
@@ -415,36 +429,32 @@ class vocabulary2 extends Component {
             view1Top: '1000%',
             view2Top: '1000%',
             view3Top: '1000%',
-            boyTop: '2%',
-            stillView: 'View3'
+            stillView: 'View3',
+            boyTop: '1000%',
+            speakerTop: '20%',
+             clearBackground:'clear',
         })
     }
 
     render() {
-        const animatedStyle = {
-            transform: [{scale:this.animatedValue}]
-        }
-        const { navigation } = this.props;
-        const stillShow = navigation.getParam('show', 'NO-ID');
-        this.state.show = stillShow;
         return (
-            <ImageBackground style={globalStyleSheet.image}
+            <ImageBackground style={{ flex: 1, width: '100%', height: '100%', resizeMode: 'stretch' }}
                 source={BG}
             >
-                <View style={{ width: '100%', height: '100%', position:'absolute',top:'0%' }}>
-                    <Image source={this.state.BackgroundImage} style={{width:'100%',height:'100%', resizeMode:'stretch'}}/>
+                <View style={{ position: 'absolute', top: '0%', width: '100%', height: '100%' }}>
+                    <Image source={BG} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
                 </View>
-                <Animated.View style={[{
-                    position: 'absolute',
-                    width: wp('17%'),
-                        height: hp('77%'),
-                    },this.moveAnimation.getLayout()]}>
+                <View style={{ position: 'absolute', top: this.state.hideLetterBG, width: '100%', height: '100%' }}>
+                    <Image source={this.state.BackgroundImage} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
+                </View>
                     <View style={{
+                        position: 'absolute',
                         width: wp('17%'),
                         height: hp('77%'),
-                        top:this.state.boyTop,
                         justifyCotent: 'center',
-                        alignItems:'center'
+                        alignItems:'center',
+                        top:this.state.boyTop,
+                        left: this.state.boyLeft,
                         }}>
                     <TouchableOpacity onPress={this.view1} style={{
                         position: 'relative', 
@@ -466,16 +476,15 @@ class vocabulary2 extends Component {
                         <Image source={require('./vocabulary2Images/TO_paa.png')}/>
                     </TouchableOpacity>
                     </View>
-                </Animated.View>
                 <Animated.View 
-                style={[{
+                style={{
                     position: 'absolute',
                     width: this.state.view1Width,
                     height: this.state.view1Height,
                     left: this.state.View1Left,
                     top:this.state.view1Top,
                     justifyCotent:'center'
-                }, animatedStyle]}>
+                }}>
                 
                     <TouchableOpacity style={{ position: 'absolute', top: '5%', left: '18%' }} onPress={this.gotoHead}>
                         <Image source={require('./vocabulary2Images/ulo1.png')} style={{
@@ -548,14 +557,14 @@ class vocabulary2 extends Component {
                     </TouchableOpacity>
                 </View>
                 <Animated.View
-                    style={[{
+                    style={{
                         position: 'absolute',
                         width: this.state.view2Width,
                         height: this.state.view2Height,
                         left: this.state.View2Left,
                         top: this.state.view2Top,
                         justifyCotent: 'center',
-                    }, animatedStyle]}>
+                    }}>
                     <TouchableOpacity style={{ position: 'absolute', top: '15.70%', left: '16%'}} onPress={this.gotoBalikat}>
                         <Image source={require('./vocabulary2Images/dibdib3.png')} style={{
                             width: wp('3.50%'),
@@ -606,8 +615,22 @@ class vocabulary2 extends Component {
                         }} />
                     </TouchableOpacity>
                 </Animated.View>
+                <View style={{
+                    position: 'absolute',
+                    left: '80%',
+                    top:this.state.speakerTop,
+                    width: '6%',
+                    height: '10%',
+                }}>
+                    <TouchableOpacity>
+                        <Image
+                            source={SpeakerIcon}
+                            style={globalStyleSheet.A_Speaker_2}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
                 <Animated.View
-                    style={[{
+                    style={{
                         position: 'absolute',
                         width: this.state.view3Width,
                         height: this.state.view3Height,
@@ -615,7 +638,7 @@ class vocabulary2 extends Component {
                         top: this.state.view3Top,
                         justifyCotent: 'center',
                         alignItems:'center',
-                    }, animatedStyle]}>
+                    }}>
                     <TouchableOpacity onPress={this.gotoBaywang} style={{position:'absolute',top:'7%'}}>
                         <Image source={require('./vocabulary2Images/paa1.png')}/>
                     </TouchableOpacity>

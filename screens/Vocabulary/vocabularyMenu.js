@@ -29,7 +29,7 @@ class vocabularyMenu extends Component {
         super(props);
         this.state = {
             top2:'1000%',
-            top1:'20%',
+            top1:'25%',
             nextTop: '45%',
             prevTop:'1000%',
         }
@@ -75,7 +75,7 @@ class vocabularyMenu extends Component {
     gotoNextPage = () => {
         this.setState({
             top1:'1000%',
-            top2: '20%',
+            top2: '25%',
             nextTop:'1000%',
             prevTop: '40%',
         })
@@ -83,7 +83,7 @@ class vocabularyMenu extends Component {
     goPrev = () => {
         this.setState({
             top2: '1000%',
-            top1: '20%',
+            top1: '25%',
             prevTop: '1000%',
             nextTop: '40%',
         })
@@ -95,7 +95,7 @@ class vocabularyMenu extends Component {
                     justifyContent: 'center',
                     position: 'absolute',
                     top: this.state.top1,
-                    left: '5%',
+                    left: '-4%',
                     width: '98%',
                     height: '80%',
                     flexDirection: 'row',
@@ -111,7 +111,7 @@ class vocabularyMenu extends Component {
                     justifyContent: 'center',
                     position: 'absolute',
                     top: this.state.top2,
-                    left: '5%',
+                    left: '7%',
                     width: '98%',
                     height: '80%',
                     flexDirection: 'row',
