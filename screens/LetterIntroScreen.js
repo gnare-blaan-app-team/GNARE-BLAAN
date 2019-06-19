@@ -13,6 +13,7 @@ class LetterIntroScreen extends Component {
     constructor() {
         super();
         this.state = {
+            source: Letter_Intro,
             paused: false,
             progress: 0,
             duration: 0,
@@ -26,7 +27,7 @@ class LetterIntroScreen extends Component {
     };
 
     handleEnd = () => {
-        this.setState({paused: true});
+        this.setState({paused: true, source: null});
         this.props.navigation.navigate('letters');
     };
 
@@ -37,7 +38,7 @@ class LetterIntroScreen extends Component {
     };
 
     gotoLetterScreen = () => {
-        this.setState({paused: true});
+        this.setState({paused: true, source: null});
         this.props.navigation.navigate('letters');
     }
 
@@ -47,7 +48,7 @@ class LetterIntroScreen extends Component {
                 <View style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'black'}}>
                     <Video
                             paused={false}
-                            source={Letter_Intro}
+                            source={this.state.source}
                             style={{ width: "100%", height: '100%' }}
                             resizeMode="stretch"
                             volume={1}

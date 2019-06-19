@@ -306,7 +306,7 @@ const styles = StyleSheet.create({
     plowStyle:{
         position: 'absolute',
         top: '63%',
-        left: '66%',
+        left: '65.5%',
         justifyContent: 'center',
         width: '22%',
         height: '28%',
@@ -318,8 +318,8 @@ const styles = StyleSheet.create({
     },
     riceStyle:{
         position: 'absolute',
-        top: '64.4%',
-        left: '11.3%',
+        top: '63.5%',
+        left: '13%',
         justifyContent: 'center',
     },
     riceImage: {

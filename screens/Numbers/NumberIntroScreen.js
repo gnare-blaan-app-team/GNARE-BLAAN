@@ -14,6 +14,7 @@ class NumberIntroScreen extends Component {
     constructor() {
         super();
         this.state = {
+            source: Number_Intro,
             paused: false,
             progress: 0,
             duration: 0,
@@ -27,7 +28,7 @@ class NumberIntroScreen extends Component {
     };
 
     handleEnd = () => {
-        this.setState({paused: true});
+        this.setState({paused: true, source: null});
         this.props.navigation.navigate('numbers');
     };
 
@@ -37,8 +38,8 @@ class NumberIntroScreen extends Component {
         });
     };
 
-    gotoLetterScreen = () => {
-        this.setState({paused: true});
+    gotoNumberScreen = () => {
+        this.setState({paused: true, source: null});
         this.props.navigation.navigate('numbers');
     }
 
@@ -48,7 +49,7 @@ class NumberIntroScreen extends Component {
                 <View style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'black'}}>
                     <Video
                             paused={false}
-                            source={Number_Intro}
+                            source={this.state.source}
                             style={{ width: "100%", height: '100%' }}
                             resizeMode="stretch"
                             volume={1}
@@ -64,7 +65,7 @@ class NumberIntroScreen extends Component {
 
                 <View style={{position: 'absolute', top: '5%', left: '2%', width: '15%', height: '10%',
                              justifyContent: 'center', alignItems: 'center'}}>
-                    <TouchableOpacity onPress={this.gotoLetterScreen}>
+                    <TouchableOpacity onPress={this.gotoNumberScreen}>
                         <Text style={[styles.skip, 
                             {borderWidth: 1, padding: 5, borderColor: 'white', borderRadius: 5}]}>
                                  Skip video

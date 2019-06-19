@@ -71,6 +71,10 @@ class Vocabulary5 extends Component {
         this.props.navigation.navigate('hornbill');
     }
 
+    gotoIlog = () => {
+        this.props.navigation.navigate('river');
+    }
+
 
 
     render() {
@@ -196,7 +200,7 @@ const styles = StyleSheet.create({
     mountainStyle: {
         position: 'absolute',
         width: '60%',
-        left: '11.5%',
+        left: '12.6%',
         height: '35%',
     },
     mountainImage: {
@@ -209,7 +213,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: '19%',
         width: '20%',
-        left: '11.5%',
+        left: '12.7%',
         height: '65%',
     },
     treeImage: {
@@ -222,7 +226,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: '19%',
         width: '24%',
-        right: '11%',
+        right: '12.5%',
         height: '65%',
     },
     fallsImage: {
@@ -233,9 +237,9 @@ const styles = StyleSheet.create({
 
     ilogStyle: {
         position: 'absolute',
-        top: '48.5%',
+        top: '48%',
         width: '45%',
-        right: '11%',
+        right: '12.5%',
         height: '40%',
     },
     ilogImage: {
@@ -248,7 +252,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: '19%',
         width: '12%',
-        left: '14%',
+        left: '16%',
         height: '32%',
     },
     lawinImage: {
@@ -261,7 +265,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: '66%',
         width: '12%',
-        left: '17%',
+        left: '20%',
         height: '23%',
         transform: [{ rotate: '12deg' }],
     },
@@ -275,7 +279,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: '56%',
         width: '3%',
-        left: '38%',
+        left: '36%',
         height: '40%',
         transform: [{ rotate: '64deg' }],
     },
