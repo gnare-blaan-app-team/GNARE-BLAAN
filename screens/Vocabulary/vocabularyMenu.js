@@ -65,6 +65,9 @@ class vocabularyMenu extends Component {
     vocabulary9 = () => {
         this.props.navigation.push('vocabulary9');
     }
+    vocabulary10 = () => {
+        this.props.navigation.push('vocabulary10');
+    }
 
     goBack = () => {
         this.props.navigation.navigate('mainMenu');
@@ -118,7 +121,7 @@ class vocabularyMenu extends Component {
                     <VocabularyItem itemImage={KitchenUtensils_icon} goto={this.vocabulary7} />
                     <VocabularyItem itemImage={GreetingsHeavenlyBodies_icon} goto={this.vocabulary8} />
                     <VocabularyItem itemImage={Calendar_icon} goto={this.vocabulary9} />
-                    <VocabularyItem itemImage={Kastifun_icon} goto={this.gotoLetters} />
+                    <VocabularyItem itemImage={Kastifun_icon} goto={this.vocabulary10} />
                 </View>
                 <View style={styles.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>

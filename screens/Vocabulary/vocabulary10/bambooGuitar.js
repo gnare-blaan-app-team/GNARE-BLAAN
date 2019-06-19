@@ -43,7 +43,7 @@ class BambooGuitar extends Component {
 
     goBack = () => {
         this.vocab10_bambooguitar.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary10');
     }
 
     gotoMainMenu = () => {

@@ -239,6 +239,11 @@ const styles = StyleSheet.create({
         top: '59%',
         left: '30%',
         justifyContent: 'center',
+        height: 60,
+        width: 90,
+        borderWidth: 0.5,
+        borderColor: 'red',
+
     },
     chickenImage: {
         width: wp('7%'),

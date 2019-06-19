@@ -43,7 +43,7 @@ class Earrings extends Component {
 
     goBack = () => {
         this.vocab10_earrings.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary10');
     }
 
     gotoMainMenu = () => {
