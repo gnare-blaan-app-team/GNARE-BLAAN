@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler, Text } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
-
+import BG from '../../images/BG.jpg';
 import Vocab3BG from './vocabulary3Images/vocab3.png';
 import BasketAsset from './vocabulary3Images/basketAsset.png';
 import CrabAsset from './vocabulary3Images/crabAsset.png';
@@ -14,6 +14,14 @@ import SeashoreAsset from './vocabulary3Images/seashoreAsset.png';
 import ShrimpAsset from './vocabulary3Images/shrimpAsset.png';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
+import Basket from './vocabulary3Images/basket.png';
+import Crab from './vocabulary3Images/crab.png';
+import Eel from './vocabulary3Images/eel.png';
+import Fish from './vocabulary3Images/fish.png';
+import Fishnet from './vocabulary3Images/fishnet.png';
+import Sea from './vocabulary3Images/sea.png';
+import Seashore from './vocabulary3Images/seashore.png';
+import Shrimp from './vocabulary3Images/shrimp.png';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
@@ -22,51 +30,191 @@ class Vocabulary3 extends Component {
         header: null,
     }
 
-
-    handleBackPress = () => {
-        this.number1.pause();
+    constructor(props) {
+        super(props);
+        this.state = {
+            BackgroundImage: Vocab3BG,
+            clearBackground: 'gotoVocab3Menu',
+            seaTop:'30%',
+            seashoreTop:'25.5%',
+            basketTop:'21%',
+            ealTop:'60%',
+            fishTop:'56%',
+            seashoreTop2: '26%',
+            seashoreTop3: '40%',
+            fishnetTop:'27%',
+            shrimpTop:'61%',
+            crabTop:'27%'
+        }
     }
 
     goBack = () => {
-        this.props.navigation.navigate('vocabularyMenu');
+        const clear = this.state.clearBackground;
+        if (clear == 'gotoVocab3Menu') {
+            this.props.navigation.navigate('vocabularyMenu')
+        }
+        if (clear == 'clear') {
+            this.setState({
+                BackgroundImage: Vocab3BG,
+                clearBackground: 'gotoVocab3Menu',
+                seaTop: '30%',
+                seashoreTop: '25.5%',
+                basketTop: '21%',
+                ealTop: '60%',
+                fishTop: '56%',
+                seashoreTop2: '26%',
+                seashoreTop3: '40%',
+                fishnetTop: '27%',
+                shrimpTop: '61%',
+                crabTop: '27%'
+            })
+        }
     }
-    gotoMainMenu = () => {
-        this.props.navigation.navigate('mainMenu');
-    }
-    gotoBasket = () => {
-        this.props.navigation.navigate('basket');
-    }
-    gotoCrab = () => {
-        this.props.navigation.navigate('crab');
-    }
-    gotoEel = () => {
-        this.props.navigation.navigate('eel');
-    }
-    gotoFish = () => {
-        this.props.navigation.navigate('fish');
-    }
-    gotoFishnet = () => {
-        this.props.navigation.navigate('fishnet');
-    }
+
     gotoSea = () => {
-        this.props.navigation.navigate('sea');
+        this.setState({
+            BackgroundImage: Sea,
+            clearBackground: 'clear',
+            seaTop: '1000%',
+            seashoreTop: '1000%',
+            basketTop: '1000%',
+            ealTop: '1000%',
+            fishTop: '1000%',
+            seashoreTop2: '1000%',
+            seashoreTop3: '1000%',
+            fishnetTop: '1000%',
+            shrimpTop: '1000%',
+            crabTop: '1000%'
+        })
     }
     gotoSeashore = () => {
-        this.props.navigation.navigate('seashore');
+        this.setState({
+            BackgroundImage: Seashore,
+            clearBackground: 'clear',
+            seaTop: '1000%',
+            seashoreTop: '1000%',
+            basketTop: '1000%',
+            ealTop: '1000%',
+            fishTop: '1000%',
+            seashoreTop2: '1000%',
+            seashoreTop3: '1000%',
+            fishnetTop: '1000%',
+            shrimpTop: '1000%',
+            crabTop: '1000%'
+        })
+    }
+    gotoBasket = () => {
+        this.setState({
+            BackgroundImage: Basket,
+            clearBackground: 'clear',
+            seaTop: '1000%',
+            seashoreTop: '1000%',
+            basketTop: '1000%',
+            ealTop: '1000%',
+            fishTop: '1000%',
+            seashoreTop2: '1000%',
+            seashoreTop3: '1000%',
+            fishnetTop: '1000%',
+            shrimpTop: '1000%',
+            crabTop: '1000%'
+        })
+    }
+    gotoEel = () => {
+        this.setState({
+            BackgroundImage: Eel,
+            clearBackground: 'clear',
+            seaTop: '1000%',
+            seashoreTop: '1000%',
+            basketTop: '1000%',
+            ealTop: '1000%',
+            fishTop: '1000%',
+            seashoreTop2: '1000%',
+            seashoreTop3: '1000%',
+            fishnetTop: '1000%',
+            shrimpTop: '1000%',
+            crabTop: '1000%'
+        })
+    }
+    gotoFish = () => {
+        this.setState({
+            BackgroundImage: Fish,
+            clearBackground: 'clear',
+            seaTop: '1000%',
+            seashoreTop: '1000%',
+            basketTop: '1000%',
+            ealTop: '1000%',
+            fishTop: '1000%',
+            seashoreTop2: '1000%',
+            seashoreTop3: '1000%',
+            fishnetTop: '1000%',
+            shrimpTop: '1000%',
+            crabTop: '1000%'
+        })
+    }
+    gotoFishnet = () => {
+        this.setState({
+            BackgroundImage: Fishnet,
+            clearBackground: 'clear',
+            seaTop: '1000%',
+            seashoreTop: '1000%',
+            basketTop: '1000%',
+            ealTop: '1000%',
+            fishTop: '1000%',
+            seashoreTop2: '1000%',
+            seashoreTop3: '1000%',
+            fishnetTop: '1000%',
+            shrimpTop: '1000%',
+            crabTop: '1000%'
+        })
     }
     gotoShrimp = () => {
-        this.props.navigation.navigate('shrimp');
+        this.setState({
+            BackgroundImage: Shrimp,
+            clearBackground: 'clear',
+            seaTop: '1000%',
+            seashoreTop: '1000%',
+            basketTop: '1000%',
+            ealTop: '1000%',
+            fishTop: '1000%',
+            seashoreTop2: '1000%',
+            seashoreTop3: '1000%',
+            fishnetTop: '1000%',
+            shrimpTop: '1000%',
+            crabTop: '1000%'
+        })
+    }
+    gotoCrab = () => {
+        this.setState({
+            BackgroundImage: Crab,
+            clearBackground: 'clear',
+            seaTop: '1000%',
+            seashoreTop: '1000%',
+            basketTop: '1000%',
+            ealTop: '1000%',
+            fishTop: '1000%',
+            seashoreTop2: '1000%',
+            seashoreTop3: '1000%',
+            fishnetTop: '1000%',
+            shrimpTop: '1000%',
+            crabTop: '1000%'
+        })
     }
 
-
+    
 
 
     render() {
 
         return (
-            <ImageBackground style={globalStyleSheet.image}
+            <ImageBackground style={{ flex: 1, width: '100%', height: '100%', resizeMode: 'stretch' }}
                 source={Vocab3BG}
             >
+                <View style={{ position: 'absolute', top: '0%', width: '100%', height: '100%' }}>
+                    <Image source={BG} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
+                </View>
+                <View style={{ position: 'absolute', width: '100%', height: '100%' }}>
+                    <Image source={this.state.BackgroundImage} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
+                </View>
                 <View style={globalStyleSheet.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
@@ -83,7 +231,12 @@ class Vocabulary3 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.seaStyle}>
+                <View style={{
+                    position: 'absolute',
+                    top: this.state.seaTop,
+                    left: '11%',
+                    justifyContent: 'center',
+                }}>
                     <TouchableOpacity onPress={this.gotoSea}>
                         <Image
                             source={SeaAsset}
@@ -91,7 +244,12 @@ class Vocabulary3 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.seashoreStyle}>
+                <View style={{
+                    position: 'absolute',
+                    top:this.state.seashoreTop,
+                    left: '53%',
+                    height: '15%',
+                }}>
                     <TouchableOpacity onPress={this.gotoSeashore}>
                         <Image
                             source={SeashoreAsset}
@@ -99,7 +257,14 @@ class Vocabulary3 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.basketStyle}>
+                <View style={{
+                    position: 'absolute',
+                    top:this.state.basketTop,
+                    left: '73%',
+                    justifyContent: 'center',
+                    width: '14%',
+                    height: '17%',
+                }}>
                     <TouchableOpacity onPress={this.gotoBasket}>
                         <Image
                             source={BasketAsset}
@@ -107,7 +272,14 @@ class Vocabulary3 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.eelStyle}>
+                <View style={{
+                    position: 'absolute',
+                    top:this.state.ealTop,
+                    left: '45%',
+                    justifyContent: 'center',
+                    width: '17%',
+                    height: '18%',
+                }}>
                     <TouchableOpacity onPress={this.gotoEel}>
                         <Image
                             source={EelAsset}
@@ -115,7 +287,14 @@ class Vocabulary3 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.fishStyle}>
+                <View style={{
+                    position: 'absolute',
+                    top:this.state.fishTop,
+                    left: '15%',
+                    justifyContent: 'center',
+                    width: '26%',
+                    height: '27%',
+                }}>
                     <TouchableOpacity onPress={this.gotoFish}>
                         <Image
                             source={FishAsset}
@@ -126,19 +305,26 @@ class Vocabulary3 extends Component {
                 <View style={styles.containerStyle}>
                 </View>
 
-                <View style={{position: "absolute", height: hp('17%'), width: wp('30%'), left: '11.3%', top: '26%'}}>
+                <View style={{position: "absolute", height: hp('17%'), width: wp('30%'), left: '11.3%', top:this.state.seashoreTop2,}}>
                     <TouchableOpacity  onPress={this.gotoSeashore}>
                        <Text style={{width:"100%", height:"100%"}}></Text>
                     </TouchableOpacity>
                 </View>
 
-                <View style={{position: "absolute", height: hp('15%'), width: wp('10%'), left: '79%', top: '40%'}}>
+                <View style={{position: "absolute", height: hp('15%'), width: wp('10%'), left: '79%', top:this.state.seashoreTop3}}>
                     <TouchableOpacity  onPress={this.gotoSeashore}>
                        <Text style={{width:"100%", height:"100%"}}></Text>
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.fishnetStyle}>
+                <View style={{
+                    position: 'absolute',
+                    top:this.state.fishnetTop,
+                    left: '19%',
+                    justifyContent: 'center',
+                    width: '14%',
+                    height: '12%',
+                }}>
                     <TouchableOpacity onPress={this.gotoFishnet}>
                         <Image
                             source={FishnetAsset}
@@ -146,7 +332,14 @@ class Vocabulary3 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.shrimpStyle}>
+                <View style={{
+                    position: 'absolute',
+                    top:this.state.shrimpTop,
+                    left: '66%',
+                    justifyContent: 'center',
+                    width: '20%',
+                    height: '20%',
+                }}>
                     <TouchableOpacity onPress={this.gotoShrimp}>
                         <Image
                             source={ShrimpAsset}
@@ -154,7 +347,13 @@ class Vocabulary3 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.crabStyle}>
+                <View style={{
+                    position: 'absolute',
+                    top:this.state.crabTop,
+                    left: '62%',
+                    justifyContent: 'center',
+                    height: '12%',
+                }}>
                     <TouchableOpacity onPress={this.gotoCrab}>
                         <Image
                             source={CrabAsset}

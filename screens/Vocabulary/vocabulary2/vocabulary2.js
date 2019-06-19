@@ -3,6 +3,7 @@ import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler
 import { withNavigation } from 'react-navigation';
 import { globalStyleSheet } from '../../globalStyleSheet/globalStyleSheet'
 import * as Animatable from 'react-native-animatable';
+import BG2 from '../../images/BG.jpg';
 import BG from '../../images/boy.png';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
@@ -154,6 +155,10 @@ class vocabulary2 extends Component {
         Animated.spring(this.animatedValue,{
             toValue: 0.5
          }).start()
+    }
+
+    gotoMainMenu = () => {
+        this.props.navigation.navigate('mainMenu');
     }
 
     goBack = () => {
@@ -444,7 +449,7 @@ class vocabulary2 extends Component {
                 <View style={{ position: 'absolute', top: '0%', width: '100%', height: '100%' }}>
                     <Image source={BG} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
                 </View>
-                <View style={{ position: 'absolute', top: this.state.hideLetterBG, width: '100%', height: '100%' }}>
+                <View style={{ position: 'absolute',width: '100%', height: '100%' }}>
                     <Image source={this.state.BackgroundImage} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
                 </View>
                     <View style={{
@@ -657,6 +662,14 @@ class vocabulary2 extends Component {
                         <Image source={require('./vocabulary2Images/paa6.png')} />
                     </TouchableOpacity>
                 </Animated.View>       
+                <View style={globalStyleSheet.homeContainer}>
+                    <TouchableOpacity onPress={this.gotoMainMenu}>
+                        <Image
+                            source={Home_icon}
+                            style={globalStyleSheet.home}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
             </ImageBackground>
         )
     }

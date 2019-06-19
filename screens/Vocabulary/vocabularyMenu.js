@@ -39,16 +39,16 @@ class vocabularyMenu extends Component {
         this.props.navigation.navigate('mainMenu');
     }
     vocabulary1 = () => {
-        this.props.navigation.navigate('vocabulary1');
+        this.props.navigation.push('vocabulary1');
     }
     vocabulary2 = () => {
-        this.props.navigation.navigate('vocabulary2');
+        this.props.navigation.push('vocabulary2');
     }
     vocabulary3 = () => {
-        this.props.navigation.navigate('vocabulary3');
+        this.props.navigation.push('vocabulary3');
     }
     vocabulary4 = () => {
-        this.props.navigation.navigate('vocabulary4');
+        this.props.navigation.push('vocabulary4');
     }
     vocabulary5 = () => {
         this.props.navigation.push('vocabulary5');
@@ -95,7 +95,7 @@ class vocabularyMenu extends Component {
                     justifyContent: 'center',
                     position: 'absolute',
                     top: this.state.top1,
-                    left: '-4%',
+                    left: '-7%',
                     width: '98%',
                     height: '80%',
                     flexDirection: 'row',
