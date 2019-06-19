@@ -7,7 +7,7 @@ import Vocab5BG from './vocabulary5Images/Vocab5.png';
 
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
-
+import BG from '../../images/BG.jpg';
 import ItemTreeAsset from './vocabulary5Images/Item_Puno.png';
 import ItemMountainAsset from './vocabulary5Images/Item_Bundok.png';
 import ItemFallsAsset from './vocabulary5Images/Item_Falls.png';
@@ -18,6 +18,16 @@ import ItemSpearAsset from './vocabulary5Images/Item_Spear.png';
 import ItemSalamanderAsset from './vocabulary5Images/Item_Salamander.png';
 import ItemAxeAsset from './vocabulary5Images/Item_Axe.png';
 import ItemHornbillAsset from './vocabulary5Images/Item_Kalaw1.png';
+import Axe from './vocabulary5Images/ax.png';
+import Bow from './vocabulary5Images/bow.png';
+import Hawk from './vocabulary5Images/hawk.png';
+import Hornbill from './vocabulary5Images/hornbill.png';
+import Mountain from './vocabulary5Images/mountain.png';
+import River from './vocabulary5Images/river.png';
+import Salamander from './vocabulary5Images/salamander.png';
+import Spear from './vocabulary5Images/spear.png';
+import Tree from './vocabulary5Images/tree.png';
+import Waterfall from './vocabulary5Images/waterfall.png';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
@@ -26,63 +36,239 @@ class Vocabulary5 extends Component {
         header: null,
     }
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            BackgroundImage: Vocab5BG,
+            mountainLeft:'11.5%',
+            treeTop:'19%',
+            fallsTop:'19%',
+            ilogTop:'48.5%',
+            lawinTop:'19%',
+            bowTop:'66%',
+            spearTop:'56%',
+            salamanderTop:'61%',
+            axeTop:'72%',
+            hornbillTop:'23%',
+            clearBackground:'gotoVocab5Menu'
+        }
+    }
 
-    handleBackPress = () => {
-        this.number1.pause();
+    gotoMainMenu = () => {
+        this.props.navigation.navigate('mainMenu')
     }
 
     goBack = () => {
-        this.props.navigation.navigate('vocabularyMenu');
-    }
-
-    gotoTree = () => {
-        this.props.navigation.navigate('tree');
+        const clear = this.state.clearBackground;
+        if (clear == 'gotoVocab5Menu') {
+            this.props.navigation.navigate('vocabularyMenu')
+        }
+        if (clear == 'clear') {
+            this.setState({
+                BackgroundImage: Vocab5BG,
+                mountainLeft: '11.5%',
+                treeTop: '19%',
+                fallsTop: '19%',
+                ilogTop: '48.5%',
+                lawinTop: '19%',
+                bowTop: '66%',
+                spearTop: '56%',
+                salamanderTop: '61%',
+                axeTop: '72%',
+                hornbillTop: '23%',
+                clearBackground: 'gotoVocab5Menu',
+            })
+        }
     }
 
     gotoMountain = () => {
-        this.props.navigation.navigate('mountain');
+        this.setState({
+            BackgroundImage: Mountain,
+            mountainLeft: '1000%',
+            treeTop: '1000%',
+            fallsTop: '1000%',
+            ilogTop: '1000%',
+            lawinTop: '1000%',
+            bowTop: '1000%',
+            spearTop: '1000%',
+            salamanderTop: '1000%',
+            axeTop: '1000%',
+            hornbillTop: '1000%',
+            clearBackground: 'clear',
+        })
+    }
+
+    gotoTree = () => {
+        this.setState({
+            BackgroundImage: Tree,
+            mountainLeft: '1000%',
+            treeTop: '1000%',
+            fallsTop: '1000%',
+            ilogTop: '1000%',
+            lawinTop: '1000%',
+            bowTop: '1000%',
+            spearTop: '1000%',
+            salamanderTop: '1000%',
+            axeTop: '1000%',
+            hornbillTop: '1000%',
+            clearBackground: 'clear',
+        })
     }
 
     gotoFalls = () => {
-        this.props.navigation.navigate('waterfall');
+        this.setState({
+            BackgroundImage: Waterfall,
+            mountainLeft: '1000%',
+            treeTop: '1000%',
+            fallsTop: '1000%',
+            ilogTop: '1000%',
+            lawinTop: '1000%',
+            bowTop: '1000%',
+            spearTop: '1000%',
+            salamanderTop: '1000%',
+            axeTop: '1000%',
+            hornbillTop: '1000%',
+            clearBackground: 'clear',
+        })
+    }
+
+    gotoIlog = () => {
+        this.setState({
+            BackgroundImage: River,
+            mountainLeft: '1000%',
+            treeTop: '1000%',
+            fallsTop: '1000%',
+            ilogTop: '1000%',
+            lawinTop: '1000%',
+            bowTop: '1000%',
+            spearTop: '1000%',
+            salamanderTop: '1000%',
+            axeTop: '1000%',
+            hornbillTop: '1000%',
+            clearBackground: 'clear',
+        })
     }
 
     gotoLawin = () => {
-        this.props.navigation.navigate('hawk');
+        this.setState({
+            BackgroundImage: Hawk,
+            mountainLeft: '1000%',
+            treeTop: '1000%',
+            fallsTop: '1000%',
+            ilogTop: '1000%',
+            lawinTop: '1000%',
+            bowTop: '1000%',
+            spearTop: '1000%',
+            salamanderTop: '1000%',
+            axeTop: '1000%',
+            hornbillTop: '1000%',
+            clearBackground: 'clear',
+        })
     }
-
     gotoBow = () => {
-        this.props.navigation.navigate('bow');
+        this.setState({
+            BackgroundImage: Bow,
+            mountainLeft: '1000%',
+            treeTop: '1000%',
+            fallsTop: '1000%',
+            ilogTop: '1000%',
+            lawinTop: '1000%',
+            bowTop: '1000%',
+            spearTop: '1000%',
+            salamanderTop: '1000%',
+            axeTop: '1000%',
+            hornbillTop: '1000%',
+            clearBackground: 'clear',
+        })
     }
-
-    gotoSpear = () => {
-        this.props.navigation.navigate('spear');
+    gotoSpearit = () => {
+        this.setState({
+            BackgroundImage: Spear,
+            mountainLeft: '1000%',
+            treeTop: '1000%',
+            fallsTop: '1000%',
+            ilogTop: '1000%',
+            lawinTop: '1000%',
+            bowTop: '1000%',
+            spearTop: '1000%',
+            salamanderTop: '1000%',
+            axeTop: '1000%',
+            hornbillTop: '1000%',
+            clearBackground: 'clear',
+        })
     }
-
     gotoSalamander = () => {
-        this.props.navigation.navigate('salamander');
+        this.setState({
+            BackgroundImage: Salamander,
+            mountainLeft: '1000%',
+            treeTop: '1000%',
+            fallsTop: '1000%',
+            ilogTop: '1000%',
+            lawinTop: '1000%',
+            bowTop: '1000%',
+            spearTop: '1000%',
+            salamanderTop: '1000%',
+            axeTop: '1000%',
+            hornbillTop: '1000%',
+            clearBackground: 'clear',
+        })
     }
-
     gotoAxe = () => {
-        this.props.navigation.navigate('ax');
+        this.setState({
+            BackgroundImage: Axe,
+            mountainLeft: '1000%',
+            treeTop: '1000%',
+            fallsTop: '1000%',
+            ilogTop: '1000%',
+            lawinTop: '1000%',
+            bowTop: '1000%',
+            spearTop: '1000%',
+            salamanderTop: '1000%',
+            axeTop: '1000%',
+            hornbillTop: '1000%',
+            clearBackground: 'clear',
+        })
     }
-
     gotoHornbill = () => {
-        this.props.navigation.navigate('hornbill');
+        this.setState({
+            BackgroundImage: Hornbill,
+            mountainLeft: '1000%',
+            treeTop: '1000%',
+            fallsTop: '1000%',
+            ilogTop: '1000%',
+            lawinTop: '1000%',
+            bowTop: '1000%',
+            spearTop: '1000%',
+            salamanderTop: '1000%',
+            axeTop: '1000%',
+            hornbillTop: '1000%',
+            clearBackground: 'clear',
+        })
     }
 
+<<<<<<< HEAD
     gotoIlog = () => {
         this.props.navigation.navigate('river');
     }
 
 
 
+=======
+>>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     render() {
 
         return (
-            <ImageBackground style={globalStyleSheet.image}
+            <ImageBackground style={{
+                flex: 1, width: '100%', height: '100%', resizeMode: 'stretch', justifyContent: 'center',
+                alignItems: 'center', }}
                 source={Vocab5BG}
             >
+                <View style={{ position: 'absolute', top: '0%', width: '100%', height: '100%' }}>
+                    <Image source={BG} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
+                </View>
+                <View style={{ position: 'absolute', width: '100%', height: '100%' }}>
+                    <Image source={this.state.BackgroundImage} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
+                </View>
                 <View style={globalStyleSheet.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
@@ -100,7 +286,12 @@ class Vocabulary5 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.mountainStyle}>
+                <View style={{
+                    position: 'absolute',
+                    width: '60%',
+                    left: this.state.mountainLeft,
+                    height: '35%',
+                }}>
                     <TouchableOpacity onPress={this.gotoMountain}>
                         <Image
                             source={ItemMountainAsset}
@@ -109,7 +300,13 @@ class Vocabulary5 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.treeStyle}>
+                <View style={{
+                    position: 'absolute',
+                    top: this.state.treeTop,
+                    width: '20%',
+                    left: '11.5%',
+                    height: '65%',
+                }}>
                     <TouchableOpacity onPress={this.gotoTree}>
                         <Image
                             source={ItemTreeAsset}
@@ -118,7 +315,13 @@ class Vocabulary5 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.fallsStyle}>
+                <View style={{
+                    position: 'absolute',
+                    top: this.state.fallsTop,
+                    width: '24%',
+                    right: '11%',
+                    height: '65%',
+                }}>
                     <TouchableOpacity onPress={this.gotoFalls}>
                         <Image
                             source={ItemFallsAsset}
@@ -127,7 +330,13 @@ class Vocabulary5 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.ilogStyle}>
+                <View style={{
+                    position: 'absolute',
+                    top: this.state.ilogTop,
+                    width: '45%',
+                    right: '11%',
+                    height: '40%',
+                }}>
                     <TouchableOpacity onPress={this.gotoIlog}>
                         <Image
                             source={ItemIlogAsset}
@@ -136,7 +345,13 @@ class Vocabulary5 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.lawinStyle}>
+                <View style={{
+                    position: 'absolute',
+                    top: this.state.lawinTop,
+                    width: '12%',
+                    left: '14%',
+                    height: '32%',
+                }}>
                     <TouchableOpacity onPress={this.gotoLawin}>
                         <Image
                             source={ItemLawinAsset}
@@ -145,7 +360,14 @@ class Vocabulary5 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.bowStyle}>
+                <View style={{
+                    position: 'absolute',
+                    top:this.state.bowTop,
+                    width: '12%',
+                    left: '17%',
+                    height: '23%',
+                    transform: [{ rotate: '12deg' }],
+                }}>
                     <TouchableOpacity onPress={this.gotoBow}>
                         <Image
                             source={ItemBowAsset}
@@ -154,8 +376,15 @@ class Vocabulary5 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.spearStyle}>
-                    <TouchableOpacity onPress={this.gotoSpear}>
+                <View style={{
+                    position: 'absolute',
+                    top:this.state.spearTop,
+                    width: '3%',
+                    left: '38%',
+                    height: '40%',
+                    transform: [{ rotate: '64deg' }],
+                }}>
+                    <TouchableOpacity onPress={this.gotoSpearit}>
                         <Image
                             source={ItemSpearAsset}
                             style={styles.spearImage}
@@ -163,7 +392,13 @@ class Vocabulary5 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.salamanderStyle}>
+                <View style={{
+                    position: 'absolute',
+                    top:this.state.salamanderTop,
+                    width: '7%',
+                    left: '75%',
+                    height: '10%',
+                }}>
                     <TouchableOpacity onPress={this.gotoSalamander}>
                         <Image
                             source={ItemSalamanderAsset}
@@ -172,7 +407,14 @@ class Vocabulary5 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.axeStyle}>
+                <View style={{
+                    position: 'absolute',
+                    top: this.state.axeTop,
+                    width: '6%',
+                    left: '78%',
+                    height: '5%',
+                    transform: [{ rotate: '-9deg' }]
+                }}>
                     <TouchableOpacity onPress={this.gotoAxe}>
                         <Image
                             source={ItemAxeAsset}
@@ -181,7 +423,13 @@ class Vocabulary5 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.hornbillStyle}>
+                <View style={{
+                    position: 'absolute',
+                    top:this.state.hornbillTop,
+                    width: '13%',
+                    right: '35%',
+                    height: '24%',
+                }}>
                     <TouchableOpacity onPress={this.gotoHornbill}>
                         <Image
                             source={ItemHornbillAsset}
@@ -196,6 +444,7 @@ class Vocabulary5 extends Component {
 }
 
 const styles = StyleSheet.create({
+<<<<<<< HEAD
 
     mountainStyle: {
         position: 'absolute',
@@ -203,11 +452,14 @@ const styles = StyleSheet.create({
         left: '12.6%',
         height: '35%',
     },
+=======
+>>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     mountainImage: {
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
     },
+<<<<<<< HEAD
 
     treeStyle: {
         position: 'absolute',
@@ -216,11 +468,14 @@ const styles = StyleSheet.create({
         left: '12.7%',
         height: '65%',
     },
+=======
+>>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     treeImage: {
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
     },
+<<<<<<< HEAD
 
     fallsStyle: {
         position: 'absolute',
@@ -229,11 +484,14 @@ const styles = StyleSheet.create({
         right: '12.5%',
         height: '65%',
     },
+=======
+>>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     fallsImage: {
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
     },
+<<<<<<< HEAD
 
     ilogStyle: {
         position: 'absolute',
@@ -242,11 +500,14 @@ const styles = StyleSheet.create({
         right: '12.5%',
         height: '40%',
     },
+=======
+>>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     ilogImage: {
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
     },
+<<<<<<< HEAD
 
     lawinStyle: {
         position: 'absolute',
@@ -255,11 +516,14 @@ const styles = StyleSheet.create({
         left: '16%',
         height: '32%',
     },
+=======
+>>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     lawinImage: {
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
     },
+<<<<<<< HEAD
 
     bowStyle: {
         position: 'absolute',
@@ -269,11 +533,14 @@ const styles = StyleSheet.create({
         height: '23%',
         transform: [{ rotate: '12deg' }],
     },
+=======
+>>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     bowImage: {
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
     },
+<<<<<<< HEAD
 
     spearStyle: {
         position: 'absolute',
@@ -283,45 +550,22 @@ const styles = StyleSheet.create({
         height: '40%',
         transform: [{ rotate: '64deg' }],
     },
+=======
+>>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     spearImage: {
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
-    },
-
-    salamanderStyle: {
-        position: 'absolute',
-        top: '61%',
-        width: '7%',
-        left: '75%',
-        height: '10%',
     },
     salamanderImage: {
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
     },
-
-    axeStyle: {
-        position: 'absolute',
-        top: '72%',
-        width: '6%',
-        left: '78%',
-        height: '5%',
-        transform: [{ rotate: '-9deg' }]
-    },
     axeImage: {
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
-    },
-
-    hornbillStyle: {
-        position: 'absolute',
-        top: '23%',
-        width: '13%',
-        right: '35%',
-        height: '24%',
     },
     hornbillImage: {
         width: '100%',
