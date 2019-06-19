@@ -57,11 +57,8 @@ export const globalStyleSheet = {
         resizeMode: 'contain',
     },
     skip: {
-        width:'100%',
-        top:'20%',
-        left:'15%',
-        fontSize:24,
-        color:'white'
+        fontSize: 18,
+        color:'white',
     },
 
     // Home Icon

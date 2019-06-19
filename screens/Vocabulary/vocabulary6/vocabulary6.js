@@ -33,6 +33,10 @@ class Vocabulary6 extends Component {
     gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
     }
+
+    gotoHouse = () => {
+        this.props.navigation.navigate('house');
+    }
     gotoWall = () => {
         this.props.navigation.navigate('wall');
     }
@@ -58,12 +62,12 @@ class Vocabulary6 extends Component {
         this.props.navigation.navigate('ladder');
     }
 
+
     render() {
-        
+
         return (
             <ImageBackground style={globalStyleSheet.image}
-                source={Vocab6BG}
-            >
+                source={Vocab6BG}>
                 <View style={globalStyleSheet.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
@@ -80,158 +84,64 @@ class Vocabulary6 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.windowStyle}>
-                    <TouchableOpacity onPress={this.gotoWindow}>
-                        <Image
-                            source={WindowAsset}
-                            style={styles.windowImage}
-                        ></Image>
+
+                <View style={{position: "absolute", height: hp('78%'), width: wp('65%'), left: '20%', top: '18%'}}>
+                    <TouchableOpacity  onPress={this.gotoHouse}>
+                       <Text style={{width:"100%", height:"100%"}}></Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.bedroomStyle}>
-                    <TouchableOpacity onPress={this.gotoBedroom}>
-                        <Image
-                            source={BedroomAsset}
-                            style={styles.bedroomImage}
-                        ></Image>
+
+                <View style={{position: "absolute", height: hp('41%'), width: wp('6.5%'), left: '31.5%', top: '50%'}}>
+                    <TouchableOpacity  onPress={this.gotoWall}>
+                       <Text style={{width:"100%", height:"100%"}}></Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.floorStyle}>
-                    <TouchableOpacity onPress={this.gotoFloor}>
-                        <Image
-                            source={FloorAsset}
-                            style={styles.floorImage}
-                        ></Image>
+
+                <View style={{position: "absolute", height: hp('25%'), width: wp('47%'), left: '29.5%', top: '20%'}}>
+                    <TouchableOpacity  onPress={this.gotoRoof}>
+                       <Text style={{width:"100%", height:"100%"}}></Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.ladderStyle}>
-                    <TouchableOpacity onPress={this.gotoLadder}>
-                        <Image
-                            source={LadderAsset}
-                            style={styles.ladderImage}
-                        ></Image>
+
+                <View style={{position: "absolute", height: hp('39%'), width: wp('3%'), left: '51%', top: '43%'}}>
+                    <TouchableOpacity  onPress={this.gotoDoor}>
+                       <Text style={{width:"100%", height:"100%"}}></Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.kitchenStyle}>
-                    <TouchableOpacity onPress={this.gotoKitchen}>
-                        <Image
-                            source={KitchenAsset}
-                            style={styles.kitchenImage}
-                        ></Image>
+
+                <View style={{position: "absolute", height: hp('35%'), width: wp('19%'), left: '57%', top: '45%'}}>
+                    <TouchableOpacity  onPress={this.gotoWindow}>
+                       <Text style={{width:"100%", height:"100%"}}></Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.doorStyle}>
-                    <TouchableOpacity onPress={this.gotoDoor}>
-                        <Image
-                            source={DoorAsset}
-                            style={styles.doorImage}
-                        ></Image>
+
+                <View style={{position: "absolute", height: hp('25%'), width: wp('11%'), left: '57%', top: '48%'}}>
+                    <TouchableOpacity  onPress={this.gotoBedroom}>
+                       <Text style={{width:"100%", height:"100%"}}></Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.wallStyle}>
-                    <TouchableOpacity onPress={this.gotoWall}>
-                        <Image
-                            source={WallAsset}
-                            style={styles.wallImage}
-                        ></Image>
+
+                <View style={{position: "absolute", height: hp('14%'), width: wp('6.5%'), left: '38%', top: '60%'}}>
+                    <TouchableOpacity  onPress={this.gotoKitchen}>
+                       <Text style={{width:"100%", height:"100%"}}></Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.roofStyle}>
-                    <TouchableOpacity onPress={this.gotoRoof}>
-                        <Image
-                            source={RoofAsset}
-                            style={styles.roofImage}
-                        ></Image>
+
+                <View style={{position: "absolute", height: hp('10%'), width: wp('13%'), left: '38%', top: '73%'}}>
+                    <TouchableOpacity  onPress={this.gotoFloor}>
+                       <Text style={{width:"100%", height:"100%"}}></Text>
                     </TouchableOpacity>
                 </View>
+
+                <View style={{position: "absolute", height: hp('5.5%'), width: wp('6%'), left: '43%', top: '68%', transform: [{ rotate: '-60deg' }]}}>
+                    <TouchableOpacity  onPress={this.gotoLadder}>
+                       <Text style={{width:"100%", height:"100%"}}></Text>
+                    </TouchableOpacity>
+                </View>
+
             </ImageBackground>
         )
     }
 }
-
-const styles = StyleSheet.create({
-    wallStyle: {
-        position: 'absolute',
-        top: '49.2%',
-        left: '31.2%',
-    },
-    wallImage: {
-        width: wp('8%'),
-        height: hp('38%'),
-        resizeMode: 'contain', 
-    },
-    roofStyle: {
-        position: 'absolute',
-        top: '12%',
-        left: '28.5%',
-    },
-    roofImage: {
-        width: wp('49.6%'),
-        height: hp('42%'),
-        resizeMode: 'contain', 
-    },
-    doorStyle: {
-        position: 'absolute',
-        top: '40.2%',
-        left: '33.8%',
-        borderWidth: 0.5,
-        borderColor: 'red',
-    },
-    doorImage: {
-        width: wp('40%'),
-        height: hp('40%'),
-        resizeMode: 'contain', 
-    },
-    windowStyle: {
-        position: 'absolute',
-        top: '41.5%',
-        left: '49%',
-    },
-    windowImage: {
-        width: wp('35%'),
-        height: hp('37%'),
-        resizeMode: 'contain', 
-    },
-    bedroomStyle: {
-        position: 'absolute',
-        top: '47%',
-        left: '40.9  %',
-    },
-    bedroomImage: {
-        width: wp('44.8%'),
-        height: hp('24%'),
-        resizeMode: 'contain', 
-    },
-    kitchenStyle: {
-        position: 'absolute',
-        top: '59%',
-        left: '21.5%',
-    },
-    kitchenImage: {
-        width: wp('44.8%'),
-        height: hp('19%'),
-        resizeMode: 'contain', 
-    },
-    floorStyle: {
-        position: 'absolute',
-        top: '73%',
-        left: '38.5%',
-    },
-    floorImage: {
-        width: wp('14%'),
-        height: hp('10%'),
-        resizeMode: 'contain', 
-    },
-    ladderStyle: {
-        position: 'absolute',
-        top: '65.5%',
-        left: '39.3%',
-    },
-    ladderImage: {
-        width: wp('15%'),
-        height: hp('11%'),
-        resizeMode: 'contain', 
-    },
-});
 
 export default withNavigation(Vocabulary6);

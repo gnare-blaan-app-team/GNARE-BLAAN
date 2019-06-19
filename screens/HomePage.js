@@ -2,7 +2,6 @@ import React,{Component} from 'react';
 import { ImageBackground, TouchableOpacity, View, Image, Text, StatusBar} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js';
-import Sound from 'react-native-sound';
 
 import HomepageBackground from './images/GnareMain.gif';
 import About_icon from "./images/Icon_About.png";
@@ -34,19 +33,19 @@ class Homescreen extends Component{
                         </View>
                         <View style={styles.row}>
                             <View style={styles.HomePageItems} >
-                                <TouchableOpacity  onPress={ ()=>{ Linking.openURL('https://google.com')}} >
+                                <TouchableOpacity>
                                     <Image style={styles.imageSizeStoryMenu} source={Like_icon} />
                                 </TouchableOpacity>
                             </View>
 
                             <View style={styles.HomePageItems} >
-                                <TouchableOpacity  onPress={ ()=>{ Linking.openURL('https://google.com')}} >
+                                <TouchableOpacity>
                                     <Image style={styles.imageSizeStoryMenu} source={Share_icon} />
                                 </TouchableOpacity>
                             </View>
 
                             <View style={styles.HomePageItems} >
-                                <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
+                                <TouchableOpacity>
                                     <Image style={styles.imageSizeStoryMenu} source={About_icon} />
                                 </TouchableOpacity>
                             </View>

@@ -24,15 +24,15 @@ class VocabularyItem extends Component {
 
 const styles = StyleSheet.create({
     menuItem: {
-        width: '26%',
-        height: '39%',
-        padding: 2,
-        resizeMode: 'contain',
+        width: '30%',
+        height: '38%',
+        padding: 1,
     },
     image: {
-        width: '90%',
-        height: '90%',
+        width: '100%',
+        height: '100%',
         resizeMode: 'contain',
+        
     }
 
 })

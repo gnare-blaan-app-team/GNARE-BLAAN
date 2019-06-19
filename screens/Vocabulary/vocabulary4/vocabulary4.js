@@ -241,8 +241,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         height: 60,
         width: 90,
-        borderWidth: 0.5,
-        borderColor: 'red',
 
     },
     chickenImage: {

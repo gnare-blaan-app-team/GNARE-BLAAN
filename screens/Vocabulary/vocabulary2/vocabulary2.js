@@ -23,6 +23,7 @@ import Knees from './vocabulary2Images/tuhod.png';
 import Toes from './vocabulary2Images/paa.png';
 import SpeakerIcon from '../../images/Speaker_icon.png';
 
+const partList=[Head,Eyes]
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
@@ -62,6 +63,7 @@ class vocabulary2 extends Component {
             boyLeft:'40%',
             stillView:'',
             speakerTop:'1000%',
+            clearBackground:'goVocabMenu',
         }
     }
 
@@ -155,24 +157,11 @@ class vocabulary2 extends Component {
     }
 
     goBack = () => {
-        if(this.state.BackgroundImage == 186){
+        const clear = this.state.clearBackground;
+        if (clear == 'goVocabMenu'){
             this.props.navigation.navigate('vocabularyMenu')
         }
-        if (this.state.BackgroundImage == 187 || 
-            this.state.BackgroundImage == 188 || 
-            this.state.BackgroundImage == 189 ||
-            this.state.BackgroundImage == 190 ||
-            this.state.BackgroundImage == 191 ||
-            this.state.BackgroundImage == 192 ||
-            this.state.BackgroundImage == 193 ||
-            this.state.BackgroundImage == 194 ||
-            this.state.BackgroundImage == 195 ||
-            this.state.BackgroundImage == 196 ||
-            this.state.BackgroundImage == 197 ||
-            this.state.BackgroundImage == 198 ||
-            this.state.BackgroundImage == 199 ||
-            this.state.BackgroundImage == 200 ||
-            this.state.BackgroundImage == 201){
+        if (clear == 'clear'){
             Animated.spring(this.animatedValue, {
                 toValue: 1,
             }).start()
@@ -182,6 +171,7 @@ class vocabulary2 extends Component {
                     view1Width: wp('50%'),
                     View1Left: '40%',
                     view1Top: '19%',
+                    clearBackground:'goVocabMenu',
                 })
             }
             if (this.state.stillView == 'View2') {
@@ -190,6 +180,7 @@ class vocabulary2 extends Component {
                     view2Width: wp('50%'),
                     View2Left: '40%',
                     view2Top: '19%',
+                    clearBackground: 'goVocabMenu',
                 })
             }
             if (this.state.stillView == 'View3') {
@@ -198,6 +189,7 @@ class vocabulary2 extends Component {
                     view3Width: wp('50%'),
                     View3Left: '40%',
                     view3Top: '19%',
+                    clearBackground: 'goVocabMenu',
                 })
             }
             this.setState({
@@ -223,7 +215,8 @@ class vocabulary2 extends Component {
             view3Top: '1000%',
             boyTop: '1000%',
             stillView:'View1',
-            speakerTop:'20%'
+            speakerTop:'20%',
+            clearBackground: 'clear'
         })
     }
 
@@ -239,6 +232,7 @@ class vocabulary2 extends Component {
             stillView: 'View1',
             boyTop: '1000%',
             speakerTop: '20%',
+            clearBackground: 'clear',
         })
     }
 
@@ -254,6 +248,7 @@ class vocabulary2 extends Component {
             stillView: 'View1',
             boyTop: '1000%',
             speakerTop:'20%',
+            clearBackground: 'clear',
         })
     }
 
@@ -269,6 +264,7 @@ class vocabulary2 extends Component {
             stillView: 'View1',
             boyTop: '1000%',
             speakerTop: '20%',
+            clearBackground: 'clear',
         })
     }
 
@@ -284,6 +280,7 @@ class vocabulary2 extends Component {
             stillView: 'View1',
             boyTop: '1000%',
             speakerTop: '20%',
+            clearBackground: 'clear',
         })
     }
     gotoEars = () => {
@@ -298,6 +295,7 @@ class vocabulary2 extends Component {
             stillView: 'View1',
             boyTop: '1000%',
             speakerTop: '20%',
+            clearBackground: 'clear',
         })
     }
     gotoHead = () => {
@@ -305,7 +303,7 @@ class vocabulary2 extends Component {
             toValue: { x: -1000, y: 100 }
         }).start()
         this.setState({
-            BackgroundImage: Head,
+            BackgroundImage: partList[0],
             view1Top: '1000%',
             view2Top: '1000%',
             view3Top: '1000%',
@@ -313,6 +311,7 @@ class vocabulary2 extends Component {
             stillView: 'View1',
             boyTop: '1000%',
             speakerTop: '20%',
+            clearBackground:'clear',   
         })
     }
     gotoBalikat = () => {
@@ -327,6 +326,7 @@ class vocabulary2 extends Component {
             stillView: 'View2',
             boyTop: '1000%',
             speakerTop: '20%',
+            clearBackground: 'clear',
         })
     }
     gotoDibdib = () => {
@@ -341,6 +341,7 @@ class vocabulary2 extends Component {
             stillView: 'View2',
             boyTop: '1000%',
             speakerTop: '20%',
+             clearBackground:'clear',
         })
     }
      gotoKamay = () => {
@@ -355,6 +356,7 @@ class vocabulary2 extends Component {
              stillView: 'View2',
              boyTop: '1000%',
              speakerTop: '20%',
+              clearBackground:'clear',
          })
     }
     gotoBaywang = () => {
@@ -370,6 +372,7 @@ class vocabulary2 extends Component {
             stillView: 'View3',
             boyTop: '1000%',
             speakerTop: '20%',
+            clearBackground: 'clear',
         })
     }
     gotoDaliri = () => {
@@ -384,6 +387,7 @@ class vocabulary2 extends Component {
             stillView: 'View2',
             boyTop: '1000%',
             speakerTop: '20%',
+             clearBackground:'clear',
         })
     }
     gotoBinti = () => {
@@ -398,6 +402,7 @@ class vocabulary2 extends Component {
             stillView: 'View3',
             boyTop: '1000%',
             speakerTop: '20%',
+            clearBackground: 'clear',
         })
     }
     gotoTuhod = () => {
@@ -412,6 +417,7 @@ class vocabulary2 extends Component {
             stillView: 'View3',
             boyTop: '1000%',
             speakerTop:'20%',
+             clearBackground:'clear',
         })
     }
     gotoPaa = () => {
@@ -426,6 +432,7 @@ class vocabulary2 extends Component {
             stillView: 'View3',
             boyTop: '1000%',
             speakerTop: '20%',
+             clearBackground:'clear',
         })
     }
 

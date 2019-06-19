@@ -8,7 +8,7 @@ import Home_icon from '../../images/Home_icon.png';
 import DasalBagoMatulog_icon from '../cultureandartsImages/1DasalBagoMatulog.png';
 import DasalNgPaglingap_icon from '../cultureandartsImages/2DasalNgPaglingap.png';
 import DasalNgPagsasalamat_icon from '../cultureandartsImages/3DasalNgPasasalamat.png';
-import cultureandarts_BG from '../cultureandartsImages/cultureandarts_BG.jpg';
+import cultureandarts_BG from '../../images/Flalok_BG.jpg';
 
 
 class prayersScreen extends Component {

@@ -71,7 +71,6 @@ const monthList = [
     Month12
 ]
 
-
 class Vocabulary9 extends Component {
     static navigationOptions = {
         header: null,
@@ -86,6 +85,8 @@ class Vocabulary9 extends Component {
             BackgroundImage:Vocab9BG,
             calendarTop:'18%',
             NextTop: '40%',
+            day:0,
+            getDate:'getDate'
         }
     }
 
@@ -128,7 +129,7 @@ class Vocabulary9 extends Component {
     }
 
     goBack = () => {
-       if(this.state.BackgroundImage == 323){
+       if(this.state.BackgroundImage == 308){
         this.props.navigation.navigate('vocabularyMenu')
        }
         this.setState({
@@ -143,7 +144,16 @@ class Vocabulary9 extends Component {
     }
 
     day = () => {
-       alert('okay')
+        showDay = this.state.getDate;
+        index = this.state.day
+        if(showDay=='getDate'){
+            this.setState({
+                BackgroundImage:dayList[index],
+                calendarTop: '1000%',
+                NextTop: '1000%',
+                prevTop: '1000%',
+            })
+        }
     }
     render() {
 
@@ -191,15 +201,109 @@ class Vocabulary9 extends Component {
                         ></Image>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={()=>{
-                        this.day();
+                        this.setState({
+                            BackgroundImage:Day7,
+                            calendarTop: '1000%',
+                            NextTop: '1000%',
+                            prevTop: '1000%',
+                        })
                     }} style={{
                         position:'absolute',
                         left:'12.50%',
                         top:'40%',
                         width: '11%', 
                         height: '11%', 
-                        borderColor: 'red', 
-                        borderWidth: 1 }}>
+                       }}>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {
+                        this.setState({
+                            BackgroundImage: Day1,
+                            calendarTop: '1000%',
+                            NextTop: '1000%',
+                            prevTop: '1000%',
+                        })
+                    }} style={{
+                        position: 'absolute',
+                        left: '24%',
+                        top: '40%',
+                        width: '11%',
+                        height: '11%',
+                    }}>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {
+                        this.setState({
+                            BackgroundImage: Day2,
+                            calendarTop: '1000%',
+                            NextTop: '1000%',
+                            prevTop: '1000%',
+                        })
+                    }} style={{
+                        position: 'absolute',
+                        left: '35%',
+                        top: '40%',
+                        width: '11%',
+                        height: '11%',
+                    }}>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {
+                        this.setState({
+                            BackgroundImage: Day3,
+                            calendarTop: '1000%',
+                            NextTop: '1000%',
+                            prevTop: '1000%',
+                        })
+                    }} style={{
+                        position: 'absolute',
+                        left: '46%',
+                        top: '40%',
+                        width: '11%',
+                        height: '11%',
+                    }}>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {
+                        this.setState({
+                            BackgroundImage: Day4,
+                            calendarTop: '1000%',
+                            NextTop: '1000%',
+                            prevTop: '1000%',
+                        })
+                    }} style={{
+                        position: 'absolute',
+                        left: '57%',
+                        top: '40%',
+                        width: '11%',
+                        height: '11%',
+                    }}>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {
+                        this.setState({
+                            BackgroundImage: Day5,
+                            calendarTop: '1000%',
+                            NextTop: '1000%',
+                            prevTop: '1000%',
+                        })
+                    }} style={{
+                        position: 'absolute',
+                        left: '68%',
+                        top: '40%',
+                        width: '11%',
+                        height: '11%',
+                    }}>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {
+                        this.setState({
+                            BackgroundImage: Day6,
+                            calendarTop: '1000%',
+                            NextTop: '1000%',
+                            prevTop: '1000%',
+                        })
+                    }} style={{
+                        position: 'absolute',
+                        left: '79%',
+                        top: '40%',
+                        width: '11%',
+                        height: '11%',
+                    }}>
                     </TouchableOpacity>
                 </View>
                 <View style={{
