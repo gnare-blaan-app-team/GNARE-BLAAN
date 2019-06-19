@@ -46,6 +46,10 @@ class Mainmenu extends Component {
         this.props.navigation.navigate('home');
     }
 
+    gotoGame = () => {
+        this.props.navigation.navigate('gameMenu');
+    }
+
     render() {
         StatusBar.setHidden(true);
         return (
@@ -56,7 +60,7 @@ class Mainmenu extends Component {
                     <MenuItem itemImage={require('./images/Icon_Letter.png')} goto={this.gotoLetters} />
                     <MenuItem itemImage={require('./images/Icon_Number.png')} goto={this.gotoNumbers}/>
                     <MenuItem itemImage={require('./images/Flalok.png')} goto={this.gotoFlalok} />
-                    <MenuItem itemImage={require('./images/Games.png')} />
+                    <MenuItem itemImage={require('./images/Games.png')} goto={this.gotoGame}/>
                     <MenuItem itemImage={require('./images/CultureandArts.png')} goto={this.gotoCultureandArts} />
                     <MenuItem itemImage={require('./images/Vocabulary.png')} goto={this.gotoVocabulary}/>
                 </View>

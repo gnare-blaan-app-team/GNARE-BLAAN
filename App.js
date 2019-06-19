@@ -304,6 +304,8 @@ import Kastifun_Screen from './screens/CultureandArts/cultureandartsScreens/kast
 import Prayers_Screen from './screens/CultureandArts/cultureandartsScreens/prayersScreen';
 import DasalBagoMatulogPlay from './screens/CultureandArts/cultureandartsScreens/prayers/DasalBagoMatulogPlay';
 
+import GameMenu from './screens/Games/GameMenu';
+
 
 useScreens();
 
@@ -611,10 +613,14 @@ export default AppNavigator = createStackNavigator(
     chantsScreen: Chants_Screen,
     kastifunScreen: Kastifun_Screen,
     prayersScreen: Prayers_Screen,
-    dasalbagomatulogPlay: DasalBagoMatulogPlay
+    dasalbagomatulogPlay: DasalBagoMatulogPlay,
+
+    //Games
+    gameMenu: GameMenu,
+
   },
 {
-    initialRouteName:"home",
+    initialRouteName:"gameMenu",
   mode: 'card',
   cardStyle: {
     backgroundColor:"transperent"
