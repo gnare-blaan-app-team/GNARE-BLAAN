@@ -5,7 +5,7 @@ import { withNavigation } from 'react-navigation';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import {globalStyleSheet} from '../globalStyleSheet/globalStyleSheet';
-import DadseBG from './gameImages/DadSeBG.png';
+import DadseBG from './dadseImages/DadSeBG.png';
 import GnareIcon from './gameImages/GnareMain.png';
 import Bang1Icon from './gameImages/bang1_icon.png';
 import Bang2Icon from './gameImages/bang2_icon.png';
