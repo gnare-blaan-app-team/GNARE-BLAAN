@@ -8,7 +8,7 @@ import Home_icon from '../images/Home_icon.png';
 import Chants_icon from './cultureandartsImages/Chants.png';
 import Kastifun_icon from './cultureandartsImages/Kastifun.png';
 import Prayers_icon from './cultureandartsImages/Prayers.png';
-import cultureandarts_BG from './cultureandartsImages/cultureandarts_BG.jpg';
+import cultureandarts_BG from '../images/Flalok_BG.jpg';
 
 
 class cultureandartsMain extends Component {
@@ -28,7 +28,7 @@ class cultureandartsMain extends Component {
 
     render(){
         return(
-           <ImageBackground style={styles.image} source={cultureandarts_BG} blurRadius={1}>
+           <ImageBackground style={styles.image} source={cultureandarts_BG}>
                 <View style={styles.CultureandArtsContainer}>
                     <View style={styles.row}>
                         <View style={styles.itemSize} >

@@ -1,27 +1,21 @@
 import React, { Component } from 'react';
-import { View, ImageBackground, Image, TouchableOpacity, StatusBar,  } from 'react-native';
+import { View, ImageBackground, Text, Image, PanResponder, TouchableOpacity, StatusBar, Animated } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import MenuItem from './MenuItem';
-import Homescreen from './HomePage';
-import Sound from 'react-native-sound';
 
-import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js';
+import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js'; 
 
 class Mainmenu extends Component {
     static navigationOptions = {
         header: null,
     }
 
-    componentWillMount() {
-        Homescreen.stopBGSound;
-    }
-
     gotoLetters = () => {
-        this.props.navigation.navigate('letters');
+        this.props.navigation.navigate('letterIntro');
     }
 
     gotoNumbers = () => {
-        this.props.navigation.navigate('numbers');
+        this.props.navigation.navigate('numberIntro');
     }
 
     gotoVocabulary = () => {
@@ -51,6 +45,7 @@ class Mainmenu extends Component {
     }
 
     render() {
+
         StatusBar.setHidden(true);
         return (
             <ImageBackground style={styles.image}
@@ -82,6 +77,8 @@ class Mainmenu extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
+
+
             </ImageBackground>
         )
     }

@@ -29,7 +29,7 @@ class vocabularyMenu extends Component {
         super(props);
         this.state = {
             top2:'1000%',
-            top1:'20%',
+            top1:'25%',
             nextTop: '45%',
             prevTop:'1000%',
         }
@@ -65,6 +65,9 @@ class vocabularyMenu extends Component {
     vocabulary9 = () => {
         this.props.navigation.push('vocabulary9');
     }
+    vocabulary10 = () => {
+        this.props.navigation.push('vocabulary10');
+    }
 
     goBack = () => {
         this.props.navigation.navigate('mainMenu');
@@ -72,7 +75,7 @@ class vocabularyMenu extends Component {
     gotoNextPage = () => {
         this.setState({
             top1:'1000%',
-            top2: '20%',
+            top2: '25%',
             nextTop:'1000%',
             prevTop: '40%',
         })
@@ -80,7 +83,7 @@ class vocabularyMenu extends Component {
     goPrev = () => {
         this.setState({
             top2: '1000%',
-            top1: '20%',
+            top1: '25%',
             prevTop: '1000%',
             nextTop: '40%',
         })
@@ -92,7 +95,7 @@ class vocabularyMenu extends Component {
                     justifyContent: 'center',
                     position: 'absolute',
                     top: this.state.top1,
-                    left: '5%',
+                    left: '-4%',
                     width: '98%',
                     height: '80%',
                     flexDirection: 'row',
@@ -108,7 +111,7 @@ class vocabularyMenu extends Component {
                     justifyContent: 'center',
                     position: 'absolute',
                     top: this.state.top2,
-                    left: '5%',
+                    left: '7%',
                     width: '98%',
                     height: '80%',
                     flexDirection: 'row',
@@ -118,7 +121,7 @@ class vocabularyMenu extends Component {
                     <VocabularyItem itemImage={KitchenUtensils_icon} goto={this.vocabulary7} />
                     <VocabularyItem itemImage={GreetingsHeavenlyBodies_icon} goto={this.vocabulary8} />
                     <VocabularyItem itemImage={Calendar_icon} goto={this.vocabulary9} />
-                    <VocabularyItem itemImage={Kastifun_icon} goto={this.gotoLetters} />
+                    <VocabularyItem itemImage={Kastifun_icon} goto={this.vocabulary10} />
                 </View>
                 <View style={styles.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>

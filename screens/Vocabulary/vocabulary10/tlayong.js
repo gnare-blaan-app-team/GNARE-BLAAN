@@ -43,7 +43,7 @@ class Tlayong extends Component {
 
     goBack = () => {
         this.vocab10_tlayong.pause();
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.navigate('vocabulary10');
     }
 
     gotoMainMenu = () => {
