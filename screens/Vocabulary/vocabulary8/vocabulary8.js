@@ -182,11 +182,12 @@ const styles = StyleSheet.create({
     },
 
     haponStyle: {
+        borderWidth: 0.5,
         position: 'absolute',
-        top: hp('20.7%'),
-        left: wp('6.5%'),
-        height: hp('48%'),
-        width: wp('30%'),
+        top: hp('20%'),
+        left: wp('7.4%'),
+        height: hp('46%'),
+        width: wp('23%'),
     },
 
     umagaStyle: {
