@@ -104,6 +104,8 @@ import Kastifun_Screen from './screens/CultureandArts/cultureandartsScreens/kast
 import Prayers_Screen from './screens/CultureandArts/cultureandartsScreens/prayersScreen';
 import DasalBagoMatulogPlay from './screens/CultureandArts/cultureandartsScreens/prayers/DasalBagoMatulogPlay';
 
+import GameMenu from './screens/Games/GameMenu';
+
 
 import ATracing from './screens/Letters/LetterTracing/ATracing';
 import BTracing from './screens/Letters/LetterTracing/BTracing';
@@ -228,11 +230,15 @@ export default AppNavigator = createStackNavigator(
     chantsScreen: Chants_Screen,
     kastifunScreen: Kastifun_Screen,
     prayersScreen: Prayers_Screen,
-    dasalbagomatulogPlay: DasalBagoMatulogPlay
+    dasalbagomatulogPlay: DasalBagoMatulogPlay,
+
+    //Games
+    gameMenu: GameMenu,
+
   },
 {
 
-  initialRouteName:"vocabularyMenu",
+  initialRouteName:"home",
 
   mode: 'card',
   cardStyle: {
