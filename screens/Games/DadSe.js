@@ -5,7 +5,7 @@ import { withNavigation } from 'react-navigation';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import {globalStyleSheet} from '../globalStyleSheet/globalStyleSheet';
-import DadseBG from './gameImages/DadSeBG.png';
+import DadseBG from './dadseImages/DadSeBG.png';
 import GnareIcon from './gameImages/GnareMain.png';
 import Bang1Icon from './gameImages/bang1_icon.png';
 import Bang2Icon from './gameImages/bang2_icon.png';
@@ -32,28 +32,28 @@ class DadSe extends Component {
                 <View style={styles.bang1Style}>
                     <Image
                         source={Bang1Icon}
-                        style={styles.bang1Image}
+                        style={styles.image}
                     >
                     </Image>
                 </View>
                 <View style={styles.bang2Style}>
                     <Image
                         source={Bang2Icon}
-                        style={styles.bang2Image}
+                        style={styles.image}
                     >
                     </Image>
                 </View>
                 <View style={styles.bang3Style}>
                     <Image
                         source={Bang3Icon}
-                        style={styles.bang3Image}
+                        style={styles.image}
                     >
                     </Image>
                 </View>
                 <View style={styles.kastifunStyle}>
                     <Image
                         source={KastifunIcon}
-                        style={styles.kastifunImage}
+                        style={styles.image}
                     >
                     </Image>
                 </View>
@@ -79,51 +79,31 @@ const styles = StyleSheet.create({
     bang1Style: {
         position: 'absolute',
         top: hp('8%'),
-        left: wp('60%'),
-        height: hp('17%'),
+        left: wp('63%'),
+        height: hp('16%'),
         width: wp('28%'),
-    },
-    bang1Image: {
-        width: '100%',
-        height: '100%',
-        resizeMode: 'stretch'
     },
     bang2Style: {
         position: 'absolute',
         top: hp('26%'),
-        left: wp('60%'),
-        height: hp('17%'),
+        left: wp('63%'),
+        height: hp('16%'),
         width: wp('28%'),
-    },
-    bang2Image: {
-        width: '100%',
-        height: '100%',
-        resizeMode: 'stretch'
     },
     bang3Style: {
         position: 'absolute',
-        top: hp('43%'),
-        left: wp('60%'),
-        height: hp('17%'),
+        top: hp('45%'),
+        left: wp('63%'),
+        height: hp('16%'),
         width: wp('28%'),
-    },
-    bang3Image: {
-        width: '100%',
-        height: '100%',
-        resizeMode: 'stretch'
     },
     kastifunStyle: {
         position: 'absolute',
-        top: hp('60%'),
-        left: wp('60%'),
-        height: hp('17%'),
+        top: hp('63%'),
+        left: wp('63%'),
+        height: hp('16%'),
         width: wp('28%'),
     },
-    kastifunImage: {
-        width: '100%',
-        height: '100%',
-        resizeMode: 'stretch'
-    }
 })
 
 
