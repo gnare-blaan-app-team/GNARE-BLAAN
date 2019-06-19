@@ -22,6 +22,13 @@ class Vocabulary6 extends Component {
         header: null,
     }
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            BackgroundImage: Vocab6BG,
+        }
+    }
+
 
     handleBackPress = () => {
         this.number1.pause();
@@ -66,8 +73,15 @@ class Vocabulary6 extends Component {
     render() {
 
         return (
-            <ImageBackground style={globalStyleSheet.image}
-                source={Vocab6BG}>
+            <ImageBackground style={{ flex: 1, width: '100%', height: '100%', resizeMode: 'stretch' }}
+                source={Vocab6BG}
+            >
+                <View style={{ position: 'absolute', top: '0%', width: '100%', height: '100%' }}>
+                    <Image source={Vocab6BG} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
+                </View>
+                <View style={{ position: 'absolute', width: '100%', height: '100%' }}>
+                    <Image source={this.state.BackgroundImage} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
+                </View>
                 <View style={globalStyleSheet.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image

@@ -60,7 +60,7 @@ class vocabulary2 extends Component {
             image3Width: wp('0%'),
             View3Left: '300%',
             view3Top: '19%',
-            boyTop:'22%',
+            boyTop:'20%',
             boyLeft:'40%',
             stillView:'',
             speakerTop:'1000%',
@@ -462,23 +462,36 @@ class vocabulary2 extends Component {
                         left: this.state.boyLeft,
                         }}>
                     <TouchableOpacity onPress={this.view1} style={{
-                        position: 'relative', 
+                        position: 'relative',
+                        top:'-3%' 
                        }}>
-                           <Image source={require('./vocabulary2Images/TO_ulo.png')}/>
+                           <Image source={require('./vocabulary2Images/TO_ulo.png')}
+                            style={{
+                            height: hp('18%'),
+                            width: wp('7%')
+                           }}/>
                         </TouchableOpacity>
                     <TouchableOpacity onPress={this.view2} style={{
-                        top:'22.22%',
+                        top:'20%',
                         position: 'absolute',
-                        left:'4%'
+                        left:'3%',
                     }}>
-                        <Image source={require('./vocabulary2Images/TO_dibdib.png')}/>
+                        <Image source={require('./vocabulary2Images/TO_dibdib.png')}
+                            style={{
+                                height: hp('29%'),
+                                width: wp('15%')
+                            }}/>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={this.view3} style={{
                             position: 'absolute',
                             top: '39%',
-                            left: '22.60%'
+                            left: '20.25%'
                     }}>
-                        <Image source={require('./vocabulary2Images/TO_paa.png')}/>
+                        <Image source={require('./vocabulary2Images/TO_paa.png')} 
+                            style={{
+                                height: hp('41.50%'),
+                                width: wp('10.40%')
+                            }}/>
                     </TouchableOpacity>
                     </View>
                 <Animated.View 

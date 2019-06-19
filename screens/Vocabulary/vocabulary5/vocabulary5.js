@@ -373,6 +373,8 @@ class Vocabulary5 extends Component {
                     width: '3%',
                     left: '38%',
                     height: '40%',
+                    borderColor:'red',
+                    borderWidth:2,
                     transform: [{ rotate: '64deg' }],
                 }}>
                     <TouchableOpacity onPress={this.gotoSpearit}>

@@ -238,7 +238,7 @@ export default AppNavigator = createStackNavigator(
   },
 {
 
-  initialRouteName:"home",
+  initialRouteName:"vocabulary2",
 
   mode: 'card',
   cardStyle: {
