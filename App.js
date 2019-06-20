@@ -110,6 +110,7 @@ import DadSe from './screens/Games/DadSe/DadSe';
 import DadSeTanbu1 from './screens/Games/DadSe/DadSeTanbu1';
 import DadSeTanbu2 from './screens/Games/DadSe/DadSeTanbu2';
 import DadSeTanbu3 from './screens/Games/DadSe/DadSeTanbu3';
+import DadSeTanbu4 from './screens/Games/DadSe/DadSeTanbu4';
 import DadBatak from './screens/Games/DadBatak';
 
 
@@ -120,6 +121,7 @@ import ETracing from './screens/Letters/LetterTracing/ETracing';
 import FTracing from './screens/Letters/LetterTracing/FTracing';
 import HTracing from './screens/Letters/LetterTracing/HTracing';
 import GTracing from './screens/Letters/LetterTracing/HTracing';
+
 
 useScreens();
 
@@ -244,6 +246,7 @@ export default AppNavigator = createStackNavigator(
     dadseTanbu1: DadSeTanbu1, 
     dadseTanbu2: DadSeTanbu2,
     dadseTanbu3: DadSeTanbu3,
+    dadseTanbu4: DadSeTanbu4,
     dadbatak: DadBatak,
     
 
