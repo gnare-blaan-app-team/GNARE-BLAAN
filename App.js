@@ -248,7 +248,12 @@ export default AppNavigator = createStackNavigator(
   },
 {
 
+<<<<<<< HEAD
   initialRouteName: "home",
+=======
+  initialRouteName:"home",
+
+>>>>>>> 01fb5422e89782c9b45f86ecc1a5a87f26582ad4
   mode: 'card',
   cardStyle: {   
     backgroundColor:"transperent"
