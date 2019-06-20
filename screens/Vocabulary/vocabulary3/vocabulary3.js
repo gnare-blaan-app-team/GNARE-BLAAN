@@ -234,7 +234,7 @@ class Vocabulary3 extends Component {
                 <View style={{
                     position: 'absolute',
                     top: this.state.seaTop,
-                    left: '11%',
+                    left: '10%',
                     justifyContent: 'center',
                 }}>
                     <TouchableOpacity onPress={this.gotoSea}>
@@ -247,7 +247,7 @@ class Vocabulary3 extends Component {
                 <View style={{
                     position: 'absolute',
                     top:this.state.seashoreTop,
-                    left: '53%',
+                    left: '51.5%',
                     height: '15%',
                 }}>
                     <TouchableOpacity onPress={this.gotoSeashore}>
@@ -260,7 +260,7 @@ class Vocabulary3 extends Component {
                 <View style={{
                     position: 'absolute',
                     top:this.state.basketTop,
-                    left: '73%',
+                    left: '70%',
                     justifyContent: 'center',
                     width: '14%',
                     height: '17%',
@@ -350,7 +350,7 @@ class Vocabulary3 extends Component {
                 <View style={{
                     position: 'absolute',
                     top:this.state.crabTop,
-                    left: '62%',
+                    left: '60%',
                     justifyContent: 'center',
                     height: '12%',
                 }}>
@@ -370,7 +370,7 @@ const styles = StyleSheet.create({
     basketStyle:{
         position: 'absolute',
         top: '21%',
-        left: '73%',
+        left: '70%',
         justifyContent: 'center',
         width: '14%',
         height: '17%',
@@ -446,7 +446,7 @@ const styles = StyleSheet.create({
     crabStyle:{
         position: 'absolute',
         top: '27%',
-        left: '62%',
+        left: '60%',
         justifyContent: 'center',
         height: '12%',
     },
@@ -458,7 +458,7 @@ const styles = StyleSheet.create({
     seashoreStyle:{
         position: 'absolute',
         top: '25.5%',
-        left: '53%',
+        left: '51.5%',
         height: '15%',
     },
     seashoreImage: {

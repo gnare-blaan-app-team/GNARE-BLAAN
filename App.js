@@ -106,7 +106,7 @@ import DasalBagoMatulogPlay from './screens/CultureandArts/cultureandartsScreens
 
 import GameMenu from './screens/Games/GameMenu';
 import DadSe from './screens/Games/DadSe';
-
+import DadBatak from './screens/Games/DadBatak';
 
 import ATracing from './screens/Letters/LetterTracing/ATracing';
 import BTracing from './screens/Letters/LetterTracing/BTracing';
@@ -236,11 +236,12 @@ export default AppNavigator = createStackNavigator(
     //Games
     gameMenu: GameMenu,
     dadse : DadSe,
+    dadbatak: DadBatak,
 
   },
 {
 
-  initialRouteName:"vocabulary2",
+  initialRouteName:"home",
 
   mode: 'card',
   cardStyle: {
