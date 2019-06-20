@@ -3,23 +3,22 @@ import { Text, View, Image, StyleSheet, TouchableOpacity , ImageBackground } fro
 import { withNavigation } from 'react-navigation';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-
 import {globalStyleSheet} from '../globalStyleSheet/globalStyleSheet';
-import DadseBG from './dadseImages/DadSeBG.png';
 import GnareIcon from './gameImages/GnareMain.png';
+import DadBatakBG from './gameImages/DadBatakBG.png';
 import Bang1Icon from './gameImages/bang1_icon.png';
 import Bang2Icon from './gameImages/bang2_icon.png';
 import Bang3Icon from './gameImages/bang3_icon.png';
 import KastifunIcon from './gameImages/kastifun_icon.png';
 
-class DadSe extends Component {
+class DadBatak extends Component {
     static navigationOptions = {
         header: null,
     }
     render() {
         return (
             <ImageBackground
-                source={DadseBG}
+                source={DadBatakBG}
                 style={globalStyleSheet.image}
             >
                 <View style={styles.gnareIconStyle}>
@@ -62,7 +61,6 @@ class DadSe extends Component {
     }
 }
 
-
 const styles = StyleSheet.create({
     gnareIconStyle: {
         position: 'absolute',
@@ -79,32 +77,31 @@ const styles = StyleSheet.create({
     bang1Style: {
         position: 'absolute',
         top: hp('8%'),
-        left: wp('63%'),
+        left: wp('60%'),
         height: hp('16%'),
         width: wp('28%'),
     },
     bang2Style: {
         position: 'absolute',
         top: hp('26%'),
-        left: wp('63%'),
+        left: wp('60%'),
         height: hp('16%'),
         width: wp('28%'),
     },
     bang3Style: {
         position: 'absolute',
-        top: hp('45%'),
-        left: wp('63%'),
+        top: hp('43%'),
+        left: wp('60%'),
         height: hp('16%'),
         width: wp('28%'),
     },
     kastifunStyle: {
         position: 'absolute',
-        top: hp('63%'),
-        left: wp('63%'),
+        top: hp('60%'),
+        left: wp('60%'),
         height: hp('16%'),
         width: wp('28%'),
-    },
+    }
 })
 
-
-export default withNavigation(DadSe);
+export default withNavigation(DadBatak);
