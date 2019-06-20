@@ -301,8 +301,9 @@ class Vocabulary5 extends Component {
                     position: 'absolute',
                     top: this.state.treeTop,
                     width: '20%',
-                    left: '11.5%',
+                    left: '12.8%',
                     height: '65%',
+                    borderWidth: 0.5,
                 }}>
                     <TouchableOpacity onPress={this.gotoTree}>
                         <Image
@@ -316,8 +317,10 @@ class Vocabulary5 extends Component {
                     position: 'absolute',
                     top: this.state.fallsTop,
                     width: '24%',
-                    right: '11%',
+                    right: '12.6%',
                     height: '65%',
+                    borderWidth: 0.5,
+
                 }}>
                     <TouchableOpacity onPress={this.gotoFalls}>
                         <Image
@@ -331,8 +334,9 @@ class Vocabulary5 extends Component {
                     position: 'absolute',
                     top: this.state.ilogTop,
                     width: '45%',
-                    right: '11%',
+                    right: '12.6%',
                     height: '40%',
+                    borderWidth: 0.5,
                 }}>
                     <TouchableOpacity onPress={this.gotoIlog}>
                         <Image
@@ -346,7 +350,7 @@ class Vocabulary5 extends Component {
                     position: 'absolute',
                     top: this.state.lawinTop,
                     width: '12%',
-                    left: '14%',
+                    left: '16%',
                     height: '32%',
                 }}>
                     <TouchableOpacity onPress={this.gotoLawin}>
@@ -361,7 +365,7 @@ class Vocabulary5 extends Component {
                     position: 'absolute',
                     top:this.state.bowTop,
                     width: '12%',
-                    left: '17%',
+                    left: '19%',
                     height: '23%',
                     transform: [{ rotate: '12deg' }],
                 }}>
@@ -377,7 +381,7 @@ class Vocabulary5 extends Component {
                     position: 'absolute',
                     top:this.state.spearTop,
                     width: '3%',
-                    left: '38%',
+                    left: '36%',
                     height: '40%',
                     transform: [{ rotate: '64deg' }],
                 }}>
@@ -393,7 +397,7 @@ class Vocabulary5 extends Component {
                     position: 'absolute',
                     top:this.state.salamanderTop,
                     width: '7%',
-                    left: '75%',
+                    left: '72%',
                     height: '10%',
                 }}>
                     <TouchableOpacity onPress={this.gotoSalamander}>
@@ -408,7 +412,7 @@ class Vocabulary5 extends Component {
                     position: 'absolute',
                     top: this.state.axeTop,
                     width: '6%',
-                    left: '78%',
+                    left: '77%',
                     height: '5%',
                     transform: [{ rotate: '-9deg' }]
                 }}>
@@ -424,7 +428,7 @@ class Vocabulary5 extends Component {
                     position: 'absolute',
                     top:this.state.hornbillTop,
                     width: '13%',
-                    right: '35%',
+                    right: '37%',
                     height: '24%',
                 }}>
                     <TouchableOpacity onPress={this.gotoHornbill}>

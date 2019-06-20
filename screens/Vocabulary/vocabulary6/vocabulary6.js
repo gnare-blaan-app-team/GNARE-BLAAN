@@ -6,14 +6,6 @@ import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 import Vocab6BG from './vocabulary6Images/vocab6.png';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
-import WallAsset from './vocabulary6Images/wallAsset.png';
-import RoofAsset from './vocabulary6Images/roofAsset.png';
-import DoorAsset from './vocabulary6Images/doorAsset.png';
-import WindowAsset from './vocabulary6Images/windowAsset.png';
-import BedroomAsset from './vocabulary6Images/bedroomAsset.png';
-import KitchenAsset from './vocabulary6Images/kitchenAsset.png';
-import FloorAsset from './vocabulary6Images/floorAsset.png';
-import LadderAsset from './vocabulary6Images/ladderAsset.png';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
