@@ -10,7 +10,7 @@ import GnareIcon from '../gameImages/GnareMain.png';
 import TanbuIcon from '../gameImages/tanbu_icon.png';
 
 
-class Tanbu extends Component {
+class DadSeTanbu2 extends Component {
     static navigationOptions = {
         header: null,
     }
@@ -63,4 +63,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default withNavigation(Tanbu);
+export default withNavigation(DadSeTanbu2);

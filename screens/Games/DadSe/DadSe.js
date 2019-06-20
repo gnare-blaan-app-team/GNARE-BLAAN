@@ -24,7 +24,9 @@ class DadSe extends Component {
     gotoDadSeTanbu2 = () => {
         this.props.navigation.navigate('dadseTanbu2')
     }
-
+    gotoDadSeTanbu3 = () => {
+        this.props.navigation.navigate('dadseTanbu3')
+    }
     render() {
         return (
             <ImageBackground
@@ -45,7 +47,7 @@ class DadSe extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.bang3Style}>
-                    <TouchableOpacity onPress={this.gotoDadSeTanbu1}>
+                    <TouchableOpacity onPress={this.gotoDadSeTanbu3}>
                         <Image source={Bang3Icon} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>

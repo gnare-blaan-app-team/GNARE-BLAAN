@@ -109,6 +109,7 @@ import GameMenu from './screens/Games/GameMenu';
 import DadSe from './screens/Games/DadSe/DadSe';
 import DadSeTanbu1 from './screens/Games/DadSe/DadSeTanbu1';
 import DadSeTanbu2 from './screens/Games/DadSe/DadSeTanbu2';
+import DadSeTanbu3 from './screens/Games/DadSe/DadSeTanbu3';
 import DadBatak from './screens/Games/DadBatak';
 
 
@@ -242,18 +243,14 @@ export default AppNavigator = createStackNavigator(
     dadse : DadSe,
     dadseTanbu1: DadSeTanbu1, 
     dadseTanbu2: DadSeTanbu2,
+    dadseTanbu3: DadSeTanbu3,
     dadbatak: DadBatak,
     
 
   },
 {
 
-<<<<<<< HEAD
   initialRouteName: "home",
-=======
-  initialRouteName:"home",
-
->>>>>>> 01fb5422e89782c9b45f86ecc1a5a87f26582ad4
   mode: 'card',
   cardStyle: {   
     backgroundColor:"transperent"
