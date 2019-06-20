@@ -6,20 +6,19 @@ import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 import Vocab6BG from './vocabulary6Images/vocab6.png';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
-import WallAsset from './vocabulary6Images/wallAsset.png';
-import RoofAsset from './vocabulary6Images/roofAsset.png';
-import DoorAsset from './vocabulary6Images/doorAsset.png';
-import WindowAsset from './vocabulary6Images/windowAsset.png';
-import BedroomAsset from './vocabulary6Images/bedroomAsset.png';
-import KitchenAsset from './vocabulary6Images/kitchenAsset.png';
-import FloorAsset from './vocabulary6Images/floorAsset.png';
-import LadderAsset from './vocabulary6Images/ladderAsset.png';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 class Vocabulary6 extends Component {
     static navigationOptions = {
         header: null,
+    }
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            BackgroundImage: Vocab6BG,
+        }
     }
 
 
@@ -66,8 +65,15 @@ class Vocabulary6 extends Component {
     render() {
 
         return (
-            <ImageBackground style={globalStyleSheet.image}
-                source={Vocab6BG}>
+            <ImageBackground style={{ flex: 1, width: '100%', height: '100%', resizeMode: 'stretch' }}
+                source={Vocab6BG}
+            >
+                <View style={{ position: 'absolute', top: '0%', width: '100%', height: '100%' }}>
+                    <Image source={Vocab6BG} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
+                </View>
+                <View style={{ position: 'absolute', width: '100%', height: '100%' }}>
+                    <Image source={this.state.BackgroundImage} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
+                </View>
                 <View style={globalStyleSheet.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image

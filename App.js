@@ -104,8 +104,13 @@ import Kastifun_Screen from './screens/CultureandArts/cultureandartsScreens/kast
 import Prayers_Screen from './screens/CultureandArts/cultureandartsScreens/prayersScreen';
 import DasalBagoMatulogPlay from './screens/CultureandArts/cultureandartsScreens/prayers/DasalBagoMatulogPlay';
 
+// Games
 import GameMenu from './screens/Games/GameMenu';
-import DadSe from './screens/Games/DadSe';
+import DadSe from './screens/Games/DadSe/DadSe';
+import DadSeTanbu1 from './screens/Games/DadSe/DadSeTanbu1';
+import DadSeTanbu2 from './screens/Games/DadSe/DadSeTanbu2';
+import DadSeTanbu3 from './screens/Games/DadSe/DadSeTanbu3';
+import DadSeTanbu4 from './screens/Games/DadSe/DadSeTanbu4';
 import DadBatak from './screens/Games/DadBatak';
 import DadBatakTanbu1 from './screens/Games/dadbatak/Tanbu1';
 import DadBatakTanbu2 from './screens/Games/dadbatak/Tanbu2';
@@ -114,6 +119,7 @@ import DadBatakTanbu3 from './screens/Games/dadbatak/Tanbu3';
 //Bang 1
 import Question1 from './screens/Games/dadbatak/Bang1/question1';
 
+
 import ATracing from './screens/Letters/LetterTracing/ATracing';
 import BTracing from './screens/Letters/LetterTracing/BTracing';
 import DTracing from './screens/Letters/LetterTracing/DTracing';
@@ -121,6 +127,7 @@ import ETracing from './screens/Letters/LetterTracing/ETracing';
 import FTracing from './screens/Letters/LetterTracing/FTracing';
 import HTracing from './screens/Letters/LetterTracing/HTracing';
 import GTracing from './screens/Letters/LetterTracing/HTracing';
+
 
 useScreens();
 
@@ -242,6 +249,10 @@ export default AppNavigator = createStackNavigator(
     //Games
     gameMenu: GameMenu,
     dadse : DadSe,
+    dadseTanbu1: DadSeTanbu1, 
+    dadseTanbu2: DadSeTanbu2,
+    dadseTanbu3: DadSeTanbu3,
+    dadseTanbu4: DadSeTanbu4,
     dadbatak: DadBatak,
     dadbataktanbu1: DadBatakTanbu1,
     dadbataktanbu2: DadBatakTanbu2,
@@ -253,9 +264,9 @@ export default AppNavigator = createStackNavigator(
   },
 {
 
-  initialRouteName:"home",
+  initialRouteName: "home",
   mode: 'card',
-  cardStyle: {
+  cardStyle: {   
     backgroundColor:"transperent"
 }
 }

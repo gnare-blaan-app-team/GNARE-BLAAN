@@ -372,7 +372,7 @@ class Vocabulary4 extends Component {
                 <View style={{
                     position: 'absolute',
                     top:this.state.riceTop,
-                    left: '11.3%',
+                    left: '13%',
                     justifyContent: 'center',
                 }}>
                     <TouchableOpacity onPress={this.gotoRice}>
@@ -411,8 +411,10 @@ class Vocabulary4 extends Component {
                 <View style={{
                     position: 'absolute',
                     top: this.state.cowTop,
-                    left: '42%',
+                    left: '45%',
                     justifyContent: 'center',
+                    width: '15%',
+
                 }}>
                     <TouchableOpacity onPress={this.gotoCow}>
                         <Image
@@ -451,8 +453,9 @@ class Vocabulary4 extends Component {
                 <View style={{
                     position: 'absolute',
                     top: this.state.cornTop,
-                    left: '20%',
+                    left: '22%',
                     justifyContent: 'center',
+                    width: wp('10%'),
                 }}>
                     <TouchableOpacity onPress={this.gotoCorn}>
                         <Image
@@ -481,9 +484,9 @@ class Vocabulary4 extends Component {
                 <View style={{
                     position: 'absolute',
                     top: this.state.plowTop,
-                    left: '66%',
+                    left: '71.5%',
                     justifyContent: 'center',
-                    width: '22%',
+                    width: '16%',
                     height: '28%',
                 }}>
                     <TouchableOpacity onPress={this.gotoPlow}>
@@ -512,137 +515,69 @@ class Vocabulary4 extends Component {
 }
 
 const styles = StyleSheet.create({
-    bambooStyle:{
-        position: 'absolute',
-        top: '56%',
-        left: '58%',
-        justifyContent: 'center',
-    },
     bambooImage: {
         width: wp('19%'),
         height: hp('29%'),
         resizeMode: 'contain',
-    },
-    boloStyle:{
-        position: 'absolute',
-        top: '53%',
-        left: '10%',
-        justifyContent: 'center',
     },
     boloImage: {
         width: wp('16%'),
         height: hp('9%'),
         resizeMode: 'contain',
     },
-    carabaoStyle:{
-        position: 'absolute',
-        top: '42%',
-        left: '36%',
-        justifyContent: 'center',
-    },
     carabaoImage: {
         width: wp('19%'),
         height: hp('22%'),
         resizeMode: 'contain',
     },
-    chickenStyle:{
-        position: 'absolute',
-        top: '59%',
-        left: '30%',
-        justifyContent: 'center',
-        height: 60,
-        width: 90,
 
-    },
     chickenImage: {
         width: wp('7%'),
         height: hp('14%'),
         resizeMode: 'contain',
     },
-    cornStyle:{
-        position: 'absolute',
-        top: '55%',
-        left: '20%',
-        justifyContent: 'center',
-    },
+
     cornImage: {
         width: wp('12%'),
         height: hp('13%'),
         resizeMode: 'contain',
+        right: '19%',
     },
-    cowStyle:{
-        position: 'absolute',
-        top: '53%',
-        left: '42%',
-        justifyContent: 'center',
-    },
+
     cowImage: {
+        right: '20%',
         width: wp('20%'),
         height: hp('24%'),
         resizeMode: 'contain',
     },
-    farmlandStyle:{
-        position: 'absolute',
-        top: '36%',
-        left: '45.5%',
-        justifyContent: 'center',
-    },
+
     farmlandImage: {
         width: wp('41%'),
         height: hp('44%'),
         resizeMode: 'contain',
-    },
-    goatStyle:{
-        position: 'absolute',
-        top: '60%',
-        left: '37%',
-        justifyContent: 'center',
     },
     goatImage: {
         width: wp('10%'),
         height: hp('20%'),
         resizeMode: 'contain',
     },
-    pigStyle:{
-        position: 'absolute',
-        top: '67%',
-        left: '43%',
-        justifyContent: 'center',
-    },
     pigImage: {
         width: wp('17%'),
         height: hp('25%'),
         resizeMode: 'contain',
     },
-    plowStyle:{
-        position: 'absolute',
-        top: '63%',
-        left: '65.5%',
-        justifyContent: 'center',
-        width: '22%',
-        height: '28%',
-    },
     plowImage: {
+        left: '-38%',
+        top: '2%',
         width: wp('25%'),
         height: hp('28%'),
         resizeMode: 'contain',
     },
-    riceStyle:{
-        position: 'absolute',
-        top: '63.5%',
-        left: '13%',
-        justifyContent: 'center',
-    },
     riceImage: {
+        bottom: '3%',
         width: wp('29.4%'),
         height: hp('27.5%'),
         resizeMode: 'contain',
-    },
-    sweetpotatoStyle:{
-        position: 'absolute',
-        top: '75%',
-        left: '58%',
-        justifyContent: 'center',
     },
     sweetpotatoImage: {
         width: wp('15%'),

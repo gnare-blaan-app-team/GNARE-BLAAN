@@ -38,29 +38,29 @@ class vocabulary2 extends Component {
         this.moveAnimation = new Animated.ValueXY({ x: 400, y: 100 })
         this.state = {
             BackgroundImage: BG,
-            view1Height: hp('0%'),
-            view1Width: wp('0%'),
-            image1Height: hp('0%'),
-            image1Width: wp('0%'),
+            view1Height: '0%',
+            view1Width:'0%',
+            image1Height:'0%',
+            image1Width:'0%',
             toValue:.5,
             View1Left:'300%',
             view1Top:'19%',
             show:'',
-            view2Height: hp('0%'),
-            view2Width: wp('0%'),
-            image2Height: hp('0%'),
-            image2Width: wp('0%'),
+            view2Height:'0%',
+            view2Width:'0%',
+            image2Height:'0%',
+            image2Width:'0%',
             View2Left:'300%',
             view2Top:'19%',
             showView1:false,
             showView2: false,
-            view3Height: hp('0%'),
-            view3Width: wp('0%'),
-            image3Height: hp('0%'),
-            image3Width: wp('0%'),
+            view3Height: '0%',
+            view3Width: '0%',
+            image3Height: '0%',
+            image3Width: '0%',
             View3Left: '300%',
             view3Top: '19%',
-            boyTop:'22%',
+            boyTop:'20%',
             boyLeft:'40%',
             stillView:'',
             speakerTop:'1000%',
@@ -76,22 +76,22 @@ class vocabulary2 extends Component {
             toValue: 1,
         }).start()
         this.setState({
-            boyTop: '22%',
+            boyTop: '20%',
             boyLeft: '20%',
             view2Top: '1000%',
             View2Left: '1000%',
             view3Top: '1000%',
             View3Left: '1000%',
-            view2Height: hp('0%'),
-            view2Width: wp('0%'),
-            view3Height: hp('0%'),
-            view3Width: wp('0%'),
-            view1Height: hp('80%'),
-            view1Width: wp('50%'),
-            image1Height: hp('80%'),
-            image1Width: wp('70%'),
-            View1Left:'40%',
-            view1Top: '19%',
+            view2Height: '0%',
+            view2Width: '0%',
+            view3Height: '0%',
+            view3Width: '0%',
+            view1Height: '80%',
+            view1Width: '50%',
+            image1Height: '80%',
+            image1Width: '70%',
+            View1Left:'37%',
+            view1Top: '25%',
 
         })
         
@@ -104,20 +104,20 @@ class vocabulary2 extends Component {
             toValue: 1,
         }).start()
         this.setState({
-            boyTop: '22%',
+            boyTop: '20%',
             boyLeft: '20%',
             view1Top: '1000%',
             View1Left: '1000%',
             view3Top: '1000%',
             View3Left: '1000%',
-            view3Height: hp('0%'),
-            view3Width: wp('0%'),
-            view2Height: hp('80%'),
-            view2Width: wp('50%'),
-            image2Height: hp('60%'),
-            image2Width: wp('30%'),
-            view2Top: '19%',
-            View2Left: '40%',
+            view3Height: '0%',
+            view3Width: '0%',
+            view2Height:'80%',
+            view2Width: '50%',
+            image2Height:'60%',
+            image2Width: '30%',
+            view2Top: '10%',
+            View2Left: '35%',
 
         })
 
@@ -130,21 +130,21 @@ class vocabulary2 extends Component {
             toValue: 1,
         }).start()
         this.setState({
-            boyTop: '22%',
+            boyTop: '20%',
             boyLeft: '20%',
-            view1Height: hp('0%'),
-            view1Width: wp('0%'),
+            view1Height: '0%',
+            view1Width: '0%',
             view1Top: '1000%',
             View1Left: '1000%',
             view2Top: '1000%',
             View2Left: '1000%',
-            view2Height: hp('0%'),
-            view2Width: wp('0%'),
-            view3Height: hp('80%'),
-            view3Width: wp('50%'),
+            view2Height: '0%',
+            view2Width: '0%',
+            view3Height: '80%',
+            view3Width: '50%',
             image3Height:400,
             image3Width: 200,
-            view3Top: '20%',
+            view3Top: '13%',
             View3Left: '35%',
         })
 
@@ -172,34 +172,34 @@ class vocabulary2 extends Component {
             }).start()
             if(this.state.stillView == 'View1'){
                 this.setState({
-                    view1Height: hp('80%'),
-                    view1Width: wp('50%'),
-                    View1Left: '40%',
-                    view1Top: '19%',
+                    view1Height: '80%',
+                    view1Width:'50%',
+                    View1Left: '37%',
+                    view1Top: '25%',
                     clearBackground:'goVocabMenu',
                 })
             }
             if (this.state.stillView == 'View2') {
                 this.setState({
-                    view2Height: hp('80%'),
-                    view2Width: wp('50%'),
-                    View2Left: '40%',
-                    view2Top: '19%',
+                    view2Height: '80%',
+                    view2Width: '50%',
                     clearBackground: 'goVocabMenu',
+                    view2Top: '10%',
+                    View2Left: '35%',
                 })
             }
             if (this.state.stillView == 'View3') {
                 this.setState({
-                    view3Height: hp('80%'),
-                    view3Width: wp('50%'),
-                    View3Left: '40%',
-                    view3Top: '19%',
+                    view3Height: '80%',
+                    view3Width: '50%',
+                    view3Top: '13%',
+                    View3Left: '35%',
                     clearBackground: 'goVocabMenu',
                 })
             }
             this.setState({
                 BackgroundImage: BG, 
-                boyTop: '22%',
+                boyTop: '20%',
                 boyLeft: '20%',
                 speakerTop:'1000%',
             })
@@ -462,23 +462,36 @@ class vocabulary2 extends Component {
                         left: this.state.boyLeft,
                         }}>
                     <TouchableOpacity onPress={this.view1} style={{
-                        position: 'relative', 
+                        position: 'relative',
+                        top:'-3%' 
                        }}>
-                           <Image source={require('./vocabulary2Images/TO_ulo.png')}/>
+                           <Image source={require('./vocabulary2Images/TO_ulo.png')}
+                            style={{
+                            height: hp('18%'),
+                            width: wp('7%')
+                           }}/>
                         </TouchableOpacity>
                     <TouchableOpacity onPress={this.view2} style={{
-                        top:'22.22%',
+                        top:'20%',
                         position: 'absolute',
-                        left:'4%'
+                        left:'3%',
                     }}>
-                        <Image source={require('./vocabulary2Images/TO_dibdib.png')}/>
+                        <Image source={require('./vocabulary2Images/TO_dibdib.png')}
+                            style={{
+                                height: hp('29%'),
+                                width: wp('15%')
+                            }}/>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={this.view3} style={{
                             position: 'absolute',
                             top: '39%',
-                            left: '22.60%'
+                            left: '20.25%'
                     }}>
-                        <Image source={require('./vocabulary2Images/TO_paa.png')}/>
+                        <Image source={require('./vocabulary2Images/TO_paa.png')} 
+                            style={{
+                                height: hp('42.70%'),
+                                width: wp('10.40%')
+                            }}/>
                     </TouchableOpacity>
                     </View>
                 <Animated.View 
@@ -488,70 +501,120 @@ class vocabulary2 extends Component {
                     height: this.state.view1Height,
                     left: this.state.View1Left,
                     top:this.state.view1Top,
-                    justifyCotent:'center'
-                }}>
-                
-                    <TouchableOpacity style={{ position: 'absolute', top: '5%', left: '18%' }} onPress={this.gotoHead}>
-                        <Image source={require('./vocabulary2Images/ulo1.png')} style={{
-                            width: wp('25.50%'),
-                            height: hp('30.90%'),
-                        }}/> 
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ position: 'absolute', top: '38.90%', left: '60%' }} onPress={this.gotoHair}>
-                        <Image source={require('./vocabulary2Images/ulo3.png')} style={{
-                            width: wp('2.90%'),
-                            height: hp('10%'),
-                        }} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ position: 'absolute', top: '38.90%', left: '20%' }} onPress={this.gotoHair}>
-                        <Image source={require('./vocabulary2Images/ulo4.png')} style={{
-                            width: wp('2.90%'),
-                            height: hp('10%'),
-                        }} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ position: 'absolute', top: '45%', left: '59.60%' }} onPress={this.gotoEars}>
-                        <Image source={require('./vocabulary2Images/ulo7.png')} style={{
-                            width: wp('4%'),
-                            height: hp('15%'),
-                        }} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ position: 'absolute', top: '45%', left: '18%' }} onPress={this.gotoEars}>
-                        <Image source={require('./vocabulary2Images/ulo8.png')} style={{
-                            width: wp('4%'),
-                            height: hp('15%'),
-                        }} />
-                    </TouchableOpacity>
-                    <Image source={require('./vocabulary2Images/ulo5.png')} style={{
-                        width: wp('19%'),
-                        height: hp('22%'),
-                        position: 'absolute',
-                        top: '51.90%',
-                        left: '23.50%'
-                    }} />
-                    <TouchableOpacity style={{position: 'absolute',top:'38.20%',left:'24%' }} onPress={this.gotoEyes}>
-                        <Image source={require('./vocabulary2Images/ulo2.png')} style={{
-                            width: wp('19%'),
-                            height: hp('15%'),
-                        }} /> 
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ position: 'absolute', top: '58%', left: '35%' }} onPress={this.gotoNose}>
-                        <Image source={require('./vocabulary2Images/ulo9.png')} style={{
-                            width: wp('7%'),
-                            height: hp('3%'),
-                        }} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ position: 'absolute', top: '63%', left: '29%' }} onPress={this.gotoMouth}>
-                        <Image source={require('./vocabulary2Images/ulo10.png')} style={{
-                            width: wp('13%'),
-                            height: hp('8.20%'),
-                        }} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ position: 'absolute', top: '73%', left: '30%' }} onPress={this.gotoLeeg}>
-                        <Image source={require('./vocabulary2Images/ulo11.png')} style={{
-                            width: wp('12.90%'),
-                            height: hp('8.20%'),
-                        }} />
-                    </TouchableOpacity>     
+                    justifyCotent:'center',
+                    alignItems:'center',
+                }}> 
+                    <View style={{ position: 'absolute', width: '23.80%', height: '40%', top: '25.88%', left: '37.90%' }}>
+                        <Image source={require('./vocabulary2Images/ulo5.png')}
+                            style={{
+                                resizeMode: 'contain',
+                                height: '100%',
+                                width: '100%'
+                            }}
+                        />
+                    </View>
+                   
+                    <View style={{ position: 'absolute', width: '23%', height: '30%', top: '18.91%', left: '38%' }}>
+                        <TouchableOpacity onPress={this.gotoEyes}>
+                            <Image source={require('./vocabulary2Images/ulo2.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{ position: 'absolute', width: '7%', height: '12%', top: '27.47%', left: '59%' }}>
+                        <TouchableOpacity onPress={this.gotoHair}>
+                            <Image source={require('./vocabulary2Images/ulo3.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{ position: 'absolute', width: '7%', height: '12%',top: '27.47%', left: '33.20%'}}>
+                        <TouchableOpacity onPress={this.gotoHair}>
+                            <Image source={require('./vocabulary2Images/ulo4.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style={{ position: 'absolute', width: '35%', height: '27%', top: '5%' }}>
+                        <TouchableOpacity onPress={this.gotoHead}>
+                            <Image source={require('./vocabulary2Images/ulo1.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{ position: 'absolute', width: '9%', height: '13%', top: '34%', left: '58.65%' }}>
+                        <TouchableOpacity onPress={this.gotoEars}>
+                            <Image source={require('./vocabulary2Images/ulo7.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{ position: 'absolute', width: '9%', height: '13%', top: '34%', left: '31.65%' }}>
+                        <TouchableOpacity onPress={this.gotoEars}>
+                            <Image source={require('./vocabulary2Images/ulo8.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    
+                    <View style={{ position: 'absolute', width: '9%', height: '13%', top: '36%', left: '45%' }}>
+                        <TouchableOpacity onPress={this.gotoNose}>
+                            <Image source={require('./vocabulary2Images/ulo9.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{ position: 'absolute', width: '12%', height: '9%', top: '43.50%', left: '43.50%'}}>
+                        <TouchableOpacity onPress={this.gotoMouth}>
+                            <Image source={require('./vocabulary2Images/ulo10.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{ position: 'absolute', width: '15%', height: '7%', top: '50%', left: '42%',}}>
+                        <TouchableOpacity onPress={this.gotoLeeg}>
+                            <Image source={require('./vocabulary2Images/ulo11.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>   
                 </Animated.View>
                 <View style={globalStyleSheet.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
@@ -570,55 +633,92 @@ class vocabulary2 extends Component {
                         top: this.state.view2Top,
                         justifyCotent: 'center',
                     }}>
-                    <TouchableOpacity style={{ position: 'absolute', top: '15.70%', left: '16%'}} onPress={this.gotoBalikat}>
-                        <Image source={require('./vocabulary2Images/dibdib3.png')} style={{
-                            width: wp('3.50%'),
-                            height: hp('16%')
-                        }} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ position: 'absolute', top: '15%', left: '52.50%' }} onPress={this.gotoBalikat}>
-                        <Image source={require('./vocabulary2Images/dibdib2.png')} style={{
-                            width: wp('4%'),
-                            height: hp('16%')
-                        }} />
-                    </TouchableOpacity>
-                    <Image source={require('./vocabulary2Images/dibdib4.png')} style={{
-                        width: wp('15%'),
-                        height: hp('18%'),
-                        position: 'absolute', 
-                        top: '34.60%', 
-                        left: '22.50%'
-                    }} />
-                    <TouchableOpacity style={{ position: 'absolute', top: '10%', left: '20%' }} onPress={this.gotoDibdib}>
-                        <Image source={require('./vocabulary2Images/dibdib1.png')} style={{
-                            width: wp('18%'),
-                            height: hp('20%')
-                        }} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ position: 'absolute', top: '26.50%', left: '6%' }} onPress={this.gotoKamay}>
-                        <Image source={require('./vocabulary2Images/dibdib5.png')} style={{
-                            width: wp('8'),
-                            height: hp('40%'),
-                        }} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ position: 'absolute', top: '29.80%', left: '53.20%' }} onPress={this.gotoKamay}>
-                        <Image source={require('./vocabulary2Images/dibdib6.png')} style={{
-                           width: wp('6.50'),
-                            height: hp('37.50%'),
-                        }} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ position: 'absolute', top: '75%', left: '58%' }} onPress={this.gotoDaliri}>
-                        <Image source={require('./vocabulary2Images/dibdib7.png')} style={{
-                            width: wp('5%'),
-                            height: hp('10%'),
-                        }} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ position: 'absolute', top: '75.90%', left: '5.90%' }} onPress={this.gotoDaliri}>
-                        <Image source={require('./vocabulary2Images/dibdib8.png')} style={{
-                            width: wp('4%'),
-                            height: hp('7.50%'),
-                        }} />
-                    </TouchableOpacity>
+                    <View style={{ position: 'absolute', width: '15%', height: '16.50%', top: '29%', left: '34.20%',}}>
+                        <TouchableOpacity onPress={this.gotoBalikat}>
+                            <Image source={require('./vocabulary2Images/dibdib3.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{ position: 'absolute', width: '15%', height: '16.50%', top: '29%', left: '65.40%',}}>
+                        <TouchableOpacity onPress={this.gotoBalikat}>
+                            <Image source={require('./vocabulary2Images/dibdib2.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{ position: 'absolute', width: '27%', height: '50%', top: '28%', left: '43.50%',}}>
+                            <Image source={require('./vocabulary2Images/dibdib4.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                    </View>
+                    <View style={{ position: 'absolute', width: '30%', height: '50%', top: '10%', left: '42%',}}>
+                        <TouchableOpacity onPress={this.gotoDibdib}>
+                            <Image source={require('./vocabulary2Images/dibdib1.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{ position: 'absolute', width: '15%', height: '40%', top: '37.47%', left: '29.95%',}}>
+                        <TouchableOpacity onPress={this.gotoKamay}>
+                            <Image source={require('./vocabulary2Images/dibdib5.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{ position: 'absolute', width: '15%', height: '35%', top: '41.47%', left: '68.06%',}}>
+                        <TouchableOpacity onPress={this.gotoKamay}>
+                            <Image source={require('./vocabulary2Images/dibdib6.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{ position: 'absolute',width: '8%', height: '10%', top: '75.30%', left: '73.92%', }}>
+                        <TouchableOpacity onPress={this.gotoDaliri}>
+                            <Image source={require('./vocabulary2Images/dibdib7.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{ position: 'absolute', width: '8%', height: '10%', top: '77d%', left: '29.70%', }}>
+                        <TouchableOpacity onPress={this.gotoDaliri}>
+                            <Image source={require('./vocabulary2Images/dibdib8.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>
                 </Animated.View>
                 <View style={{
                     position: 'absolute',
@@ -644,23 +744,59 @@ class vocabulary2 extends Component {
                         justifyCotent: 'center',
                         alignItems:'center',
                     }}>
-                    <TouchableOpacity onPress={this.gotoBaywang} style={{position:'absolute',top:'7%'}}>
-                        <Image source={require('./vocabulary2Images/paa1.png')}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ position: 'absolute', top: '18%',left:'37.80%'}} onPress={this.gotoBinti}>
-                        <Image source={require('./vocabulary2Images/paa2.png')}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ position: 'absolute', top: '38.90%',left:'37.40%'}} onPress={this.gotoTuhod}>
-                        <Image source={require('./vocabulary2Images/paa3.png')}/>
-                    </TouchableOpacity>
-                    <Image source={require('./vocabulary2Images/paa5.png')} style={{
-                        position:'absolute',
-                        top:'53.90%',
-                        left: '38.30%'
-                    }} />
-                    <TouchableOpacity style={{ position: 'absolute', top: '70%', left: '35.20%'}} onPress={this.gotoPaa}>
-                        <Image source={require('./vocabulary2Images/paa6.png')} />
-                    </TouchableOpacity>
+                    <View style={{ position: 'absolute', width: '30%', height: '16%', top: '5%', left: '29.70%', }}>
+                        <TouchableOpacity onPress={this.gotoBaywang}>
+                            <Image source={require('./vocabulary2Images/paa1.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                     <View style={{ position: 'absolute',width: '35%', height: '25%', top: '19.45%', left: '27.43%', }}>
+                        <TouchableOpacity onPress={this.gotoBinti}>
+                            <Image source={require('./vocabulary2Images/paa2.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                      <View style={{position: 'absolute',width: '32%', height: '21%', top: '42.60%', left: '28.90%', }}>
+                        <TouchableOpacity onPress={this.gotoTuhod}>
+                            <Image source={require('./vocabulary2Images/paa3.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{position: 'absolute', width: '30%', height: '21%', top: '62%', left: '30.33%', }}>
+                            <Image source={require('./vocabulary2Images/paa5.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                    </View>
+                    <View style={{position: 'absolute', width: '37.50%', height: '16%', top: '80%', left: '26.40%', }}>
+                        <TouchableOpacity onPress={this.gotoTuhod}>
+                            <Image source={require('./vocabulary2Images/paa6.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>
                 </Animated.View>       
                 <View style={globalStyleSheet.homeContainer}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>

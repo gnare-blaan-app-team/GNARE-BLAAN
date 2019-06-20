@@ -4,17 +4,28 @@ import { withNavigation } from 'react-navigation';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-import {globalStyleSheet} from '../globalStyleSheet/globalStyleSheet';
+import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 import DadseBG from './dadseImages/DadSeBG.png';
-import GnareIcon from './gameImages/GnareMain.png';
-import Bang1Icon from './gameImages/bang1_icon.png';
-import Bang2Icon from './gameImages/bang2_icon.png';
-import Bang3Icon from './gameImages/bang3_icon.png';
-import KastifunIcon from './gameImages/kastifun_icon.png';
+import GnareIcon from '../gameImages/GnareMain.png';
+import Bang1Icon from '../gameImages/bang1_icon.png';
+import Bang2Icon from '../gameImages/bang2_icon.png';
+import Bang3Icon from '../gameImages/bang3_icon.png';
+import KastifunIcon from '../gameImages/kastifun_icon.png';
+
 
 class DadSe extends Component {
     static navigationOptions = {
         header: null,
+    }
+        
+    gotoDadSeTanbu1 = () => {
+        this.props.navigation.navigate('dadseTanbu1')
+    }
+    gotoDadSeTanbu2 = () => {
+        this.props.navigation.navigate('dadseTanbu2')
+    }
+    gotoDadSeTanbu3 = () => {
+        this.props.navigation.navigate('dadseTanbu3')
     }
     render() {
         return (
@@ -23,39 +34,27 @@ class DadSe extends Component {
                 style={globalStyleSheet.image}
             >
                 <View style={styles.gnareIconStyle}>
-                    <Image
-                        source={GnareIcon}
-                        style={styles.image}
-                    >
-                    </Image>
+                    <Image source={GnareIcon} style={styles.image}></Image>
                 </View>
                 <View style={styles.bang1Style}>
-                    <Image
-                        source={Bang1Icon}
-                        style={styles.image}
-                    >
-                    </Image>
+                    <TouchableOpacity onPress={this.gotoDadSeTanbu1}>
+                        <Image source={Bang1Icon} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.bang2Style}>
-                    <Image
-                        source={Bang2Icon}
-                        style={styles.image}
-                    >
-                    </Image>
+                    <TouchableOpacity onPress={this.gotoDadSeTanbu2}>
+                        <Image source={Bang2Icon} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.bang3Style}>
-                    <Image
-                        source={Bang3Icon}
-                        style={styles.image}
-                    >
-                    </Image>
+                    <TouchableOpacity onPress={this.gotoDadSeTanbu3}>
+                        <Image source={Bang3Icon} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.kastifunStyle}>
-                    <Image
-                        source={KastifunIcon}
-                        style={styles.image}
-                    >
-                    </Image>
+                    <TouchableOpacity onPress={this.gotoDadSeTanbu1}>
+                        <Image source={KastifunIcon} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
             </ImageBackground>
         )
