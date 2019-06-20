@@ -105,6 +105,7 @@ import Prayers_Screen from './screens/CultureandArts/cultureandartsScreens/praye
 import DasalBagoMatulogPlay from './screens/CultureandArts/cultureandartsScreens/prayers/DasalBagoMatulogPlay';
 
 import GameMenu from './screens/Games/GameMenu';
+import DadSe from './screens/Games/DadSe';
 
 
 import ATracing from './screens/Letters/LetterTracing/ATracing';
@@ -234,6 +235,7 @@ export default AppNavigator = createStackNavigator(
 
     //Games
     gameMenu: GameMenu,
+    dadse : DadSe,
 
   },
 {
