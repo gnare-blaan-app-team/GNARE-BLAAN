@@ -246,15 +246,12 @@ class Vocabulary5 extends Component {
         })
     }
 
-<<<<<<< HEAD
     gotoIlog = () => {
         this.props.navigation.navigate('river');
     }
 
 
 
-=======
->>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     render() {
 
         return (
@@ -444,7 +441,6 @@ class Vocabulary5 extends Component {
 }
 
 const styles = StyleSheet.create({
-<<<<<<< HEAD
 
     mountainStyle: {
         position: 'absolute',
@@ -452,14 +448,11 @@ const styles = StyleSheet.create({
         left: '12.6%',
         height: '35%',
     },
-=======
->>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     mountainImage: {
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
     },
-<<<<<<< HEAD
 
     treeStyle: {
         position: 'absolute',
@@ -468,14 +461,11 @@ const styles = StyleSheet.create({
         left: '12.7%',
         height: '65%',
     },
-=======
->>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     treeImage: {
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
     },
-<<<<<<< HEAD
 
     fallsStyle: {
         position: 'absolute',
@@ -484,14 +474,11 @@ const styles = StyleSheet.create({
         right: '12.5%',
         height: '65%',
     },
-=======
->>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     fallsImage: {
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
     },
-<<<<<<< HEAD
 
     ilogStyle: {
         position: 'absolute',
@@ -500,14 +487,11 @@ const styles = StyleSheet.create({
         right: '12.5%',
         height: '40%',
     },
-=======
->>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     ilogImage: {
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
     },
-<<<<<<< HEAD
 
     lawinStyle: {
         position: 'absolute',
@@ -516,14 +500,11 @@ const styles = StyleSheet.create({
         left: '16%',
         height: '32%',
     },
-=======
->>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     lawinImage: {
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
     },
-<<<<<<< HEAD
 
     bowStyle: {
         position: 'absolute',
@@ -533,14 +514,11 @@ const styles = StyleSheet.create({
         height: '23%',
         transform: [{ rotate: '12deg' }],
     },
-=======
->>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     bowImage: {
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
     },
-<<<<<<< HEAD
 
     spearStyle: {
         position: 'absolute',
@@ -550,8 +528,6 @@ const styles = StyleSheet.create({
         height: '40%',
         transform: [{ rotate: '64deg' }],
     },
-=======
->>>>>>> 280c80874d859903820cf6cce7cb47d32b20fa19
     spearImage: {
         width: '100%',
         height: '100%',

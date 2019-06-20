@@ -12,6 +12,7 @@ import Bang2Icon from './gameImages/bang2_icon.png';
 import Bang3Icon from './gameImages/bang3_icon.png';
 import KastifunIcon from './gameImages/kastifun_icon.png';
 
+
 class DadSe extends Component {
     static navigationOptions = {
         header: null,
