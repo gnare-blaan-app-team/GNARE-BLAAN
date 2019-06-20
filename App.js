@@ -107,6 +107,12 @@ import DasalBagoMatulogPlay from './screens/CultureandArts/cultureandartsScreens
 import GameMenu from './screens/Games/GameMenu';
 import DadSe from './screens/Games/DadSe';
 import DadBatak from './screens/Games/DadBatak';
+import DadBatakTanbu1 from './screens/Games/dadbatak/Tanbu1';
+import DadBatakTanbu2 from './screens/Games/dadbatak/Tanbu2';
+import DadBatakTanbu3 from './screens/Games/dadbatak/Tanbu3';
+
+//Bang 1
+import Question1 from './screens/Games/dadbatak/Bang1/question1';
 
 import ATracing from './screens/Letters/LetterTracing/ATracing';
 import BTracing from './screens/Letters/LetterTracing/BTracing';
@@ -237,15 +243,17 @@ export default AppNavigator = createStackNavigator(
     gameMenu: GameMenu,
     dadse : DadSe,
     dadbatak: DadBatak,
+    dadbataktanbu1: DadBatakTanbu1,
+    dadbataktanbu2: DadBatakTanbu2,
+    dadbataktanbu3: DadBatakTanbu3,
+
+    //Bang 1
+    question1: Question1,
 
   },
 {
 
   initialRouteName:"home",
-<<<<<<< HEAD
-
-=======
->>>>>>> 52acf1ec9f9f9d783609430f7f93bf8e8c7f5b78
   mode: 'card',
   cardStyle: {
     backgroundColor:"transperent"
