@@ -104,9 +104,13 @@ import Kastifun_Screen from './screens/CultureandArts/cultureandartsScreens/kast
 import Prayers_Screen from './screens/CultureandArts/cultureandartsScreens/prayersScreen';
 import DasalBagoMatulogPlay from './screens/CultureandArts/cultureandartsScreens/prayers/DasalBagoMatulogPlay';
 
+// Games
 import GameMenu from './screens/Games/GameMenu';
-import DadSe from './screens/Games/DadSe';
+import DadSe from './screens/Games/DadSe/DadSe';
+import DadSeTanbu1 from './screens/Games/DadSe/DadSeTanbu1';
+import DadSeTanbu2 from './screens/Games/DadSe/DadSeTanbu2';
 import DadBatak from './screens/Games/DadBatak';
+
 
 import ATracing from './screens/Letters/LetterTracing/ATracing';
 import BTracing from './screens/Letters/LetterTracing/BTracing';
@@ -236,14 +240,17 @@ export default AppNavigator = createStackNavigator(
     //Games
     gameMenu: GameMenu,
     dadse : DadSe,
+    dadseTanbu1: DadSeTanbu1, 
+    dadseTanbu2: DadSeTanbu2,
     dadbatak: DadBatak,
+    
 
   },
 {
 
-  initialRouteName:"home",
+  initialRouteName: "home",
   mode: 'card',
-  cardStyle: {
+  cardStyle: {   
     backgroundColor:"transperent"
 }
 }
