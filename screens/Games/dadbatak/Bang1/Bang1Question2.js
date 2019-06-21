@@ -4,21 +4,30 @@ import { withNavigation } from 'react-navigation';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import {globalStyleSheet} from '../../../globalStyleSheet/globalStyleSheet';
-import DadBatakBG from '../../gameImages/DadBatakBG.png';
+import GnareIcon from '../../gameImages/GnareMain.png';
+import GameBG from '../../gameImages/GameBG.png';
+import Q2 from '../../gameImages/bang1Q2.png';
 
-class Question1 extends Component {
+class Bang1Question2 extends Component {
     static navigationOptions = {
         header: null,
     }
     render() {
         return (
             <ImageBackground
-                source={DadBatakBG}
+                source={GameBG}
                 style={globalStyleSheet.image}
             >
-                <View style={styles.question1Style}>
+                <View style={globalStyleSheet.gnareIconStyle}>
                     <Image
-                        source={Question1}
+                        source={GnareIcon}
+                        style={styles.image}
+                    >
+                    </Image>
+                </View>
+                <View style={globalStyleSheet.questionStyle}>
+                    <Image
+                        source={Q2}
                         style={styles.image}
                     >
                     </Image>
@@ -34,9 +43,7 @@ const styles = StyleSheet.create({
         height: '100%',
         resizeMode: 'stretch'
     },
-    question1Style: {
-        position: 'absolute'
-    }
+    
 })
 
-export default withNavigation(Question1);
+export default withNavigation(Bang1Question2);
