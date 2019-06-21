@@ -11,6 +11,11 @@ class Tanbu1 extends Component {
     static navigationOptions = {
         header: null,
     }
+
+    gotoQuestion1 = () => {
+        this.props.navigation.navigate('db_bang1Question1')
+    }
+
     render() {
         return (
             <ImageBackground
@@ -18,11 +23,13 @@ class Tanbu1 extends Component {
                 style={globalStyleSheet.image}
             >
                 <View style={styles.tanbuStyle}>
-                    <Image
-                        source={Tanbu}
-                        style={styles.image}
-                    >
-                    </Image>
+                    <TouchableOpacity onPress={this.gotoQuestion1}>
+                        <Image
+                            source={Tanbu}
+                            style={styles.image}
+                        >
+                        </Image>
+                    </TouchableOpacity>
                 </View>
             </ImageBackground>
         )

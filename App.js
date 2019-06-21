@@ -116,9 +116,19 @@ import DadBatakTanbu1 from './screens/Games/dadbatak/Tanbu1';
 import DadBatakTanbu2 from './screens/Games/dadbatak/Tanbu2';
 import DadBatakTanbu3 from './screens/Games/dadbatak/Tanbu3';
 
-//Bang 1
-import Question1 from './screens/Games/dadbatak/Bang1/question1';
-
+//Dad Batak - Bang 1
+import Bang1Question1 from './screens/Games/dadbatak/Bang1/Bang1Question1';
+import Bang1Question2 from './screens/Games/dadbatak/Bang1/Bang1Question2';
+import Bang1Question3 from './screens/Games/dadbatak/Bang1/Bang1Question3';
+import Bang1Question4 from './screens/Games/dadbatak/Bang1/Bang1Question4';
+import Bang1Question5 from './screens/Games/dadbatak/Bang1/Bang1Question5';
+import Bang1Question6 from './screens/Games/dadbatak/Bang1/Bang1Question6';
+import Bang1Question7 from './screens/Games/dadbatak/Bang1/Bang1Question7';
+import Bang1Question8 from './screens/Games/dadbatak/Bang1/Bang1Question8';
+import Bang1Question9 from './screens/Games/dadbatak/Bang1/Bang1Question9';
+import Bang1Question10 from './screens/Games/dadbatak/Bang1/Bang1Question10';
+import Bang1Question11 from './screens/Games/dadbatak/Bang1/Bang1Question11';
+import Bang1Question12 from './screens/Games/dadbatak/Bang1/Bang1Question12';
 
 import ATracing from './screens/Letters/LetterTracing/ATracing';
 import BTracing from './screens/Letters/LetterTracing/BTracing';
@@ -258,13 +268,24 @@ export default AppNavigator = createStackNavigator(
     dadbataktanbu2: DadBatakTanbu2,
     dadbataktanbu3: DadBatakTanbu3,
 
-    //Bang 1
-    question1: Question1,
+    //Dad Batak - Bang 1
+    db_bang1Question1: Bang1Question1,
+    db_bang1Question2: Bang1Question2,
+    db_bang1Question3: Bang1Question3,
+    db_bang1Question4: Bang1Question4,
+    db_bang1Question5: Bang1Question5,
+    db_bang1Question6: Bang1Question6,
+    db_bang1Question7: Bang1Question7,
+    db_bang1Question8: Bang1Question8,
+    db_bang1Question9: Bang1Question9,
+    db_bang1Question10: Bang1Question10,
+    db_bang1Question11: Bang1Question11,
+    db_bang1Question12: Bang1Question12,
 
   },
 {
 
-  initialRouteName: "home",
+  initialRouteName: "db_bang1Question1",
   mode: 'card',
   cardStyle: {   
     backgroundColor:"transperent"
