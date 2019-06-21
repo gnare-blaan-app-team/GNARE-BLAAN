@@ -451,4 +451,48 @@ export const globalStyleSheet = {
         height: hp('12%')
     },
 
+    //Dad Se - Bang 1 Styles for Choices
+    bang1Board: {
+        position: 'absolute',
+        top: '11.5%',
+        left:'23%',
+        height: hp('50%'),
+        width: wp('60%'),
+    },
+    ds_bang1_choice1Style: {
+        position: 'absolute',
+        top: '68%',
+        left:'18%',
+        height: hp('10%'),
+        width: wp('14%'),
+    },
+    ds_bang1_choice2Style: {
+        position: 'absolute',
+        top: '68%',
+        left:'35%',
+        height: hp('10%'),
+        width: wp('14%'),
+    },
+    ds_bang1_choice3Style: {
+        position: 'absolute',
+        top: '68%',
+        left:'53%',
+        height: hp('10%'),
+        width: wp('14%'),
+    },
+    ds_bang1_choice4Style: {
+        position: 'absolute',
+        top: '68%',
+        left:'70%',
+        height: hp('10%'),
+        width: wp('14%'),
+    },
+    gufadyan: {
+        position: 'absolute',
+        top: '85%',
+        left:'73%',
+        height: hp('9%'),
+        width: wp('19%'),
+    }
+
 };

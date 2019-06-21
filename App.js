@@ -130,6 +130,17 @@ import Bang1Question10 from './screens/Games/dadbatak/Bang1/Bang1Question10';
 import Bang1Question11 from './screens/Games/dadbatak/Bang1/Bang1Question11';
 import Bang1Question12 from './screens/Games/dadbatak/Bang1/Bang1Question12';
 
+//Dad Se - Bang 1
+import DSBang1Question1 from './screens/Games/DadSe/Bang1/DSBang1Question1';
+import DSBang1Question2 from './screens/Games/DadSe/Bang1/DSBang1Question2';
+import DSBang1Question3 from './screens/Games/DadSe/Bang1/DSBang1Question3';
+import DSBang1Question4 from './screens/Games/DadSe/Bang1/DSBang1Question4';
+import DSBang1Question5 from './screens/Games/DadSe/Bang1/DSBang1Question5';
+import DSBang1Question6 from './screens/Games/DadSe/Bang1/DSBang1Question6';
+import DSBang1Question7 from './screens/Games/DadSe/Bang1/DSBang1Question7';
+import DSBang1Question10 from './screens/Games/DadSe/Bang1/DSBang1Question10';
+
+//Letter Tracing
 import ATracing from './screens/Letters/LetterTracing/ATracing';
 import BTracing from './screens/Letters/LetterTracing/BTracing';
 import DTracing from './screens/Letters/LetterTracing/DTracing';
@@ -282,10 +293,19 @@ export default AppNavigator = createStackNavigator(
     db_bang1Question11: Bang1Question11,
     db_bang1Question12: Bang1Question12,
 
+    //Dad Se - Bang 1
+    ds_bang1Question1: DSBang1Question1,
+    ds_bang1Question2: DSBang1Question2,
+    ds_bang1Question3: DSBang1Question3,
+    ds_bang1Question4: DSBang1Question4,
+    ds_bang1Question5: DSBang1Question5,
+    ds_bang1Question6: DSBang1Question6,
+    ds_bang1Question7: DSBang1Question7,
+    ds_bang1Question10: DSBang1Question10,
   },
 {
 
-  initialRouteName: "db_bang1Question1",
+  initialRouteName: "ds_bang1Question10",
   mode: 'card',
   cardStyle: {   
     backgroundColor:"transperent"
