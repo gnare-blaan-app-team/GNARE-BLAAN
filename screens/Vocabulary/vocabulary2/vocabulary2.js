@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler,Animated } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { globalStyleSheet } from '../../globalStyleSheet/globalStyleSheet'
-import * as Animatable from 'react-native-animatable';
 import BG2 from '../../images/BG.jpg';
 import BG from '../../images/boy.png';
 import Back_icon from '../../images/Back_icon.png';
@@ -24,9 +23,7 @@ import Knees from './vocabulary2Images/tuhod.png';
 import Toes from './vocabulary2Images/paa.png';
 import SpeakerIcon from '../../images/Speaker_icon.png';
 
-const partList=[Head,Eyes]
-
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+const partList = [Head, Eyes, Hair, Nose, Mouth, Ears, Neck, Shoulder, Chest, Hand, Hips, Fingers, Legs, Knees, Toes,BG]
 
 class vocabulary2 extends Component {
     static navigationOptions = {
@@ -40,27 +37,17 @@ class vocabulary2 extends Component {
             BackgroundImage: BG,
             view1Height: '0%',
             view1Width:'0%',
-            image1Height:'0%',
-            image1Width:'0%',
-            toValue:.5,
             View1Left:'300%',
             view1Top:'19%',
-            show:'',
             view2Height:'0%',
             view2Width:'0%',
-            image2Height:'0%',
-            image2Width:'0%',
             View2Left:'300%',
             view2Top:'19%',
-            showView1:false,
-            showView2: false,
             view3Height: '0%',
             view3Width: '0%',
-            image3Height: '0%',
-            image3Width: '0%',
             View3Left: '300%',
-            view3Top: '19%',
-            boyTop:'20%',
+            view3Top: '18%',
+            boyTop:'16%',
             boyLeft:'40%',
             stillView:'',
             speakerTop:'1000%',
@@ -68,86 +55,73 @@ class vocabulary2 extends Component {
         }
     }
 
-    view1 =()=>{
-        Animated.spring(this.moveAnimation, {
-            toValue: { x: 200, y: 100 }
-        }).start()
+    View = (View) => {
         Animated.spring(this.animatedValue, {
             toValue: 1,
         }).start()
-        this.setState({
-            boyTop: '20%',
-            boyLeft: '20%',
-            view2Top: '1000%',
-            View2Left: '1000%',
-            view3Top: '1000%',
-            View3Left: '1000%',
-            view2Height: '0%',
-            view2Width: '0%',
-            view3Height: '0%',
-            view3Width: '0%',
-            view1Height: '80%',
-            view1Width: '50%',
-            image1Height: '80%',
-            image1Width: '70%',
-            View1Left:'37%',
-            view1Top: '25%',
-
-        })
-        
+        if(View == 1){
+            this.setState({
+                boyTop: '20%',
+                boyLeft: '20%',
+                View1Left: '37%',
+                view1Top: '25%',
+                view1Height: '80%',
+                view1Width: '50%',
+                view2Top: '1000%',
+                View2Left: '1000%',
+                view3Top: '1000%',
+                View3Left: '1000%',
+                stillView:1,
+            })
+        }
+        if(View == 2){
+            this.setState({
+                boyTop: '20%',
+                boyLeft: '20%',
+                view1Top: '1000%',
+                View1Left: '1000%',
+                view3Top: '1000%',
+                View3Left: '1000%',
+                view3Height: '0%',
+                view3Width: '0%',
+                view2Height: '80%',
+                view2Width: '50%',
+                view2Top: '10%',
+                View2Left: '35%',
+                stillView: 2,
+            })
+        }
+        if(View == 3){
+            this.setState({
+                boyTop: '20%',
+                boyLeft: '20%',
+                view1Height: '0%',
+                view1Width: '0%',
+                view1Top: '1000%',
+                View1Left: '1000%',
+                view2Top: '1000%',
+                View2Left: '1000%',
+                view2Height: '0%',
+                view2Width: '0%',
+                view3Height: '80%',
+                view3Width: '50%',
+                View3Left: '37%',
+                view3Top: '13%',
+                stillView: 3,
+            })
+        }
     }
-    view2 = () => {
-        Animated.spring(this.moveAnimation, {
-            toValue: { x: 200, y: 100 }
-        }).start()
-        Animated.spring(this.animatedValue, {
-            toValue: 1,
-        }).start()
-        this.setState({
-            boyTop: '20%',
-            boyLeft: '20%',
-            view1Top: '1000%',
-            View1Left: '1000%',
-            view3Top: '1000%',
-            View3Left: '1000%',
-            view3Height: '0%',
-            view3Width: '0%',
-            view2Height:'80%',
-            view2Width: '50%',
-            image2Height:'60%',
-            image2Width: '30%',
-            view2Top: '10%',
-            View2Left: '35%',
 
-        })
-
-    }
-    view3 = () => {
-        Animated.spring(this.moveAnimation, {
-            toValue: { x: 200, y: 100 }
-        }).start()
-        Animated.spring(this.animatedValue, {
-            toValue: 1,
-        }).start()
+    changeBackground = (Background) => {
         this.setState({
-            boyTop: '20%',
-            boyLeft: '20%',
-            view1Height: '0%',
-            view1Width: '0%',
+            BackgroundImage: partList[Background],
             view1Top: '1000%',
-            View1Left: '1000%',
             view2Top: '1000%',
-            View2Left: '1000%',
-            view2Height: '0%',
-            view2Width: '0%',
-            view3Height: '80%',
-            view3Width: '50%',
-            image3Height:400,
-            image3Width: 200,
-            view3Top: '13%',
-            View3Left: '35%',
+            view3Top: '1000%',
+            boyTop: '1000%',
+            speakerTop: '20%',
+            clearBackground: 'clear',
         })
-
     }
 
     componentWillMount(){
@@ -167,277 +141,14 @@ class vocabulary2 extends Component {
             this.props.navigation.navigate('vocabularyMenu')
         }
         if (clear == 'clear'){
-            Animated.spring(this.animatedValue, {
-                toValue: 1,
-            }).start()
-            if(this.state.stillView == 'View1'){
-                this.setState({
-                    view1Height: '80%',
-                    view1Width:'50%',
-                    View1Left: '37%',
-                    view1Top: '25%',
-                    clearBackground:'goVocabMenu',
-                })
-            }
-            if (this.state.stillView == 'View2') {
-                this.setState({
-                    view2Height: '80%',
-                    view2Width: '50%',
-                    clearBackground: 'goVocabMenu',
-                    view2Top: '10%',
-                    View2Left: '35%',
-                })
-            }
-            if (this.state.stillView == 'View3') {
-                this.setState({
-                    view3Height: '80%',
-                    view3Width: '50%',
-                    view3Top: '13%',
-                    View3Left: '35%',
-                    clearBackground: 'goVocabMenu',
-                })
-            }
-            this.setState({
-                BackgroundImage: BG, 
-                boyTop: '20%',
-                boyLeft: '20%',
-                speakerTop:'1000%',
-            })
-            Animated.spring(this.moveAnimation, {
-                toValue: { x: 200, y: 100 }
-            }).start()
+          const show = this.state.stillView;
+          this.View(show);
+          this.setState({
+              clearBackground:'goVocabMenu',
+          })
         }
-    }
-
-    gotoEyes = () =>{
-        Animated.spring(this.moveAnimation, {
-            toValue: { x: -1000, y: 100 }
-        }).start()
         this.setState({
-            BackgroundImage: Eyes,
-            view1Top: '1000%',
-            view2Top: '1000%',
-            view3Top: '1000%',
-            boyTop: '1000%',
-            stillView:'View1',
-            speakerTop:'20%',
-            clearBackground: 'clear'
-        })
-    }
-
-    gotoNose = () => {
-        Animated.spring(this.moveAnimation, {
-            toValue: { x: -1000, y: 100 }
-        }).start()
-        this.setState({
-            BackgroundImage: Nose,
-            view1Top: '1000%',
-            view2Top: '1000%',
-            view3Top: '1000%',
-            stillView: 'View1',
-            boyTop: '1000%',
-            speakerTop: '20%',
-            clearBackground: 'clear',
-        })
-    }
-
-    gotoMouth = () => {
-        Animated.spring(this.moveAnimation, {
-            toValue: { x: -1000, y: 100 }
-        }).start()
-        this.setState({
-            BackgroundImage: Mouth,
-            view1Top: '1000%',
-            view2Top: '1000%',
-            view3Top: '1000%',
-            stillView: 'View1',
-            boyTop: '1000%',
-            speakerTop:'20%',
-            clearBackground: 'clear',
-        })
-    }
-
-    gotoLeeg = () => {
-        Animated.spring(this.moveAnimation, {
-            toValue: { x: -1000, y: 100 }
-        }).start()
-        this.setState({
-            BackgroundImage: Neck,
-            view1Top: '1000%',
-            view2Top: '1000%',
-            view3Top: '1000%',
-            stillView: 'View1',
-            boyTop: '1000%',
-            speakerTop: '20%',
-            clearBackground: 'clear',
-        })
-    }
-
-    gotoHair = () => {
-        Animated.spring(this.moveAnimation, {
-            toValue: { x: -1000, y: 100 }
-        }).start()
-        this.setState({
-            BackgroundImage: Hair,
-            view1Top: '1000%',
-            view2Top: '1000%',
-            view3Top: '1000%',
-            stillView: 'View1',
-            boyTop: '1000%',
-            speakerTop: '20%',
-            clearBackground: 'clear',
-        })
-    }
-    gotoEars = () => {
-        Animated.spring(this.moveAnimation, {
-            toValue: { x: -1000, y: 100 }
-        }).start()
-        this.setState({
-            BackgroundImage: Ears,
-            view1Top: '1000%',
-            view2Top: '1000%',
-            view3Top: '1000%',
-            stillView: 'View1',
-            boyTop: '1000%',
-            speakerTop: '20%',
-            clearBackground: 'clear',
-        })
-    }
-    gotoHead = () => {
-        Animated.spring(this.moveAnimation, {
-            toValue: { x: -1000, y: 100 }
-        }).start()
-        this.setState({
-            BackgroundImage: partList[0],
-            view1Top: '1000%',
-            view2Top: '1000%',
-            view3Top: '1000%',
-            boyTop:'2%',
-            stillView: 'View1',
-            boyTop: '1000%',
-            speakerTop: '20%',
-            clearBackground:'clear',   
-        })
-    }
-    gotoBalikat = () => {
-        Animated.spring(this.moveAnimation, {
-            toValue: { x: -1000, y: 100 }
-        }).start()
-        this.setState({
-            BackgroundImage: Shoulder,
-            view1Top: '1000%',
-            view2Top: '1000%',
-            view3Top: '1000%',
-            stillView: 'View2',
-            boyTop: '1000%',
-            speakerTop: '20%',
-            clearBackground: 'clear',
-        })
-    }
-    gotoDibdib = () => {
-        Animated.spring(this.moveAnimation, {
-            toValue: { x: -1000, y: 100 }
-        }).start()
-        this.setState({
-            BackgroundImage: Chest,
-            view1Top: '1000%',
-            view2Top: '1000%',
-            view3Top: '1000%',
-            stillView: 'View2',
-            boyTop: '1000%',
-            speakerTop: '20%',
-             clearBackground:'clear',
-        })
-    }
-     gotoKamay = () => {
-         Animated.spring(this.moveAnimation, {
-             toValue: { x: -1000, y: 100 }
-         }).start()
-         this.setState({
-             BackgroundImage: Hand,
-             view1Top: '1000%',
-             view2Top: '1000%',
-             view3Top: '1000%',
-             stillView: 'View2',
-             boyTop: '1000%',
-             speakerTop: '20%',
-              clearBackground:'clear',
-         })
-    }
-    gotoBaywang = () => {
-        Animated.spring(this.moveAnimation, {
-            toValue: { x: -1000, y: 100 }
-        }).start()
-        this.setState({
-            BackgroundImage: Hips,
-            view1Top: '1000%',
-            view2Top: '1000%',
-            view3Top: '1000%',
-            boyTop: '2%',
-            stillView: 'View3',
-            boyTop: '1000%',
-            speakerTop: '20%',
-            clearBackground: 'clear',
-        })
-    }
-    gotoDaliri = () => {
-        Animated.spring(this.moveAnimation, {
-            toValue: { x: -1000, y: 100 }
-        }).start()
-        this.setState({
-            BackgroundImage: Fingers,
-            view1Top: '1000%',
-            view2Top: '1000%',
-            view3Top: '1000%',
-            stillView: 'View2',
-            boyTop: '1000%',
-            speakerTop: '20%',
-             clearBackground:'clear',
-        })
-    }
-    gotoBinti = () => {
-        Animated.spring(this.moveAnimation, {
-            toValue: { x: -1000, y: 100 }
-        }).start()
-        this.setState({
-            BackgroundImage: Legs,
-            view1Top: '1000%',
-            view2Top: '1000%',
-            view3Top: '1000%',
-            stillView: 'View3',
-            boyTop: '1000%',
-            speakerTop: '20%',
-            clearBackground: 'clear',
-        })
-    }
-    gotoTuhod = () => {
-        Animated.spring(this.moveAnimation, {
-            toValue: { x: -1000, y: 100 }
-        }).start()
-        this.setState({
-            BackgroundImage: Knees,
-            view1Top: '1000%',
-            view2Top: '1000%',
-            view3Top: '1000%',
-            stillView: 'View3',
-            boyTop: '1000%',
-            speakerTop:'20%',
-             clearBackground:'clear',
-        })
-    }
-    gotoPaa = () => {
-        Animated.spring(this.moveAnimation, {
-            toValue: { x: -1000, y: 100 }
-        }).start()
-        this.setState({
-            BackgroundImage: Toes,
-            view1Top: '1000%',
-            view2Top: '1000%',
-            view3Top: '1000%',
-            stillView: 'View3',
-            boyTop: '1000%',
-            speakerTop: '20%',
-             clearBackground:'clear',
+            BackgroundImage:partList[15],
         })
     }
 
@@ -453,46 +164,53 @@ class vocabulary2 extends Component {
                     <Image source={this.state.BackgroundImage} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
                 </View>
                     <View style={{
-                        position: 'absolute',
-                        width: wp('17%'),
-                        height: hp('77%'),
-                        justifyCotent: 'center',
-                        alignItems:'center',
-                        top:this.state.boyTop,
-                        left: this.state.boyLeft,
+                    position: 'absolute',          
+                    width:'20%',
+                    height:'70%',
+                    top:this.state.boyTop,
+                    left:this.state.boyLeft,
+                    justifyCotent:'center',
+                    alignItems:'center'
+                    }}>
+                    <View style={{ position: 'absolute', width: '35%', height: '45%',top:'-6.30%',left:'31.50%'}}>
+                        <TouchableOpacity onPress={() => {
+                            this.View(1)
                         }}>
-                    <TouchableOpacity onPress={this.view1} style={{
-                        position: 'relative',
-                        top:'-3%' 
-                       }}>
-                           <Image source={require('./vocabulary2Images/TO_ulo.png')}
-                            style={{
-                            height: hp('18%'),
-                            width: wp('7%')
-                           }}/>
+                            <Image source={require('./vocabulary2Images/TO_ulo.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
                         </TouchableOpacity>
-                    <TouchableOpacity onPress={this.view2} style={{
-                        top:'20%',
-                        position: 'absolute',
-                        left:'3%',
-                    }}>
-                        <Image source={require('./vocabulary2Images/TO_dibdib.png')}
-                            style={{
-                                height: hp('29%'),
-                                width: wp('15%')
-                            }}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={this.view3} style={{
-                            position: 'absolute',
-                            top: '39%',
-                            left: '20.25%'
-                    }}>
-                        <Image source={require('./vocabulary2Images/TO_paa.png')} 
-                            style={{
-                                height: hp('42.70%'),
-                                width: wp('10.40%')
-                            }}/>
-                    </TouchableOpacity>
+                    </View>
+                    <View style={{ position: 'absolute', width: '71%', height: '55%',top:'16.45%',left:'11%'}}>
+                        <TouchableOpacity onPress={() => {
+                            this.View(2)
+                        }}>
+                            <Image source={require('./vocabulary2Images/TO_dibdib.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{ position: 'absolute', width: '80%', height: '50%', top: '48%', left: '9%',top:'44%' }}>
+                        <TouchableOpacity onPress={() => {
+                            this.View(3)
+                        }}>
+                            <Image source={require('./vocabulary2Images/TO_paa.png')}
+                                style={{
+                                    resizeMode: 'contain',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
+                            />
+                        </TouchableOpacity>
+                    </View>
                     </View>
                 <Animated.View 
                 style={{
@@ -514,8 +232,10 @@ class vocabulary2 extends Component {
                         />
                     </View>
                    
-                    <View style={{ position: 'absolute', width: '23%', height: '30%', top: '18.91%', left: '38%' }}>
-                        <TouchableOpacity onPress={this.gotoEyes}>
+                    <View style={{ position: 'absolute', width: '23%', height: '30%', top: '19.30%', left: '38%' }}>
+                        <TouchableOpacity onPress={() => {
+                            this.changeBackground(1)
+                        }}>
                             <Image source={require('./vocabulary2Images/ulo2.png')}
                                 style={{
                                     resizeMode: 'contain',
@@ -526,7 +246,9 @@ class vocabulary2 extends Component {
                         </TouchableOpacity>
                     </View>
                     <View style={{ position: 'absolute', width: '7%', height: '12%', top: '27.47%', left: '59%' }}>
-                        <TouchableOpacity onPress={this.gotoHair}>
+                        <TouchableOpacity onPress={() => {
+                            this.changeBackground(2)
+                        }}>
                             <Image source={require('./vocabulary2Images/ulo3.png')}
                                 style={{
                                     resizeMode: 'contain',
@@ -537,7 +259,9 @@ class vocabulary2 extends Component {
                         </TouchableOpacity>
                     </View>
                     <View style={{ position: 'absolute', width: '7%', height: '12%',top: '27.47%', left: '33.20%'}}>
-                        <TouchableOpacity onPress={this.gotoHair}>
+                        <TouchableOpacity onPress={() => {
+                            this.changeBackground(2)
+                        }}>
                             <Image source={require('./vocabulary2Images/ulo4.png')}
                                 style={{
                                     resizeMode: 'contain',
@@ -548,8 +272,10 @@ class vocabulary2 extends Component {
                         </TouchableOpacity>
                     </View>
 
-                    <View style={{ position: 'absolute', width: '35%', height: '27%', top: '5%' }}>
-                        <TouchableOpacity onPress={this.gotoHead}>
+                    <View style={{ position: 'absolute', width: '35%', height: '27%', top: '6%' }}>
+                        <TouchableOpacity onPress={() => {
+                            this.changeBackground(0)
+                        }}>
                             <Image source={require('./vocabulary2Images/ulo1.png')}
                                 style={{
                                     resizeMode: 'contain',
@@ -560,7 +286,9 @@ class vocabulary2 extends Component {
                         </TouchableOpacity>
                     </View>
                     <View style={{ position: 'absolute', width: '9%', height: '13%', top: '34%', left: '58.65%' }}>
-                        <TouchableOpacity onPress={this.gotoEars}>
+                        <TouchableOpacity onPress={() => {
+                            this.changeBackground(5)
+                        }}>
                             <Image source={require('./vocabulary2Images/ulo7.png')}
                                 style={{
                                     resizeMode: 'contain',
@@ -571,7 +299,9 @@ class vocabulary2 extends Component {
                         </TouchableOpacity>
                     </View>
                     <View style={{ position: 'absolute', width: '9%', height: '13%', top: '34%', left: '31.65%' }}>
-                        <TouchableOpacity onPress={this.gotoEars}>
+                        <TouchableOpacity onPress={() => {
+                            this.changeBackground(5)
+                        }}>
                             <Image source={require('./vocabulary2Images/ulo8.png')}
                                 style={{
                                     resizeMode: 'contain',
@@ -583,7 +313,9 @@ class vocabulary2 extends Component {
                     </View>
                     
                     <View style={{ position: 'absolute', width: '9%', height: '13%', top: '36%', left: '45%' }}>
-                        <TouchableOpacity onPress={this.gotoNose}>
+                        <TouchableOpacity onPress={() => {
+                            this.changeBackground(3)
+                        }}>
                             <Image source={require('./vocabulary2Images/ulo9.png')}
                                 style={{
                                     resizeMode: 'contain',
@@ -594,7 +326,9 @@ class vocabulary2 extends Component {
                         </TouchableOpacity>
                     </View>
                     <View style={{ position: 'absolute', width: '12%', height: '9%', top: '43.50%', left: '43.50%'}}>
-                        <TouchableOpacity onPress={this.gotoMouth}>
+                        <TouchableOpacity onPress={() => {
+                            this.changeBackground(4)
+                        }}>
                             <Image source={require('./vocabulary2Images/ulo10.png')}
                                 style={{
                                     resizeMode: 'contain',
@@ -605,7 +339,9 @@ class vocabulary2 extends Component {
                         </TouchableOpacity>
                     </View>
                     <View style={{ position: 'absolute', width: '15%', height: '7%', top: '50%', left: '42%',}}>
-                        <TouchableOpacity onPress={this.gotoLeeg}>
+                        <TouchableOpacity onPress={() => {
+                            this.changeBackground(6)
+                        }}>
                             <Image source={require('./vocabulary2Images/ulo11.png')}
                                 style={{
                                     resizeMode: 'contain',
@@ -634,7 +370,9 @@ class vocabulary2 extends Component {
                         justifyCotent: 'center',
                     }}>
                     <View style={{ position: 'absolute', width: '15%', height: '16.50%', top: '29%', left: '34.20%',}}>
-                        <TouchableOpacity onPress={this.gotoBalikat}>
+                        <TouchableOpacity onPress={() => {
+                            this.changeBackground(7)
+                        }}>
                             <Image source={require('./vocabulary2Images/dibdib3.png')}
                                 style={{
                                     resizeMode: 'contain',
@@ -645,7 +383,9 @@ class vocabulary2 extends Component {
                         </TouchableOpacity>
                     </View>
                     <View style={{ position: 'absolute', width: '15%', height: '16.50%', top: '29%', left: '65.40%',}}>
-                        <TouchableOpacity onPress={this.gotoBalikat}>
+                        <TouchableOpacity onPress={() => {
+                            this.changeBackground(7)
+                        }}>
                             <Image source={require('./vocabulary2Images/dibdib2.png')}
                                 style={{
                                     resizeMode: 'contain',
@@ -665,7 +405,9 @@ class vocabulary2 extends Component {
                             />
                     </View>
                     <View style={{ position: 'absolute', width: '30%', height: '50%', top: '10%', left: '42%',}}>
-                        <TouchableOpacity onPress={this.gotoDibdib}>
+                        <TouchableOpacity onPress={() => {
+                            this.changeBackground(8)
+                        }}>
                             <Image source={require('./vocabulary2Images/dibdib1.png')}
                                 style={{
                                     resizeMode: 'contain',
@@ -676,7 +418,9 @@ class vocabulary2 extends Component {
                         </TouchableOpacity>
                     </View>
                     <View style={{ position: 'absolute', width: '15%', height: '40%', top: '37.47%', left: '29.95%',}}>
-                        <TouchableOpacity onPress={this.gotoKamay}>
+                        <TouchableOpacity onPress={() => {
+                            this.changeBackground(9)
+                        }}>
                             <Image source={require('./vocabulary2Images/dibdib5.png')}
                                 style={{
                                     resizeMode: 'contain',
@@ -687,7 +431,9 @@ class vocabulary2 extends Component {
                         </TouchableOpacity>
                     </View>
                     <View style={{ position: 'absolute', width: '15%', height: '35%', top: '41.47%', left: '68.06%',}}>
-                        <TouchableOpacity onPress={this.gotoKamay}>
+                        <TouchableOpacity onPress={() => {
+                            this.changeBackground(9)
+                        }}>
                             <Image source={require('./vocabulary2Images/dibdib6.png')}
                                 style={{
                                     resizeMode: 'contain',
@@ -698,7 +444,9 @@ class vocabulary2 extends Component {
                         </TouchableOpacity>
                     </View>
                     <View style={{ position: 'absolute',width: '8%', height: '10%', top: '75.30%', left: '73.92%', }}>
-                        <TouchableOpacity onPress={this.gotoDaliri}>
+                        <TouchableOpacity onPress={() => {
+                            this.changeBackground(11)
+                        }}>
                             <Image source={require('./vocabulary2Images/dibdib7.png')}
                                 style={{
                                     resizeMode: 'contain',
@@ -709,7 +457,9 @@ class vocabulary2 extends Component {
                         </TouchableOpacity>
                     </View>
                     <View style={{ position: 'absolute', width: '8%', height: '10%', top: '77d%', left: '29.70%', }}>
-                        <TouchableOpacity onPress={this.gotoDaliri}>
+                        <TouchableOpacity onPress={() => {
+                            this.changeBackground(11)
+                        }}>
                             <Image source={require('./vocabulary2Images/dibdib8.png')}
                                 style={{
                                     resizeMode: 'contain',
@@ -745,7 +495,9 @@ class vocabulary2 extends Component {
                         alignItems:'center',
                     }}>
                     <View style={{ position: 'absolute', width: '30%', height: '16%', top: '5%', left: '29.70%', }}>
-                        <TouchableOpacity onPress={this.gotoBaywang}>
+                        <TouchableOpacity onPress={() => {
+                            this.changeBackground(10)
+                        }}>
                             <Image source={require('./vocabulary2Images/paa1.png')}
                                 style={{
                                     resizeMode: 'contain',
@@ -756,7 +508,9 @@ class vocabulary2 extends Component {
                         </TouchableOpacity>
                     </View>
                      <View style={{ position: 'absolute',width: '35%', height: '25%', top: '19.45%', left: '27.43%', }}>
-                        <TouchableOpacity onPress={this.gotoBinti}>
+                        <TouchableOpacity onPress={() => {
+                            this.changeBackground(12)
+                        }}>
                             <Image source={require('./vocabulary2Images/paa2.png')}
                                 style={{
                                     resizeMode: 'contain',
@@ -766,8 +520,10 @@ class vocabulary2 extends Component {
                             />
                         </TouchableOpacity>
                     </View>
-                      <View style={{position: 'absolute',width: '32%', height: '21%', top: '42.60%', left: '28.90%', }}>
-                        <TouchableOpacity onPress={this.gotoTuhod}>
+                      <View style={{position: 'absolute',width: '33%', height: '21%', top: '42.60%', left: '28.25%', }}>
+                        <TouchableOpacity onPress={() => {
+                            this.changeBackground(13)
+                        }}>
                             <Image source={require('./vocabulary2Images/paa3.png')}
                                 style={{
                                     resizeMode: 'contain',
@@ -777,7 +533,7 @@ class vocabulary2 extends Component {
                             />
                         </TouchableOpacity>
                     </View>
-                    <View style={{position: 'absolute', width: '30%', height: '21%', top: '62%', left: '30.33%', }}>
+                    <View style={{position: 'absolute', width: '30%', height: '21%', top: '61%', left: '30.33%', }}>
                             <Image source={require('./vocabulary2Images/paa5.png')}
                                 style={{
                                     resizeMode: 'contain',
@@ -786,8 +542,10 @@ class vocabulary2 extends Component {
                                 }}
                             />
                     </View>
-                    <View style={{position: 'absolute', width: '37.50%', height: '16%', top: '80%', left: '26.40%', }}>
-                        <TouchableOpacity onPress={this.gotoTuhod}>
+                    <View style={{position: 'absolute', width: '37.50%', height: '16%', top: '79%', left: '26.40%', }}>
+                        <TouchableOpacity onPress={() => {
+                            this.changeBackground(14)
+                        }}>
                             <Image source={require('./vocabulary2Images/paa6.png')}
                                 style={{
                                     resizeMode: 'contain',

@@ -19,6 +19,7 @@ import SweetPotatoAsset from './vocabulary4Images/sweetpotatoAsset.png';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
 import BG from '../../images/BG.jpg';
+
 import Bamboo from './vocabulary4Images/bamboo.png';
 import Bolo from './vocabulary4Images/bolo.png';
 import Carabao from './vocabulary4Images/carabao.png';
@@ -33,6 +34,8 @@ import Rice from './vocabulary4Images/rice.png';
 import Potato from './vocabulary4Images/sweetpotato.png';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
+const backgroundList = [Bamboo,Bolo,Carabao,Chicken,Corn,Cow,Farmland,Goat,Pig,Plow,Rice,Potato];
 
 class Vocabulary4 extends Component {
     static navigationOptions = {
@@ -86,10 +89,11 @@ class Vocabulary4 extends Component {
     gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
     }
-    gotoBamboo = () => {
+   
+    changeBackground = (index) => {
         this.setState({
-            BackgroundImage: Bamboo,
-            clearBackground: 'gotoVocab1Menu',
+            BackgroundImage:backgroundList[index],
+            clearBackground: 'clear',
             farmlandTop: '1000%',
             carabaoTop: '1000%',
             riceTop: '1000%',
@@ -102,216 +106,6 @@ class Vocabulary4 extends Component {
             chickenTop: '1000%',
             plowTop: '1000%',
             potatoTop: '1000%',
-            clearBackground: 'clear',
-        })
-    }
-    gotoBolo = () => {
-        this.setState({
-            BackgroundImage: Bolo,
-            clearBackground: 'gotoVocab1Menu',
-            farmlandTop: '1000%',
-            carabaoTop: '1000%',
-            riceTop: '1000%',
-            bambooTop: '1000%',
-            boloTop: '1000%',
-            cowTop: '1000%',
-            pigTop: '1000%',
-            goatTop: '1000%',
-            cornTop: '1000%',
-            chickenTop: '1000%',
-            plowTop: '1000%',
-            potatoTop: '1000%',
-            clearBackground: 'clear',
-        })
-    }
-    gotoCarabao = () => {
-        this.setState({
-            BackgroundImage: Carabao,
-            clearBackground: 'gotoVocab1Menu',
-            farmlandTop: '1000%',
-            carabaoTop: '1000%',
-            riceTop: '1000%',
-            bambooTop: '1000%',
-            boloTop: '1000%',
-            cowTop: '1000%',
-            pigTop: '1000%',
-            goatTop: '1000%',
-            cornTop: '1000%',
-            chickenTop: '1000%',
-            plowTop: '1000%',
-            potatoTop: '1000%',
-            clearBackground: 'clear',
-        })
-    }
-    gotoChicken = () => {
-        this.setState({
-            BackgroundImage: Chicken,
-            clearBackground: 'gotoVocab1Menu',
-            farmlandTop: '1000%',
-            carabaoTop: '1000%',
-            riceTop: '1000%',
-            bambooTop: '1000%',
-            boloTop: '1000%',
-            cowTop: '1000%',
-            pigTop: '1000%',
-            goatTop: '1000%',
-            cornTop: '1000%',
-            chickenTop: '1000%',
-            plowTop: '1000%',
-            potatoTop: '1000%',
-            clearBackground: 'clear',
-        })
-    }
-    gotoCorn = () => {
-        this.setState({
-            BackgroundImage: Corn,
-            clearBackground: 'gotoVocab1Menu',
-            farmlandTop: '1000%',
-            carabaoTop: '1000%',
-            riceTop: '1000%',
-            bambooTop: '1000%',
-            boloTop: '1000%',
-            cowTop: '1000%',
-            pigTop: '1000%',
-            goatTop: '1000%',
-            cornTop: '1000%',
-            chickenTop: '1000%',
-            plowTop: '1000%',
-            potatoTop: '1000%',
-            clearBackground: 'clear',
-        })
-    }
-    gotoCow = () => {
-        this.setState({
-            BackgroundImage: Cow,
-            clearBackground: 'gotoVocab1Menu',
-            farmlandTop: '1000%',
-            carabaoTop: '1000%',
-            riceTop: '1000%',
-            bambooTop: '1000%',
-            boloTop: '1000%',
-            cowTop: '1000%',
-            pigTop: '1000%',
-            goatTop: '1000%',
-            cornTop: '1000%',
-            chickenTop: '1000%',
-            plowTop: '1000%',
-            potatoTop: '1000%',
-            clearBackground: 'clear',
-        })
-    }
-    gotoFarmland = () => {
-        this.setState({
-            BackgroundImage: Farmland,
-            clearBackground: 'gotoVocab1Menu',
-            farmlandTop: '1000%',
-            carabaoTop: '1000%',
-            riceTop: '1000%',
-            bambooTop: '1000%',
-            boloTop: '1000%',
-            cowTop: '1000%',
-            pigTop: '1000%',
-            goatTop: '1000%',
-            cornTop: '1000%',
-            chickenTop: '1000%',
-            plowTop: '1000%',
-            potatoTop: '1000%',
-            clearBackground: 'clear',
-        })
-    }
-    gotoGoat = () => {
-        this.setState({
-            BackgroundImage: Goat,
-            clearBackground: 'gotoVocab1Menu',
-            farmlandTop: '1000%',
-            carabaoTop: '1000%',
-            riceTop: '1000%',
-            bambooTop: '1000%',
-            boloTop: '1000%',
-            cowTop: '1000%',
-            pigTop: '1000%',
-            goatTop: '1000%',
-            cornTop: '1000%',
-            chickenTop: '1000%',
-            plowTop: '1000%',
-            potatoTop: '1000%',
-            clearBackground: 'clear',
-        })
-    }
-    gotoPig = () => {
-        this.setState({
-            BackgroundImage: Pig,
-            clearBackground: 'gotoVocab1Menu',
-            farmlandTop: '1000%',
-            carabaoTop: '1000%',
-            riceTop: '1000%',
-            bambooTop: '1000%',
-            boloTop: '1000%',
-            cowTop: '1000%',
-            pigTop: '1000%',
-            goatTop: '1000%',
-            cornTop: '1000%',
-            chickenTop: '1000%',
-            plowTop: '1000%',
-            potatoTop: '1000%',
-            clearBackground: 'clear',
-        })
-    }
-    gotoPlow = () => {
-        this.setState({
-            BackgroundImage: Plow,
-            clearBackground: 'gotoVocab1Menu',
-            farmlandTop: '1000%',
-            carabaoTop: '1000%',
-            riceTop: '1000%',
-            bambooTop: '1000%',
-            boloTop: '1000%',
-            cowTop: '1000%',
-            pigTop: '1000%',
-            goatTop: '1000%',
-            cornTop: '1000%',
-            chickenTop: '1000%',
-            plowTop: '1000%',
-            potatoTop: '1000%',
-            clearBackground: 'clear',
-        })
-    }
-    gotoRice = () => {
-        this.setState({
-            BackgroundImage: Rice,
-            clearBackground: 'gotoVocab1Menu',
-            farmlandTop: '1000%',
-            carabaoTop: '1000%',
-            riceTop: '1000%',
-            bambooTop: '1000%',
-            boloTop: '1000%',
-            cowTop: '1000%',
-            pigTop: '1000%',
-            goatTop: '1000%',
-            cornTop: '1000%',
-            chickenTop: '1000%',
-            plowTop: '1000%',
-            potatoTop: '1000%',
-            clearBackground: 'clear',
-        })
-    }
-    gotoSweetPotato = () => {
-        this.setState({
-            BackgroundImage: Potato,
-            clearBackground: 'gotoVocab1Menu',
-            farmlandTop: '1000%',
-            carabaoTop: '1000%',
-            riceTop: '1000%',
-            bambooTop: '1000%',
-            boloTop: '1000%',
-            cowTop: '1000%',
-            pigTop: '1000%',
-            goatTop: '1000%',
-            cornTop: '1000%',
-            chickenTop: '1000%',
-            plowTop: '1000%',
-            potatoTop: '1000%',
-            clearBackground: 'clear',
         })
     }
 
@@ -349,7 +143,9 @@ class Vocabulary4 extends Component {
                     left: '45.5%',
                     justifyContent: 'center',
                 }}>
-                    <TouchableOpacity onPress={this.gotoFarmland}>
+                    <TouchableOpacity onPress={() => {
+                        this.changeBackground(6)
+                    }}>
                         <Image
                             source={FarmlandAsset}
                             style={styles.farmlandImage}
@@ -362,7 +158,9 @@ class Vocabulary4 extends Component {
                     left: '36%',
                     justifyContent: 'center',
                 }}>
-                    <TouchableOpacity onPress={this.gotoCarabao}>
+                    <TouchableOpacity onPress={() => {
+                        this.changeBackground(2)
+                    }}>
                         <Image
                             source={CarabaoAsset}
                             style={styles.carabaoImage}
@@ -375,7 +173,9 @@ class Vocabulary4 extends Component {
                     left: '13%',
                     justifyContent: 'center',
                 }}>
-                    <TouchableOpacity onPress={this.gotoRice}>
+                    <TouchableOpacity onPress={() => {
+                        this.changeBackground(10)
+                    }}>
                         <Image
                             source={RiceAsset}
                             style={styles.riceImage}
@@ -388,7 +188,9 @@ class Vocabulary4 extends Component {
                     left: '58%',
                     justifyContent: 'center',
                 }}>
-                    <TouchableOpacity onPress={this.gotoBamboo}>
+                    <TouchableOpacity onPress={() => {
+                        this.changeBackground(0)
+                    }}>
                         <Image
                             source={BambooAsset}
                             style={styles.bambooImage}
@@ -401,7 +203,9 @@ class Vocabulary4 extends Component {
                     left: '10%',
                     justifyContent: 'center',
                 }}>
-                    <TouchableOpacity onPress={this.gotoBolo}>
+                    <TouchableOpacity onPress={() => {
+                        this.changeBackground(1)
+                    }}>
                         <Image
                             source={BoloAsset}
                             style={styles.boloImage}
@@ -416,7 +220,9 @@ class Vocabulary4 extends Component {
                     width: '15%',
 
                 }}>
-                    <TouchableOpacity onPress={this.gotoCow}>
+                    <TouchableOpacity onPress={() => {
+                        this.changeBackground(5)
+                    }}>
                         <Image
                             source={CowAsset}
                             style={styles.cowImage}
@@ -429,7 +235,9 @@ class Vocabulary4 extends Component {
                     left: '43%',
                     justifyContent: 'center',
                 }}>
-                    <TouchableOpacity onPress={this.gotoPig}>
+                    <TouchableOpacity onPress={() => {
+                        this.changeBackground(8)
+                    }}>
                         <Image
                             source={PigAsset}
                             style={styles.pigImage}
@@ -442,7 +250,9 @@ class Vocabulary4 extends Component {
                     left: '37%',
                     justifyContent: 'center',
                 }}>
-                    <TouchableOpacity onPress={this.gotoGoat}>
+                    <TouchableOpacity onPress={() => {
+                        this.changeBackground(7)
+                    }}>
                         <Image
                             source={GoatAsset}
                             style={styles.goatImage}
@@ -457,7 +267,9 @@ class Vocabulary4 extends Component {
                     justifyContent: 'center',
                     width: wp('10%'),
                 }}>
-                    <TouchableOpacity onPress={this.gotoCorn}>
+                    <TouchableOpacity onPress={() => {
+                        this.changeBackground(4)
+                    }}>
                         <Image
                             source={CornAsset}
                             style={styles.cornImage}
@@ -473,7 +285,9 @@ class Vocabulary4 extends Component {
                     height: 60,
                     width: 90,
                 }}>
-                    <TouchableOpacity onPress={this.gotoChicken}>
+                    <TouchableOpacity onPress={() => {
+                        this.changeBackground(3)
+                    }}>
                         <Image
                             source={ChickenAsset}
                             style={styles.chickenImage}
@@ -489,7 +303,9 @@ class Vocabulary4 extends Component {
                     width: '16%',
                     height: '28%',
                 }}>
-                    <TouchableOpacity onPress={this.gotoPlow}>
+                    <TouchableOpacity onPress={() => {
+                        this.changeBackground(9)
+                    }}>
                         <Image
                             source={PlowAsset}
                             style={styles.plowImage}
@@ -502,7 +318,9 @@ class Vocabulary4 extends Component {
                     left: '58%',
                     justifyContent: 'center',
                 }}>
-                    <TouchableOpacity onPress={this.gotoSweetPotato}>
+                    <TouchableOpacity onPress={() => {
+                        this.changeBackground(11)
+                    }}>
                         <Image
                             source={SweetPotatoAsset}
                             style={styles.sweetpotatoImage}
