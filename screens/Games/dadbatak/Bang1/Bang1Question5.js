@@ -7,6 +7,11 @@ import {globalStyleSheet} from '../../../globalStyleSheet/globalStyleSheet';
 import GnareIcon from '../../gameImages/GnareMain.png';
 import GameBG from '../../gameImages/GameBG.png';
 import Q5 from '../../gameImages/bang1Q5.png';
+import E from '../../gameImages/e.png';
+import A from '../../gameImages/a.png';
+import Oaccent from '../../gameImages/o-accent.png';
+import Aaccent from '../../gameImages/a-accent.png';
+import Home_icon from '../../../images/Home_icon.png';
 
 class Bang1Question5 extends Component {
     static navigationOptions = {
@@ -31,6 +36,50 @@ class Bang1Question5 extends Component {
                         style={styles.image}
                     >
                     </Image>
+                </View>
+                <View style={globalStyleSheet.db_b1_choice1Style}>
+                    <TouchableOpacity>
+                        <Image
+                            source={E}
+                            style={styles.image}
+                        >
+                        </Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.db_b1_choice2Style}>
+                    <TouchableOpacity>
+                        <Image
+                            source={A}
+                            style={styles.image}
+                        >
+                        </Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.db_b1_choice3Style}>
+                    <TouchableOpacity>
+                        <Image
+                            source={Oaccent}
+                            style={styles.image}
+                        >
+                        </Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.db_b1_choice4Style}>
+                    <TouchableOpacity>
+                        <Image
+                            source={Aaccent}
+                            style={styles.image}
+                        >
+                        </Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.homeContainer}>
+                    <TouchableOpacity onPress={this.gotoMainMenu}>
+                        <Image
+                            source={Home_icon}
+                            style={globalStyleSheet.home}
+                        ></Image>
+                    </TouchableOpacity>
                 </View>
             </ImageBackground>
         )
