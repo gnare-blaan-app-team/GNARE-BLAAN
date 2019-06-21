@@ -16,80 +16,109 @@ import sandokAsset from './vocabulary7Images/item_sandok.png';
 import spoonAsset from './vocabulary7Images/item_spoon.png';
 import stoveAsset from './vocabulary7Images/item_stove.png';
 
+import Cup from './vocabulary7Images/cup.png';
+import Firewood from './vocabulary7Images/firewood.png';
+import Kettle from './vocabulary7Images/kettle.png';
+import Knife from './vocabulary7Images/knife.png';
+import Laddle from './vocabulary7Images/laddle.png';
+import Mortar from './vocabulary7Images/mortar.png';  
+import Plate from './vocabulary7Images/plate.png';
+import Pot from './vocabulary7Images/pot.png';
+import Spoon from './vocabulary7Images/spoon.png';
+import Stove from './vocabulary7Images/stove.png';
+import Tray from './vocabulary7Images/tray.png';
+
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
+const backgroundList = [Cup,Firewood,Kettle,Knife,Laddle,Mortar,Plate,Pot,Spoon,Stove,Tray];
 
 class Vocabulary7 extends Component {
     static navigationOptions = {
         header: null,
     }
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      BackgroundImage: Vocab7BG,
+      clearBackground: 'gotoVocab7Menu',
+      trayTop: '21%',
+      stoveTop: '36%',
+      potTop: '44%',
+      firewoodTop: '58%',
+      plateTop:'43%',
+      cupTop: '38%',
+      kettleTop: '53%',
+      knifeTop: '67%',
+      mortarTop: '55%',
+      sandokTop: '20%',
+      spoonTop: '49%',
+    } 
+  }
+
+  goBack = () => {
+    const clear = this.state.clearBackground;
+    if (clear == 'gotoVocab7Menu') {
+      this.props.navigation.navigate('vocabularyMenu')
+    }
+    if (clear == 'clear') {
+      this.setState({
+        BackgroundImage: Vocab7BG,
+        clearBackground: 'gotoVocab7Menu',
+        trayTop: '21%',
+        stoveTop: '36%',
+        potTop: '44%',
+        firewoodTop: '58%',
+        plateTop: '43%',
+        cupTop: '38%',
+        kettleTop: '53%',
+        knifeTop: '67%',
+        mortarTop: '55%',
+        sandokTop: '20%',
+        spoonTop: '49%',
+      })
+    }
+  }
+
+
     gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
     }
 
-    handleBackPress = () => {
-        this.number1.pause();
+    changeBackground = (index) => {
+      this.setState({
+        BackgroundImage:backgroundList[index],
+        clearBackground: 'clear',
+        trayTop: '1000%',
+        stoveTop: '1000%',
+        potTop: '1000%',
+        firewoodTop: '1000%',
+        plateTop: '1000%',
+        cupTop: '1000%',
+        kettleTop: '1000%',
+        knifeTop: '1000%',
+        mortarTop: '1000%',
+        sandokTop: '1000%',
+        spoonTop: '1000%',
+      })
     }
-
-    goBack = () => {
-        this.props.navigation.navigate('vocabularyMenu');
-    }
-
-    gotoMortar = () => {
-        this.props.navigation.navigate('mortar');
-    }
-
-    gotoTray = () => {
-        this.props.navigation.navigate('tray');
-    }
-
-    gotoPot = () => {
-        this.props.navigation.navigate('pot');
-    }
-
-    gotoCup = () => {
-        this.props.navigation.navigate('cup');
-    }
-
-    gotoFirewood = () => {
-          this.props.navigation.navigate('firewood');
-    }
-
-    gotoKettle = () => {
-          this.props.navigation.navigate('kettle');
-    }
-
-    gotoKnife = () => {
-          this.props.navigation.navigate('knife');
-    }
-
-    gotoPlate = () => {
-          this.props.navigation.navigate('plate');
-    }
-
-    gotoSandok = () => {
-          this.props.navigation.navigate('laddle');
-    }
-
-    gotoSpoon = () => {
-          this.props.navigation.navigate('spoon');
-    }
-
-    gotoStove = () => {
-          this.props.navigation.navigate('stove');
-    }
-
 
 
     render() {
 
         return (
-            <ImageBackground style={globalStyleSheet.image}
-                source={Vocab7BG}
-            >
+          <ImageBackground style={{ flex: 1, width: '100%', height: '100%', resizeMode: 'stretch' }}
+            source={Vocab7BG}
+          >
+            <View style={{ position: 'absolute', top: '0%', width: '100%', height: '100%' }}>
+              <Image source={Vocab7BG} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
+            </View>
+            <View style={{ position: 'absolute', width: '100%', height: '100%' }}>
+              <Image source={this.state.BackgroundImage} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
+            </View>
                 <View style={globalStyleSheet.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
@@ -109,8 +138,14 @@ class Vocabulary7 extends Component {
 
 
 
-                <View style={styles.trayBorder}>
-                    <TouchableOpacity onPress={this.gotoTray}>
+                <View style={{
+              position: 'absolute',
+              left: '16%',
+              top:this.state.trayTop,
+                }}>
+                    <TouchableOpacity onPress={() => {
+                      this.changeBackground(10);
+                    }}>
                         <Image
                             source={bilaoAsset}
                             style={styles.trayImage}
@@ -118,8 +153,14 @@ class Vocabulary7 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.stoveBorder}>
-                    <TouchableOpacity onPress={this.gotoStove}>
+                <View style={{
+              position: 'absolute',
+              left: '38%',
+              top: this.state.stoveTop,
+                }}>
+              <TouchableOpacity onPress={() => {
+                this.changeBackground(9);
+              }}>
                         <Image
                             source={stoveAsset}
                             style={styles.stoveImage}
@@ -127,8 +168,14 @@ class Vocabulary7 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.potBorder}>
-                    <TouchableOpacity onPress={this.gotoPot}>
+                <View style={{
+              position: 'absolute',
+              left: '50%',
+              top:this.state.potTop,
+                }}>
+              <TouchableOpacity onPress={() => {
+                this.changeBackground(7);
+              }}>
                         <Image
                             source={cookingpotAsset}
                             style={styles.potImage}
@@ -136,8 +183,14 @@ class Vocabulary7 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.firewoodBorder}>
-                    <TouchableOpacity onPress={this.gotoFirewood}>
+                <View style={{
+              position: 'absolute',
+              left: '28.4%',
+              top: this.state.firewoodTop,
+                }}>
+              <TouchableOpacity onPress={() => {
+                this.changeBackground(1);
+              }}>
                         <Image
                             source={firewoodAsset}
                             style={styles.firewoodImage}
@@ -145,8 +198,14 @@ class Vocabulary7 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.plateBorder}>
-                    <TouchableOpacity onPress={this.gotoPlate}>
+                <View style={{
+              position: 'absolute',
+              left: '73%',
+              top: this.state.plateTop,
+                }}>
+              <TouchableOpacity onPress={() => {
+                this.changeBackground(6);
+              }}>
                         <Image
                             source={plateAsset}
                             style={styles.plateImage}
@@ -154,8 +213,14 @@ class Vocabulary7 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.cupBorder}>
-                    <TouchableOpacity onPress={this.gotoCup}>
+                <View style={{
+              position: 'absolute',
+              left: '65%',
+              top:this.state.cupTop,
+                }}>
+              <TouchableOpacity onPress={() => {
+                this.changeBackground(0);
+              }}>
                         <Image
                             source={cupAsset}
                             style={styles.cupImage}
@@ -163,8 +228,14 @@ class Vocabulary7 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.kettleBorder}>
-                    <TouchableOpacity onPress={this.gotoKettle}>
+                <View style={{
+              position: 'absolute',
+              left: '79%',
+              top:this.state.kettleTop
+                }}>
+              <TouchableOpacity onPress={() => {
+                this.changeBackground(2);
+              }}>
                         <Image
                             source={kettleAsset}
                             style={styles.kettleImage}
@@ -172,8 +243,14 @@ class Vocabulary7 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.knifeBorder}>
-                    <TouchableOpacity onPress={this.gotoKnife}>
+                <View style={{
+              position: 'absolute',
+              left: '15%',
+              top: this.state.knifeTop,
+                }}>
+              <TouchableOpacity onPress={() => {
+                this.changeBackground(3);
+              }}>
                         <Image
                             source={kutsilyoAsset}
                             style={styles.knifeImage}
@@ -181,8 +258,14 @@ class Vocabulary7 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.mortarBorder}>
-                    <TouchableOpacity onPress={this.gotoMortar}>
+                <View style={{
+              position: 'absolute',
+              left: '12%',
+              top: this.state.mortarTop,
+                }}>
+              <TouchableOpacity onPress={() => {
+                this.changeBackground(5);
+              }}>
                         <Image
                             source={bayuhanAsset}
                             style={styles.mortarImage}
@@ -190,8 +273,14 @@ class Vocabulary7 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.sandokBorder}>
-                    <TouchableOpacity onPress={this.gotoSandok}>
+                <View style={{
+              position: 'absolute',
+              left: '72%',
+              top: this.state.sandokTop,
+                }}>
+              <TouchableOpacity onPress={() => {
+                this.changeBackground(9);
+              }}>
                         <Image
                             source={sandokAsset}
                             style={styles.sandokImage}
@@ -199,8 +288,14 @@ class Vocabulary7 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.spoonBorder}>
-                    <TouchableOpacity onPress={this.gotoSpoon}>
+                <View style={{
+              position: 'absolute',
+              left: '66%',
+              top: this.state.spoonTop,
+                }}>
+              <TouchableOpacity onPress={() => {
+                this.changeBackground(8);
+              }}>
                         <Image
                             source={spoonAsset}
                             style={styles.spoonImage}

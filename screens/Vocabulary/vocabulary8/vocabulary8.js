@@ -18,65 +18,89 @@ import Moon from './vocabulary8Images/Item_Moon.png';
 import Sun from './vocabulary8Images/Item_Sun.png';
 import Star from './vocabulary8Images/Item_Stars.png';
 
+import Afternoon from './vocabulary8Images/afternoon.png';
+import Clouder from './vocabulary8Images/cloud.png';
+import Evening from './vocabulary8Images/evening.png';
+import Goodbyer from './vocabulary8Images/goodbye.png';
+import Mooner from './vocabulary8Images/moon.png';
+import Morning from './vocabulary8Images/morning.png';
+import Starer from './vocabulary8Images/star.png';
+import Suner from './vocabulary8Images/sun.png';
+
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
+const backgroundList = [Afternoon, Clouder, Evening, Goodbyer, Mooner, Morning, Starer, Suner];
 
 class Vocabulary8 extends Component {
     static navigationOptions = {
         header: null,
     }
 
-
-    handleBackPress = () => {
-        this.number1.pause();
+    constructor(props) {
+        super(props);
+        this.state = {
+            BackgroundImage: Vocab8BG,
+            clearBackground: 'gotoVocab8Menu',
+            haponTop: '20%',
+            gabiTop: '20.7%',
+            umagaTop: '20.7%',
+            sunTop: '22%',
+            goodbyeTop: '50%',
+            starTop: '30%',
+            moonTop: '25%',
+            cloudTop: '30%',
+        }
     }
 
     goBack = () => {
-        this.props.navigation.navigate('vocabularyMenu');
+        const clear = this.state.clearBackground;
+        if (clear == 'gotoVocab8Menu') {
+            this.props.navigation.navigate('vocabularyMenu')
+        }
+        if (clear == 'clear') {
+            this.setState({
+                BackgroundImage: Vocab8BG,
+                clearBackground: 'gotoVocab8Menu',
+                haponTop: '20%',
+                gabiTop: '20.7%',
+                umagaTop: '20.7%',
+                sunTop: '22%',
+                goodbyeTop: '50%',
+                starTop: '30%',
+                moonTop: '25%',
+                cloudTop: '30%',
+            })
+        }
     }
 
-    gotoMainMenu = () => {
-        this.props.navigation.navigate('mainMenu');
-    }
 
-    gotoHapon = () => {
-        this.props.navigation.navigate('afternoon');
+    changeBackground = (index) => {
+        this.setState({
+            BackgroundImage:backgroundList[index],
+            clearBackground: 'clear',
+            haponTop: '1000%',
+            gabiTop: '1000%',
+            umagaTop: '1000%',
+            sunTop: '1000%',
+            goodbyeTop: '1000%',
+            starTop: '1000%',
+            moonTop: '1000%',
+            cloudTop: '1000%',
+        })
     }
-
-    gotoUmaga = () => {
-        this.props.navigation.navigate('morning');
-    }
-
-    gotoGabi = () => {
-        this.props.navigation.navigate('evening');
-    }
-
-    gotoSun = () => {
-        this.props.navigation.navigate('sun');
-    }
-
-    gotoCloud = () => {
-        this.props.navigation.navigate('cloud');
-    }
-
-    gotoGoodbye = () => {
-        this.props.navigation.navigate('goodbye');
-    }
-
-    gotoMoon = () => {
-        this.props.navigation.navigate('moon');
-    }
-
-    gotoStar = () => {
-        this.props.navigation.navigate('star');
-    }
-
 
     render() {
 
         return (
-            <ImageBackground style={globalStyleSheet.image}
+            <ImageBackground style={{ flex: 1, width: '100%', height: '100%', resizeMode: 'stretch' }}
                 source={Vocab8BG}
             >
+                <View style={{ position: 'absolute', top: '0%', width: '100%', height: '100%' }}>
+                    <Image source={Vocab8BG} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
+                </View>
+                <View style={{ position: 'absolute', width: '100%', height: '100%' }}>
+                    <Image source={this.state.BackgroundImage} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
+                </View>
                 <View style={globalStyleSheet.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
@@ -94,8 +118,16 @@ class Vocabulary8 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.haponStyle}>
-                    <TouchableOpacity onPress={this.gotoHapon}>
+                <View style={{
+                    position: 'absolute',
+                    top: this.state.haponTop,
+                    left: '11%',
+                    height: hp('46%'),
+                    width: wp('23%'),
+                }}>
+                    <TouchableOpacity onPress={() =>{
+                        this.changeBackground(0)
+                    }}>
                         <Image
                             source={Hapon}
                             style={styles.Image}
@@ -103,8 +135,16 @@ class Vocabulary8 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.gabiStyle}>
-                    <TouchableOpacity onPress={this.gotoGabi}>
+                <View style={{
+                    position: 'absolute',
+                    top:this.state.gabiTop,
+                    right:'10%',
+                    height: hp('43.5%'),
+                    width: wp('29%'),
+                }}>
+                    <TouchableOpacity onPress={() => {
+                        this.changeBackground(2)
+                    }}>
                         <Image
                             source={Gabi}
                             style={styles.Image}
@@ -112,8 +152,16 @@ class Vocabulary8 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.umagaStyle}>
-                    <TouchableOpacity onPress={this.gotoUmaga}>
+                <View style={{
+                    position: 'absolute',
+                    top:this.state.umagaTop,
+                    left: '23%',
+                    height: hp('27.8%'),
+                    width: wp('50%'),
+                }}>
+                    <TouchableOpacity onPress={() => {
+                        this.changeBackground(5)
+                    }}>
                         <Image
                             source={Umaga}
                             style={styles.Image}
@@ -121,8 +169,16 @@ class Vocabulary8 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.sunStyle}>
-                    <TouchableOpacity onPress={this.gotoSun}>
+                <View style={{
+                    position: 'absolute',
+                    top:this.state.sunTop,
+                    left: '45%',
+                    height: hp('10%'),
+                    width: wp('7%')
+                }}>
+                    <TouchableOpacity onPress={() => {
+                        this.changeBackground(7)
+                    }}>
                         <Image
                             source={Sun}
                             style={styles.Image}
@@ -130,8 +186,16 @@ class Vocabulary8 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.goodbyeStyle}>
-                    <TouchableOpacity onPress={this.gotoGoodbye}>
+                <View style={{
+                    position: 'absolute',
+                    top:this.state.goodbyeTop,
+                    left: '45%',
+                    height: hp('40%'),
+                    width: wp('25%'),
+                }}>
+                    <TouchableOpacity onPress={() => {
+                        this.changeBackground(3)
+                    }}>
                         <Image
                             source={Goodbye}
                             style={styles.Image}
@@ -140,8 +204,16 @@ class Vocabulary8 extends Component {
                 </View>
 
 
-                <View style={styles.starStyle}>
-                    <TouchableOpacity onPress={this.gotoStar}>
+                <View style={{
+                    position: 'absolute',
+                    top: this.state.starTop,
+                    right: '15%',
+                    height: hp('10%'),
+                    width: wp('30%')
+                }}>
+                    <TouchableOpacity onPress={() => {
+                        this.changeBackground(6)
+                    }}>
                         <Image
                             source={Star}
                             style={styles.Image}
@@ -149,8 +221,16 @@ class Vocabulary8 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.moonStyle}>
-                    <TouchableOpacity onPress={this.gotoMoon}>
+                <View style={{
+                    position: 'absolute',
+                    top:this.state.moonTop,
+                    right: '14%',
+                    height: hp('10%'),
+                    width: wp('6%')
+                }}>
+                    <TouchableOpacity onPress={() => {
+                        this.changeBackground(4)
+                    }}>
                         <Image
                             source={Moon}
                             style={styles.Image}
@@ -159,8 +239,16 @@ class Vocabulary8 extends Component {
                 </View>
 
 
-                <View style={styles.cloudStyle}>
-                    <TouchableOpacity onPress={this.gotoCloud}>
+                <View style={{
+                    position: 'absolute',
+                    top:this.state.cloudTop,
+                    left: '34%',
+                    height: hp('13%'),
+                    width: wp('33%')
+                }}>
+                    <TouchableOpacity onPress={() => {
+                        this.changeBackground(1)
+                    }}>
                         <Image
                             source={Cloud}
                             style={styles.Image}
@@ -182,7 +270,6 @@ const styles = StyleSheet.create({
     },
 
     haponStyle: {
-        borderWidth: 0.5,
         position: 'absolute',
         top: hp('20%'),
         left: wp('7.4%'),

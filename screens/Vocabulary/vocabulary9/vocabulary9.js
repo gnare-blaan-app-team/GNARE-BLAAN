@@ -69,7 +69,9 @@ const monthList = [
     Month10,
     Month11,
     Month12
-]
+];
+
+const daylist = [Day1,Day2,Day3,Day4,Day5,Day6,Day7];
 
 class Vocabulary9 extends Component {
     static navigationOptions = {
@@ -86,7 +88,7 @@ class Vocabulary9 extends Component {
             calendarTop:'18%',
             NextTop: '40%',
             day:0,
-            getDate:'getDate'
+            clearBackground:'gotoVocab9Menu'
         }
     }
 
@@ -111,6 +113,7 @@ class Vocabulary9 extends Component {
             calendarTop:'1000%',
             NextTop:'1000%',
             prevTop:'1000%',
+            clearBackground: 'clear'
         })
     }
     goPrev = () => {
@@ -129,31 +132,33 @@ class Vocabulary9 extends Component {
     }
 
     goBack = () => {
-       if(this.state.BackgroundImage == 308){
-        this.props.navigation.navigate('vocabularyMenu')
-       }
-        this.setState({
-            BackgroundImage: Vocab9BG,
-            calendarTop: '18%',
-            NextTop: '40%',
-            prevTop: '40%',
-        })
+        const clear = this.state.clearBackground;
+        if (clear == 'gotoVocab9Menu') {
+            this.props.navigation.navigate('vocabularyMenu')
+        }
+        if (clear == 'clear') {
+            this.setState({
+                BackgroundImage: Vocab9BG,
+                clearBackground: 'gotoVocab9Menu',
+                prevTop: '40%',
+                calendarTop: '18%',
+                NextTop: '40%',
+                getDate: 'getDate',
+            })
+        }
     }
     gotoMainMenu = () =>{
         this.props.navigation.navigate('mainMenu')
     }
 
-    day = () => {
-        showDay = this.state.getDate;
-        index = this.state.day
-        if(showDay=='getDate'){
-            this.setState({
-                BackgroundImage:dayList[index],
-                calendarTop: '1000%',
-                NextTop: '1000%',
-                prevTop: '1000%',
-            })
-        }
+    day = (index) => {
+        this.setState({
+            BackgroundImage:daylist[index],
+            clearBackground: 'clear',
+            prevTop: '1000%',
+            calendarTop: '1000%',
+            NextTop: '1000%',
+        })
     }
     render() {
 
@@ -201,12 +206,7 @@ class Vocabulary9 extends Component {
                         ></Image>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={()=>{
-                        this.setState({
-                            BackgroundImage:Day7,
-                            calendarTop: '1000%',
-                            NextTop: '1000%',
-                            prevTop: '1000%',
-                        })
+                        this.day(6);
                     }} style={{
                         position:'absolute',
                         left:'12.50%',
@@ -216,12 +216,7 @@ class Vocabulary9 extends Component {
                        }}>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        this.setState({
-                            BackgroundImage: Day1,
-                            calendarTop: '1000%',
-                            NextTop: '1000%',
-                            prevTop: '1000%',
-                        })
+                        this.day(0);
                     }} style={{
                         position: 'absolute',
                         left: '24%',
@@ -231,12 +226,7 @@ class Vocabulary9 extends Component {
                     }}>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        this.setState({
-                            BackgroundImage: Day2,
-                            calendarTop: '1000%',
-                            NextTop: '1000%',
-                            prevTop: '1000%',
-                        })
+                        this.day(1);
                     }} style={{
                         position: 'absolute',
                         left: '35%',
@@ -246,12 +236,7 @@ class Vocabulary9 extends Component {
                     }}>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        this.setState({
-                            BackgroundImage: Day3,
-                            calendarTop: '1000%',
-                            NextTop: '1000%',
-                            prevTop: '1000%',
-                        })
+                        this.day(2);
                     }} style={{
                         position: 'absolute',
                         left: '46%',
@@ -261,12 +246,7 @@ class Vocabulary9 extends Component {
                     }}>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        this.setState({
-                            BackgroundImage: Day4,
-                            calendarTop: '1000%',
-                            NextTop: '1000%',
-                            prevTop: '1000%',
-                        })
+                        this.day(3);
                     }} style={{
                         position: 'absolute',
                         left: '57%',
@@ -276,12 +256,7 @@ class Vocabulary9 extends Component {
                     }}>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        this.setState({
-                            BackgroundImage: Day5,
-                            calendarTop: '1000%',
-                            NextTop: '1000%',
-                            prevTop: '1000%',
-                        })
+                        this.day(4);
                     }} style={{
                         position: 'absolute',
                         left: '68%',
@@ -291,12 +266,7 @@ class Vocabulary9 extends Component {
                     }}>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        this.setState({
-                            BackgroundImage: Day6,
-                            calendarTop: '1000%',
-                            NextTop: '1000%',
-                            prevTop: '1000%',
-                        })
+                        this.day(5);
                     }} style={{
                         position: 'absolute',
                         left: '79%',
