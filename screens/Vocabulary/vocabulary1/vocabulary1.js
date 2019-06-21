@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler, Text } from 'react-native';
+import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, PanResponder, Text } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
@@ -21,6 +21,8 @@ import Kaibe from './vocabulary1Images/kaibe.png';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
+const BackgroundList = [Tatay,Nanay,Lola,Lola,Kaito,Kaibe];
+
 class Vocabulary1 extends Component {
     static navigationOptions = {
         header: null,
@@ -29,14 +31,14 @@ class Vocabulary1 extends Component {
   constructor(props) {
         super(props);
         this.state = {
-        BackgroundImage: Vocab1BG,
-        clearBackground:'gotoVocab1Menu',
-        NanayTop:'26%',
-        LoloTop:'23%',
-        LolaTop:'25%',
-        KaitoTop:'37%',
-        KaibeTop: '37%',
-        TatayTop:'23%'
+          BackgroundImage: Vocab1BG,
+          clearBackground:'gotoVocab1Menu',
+          NanayTop:'26%',
+          LoloTop:'23%',
+          LolaTop:'25%',
+          KaitoTop:'37%',
+          KaibeTop: '37%',
+          TatayTop:'23%',
     }
   }
 
@@ -63,9 +65,10 @@ class Vocabulary1 extends Component {
     }
   }
 
-  gotoTatay = () =>{
+
+  changeBackground = (index) =>{
     this.setState({
-      BackgroundImage:Tatay,
+      BackgroundImage:BackgroundList[index],
       NanayTop: '1000%',
       LoloTop: '1000%',
       LolaTop: '1000%',
@@ -76,69 +79,7 @@ class Vocabulary1 extends Component {
     })
   }
 
-  gotoNanay = () => {
-    this.setState({
-      BackgroundImage: Nanay,
-      NanayTop: '1000%',
-      LoloTop: '1000%',
-      LolaTop: '1000%',
-      KaitoTop: '1000%',
-      KaibeTop: '1000%',
-      TatayTop: '1000%',
-      clearBackground: 'clear',
-    })
-  }
-
-  gotoLolo = () => {
-    this.setState({
-      BackgroundImage: Lolo,
-      NanayTop: '1000%',
-      LoloTop: '1000%',
-      LolaTop: '1000%',
-      KaitoTop: '1000%',
-      KaibeTop: '1000%',
-      TatayTop: '1000%',
-      clearBackground: 'clear',
-    })
-  }
-
-  gotoLola = () => {
-    this.setState({
-      BackgroundImage: Lola,
-      NanayTop: '1000%',
-      LoloTop: '1000%',
-      LolaTop: '1000%',
-      KaitoTop: '1000%',
-      KaibeTop: '1000%',
-      TatayTop: '1000%',
-      clearBackground: 'clear',
-    })
-  }
-
-  gotoKaito = () => {
-    this.setState({
-      BackgroundImage: Kaito,
-      NanayTop: '1000%',
-      LoloTop: '1000%',
-      LolaTop: '1000%',
-      KaitoTop: '1000%',
-      KaibeTop: '1000%',
-      TatayTop: '1000%',
-      clearBackground: 'clear',
-    })
-  }
-  gotoKaibe = () => {
-    this.setState({
-      BackgroundImage: Kaibe,
-      NanayTop: '1000%',
-      LoloTop: '1000%',
-      LolaTop: '1000%',
-      KaitoTop: '1000%',
-      KaibeTop: '1000%',
-      TatayTop: '1000%',
-      clearBackground: 'clear',
-    })
-  }
+  
 
     render() {
 
@@ -174,8 +115,10 @@ class Vocabulary1 extends Component {
               top: this.state.TatayTop,
               width: '18%',
               resizeMode: 'cover',
-                  }}>
-                      <TouchableOpacity onPress={this.gotoTatay}>
+            }}>
+                      <TouchableOpacity onPress={() => {
+                        this.changeBackground(0);
+                      }}>
                           <Image
                               source={TatayAsset}
                               style={styles.tatayImage}
@@ -186,8 +129,10 @@ class Vocabulary1 extends Component {
               position: 'absolute',
               left: '50%',
               top: this.state.NanayTop
+            }}>
+              <TouchableOpacity onPress={() => {
+                this.changeBackground(1);
               }}>
-                      <TouchableOpacity onPress={this.gotoNanay}>
                           <Image
                               source={NanayAsset}
                               style={styles.nanayImage}
@@ -201,7 +146,9 @@ class Vocabulary1 extends Component {
               width: '11%',
               resizeMode: 'cover',
                     }}>
-                        <TouchableOpacity onPress={this.gotoLolo}>
+              <TouchableOpacity onPress={() => {
+                this.changeBackground(2);
+              }}>
                             <Image
                                 source={LoloAsset}
                                 style={styles.loloImage}
@@ -214,7 +161,9 @@ class Vocabulary1 extends Component {
               left: '25%',
               top: this.state.LolaTop,
               }}>
-                        <TouchableOpacity onPress={this.gotoLola}>
+              <TouchableOpacity onPress={() => {
+                this.changeBackground(3);
+              }}>
                             <Image
                                 source={LolaAsset}
                                 style={styles.lolaImage}
@@ -227,7 +176,9 @@ class Vocabulary1 extends Component {
               left: '65%',
               top: this.state.KaitoTop,
                     }}>
-                        <TouchableOpacity onPress={this.gotoKaito}>
+              <TouchableOpacity onPress={() => {
+                this.changeBackground(4);
+              }}>
                             <Image
                                 source={KaitoAsset}
                                 style={styles.kaitoImage}
@@ -240,7 +191,9 @@ class Vocabulary1 extends Component {
               left: '58%',
               top: this.state.KaibeTop,
                     }}>
-                        <TouchableOpacity onPress={this.gotoKaibe}>
+              <TouchableOpacity onPress={() => {
+                this.changeBackground(5);
+              }}>
                             <Image
                                 source={KaibeAsset}
                                 style={styles.kaibeImage}

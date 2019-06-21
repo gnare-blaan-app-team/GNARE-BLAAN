@@ -15,6 +15,11 @@ class DadBatak extends Component {
     static navigationOptions = {
         header: null,
     }
+
+    gotoTanbu1 = () => {
+        this.props.navigation.navigate('tanbu1')
+    }
+
     render() {
         return (
             <ImageBackground
@@ -29,32 +34,40 @@ class DadBatak extends Component {
                     </Image>
                 </View>
                 <View style={styles.bang1Style}>
-                    <Image
-                        source={Bang1Icon}
-                        style={styles.image}
-                    >
-                    </Image>
+                    <TouchableOpacity onPress={this.gotoTanbu1}>
+                        <Image
+                            source={Bang1Icon}
+                            style={styles.image}
+                        >
+                        </Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.bang2Style}>
-                    <Image
-                        source={Bang2Icon}
-                        style={styles.image}
-                    >
-                    </Image>
+                    <TouchableOpacity onPress={this.gotoTanbu1}>
+                        <Image
+                            source={Bang2Icon}
+                            style={styles.image}
+                        >
+                        </Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.bang3Style}>
-                    <Image
-                        source={Bang3Icon}
-                        style={styles.image}
-                    >
-                    </Image>
+                <TouchableOpacity onPress={this.gotoTanbu1}>
+                        <Image
+                            source={Bang3Icon}
+                            style={styles.image}
+                        >
+                        </Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.kastifunStyle}>
-                    <Image
-                        source={KastifunIcon}
-                        style={styles.image}
-                    >
-                    </Image>
+                    <TouchableOpacity onPress={this.gotoTanbu1}>
+                        <Image
+                            source={KastifunIcon}
+                            style={styles.image}
+                        >
+                        </Image>
+                    </TouchableOpacity>
                 </View>
             </ImageBackground>
         )

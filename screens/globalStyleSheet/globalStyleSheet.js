@@ -405,4 +405,94 @@ export const globalStyleSheet = {
         top: '15%',
         justifyContent: 'center',
     },
+
+    //Dad Batak
+    gnareIconStyle: {
+        position: 'absolute',
+        top: hp('5%'),
+        left: wp('2%'),
+        height: hp('12%'),
+        width: wp('10%'),
+    },
+    questionStyle: {
+        position: 'absolute',
+        top: '15%',
+        width: wp('55%'),
+        height: hp('45%')
+    },
+
+    //Dad Batak - Bang 1 Styles for Choices
+    db_b1_choice2Style : {
+        position: 'absolute',
+        top: '67%',
+        left: '39%',
+        width: wp('10%'),
+        height: hp('12%')
+    },
+    db_b1_choice3Style : {
+        position: 'absolute',
+        top: '67%',
+        left: '51%',
+        width: wp('10%'),
+        height: hp('12%')
+    },
+    db_b1_choice4Style : {
+        position: 'absolute',
+        top: '67%',
+        left: '63%',
+        width: wp('10%'),
+        height: hp('12%')
+    },
+    db_b1_choice1Style : {
+        position: 'absolute',
+        top: '67%',
+        left: '27%',
+        width: wp('10%'),
+        height: hp('12%')
+    },
+
+    //Dad Se - Bang 1 Styles for Choices
+    bang1Board: {
+        position: 'absolute',
+        top: '11.5%',
+        left:'23%',
+        height: hp('50%'),
+        width: wp('60%'),
+    },
+    ds_bang1_choice1Style: {
+        position: 'absolute',
+        top: '68%',
+        left:'18%',
+        height: hp('10%'),
+        width: wp('14%'),
+    },
+    ds_bang1_choice2Style: {
+        position: 'absolute',
+        top: '68%',
+        left:'35%',
+        height: hp('10%'),
+        width: wp('14%'),
+    },
+    ds_bang1_choice3Style: {
+        position: 'absolute',
+        top: '68%',
+        left:'53%',
+        height: hp('10%'),
+        width: wp('14%'),
+    },
+    ds_bang1_choice4Style: {
+        position: 'absolute',
+        top: '68%',
+        left:'70%',
+        height: hp('10%'),
+        width: wp('14%'),
+    },
+    gufadyan: {
+        position: 'absolute',
+        top: '85%',
+        left:'73%',
+        height: hp('9%'),
+        width: wp('19%'),
+    }
+
 };

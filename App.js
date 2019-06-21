@@ -39,62 +39,18 @@ import Vocabulary5 from './screens/Vocabulary/vocabulary5/vocabulary5';
 
 //Vocabulary6
 import Vocabulary6 from './screens/Vocabulary/vocabulary6/vocabulary6'
-import Bedroom from './screens/Vocabulary/vocabulary6/bedroom';
-import Door from './screens/Vocabulary/vocabulary6/door';
-import Floor from './screens/Vocabulary/vocabulary6/floor';
-import House from './screens/Vocabulary/vocabulary6/house';
-import Kitchen from './screens/Vocabulary/vocabulary6/kitchen';
-import Ladder from './screens/Vocabulary/vocabulary6/ladder';
-import Roof from './screens/Vocabulary/vocabulary6/roof';
-import Wall from './screens/Vocabulary/vocabulary6/wall';
-import Window from './screens/Vocabulary/vocabulary6/window';
 
 //Vocabulary7
 import Vocabulary7 from './screens/Vocabulary/vocabulary7/vocabulary7';
-import Cup from './screens/Vocabulary/vocabulary7/cup';
-import Pot from './screens/Vocabulary/vocabulary7/pot';
-import Firewood from './screens/Vocabulary/vocabulary7/firewood';
-import Kettle from './screens/Vocabulary/vocabulary7/kettle';
-import Knife from './screens/Vocabulary/vocabulary7/knife';
-import Laddle from './screens/Vocabulary/vocabulary7/laddle';
-import Mortar from './screens/Vocabulary/vocabulary7/mortar';
-import Plate from './screens/Vocabulary/vocabulary7/plate';
-import Spoon from './screens/Vocabulary/vocabulary7/spoon';
-import Stove from './screens/Vocabulary/vocabulary7/stove';
-import Tray from './screens/Vocabulary/vocabulary7/tray';
 
 //Vocabulary8
 import Vocabulary8 from './screens/Vocabulary/vocabulary8/vocabulary8';
-import Afternoon from './screens/Vocabulary/vocabulary8/afternoon';
-import Cloud from './screens/Vocabulary/vocabulary8/cloud';
-import Evening from './screens/Vocabulary/vocabulary8/evening';
-import Goodbye from './screens/Vocabulary/vocabulary8/goodbye';
-import Moon from './screens/Vocabulary/vocabulary8/moon';
-import Morning from './screens/Vocabulary/vocabulary8/morning';
-import Star from './screens/Vocabulary/vocabulary8/star';
-import Sun from './screens/Vocabulary/vocabulary8/sun';
 
 //Vocabulary9
 import Vocabulary9 from './screens/Vocabulary/vocabulary9/vocabulary9';
 
 //Vocabulary10
 import Vocabulary10 from './screens/Vocabulary/vocabulary10/vocabulary10';
-
-import BambooGuitar from './screens/Vocabulary/vocabulary10/bambooGuitar';
-import Blouse from './screens/Vocabulary/vocabulary10/blouse';
-import Comb from './screens/Vocabulary/vocabulary10/comb';
-import Earrings from './screens/Vocabulary/vocabulary10/earrings';
-import Galing from './screens/Vocabulary/vocabulary10/galing';
-import Gong from './screens/Vocabulary/vocabulary10/gong';
-import Guitar from './screens/Vocabulary/vocabulary10/guitar';
-import Headcover from './screens/Vocabulary/vocabulary10/headcover';
-import Kulintang from './screens/Vocabulary/vocabulary10/kulintang';
-import Logdrum from './screens/Vocabulary/vocabulary10/logdrum';
-import Necklace from './screens/Vocabulary/vocabulary10/necklace';
-import Pants from './screens/Vocabulary/vocabulary10/pants';
-import Saul from './screens/Vocabulary/vocabulary10/saul';
-import Skirt from './screens/Vocabulary/vocabulary10/skirt';
-import Tlayong from './screens/Vocabulary/vocabulary10/tlayong';
 
 // Culture and Arts Import
 
@@ -104,9 +60,18 @@ import Kastifun_Screen from './screens/CultureandArts/cultureandartsScreens/kast
 import Prayers_Screen from './screens/CultureandArts/cultureandartsScreens/prayersScreen';
 import DasalBagoMatulogPlay from './screens/CultureandArts/cultureandartsScreens/prayers/DasalBagoMatulogPlay';
 
-import GameMenu from './screens/Games/GameMenu';
-import DadSe from './screens/Games/DadSe';
-import DadBatak from './screens/Games/DadBatak';
+// Games
+// import GameMenu from './screens/Games/GameMenu';
+// import DadSe from './screens/Games/DadSe/DadSe';
+// import DadSeTanbu1 from './screens/Games/DadSe/DadSeTanbu1';
+// import DadSeTanbu2 from './screens/Games/DadSe/DadSeTanbu2';
+// import DadSeTanbu3 from './screens/Games/DadSe/DadSeTanbu3';
+// import DadSeTanbu4 from './screens/Games/DadSe/DadSeTanbu4';
+// import DadBatak from './screens/Games/DadBatak';
+
+// import DadBatakTanbu1 from './screens/Games/dadbatak/Tanbu1';
+// import DadBatakTanbu2 from './screens/Games/dadbatak/Tanbu2';
+// import DadBatakTanbu3 from './screens/Games/dadbatak/Tanbu3';
 
 
 // Letter Tracing
@@ -141,6 +106,7 @@ import SevenTracing from './screens/Numbers/NumberTracing/7Tracing';
 import EightTracing from './screens/Numbers/NumberTracing/8Tracing';
 import NineTracing from './screens/Numbers/NumberTracing/9Tracing';
 //import TenTracing from './screens/Numbers/NumberTracing/10Tracing';
+
 
 useScreens();
 
@@ -221,63 +187,18 @@ export default AppNavigator = createStackNavigator(
     
     //Vocabulary6
     vocabulary6: Vocabulary6,
-    bedroom: Bedroom,
-    door: Door,
-    floor: Floor,
-    house: House,
-    kitchen: Kitchen,
-    ladder: Ladder,
-    roof: Roof,
-    wall: Wall,
-    window: Window,
 
     //Vocabulary7
     vocabulary7: Vocabulary7,
-    cup: Cup,
-    firewood: Firewood,
-    kettle: Kettle,
-    knife: Knife,
-    laddle: Laddle,
-    mortar: Mortar,
-    plate: Plate,
-    pot: Pot,
-    spoon: Spoon,
-    stove: Stove,
-    tray: Tray,
 
     //Vocabulary8
     vocabulary8: Vocabulary8,
-    afternoon: Afternoon,
-    cloud: Cloud,
-    evening: Evening,
-    goodbye: Goodbye,
-    moon: Moon,
-    morning: Morning,
-    star: Star,
-    sun: Sun,
 
     //Vocabulary9
     vocabulary9: Vocabulary9,
 
     //Vocabulary10
     vocabulary10: Vocabulary10,
-
-    bambooGuitar: BambooGuitar,
-    blouse: Blouse,
-    comb: Comb,
-    earrings: Earrings,
-    galing: Galing,
-    gong: Gong,
-    guitar: Guitar,
-    headcover: Headcover,
-    kulintang: Kulintang,
-    logdrum: Logdrum,
-    necklace: Necklace,
-    pants: Pants,
-    saul: Saul,
-    skirt: Skirt,
-    tlayong: Tlayong,
-
 
     //Culture and Arts
     cultureandarts: cultureandartsMain,
@@ -286,16 +207,45 @@ export default AppNavigator = createStackNavigator(
     prayersScreen: Prayers_Screen,
     dasalbagomatulogPlay: DasalBagoMatulogPlay,
 
-    //Games
-    gameMenu: GameMenu,
-    dadse : DadSe,
-    dadbatak: DadBatak,
+    // //Games
+    // gameMenu: GameMenu,
+    // dadse : DadSe,
+    // dadseTanbu1: DadSeTanbu1, 
+    // dadseTanbu2: DadSeTanbu2,
+    // dadseTanbu3: DadSeTanbu3,
+    // dadseTanbu4: DadSeTanbu4,
+    // dadbatak: DadBatak,
+    // dadbataktanbu1: DadBatakTanbu1,
+    // dadbataktanbu2: DadBatakTanbu2,
+    // dadbataktanbu3: DadBatakTanbu3,
 
+    // //Dad Batak - Bang 1
+    // db_bang1Question1: Bang1Question1,
+    // db_bang1Question2: Bang1Question2,
+    // db_bang1Question3: Bang1Question3,
+    // db_bang1Question4: Bang1Question4,
+    // db_bang1Question5: Bang1Question5,
+    // db_bang1Question6: Bang1Question6,
+    // db_bang1Question7: Bang1Question7,
+    // db_bang1Question8: Bang1Question8,
+    // db_bang1Question9: Bang1Question9,
+    // db_bang1Question10: Bang1Question10,
+    // db_bang1Question11: Bang1Question11,
+    // db_bang1Question12: Bang1Question12,
+
+    // //Dad Se - Bang 1
+    // ds_bang1Question1: DSBang1Question1,
+    // ds_bang1Question2: DSBang1Question2,
+    // ds_bang1Question3: DSBang1Question3,
+    // ds_bang1Question4: DSBang1Question4,
+    // ds_bang1Question5: DSBang1Question5,
+    // ds_bang1Question6: DSBang1Question6,
+    // ds_bang1Question7: DSBang1Question7,
+    // ds_bang1Question10: DSBang1Question10,
   },
 {
 
     initialRouteName:"home",
-
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"
