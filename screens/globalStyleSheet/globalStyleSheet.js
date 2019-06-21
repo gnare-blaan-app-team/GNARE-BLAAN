@@ -405,4 +405,50 @@ export const globalStyleSheet = {
         top: '15%',
         justifyContent: 'center',
     },
+
+    //Dad Batak
+    gnareIconStyle: {
+        position: 'absolute',
+        top: hp('5%'),
+        left: wp('2%'),
+        height: hp('12%'),
+        width: wp('10%'),
+    },
+    questionStyle: {
+        position: 'absolute',
+        top: '15%',
+        width: wp('55%'),
+        height: hp('45%')
+    },
+
+    //Dad Batak - Bang 1 Styles for Choices
+    db_b1_choice2Style : {
+        position: 'absolute',
+        top: '67%',
+        left: '39%',
+        width: wp('10%'),
+        height: hp('12%')
+    },
+    db_b1_choice3Style : {
+        position: 'absolute',
+        top: '67%',
+        left: '51%',
+        width: wp('10%'),
+        height: hp('12%')
+    },
+    db_b1_choice4Style : {
+        position: 'absolute',
+        top: '67%',
+        left: '63%',
+        width: wp('10%'),
+        height: hp('12%')
+    },
+    db_b1_choice1Style : {
+        position: 'absolute',
+        top: '67%',
+        left: '27%',
+        width: wp('10%'),
+        height: hp('12%')
+    },
+
 };

@@ -17,7 +17,6 @@ class GameMenu extends Component {
     gotoDadBatak = () => {
         this.props.navigation.navigate('dadbatak')
     }
-
     gotoDadSe = () => {
         this.props.navigation.navigate('dadse')
     }

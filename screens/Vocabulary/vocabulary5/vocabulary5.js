@@ -313,6 +313,13 @@ class Vocabulary5 extends Component {
 }
 
 const styles = StyleSheet.create({
+
+    mountainStyle: {
+        position: 'absolute',
+        width: '60%',
+        left: '12.6%',
+        height: '35%',
+    },
     mountainImage: {
         width: '100%',
         height: '100%',

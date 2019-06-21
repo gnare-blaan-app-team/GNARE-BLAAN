@@ -60,9 +60,31 @@ import Kastifun_Screen from './screens/CultureandArts/cultureandartsScreens/kast
 import Prayers_Screen from './screens/CultureandArts/cultureandartsScreens/prayersScreen';
 import DasalBagoMatulogPlay from './screens/CultureandArts/cultureandartsScreens/prayers/DasalBagoMatulogPlay';
 
+// Games
 import GameMenu from './screens/Games/GameMenu';
-import DadSe from './screens/Games/DadSe';
+import DadSe from './screens/Games/DadSe/DadSe';
+import DadSeTanbu1 from './screens/Games/DadSe/DadSeTanbu1';
+import DadSeTanbu2 from './screens/Games/DadSe/DadSeTanbu2';
+import DadSeTanbu3 from './screens/Games/DadSe/DadSeTanbu3';
+import DadSeTanbu4 from './screens/Games/DadSe/DadSeTanbu4';
 import DadBatak from './screens/Games/DadBatak';
+import DadBatakTanbu1 from './screens/Games/dadbatak/Tanbu1';
+import DadBatakTanbu2 from './screens/Games/dadbatak/Tanbu2';
+import DadBatakTanbu3 from './screens/Games/dadbatak/Tanbu3';
+
+//Dad Batak - Bang 1
+import Bang1Question1 from './screens/Games/dadbatak/Bang1/Bang1Question1';
+import Bang1Question2 from './screens/Games/dadbatak/Bang1/Bang1Question2';
+import Bang1Question3 from './screens/Games/dadbatak/Bang1/Bang1Question3';
+import Bang1Question4 from './screens/Games/dadbatak/Bang1/Bang1Question4';
+import Bang1Question5 from './screens/Games/dadbatak/Bang1/Bang1Question5';
+import Bang1Question6 from './screens/Games/dadbatak/Bang1/Bang1Question6';
+import Bang1Question7 from './screens/Games/dadbatak/Bang1/Bang1Question7';
+import Bang1Question8 from './screens/Games/dadbatak/Bang1/Bang1Question8';
+import Bang1Question9 from './screens/Games/dadbatak/Bang1/Bang1Question9';
+import Bang1Question10 from './screens/Games/dadbatak/Bang1/Bang1Question10';
+import Bang1Question11 from './screens/Games/dadbatak/Bang1/Bang1Question11';
+import Bang1Question12 from './screens/Games/dadbatak/Bang1/Bang1Question12';
 
 import ATracing from './screens/Letters/LetterTracing/ATracing';
 import BTracing from './screens/Letters/LetterTracing/BTracing';
@@ -71,6 +93,7 @@ import ETracing from './screens/Letters/LetterTracing/ETracing';
 import FTracing from './screens/Letters/LetterTracing/FTracing';
 import HTracing from './screens/Letters/LetterTracing/HTracing';
 import GTracing from './screens/Letters/LetterTracing/HTracing';
+
 
 useScreens();
 
@@ -147,15 +170,35 @@ export default AppNavigator = createStackNavigator(
     //Games
     gameMenu: GameMenu,
     dadse : DadSe,
+    dadseTanbu1: DadSeTanbu1, 
+    dadseTanbu2: DadSeTanbu2,
+    dadseTanbu3: DadSeTanbu3,
+    dadseTanbu4: DadSeTanbu4,
     dadbatak: DadBatak,
+    dadbataktanbu1: DadBatakTanbu1,
+    dadbataktanbu2: DadBatakTanbu2,
+    dadbataktanbu3: DadBatakTanbu3,
+
+    //Dad Batak - Bang 1
+    db_bang1Question1: Bang1Question1,
+    db_bang1Question2: Bang1Question2,
+    db_bang1Question3: Bang1Question3,
+    db_bang1Question4: Bang1Question4,
+    db_bang1Question5: Bang1Question5,
+    db_bang1Question6: Bang1Question6,
+    db_bang1Question7: Bang1Question7,
+    db_bang1Question8: Bang1Question8,
+    db_bang1Question9: Bang1Question9,
+    db_bang1Question10: Bang1Question10,
+    db_bang1Question11: Bang1Question11,
+    db_bang1Question12: Bang1Question12,
 
   },
 {
 
-  initialRouteName:"home",
-
+  initialRouteName: "db_bang1Question1",
   mode: 'card',
-  cardStyle: {
+  cardStyle: {   
     backgroundColor:"transperent"
 }
 }
