@@ -5,20 +5,20 @@ import MenuItem from './LettersMenu';
 
 import Sound from 'react-native-sound';
 
-import GoBackIcon from './images/Back_icon.png';
-import HomeIcon from './images/Home_icon.png';
+import GoBackIcon from '../images/Back_icon.png';
+import HomeIcon from '../images/Home_icon.png';
 import GlowA from './lettersGlow/GlowA.gif';
 import Glow_A from './lettersGlow/Glow_A.png';
 
     // Letter Components Imports
-import SentenceIcon from './images/Letters_Info_Icon.png';
-import SpeakerIcon from './images/Speaker_icon.png';
-import PencilIcon from './images/Pencil_icon.png';
-import NextIcon from './images/Next_Icon.png';
-import PrevIcon from './images/Prev_Icon.png';
+import SentenceIcon from '../images/Letters_Info_Icon.png';
+import SpeakerIcon from '../images/Speaker_icon.png';
+import PencilIcon from '../images/Pencil_icon.png';
+import NextIcon from '../images/Next_Icon.png';
+import PrevIcon from '../images/Prev_Icon.png';
 
     // Letter Main Background Import
-import imageMainBG from './images/BG.jpg';
+import imageMainBG from '../images/BG.jpg';
 
     // Letter Background Imports
 import LetterA from './lettersImage/LetterA.png';
@@ -61,17 +61,17 @@ import sentenceU from './lettersImage/sentenceU.png';
 import sentenceW from './lettersImage/sentenceW.png';
 import sentenceY from './lettersImage/sentenceY.png';
 
-import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js';
+import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 
     // Hiding Components
 const hideLeft = '-1000%';
 const hideRight = '1000%';
 const showPrev ='5%';
 const showNext = '83%';
-const showPencil = '18%';
+const showPencil = '20%';
 const showGlow = '20%';
 const showSpeaker = '25%';
-const showSentence = '73%';
+const showSentence = '80%';
 
 Sound.setCategory('Playback');
 
@@ -370,7 +370,8 @@ class Letters extends Component {
 
                 {/* Start of Page Letters Code Part */}
                 {/* Sentence Button */}
-               <View style={{position: 'absolute', left: '80%', top: this.state.sentenceHide, width: '14%', height: '28%',}} >
+               <View style={{position: 'absolute', left: '80%', 
+                            top: this.state.sentenceHide, width: '14%', height: '28%',}} >
                     <TouchableOpacity onPress={this.sentencePage}>
                         <Image
                             source={SentenceIcon}
@@ -417,7 +418,8 @@ class Letters extends Component {
                 </View>
 
                 {/* Pencil Button */}
-                <View style={{position: 'absolute', left: '10%', top: this.state.pencilHide, width: '9%', height: '24%',}} >
+                <View style={{position: 'absolute', left: '11%', 
+                top: this.state.pencilHide, width: '7%', height: '20%',}} >
                     <TouchableOpacity onPress={this.letterTracing}>
                         <Image
                         source={PencilIcon}
@@ -427,7 +429,8 @@ class Letters extends Component {
                 </View>
 
                  {/* Prev Button */}
-                <View style={{position: 'absolute', left: this.state.prevHide, top: '40%', width: '12%', height: '24%',}}>
+                <View style={{position: 'absolute', left: this.state.prevHide, 
+                            top: '46%', width: '12%', height: '24%',}}>
                     <TouchableOpacity onPress={this.goPrev}>
                         <Image
                             source={PrevIcon}
@@ -437,7 +440,8 @@ class Letters extends Component {
                 </View>
 
                 {/* Next Button */}
-                <View style={{position: 'absolute', left: this.state.nextHide, top: '40%', width: '12%', height: '24%',}} >
+                <View style={{position: 'absolute', left: this.state.nextHide, 
+                            top: '46%', width: '12%', height: '24%',}} >
                     <TouchableOpacity onPress={this.goNext}>
                         <Image
                             source={NextIcon}
@@ -502,7 +506,7 @@ class Letters extends Component {
                 </View>
 
                 <View style={{position: 'absolute',
-                                left: '86%',
+                                left: '88%',
                                 top: '3%',
                                 width: '14%',
                                 height: '28%',}}>

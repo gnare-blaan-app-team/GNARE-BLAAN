@@ -1,9 +1,9 @@
-import Letter_Intro from './IntroVideos/Letter_Intro.mp4';
+import Letter_Intro from '../IntroVideos/Letter_Intro.mp4';
 import React, { Component } from 'react';
 import Video from 'react-native-video';
 import { Text, View, TouchableOpacity , ImageBackground } from 'react-native';
 import { withNavigation } from 'react-navigation';
-import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js';
+import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 
 class LetterIntroScreen extends Component {
     static navigationOptions = {
@@ -13,10 +13,11 @@ class LetterIntroScreen extends Component {
     constructor() {
         super();
         this.state = {
-            source: Letter_Intro,
             paused: false,
             progress: 0,
+            volume: 1,
             duration: 0,
+            muted: false,
         }
     }
 
@@ -27,7 +28,7 @@ class LetterIntroScreen extends Component {
     };
 
     handleEnd = () => {
-        this.setState({paused: true, source: null});
+        this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.navigate('letters');
     };
 
@@ -38,7 +39,7 @@ class LetterIntroScreen extends Component {
     };
 
     gotoLetterScreen = () => {
-        this.setState({paused: true, source: null});
+        this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.navigate('letters');
     }
 
@@ -48,11 +49,11 @@ class LetterIntroScreen extends Component {
                 <View style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'black'}}>
                     <Video
                             paused={false}
-                            source={this.state.source}
+                            source={Letter_Intro}
                             style={{ width: "100%", height: '100%' }}
                             resizeMode="stretch"
-                            volume={1}
-                            muted={false}
+                            volume={this.state.volume}
+                            muted={this.state.muted}
                             onLoad={this.handleLoad}
                             onProgress={this.handleProgress}
                             onEnd={this.handleEnd}
