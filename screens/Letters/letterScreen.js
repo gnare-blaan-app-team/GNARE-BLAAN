@@ -61,6 +61,26 @@ import sentenceU from './lettersImage/sentenceU.png';
 import sentenceW from './lettersImage/sentenceW.png';
 import sentenceY from './lettersImage/sentenceY.png';
 
+
+import A from './lettersGlow/A.gif';
+import B from './lettersGlow/B.gif';
+import D from './lettersGlow/D.gif';
+import E from './lettersGlow/E.gif';
+import F from './lettersGlow/F.gif';
+import G from './lettersGlow/G.gif';
+import H from './lettersGlow/H.gif';
+import I from './lettersGlow/I.gif';
+import K from './lettersGlow/K.gif';
+import L from './lettersGlow/L.gif';
+import M from './lettersGlow/M.gif';
+import N from './lettersGlow/N.gif';
+import O from './lettersGlow/O.gif';
+import S from './lettersGlow/S.gif';
+import T from './lettersGlow/T.gif';
+import U from './lettersGlow/U.gif';
+import W from './lettersGlow/W.gif';
+import Y from './lettersGlow/Y.gif';
+
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 
     // Hiding Components
@@ -88,8 +108,7 @@ const sentenceBGList = [sentenceA, sentenceB, sentenceD, sentenceE, sentenceF, s
     sentenceO, sentenceS, sentenceT, sentenceU, sentenceW, sentenceY];
 
     // Word GLow List
-const glowGIFList = [GlowA];
-const glowPicList = [Glow_A];
+const glowGIFList = [A, B, D, E, F, G, H, I, K, L, M, N, O, S, T, U, W, Y];
 
 
 class Letters extends Component {
@@ -120,7 +139,7 @@ class Letters extends Component {
             sentenceHide: hideRight,
             indexSound: 0,
 
-            glow: Glow_A,
+            glow: glowGIFList[0],
             hideLetterBG: '0%',
             prevBG: imageMainBG,
         },
@@ -146,7 +165,7 @@ class Letters extends Component {
                         speakerHide: imageBG == imageMainBG ? hideLeft : showSpeaker,
                         sentenceHide: imageBG == imageMainBG ? hideRight : showSentence,
                         pencilHide: imageBG == imageMainBG ? hideLeft : showPencil,
-                        indexSound: soundPlay,
+                        indexSound: soundPlay, glow: glowGIFList[soundPlay],
                         });
         this.autoPlaySound();
     }
@@ -172,7 +191,7 @@ class Letters extends Component {
                     this.wordSound.play();
                 }});
                 this.setState({glow: Glow_A});
-                this.setState({glow: GlowA});
+                this.setState({glow: glowGIFList[this.state.indexSound]});
         }, 5000);
     }
 
@@ -265,7 +284,7 @@ class Letters extends Component {
             } else {
                 this.wordSound.play();
                 this.setState({glow: Glow_A});
-                this.setState({glow: GlowA});
+                this.setState({glow: glowGIFList[this.state.indexSound]});
             }});
     }
 

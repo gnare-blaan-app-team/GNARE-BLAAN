@@ -34,7 +34,7 @@ const hideLeft = '-1000%';
 const hideRight = '1000%';
 const showPrev ='5%';
 const showNext = '85%';
-const showPencil = '20%';
+const showPencil = '22%';
 const showGlow = '23%';
 const showSpeaker = '25%';
 const showSentence = '80%';
@@ -166,7 +166,7 @@ class NumberScreen extends Component {
 
     letterTracing = () => {
         this.handleBackPress();
-        this.props.navigation.navigate('tracing' + soundList[this.state.indexSound]);
+        this.props.navigation.push('tracing' + soundList[this.state.indexSound]);
     }
 
 
