@@ -238,7 +238,6 @@ class NumberScreen extends Component {
                     nextHide: showNext,
                     sentenceObjectHide: hideLeft,
                     speaker2Hide: hideLeft, prevBG: numberBGList[this.state.indexSound]});
-                
         } else {
             if(this.state.imageBackground == imageMainBG) {
                 this.handleBackPress();

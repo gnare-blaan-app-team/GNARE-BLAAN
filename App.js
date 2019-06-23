@@ -245,7 +245,7 @@ export default AppNavigator = createStackNavigator(
   },
 {
 
-    initialRouteName:"home",
+    initialRouteName:"tracing5",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"

@@ -103,8 +103,7 @@ class OneTracing extends Component {
                             if(!this.state.dot1) {
                                 if(gesture.moveX >= this.line1[0].x - 20 && gesture.moveX <= this.line1[0].x + 20) {
                                     if(gesture.moveY >= this.line1[0].y - 20 && gesture.moveY <= this.line1[0].y + 20) {
-                                        this.setState({arrayMove: [...this.state.arrayMove, coordinate],
-                                            touchLength: this.touchLength + 1, dot1: true});
+                                        this.setState({dot1: true});
                                     }
                                 }
                             }
@@ -112,8 +111,7 @@ class OneTracing extends Component {
                             if(this.state.dot1) {
                                 if(gesture.moveX >= this.line1[1].x - 20 && gesture.moveX <= this.line1[1].x + 20) {
                                     if(gesture.moveY >= this.line1[1].y - 20 && gesture.moveY <= this.line1[1].y + 20) {
-                                        this.setState({arrayMove: [...this.state.arrayMove, coordinate],
-                                            touchLength: this.touchLength + 1, dot2: true});
+                                        this.setState({dot2: true});
                                     }
                                 }
                             }
@@ -121,8 +119,7 @@ class OneTracing extends Component {
                             if(this.state.dot2 && this.state.dot1) {
                                 if(gesture.moveX >= this.line1[2].x - 20 && gesture.moveX <= this.line1[2].x + 20) {
                                     if(gesture.moveY >= this.line1[2].y - 20 && gesture.moveY <= this.line1[2].y + 20) {
-                                        this.setState({arrayMove: [...this.state.arrayMove, coordinate],
-                                            touchLength: this.touchLength + 1, dot3: true});
+                                        this.setState({dot3: true});
                                     }
                                 }
                             }
@@ -132,8 +129,7 @@ class OneTracing extends Component {
                             if(!this.state.dot4) {
                                 if(gesture.moveX >= this.line2[0].x - 20 && gesture.moveX <= this.line2[0].x + 20) {
                                     if(gesture.moveY >= this.line2[0].y - 20 && gesture.moveY <= this.line2[0].y + 20) {
-                                        this.setState({arrayMove: [...this.state.arrayMove, coordinate],
-                                            touchLength: this.touchLength + 1, dot4: true});
+                                        this.setState({dot4: true});
                                     }
                                 }
                             }
@@ -141,8 +137,7 @@ class OneTracing extends Component {
                             if(this.state.dot4) {
                                 if(gesture.moveX >= this.line2[1].x - 20 && gesture.moveX <= this.line2[1].x + 20) {
                                     if(gesture.moveY >= this.line2[1].y - 20 && gesture.moveY <= this.line2[1].y + 20) {
-                                        this.setState({arrayMove: [...this.state.arrayMove, coordinate],
-                                            touchLength: this.touchLength + 1, dot5: true});
+                                        this.setState({dot5: true});
                                     }
                                 }
                             }
@@ -150,8 +145,7 @@ class OneTracing extends Component {
                             if(this.state.dot4 && this.state.dot5) {
                                 if(gesture.moveX >= this.line2[2].x - 20 && gesture.moveX <= this.line2[2].x + 20) {
                                     if(gesture.moveY >= this.line2[2].y - 20 && gesture.moveY <= this.line2[2].y + 20) {
-                                        this.setState({arrayMove: [...this.state.arrayMove, coordinate],
-                                            touchLength: this.touchLength + 1, dot6: true});
+                                        this.setState({dot6: true});
                                     }
                                 }
                             }
@@ -177,15 +171,12 @@ class OneTracing extends Component {
     }
 
     gotoMainMenu = () => {
-       // this.bg.stop();
-       this.setState({arrayMove: [], dot1: false, dot2: false, dot3: false, dot4: false, dot5: false, dot6: false,
-        showShaded: 0, shaded: shadedLine[0], tracing: tracingLine[0], showTracing: 1});
+        this.clearBoard();
         this.props.navigation.navigate('home');
     }
 
     goBack = () => {
-        this.setState({arrayMove: [], dot1: false, dot2: false, dot3: false, dot4: false, dot5: false, dot6: false,
-            showShaded: 0, shaded: shadedLine[0], tracing: tracingLine[0], showTracing: 1});
+        this.clearBoard();
         this.props.navigation.navigate('numbers');
     }
 
