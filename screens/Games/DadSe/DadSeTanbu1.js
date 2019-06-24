@@ -14,6 +14,12 @@ class DadSeTanbu1 extends Component {
     static navigationOptions = {
         header: null,
     }
+
+    
+    gotoBang1 = () => {
+        this.props.navigation.navigate('ds_bang1Question1')
+    }
+    
     render() {
         return (
             <ImageBackground
@@ -27,13 +33,15 @@ class DadSeTanbu1 extends Component {
                     >
                     </Image>
                 </View>
-                <View style={styles.tanbuStyle}>
-                    <Image
-                        source={TanbuIcon}
-                        style={styles.image}
-                    >
-                    </Image>
-                </View>
+                    <View style={styles.tanbuStyle}>
+                        <TouchableOpacity onPress = {this.gotoBang1}>
+                            <Image
+                                source={TanbuIcon}
+                                style={styles.image}
+                            >
+                            </Image>
+                        </TouchableOpacity>
+                    </View>
             </ImageBackground>
         )
     }
