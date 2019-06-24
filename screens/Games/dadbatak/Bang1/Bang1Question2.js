@@ -17,6 +17,11 @@ class Bang1Question2 extends Component {
     static navigationOptions = {
         header: null,
     }
+
+    gotoMainMenu = () =>{
+        this.props.navigation.navigate('mainMenu')
+    }
+    
     render() {
         return (
             <ImageBackground
