@@ -60,18 +60,19 @@ import Kastifun_Screen from './screens/CultureandArts/cultureandartsScreens/kast
 import Prayers_Screen from './screens/CultureandArts/cultureandartsScreens/prayersScreen';
 import DasalBagoMatulogPlay from './screens/CultureandArts/cultureandartsScreens/prayers/DasalBagoMatulogPlay';
 
-// Games
-// import GameMenu from './screens/Games/GameMenu';
+ //Games
+ import GameMenu from './screens/Games/GameMenu';
 // import DadSe from './screens/Games/DadSe/DadSe';
 // import DadSeTanbu1 from './screens/Games/DadSe/DadSeTanbu1';
 // import DadSeTanbu2 from './screens/Games/DadSe/DadSeTanbu2';
 // import DadSeTanbu3 from './screens/Games/DadSe/DadSeTanbu3';
 // import DadSeTanbu4 from './screens/Games/DadSe/DadSeTanbu4';
-// import DadBatak from './screens/Games/DadBatak';
+ import DadBatak from './screens/Games/DadBatak';
 
 // import DadBatakTanbu1 from './screens/Games/dadbatak/Tanbu1';
 // import DadBatakTanbu2 from './screens/Games/dadbatak/Tanbu2';
 // import DadBatakTanbu3 from './screens/Games/dadbatak/Tanbu3';
+import Bang1Question1 from './screens/Games/dadbatak/Bang1/Bang1Question1';
 
 
 // Letter Tracing
@@ -107,6 +108,8 @@ import EightTracing from './screens/Numbers/NumberTracing/8Tracing';
 import NineTracing from './screens/Numbers/NumberTracing/9Tracing';
 //import TenTracing from './screens/Numbers/NumberTracing/10Tracing';
 
+
+import Try from './try';
 
 useScreens();
 
@@ -208,7 +211,7 @@ export default AppNavigator = createStackNavigator(
     dasalbagomatulogPlay: DasalBagoMatulogPlay,
 
     // //Games
-    // gameMenu: GameMenu,
+     gameMenu: GameMenu,
     // dadse : DadSe,
     // dadseTanbu1: DadSeTanbu1, 
     // dadseTanbu2: DadSeTanbu2,
@@ -220,7 +223,7 @@ export default AppNavigator = createStackNavigator(
     // dadbataktanbu3: DadBatakTanbu3,
 
     // //Dad Batak - Bang 1
-    // db_bang1Question1: Bang1Question1,
+     db_bang1Question1: Bang1Question1,
     // db_bang1Question2: Bang1Question2,
     // db_bang1Question3: Bang1Question3,
     // db_bang1Question4: Bang1Question4,
@@ -242,10 +245,12 @@ export default AppNavigator = createStackNavigator(
     // ds_bang1Question6: DSBang1Question6,
     // ds_bang1Question7: DSBang1Question7,
     // ds_bang1Question10: DSBang1Question10,
+
+    try:Try
   },
 {
 
-    initialRouteName:"home",
+    initialRouteName:"gameMenu",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"
