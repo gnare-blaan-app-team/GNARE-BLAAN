@@ -5,9 +5,9 @@ import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleShee
 
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
-import Chant1_icon from '../cultureandartsImages/Chant1.png';
-import Chant2_icon from '../cultureandartsImages/Chant2.png';
-import Chant3_icon from '../cultureandartsImages/Chant3.png';
+import Chant1_icon from '../cultureandartsImages/chant_1DasalBagoMatulog.png';
+import Chant2_icon from '../cultureandartsImages/chant_2DasalNgPaglingap.png';
+import Chant3_icon from '../cultureandartsImages/chant_3DasalNgPasasalamat.png';
 import cultureandarts_BG from '../../images/Flalok_BG.jpg';
 
 class chantsScreen extends Component {
@@ -31,19 +31,19 @@ class chantsScreen extends Component {
                <View style={styles.CultureandArtsContainer}>
                     <View style={styles.row}>
                         <View style={styles.itemSize} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
+                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('chant1Screen')} >
                                 <Image style={styles.imageSizeStoryMenu} source={Chant1_icon} />
                             </TouchableOpacity>
                         </View>
 
                         <View style={styles.itemSize} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
+                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('chant2Screen')} >
                                 <Image style={styles.imageSizeStoryMenu} source={Chant2_icon} />
                             </TouchableOpacity>
                         </View>
 
                         <View style={styles.itemSize} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
+                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('chant3Screen')} >
                                 <Image style={styles.imageSizeStoryMenu} source={Chant3_icon} />
                             </TouchableOpacity>
                         </View>

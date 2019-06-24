@@ -31,13 +31,13 @@ class cultureandartsMain extends Component {
            <ImageBackground style={styles.image} source={cultureandarts_BG}>
                 <View style={styles.CultureandArtsContainer}>
                     <View style={styles.row}>
-                        <View style={styles.itemSize} >
+                        <View style={[styles.itemSize, {height: '45%', marginRight: "5%"}]} >
                             <TouchableOpacity  onPress={() => this.props.navigation.navigate('chantsScreen')} >
                                 <Image style={styles.imageSizeStoryMenu} source={Chants_icon} />
                             </TouchableOpacity>
                         </View>
 
-                        <View style={styles.itemSize} >
+                        <View style={[styles.itemSize, {height: '45%', marginLeftt: "5%"}]} >
                             <TouchableOpacity  onPress={() => this.props.navigation.navigate('prayersScreen')} >
                                 <Image style={styles.imageSizeStoryMenu} source={Prayers_icon} />
                             </TouchableOpacity>
@@ -45,7 +45,7 @@ class cultureandartsMain extends Component {
                     </View>
 
                     <View style={styles.row1}>
-                        <View style={styles.itemSize} >
+                        <View style={[styles.itemSize, {height: '45%'}]} >
                             <TouchableOpacity  onPress={() => this.props.navigation.navigate('kastifunScreen')} >
                                 <Image style={styles.imageSizeStoryMenu} source={Kastifun_icon} />
                             </TouchableOpacity>

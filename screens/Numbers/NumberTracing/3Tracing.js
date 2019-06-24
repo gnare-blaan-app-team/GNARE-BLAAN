@@ -109,104 +109,90 @@ class ThreeTracing extends Component {
                     this.setState({arrayMove: [...this.state.arrayMove, coordinate],
                         touchLength: this.touchLength + 1});
 
-                    if((!this.state.dot1 || !this.state.dot2) || (!this.state.dot3 || !this.state.dot4)) {
+                    // Dot 1
+                    if(!this.state.dot1) {
+                        if(gesture.moveX >= this.line1[0].x - 20 && gesture.moveX <= this.line1[0].x + 20) {
+                            if(gesture.moveY >= this.line1[0].y - 20 && gesture.moveY <= this.line1[0].y + 20) {
+                                //alert('Dot1');
+                                this.setState({dot1: true});
+                            }
+                        }
+                    }
                     
-                        // Dot 1
-                        if(!this.state.dot1) {
-                            if(gesture.moveX >= this.line1[0].x - 20 && gesture.moveX <= this.line1[0].x + 20) {
-                                if(gesture.moveY >= this.line1[0].y - 20 && gesture.moveY <= this.line1[0].y + 20) {
-                                    //alert('Dot1');
-                                    this.setState({arrayMove: [...this.state.arrayMove, coordinate],
-                                        touchLength: this.touchLength + 1, dot1: true});
-                                }
+                    // Dot 2
+                    if(this.state.dot1 && !this.state.dot2) {
+                        if(gesture.moveX >= this.line1[1].x - 20 && gesture.moveX <= this.line1[1].x + 20) {
+                            if(gesture.moveY >= this.line1[1].y - 20 && gesture.moveY <= this.line1[1].y + 20) {
+                                //alert('Dot2');
+                                this.setState({dot2: true});
                             }
                         }
-                        
-                        // Dot 2
-                        if(this.state.dot1) {
-                            if(gesture.moveX >= this.line1[1].x - 20 && gesture.moveX <= this.line1[1].x + 20) {
-                                if(gesture.moveY >= this.line1[1].y - 20 && gesture.moveY <= this.line1[1].y + 20) {
-                                    //alert('Dot2');
-                                    this.setState({arrayMove: [...this.state.arrayMove, coordinate],
-                                        touchLength: this.touchLength + 1, dot2: true});
-                                }
+                    }
+                    
+                    // Dot 3
+                    if(this.state.dot2 && !this.state.dot3) {
+                        if(gesture.moveX >= this.line1[2].x - 20 && gesture.moveX <= this.line1[2].x + 20) {
+                            if(gesture.moveY >= this.line1[2].y - 20 && gesture.moveY <= this.line1[2].y + 20) {
+                                //alert('Dot3');
+                                this.setState({dot3: true});
                             }
                         }
-                        
-                        // Dot 3
-                        if(this.state.dot2 && this.state.dot1) {
-                            if(gesture.moveX >= this.line1[2].x - 20 && gesture.moveX <= this.line1[2].x + 20) {
-                                if(gesture.moveY >= this.line1[2].y - 20 && gesture.moveY <= this.line1[2].y + 20) {
-                                    //alert('Dot3');
-                                    this.setState({arrayMove: [...this.state.arrayMove, coordinate],
-                                        touchLength: this.touchLength + 1, dot3: true});
-                                }
-                            }
-                        }
+                    }
 
-                        // Dot 4
-                        if((this.state.dot2 && this.state.dot1) && this.state.dot3) {
-                            if(gesture.moveX >= this.line1[3].x - 20 && gesture.moveX <= this.line1[3].x + 20) {
-                                if(gesture.moveY >= this.line1[3].y - 20 && gesture.moveY <= this.line1[3].y + 20) {
-                                    //alert('Dot4');
-                                    this.setState({arrayMove: [...this.state.arrayMove, coordinate],
-                                        touchLength: this.touchLength + 1, dot4: true});
-                                }
+                    // Dot 4
+                    if(this.state.dot3 && !this.state.dot4) {
+                        if(gesture.moveX >= this.line1[3].x - 20 && gesture.moveX <= this.line1[3].x + 20) {
+                            if(gesture.moveY >= this.line1[3].y - 20 && gesture.moveY <= this.line1[3].y + 20) {
+                                //alert('Dot4');
+                                this.setState({dot4: true});
                             }
                         }
-                    // If cleared, Line 1. Proceed to Line 2. Here.
-                } else {
+                    }
+
                     // Dot 5
-                    if(!this.state.dot5) {
+                    if(this.state.dot4 && !this.state.dot5) {
                         if(gesture.moveX >= this.line2[0].x - 20 && gesture.moveX <= this.line2[0].x + 20) {
                             if(gesture.moveY >= this.line2[0].y - 20 && gesture.moveY <= this.line2[0].y + 20) {
                                 //alert('Dot5');
-                                this.setState({arrayMove: [...this.state.arrayMove, coordinate],
-                                    touchLength: this.touchLength + 1, dot5: true});
+                                this.setState({dot5: true});
                             }
                         }
                     }
 
                     // Dot 6
-                    if(this.state.dot5) {
+                    if(this.state.dot5 && !this.state.dot6) {
                         if(gesture.moveX >= this.line2[1].x - 20 && gesture.moveX <= this.line2[1].x + 20) {
                             if(gesture.moveY >= this.line2[1].y - 20 && gesture.moveY <= this.line2[1].y + 20) {
                                 // alert('Dot6');
-                                this.setState({arrayMove: [...this.state.arrayMove, coordinate],
-                                    touchLength: this.touchLength + 1, dot6: true});
+                                this.setState({dot6: true});
                             }
                         }
                     }
 
                     // Dot 7
-                    if(this.state.dot5 && this.state.dot6) {
+                    if(this.state.dot6 && !this.state.dot7) {
                         if(gesture.moveX >= this.line2[2].x - 20 && gesture.moveX <= this.line2[2].x + 20) {
                             if(gesture.moveY >= this.line2[2].y - 20 && gesture.moveY <= this.line2[2].y + 20) {
                                 // alert('Dot6');
-                                this.setState({arrayMove: [...this.state.arrayMove, coordinate],
-                                    touchLength: this.touchLength + 1, dot7: true});
+                                this.setState({dot7: true});
                             }
                         }
                     }
 
                     // Dot 8
-                    if(this.state.dot5 && this.state.dot6) {
-                        if(this.state.dot7) {
-                            if(gesture.moveX >= this.line2[3].x - 20 && gesture.moveX <= this.line2[3].x + 20) {
-                                if(gesture.moveY >= this.line2[3].y - 20 && gesture.moveY <= this.line2[3].y + 20) {
-                                    // alert('Dot6');
-                                    this.setState({arrayMove: [...this.state.arrayMove, coordinate],
-                                        touchLength: this.touchLength + 1, dot8: true});
-                                }
+                    if(this.state.dot7 && !this.state.dot8) {
+                        if(gesture.moveX >= this.line2[3].x - 20 && gesture.moveX <= this.line2[3].x + 20) {
+                            if(gesture.moveY >= this.line2[3].y - 20 && gesture.moveY <= this.line2[3].y + 20) {
+                                // alert('Dot6');
+                                this.setState({dot8: true});
                             }
                         }
                     }
-                }
                 }                
             },
             onPanResponderRelease: (e, gesture) => {
-                if((this.state.dot2 && this.state.dot1) && (this.state.dot3 && this.state.dot4)) {
-                    if((this.state.dot5 && this.state.dot6) && (this.state.dot7 && this.state.dot8)) {
+                if(this.state.dot4) {
+                    if(this.state.dot8) {
                         this.setState({arrayMove: [], showShaded: 1, shaded: shadedLine[1],
                             tracing: tracingLine[1], showTracing: 0});
                     } else {
@@ -226,16 +212,12 @@ class ThreeTracing extends Component {
     }
 
     gotoMainMenu = () => {
-        this.setState({arrayMove: [], dot1: false, dot2: false, dot3: false, 
-            dot4: false, dot5: false, dot6: false, dot7: false, dot8: false,
-            showShaded: 0, shaded: shadedLine[0], tracing: tracingLine[0], showTracing: 1});
+        this.clearBoard();
         this.props.navigation.navigate('home');
     }
 
     goBack = () => {
-        this.setState({arrayMove: [], dot1: false, dot2: false, dot3: false, 
-            dot4: false, dot5: false, dot6: false, dot7: false, dot8: false,
-            showShaded: 0, shaded: shadedLine[0], tracing: tracingLine[0], showTracing: 1});
+        this.clearBoard();
         this.props.navigation.navigate('numbers');
     }
 
