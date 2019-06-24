@@ -238,12 +238,12 @@ class SevenTracing extends Component {
                                 top: '5%', left: '32%', opacity: this.state.showTracing,}}>
                         <Image source={this.state.tracing} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
                             
-                        {/* <View style={[styles.dot, {top: numberDimension.height * 0.08,
+                        <View style={[styles.dot, {top: numberDimension.height * 0.08,
                             left: numberDimension.width * 0.1}]}></View>
                         <View style={[styles.dot, {top: numberDimension.height * 0.08,
                             left: numberDimension.width * 0.5}]}></View>
                         <View style={[styles.dot, {top: numberDimension.height * 0.08,
-                            left: numberDimension.width * 0.85}]}></View> */}
+                            left: numberDimension.width * 0.85}]}></View>
 
                             {/*
                                 this.line1 = [{
