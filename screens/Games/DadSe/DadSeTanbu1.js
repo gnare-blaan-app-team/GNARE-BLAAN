@@ -14,6 +14,12 @@ class DadSeTanbu1 extends Component {
     static navigationOptions = {
         header: null,
     }
+
+    
+    gotoBang1 = () => {
+        this.props.navigation.navigate('ds_bang1Question1')
+    }
+    
     render() {
         return (
             <ImageBackground
@@ -27,13 +33,21 @@ class DadSeTanbu1 extends Component {
                     >
                     </Image>
                 </View>
-                <View style={styles.tanbuStyle}>
-                    <Image
-                        source={TanbuIcon}
-                        style={styles.image}
-                    >
-                    </Image>
-                </View>
+                    <View style={{
+                    position: 'absolute',
+                    top: '30%',
+                    left: '48%',
+                    height: hp('40%'),
+                    width: wp('50%'),
+                    }}>
+                        <TouchableOpacity onPress = {this.gotoBang1}>
+                            <Image
+                                source={TanbuIcon}
+                                style={styles.image}
+                            >
+                            </Image>
+                        </TouchableOpacity>
+                    </View>
             </ImageBackground>
         )
     }
@@ -52,13 +66,6 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
-    },
-    tanbuStyle: {
-        position: 'absolute',
-        top: '30%',
-        left: '48%',
-        height: hp('40%'),
-        width: wp('50%'),
     },
 })
 

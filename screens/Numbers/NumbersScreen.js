@@ -34,7 +34,7 @@ const hideLeft = '-1000%';
 const hideRight = '1000%';
 const showPrev ='5%';
 const showNext = '85%';
-const showPencil = '20%';
+const showPencil = '22%';
 const showGlow = '23%';
 const showSpeaker = '25%';
 const showSentence = '80%';
@@ -166,7 +166,7 @@ class NumberScreen extends Component {
 
     letterTracing = () => {
         this.handleBackPress();
-        this.props.navigation.navigate('tracing' + soundList[this.state.indexSound]);
+        this.props.navigation.push('tracing' + soundList[this.state.indexSound]);
     }
 
 
@@ -238,7 +238,6 @@ class NumberScreen extends Component {
                     nextHide: showNext,
                     sentenceObjectHide: hideLeft,
                     speaker2Hide: hideLeft, prevBG: numberBGList[this.state.indexSound]});
-                
         } else {
             if(this.state.imageBackground == imageMainBG) {
                 this.handleBackPress();
@@ -302,7 +301,7 @@ class NumberScreen extends Component {
                 </View>
 
                 {/* Number Glow Container */}
-                <View style={{position: 'absolute', left: '53%', top: this.state.glowHide, width: '25%', height: '40%',}} >
+                <View style={{position: 'absolute', left: '51%', top: this.state.glowHide, width: '30%', height: '40%',}} >
                     <Image style={styles.Glow} source={this.state.glow}/>
                 </View>
 

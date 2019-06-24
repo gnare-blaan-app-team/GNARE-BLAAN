@@ -60,22 +60,62 @@ import Kastifun_Screen from './screens/CultureandArts/cultureandartsScreens/kast
 import Prayers_Screen from './screens/CultureandArts/cultureandartsScreens/prayersScreen';
 import DasalBagoMatulogPlay from './screens/CultureandArts/cultureandartsScreens/prayers/DasalBagoMatulogPlay';
 
- //Games
- import GameMenu from './screens/Games/GameMenu';
-// import DadSe from './screens/Games/DadSe/DadSe';
-// import DadSeTanbu1 from './screens/Games/DadSe/DadSeTanbu1';
-// import DadSeTanbu2 from './screens/Games/DadSe/DadSeTanbu2';
-// import DadSeTanbu3 from './screens/Games/DadSe/DadSeTanbu3';
-// import DadSeTanbu4 from './screens/Games/DadSe/DadSeTanbu4';
- import DadBatak from './screens/Games/DadBatak';
+// Games
+import GameMenu from './screens/Games/GameMenu';
+import DadSe from './screens/Games/DadSe/DadSe';
+import DadSeTanbu1 from './screens/Games/DadSe/DadSeTanbu1';
+import DadSeTanbu2 from './screens/Games/DadSe/DadSeTanbu2';
+import DadSeTanbu3 from './screens/Games/DadSe/DadSeTanbu3';
+import DadSeTanbu4 from './screens/Games/DadSe/DadSeTanbu4';
+import DadBatak from './screens/Games/DadBatak';
+import DadBatakTanbu1 from './screens/Games/dadbatak/Tanbu1';
+import DadBatakTanbu2 from './screens/Games/dadbatak/Tanbu2';
+import DadBatakTanbu3 from './screens/Games/dadbatak/Tanbu3';
 
-// import DadBatakTanbu1 from './screens/Games/dadbatak/Tanbu1';
-// import DadBatakTanbu2 from './screens/Games/dadbatak/Tanbu2';
-// import DadBatakTanbu3 from './screens/Games/dadbatak/Tanbu3';
+//Dad Batak - Bang 1
 import Bang1Question1 from './screens/Games/dadbatak/Bang1/Bang1Question1';
+import Bang1Question2 from './screens/Games/dadbatak/Bang1/Bang1Question2';
+import Bang1Question3 from './screens/Games/dadbatak/Bang1/Bang1Question3';
+import Bang1Question4 from './screens/Games/dadbatak/Bang1/Bang1Question4';
+import Bang1Question5 from './screens/Games/dadbatak/Bang1/Bang1Question5';
+import Bang1Question6 from './screens/Games/dadbatak/Bang1/Bang1Question6';
+import Bang1Question7 from './screens/Games/dadbatak/Bang1/Bang1Question7';
+import Bang1Question8 from './screens/Games/dadbatak/Bang1/Bang1Question8';
+import Bang1Question9 from './screens/Games/dadbatak/Bang1/Bang1Question9';
+import Bang1Question10 from './screens/Games/dadbatak/Bang1/Bang1Question10';
+import Bang1Question11 from './screens/Games/dadbatak/Bang1/Bang1Question11';
+import Bang1Question12 from './screens/Games/dadbatak/Bang1/Bang1Question12';
+
+//Dad Se - Bang 1
+import DSBang1Question1 from './screens/Games/DadSe/Bang1/DSBang1Question1';
+import DSBang1Question2 from './screens/Games/DadSe/Bang1/DSBang1Question2';
+import DSBang1Question3 from './screens/Games/DadSe/Bang1/DSBang1Question3';
+import DSBang1Question4 from './screens/Games/DadSe/Bang1/DSBang1Question4';
+import DSBang1Question5 from './screens/Games/DadSe/Bang1/DSBang1Question5';
+import DSBang1Question6 from './screens/Games/DadSe/Bang1/DSBang1Question6';
+import DSBang1Question7 from './screens/Games/DadSe/Bang1/DSBang1Question7';
+import DSBang1Question10 from './screens/Games/DadSe/Bang1/DSBang1Question10';
+
+//Dad Se - Bang 2
+import DSBang2Question1 from './screens/Games/DadSe/Bang2/DSBang2Question1';
+import DSBang2Question2 from './screens/Games/DadSe/Bang2/DSBang2Question2';
+import DSBang2Question3 from './screens/Games/DadSe/Bang2/DSBang2Question3';
+import DSBang2Question4 from './screens/Games/DadSe/Bang2/DSBang2Question4';
+import DSBang2Question5 from './screens/Games/DadSe/Bang2/DSBang2Question5';
+import DSBang2Question6 from './screens/Games/DadSe/Bang2/DSBang2Question6';
+import DSBang2Question7 from './screens/Games/DadSe/Bang2/DSBang2Question7';
+import DSBang2Question8 from './screens/Games/DadSe/Bang2/DSBang2Question8';
+import DSBang2Question9 from './screens/Games/DadSe/Bang2/DSBang2Question9';
+
+//Dad Se - Bang 3
+import DSBang3Question1 from './screens/Games/DadSe/Bang3/DSBang3Question1';
+import DSBang3Question2 from './screens/Games/DadSe/Bang3/DSBang3Question2';
+import DSBang3Question3 from './screens/Games/DadSe/Bang3/DSBang3Question3';
+import DSBang3Question4 from './screens/Games/DadSe/Bang3/DSBang3Question4';
+import DSBang3Question5 from './screens/Games/DadSe/Bang3/DSBang3Question5';
 
 
-// Letter Tracing
+//Letter Tracing
 import ATracing from './screens/Letters/LetterTracing/ATracing';
 import BTracing from './screens/Letters/LetterTracing/BTracing';
 import DTracing from './screens/Letters/LetterTracing/DTracing';
@@ -210,47 +250,63 @@ export default AppNavigator = createStackNavigator(
     prayersScreen: Prayers_Screen,
     dasalbagomatulogPlay: DasalBagoMatulogPlay,
 
-    // //Games
-     gameMenu: GameMenu,
-    // dadse : DadSe,
-    // dadseTanbu1: DadSeTanbu1, 
-    // dadseTanbu2: DadSeTanbu2,
-    // dadseTanbu3: DadSeTanbu3,
-    // dadseTanbu4: DadSeTanbu4,
-    // dadbatak: DadBatak,
-    // dadbataktanbu1: DadBatakTanbu1,
-    // dadbataktanbu2: DadBatakTanbu2,
-    // dadbataktanbu3: DadBatakTanbu3,
+    //Games
+    gameMenu: GameMenu,
+    dadse : DadSe,
+    dadseTanbu1: DadSeTanbu1, 
+    dadseTanbu2: DadSeTanbu2,
+    dadseTanbu3: DadSeTanbu3,
+    dadseTanbu4: DadSeTanbu4,
+    dadbatak: DadBatak,
+    dadbataktanbu1: DadBatakTanbu1,
+    dadbataktanbu2: DadBatakTanbu2,
+    dadbataktanbu3: DadBatakTanbu3,
 
-    // //Dad Batak - Bang 1
-     db_bang1Question1: Bang1Question1,
-    // db_bang1Question2: Bang1Question2,
-    // db_bang1Question3: Bang1Question3,
-    // db_bang1Question4: Bang1Question4,
-    // db_bang1Question5: Bang1Question5,
-    // db_bang1Question6: Bang1Question6,
-    // db_bang1Question7: Bang1Question7,
-    // db_bang1Question8: Bang1Question8,
-    // db_bang1Question9: Bang1Question9,
-    // db_bang1Question10: Bang1Question10,
-    // db_bang1Question11: Bang1Question11,
-    // db_bang1Question12: Bang1Question12,
+    //Dad Batak - Bang 1
+    db_bang1Question1: Bang1Question1,
+    db_bang1Question2: Bang1Question2,
+    db_bang1Question3: Bang1Question3,
+    db_bang1Question4: Bang1Question4,
+    db_bang1Question5: Bang1Question5,
+    db_bang1Question6: Bang1Question6,
+    db_bang1Question7: Bang1Question7,
+    db_bang1Question8: Bang1Question8,
+    db_bang1Question9: Bang1Question9,
+    db_bang1Question10: Bang1Question10,
+    db_bang1Question11: Bang1Question11,
+    db_bang1Question12: Bang1Question12,
 
-    // //Dad Se - Bang 1
-    // ds_bang1Question1: DSBang1Question1,
-    // ds_bang1Question2: DSBang1Question2,
-    // ds_bang1Question3: DSBang1Question3,
-    // ds_bang1Question4: DSBang1Question4,
-    // ds_bang1Question5: DSBang1Question5,
-    // ds_bang1Question6: DSBang1Question6,
-    // ds_bang1Question7: DSBang1Question7,
-    // ds_bang1Question10: DSBang1Question10,
+    //Dad Se - Bang 1
+    ds_bang1Question1: DSBang1Question1,
+    ds_bang1Question2: DSBang1Question2,
+    ds_bang1Question3: DSBang1Question3,
+    ds_bang1Question4: DSBang1Question4,
+    ds_bang1Question5: DSBang1Question5,
+    ds_bang1Question6: DSBang1Question6,
+    ds_bang1Question7: DSBang1Question7,
+    ds_bang1Question10: DSBang1Question10,
 
-    try:Try
+    //Dad Se - Bang 2
+    ds_bang2Question1: DSBang2Question1,
+    ds_bang2Question2: DSBang2Question2,
+    ds_bang2Question3: DSBang2Question3,
+    ds_bang2Question4: DSBang2Question4,
+    ds_bang2Question5: DSBang2Question5,
+    ds_bang2Question6: DSBang2Question6,
+    ds_bang2Question7: DSBang2Question7,
+    ds_bang2Question8: DSBang2Question8,
+    ds_bang2Question9: DSBang2Question9,
+
+    //Dad Se - Bang 3
+    ds_bang3Question1: DSBang3Question1,
+    ds_bang3Question2: DSBang3Question2,
+    ds_bang3Question3: DSBang3Question3,
+    ds_bang3Question4: DSBang3Question4,
+    ds_bang3Question5: DSBang3Question5,
   },
 {
 
-    initialRouteName:"gameMenu",
+    initialRouteName:"vocabularyMenu",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"

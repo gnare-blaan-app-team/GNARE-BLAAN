@@ -19,6 +19,11 @@ class DSBang1Question1 extends Component {
     static navigationOptions = {
         header: null,
     }
+
+    gotoMainMenu = () =>{
+        this.props.navigation.navigate('mainMenu')
+    }
+    
     render() {
         return (
             <ImageBackground
