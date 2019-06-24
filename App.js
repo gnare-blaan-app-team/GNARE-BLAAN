@@ -263,6 +263,9 @@ export default AppNavigator = createStackNavigator(
     dadbataktanbu3: DadBatakTanbu3,
 
     //Dad Batak - Bang 1
+
+    dadbtaktanbu1: DadBatakTanbu1,
+
     db_bang1Question1: Bang1Question1,
     db_bang1Question2: Bang1Question2,
     db_bang1Question3: Bang1Question3,
