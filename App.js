@@ -94,6 +94,8 @@ import DSBang1Question4 from './screens/Games/DadSe/Bang1/DSBang1Question4';
 import DSBang1Question5 from './screens/Games/DadSe/Bang1/DSBang1Question5';
 import DSBang1Question6 from './screens/Games/DadSe/Bang1/DSBang1Question6';
 import DSBang1Question7 from './screens/Games/DadSe/Bang1/DSBang1Question7';
+import DSBang1Question8 from './screens/Games/DadSe/Bang1/DSBang1Question8';
+import DSBang1Question9 from './screens/Games/DadSe/Bang1/DSBang1Question9';
 import DSBang1Question10 from './screens/Games/DadSe/Bang1/DSBang1Question10';
 
 //Dad Se - Bang 2
@@ -263,6 +265,9 @@ export default AppNavigator = createStackNavigator(
     dadbataktanbu3: DadBatakTanbu3,
 
     //Dad Batak - Bang 1
+
+    dadbtaktanbu1: DadBatakTanbu1,
+
     db_bang1Question1: Bang1Question1,
     db_bang1Question2: Bang1Question2,
     db_bang1Question3: Bang1Question3,
@@ -284,6 +289,8 @@ export default AppNavigator = createStackNavigator(
     ds_bang1Question5: DSBang1Question5,
     ds_bang1Question6: DSBang1Question6,
     ds_bang1Question7: DSBang1Question7,
+    ds_bang1Question8: DSBang1Question8,
+    ds_bang1Question9: DSBang1Question9,
     ds_bang1Question10: DSBang1Question10,
 
     //Dad Se - Bang 2
