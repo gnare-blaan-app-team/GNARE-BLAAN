@@ -43,7 +43,7 @@ class Vocabulary5 extends Component {
         super(props);
         this.state = {
             BackgroundImage: Vocab5BG,
-            mountainLeft:'11.5%',
+            mountainLeft:'12.7%',
             treeTop:'19%',
             fallsTop:'19%',
             ilogTop:'48.5%',
@@ -69,7 +69,7 @@ class Vocabulary5 extends Component {
         if (clear == 'clear') {
             this.setState({
                 BackgroundImage: Vocab5BG,
-                mountainLeft: '11.5%',
+                mountainLeft: '12.7%',
                 treeTop: '19%',
                 fallsTop: '19%',
                 ilogTop: '48.5%',
