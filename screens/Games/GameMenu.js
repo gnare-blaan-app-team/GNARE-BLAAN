@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, TouchableOpacity , ImageBackground } from 'react-native';
+import { AsyncStorage, View, Image, StyleSheet, TouchableOpacity , ImageBackground } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
@@ -18,7 +18,10 @@ import TanbuIcon from './gameImages/tanbu_icon.png';
 
 const backgroundList = [BG,Slide1,DadseBG]
 
+const Key = '@MyApp:key';
+
 class GameMenu extends Component {
+    
     static navigationOptions = {
         header: null,
     }
@@ -36,6 +39,13 @@ class GameMenu extends Component {
             kastifunTop:'1000%',
             tanbuTop: '1000%',
             level:0,
+        }
+    }
+       onLoad = async () => {
+        const quesion = await AsyncStorage.getItem(Key);
+        this.setState({ quesion });
+        if (quesion == 'Level3') {
+            this.props.navigation.push('ds_bang1Question2')
         }
     }
 
@@ -59,6 +69,7 @@ class GameMenu extends Component {
     }
 
     gotoDadSeTanbu = (index) => {
+        this.onLoad();
         this.setState({
             tanbuTop:'30%',
             dadbatakTop: '1000%',
@@ -68,6 +79,7 @@ class GameMenu extends Component {
             tanbu3Top: '1000%',
             kastifunTop: '1000%',
         })
+        
     }
     gotoBang = () => {
         const index = this.state.level;
@@ -80,12 +92,10 @@ class GameMenu extends Component {
         if(index == 3){
             this.props.navigation.push('ds_bang3Question1');
         }
-        // if (index == 4) {
-        //     this.props.navigation.push('ds_bang1Question1');
-        // }
     }
 
     render() {
+        console.disableYellowBox = true; 
         return (
             <ImageBackground style={{ flex: 1, width: '100%', height: '100%', resizeMode: 'stretch' }}
                 source={BG}

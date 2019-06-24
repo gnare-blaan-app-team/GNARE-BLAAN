@@ -116,6 +116,7 @@ import DSBang3Question3 from './screens/Games/DadSe/Bang3/DSBang3Question3';
 import DSBang3Question4 from './screens/Games/DadSe/Bang3/DSBang3Question4';
 import DSBang3Question5 from './screens/Games/DadSe/Bang3/DSBang3Question5';
 
+import Bang from './screens/Games/DadSe/Bang1/Bang';
 
 //Letter Tracing
 import ATracing from './screens/Letters/LetterTracing/ATracing';
@@ -310,10 +311,12 @@ export default AppNavigator = createStackNavigator(
     ds_bang3Question3: DSBang3Question3,
     ds_bang3Question4: DSBang3Question4,
     ds_bang3Question5: DSBang3Question5,
+
+    bang: Bang
   },
 {
 
-    initialRouteName:"vocabularyMenu",
+  initialRouteName:"home",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"
