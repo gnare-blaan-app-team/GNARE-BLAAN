@@ -6,7 +6,7 @@ import DLetter from '../LettersAssets/D.png';
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
 
-class ATracing extends Component {
+class DTracing extends Component {
     static navigationOptions = {
         header: null,
     }
@@ -122,4 +122,4 @@ const ballStyle = StyleSheet.create({
     }
 });
 
-export default withNavigation(ATracing);
+export default withNavigation(DTracing);

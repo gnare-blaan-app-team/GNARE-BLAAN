@@ -29,17 +29,16 @@ class Vocabulary1 extends Component {
     }
 
   constructor(props) {
-    super(props);
-    this.state = {
-      BackgroundImage: Vocab1BG,
-      clearBackground:'gotoVocab1Menu',
-      NanayTop:'26%',
-      LoloTop:'23%',
-      LolaTop:'25%',
-      KaitoTop:'37%',
-      KaibeTop: '37%',
-      TatayTop:'23%',
-      choice:0,
+        super(props);
+        this.state = {
+          BackgroundImage: Vocab1BG,
+          clearBackground:'gotoVocab1Menu',
+          NanayTop:'26%',
+          LoloTop:'23%',
+          LolaTop:'25%',
+          KaitoTop:'37%',
+          KaibeTop: '37%',
+          TatayTop:'23%',
     }
   }
 

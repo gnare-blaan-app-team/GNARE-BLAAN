@@ -5,7 +5,7 @@ import { withNavigation } from 'react-navigation';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
-import DadseBG from './dadseImages/DadSeBG.png';
+import DadseBG from '../gameImages/DadSeBG.png';
 import GnareIcon from '../gameImages/GnareMain.png';
 import TanbuIcon from '../gameImages/tanbu_icon.png';
 
@@ -14,6 +14,11 @@ class DadSeTanbu2 extends Component {
     static navigationOptions = {
         header: null,
     }
+
+    gotoBang2 = () => {
+        this.props.navigation.navigate('ds_bang2Question2')
+    }  
+
     render() {
         return (
             <ImageBackground
@@ -28,11 +33,13 @@ class DadSeTanbu2 extends Component {
                     </Image>
                 </View>
                 <View style={styles.tanbuStyle}>
-                    <Image
-                        source={TanbuIcon}
-                        style={styles.image}
-                    >
-                    </Image>
+                    <TouchableOpacity onPress = {this.gotoBang2}>
+                        <Image
+                            source={TanbuIcon}
+                            style={styles.image}
+                        >
+                        </Image>
+                    </TouchableOpacity>
                 </View>
             </ImageBackground>
         )

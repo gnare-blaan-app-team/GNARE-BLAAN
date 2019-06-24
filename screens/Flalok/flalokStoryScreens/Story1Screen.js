@@ -101,7 +101,7 @@ class Story1Screen extends Component {
 
     handleEnd = () => {
         this.setState({ paused: true, opacityVideo: 0, opacityNext: 1, 
-                    hideVideo: 0, hideTabs: '15%', hideHome: '-2%',
+                    hideVideo: 0, hideTabs: '15%', hideHome: '3%',
                     hideStory: '-1000%'});
         //his.props.navigation.navigate('endstory');
     };
@@ -136,7 +136,7 @@ class Story1Screen extends Component {
     hideControl = () => {
         this.setState({
             controlHide: this.state.controlHide == 0 ? -1000 : 0,
-            vidSkip: this.state.vidSkip == '-2%' ? '-1000%' : '-2%',
+            vidSkip: this.state.vidSkip == '3%' ? '-1000%' : '3%',
             hideSub: this.state.hideSub == '-1000%'  ? '3%' : '-1000%',
         })
     }

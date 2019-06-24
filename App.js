@@ -2,11 +2,11 @@ import { createStackNavigator} from "react-navigation";
 import { useScreens } from 'react-native-screens';
 import HomeScreen from './screens/HomePage';
 import MainMenu from './screens/MainMenu';
-import LetterScreen from './screens/letterScreen';
+import LetterScreen from './screens/Letters/letterScreen';
 import Numbers from './screens/Numbers/NumbersScreen';
 
 import NumberIntroScreen from './screens/Numbers/NumberIntroScreen';
-import LetterIntroScreen from './screens/LetterIntroScreen';
+import LetterIntroScreen from './screens/Letters/LetterIntroScreen';
 
 // Flalok Stories Import
 
@@ -86,13 +86,67 @@ import Bang1Question10 from './screens/Games/dadbatak/Bang1/Bang1Question10';
 import Bang1Question11 from './screens/Games/dadbatak/Bang1/Bang1Question11';
 import Bang1Question12 from './screens/Games/dadbatak/Bang1/Bang1Question12';
 
+//Dad Se - Bang 1
+import DSBang1Question1 from './screens/Games/DadSe/Bang1/DSBang1Question1';
+import DSBang1Question2 from './screens/Games/DadSe/Bang1/DSBang1Question2';
+import DSBang1Question3 from './screens/Games/DadSe/Bang1/DSBang1Question3';
+import DSBang1Question4 from './screens/Games/DadSe/Bang1/DSBang1Question4';
+import DSBang1Question5 from './screens/Games/DadSe/Bang1/DSBang1Question5';
+import DSBang1Question6 from './screens/Games/DadSe/Bang1/DSBang1Question6';
+import DSBang1Question7 from './screens/Games/DadSe/Bang1/DSBang1Question7';
+import DSBang1Question10 from './screens/Games/DadSe/Bang1/DSBang1Question10';
+
+//Dad Se - Bang 2
+import DSBang2Question1 from './screens/Games/DadSe/Bang2/DSBang2Question1';
+import DSBang2Question2 from './screens/Games/DadSe/Bang2/DSBang2Question2';
+import DSBang2Question3 from './screens/Games/DadSe/Bang2/DSBang2Question3';
+import DSBang2Question4 from './screens/Games/DadSe/Bang2/DSBang2Question4';
+import DSBang2Question5 from './screens/Games/DadSe/Bang2/DSBang2Question5';
+import DSBang2Question6 from './screens/Games/DadSe/Bang2/DSBang2Question6';
+import DSBang2Question7 from './screens/Games/DadSe/Bang2/DSBang2Question7';
+import DSBang2Question8 from './screens/Games/DadSe/Bang2/DSBang2Question8';
+import DSBang2Question9 from './screens/Games/DadSe/Bang2/DSBang2Question9';
+
+//Dad Se - Bang 3
+import DSBang3Question1 from './screens/Games/DadSe/Bang3/DSBang3Question1';
+import DSBang3Question2 from './screens/Games/DadSe/Bang3/DSBang3Question2';
+import DSBang3Question3 from './screens/Games/DadSe/Bang3/DSBang3Question3';
+import DSBang3Question4 from './screens/Games/DadSe/Bang3/DSBang3Question4';
+import DSBang3Question5 from './screens/Games/DadSe/Bang3/DSBang3Question5';
+
+
+//Letter Tracing
 import ATracing from './screens/Letters/LetterTracing/ATracing';
 import BTracing from './screens/Letters/LetterTracing/BTracing';
 import DTracing from './screens/Letters/LetterTracing/DTracing';
 import ETracing from './screens/Letters/LetterTracing/ETracing';
 import FTracing from './screens/Letters/LetterTracing/FTracing';
 import HTracing from './screens/Letters/LetterTracing/HTracing';
-import GTracing from './screens/Letters/LetterTracing/HTracing';
+import GTracing from './screens/Letters/LetterTracing/GTracing';
+import ITracing from './screens/Letters/LetterTracing/ITracing';
+import KTracing from './screens/Letters/LetterTracing/KTracing';
+import LTracing from './screens/Letters/LetterTracing/LTracing';
+import MTracing from './screens/Letters/LetterTracing/MTracing';
+import NTracing from './screens/Letters/LetterTracing/NTracing';
+import OTracing from './screens/Letters/LetterTracing/OTracing';
+import STracing from './screens/Letters/LetterTracing/STracing';
+import TTracing from './screens/Letters/LetterTracing/TTracing';
+import UTracing from './screens/Letters/LetterTracing/UTracing';
+import WTracing from './screens/Letters/LetterTracing/WTracing';
+import YTracing from './screens/Letters/LetterTracing/YTracing';
+
+
+// Number Tracing
+import OneTracing from './screens/Numbers/NumberTracing/1Tracing';
+import TwoTracing from './screens/Numbers/NumberTracing/2Tracing';
+import ThreeTracing from './screens/Numbers/NumberTracing/3Tracing';
+import FourTracing from './screens/Numbers/NumberTracing/4Tracing';
+import FiveTracing from './screens/Numbers/NumberTracing/5Tracing';
+import SixTracing from './screens/Numbers/NumberTracing/6Tracing';
+import SevenTracing from './screens/Numbers/NumberTracing/7Tracing';
+import EightTracing from './screens/Numbers/NumberTracing/8Tracing';
+import NineTracing from './screens/Numbers/NumberTracing/9Tracing';
+//import TenTracing from './screens/Numbers/NumberTracing/10Tracing';
 
 
 useScreens();
@@ -105,8 +159,11 @@ export default AppNavigator = createStackNavigator(
     letters: LetterScreen,
     numbers: Numbers,
 
+
+    // Letters
     letterIntro: LetterIntroScreen,
 
+    // Letter Tracing
     tracingA: ATracing,
     tracingB: BTracing,
     tracingD: DTracing,
@@ -114,6 +171,30 @@ export default AppNavigator = createStackNavigator(
     tracingF: FTracing,
     tracingG: GTracing,
     tracingH: HTracing,
+    tracingI: ITracing,
+    tracingK: KTracing,
+    tracingL: LTracing,
+    tracingM: MTracing,
+    tracingN: NTracing,
+    tracingO: OTracing,
+    tracingS: STracing,
+    tracingT: TTracing,
+    tracingU: UTracing,
+    tracingW: WTracing,
+    tracingY: YTracing,
+
+    // Number Tracing
+    tracing1: OneTracing,
+    tracing2: TwoTracing,
+    tracing3: ThreeTracing,
+    tracing4: FourTracing,
+    tracing5: FiveTracing,
+    tracing6: SixTracing,
+    tracing7: SevenTracing,
+    tracing8: EightTracing,
+    tracing9: NineTracing,
+    //tracing10: TenTracing,
+    
 
 
     numberIntro: NumberIntroScreen,
@@ -196,12 +277,39 @@ export default AppNavigator = createStackNavigator(
     db_bang1Question11: Bang1Question11,
     db_bang1Question12: Bang1Question12,
 
+    //Dad Se - Bang 1
+    ds_bang1Question1: DSBang1Question1,
+    ds_bang1Question2: DSBang1Question2,
+    ds_bang1Question3: DSBang1Question3,
+    ds_bang1Question4: DSBang1Question4,
+    ds_bang1Question5: DSBang1Question5,
+    ds_bang1Question6: DSBang1Question6,
+    ds_bang1Question7: DSBang1Question7,
+    ds_bang1Question10: DSBang1Question10,
+
+    //Dad Se - Bang 2
+    ds_bang2Question1: DSBang2Question1,
+    ds_bang2Question2: DSBang2Question2,
+    ds_bang2Question3: DSBang2Question3,
+    ds_bang2Question4: DSBang2Question4,
+    ds_bang2Question5: DSBang2Question5,
+    ds_bang2Question6: DSBang2Question6,
+    ds_bang2Question7: DSBang2Question7,
+    ds_bang2Question8: DSBang2Question8,
+    ds_bang2Question9: DSBang2Question9,
+
+    //Dad Se - Bang 3
+    ds_bang3Question1: DSBang3Question1,
+    ds_bang3Question2: DSBang3Question2,
+    ds_bang3Question3: DSBang3Question3,
+    ds_bang3Question4: DSBang3Question4,
+    ds_bang3Question5: DSBang3Question5,
   },
 {
 
-  initialRouteName: "home",
-  mode: 'card',
-  cardStyle: {   
+    initialRouteName:"home",
+    mode: 'card',
+    cardStyle: {
     backgroundColor:"transperent"
 }
 }
