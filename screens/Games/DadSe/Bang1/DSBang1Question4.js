@@ -9,11 +9,11 @@ import GameBG from '../../gameImages/GameBG.png';
 import Home_icon from '../../../images/Home_icon.png';
 import GnareIcon from '../../gameImages/GnareMain.png';
 import Gufadyan from '../../gameImages/gufadyan.png';
-import Bang1Board from '../../gameImages/bang1DadSeBG.png';
-import Tlu from '../../gameImages/tlu.png';
-import Lime from '../../gameImages/lime.png';
-import Fat from '../../gameImages/fat.png';
-import Sfalo from '../../gameImages/sfalo.png';
+import Bang1BoardQ4 from '../../gameImages/DS_bang1Q4.png';
+import DSB1Tlu from '../../gameImages/tlu.png';
+import DSB1Lime from '../../gameImages/lime.png';
+import DSB1Fat from '../../gameImages/fat.png';
+import DSB1Sfalo from '../../gameImages/sfalo.png';
 
 class DSBang1Question4 extends Component {
     static navigationOptions = {
@@ -34,19 +34,19 @@ class DSBang1Question4 extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.bang1Board}>
-                    <Image source={Bang1Board} style={styles.image}></Image>
+                    <Image source={Bang1BoardQ4} style={styles.image}></Image>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice1Style}>
-                    <Image source={Tlu} style={styles.image}></Image>
+                    <Image source={DSB1Tlu} style={styles.image}></Image>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice2Style}>
-                    <Image source={Lime} style={styles.image}></Image>
+                    <Image source={DSB1Lime} style={styles.image}></Image>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice3Style}>
-                    <Image source={Fat} style={styles.image}></Image>
+                    <Image source={DSB1Fat} style={styles.image}></Image>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice4Style}>
-                    <Image source={Sfalo} style={styles.image}></Image>
+                    <Image source={DSB1Sfalo} style={styles.image}></Image>
                 </View>
                 <View style={globalStyleSheet.gufadyan}>
                     <Image source={Gufadyan} style={styles.image}></Image>
