@@ -1,5 +1,6 @@
 'use-restrict';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { Dimensions } from 'react-native';
 
 export const globalStyleSheet = {
 
@@ -12,6 +13,22 @@ export const globalStyleSheet = {
         justifyContent: 'center',
         alignItems: 'center',
         resizeMode: 'contain',
+    },
+
+    trace: {
+        position: 'absolute',
+        backgroundColor: 'black',
+        width: Dimensions.get('window').width > 712 ? 80 : 60,
+        height: Dimensions.get('window').height > 360 ? 80 : 60,
+        borderRadius: Dimensions.get('window').height > 360 ? 80 : 60,
+    },
+
+    dot: {
+        position: 'absolute',
+        backgroundColor: 'black',
+        width: 20,
+        height: 20,
+        borderRadius: 20,
     },
 
     image2: {
