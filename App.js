@@ -58,7 +58,14 @@ import cultureandartsMain from './screens/CultureandArts/cultureandartsMain';
 import Chants_Screen from './screens/CultureandArts/cultureandartsScreens/chantsScreen';
 import Kastifun_Screen from './screens/CultureandArts/cultureandartsScreens/kastifunScreen';
 import Prayers_Screen from './screens/CultureandArts/cultureandartsScreens/prayersScreen';
-import DasalBagoMatulogPlay from './screens/CultureandArts/cultureandartsScreens/prayers/DasalBagoMatulogPlay';
+import Prayer1_Screen from './screens/CultureandArts/cultureandartsScreens/prayers/prayers1Screen';
+import Prayer2_Screen from './screens/CultureandArts/cultureandartsScreens/prayers/prayers2Screen';
+import Prayer3_Screen from './screens/CultureandArts/cultureandartsScreens/prayers/prayers3Screen';
+import Chant1_Screen from './screens/CultureandArts/cultureandartsScreens/chants/chants1Screen';
+import Chant2_Screen from './screens/CultureandArts/cultureandartsScreens/chants/chants2Screen';
+import Chant3_Screen from './screens/CultureandArts/cultureandartsScreens/chants/chants3Screen';
+import Kastifun1_Screen from './screens/CultureandArts/cultureandartsScreens/kastifun/kastifun1Screen';
+import Kastifun2_Screen from './screens/CultureandArts/cultureandartsScreens/kastifun/kastifun2Screen';
 
 // Games
 import GameMenu from './screens/Games/GameMenu';
@@ -248,7 +255,14 @@ export default AppNavigator = createStackNavigator(
     chantsScreen: Chants_Screen,
     kastifunScreen: Kastifun_Screen,
     prayersScreen: Prayers_Screen,
-    dasalbagomatulogPlay: DasalBagoMatulogPlay,
+    prayer1Screen: Prayer1_Screen,
+    prayer2Screen: Prayer2_Screen,
+    prayer3Screen: Prayer3_Screen,
+    chant1Screen: Chant1_Screen,
+    chant2Screen: Chant2_Screen,
+    chant3Screen: Chant3_Screen,
+    kastifun1Screen: Kastifun1_Screen,
+    kastifun2Screen: Kastifun2_Screen,
 
     //Games
     gameMenu: GameMenu,
@@ -311,7 +325,7 @@ export default AppNavigator = createStackNavigator(
   },
 {
 
-    initialRouteName:"home",
+    initialRouteName:"tracing7",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"

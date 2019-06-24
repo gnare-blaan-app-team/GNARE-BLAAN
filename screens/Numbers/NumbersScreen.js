@@ -35,7 +35,7 @@ const hideRight = '1000%';
 const showPrev ='5%';
 const showNext = '85%';
 const showPencil = '22%';
-const showGlow = '23%';
+const showGlow = '21%';
 const showSpeaker = '25%';
 const showSentence = '80%';
 const showSentenceObject = '20%';
@@ -301,7 +301,7 @@ class NumberScreen extends Component {
                 </View>
 
                 {/* Number Glow Container */}
-                <View style={{position: 'absolute', left: '53%', top: this.state.glowHide, width: '25%', height: '40%',}} >
+                <View style={{position: 'absolute', left: '51%', top: this.state.glowHide, width: '30%', height: '45%',}} >
                     <Image style={styles.Glow} source={this.state.glow}/>
                 </View>
 
