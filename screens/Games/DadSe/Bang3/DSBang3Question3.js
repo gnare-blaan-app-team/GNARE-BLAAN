@@ -9,21 +9,16 @@ import GameBG from '../../gameImages/GameBG.png';
 import Home_icon from '../../../images/Home_icon.png';
 import GnareIcon from '../../gameImages/GnareMain.png';
 import Gufadyan from '../../gameImages/gufadyan.png';
-import Bang1Board from '../../gameImages/bang1DadSeBG.png';
-import Lwe from '../../gameImages/lwe.png';
-import Fat from '../../gameImages/fat.png';
-import Lime from '../../gameImages/lime.png';
-import Satu from '../../gameImages/satu.png';
+import Bang3BoardQ3 from '../../gameImages/DS_bang3Q3.png';
+import DSB3Fitu from '../../gameImages/fitu.png';
+import DSB3Lime from '../../gameImages/lime.png';
+import DSB3Nam from '../../gameImages/nam.png';
+import DSB3Fat from '../../gameImages/fat.png';
 
-class DSBang1Question1 extends Component {
+class DSBang3Question3 extends Component {
     static navigationOptions = {
         header: null,
     }
-
-    gotoMainMenu = () =>{
-        this.props.navigation.navigate('mainMenu')
-    }
-    
     render() {
         return (
             <ImageBackground
@@ -39,19 +34,19 @@ class DSBang1Question1 extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.bang1Board}>
-                    <Image source={Bang1Board} style={styles.image}></Image>
+                    <Image source={Bang3BoardQ3} style={styles.image}></Image>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice1Style}>
-                    <Image source={Lwe} style={styles.image}></Image>
+                    <Image source={DSB3Fitu} style={styles.image}></Image>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice2Style}>
-                    <Image source={Fat} style={styles.image}></Image>
+                    <Image source={DSB3Lime} style={styles.image}></Image>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice3Style}>
-                    <Image source={Lime} style={styles.image}></Image>
+                    <Image source={DSB3Nam} style={styles.image}></Image>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice4Style}>
-                    <Image source={Satu} style={styles.image}></Image>
+                    <Image source={DSB3Fat} style={styles.image}></Image>
                 </View>
                 <View style={globalStyleSheet.gufadyan}>
                     <Image source={Gufadyan} style={styles.image}></Image>
@@ -71,4 +66,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default withNavigation(DSBang1Question1);
+export default withNavigation(DSBang3Question3);

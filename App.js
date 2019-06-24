@@ -96,6 +96,25 @@ import DSBang1Question6 from './screens/Games/DadSe/Bang1/DSBang1Question6';
 import DSBang1Question7 from './screens/Games/DadSe/Bang1/DSBang1Question7';
 import DSBang1Question10 from './screens/Games/DadSe/Bang1/DSBang1Question10';
 
+//Dad Se - Bang 2
+import DSBang2Question1 from './screens/Games/DadSe/Bang2/DSBang2Question1';
+import DSBang2Question2 from './screens/Games/DadSe/Bang2/DSBang2Question2';
+import DSBang2Question3 from './screens/Games/DadSe/Bang2/DSBang2Question3';
+import DSBang2Question4 from './screens/Games/DadSe/Bang2/DSBang2Question4';
+import DSBang2Question5 from './screens/Games/DadSe/Bang2/DSBang2Question5';
+import DSBang2Question6 from './screens/Games/DadSe/Bang2/DSBang2Question6';
+import DSBang2Question7 from './screens/Games/DadSe/Bang2/DSBang2Question7';
+import DSBang2Question8 from './screens/Games/DadSe/Bang2/DSBang2Question8';
+import DSBang2Question9 from './screens/Games/DadSe/Bang2/DSBang2Question9';
+
+//Dad Se - Bang 3
+import DSBang3Question1 from './screens/Games/DadSe/Bang3/DSBang3Question1';
+import DSBang3Question2 from './screens/Games/DadSe/Bang3/DSBang3Question2';
+import DSBang3Question3 from './screens/Games/DadSe/Bang3/DSBang3Question3';
+import DSBang3Question4 from './screens/Games/DadSe/Bang3/DSBang3Question4';
+import DSBang3Question5 from './screens/Games/DadSe/Bang3/DSBang3Question5';
+
+
 //Letter Tracing
 import ATracing from './screens/Letters/LetterTracing/ATracing';
 import BTracing from './screens/Letters/LetterTracing/BTracing';
@@ -213,6 +232,24 @@ export default AppNavigator = createStackNavigator(
     ds_bang1Question6: DSBang1Question6,
     ds_bang1Question7: DSBang1Question7,
     ds_bang1Question10: DSBang1Question10,
+
+    //Dad Se - Bang 2
+    ds_bang2Question1: DSBang2Question1,
+    ds_bang2Question2: DSBang2Question2,
+    ds_bang2Question3: DSBang2Question3,
+    ds_bang2Question4: DSBang2Question4,
+    ds_bang2Question5: DSBang2Question5,
+    ds_bang2Question6: DSBang2Question6,
+    ds_bang2Question7: DSBang2Question7,
+    ds_bang2Question8: DSBang2Question8,
+    ds_bang2Question9: DSBang2Question9,
+
+    //Dad Se - Bang 3
+    ds_bang3Question1: DSBang3Question1,
+    ds_bang3Question2: DSBang3Question2,
+    ds_bang3Question3: DSBang3Question3,
+    ds_bang3Question4: DSBang3Question4,
+    ds_bang3Question5: DSBang3Question5,
   },
 {
 
