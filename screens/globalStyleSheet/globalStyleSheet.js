@@ -64,7 +64,7 @@ export const globalStyleSheet = {
     // Home Icon
     homeContainer: {
         position: 'absolute',
-        left: '85%',
+        left: '88%',
         top: '3%',
         width: '14%',
         height: '28%',

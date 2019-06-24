@@ -6,7 +6,7 @@ import BLetter from '../LettersAssets/B.png';
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
 
-class ATracing extends Component {
+class BTracing extends Component {
     static navigationOptions = {
         header: null,
     }
@@ -84,7 +84,7 @@ class ATracing extends Component {
                 <View {...this.panResponder.panHandlers} style={{position: 'absolute', 
                         width: '75%', height: '70%', top: '20%', left: '12.5%'}}>
                     <View style={{position: 'absolute', width: '70%', height: '80%', top: '10%', left: '15%'}}>
-                        <Image source={DLetter} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
+                        <Image source={BLetter} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
                     </View>
                 </View>
 
@@ -122,4 +122,4 @@ const ballStyle = StyleSheet.create({
     }
 });
 
-export default withNavigation(ATracing);
+export default withNavigation(BTracing);

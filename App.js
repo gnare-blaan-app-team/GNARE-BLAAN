@@ -2,11 +2,11 @@ import { createStackNavigator} from "react-navigation";
 import { useScreens } from 'react-native-screens';
 import HomeScreen from './screens/HomePage';
 import MainMenu from './screens/MainMenu';
-import LetterScreen from './screens/letterScreen';
+import LetterScreen from './screens/Letters/letterScreen';
 import Numbers from './screens/Numbers/NumbersScreen';
 
 import NumberIntroScreen from './screens/Numbers/NumberIntroScreen';
-import LetterIntroScreen from './screens/LetterIntroScreen';
+import LetterIntroScreen from './screens/Letters/LetterIntroScreen';
 
 // Flalok Stories Import
 
@@ -122,7 +122,31 @@ import DTracing from './screens/Letters/LetterTracing/DTracing';
 import ETracing from './screens/Letters/LetterTracing/ETracing';
 import FTracing from './screens/Letters/LetterTracing/FTracing';
 import HTracing from './screens/Letters/LetterTracing/HTracing';
-import GTracing from './screens/Letters/LetterTracing/HTracing';
+import GTracing from './screens/Letters/LetterTracing/GTracing';
+import ITracing from './screens/Letters/LetterTracing/ITracing';
+import KTracing from './screens/Letters/LetterTracing/KTracing';
+import LTracing from './screens/Letters/LetterTracing/LTracing';
+import MTracing from './screens/Letters/LetterTracing/MTracing';
+import NTracing from './screens/Letters/LetterTracing/NTracing';
+import OTracing from './screens/Letters/LetterTracing/OTracing';
+import STracing from './screens/Letters/LetterTracing/STracing';
+import TTracing from './screens/Letters/LetterTracing/TTracing';
+import UTracing from './screens/Letters/LetterTracing/UTracing';
+import WTracing from './screens/Letters/LetterTracing/WTracing';
+import YTracing from './screens/Letters/LetterTracing/YTracing';
+
+
+// Number Tracing
+import OneTracing from './screens/Numbers/NumberTracing/1Tracing';
+import TwoTracing from './screens/Numbers/NumberTracing/2Tracing';
+import ThreeTracing from './screens/Numbers/NumberTracing/3Tracing';
+import FourTracing from './screens/Numbers/NumberTracing/4Tracing';
+import FiveTracing from './screens/Numbers/NumberTracing/5Tracing';
+import SixTracing from './screens/Numbers/NumberTracing/6Tracing';
+import SevenTracing from './screens/Numbers/NumberTracing/7Tracing';
+import EightTracing from './screens/Numbers/NumberTracing/8Tracing';
+import NineTracing from './screens/Numbers/NumberTracing/9Tracing';
+//import TenTracing from './screens/Numbers/NumberTracing/10Tracing';
 
 
 useScreens();
@@ -135,8 +159,11 @@ export default AppNavigator = createStackNavigator(
     letters: LetterScreen,
     numbers: Numbers,
 
+
+    // Letters
     letterIntro: LetterIntroScreen,
 
+    // Letter Tracing
     tracingA: ATracing,
     tracingB: BTracing,
     tracingD: DTracing,
@@ -144,6 +171,30 @@ export default AppNavigator = createStackNavigator(
     tracingF: FTracing,
     tracingG: GTracing,
     tracingH: HTracing,
+    tracingI: ITracing,
+    tracingK: KTracing,
+    tracingL: LTracing,
+    tracingM: MTracing,
+    tracingN: NTracing,
+    tracingO: OTracing,
+    tracingS: STracing,
+    tracingT: TTracing,
+    tracingU: UTracing,
+    tracingW: WTracing,
+    tracingY: YTracing,
+
+    // Number Tracing
+    tracing1: OneTracing,
+    tracing2: TwoTracing,
+    tracing3: ThreeTracing,
+    tracing4: FourTracing,
+    tracing5: FiveTracing,
+    tracing6: SixTracing,
+    tracing7: SevenTracing,
+    tracing8: EightTracing,
+    tracing9: NineTracing,
+    //tracing10: TenTracing,
+    
 
 
     numberIntro: NumberIntroScreen,
@@ -253,9 +304,9 @@ export default AppNavigator = createStackNavigator(
   },
 {
 
-  initialRouteName: "home",
-  mode: 'card',
-  cardStyle: {   
+    initialRouteName:"home",
+    mode: 'card',
+    cardStyle: {
     backgroundColor:"transperent"
 }
 }

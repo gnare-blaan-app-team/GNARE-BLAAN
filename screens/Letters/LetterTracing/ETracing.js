@@ -6,7 +6,7 @@ import ELetter from '../LettersAssets/E.png';
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
 
-class ATracing extends Component {
+class ETracing extends Component {
     static navigationOptions = {
         header: null,
     }
@@ -122,4 +122,4 @@ const ballStyle = StyleSheet.create({
     }
 });
 
-export default withNavigation(ATracing);
+export default withNavigation(ETracing);

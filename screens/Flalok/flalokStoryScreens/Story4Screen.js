@@ -101,7 +101,7 @@ class Story4Screen extends Component {
 
     handleEnd = () => {
         this.setState({ paused: true, opacityVideo: 0, opacityNext: 1, 
-                    hideVideo: 0, hideTabs: '15%', hideHome: '-2%',
+                    hideVideo: 0, hideTabs: '15%', hideHome: '3%',
                     hideStory: '-1000%'});
         //his.props.navigation.navigate('endstory');
     };
@@ -136,7 +136,7 @@ class Story4Screen extends Component {
     hideControl = () => {
         this.setState({
             controlHide: this.state.controlHide == 0 ? -1000 : 0,
-            vidSkip: this.state.vidSkip == '-2%' ? '-1000%' : '-2%',
+            vidSkip: this.state.vidSkip == '3%' ? '-1000%' : '3%',
             hideSub: this.state.hideSub == '-1000%'  ? '3%' : '-1000%',
         })
     }
@@ -151,8 +151,7 @@ class Story4Screen extends Component {
                     <TouchableWithoutFeedback onPress={this.hideControl}>
                         <Video
                             paused={this.state.paused}
-                            source={this.state.videoFile}
-                            
+                            source={this.state.videoFile}  
                             style={{ width: "100%", height: '100%' }}
                             resizeMode="stretch"
                             volume={this.state.volume}

@@ -71,7 +71,7 @@ class ATracing extends Component {
         let touchTrail = this.state.arrayMove.map((item, key) => {
             return(
                 <View key = { key } {...this.panResponder.panHandlers}
-                    style={[ballStyle.circle, {position: 'absolute', left: item.x - 20, top: item.y - 20}]}>
+                    style={[ballStyle.circle, {position: 'absolute', left: item.x - 24, top: item.y - 24}]}>
                 </View>
             )
         });
@@ -116,9 +116,9 @@ class ATracing extends Component {
 const ballStyle = StyleSheet.create({
     circle: {
         backgroundColor: 'black',
-        width: 45,
-        height: 45,
-        borderRadius: 40,
+        width: 48,
+        height: 48,
+        borderRadius: 48,
     }
 });
 
