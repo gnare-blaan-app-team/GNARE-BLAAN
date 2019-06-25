@@ -270,7 +270,7 @@ class SevenTracing extends Component {
                                 x: numberDimension.width * 0.7,
                                 y: numberDimension.height * 0.25,
                             }, {
-                                x: numberDimension.width * 0.49,
+                                x: numberDimension .width * 0.49,
                                 y: numberDimension.height * 0.5,
                             }, {
                                 x: numberDimension.width * 0.38,
