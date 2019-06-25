@@ -86,6 +86,23 @@ import Bang1Question10 from './screens/Games/dadbatak/Bang1/Bang1Question10';
 import Bang1Question11 from './screens/Games/dadbatak/Bang1/Bang1Question11';
 import Bang1Question12 from './screens/Games/dadbatak/Bang1/Bang1Question12';
 
+//Dad Batak - Bang 2
+import Bang2Question1 from './screens/Games/dadbatak/Bang2/Bang2Question1';
+import Bang2Question2 from './screens/Games/dadbatak/Bang2/Bang2Question2';
+import Bang2Question3 from './screens/Games/dadbatak/Bang2/Bang2Question3';
+import Bang2Question4 from './screens/Games/dadbatak/Bang2/Bang2Question4';
+import Bang2Question5 from './screens/Games/dadbatak/Bang2/Bang2Question5';
+import Bang2Question6 from './screens/Games/dadbatak/Bang2/Bang2Question6';
+import Bang2Question7 from './screens/Games/dadbatak/Bang2/Bang2Question7';
+import Bang2Question8 from './screens/Games/dadbatak/Bang2/Bang2Question8';
+import Bang2Question9 from './screens/Games/dadbatak/Bang2/Bang2Question9';
+import Bang2Question10 from './screens/Games/dadbatak/Bang2/Bang2Question10';
+import Bang2Question11 from './screens/Games/dadbatak/Bang2/Bang2Question11';
+import Bang2Question12 from './screens/Games/dadbatak/Bang2/Bang2Question12';
+import Bang2Question13 from './screens/Games/dadbatak/Bang2/Bang2Question13';
+import Bang2Question14 from './screens/Games/dadbatak/Bang2/Bang2Question14';
+import Bang2Question15 from './screens/Games/dadbatak/Bang2/Bang2Question15';
+
 //Dad Se - Bang 1
 import DSBang1Question1 from './screens/Games/DadSe/Bang1/DSBang1Question1';
 import DSBang1Question2 from './screens/Games/DadSe/Bang1/DSBang1Question2';
@@ -264,8 +281,6 @@ export default AppNavigator = createStackNavigator(
 
     //Dad Batak - Bang 1
 
-    dadbtaktanbu1: DadBatakTanbu1,
-
     db_bang1Question1: Bang1Question1,
     db_bang1Question2: Bang1Question2,
     db_bang1Question3: Bang1Question3,
@@ -278,6 +293,23 @@ export default AppNavigator = createStackNavigator(
     db_bang1Question10: Bang1Question10,
     db_bang1Question11: Bang1Question11,
     db_bang1Question12: Bang1Question12,
+
+    //Dad Batak - Bang 2
+    db_bang2Question1: Bang2Question1,
+    db_bang2Question2: Bang2Question2,
+    db_bang2Question3: Bang2Question3,
+    db_bang2Question4: Bang2Question4,
+    db_bang2Question5: Bang2Question5,
+    db_bang2Question6: Bang2Question6,
+    db_bang2Question7: Bang2Question7,
+    db_bang2Question8: Bang2Question8,
+    db_bang2Question9: Bang2Question9,
+    db_bang2Question10: Bang2Question10,
+    db_bang2Question11: Bang2Question11,
+    db_bang2Question12: Bang2Question12,
+    db_bang2Question13: Bang2Question13,
+    db_bang2Question14: Bang2Question14,
+    db_bang2Question15: Bang2Question15,
 
     //Dad Se - Bang 1
     ds_bang1Question1: DSBang1Question1,

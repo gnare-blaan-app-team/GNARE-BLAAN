@@ -17,7 +17,11 @@ class DadBatak extends Component {
     }
 
     gotoTanbu1 = () => {
-        this.props.navigation.navigate('dadbtaktanbu1')
+        this.props.navigation.navigate('dadbataktanbu1')
+    }
+
+    gotoTanbu2 = () => {
+        this.props.navigation.navaigate('dadbataktanbu2')
     }
 
     render() {
@@ -43,7 +47,7 @@ class DadBatak extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.bang2Style}>
-                    <TouchableOpacity onPress={this.gotoTanbu1}>
+                    <TouchableOpacity onPress={this.gotoTanbu2}>
                         <Image
                             source={Bang2Icon}
                             style={styles.image}
@@ -52,7 +56,7 @@ class DadBatak extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.bang3Style}>
-                <TouchableOpacity onPress={this.gotoTanbu1}>
+                <TouchableOpacity>
                         <Image
                             source={Bang3Icon}
                             style={styles.image}
@@ -61,7 +65,7 @@ class DadBatak extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.kastifunStyle}>
-                    <TouchableOpacity onPress={this.gotoTanbu1}>
+                    <TouchableOpacity>
                         <Image
                             source={KastifunIcon}
                             style={styles.image}
