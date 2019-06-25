@@ -21,7 +21,7 @@ class DadBatak extends Component {
     }
 
     gotoTanbu2 = () => {
-        this.props.navigation.navaigate('dadbataktanbu2')
+        this.props.navigation.navigate('dadbataktanbu2')
     }
 
     render() {

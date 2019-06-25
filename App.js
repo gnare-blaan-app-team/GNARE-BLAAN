@@ -110,6 +110,20 @@ import Bang2Question13 from './screens/Games/dadbatak/Bang2/Bang2Question13';
 import Bang2Question14 from './screens/Games/dadbatak/Bang2/Bang2Question14';
 import Bang2Question15 from './screens/Games/dadbatak/Bang2/Bang2Question15';
 
+//Dad Batak - Bang 3
+import Bang3Question1 from './screens/Games/dadbatak/Bang3/Bang3Question1';
+import Bang3Question2 from './screens/Games/dadbatak/Bang3/Bang3Question2';
+import Bang3Question3 from './screens/Games/dadbatak/Bang3/Bang3Question3';
+import Bang3Question4 from './screens/Games/dadbatak/Bang3/Bang3Question4';
+import Bang3Question5 from './screens/Games/dadbatak/Bang3/Bang3Question5';
+import Bang3Question6 from './screens/Games/dadbatak/Bang3/Bang3Question6';
+import Bang3Question7 from './screens/Games/dadbatak/Bang3/Bang3Question7';
+import Bang3Question8 from './screens/Games/dadbatak/Bang3/Bang3Question8';
+import Bang3Question9 from './screens/Games/dadbatak/Bang3/Bang3Question9';
+import Bang3Question10 from './screens/Games/dadbatak/Bang3/Bang3Question10';
+import Bang3Question11 from './screens/Games/dadbatak/Bang3/Bang3Question11';
+import Bang3Question12 from './screens/Games/dadbatak/Bang3/Bang3Question12';
+
 //Dad Se - Bang 1
 import DSBang1Question1 from './screens/Games/DadSe/Bang1/DSBang1Question1';
 import DSBang1Question2 from './screens/Games/DadSe/Bang1/DSBang1Question2';
@@ -327,6 +341,20 @@ export default AppNavigator = createStackNavigator(
     db_bang2Question13: Bang2Question13,
     db_bang2Question14: Bang2Question14,
     db_bang2Question15: Bang2Question15,
+
+    //Dad Batak - Bang 3
+    db_bang3Question1: Bang3Question1,
+    db_bang3Question2: Bang3Question2,
+    db_bang3Question3: Bang3Question3,
+    db_bang3Question4: Bang3Question4,
+    db_bang3Question5: Bang3Question5,
+    db_bang3Question6: Bang3Question6,
+    db_bang3Question7: Bang3Question7,
+    db_bang3Question8: Bang3Question8,
+    db_bang3Question9: Bang3Question9,
+    db_bang3Question10: Bang3Question10,
+    db_bang3Question11: Bang3Question11,
+    db_bang3Question12: Bang3Question12,
 
     //Dad Se - Bang 1
     ds_bang1Question1: DSBang1Question1,
