@@ -29,7 +29,7 @@ class vocabularyMenu extends Component {
         super(props);
         this.state = {
             top2:'1000%',
-            top1:'25%',
+            top1:'20%',
             nextTop: '45%',
             prevTop:'1000%',
         }
@@ -75,17 +75,17 @@ class vocabularyMenu extends Component {
     gotoNextPage = () => {
         this.setState({
             top1:'1000%',
-            top2: '25%',
+            top2: '20%',
             nextTop:'1000%',
-            prevTop: '40%',
+            prevTop: '45%',
         })
     }
     goPrev = () => {
         this.setState({
             top2: '1000%',
-            top1: '25%',
+            top1: '20%',
             prevTop: '1000%',
-            nextTop: '40%',
+            nextTop: '45%',
         })
     }
     render(){
@@ -95,7 +95,6 @@ class vocabularyMenu extends Component {
                     justifyContent: 'center',
                     position: 'absolute',
                     top: this.state.top1,
-                    left: '-7%',
                     width: '98%',
                     height: '80%',
                     flexDirection: 'row',
@@ -111,7 +110,6 @@ class vocabularyMenu extends Component {
                     justifyContent: 'center',
                     position: 'absolute',
                     top: this.state.top2,
-                    left: '7%',
                     width: '98%',
                     height: '80%',
                     flexDirection: 'row',
@@ -133,7 +131,7 @@ class vocabularyMenu extends Component {
                 </View>
                 <View style={{
                     position: 'absolute',
-                    left: '83%',
+                    left: '90%',
                     top: this.state.nextTop,
                     width: '12%',
                     height: '24%',}}>
@@ -154,7 +152,7 @@ class vocabularyMenu extends Component {
                 </View>
                 <View style={{
                     position: 'absolute',
-                    left: '5%',
+                    left: '1%',
                     top: this.state.prevTop,
                     width: '12%',
                     height: '24%',}}>

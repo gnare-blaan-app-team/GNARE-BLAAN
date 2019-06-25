@@ -5,9 +5,9 @@ import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleShee
 
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
-import DasalBagoMatulog_icon from '../cultureandartsImages/1DasalBagoMatulog.png';
-import DasalNgPaglingap_icon from '../cultureandartsImages/2DasalNgPaglingap.png';
-import DasalNgPagsasalamat_icon from '../cultureandartsImages/3DasalNgPasasalamat.png';
+import prayer1_icon from '../cultureandartsImages/prayers_1DasalSaPaggising.png';
+import prayer2_icon from '../cultureandartsImages/prayers_2DasalBagoKumain.png';
+import prayer3_icon from '../cultureandartsImages/prayers_3DasalBagoMatulog.png';
 import cultureandarts_BG from '../../images/Flalok_BG.jpg';
 
 
@@ -31,21 +31,21 @@ class prayersScreen extends Component {
            <ImageBackground style={styles.image} source={cultureandarts_BG} blurRadius={1}>
                 <View style={styles.CultureandArtsContainer}>
                     <View style={styles.row}>
-                        <View style={styles.itemSize} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
-                                <Image style={styles.imageSizeStoryMenu} source={DasalBagoMatulog_icon} />
+                        <View style={[styles.itemSize, {height: '70%', width: '30%'}]} >
+                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('prayer1Screen')} >
+                                <Image style={styles.imageSizeStoryMenu} source={prayer1_icon} />
                             </TouchableOpacity>
                         </View>
 
-                        <View style={styles.itemSize} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
-                                <Image style={styles.imageSizeStoryMenu} source={DasalNgPaglingap_icon} />
+                        <View style={[styles.itemSize, {height: '70%', width: '30%', marginRight: '5%', marginLeft: '5%'}]} >
+                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('prayer2Screen')} >
+                                <Image style={styles.imageSizeStoryMenu} source={prayer2_icon} />
                             </TouchableOpacity>
                         </View>
 
-                        <View style={styles.itemSize} >
-                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('')} >
-                                <Image style={styles.imageSizeStoryMenu} source={DasalNgPagsasalamat_icon} />
+                        <View style={[styles.itemSize, {height: '70%', width: '30%'}]} >
+                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('prayer3Screen')} >
+                                <Image style={styles.imageSizeStoryMenu} source={prayer3_icon} />
                             </TouchableOpacity>
                         </View>
                     </View>

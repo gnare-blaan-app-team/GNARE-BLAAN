@@ -80,9 +80,6 @@ class OneTracing extends Component {
 
         this.panResponder = PanResponder.create({
             onStartShouldSetPanResponder: (e, gesture) => true,
-            onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
-            onMoveShouldSetPanResponder: (evt, gestureState) => true,
-            onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
             onPanResponderMove: (e, gesture)=> {
                 const coordinate = {
                     x: gesture.moveX,
@@ -98,63 +95,65 @@ class OneTracing extends Component {
                 } else {
                     this.setState({arrayMove: [...this.state.arrayMove, coordinate],
                         touchLength: this.touchLength + 1});
-
-                        if((!this.state.dot1 || !this.state.dot2) || !this.state.dot3) {
-                            if(!this.state.dot1) {
-                                if(gesture.moveX >= this.line1[0].x - 20 && gesture.moveX <= this.line1[0].x + 20) {
-                                    if(gesture.moveY >= this.line1[0].y - 20 && gesture.moveY <= this.line1[0].y + 20) {
-                                        this.setState({dot1: true});
-                                    }
-                                }
-                            }
-                            
-                            if(this.state.dot1) {
-                                if(gesture.moveX >= this.line1[1].x - 20 && gesture.moveX <= this.line1[1].x + 20) {
-                                    if(gesture.moveY >= this.line1[1].y - 20 && gesture.moveY <= this.line1[1].y + 20) {
-                                        this.setState({dot2: true});
-                                    }
-                                }
-                            }
-                            
-                            if(this.state.dot2 && this.state.dot1) {
-                                if(gesture.moveX >= this.line1[2].x - 20 && gesture.moveX <= this.line1[2].x + 20) {
-                                    if(gesture.moveY >= this.line1[2].y - 20 && gesture.moveY <= this.line1[2].y + 20) {
-                                        this.setState({dot3: true});
-                                    }
-                                }
-                            }
-                        } else {
-
-                            //alert('2nd Line');
-                            if(!this.state.dot4) {
-                                if(gesture.moveX >= this.line2[0].x - 20 && gesture.moveX <= this.line2[0].x + 20) {
-                                    if(gesture.moveY >= this.line2[0].y - 20 && gesture.moveY <= this.line2[0].y + 20) {
-                                        this.setState({dot4: true});
-                                    }
-                                }
-                            }
-                            
-                            if(this.state.dot4) {
-                                if(gesture.moveX >= this.line2[1].x - 20 && gesture.moveX <= this.line2[1].x + 20) {
-                                    if(gesture.moveY >= this.line2[1].y - 20 && gesture.moveY <= this.line2[1].y + 20) {
-                                        this.setState({dot5: true});
-                                    }
-                                }
-                            }
-                            
-                            if(this.state.dot4 && this.state.dot5) {
-                                if(gesture.moveX >= this.line2[2].x - 20 && gesture.moveX <= this.line2[2].x + 20) {
-                                    if(gesture.moveY >= this.line2[2].y - 20 && gesture.moveY <= this.line2[2].y + 20) {
-                                        this.setState({dot6: true});
-                                    }
-                                }
+                    
+                    // Dot 1
+                    if(!this.state.dot1) {
+                        if(gesture.moveX >= this.line1[0].x - 20 && gesture.moveX <= this.line1[0].x + 20) {
+                            if(gesture.moveY >= this.line1[0].y - 20 && gesture.moveY <= this.line1[0].y + 20) {
+                                this.setState({dot1: true});
                             }
                         }
-                    } 
+                    }
+                    
+                    // Dot 2
+                    if(this.state.dot1 && !this.state.dot2) {
+                        if(gesture.moveX >= this.line1[1].x - 20 && gesture.moveX <= this.line1[1].x + 20) {
+                            if(gesture.moveY >= this.line1[1].y - 20 && gesture.moveY <= this.line1[1].y + 20) {
+                                this.setState({dot2: true});
+                            }
+                        }
+                    }
+                    
+                    // Dot 3
+                    if(this.state.dot2 && !this.state.dot3) {
+                        if(gesture.moveX >= this.line1[2].x - 20 && gesture.moveX <= this.line1[2].x + 20) {
+                            if(gesture.moveY >= this.line1[2].y - 20 && gesture.moveY <= this.line1[2].y + 20) {
+                                this.setState({dot3: true});
+                            }
+                        }
+                    }
+                    
+                    // Dot 4
+                    if(this.state.dot3 && !this.state.dot4) {
+                        if(gesture.moveX >= this.line2[0].x - 20 && gesture.moveX <= this.line2[0].x + 20) {
+                            if(gesture.moveY >= this.line2[0].y - 20 && gesture.moveY <= this.line2[0].y + 20) {
+                                this.setState({dot4: true});
+                            }
+                        }
+                    }
+                    
+                    // Dot 5
+                    if(this.state.dot4 && !this.state.dot5) {
+                        if(gesture.moveX >= this.line2[1].x - 20 && gesture.moveX <= this.line2[1].x + 20) {
+                            if(gesture.moveY >= this.line2[1].y - 20 && gesture.moveY <= this.line2[1].y + 20) {
+                                this.setState({dot5: true});
+                            }
+                        }
+                    }
+                    
+                    // Dot 6
+                    if(this.state.dot5 && !this.state.dot6) {
+                        if(gesture.moveX >= this.line2[2].x - 20 && gesture.moveX <= this.line2[2].x + 20) {
+                            if(gesture.moveY >= this.line2[2].y - 20 && gesture.moveY <= this.line2[2].y + 20) {
+                                this.setState({dot6: true});
+                            }
+                        }
+                    }
+                }
             },
-            onPanResponderRelease: (e, gesture) => {4
-                if((this.state.dot1 && this.state.dot2) && this.state.dot3) {
-                    if((this.state.dot4 && this.state.dot5) && this.state.dot6) {
+            onPanResponderRelease: (e, gesture) => {
+                if(this.state.dot3) {
+                    if(this.state.dot6) {
                         this.setState({arrayMove: [], showShaded: 1, shaded: shadedLine[1],
                             tracing: tracingLine[1], showTracing: 0});
                     } else {
@@ -190,7 +189,7 @@ class OneTracing extends Component {
         let touchTrail = this.state.arrayMove.map((item, key) => {
             return(
                 <View key = { key } {...this.panResponder.panHandlers}
-                    style={[ballStyle.circle, {position: 'absolute', left: item.x - 24, top: item.y - 24}]}>
+                    style={[ballStyle.circle, {position: 'absolute', left: item.x - 30, top: item.y - 30}]}>
                 </View>
             )
         });
@@ -252,9 +251,9 @@ class OneTracing extends Component {
 const ballStyle = StyleSheet.create({
     circle: {
         backgroundColor: 'black',
-        width: 48,
-        height: 48,
-        borderRadius: 48,
+        width: 80,
+        height: 80,
+        borderRadius: 80,
     }
 });
 

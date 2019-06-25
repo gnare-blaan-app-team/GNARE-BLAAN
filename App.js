@@ -58,7 +58,14 @@ import cultureandartsMain from './screens/CultureandArts/cultureandartsMain';
 import Chants_Screen from './screens/CultureandArts/cultureandartsScreens/chantsScreen';
 import Kastifun_Screen from './screens/CultureandArts/cultureandartsScreens/kastifunScreen';
 import Prayers_Screen from './screens/CultureandArts/cultureandartsScreens/prayersScreen';
-import DasalBagoMatulogPlay from './screens/CultureandArts/cultureandartsScreens/prayers/DasalBagoMatulogPlay';
+import Prayer1_Screen from './screens/CultureandArts/cultureandartsScreens/prayers/prayers1Screen';
+import Prayer2_Screen from './screens/CultureandArts/cultureandartsScreens/prayers/prayers2Screen';
+import Prayer3_Screen from './screens/CultureandArts/cultureandartsScreens/prayers/prayers3Screen';
+import Chant1_Screen from './screens/CultureandArts/cultureandartsScreens/chants/chants1Screen';
+import Chant2_Screen from './screens/CultureandArts/cultureandartsScreens/chants/chants2Screen';
+import Chant3_Screen from './screens/CultureandArts/cultureandartsScreens/chants/chants3Screen';
+import Kastifun1_Screen from './screens/CultureandArts/cultureandartsScreens/kastifun/kastifun1Screen';
+import Kastifun2_Screen from './screens/CultureandArts/cultureandartsScreens/kastifun/kastifun2Screen';
 
 // Games
 import GameMenu from './screens/Games/GameMenu';
@@ -133,6 +140,7 @@ import DSBang3Question3 from './screens/Games/DadSe/Bang3/DSBang3Question3';
 import DSBang3Question4 from './screens/Games/DadSe/Bang3/DSBang3Question4';
 import DSBang3Question5 from './screens/Games/DadSe/Bang3/DSBang3Question5';
 
+import Bang from './screens/Games/DadSe/Bang1/Bang';
 
 //Letter Tracing
 import ATracing from './screens/Letters/LetterTracing/ATracing';
@@ -167,6 +175,8 @@ import EightTracing from './screens/Numbers/NumberTracing/8Tracing';
 import NineTracing from './screens/Numbers/NumberTracing/9Tracing';
 //import TenTracing from './screens/Numbers/NumberTracing/10Tracing';
 
+
+import Try from './try';
 
 useScreens();
 
@@ -265,7 +275,14 @@ export default AppNavigator = createStackNavigator(
     chantsScreen: Chants_Screen,
     kastifunScreen: Kastifun_Screen,
     prayersScreen: Prayers_Screen,
-    dasalbagomatulogPlay: DasalBagoMatulogPlay,
+    prayer1Screen: Prayer1_Screen,
+    prayer2Screen: Prayer2_Screen,
+    prayer3Screen: Prayer3_Screen,
+    chant1Screen: Chant1_Screen,
+    chant2Screen: Chant2_Screen,
+    chant3Screen: Chant3_Screen,
+    kastifun1Screen: Kastifun1_Screen,
+    kastifun2Screen: Kastifun2_Screen,
 
     //Games
     gameMenu: GameMenu,
@@ -340,10 +357,12 @@ export default AppNavigator = createStackNavigator(
     ds_bang3Question3: DSBang3Question3,
     ds_bang3Question4: DSBang3Question4,
     ds_bang3Question5: DSBang3Question5,
+
+    bang: Bang
   },
 {
 
-    initialRouteName:"home",
+  initialRouteName:"home",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"

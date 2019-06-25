@@ -36,22 +36,46 @@ class DadSe extends Component {
                 <View style={styles.gnareIconStyle}>
                     <Image source={GnareIcon} style={styles.image}></Image>
                 </View>
-                <View style={styles.bang1Style}>
+                <View style={{
+                    position: 'absolute',
+                    top: hp('8%'),
+                    left: wp('63%'),
+                    height: hp('16%'),
+                    width: wp('28%'),
+                }}>
                     <TouchableOpacity onPress={this.gotoDadSeTanbu1}>
                         <Image source={Bang1Icon} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.bang2Style}>
+                <View style={{
+                    position: 'absolute',
+                    top: hp('26%'),
+                    left: wp('63%'),
+                    height: hp('16%'),
+                    width: wp('28%'),
+                }}>
                     <TouchableOpacity onPress={this.gotoDadSeTanbu2}>
                         <Image source={Bang2Icon} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.bang3Style}>
+                <View style={{
+                    position: 'absolute',
+                    top: hp('45%'),
+                    left: wp('63%'),
+                    height: hp('16%'),
+                    width: wp('28%'),
+                }}>
                     <TouchableOpacity onPress={this.gotoDadSeTanbu3}>
                         <Image source={Bang3Icon} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.kastifunStyle}>
+                <View style={{
+                    position: 'absolute',
+                    top: hp('63%'),
+                    left: wp('63%'),
+                    height: hp('16%'),
+                    width: wp('28%'),
+                }}>
                     <TouchableOpacity onPress={this.gotoDadSeTanbu1}>
                         <Image source={KastifunIcon} style={styles.image}></Image>
                     </TouchableOpacity>
@@ -74,35 +98,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
-    },
-    bang1Style: {
-        position: 'absolute',
-        top: hp('8%'),
-        left: wp('63%'),
-        height: hp('16%'),
-        width: wp('28%'),
-    },
-    bang2Style: {
-        position: 'absolute',
-        top: hp('26%'),
-        left: wp('63%'),
-        height: hp('16%'),
-        width: wp('28%'),
-    },
-    bang3Style: {
-        position: 'absolute',
-        top: hp('45%'),
-        left: wp('63%'),
-        height: hp('16%'),
-        width: wp('28%'),
-    },
-    kastifunStyle: {
-        position: 'absolute',
-        top: hp('63%'),
-        left: wp('63%'),
-        height: hp('16%'),
-        width: wp('28%'),
-    },
+    },  
 })
 
 
