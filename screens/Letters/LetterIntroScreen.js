@@ -1,9 +1,10 @@
 import Letter_Intro from '../IntroVideos/Letter_Intro.mp4';
 import React, { Component } from 'react';
 import Video from 'react-native-video';
-import { Text, View, TouchableOpacity , ImageBackground } from 'react-native';
+import { Text, View, TouchableOpacity , ImageBackground, Image } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
+import Skip from '../images/skip.png';
 
 class LetterIntroScreen extends Component {
     static navigationOptions = {
@@ -62,16 +63,14 @@ class LetterIntroScreen extends Component {
                             }}
                         />
                 </View>
-
-                <View style={{position: 'absolute', top: '5%', left: '2%', width: '15%', height: '10%',
-                            justifyContent: 'center', alignItems: 'center'}}>
+                <View style={[styles.backContainer, {left: '87%'}]}>
                     <TouchableOpacity onPress={this.gotoLetterScreen}>
-                        <Text style={[styles.skip, 
-                            {borderWidth: 1, padding: 5, borderColor: 'white', borderRadius: 5}]}>
-                                Skip video
-                        </Text>
+                        <Image
+                            source={Skip}
+                            style={styles.back}
+                        ></Image>
                     </TouchableOpacity>
-                </View>
+                </View> 
             </ImageBackground>
         )
     }
