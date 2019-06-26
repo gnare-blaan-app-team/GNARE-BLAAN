@@ -48,7 +48,7 @@ class Vocabulary7 extends Component {
       trayTop: '21%',
       stoveTop: '36%',
       potTop: '44%',
-      firewoodTop: '58%',
+      firewoodTop: '59%',
       plateTop:'43%',
       cupTop: '38%',
       kettleTop: '53%',
@@ -62,7 +62,7 @@ class Vocabulary7 extends Component {
   goBack = () => {
     const clear = this.state.clearBackground;
     if (clear == 'gotoVocab7Menu') {
-      this.props.navigation.navigate('vocabularyMenu')
+      this.props.navigation.navigate('vocabulary6')
     }
     if (clear == 'clear') {
       this.setState({
@@ -71,7 +71,7 @@ class Vocabulary7 extends Component {
         trayTop: '21%',
         stoveTop: '36%',
         potTop: '44%',
-        firewoodTop: '58%',
+        firewoodTop: '59%',
         plateTop: '43%',
         cupTop: '38%',
         kettleTop: '53%',
