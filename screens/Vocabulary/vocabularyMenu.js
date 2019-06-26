@@ -116,8 +116,9 @@ class vocabularyMenu extends Component {
                     flexWrap: 'wrap',
                     }}>
                     <VocabularyItem itemImage={HouseParts_icon} goto={this.vocabulary6} />
-                    <VocabularyItem itemImage={KitchenUtensils_icon} goto={this.vocabulary7} />
+                    
                     <VocabularyItem itemImage={GreetingsHeavenlyBodies_icon} goto={this.vocabulary8} />
+                    {/* <VocabularyItem/> */}
                     <VocabularyItem itemImage={Calendar_icon} goto={this.vocabulary9} />
                     <VocabularyItem itemImage={Kastifun_icon} goto={this.vocabulary10} />
                 </View>
