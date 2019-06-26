@@ -27,6 +27,10 @@ class DadSe extends Component {
     gotoDadSeTanbu3 = () => {
         this.props.navigation.navigate('dadseTanbu3')
     }
+    gotoKastifun = () => {
+        this.props.navigation.navigate('kastifunScreen')
+    }
+
     render() {
         return (
             <ImageBackground
@@ -76,7 +80,7 @@ class DadSe extends Component {
                     height: hp('16%'),
                     width: wp('28%'),
                 }}>
-                    <TouchableOpacity onPress={this.gotoDadSeTanbu1}>
+                    <TouchableOpacity onPress={this.gotoKastifun}>
                         <Image source={KastifunIcon} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>
