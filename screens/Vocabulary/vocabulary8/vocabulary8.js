@@ -41,11 +41,11 @@ class Vocabulary8 extends Component {
         this.state = {
             BackgroundImage: Vocab8BG,
             clearBackground: 'gotoVocab8Menu',
-            haponTop: '20%',
-            gabiTop: '20.7%',
-            umagaTop: '20.7%',
+            haponTop: '19%',
+            gabiTop: '19%',
+            umagaTop: '19%',
             sunTop: '22%',
-            goodbyeTop: '50%',
+            goodbyeTop: '45%',
             starTop: '30%',
             moonTop: '25%',
             cloudTop: '30%',
@@ -61,11 +61,11 @@ class Vocabulary8 extends Component {
             this.setState({
                 BackgroundImage: Vocab8BG,
                 clearBackground: 'gotoVocab8Menu',
-                haponTop: '20%',
-                gabiTop: '20.7%',
-                umagaTop: '20.7%',
+                haponTop: '19%',
+                gabiTop: '19%',
+                umagaTop: '19%',
                 sunTop: '22%',
-                goodbyeTop: '50%',
+                goodbyeTop: '45%',
                 starTop: '30%',
                 moonTop: '25%',
                 cloudTop: '30%',
@@ -121,7 +121,7 @@ class Vocabulary8 extends Component {
                 <View style={{
                     position: 'absolute',
                     top: this.state.haponTop,
-                    left: '11%',
+                    left: '11.5%',
                     height: hp('46%'),
                     width: wp('23%'),
                 }}>
@@ -138,7 +138,7 @@ class Vocabulary8 extends Component {
                 <View style={{
                     position: 'absolute',
                     top:this.state.gabiTop,
-                    right:'10%',
+                    right:'10.5%',
                     height: hp('43.5%'),
                     width: wp('29%'),
                 }}>
