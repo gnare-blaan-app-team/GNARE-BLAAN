@@ -444,7 +444,27 @@ export const globalStyleSheet = {
         height: hp('9%'),
         width: wp('19%'),
     },
-    
+    fadlugStyle: {
+        position: 'absolute',
+        top: '19%',
+        left:'18%',
+        height: hp('31%'),
+        width: wp('30%'),
+    },
+    gufadyanStyle: {
+        position: 'absolute',
+        top: '19%',
+        left:'55%',
+        height: hp('31%'),
+        width: wp('30%'),
+    },
+    lamwaStyle: {
+        position: 'absolute',
+        top: '56%',
+        left:'36%',
+        height: hp('33%'),
+        width: wp('32%'),
+    },
 
     //Dad Batak - Bang 1 Styles for Choices
     db_b1_choice2Style : {
