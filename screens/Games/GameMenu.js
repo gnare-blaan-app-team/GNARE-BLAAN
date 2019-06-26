@@ -11,14 +11,20 @@ import DadSe from './gameImages/1Icon_DadSe.png';
 import GnareIcon from './gameImages/GnareMain.png';
 import DadseBG from './gameImages/DadSeBG.png';
 import Bang1Icon from './gameImages/bang1_icon.png';
-import Bang2Icon from './gameImages/bang2_icon.png';
-import Bang3Icon from './gameImages/bang3_icon.png';
+import Bang2Icon from './gameImages/12Icon_Bang2Lock.png';
+import Bang22Icon from './gameImages/bang2_icon.png';
+import Bang3Icon from './gameImages/12Icon_Bang3Lock.png';
 import KastifunIcon from './gameImages/kastifun_icon.png';
 import TanbuIcon from './gameImages/tanbu_icon.png';
+import NextLevel from './gameImages/nextlevel.png'; 
+import CoinBank from './gameImages/coinbank.png'; 
+import Market from './gameImages/market.png'; 
 
 const backgroundList = [BG,Slide1,DadseBG]
 
 const Key = '@MyApp:key';
+
+const Finish = '@MyApp:finish';
 
 class GameMenu extends Component {
     
@@ -39,14 +45,65 @@ class GameMenu extends Component {
             kastifunTop:'1000%',
             tanbuTop: '1000%',
             level:0,
+            Clickabletanbu2Top:'1000%',
+            show:'',
+            nextLevelTop:'1000%',
+            coinBankTop:'1000%',
+            marketTop:'1000%'
         }
     }
-       onLoad = async () => {
-        const quesion = await AsyncStorage.getItem(Key);
-        this.setState({ quesion });
-        if (quesion == 'Level3') {
-            this.props.navigation.push('ds_bang1Question2')
+
+    onSave = async () => {
+        const next = Math.floor(Math.random() * 10);
+        const convert = JSON.stringify(next);
+        alert(convert)
+        await AsyncStorage.setItem(Key, convert);
+    }
+
+    onLoad = async () => {
+        const storedValue = await AsyncStorage.getItem(Key);
+        if (storedValue == null){
+            this.onSave();
+            this.props.navigation.push('bang');
+        }else{
+            this.props.navigation.push('bang');
         }
+    }
+
+    onLoad2 = async () => {
+        const finishLevel = await AsyncStorage.getItem(Finish);
+        if (finishLevel == 'Level1Completed') {
+            this.setState({
+                Clickabletanbu2Top: '40%',
+                tanbu2Top: '1000%',
+                
+            })
+        }
+    }
+
+    componentDidMount(){
+        const showIt = this.state.show;
+        if (showIt == 'Dadse'){
+            this.setState({
+                BackgroundImage: backgroundList[2],
+                nextLevelTop: '22%',
+                coinBankTop: '40%',
+                marketTop:'59%',
+                dadbatakTop: '1000%',
+                dadseTop:'1000%',
+            })
+        }
+    }
+
+    gotoNextLevel = () => {
+        this.setState({
+            nextLevelTop: '1000%',
+            coinBankTop: '1000%',
+            marketTop: '1000%',
+            tanbu1Top: '22%',
+            Clickabletanbu2Top:'40%',
+            tanbu3Top: '59%',
+        })
     }
 
     gotoMainMenu = () => {
@@ -57,6 +114,7 @@ class GameMenu extends Component {
         this.props.navigation.navigate('dadbatak');
     }
     gotoDadSe = () => {
+        this.onLoad2();
         this.setState({
             BackgroundImage:backgroundList[2],
             dadbatakTop:'1000%',
@@ -69,7 +127,6 @@ class GameMenu extends Component {
     }
 
     gotoDadSeTanbu = (index) => {
-        this.onLoad();
         this.setState({
             tanbuTop:'30%',
             dadbatakTop: '1000%',
@@ -78,13 +135,15 @@ class GameMenu extends Component {
             tanbu2Top: '1000%',
             tanbu3Top: '1000%',
             kastifunTop: '1000%',
+            Clickabletanbu2Top: '1000%',
         })
         
     }
     gotoBang = () => {
+        
         const index = this.state.level;
         if(index == 1){
-            this.props.navigation.push('ds_bang1Question1');
+           this.onLoad();
         }
         if(index == 2){
             this.props.navigation.push('ds_bang2Question1');
@@ -96,6 +155,9 @@ class GameMenu extends Component {
 
     render() {
         console.disableYellowBox = true; 
+        const { navigation } = this.props;
+        const itemId = navigation.getParam('show', 'NO-ID');
+        this.state.show = itemId;
         return (
             <ImageBackground style={{ flex: 1, width: '100%', height: '100%', resizeMode: 'stretch' }}
                 source={BG}
@@ -169,13 +231,22 @@ class GameMenu extends Component {
                     height: hp('16%'),
                     width: wp('28%'),
                 }}>
+                        <Image source={Bang2Icon} style={styles.image}></Image>
+                </View>
+                <View style={{
+                    position: 'absolute',
+                    top: this.state.Clickabletanbu2Top,
+                    left: wp('63%'),
+                    height: hp('16%'),
+                    width: wp('28%'),
+                }}>
                     <TouchableOpacity onPress={() => {
                         this.gotoDadSeTanbu();
                         this.setState({
-                            level: 2,
+                            level: 4,
                         })
                     }}>
-                        <Image source={Bang2Icon} style={styles.image}></Image>
+                        <Image source={Bang22Icon} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>
                 <View style={{
@@ -185,14 +256,7 @@ class GameMenu extends Component {
                     height: hp('16%'),
                     width: wp('28%'),
                 }}>
-                    <TouchableOpacity onPress={() => {
-                        this.gotoDadSeTanbu();
-                        this.setState({
-                            level: 3,
-                        })
-                    }}>
                         <Image source={Bang3Icon} style={styles.image}></Image>
-                    </TouchableOpacity>
                 </View>
                 <View style={{
                     position: 'absolute',
@@ -231,6 +295,39 @@ class GameMenu extends Component {
                             source={require('../images/Home_icon.png')}
                             style={globalStyleSheet.home}
                         ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={{
+                    position: 'absolute',
+                    top: this.state.nextLevelTop,
+                    left: wp('63%'),
+                    height: hp('16%'),
+                    width: wp('28%'),
+                }}>
+                    <TouchableOpacity onPress={this.gotoNextLevel}>
+                        <Image source={NextLevel} style={styles.image}></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={{
+                    position: 'absolute',
+                    top: this.state.coinBankTop,
+                    left: wp('63%'),
+                    height: hp('16%'),
+                    width: wp('28%'),
+                }}>
+                    <TouchableOpacity>
+                        <Image source={CoinBank} style={styles.image}></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={{
+                    position: 'absolute',
+                    top: this.state.marketTop,
+                    left: wp('63%'),
+                    height: hp('16%'),
+                    width: wp('28%'),
+                }}>
+                    <TouchableOpacity>
+                        <Image source={Market} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>
             </ImageBackground>

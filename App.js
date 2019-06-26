@@ -319,7 +319,7 @@ export default AppNavigator = createStackNavigator(
     ds_bang2Question8: DSBang2Question8,
     ds_bang2Question9: DSBang2Question9,
 
-    //Dad Se - Bang 3
+    //Dad Se - Bang 3s
     ds_bang3Question1: DSBang3Question1,
     ds_bang3Question2: DSBang3Question2,
     ds_bang3Question3: DSBang3Question3,
@@ -330,7 +330,7 @@ export default AppNavigator = createStackNavigator(
   },
 {
 
-  initialRouteName:"home",
+  initialRouteName:"gameMenu",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"
