@@ -189,7 +189,7 @@ class OneTracing extends Component {
         let touchTrail = this.state.arrayMove.map((item, key) => {
             return(
                 <View key = { key } {...this.panResponder.panHandlers}
-                    style={[ballStyle.circle, {position: 'absolute', left: item.x - 24, top: item.y - 24}]}>
+                    style={[ballStyle.circle, {position: 'absolute', left: item.x - 30, top: item.y - 30}]}>
                 </View>
             )
         });
@@ -251,9 +251,9 @@ class OneTracing extends Component {
 const ballStyle = StyleSheet.create({
     circle: {
         backgroundColor: 'black',
-        width: 48,
-        height: 48,
-        borderRadius: 48,
+        width: 80,
+        height: 80,
+        borderRadius: 80,
     }
 });
 

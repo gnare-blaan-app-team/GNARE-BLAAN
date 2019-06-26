@@ -33,7 +33,13 @@ class DadSeTanbu1 extends Component {
                     >
                     </Image>
                 </View>
-                    <View style={styles.tanbuStyle}>
+                    <View style={{
+                    position: 'absolute',
+                    top: '30%',
+                    left: '48%',
+                    height: hp('40%'),
+                    width: wp('50%'),
+                    }}>
                         <TouchableOpacity onPress = {this.gotoBang1}>
                             <Image
                                 source={TanbuIcon}
@@ -60,13 +66,6 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         resizeMode: 'stretch'
-    },
-    tanbuStyle: {
-        position: 'absolute',
-        top: '30%',
-        left: '48%',
-        height: hp('40%'),
-        width: wp('50%'),
     },
 })
 

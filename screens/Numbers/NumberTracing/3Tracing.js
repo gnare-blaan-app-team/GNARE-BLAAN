@@ -256,7 +256,7 @@ class ThreeTracing extends Component {
                 </View>
 
 
-                {/* <View style={[dotStyle.dot, {top: screenHeight * 0.35, 
+                <View style={[dotStyle.dot, {top: screenHeight * 0.35, 
                     left: screenWidth * 0.42}]}>
                 </View>
                 <View style={[dotStyle.dot, {top: screenHeight * 0.27, 
@@ -267,7 +267,7 @@ class ThreeTracing extends Component {
                 </View>
                 <View style={[dotStyle.dot, {top: screenHeight * 0.5, 
                     left: screenWidth * 0.48}]}>
-                </View> */}
+                </View>
 
                 {/*
                     this.line1 = [{
@@ -285,7 +285,7 @@ class ThreeTracing extends Component {
                     }];
                 */}
 
-                {/* <View style={[dotStyle.dot, {top: screenHeight * 0.52, 
+                <View style={[dotStyle.dot, {top: screenHeight * 0.52, 
                     left: screenWidth * 0.52}]}>
                 </View>
                 <View style={[dotStyle.dot, {top: screenHeight * 0.65, 
@@ -296,7 +296,7 @@ class ThreeTracing extends Component {
                 </View>
                 <View style={[dotStyle.dot, {top: screenHeight * 0.67, 
                     left: screenWidth * 0.41}]}>
-                </View> */}
+                </View>
 
                 {/*
                     this.line2 = [{

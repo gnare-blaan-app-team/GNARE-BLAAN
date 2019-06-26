@@ -238,12 +238,12 @@ class SevenTracing extends Component {
                                 top: '5%', left: '32%', opacity: this.state.showTracing,}}>
                         <Image source={this.state.tracing} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
                             
-                        {/* <View style={[styles.dot, {top: numberDimension.height * 0.08,
+                        <View style={[styles.dot, {top: numberDimension.height * 0.08,
                             left: numberDimension.width * 0.1}]}></View>
                         <View style={[styles.dot, {top: numberDimension.height * 0.08,
                             left: numberDimension.width * 0.5}]}></View>
                         <View style={[styles.dot, {top: numberDimension.height * 0.08,
-                            left: numberDimension.width * 0.85}]}></View> */}
+                            left: numberDimension.width * 0.85}]}></View>
 
                             {/*
                                 this.line1 = [{
@@ -258,19 +258,19 @@ class SevenTracing extends Component {
                                 }, ];
                             */}
 
-                            {/* <View style={[styles.dot, {top: numberDimension.height * 0.25,
+                            <View style={[styles.dot, {top: numberDimension.height * 0.25,
                                     left: numberDimension.width * 0.7}]}></View>
                             <View style={[styles.dot, {top: numberDimension.height * 0.5,
                                     left: numberDimension.width * 0.49}]}></View>
                             <View style={[styles.dot, {top: numberDimension.height * 0.85,
-                                    left: numberDimension.width * 0.38}]}></View> */}
+                                    left: numberDimension.width * 0.38}]}></View>
                         
                         {/*
                             this.line2 = [{
                                 x: numberDimension.width * 0.7,
                                 y: numberDimension.height * 0.25,
                             }, {
-                                x: numberDimension.width * 0.49,
+                                x: numberDimension .width * 0.49,
                                 y: numberDimension.height * 0.5,
                             }, {
                                 x: numberDimension.width * 0.38,

@@ -11,37 +11,37 @@ class Mainmenu extends Component {
     }
 
     gotoLetters = () => {
-        this.props.navigation.navigate('letterIntro');
+        this.props.navigation.push('letterIntro');
     }
 
     gotoNumbers = () => {
-        this.props.navigation.navigate('numberIntro');
+        this.props.navigation.push('numberIntro');
     }
 
     gotoVocabulary = () => {
-        this.props.navigation.navigate('vocabularyMenu');
+        this.props.navigation.push('vocabularyMenu');
     }
 
     gotoFlalok = () => {
        // this.bg.stop();
-        this.props.navigation.navigate('flalok');
+        this.props.navigation.push('flalok');
     }
 
     gotoMainMenu = () => {
        // this.bg.stop();
-        this.props.navigation.navigate('home');
+        this.props.navigation.push('home');
     }
 
     gotoCultureandArts = () => {
-        this.props.navigation.navigate('cultureandarts');
+        this.props.navigation.push('cultureandarts');
     }
 
     goBack = () => {
-        this.props.navigation.navigate('home');
+        this.props.navigation.push('home');
     }
 
     gotoGame = () => {
-        this.props.navigation.navigate('gameMenu');
+        this.props.navigation.push('gameMenu');
     }
 
     render() {

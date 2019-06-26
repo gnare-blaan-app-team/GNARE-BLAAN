@@ -476,6 +476,52 @@ export const globalStyleSheet = {
         height: hp('12%')
     },
 
+    //Dad Batak - Bang 2 Styles for Choices
+    db_b2_choice1Style: {
+        position: 'absolute',
+        top: '67%',
+        left: '22.5%',
+        width: wp('17%'),
+        height: hp('12%')
+    },
+    db_b2_choice2Style: {
+        position: 'absolute',
+        top: '67%',
+        left:'41.5%',
+        width: wp('17%'),
+        height: hp('12%')
+    },
+    db_b2_choice3Style: {
+        position: 'absolute',
+        top: '67%',
+        left:'60.5%',
+        width: wp('17%'),
+        height: hp('12%')
+    },
+
+    //Dad Batak - Bang 3 Styles for Choices
+    db_b3_choice1Style: {
+        position: 'absolute',
+        top: '67%',
+        left: '22.5%',
+        width: wp('17%'),
+        height: hp('12%')
+    },
+    db_b3_choice2Style: {
+        position: 'absolute',
+        top: '67%',
+        left:'41.5%',
+        width: wp('17%'),
+        height: hp('12%')
+    },
+    db_b3_choice3Style: {
+        position: 'absolute',
+        top: '67%',
+        left:'60.5%',
+        width: wp('17%'),
+        height: hp('12%')
+    },
+
     //Dad Se - Bang 1 Styles for Choices
     bang1Board: {
         position: 'absolute',

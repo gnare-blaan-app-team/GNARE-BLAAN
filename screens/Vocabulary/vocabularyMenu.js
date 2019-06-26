@@ -5,16 +5,16 @@ import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.j
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Back_icon from '../images/Back_icon.png';
 import Home_icon from '../images/Home_icon.png';
-import MembersFamily_icon from './vocabularyMenuImages/V1.png';
-import BodyParts_icon from './vocabularyMenuImages/V2.png';
-import FishingTools_icon from './vocabularyMenuImages/V3.png';
-import FarmingTools_icon from './vocabularyMenuImages/V4.png';
-import Mountains_icon from './vocabularyMenuImages/V5.png';
-import HouseParts_icon from './vocabularyMenuImages/V6.png';
+import MembersFamily_icon from './vocabularyMenuImages/Vocab1.png';
+import BodyParts_icon from './vocabularyMenuImages/Vocab2.png';
+import FishingTools_icon from './vocabularyMenuImages/Vocab3.png';
+import FarmingTools_icon from './vocabularyMenuImages/Vocab4.png';
+import Mountains_icon from './vocabularyMenuImages/Vocab5.png';
+import HouseParts_icon from './vocabularyMenuImages/Vocab6.png';
 import KitchenUtensils_icon from './vocabularyMenuImages/V7.png';
-import GreetingsHeavenlyBodies_icon from './vocabularyMenuImages/V8.png';
-import Calendar_icon from './vocabularyMenuImages/V9.png';
-import Kastifun_icon from './vocabularyMenuImages/V10-11.png';
+import GreetingsHeavenlyBodies_icon from './vocabularyMenuImages/Vocab8.png';
+import Calendar_icon from './vocabularyMenuImages/Vocab9.png';
+import Kastifun_icon from './vocabularyMenuImages/Vocab10.png';
 import VocabularyItem from './vocabularyItem';
 import NextIcon from '../images/Next_Icon.png';
 import PrevIcon from '../images/Prev_Icon.png';
@@ -29,7 +29,7 @@ class vocabularyMenu extends Component {
         super(props);
         this.state = {
             top2:'1000%',
-            top1:'25%',
+            top1:'20%',
             nextTop: '45%',
             prevTop:'1000%',
         }
@@ -75,17 +75,17 @@ class vocabularyMenu extends Component {
     gotoNextPage = () => {
         this.setState({
             top1:'1000%',
-            top2: '25%',
+            top2: '20%',
             nextTop:'1000%',
-            prevTop: '40%',
+            prevTop: '45%',
         })
     }
     goPrev = () => {
         this.setState({
             top2: '1000%',
-            top1: '25%',
+            top1: '20%',
             prevTop: '1000%',
-            nextTop: '40%',
+            nextTop: '45%',
         })
     }
     render(){
@@ -95,7 +95,6 @@ class vocabularyMenu extends Component {
                     justifyContent: 'center',
                     position: 'absolute',
                     top: this.state.top1,
-                    left: '-7%',
                     width: '98%',
                     height: '80%',
                     flexDirection: 'row',
@@ -111,7 +110,6 @@ class vocabularyMenu extends Component {
                     justifyContent: 'center',
                     position: 'absolute',
                     top: this.state.top2,
-                    left: '7%',
                     width: '98%',
                     height: '80%',
                     flexDirection: 'row',
@@ -133,7 +131,7 @@ class vocabularyMenu extends Component {
                 </View>
                 <View style={{
                     position: 'absolute',
-                    left: '83%',
+                    left: '90%',
                     top: this.state.nextTop,
                     width: '12%',
                     height: '24%',}}>
@@ -154,7 +152,7 @@ class vocabularyMenu extends Component {
                 </View>
                 <View style={{
                     position: 'absolute',
-                    left: '5%',
+                    left: '1%',
                     top: this.state.prevTop,
                     width: '12%',
                     height: '24%',}}>
