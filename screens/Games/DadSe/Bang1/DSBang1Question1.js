@@ -58,6 +58,10 @@ class DSBang1Question1 extends Component {
         this.props.navigation.navigate('mainMenu')
     }
 
+    gotoGufadyan = () =>{
+        this.props.navigation.navigate('dadseMarket')
+    }
+
     onSave = async () => {
         await AsyncStorage.setItem(Key, 'Level2');
     }
@@ -208,7 +212,9 @@ class DSBang1Question1 extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.gufadyan}>
-                    <Image source={Gufadyan} style={styles.image}></Image>
+                    <TouchableOpacity onPress={this.gotoGufadyan}>
+                        <Image source={Gufadyan} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
                 <Animatable.View ref={this.handleViewRef} style={[styles.answerContainer,{top:this.state.answerTop}]}>
                         <Image source={this.state.answerImage} style={{
