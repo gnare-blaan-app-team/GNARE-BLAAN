@@ -17,7 +17,7 @@ import DSTlayong from '../gameImages/Market/DS_TlayongContainer.png';
 import DSDafeng from '../gameImages/Market/DS_DafengContainer.png';
 import DSKulangTana from '../gameImages/Market/DS_KulangTanaContainer.png';
 import DSSlah from '../gameImages/Market/DS_SlahContainer.png';
-import DSCoinbank from '../gameImages/Market/Coinbank.png';
+import Coinbank from '../gameImages/Coinbank.png';
 import DSMayad from '../gameImages/Market/Mayad.png';
 import DSFule from '../gameImages/Market/Fule.png';
 import DSXButton from '../gameImages/Market/XButton.png';
@@ -137,7 +137,7 @@ class DadSeMarket extends Component {
                     </View>
 
                     <View style={globalStyleSheet.coinbankStyle}>
-                        <Image source={DSCoinbank} style={styles.imageStyle}></Image>
+                        <Image source={Coinbank} style={styles.imageStyle}></Image>
                     </View>
 
                     <View style={globalStyleSheet.mayadStyle}>

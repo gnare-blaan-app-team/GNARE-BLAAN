@@ -431,6 +431,13 @@ export const globalStyleSheet = {
         height: hp('12%'),
         width: wp('10%'),
     },
+    coinbankBang: {
+        position: 'absolute',
+        bottom: hp('4%'),
+        left: wp('5%'),
+        height: hp('15%'),
+        width: wp('12%'),
+    },
     questionStyle: {
         position: 'absolute',
         top: '15%',

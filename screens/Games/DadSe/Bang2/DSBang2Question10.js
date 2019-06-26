@@ -9,14 +9,14 @@ import GameBG from '../../gameImages/GameBG.png';
 import Home_icon from '../../../images/Home_icon.png';
 import GnareIcon from '../../gameImages/GnareMain.png';
 import Gufadyan from '../../gameImages/gufadyan.png';
-import Bang2BoardQ9 from '../../gameImages/DS_bang2Q9.png';
+import Bang2BoardQ10 from '../../gameImages/DS_bang2Q10.png';
+import DSB2Lime from '../../gameImages/DSB2_lime.png';
 import DSB2Nam from '../../gameImages/DSB2_nam.png';
 import DSB2Sfalo from '../../gameImages/DSB2_sfalo.png';
 import DSB2Syem from '../../gameImages/DSB2_syem.png';
-import DSB2Lime from '../../gameImages/DSB2_lime.png';
 import Coinbank from '../../gameImages/Coinbank.png';
 
-class DSBang2Question9 extends Component {
+class DSBang2Question10 extends Component {
     static navigationOptions = {
         header: null,
     }
@@ -43,26 +43,26 @@ class DSBang2Question9 extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.bang1Board}>
-                    <Image source={Bang2BoardQ9} style={styles.image}></Image>
+                    <Image source={Bang2BoardQ10} style={styles.image}></Image>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice1Style}>
                     <TouchableOpacity>
-                        <Image source={DSB2Nam} style={styles.image}></Image>
+                        <Image source={DSB2Lime} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice2Style}>
                     <TouchableOpacity>
-                        <Image source={DSB2Sfalo} style={styles.image}></Image>
+                        <Image source={DSB2Nam} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice3Style}>
                     <TouchableOpacity>
-                        <Image source={DSB2Syem} style={styles.image}></Image>
+                        <Image source={DSB2Sfalo} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice4Style}>
                     <TouchableOpacity>
-                        <Image source={DSB2Lime} style={styles.image}></Image>
+                        <Image source={DSB2Syem} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.gufadyan}>
@@ -85,4 +85,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default withNavigation(DSBang2Question9);
+export default withNavigation(DSBang2Question10);
