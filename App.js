@@ -74,6 +74,9 @@ import DadSeTanbu1 from './screens/Games/DadSe/DadSeTanbu1';
 import DadSeTanbu2 from './screens/Games/DadSe/DadSeTanbu2';
 import DadSeTanbu3 from './screens/Games/DadSe/DadSeTanbu3';
 import DadSeTanbu4 from './screens/Games/DadSe/DadSeTanbu4';
+import DadSeProceed from './screens/Games/DadSe/DadSeProceed';
+// import DadSeKastifun from './screens/Games/DadSe/DadSeKastifun';
+
 import DadBatak from './screens/Games/DadBatak';
 import DadBatakTanbu1 from './screens/Games/dadbatak/Tanbu1';
 import DadBatakTanbu2 from './screens/Games/dadbatak/Tanbu2';
@@ -271,6 +274,9 @@ export default AppNavigator = createStackNavigator(
     dadseTanbu2: DadSeTanbu2,
     dadseTanbu3: DadSeTanbu3,
     dadseTanbu4: DadSeTanbu4,
+    dadseProceed: DadSeProceed,
+    // dadseKastifun: DadSeKastifun,
+
     dadbatak: DadBatak,
     dadbataktanbu1: DadBatakTanbu1,
     dadbataktanbu2: DadBatakTanbu2,
@@ -325,7 +331,7 @@ export default AppNavigator = createStackNavigator(
   },
 {
 
-    initialRouteName:"tracing7",
+    initialRouteName:"home",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"

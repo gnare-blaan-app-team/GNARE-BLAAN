@@ -423,7 +423,7 @@ export const globalStyleSheet = {
         justifyContent: 'center',
     },
 
-    //Dad Batak
+    //Games
     gnareIconStyle: {
         position: 'absolute',
         top: hp('5%'),
@@ -437,6 +437,14 @@ export const globalStyleSheet = {
         width: wp('55%'),
         height: hp('45%')
     },
+    gufadyan: {
+        position: 'absolute',
+        top: '85%',
+        left:'73%',
+        height: hp('9%'),
+        width: wp('19%'),
+    },
+    
 
     //Dad Batak - Bang 1 Styles for Choices
     db_b1_choice2Style : {
@@ -504,12 +512,5 @@ export const globalStyleSheet = {
         height: hp('10%'),
         width: wp('14%'),
     },
-    gufadyan: {
-        position: 'absolute',
-        top: '85%',
-        left:'73%',
-        height: hp('9%'),
-        width: wp('19%'),
-    }
 
 };
