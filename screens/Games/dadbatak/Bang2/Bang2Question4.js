@@ -7,10 +7,10 @@ import {globalStyleSheet} from '../../../globalStyleSheet/globalStyleSheet';
 import GnareIcon from '../../gameImages/GnareMain.png';
 import GameBG from '../../gameImages/GameBG.png';
 import Home_icon from '../../../images/Home_icon.png';
-import Bang2Q4 from '../../gameImages/bang2Images/db_bang2Q4.png';
-import Tutubig from '../../gameImages/bang2Images/tutubig.png';
-import Tutubi from '../../gameImages/bang2Images/tutubi.png';
-import Tutubik from '../../gameImages/bang2Images/tutubik.png';
+import Bang2Q4 from '../../gameImages/DB_Bang2Images/db_bang2Q4.png';
+import Tutubig from '../../gameImages/DB_Bang2Images/tutubig.png';
+import Tutubi from '../../gameImages/DB_Bang2Images/tutubi.png';
+import Tutubik from '../../gameImages/DB_Bang2Images/tutubik.png';
 
 class Bang2Question4 extends Component {
     static navigationOptions = {

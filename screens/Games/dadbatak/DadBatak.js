@@ -3,13 +3,13 @@ import { Text, View, Image, StyleSheet, TouchableOpacity , ImageBackground } fro
 import { withNavigation } from 'react-navigation';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import {globalStyleSheet} from '../globalStyleSheet/globalStyleSheet';
-import GnareIcon from './gameImages/GnareMain.png';
-import DadBatakBG from './gameImages/DadBatakBG.png';
-import Bang1Icon from './gameImages/bang1_icon.png';
-import Bang2Icon from './gameImages/bang2_icon.png';
-import Bang3Icon from './gameImages/bang3_icon.png';
-import KastifunIcon from './gameImages/kastifun_icon.png';
+import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
+import GnareIcon from '../gameImages/GnareMain.png';
+import DadBatakBG from '../gameImages/DadBatakBG.png';
+import Bang1Icon from '../gameImages/bang1_icon.png';
+import Bang2Icon from '../gameImages/bang2_icon.png';
+import Bang3Icon from '../gameImages/bang3_icon.png';
+import KastifunIcon from '../gameImages/kastifun_icon.png';
 
 class DadBatak extends Component {
     static navigationOptions = {
@@ -26,6 +26,10 @@ class DadBatak extends Component {
 
     gotoTanbu3 = () => {
         this.props.navigation.navigate('dadbataktanbu3')
+    }
+
+    gotoKastifun = () => {
+        this.props.navigation.navigate('kastifunScreen')
     }
 
     render() {
@@ -69,7 +73,7 @@ class DadBatak extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.kastifunStyle}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={this.gotoKastifun}>
                         <Image
                             source={KastifunIcon}
                             style={styles.image}

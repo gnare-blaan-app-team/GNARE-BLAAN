@@ -7,10 +7,10 @@ import {globalStyleSheet} from '../../../globalStyleSheet/globalStyleSheet';
 import GnareIcon from '../../gameImages/GnareMain.png';
 import GameBG from '../../gameImages/GameBG.png';
 import Home_icon from '../../../images/Home_icon.png';
-import Bang3Q7 from '../../gameImages/bang3Images/db_bang3Q7.png';
-import Carpenter from '../../gameImages/bang3Images/carpenter.png';
-import Carpinter from '../../gameImages/bang3Images/carpinter.png';
-import Carpentir from '../../gameImages/bang3Images/carpentir.png';
+import Bang3Q7 from '../../gameImages/DB_Bang3Images/db_bang3Q7.png';
+import Carpenter from '../../gameImages/DB_Bang3Images/carpenter.png';
+import Carpinter from '../../gameImages/DB_Bang3Images/carpinter.png';
+import Carpentir from '../../gameImages/DB_Bang3Images/carpentir.png';
 
 class Bang3Question7 extends Component {
     static navigationOptions = {
