@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, Text, StyleSheet, ImageBackground, TouchableOpacity, BackHandler } from 'react-native';
+import { View, Image, Text, StyleSheet, ImageBackground, TouchableOpacity, BackHandler, } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
@@ -16,6 +16,7 @@ import Ladder from './vocabulary6Images/ladder.png';
 import Roof from './vocabulary6Images/roof.png';  
 import Wall from './vocabulary6Images/wall.png';
 import Window from './vocabulary6Images/window.png';
+import abu_icon from './vocabulary6Images/Abu.png';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
@@ -40,7 +41,8 @@ class Vocabulary6 extends Component {
             kitchenTop: '60%',
             floorTop:'73%',
             ladderTop:'68%',
-            clearBackground:'gotoVocab6Menu'
+            clearBackground:'gotoVocab6Menu',
+            kitchenBtnTop:'1000%'
         }
     }
 
@@ -61,9 +63,14 @@ class Vocabulary6 extends Component {
                 kitchenTop: '60%',
                 floorTop: '73%',
                 ladderTop: '68%',
+                kitchenBtnTop:'1000%',
                 clearBackground: 'gotoVocab6Menu'
             })
         }
+    }
+
+    gotoVocabulary7 = () => {
+        this.props.navigation.navigate('vocabulary7')
     }
 
     changeBackground = (index) => {
@@ -162,8 +169,17 @@ class Vocabulary6 extends Component {
                 <View style={{position: "absolute", height: hp('14%'), width: wp('6.5%'), left: '38%', top:this.state.kitchenTop}}>
                     <TouchableOpacity onPress={() => {
                         this.changeBackground(4);
+                        this.setState({
+                            kitchenBtnTop:'72%'
+                        })
                     }}>
                        <Text style={{width:"100%", height:"100%"}}></Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{position:'absolute',top:this.state.kitchenBtnTop, left: '20.8%'}}>
+                    <TouchableOpacity onPress={this.gotoVocabulary7}>
+                        <Image source={abu_icon} style={{height: hp('10%'), resizeMode: 'contain'}}/>
                     </TouchableOpacity>
                 </View>
 

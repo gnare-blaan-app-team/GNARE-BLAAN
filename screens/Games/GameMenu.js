@@ -143,7 +143,7 @@ class GameMenu extends Component {
         
         const index = this.state.level;
         if(index == 1){
-           this.onLoad();
+            this.props.navigation.push('bang');
         }
         if(index == 2){
             this.props.navigation.push('ds_bang2Question1');

@@ -89,8 +89,7 @@ class DSBang1Question3 extends Component {
                     blackboardWidth: '60%',
                 })
                 setTimeout(() => {
-                    this.onSave2();
-                    this.props.navigation.push('bang', { index: 1 });
+                    this.props.navigation.push('bang');
                 }, 2000)
             }, 1000)
         } else {

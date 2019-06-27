@@ -140,7 +140,7 @@ class Vocabulary4 extends Component {
                 <View style={{
                     position: 'absolute',
                     top:this.state.farmlandTop,
-                    left: '45.5%',
+                    left: '44%',
                     justifyContent: 'center',
                 }}>
                     <TouchableOpacity onPress={() => {

@@ -60,6 +60,10 @@ class DSBang1Question1 extends Component {
         this.props.navigation.navigate('mainMenu')
     }
 
+    gotoGufadyan = () =>{
+        this.props.navigation.navigate('dadseMarket')
+    }
+
     onSave = async () => {
         const next = Math.floor(Math.random() * 10);
         const convert = JSON.stringify(next);
@@ -87,8 +91,7 @@ class DSBang1Question1 extends Component {
                     blackboardWidth: '60%',
                 })
                 setTimeout(()=>{
-                    this.onSave();
-                    this.props.navigation.push('bang', { index: 'ok' });
+                    this.props.navigation.push('bang');
                 },2000)
             },1000)
         }else{
@@ -234,7 +237,9 @@ class DSBang1Question1 extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.gufadyan}>
-                    <Image source={Gufadyan} style={styles.image}></Image>
+                    <TouchableOpacity onPress={this.gotoGufadyan}>
+                        <Image source={Gufadyan} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
                 <Animatable.View ref={this.handleViewRef} style={[styles.answerContainer,{top:this.state.answerTop}]}>
                         <Image source={this.state.answerImage} style={{

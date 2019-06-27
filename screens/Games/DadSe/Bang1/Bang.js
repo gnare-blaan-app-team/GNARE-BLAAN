@@ -39,11 +39,21 @@ const prevKey = '@MyApp:prevkey';
 
 const RandomQuestion = [Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10];
 
+const stageNumber = [0,1,2,3,4,5,6,7,8,9];
+
 const alreadyShowed = [];
 
 class Bang extends Component {
     static navigationOptions = {
         header: null,
+    }
+    constructor(props) {
+        super(props);
+        this.state = {
+            questionStage: Background,
+            index: 0,
+            Finish: 0,
+        }
     }
 
     onSave = async () => {
@@ -52,16 +62,33 @@ class Bang extends Component {
     }
 
     onLoad = async () => {
-        const storedValue = await AsyncStorage.getItem(Key);
-        const preValue = await AsyncStorage.getItem(prevKey);
-        this.setState({
-            questionStage: RandomQuestion[storedValue],
-        })
-        if(alreadyShowed.length == 5){
-            this.setState({
-                questionStage:Ending,
+        var Randomizer = Math.floor(Math.random() * 10);
+        for(var a = 0; a <= alreadyShowed.length;a++){
+            if (Randomizer != alreadyShowed[a]){
+                    this.setState({
+                questionStage:RandomQuestion[Randomizer],
             })
+            }else{
+                if(Randomizer == 1){
+                    const newRan= Randomizer + 1;
+                    this.setState({
+                        questionStage: RandomQuestion[newRan],
+                    })
+                }
+                if (Randomizer == 9) {
+                    const newRan = Randomizer + 1;
+                    this.setState({
+                        questionStage: RandomQuestion[newRan],
+                    })
+                }
+                const newRan = Randomizer + 1;
+                this.setState({
+                    questionStage: RandomQuestion[newRan],
+                })
+            }
         }
+        alreadyShowed.push(PickStage);
+        alert(alreadyShowed)
     }
         
 
@@ -70,14 +97,7 @@ class Bang extends Component {
 
     }
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            questionStage: Background,
-            index: 0,
-            alreadyAnswered:0,
-        }
-    }
+    
 
     render() {
         const { navigation } = this.props;

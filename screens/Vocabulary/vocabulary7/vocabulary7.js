@@ -62,7 +62,7 @@ class Vocabulary7 extends Component {
   goBack = () => {
     const clear = this.state.clearBackground;
     if (clear == 'gotoVocab7Menu') {
-      this.props.navigation.navigate('vocabularyMenu')
+      this.props.navigation.navigate('vocabulary6')
     }
     if (clear == 'clear') {
       this.setState({

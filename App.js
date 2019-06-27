@@ -73,7 +73,9 @@ import DadSe from './screens/Games/DadSe/DadSe';
 import DadSeTanbu1 from './screens/Games/DadSe/DadSeTanbu1';
 import DadSeTanbu2 from './screens/Games/DadSe/DadSeTanbu2';
 import DadSeTanbu3 from './screens/Games/DadSe/DadSeTanbu3';
-import DadSeTanbu4 from './screens/Games/DadSe/DadSeTanbu4';
+import DadSeProceed from './screens/Games/DadSe/DadSeProceed';
+import DadSeMarket from './screens/Games/DadSe/DadSeMarket';
+
 import DadBatak from './screens/Games/DadBatak';
 import DadBatakTanbu1 from './screens/Games/dadbatak/Tanbu1';
 import DadBatakTanbu2 from './screens/Games/dadbatak/Tanbu2';
@@ -92,6 +94,37 @@ import Bang1Question9 from './screens/Games/dadbatak/Bang1/Bang1Question9';
 import Bang1Question10 from './screens/Games/dadbatak/Bang1/Bang1Question10';
 import Bang1Question11 from './screens/Games/dadbatak/Bang1/Bang1Question11';
 import Bang1Question12 from './screens/Games/dadbatak/Bang1/Bang1Question12';
+
+//Dad Batak - Bang 2
+import Bang2Question1 from './screens/Games/dadbatak/Bang2/Bang2Question1';
+import Bang2Question2 from './screens/Games/dadbatak/Bang2/Bang2Question2';
+import Bang2Question3 from './screens/Games/dadbatak/Bang2/Bang2Question3';
+import Bang2Question4 from './screens/Games/dadbatak/Bang2/Bang2Question4';
+import Bang2Question5 from './screens/Games/dadbatak/Bang2/Bang2Question5';
+import Bang2Question6 from './screens/Games/dadbatak/Bang2/Bang2Question6';
+import Bang2Question7 from './screens/Games/dadbatak/Bang2/Bang2Question7';
+import Bang2Question8 from './screens/Games/dadbatak/Bang2/Bang2Question8';
+import Bang2Question9 from './screens/Games/dadbatak/Bang2/Bang2Question9';
+import Bang2Question10 from './screens/Games/dadbatak/Bang2/Bang2Question10';
+import Bang2Question11 from './screens/Games/dadbatak/Bang2/Bang2Question11';
+import Bang2Question12 from './screens/Games/dadbatak/Bang2/Bang2Question12';
+import Bang2Question13 from './screens/Games/dadbatak/Bang2/Bang2Question13';
+import Bang2Question14 from './screens/Games/dadbatak/Bang2/Bang2Question14';
+import Bang2Question15 from './screens/Games/dadbatak/Bang2/Bang2Question15';
+
+//Dad Batak - Bang 3
+import Bang3Question1 from './screens/Games/dadbatak/Bang3/Bang3Question1';
+import Bang3Question2 from './screens/Games/dadbatak/Bang3/Bang3Question2';
+import Bang3Question3 from './screens/Games/dadbatak/Bang3/Bang3Question3';
+import Bang3Question4 from './screens/Games/dadbatak/Bang3/Bang3Question4';
+import Bang3Question5 from './screens/Games/dadbatak/Bang3/Bang3Question5';
+import Bang3Question6 from './screens/Games/dadbatak/Bang3/Bang3Question6';
+import Bang3Question7 from './screens/Games/dadbatak/Bang3/Bang3Question7';
+import Bang3Question8 from './screens/Games/dadbatak/Bang3/Bang3Question8';
+import Bang3Question9 from './screens/Games/dadbatak/Bang3/Bang3Question9';
+import Bang3Question10 from './screens/Games/dadbatak/Bang3/Bang3Question10';
+import Bang3Question11 from './screens/Games/dadbatak/Bang3/Bang3Question11';
+import Bang3Question12 from './screens/Games/dadbatak/Bang3/Bang3Question12';
 
 //Dad Se - Bang 1
 import DSBang1Question1 from './screens/Games/DadSe/Bang1/DSBang1Question1';
@@ -156,10 +189,11 @@ import SixTracing from './screens/Numbers/NumberTracing/6Tracing';
 import SevenTracing from './screens/Numbers/NumberTracing/7Tracing';
 import EightTracing from './screens/Numbers/NumberTracing/8Tracing';
 import NineTracing from './screens/Numbers/NumberTracing/9Tracing';
-//import TenTracing from './screens/Numbers/NumberTracing/10Tracing';
+import TenTracing from './screens/Numbers/NumberTracing/10Tracing';
 
 
 import Try from './try';
+
 
 useScreens();
 
@@ -205,7 +239,7 @@ export default AppNavigator = createStackNavigator(
     tracing7: SevenTracing,
     tracing8: EightTracing,
     tracing9: NineTracing,
-    //tracing10: TenTracing,
+    tracing10: TenTracing,
     
 
 
@@ -273,15 +307,15 @@ export default AppNavigator = createStackNavigator(
     dadseTanbu1: DadSeTanbu1, 
     dadseTanbu2: DadSeTanbu2,
     dadseTanbu3: DadSeTanbu3,
-    dadseTanbu4: DadSeTanbu4,
+    dadseProceed: DadSeProceed,
+    dadseMarket: DadSeMarket,
+
     dadbatak: DadBatak,
     dadbataktanbu1: DadBatakTanbu1,
     dadbataktanbu2: DadBatakTanbu2,
     dadbataktanbu3: DadBatakTanbu3,
 
     //Dad Batak - Bang 1
-
-    dadbtaktanbu1: DadBatakTanbu1,
 
     db_bang1Question1: Bang1Question1,
     db_bang1Question2: Bang1Question2,
@@ -295,6 +329,37 @@ export default AppNavigator = createStackNavigator(
     db_bang1Question10: Bang1Question10,
     db_bang1Question11: Bang1Question11,
     db_bang1Question12: Bang1Question12,
+
+    //Dad Batak - Bang 2
+    db_bang2Question1: Bang2Question1,
+    db_bang2Question2: Bang2Question2,
+    db_bang2Question3: Bang2Question3,
+    db_bang2Question4: Bang2Question4,
+    db_bang2Question5: Bang2Question5,
+    db_bang2Question6: Bang2Question6,
+    db_bang2Question7: Bang2Question7,
+    db_bang2Question8: Bang2Question8,
+    db_bang2Question9: Bang2Question9,
+    db_bang2Question10: Bang2Question10,
+    db_bang2Question11: Bang2Question11,
+    db_bang2Question12: Bang2Question12,
+    db_bang2Question13: Bang2Question13,
+    db_bang2Question14: Bang2Question14,
+    db_bang2Question15: Bang2Question15,
+
+    //Dad Batak - Bang 3
+    db_bang3Question1: Bang3Question1,
+    db_bang3Question2: Bang3Question2,
+    db_bang3Question3: Bang3Question3,
+    db_bang3Question4: Bang3Question4,
+    db_bang3Question5: Bang3Question5,
+    db_bang3Question6: Bang3Question6,
+    db_bang3Question7: Bang3Question7,
+    db_bang3Question8: Bang3Question8,
+    db_bang3Question9: Bang3Question9,
+    db_bang3Question10: Bang3Question10,
+    db_bang3Question11: Bang3Question11,
+    db_bang3Question12: Bang3Question12,
 
     //Dad Se - Bang 1
     ds_bang1Question1: DSBang1Question1,
@@ -330,7 +395,7 @@ export default AppNavigator = createStackNavigator(
   },
 {
 
-  initialRouteName:"gameMenu",
+    initialRouteName:"gameMenu",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"
