@@ -17,7 +17,7 @@ import Bang3Icon from './gameImages/12Icon_Bang3Lock.png';
 import KastifunIcon from './gameImages/kastifun_icon.png';
 import TanbuIcon from './gameImages/tanbu_icon.png';
 import NextLevel from './gameImages/nextlevel.png'; 
-import CoinBank from './gameImages/coinbank.png'; 
+import CoinBank from './gameImages/Coinbank.png'; 
 import Market from './gameImages/market.png'; 
 
 const backgroundList = [BG,Slide1,DadseBG]
