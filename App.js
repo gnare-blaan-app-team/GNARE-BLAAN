@@ -401,7 +401,7 @@ export default AppNavigator = createStackNavigator(
   },
 {
 
-    initialRouteName:"gameMenu",
+    initialRouteName:"home",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"
