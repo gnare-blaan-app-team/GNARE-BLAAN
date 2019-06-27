@@ -14,11 +14,17 @@ import DSB3Walu from '../../gameImages/walu.png';
 import DSB3Fat from '../../gameImages/fat.png';
 import DSB3Syem from '../../gameImages/syem.png';
 import DSB3Nam from '../../gameImages/nam.png';
+import Coinbank from '../../gameImages/Coinbank.png';
 
 class DSBang3Question5 extends Component {
     static navigationOptions = {
         header: null,
     }
+
+    gotoMainMenu = () => {
+        this.props.navigation.navigate('mainMenu')
+    }
+
     render() {
         return (
             <ImageBackground
@@ -27,6 +33,9 @@ class DSBang3Question5 extends Component {
             >
                 <View style={globalStyleSheet.gnareIconStyle}>
                     <Image source={GnareIcon} style={styles.image}></Image>
+                </View>
+                <View style={globalStyleSheet.coinbankBang}>
+                    <Image source={Coinbank} style={styles.image}></Image>
                 </View>
                 <View style={globalStyleSheet.homeContainer}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
@@ -37,19 +46,29 @@ class DSBang3Question5 extends Component {
                     <Image source={Bang3BoardQ5} style={styles.image}></Image>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice1Style}>
-                    <Image source={DSB3Walu} style={styles.image}></Image>
+                    <TouchableOpacity>
+                        <Image source={DSB3Walu} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice2Style}>
-                    <Image source={DSB3Fat} style={styles.image}></Image>
+                    <TouchableOpacity>
+                        <Image source={DSB3Fat} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice3Style}>
-                    <Image source={DSB3Syem} style={styles.image}></Image>
+                    <TouchableOpacity>
+                        <Image source={DSB3Syem} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice4Style}>
-                    <Image source={DSB3Nam} style={styles.image}></Image>
+                    <TouchableOpacity>
+                        <Image source={DSB3Nam} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.gufadyan}>
-                    <Image source={Gufadyan} style={styles.image}></Image>
+                    <TouchableOpacity>
+                        <Image source={Gufadyan} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
             </ImageBackground>
         )
