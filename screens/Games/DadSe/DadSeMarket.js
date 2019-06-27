@@ -8,7 +8,7 @@ import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 import GameBG from '../gameImages/GameBG.png';
 import Home_icon from '../../images/Home_icon.png';
 import GnareIcon from '../gameImages/GnareMain.png';
-import KwartoBG from '../gameImages/KwartoBG.png';
+import KwartoBG from '../gameImages/GameBG.png';
 import DSKaibe from '../gameImages/Market/DS_Kaibe.png';
 import DSSwatSalah from '../gameImages/Market/DS_SwatSlahContainer.png';
 import DSUlel from '../gameImages/Market/DS_UlelContainer.png';
