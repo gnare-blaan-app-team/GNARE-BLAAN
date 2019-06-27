@@ -75,6 +75,9 @@ import DadSeTanbu2 from './screens/Games/DadSe/DadSeTanbu2';
 import DadSeTanbu3 from './screens/Games/DadSe/DadSeTanbu3';
 import DadSeProceed from './screens/Games/DadSe/DadSeProceed';
 import DadSeMarket from './screens/Games/DadSe/DadSeMarket';
+import DadSeBank from './screens/Games/DadSe/DadSeBank';
+import DadSeBankQuestion from './screens/Games/DadSe/DadSeBankQuestion';
+import DadSeEnd from './screens/Games/DadSe/DadSeEnd';
 
 import DadBatak from './screens/Games/dadbatak/DadBatak';
 import DadBatakTanbu1 from './screens/Games/dadbatak/Tanbu1';
@@ -151,6 +154,7 @@ import DSBang2Question6 from './screens/Games/DadSe/Bang2/DSBang2Question6';
 import DSBang2Question7 from './screens/Games/DadSe/Bang2/DSBang2Question7';
 import DSBang2Question8 from './screens/Games/DadSe/Bang2/DSBang2Question8';
 import DSBang2Question9 from './screens/Games/DadSe/Bang2/DSBang2Question9';
+import DSBang2Question10 from './screens/Games/DadSe/Bang2/DSBang2Question10';
 
 //Dad Se - Bang 3
 import DSBang3Question1 from './screens/Games/DadSe/Bang3/DSBang3Question1';
@@ -192,7 +196,7 @@ import SixTracing from './screens/Numbers/NumberTracing/6Tracing';
 import SevenTracing from './screens/Numbers/NumberTracing/7Tracing';
 import EightTracing from './screens/Numbers/NumberTracing/8Tracing';
 import NineTracing from './screens/Numbers/NumberTracing/9Tracing';
-//import TenTracing from './screens/Numbers/NumberTracing/10Tracing';
+import TenTracing from './screens/Numbers/NumberTracing/10Tracing';
 
 
 import Try from './try';
@@ -242,7 +246,7 @@ export default AppNavigator = createStackNavigator(
     tracing7: SevenTracing,
     tracing8: EightTracing,
     tracing9: NineTracing,
-    //tracing10: TenTracing,
+    tracing10: TenTracing,
     
 
 
@@ -312,6 +316,9 @@ export default AppNavigator = createStackNavigator(
     dadseTanbu3: DadSeTanbu3,
     dadseProceed: DadSeProceed,
     dadseMarket: DadSeMarket,
+    dadseBank: DadSeBank,
+    dadseBankQuestion: DadSeBankQuestion,
+    dadseEnd: DadSeEnd,
 
     dadbatak: DadBatak,
     dadbataktanbu1: DadBatakTanbu1,
@@ -389,8 +396,9 @@ export default AppNavigator = createStackNavigator(
     ds_bang2Question7: DSBang2Question7,
     ds_bang2Question8: DSBang2Question8,
     ds_bang2Question9: DSBang2Question9,
+    ds_bang2Question10: DSBang2Question10,
 
-    //Dad Se - Bang 3
+    //Dad Se - Bang 3s
     ds_bang3Question1: DSBang3Question1,
     ds_bang3Question2: DSBang3Question2,
     ds_bang3Question3: DSBang3Question3,

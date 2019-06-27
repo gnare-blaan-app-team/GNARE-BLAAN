@@ -14,11 +14,17 @@ import DSB2Satu from '../../gameImages/DSB2_satu.png';
 import DSB2Fat from '../../gameImages/DSB2_fat.png';
 import DSB2Syem from '../../gameImages/DSB2_syem.png';
 import DSB2Walu from '../../gameImages/DSB2_walu.png';
+import Coinbank from '../../gameImages/Coinbank.png';
 
 class DSBang2Question6 extends Component {
     static navigationOptions = {
         header: null,
     }
+
+    gotoMainMenu = () => {
+        this.props.navigation.navigate('mainMenu')
+    }
+    
     render() {
         return (
             <ImageBackground
@@ -27,6 +33,9 @@ class DSBang2Question6 extends Component {
             >
                 <View style={globalStyleSheet.gnareIconStyle}>
                     <Image source={GnareIcon} style={styles.image}></Image>
+                </View>
+                <View style={globalStyleSheet.coinbankBang}>
+                    <Image source={Coinbank} style={styles.image}></Image>
                 </View>
                 <View style={globalStyleSheet.homeContainer}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
@@ -37,19 +46,29 @@ class DSBang2Question6 extends Component {
                     <Image source={Bang2BoardQ6} style={styles.image}></Image>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice1Style}>
-                    <Image source={DSB2Satu} style={styles.image}></Image>
+                    <TouchableOpacity>
+                        <Image source={DSB2Satu} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice2Style}>
-                    <Image source={DSB2Fat} style={styles.image}></Image>
+                    <TouchableOpacity>
+                        <Image source={DSB2Fat} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice3Style}>
-                    <Image source={DSB2Syem} style={styles.image}></Image>
+                    <TouchableOpacity>
+                        <Image source={DSB2Syem} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice4Style}>
-                    <Image source={DSB2Walu} style={styles.image}></Image>
+                    <TouchableOpacity>
+                        <Image source={DSB2Walu} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.gufadyan}>
-                    <Image source={Gufadyan} style={styles.image}></Image>
+                    <TouchableOpacity>
+                        <Image source={Gufadyan} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
             </ImageBackground>
         )

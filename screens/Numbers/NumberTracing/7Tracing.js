@@ -33,7 +33,10 @@ const numberDimension = {
     height: boardDimension.height * 0.9,
 }
 
-const scope = 30;
+const scope = 50;
+const trail = 25;
+const velocityLimit = 1.2;
+const velocityLimit2 = -1.5;
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
 
@@ -66,14 +69,14 @@ class SevenTracing extends Component {
         },
 
         this.line1 = [{
-            x: numberDimension.width * 0.1,
-            y: numberDimension.height * 0.08,
+            x: numberDimension.width * 0.15,
+            y: numberDimension.height * 0.07,
         }, {
             x: numberDimension.width * 0.5,
-            y: numberDimension.height * 0.08,
+            y: numberDimension.height * 0.07,
         }, {
-            x: numberDimension.width * 0.8,
-            y: numberDimension.height * 0.08,
+            x: numberDimension.width * 0.78,
+            y: numberDimension.height * 0.07,
         }, ];
 
         this.line2 = [{
@@ -102,13 +105,11 @@ class SevenTracing extends Component {
                     y: gestureState.moveY
                 }
 
-                if(gestureState.vx >= 1.2 || gestureState.vx <= -1.2) {
-                    this.setState({arrayMove: [],
-                        touchLength: 0});
+                if(gestureState.vx >= velocityLimit || gestureState.vx <= velocityLimit2) {
+                    this.clearBoard();
                 }
-                else if(gestureState.vy >= 1.5 || gestureState.vy <= -1.5) {
-                    this.setState({arrayMove: [],
-                        touchLength: 0});
+                else if(gestureState.vy >= velocityLimit || gestureState.vy <= velocityLimit2) {
+                    this.clearBoard();
                 } else {
                     this.setState({arrayMove: [...this.state.arrayMove, coordinate],
                         touchLength: this.touchLength + 1});
@@ -117,7 +118,7 @@ class SevenTracing extends Component {
                     if(!this.state.dot1) {
                         if(e.nativeEvent.locationX >= this.line1[0].x - scope && e.nativeEvent.locationX <= this.line1[0].x + scope) {
                             if(e.nativeEvent.locationY >= this.line1[0].y - scope && e.nativeEvent.locationY <= this.line1[0].y + scope) {
-                                //  alert('Dot1');
+                                //alert('Dot1');
                                 this.setState({dot1: true});
                             }
                         }
@@ -127,7 +128,7 @@ class SevenTracing extends Component {
                     if(this.state.dot1 && !this.state.dot2) {
                         if(e.nativeEvent.locationX >= this.line1[1].x - scope && e.nativeEvent.locationX <= this.line1[1].x + scope) {
                             if(e.nativeEvent.locationY >= this.line1[1].y - scope && e.nativeEvent.locationY <= this.line1[1].y + scope) {
-                                // alert('Dot2');
+                                //alert('Dot2');
                                 this.setState({dot2: true});
                             }
                         }
@@ -220,7 +221,7 @@ class SevenTracing extends Component {
         let touchTrail = this.state.arrayMove.map((item, key) => {
             return(
                 <View key = { key } {...this.panResponder.panHandlers}
-                    style={[styles.trace, {position: 'absolute', left: item.x - 30, top: item.y - 30}]}>
+                    style={[styles.trace, {position: 'absolute', left: item.x - trail, top: item.y - trail}]}>
                 </View>
             )
         });
@@ -238,39 +239,39 @@ class SevenTracing extends Component {
                                 top: '5%', left: '32%', opacity: this.state.showTracing,}}>
                         <Image source={this.state.tracing} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
                             
-                        <View style={[styles.dot, {top: numberDimension.height * 0.08,
-                            left: numberDimension.width * 0.1}]}></View>
-                        <View style={[styles.dot, {top: numberDimension.height * 0.08,
+                        {/* <View style={[styles.dot, {top: numberDimension.height * 0.07,
+                            left: numberDimension.width * 0.15}]}></View>
+                        <View style={[styles.dot, {top: numberDimension.height * 0.07,
                             left: numberDimension.width * 0.5}]}></View>
-                        <View style={[styles.dot, {top: numberDimension.height * 0.08,
-                            left: numberDimension.width * 0.85}]}></View>
+                        <View style={[styles.dot, {top: numberDimension.height * 0.07,
+                            left: numberDimension.width * 0.8}]}></View> */}
 
                             {/*
                                 this.line1 = [{
-                                    x: numberDimension.width * 0.1,
-                                    y: numberDimension.height * 0.08,
+                                    x: numberDimension.width * 0.15,
+                                    y: numberDimension.height * 0.07,
                                 }, {
                                     x: numberDimension.width * 0.5,
-                                    y: numberDimension.height * 0.08,
+                                    y: numberDimension.height * 0.07,
                                 }, {
-                                    x: numberDimension.width * 0.85,
-                                    y: numberDimension.height * 0.08,
+                                    x: numberDimension.width * 0.8,
+                                    y: numberDimension.height * 0.07,
                                 }, ];
                             */}
 
-                            <View style={[styles.dot, {top: numberDimension.height * 0.25,
-                                    left: numberDimension.width * 0.7}]}></View>
-                            <View style={[styles.dot, {top: numberDimension.height * 0.5,
-                                    left: numberDimension.width * 0.49}]}></View>
-                            <View style={[styles.dot, {top: numberDimension.height * 0.85,
-                                    left: numberDimension.width * 0.38}]}></View>
+                        {/* <View style={[styles.dot, {top: numberDimension.height * 0.25,
+                                left: numberDimension.width * 0.64}]}></View>
+                        <View style={[styles.dot, {top: numberDimension.height * 0.5,
+                                left: numberDimension.width * 0.45}]}></View>
+                        <View style={[styles.dot, {top: numberDimension.height * 0.8,
+                                left: numberDimension.width * 0.34}]}></View> */}
                         
                         {/*
                             this.line2 = [{
                                 x: numberDimension.width * 0.7,
                                 y: numberDimension.height * 0.25,
                             }, {
-                                x: numberDimension .width * 0.49,
+                                x: numberDimension.width * 0.49,
                                 y: numberDimension.height * 0.5,
                             }, {
                                 x: numberDimension.width * 0.38,

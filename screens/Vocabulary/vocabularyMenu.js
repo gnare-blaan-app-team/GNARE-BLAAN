@@ -11,7 +11,6 @@ import FishingTools_icon from './vocabularyMenuImages/Vocab3.png';
 import FarmingTools_icon from './vocabularyMenuImages/Vocab4.png';
 import Mountains_icon from './vocabularyMenuImages/Vocab5.png';
 import HouseParts_icon from './vocabularyMenuImages/Vocab6.png';
-import KitchenUtensils_icon from './vocabularyMenuImages/V7.png';
 import GreetingsHeavenlyBodies_icon from './vocabularyMenuImages/Vocab8.png';
 import Calendar_icon from './vocabularyMenuImages/Vocab9.png';
 import Kastifun_icon from './vocabularyMenuImages/Vocab10.png';
