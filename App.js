@@ -150,6 +150,7 @@ import DSBang2Question6 from './screens/Games/DadSe/Bang2/DSBang2Question6';
 import DSBang2Question7 from './screens/Games/DadSe/Bang2/DSBang2Question7';
 import DSBang2Question8 from './screens/Games/DadSe/Bang2/DSBang2Question8';
 import DSBang2Question9 from './screens/Games/DadSe/Bang2/DSBang2Question9';
+import DSBang2Question10 from './screens/Games/DadSe/Bang2/DSBang2Question10';
 
 //Dad Se - Bang 3
 import DSBang3Question1 from './screens/Games/DadSe/Bang3/DSBang3Question1';
@@ -191,7 +192,7 @@ import SixTracing from './screens/Numbers/NumberTracing/6Tracing';
 import SevenTracing from './screens/Numbers/NumberTracing/7Tracing';
 import EightTracing from './screens/Numbers/NumberTracing/8Tracing';
 import NineTracing from './screens/Numbers/NumberTracing/9Tracing';
-//import TenTracing from './screens/Numbers/NumberTracing/10Tracing';
+import TenTracing from './screens/Numbers/NumberTracing/10Tracing';
 
 
 import Try from './try';
@@ -241,7 +242,7 @@ export default AppNavigator = createStackNavigator(
     tracing7: SevenTracing,
     tracing8: EightTracing,
     tracing9: NineTracing,
-    //tracing10: TenTracing,
+    tracing10: TenTracing,
     
 
 
@@ -387,8 +388,9 @@ export default AppNavigator = createStackNavigator(
     ds_bang2Question7: DSBang2Question7,
     ds_bang2Question8: DSBang2Question8,
     ds_bang2Question9: DSBang2Question9,
+    ds_bang2Question10: DSBang2Question10,
 
-    //Dad Se - Bang 3
+    //Dad Se - Bang 3s
     ds_bang3Question1: DSBang3Question1,
     ds_bang3Question2: DSBang3Question2,
     ds_bang3Question3: DSBang3Question3,
@@ -399,7 +401,7 @@ export default AppNavigator = createStackNavigator(
   },
 {
 
-    initialRouteName:"home",
+    initialRouteName:"gameMenu",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"

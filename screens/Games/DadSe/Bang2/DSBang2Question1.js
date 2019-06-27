@@ -14,6 +14,7 @@ import DSB2Walu from '../../gameImages/DSB2_walu.png';
 import DSB2Satu from '../../gameImages/DSB2_satu.png';
 import DSB2Lime from '../../gameImages/DSB2_lime.png';
 import DSB2Syem from '../../gameImages/DSB2_syem.png';
+import Coinbank from '../../gameImages/Coinbank.png';
 
 class DSBang2Question1 extends Component {
     static navigationOptions = {
@@ -33,6 +34,9 @@ class DSBang2Question1 extends Component {
                 <View style={globalStyleSheet.gnareIconStyle}>
                     <Image source={GnareIcon} style={styles.image}></Image>
                 </View>
+                <View style={globalStyleSheet.coinbankBang}>
+                    <Image source={Coinbank} style={styles.image}></Image>
+                </View>
                 <View style={globalStyleSheet.homeContainer}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Image source={Home_icon} style={globalStyleSheet.home}></Image>
@@ -42,19 +46,29 @@ class DSBang2Question1 extends Component {
                     <Image source={Bang2BoardQ1} style={styles.image}></Image>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice1Style}>
-                    <Image source={DSB2Walu} style={styles.image}></Image>
+                    <TouchableOpacity>
+                        <Image source={DSB2Walu} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice2Style}>
-                    <Image source={DSB2Satu} style={styles.image}></Image>
+                    <TouchableOpacity>
+                        <Image source={DSB2Satu} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice3Style}>
-                    <Image source={DSB2Lime} style={styles.image}></Image>
+                    <TouchableOpacity>
+                        <Image source={DSB2Lime} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.ds_bang1_choice4Style}>
-                    <Image source={DSB2Syem} style={styles.image}></Image>
+                    <TouchableOpacity>
+                        <Image source={DSB2Syem} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.gufadyan}>
-                    <Image source={Gufadyan} style={styles.image}></Image>
+                    <TouchableOpacity>
+                        <Image source={Gufadyan} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
             </ImageBackground>
         )

@@ -17,15 +17,15 @@ export const globalStyleSheet = {
 
     trace: {
         position: 'absolute',
-        backgroundColor: 'black',
-        width: Dimensions.get('window').width > 712 ? 80 : 60,
-        height: Dimensions.get('window').height > 360 ? 80 : 60,
-        borderRadius: Dimensions.get('window').height > 360 ? 80 : 60,
+        backgroundColor: '#ffea00',
+        width: 60,
+        height: 60,
+        borderRadius: 60,
     },
 
     dot: {
         position: 'absolute',
-        backgroundColor: 'black',
+        backgroundColor: '#ffea00',
         width: 20,
         height: 20,
         borderRadius: 20,
@@ -430,6 +430,13 @@ export const globalStyleSheet = {
         left: wp('2%'),
         height: hp('12%'),
         width: wp('10%'),
+    },
+    coinbankBang: {
+        position: 'absolute',
+        bottom: hp('4%'),
+        left: wp('5%'),
+        height: hp('15%'),
+        width: wp('12%'),
     },
     questionStyle: {
         position: 'absolute',

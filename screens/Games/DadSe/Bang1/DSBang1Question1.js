@@ -19,15 +19,17 @@ import TransparentFat from '../../gameImages/tranparentFat.png';
 import TransparentLime from '../../gameImages/tranparentLime.png';
 import TransparentSatu from '../../gameImages/tranparentSatu.png';
 import EmptyChoices from '../../gameImages/emptyChoices.png';
+import Star from '../../gameImages/12Icon_Star.png';
 import C1 from '../../gameImages/Q1_Correct.png';
 import * as Animatable from 'react-native-animatable';
+
 
 
 const answer1List = [TransparentIwe,TransparentFat,TransparentLime,TransparentSatu];
 
 const choices = [DSB1Lwe, DSB1Fat,DSB1Lime,DSB1Satu];
 
-
+const Key = '@MyApp:key';
 
 class DSBang1Question1 extends Component {
     handleViewRef = ref => this.view = ref;
@@ -63,14 +65,17 @@ class DSBang1Question1 extends Component {
     }
 
     onSave = async () => {
-        await AsyncStorage.setItem(Key, 'Level2');
+        const next = Math.floor(Math.random() * 10);
+        const convert = JSON.stringify(next);
+        await AsyncStorage.setItem(Key, convert);
     }
 
     answer(number,status){
         this.setState({
             answerTop: '49%',
-            answerImage:answer1List[number]
+            answerImage: answer1List[number]
         });
+      
         if(status == 'correct'){
             this.correct();
             setTimeout(() => {
@@ -86,8 +91,7 @@ class DSBang1Question1 extends Component {
                     blackboardWidth: '60%',
                 })
                 setTimeout(()=>{
-                    this.onSave();
-                    this.props.navigation.push('ds_bang1Question2');
+                    this.props.navigation.push('bang');
                 },2000)
             },1000)
         }else{
@@ -95,9 +99,16 @@ class DSBang1Question1 extends Component {
         }
         if(number == 0){
             this.setState({
-                choices1Top:'1000%',
-                emptyChoice:'18%',
+                choices1Top: '1000%',
+                emptyChoice: '18%',
             })
+            setTimeout(() => {
+                this.setState({
+                    answerTop: '1000%',
+                    choices1Top: '68%',
+                    emptyChoice: '1000%',
+                });
+            }, 1000)
         }else{
             this.setState({
                 choices1Top: '68%',
@@ -108,6 +119,13 @@ class DSBang1Question1 extends Component {
                 choices2Top:'1000%',
                 emptyChoice:'35%',
             })
+            setTimeout(() => {
+                this.setState({
+                    answerTop: '1000%',
+                    choices2Top: '68%',
+                    emptyChoice: '1000%',
+                });
+            }, 1000)
         }else{
             this.setState({
                 choices2Top: '68%',
@@ -118,6 +136,13 @@ class DSBang1Question1 extends Component {
                 choices3Top: '1000%',
                 emptyChoice: '53%',
             })
+            setTimeout(() => {
+                this.setState({
+                    answerTop: '1000%',
+                    choices3Top: '68%',
+                    emptyChoice: '1000%',
+                });
+            }, 1000)
         } else {
             this.setState({
                 choices3Top: '68%',
@@ -231,6 +256,45 @@ class DSBang1Question1 extends Component {
                     width: wp('14%'),
                     }}>
                     <Image source={EmptyChoices} style={{
+                        width: '100%',
+                        height: '100%',
+                        resizeMode: 'contain'
+                    }}></Image>
+                </View>
+                <View style={{
+                    top: '2%',
+                    left: '18%',
+                    position: 'absolute',
+                    height: hp('10%'),
+                    width: wp('14%'),
+                }}>
+                    <Image source={Star} style={{
+                        width: '100%',
+                        height: '100%',
+                        resizeMode: 'contain'
+                    }}></Image>
+                </View>
+                <View style={{
+                    top: '2%',
+                    left: '25%',
+                    position: 'absolute',
+                    height: hp('10%'),
+                    width: wp('14%'),
+                }}>
+                    <Image source={Star} style={{
+                        width: '100%',
+                        height: '100%',
+                        resizeMode: 'contain'
+                    }}></Image>
+                </View>
+                <View style={{
+                    top: '2%',
+                    left: '32%',
+                    position: 'absolute',
+                    height: hp('10%'),
+                    width: wp('14%'),
+                }}>
+                    <Image source={Star} style={{
                         width: '100%',
                         height: '100%',
                         resizeMode: 'contain'
