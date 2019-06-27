@@ -7,10 +7,10 @@ import {globalStyleSheet} from '../../../globalStyleSheet/globalStyleSheet';
 import GnareIcon from '../../gameImages/GnareMain.png';
 import GameBG from '../../gameImages/GameBG.png';
 import Home_icon from '../../../images/Home_icon.png';
-import Bang3Q9 from '../../gameImages/bang3Images/db_bang3Q9.png';
-import Carriage from '../../gameImages/bang3Images/carriage.png';
-import Karriage from '../../gameImages/bang3Images/karriage.png';
-import Cariage from '../../gameImages/bang3Images/cariage.png';
+import Bang3Q9 from '../../gameImages/DB_Bang3Images/db_bang3Q9.png';
+import Carriage from '../../gameImages/DB_Bang3Images/carriage.png';
+import Karriage from '../../gameImages/DB_Bang3Images/karriage.png';
+import Cariage from '../../gameImages/DB_Bang3Images/cariage.png';
 
 class Bang3Question9 extends Component {
     static navigationOptions = {

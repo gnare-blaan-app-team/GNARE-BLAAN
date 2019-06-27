@@ -6,11 +6,11 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import {globalStyleSheet} from '../../../globalStyleSheet/globalStyleSheet';
 import GnareIcon from '../../gameImages/GnareMain.png';
 import GameBG from '../../gameImages/GameBG.png';
-import Q8 from '../../gameImages/bang1Q8.png';
-import L from '../../gameImages/l.png';
-import K from '../../gameImages/k.png';
-import B from '../../gameImages/b.png';
-import H from '../../gameImages/h.png';
+import Q8 from '../../gameImages/DB_Bang1Images/bang1Q8.png';
+import L from '../../gameImages/DB_Bang1Images/l.png';
+import K from '../../gameImages/DB_Bang1Images/k.png';
+import B from '../../gameImages/DB_Bang1Images/b.png';
+import H from '../../gameImages/DB_Bang1Images/h.png';
 import Home_icon from '../../../images/Home_icon.png';
 
 class Bang1Question8 extends Component {

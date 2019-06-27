@@ -7,10 +7,10 @@ import {globalStyleSheet} from '../../../globalStyleSheet/globalStyleSheet';
 import GnareIcon from '../../gameImages/GnareMain.png';
 import GameBG from '../../gameImages/GameBG.png';
 import Home_icon from '../../../images/Home_icon.png';
-import Bang2Q15 from '../../gameImages/bang2Images/db_bang2Q15.png';
-import Agung from '../../gameImages/bang2Images/agung.png';
-import Agnu from '../../gameImages/bang2Images/agnu.png';
-import Agong from '../../gameImages/bang2Images/agong.png';
+import Bang2Q15 from '../../gameImages/DB_Bang2Images/db_bang2Q15.png';
+import Agung from '../../gameImages/DB_Bang2Images/agung.png';
+import Agnu from '../../gameImages/DB_Bang2Images/agnu.png';
+import Agong from '../../gameImages/DB_Bang2Images/agong.png';
 
 class Bang2Question15 extends Component {
     static navigationOptions = {

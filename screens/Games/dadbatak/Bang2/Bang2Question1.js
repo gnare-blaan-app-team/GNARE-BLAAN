@@ -7,10 +7,10 @@ import {globalStyleSheet} from '../../../globalStyleSheet/globalStyleSheet';
 import GnareIcon from '../../gameImages/GnareMain.png';
 import GameBG from '../../gameImages/GameBG.png';
 import Home_icon from '../../../images/Home_icon.png';
-import Bang2Q1 from '../../gameImages/bang2Images/db_bang2Q1.png';
-import Pampunas from '../../gameImages/bang2Images/pampunas.png';
-import Bampura from '../../gameImages/bang2Images/bampura.png';
-import Pambura from '../../gameImages/bang2Images/pambura.png';
+import Bang2Q1 from '../../gameImages/DB_Bang2Images/db_bang2Q1.png';
+import Pampunas from '../../gameImages/DB_Bang2Images/pampunas.png';
+import Bampura from '../../gameImages/DB_Bang2Images/bampura.png';
+import Pambura from '../../gameImages/DB_Bang2Images/pambura.png';
 
 class Bang2Question1 extends Component {
     static navigationOptions = {
