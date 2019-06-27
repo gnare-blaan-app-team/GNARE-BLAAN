@@ -75,6 +75,9 @@ import DadSeTanbu2 from './screens/Games/DadSe/DadSeTanbu2';
 import DadSeTanbu3 from './screens/Games/DadSe/DadSeTanbu3';
 import DadSeProceed from './screens/Games/DadSe/DadSeProceed';
 import DadSeMarket from './screens/Games/DadSe/DadSeMarket';
+import DadSeBank from './screens/Games/DadSe/DadSeBank';
+import DadSeBankQuestion from './screens/Games/DadSe/DadSeBankQuestion';
+import DadSeEnd from './screens/Games/DadSe/DadSeEnd';
 
 import DadBatak from './screens/Games/dadbatak/DadBatak';
 import DadBatakTanbu1 from './screens/Games/dadbatak/Tanbu1';
@@ -312,6 +315,9 @@ export default AppNavigator = createStackNavigator(
     dadseTanbu3: DadSeTanbu3,
     dadseProceed: DadSeProceed,
     dadseMarket: DadSeMarket,
+    dadseBank: DadSeBank,
+    dadseBankQuestion: DadSeBankQuestion,
+    dadseEnd: DadSeEnd,
 
     dadbatak: DadBatak,
     dadbataktanbu1: DadBatakTanbu1,
