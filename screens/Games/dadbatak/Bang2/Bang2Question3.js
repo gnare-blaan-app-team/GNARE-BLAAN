@@ -7,10 +7,10 @@ import {globalStyleSheet} from '../../../globalStyleSheet/globalStyleSheet';
 import GnareIcon from '../../gameImages/GnareMain.png';
 import GameBG from '../../gameImages/GameBG.png';
 import Home_icon from '../../../images/Home_icon.png';
-import Bang2Q3 from '../../gameImages/bang2Images/db_bang2Q3.png';
-import Bubuyog from '../../gameImages/bang2Images/bubuyog.png';
-import Boboyog from '../../gameImages/bang2Images/boboyog.png';
-import Lamok from '../../gameImages/bang2Images/lamok.png';
+import Bang2Q3 from '../../gameImages/DB_Bang2Images/db_bang2Q3.png';
+import Bubuyog from '../../gameImages/DB_Bang2Images/bubuyog.png';
+import Boboyog from '../../gameImages/DB_Bang2Images/boboyog.png';
+import Lamok from '../../gameImages/DB_Bang2Images/lamok.png';
 
 class Bang2Question3 extends Component {
     static navigationOptions = {

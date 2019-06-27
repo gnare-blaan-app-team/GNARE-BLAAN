@@ -7,10 +7,10 @@ import {globalStyleSheet} from '../../../globalStyleSheet/globalStyleSheet';
 import GnareIcon from '../../gameImages/GnareMain.png';
 import GameBG from '../../gameImages/GameBG.png';
 import Home_icon from '../../../images/Home_icon.png';
-import Bang3Q12 from '../../gameImages/bang3Images/db_bang3Q12.png';
-import Waterman from '../../gameImages/bang3Images/waterman.png';
-import Tubeman from '../../gameImages/bang3Images/tubeman.png';
-import Fireman from '../../gameImages/bang3Images/fireman.png';
+import Bang3Q12 from '../../gameImages/DB_Bang3Images/db_bang3Q12.png';
+import Waterman from '../../gameImages/DB_Bang3Images/waterman.png';
+import Tubeman from '../../gameImages/DB_Bang3Images/tubeman.png';
+import Fireman from '../../gameImages/DB_Bang3Images/fireman.png';
 
 class Bang3Question12 extends Component {
     static navigationOptions = {

@@ -7,10 +7,10 @@ import {globalStyleSheet} from '../../../globalStyleSheet/globalStyleSheet';
 import GnareIcon from '../../gameImages/GnareMain.png';
 import GameBG from '../../gameImages/GameBG.png';
 import Home_icon from '../../../images/Home_icon.png';
-import Bang3Q6 from '../../gameImages/bang3Images/db_bang3Q6.png';
-import Doctur from '../../gameImages/bang3Images/doctur.png';
-import Doctor from '../../gameImages/bang3Images/doctor.png';
-import Teacher from '../../gameImages/bang3Images/teacher.png';
+import Bang3Q6 from '../../gameImages/DB_Bang3Images/db_bang3Q6.png';
+import Doctur from '../../gameImages/DB_Bang3Images/doctur.png';
+import Doctor from '../../gameImages/DB_Bang3Images/doctor.png';
+import Teacher from '../../gameImages/DB_Bang3Images/teacher.png';
 
 class Bang3Question6 extends Component {
     static navigationOptions = {
