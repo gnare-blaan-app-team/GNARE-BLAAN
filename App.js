@@ -113,6 +113,7 @@ import Bang2Question12 from './screens/Games/dadbatak/Bang2/Bang2Question12';
 import Bang2Question13 from './screens/Games/dadbatak/Bang2/Bang2Question13';
 import Bang2Question14 from './screens/Games/dadbatak/Bang2/Bang2Question14';
 import Bang2Question15 from './screens/Games/dadbatak/Bang2/Bang2Question15';
+import Bang2Question16 from './screens/Games/dadbatak/Bang2/Bang2Question16';
 
 //Dad Batak - Bang 3
 import Bang3Question1 from './screens/Games/dadbatak/Bang3/Bang3Question1';
@@ -350,6 +351,7 @@ export default AppNavigator = createStackNavigator(
     db_bang2Question13: Bang2Question13,
     db_bang2Question14: Bang2Question14,
     db_bang2Question15: Bang2Question15,
+    db_bang2Question16: Bang2Question16,
 
     //Dad Batak - Bang 3
     db_bang3Question1: Bang3Question1,
