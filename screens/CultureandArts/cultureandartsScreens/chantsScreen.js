@@ -30,8 +30,14 @@ class chantsScreen extends Component {
            <ImageBackground style={styles.image} source={cultureandarts_BG} blurRadius={1}>
                <View style={styles.CultureandArtsContainer}>
                     <View style={styles.row}>
-                        <View style={styles.itemSize} >
+                        {/* <View style={styles.itemSize} >
                             <TouchableOpacity  onPress={ ()=>{ Linking.openURL('https://drive.google.com/file/d/1DuL-34DXiUMNvTPSbtxlMWG8Zd77vLiU/view?usp=sharing')}} >
+                                <Image style={styles.imageSizeStoryMenu} source={Chant1_icon} />
+                            </TouchableOpacity>
+                        </View> */}
+
+                        <View style={styles.itemSize} >
+                            <TouchableOpacity  onPress={() => this.props.navigation.navigate('chant1Screen')} >
                                 <Image style={styles.imageSizeStoryMenu} source={Chant1_icon} />
                             </TouchableOpacity>
                         </View>
