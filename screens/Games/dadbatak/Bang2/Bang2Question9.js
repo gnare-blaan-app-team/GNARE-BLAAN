@@ -7,10 +7,10 @@ import {globalStyleSheet} from '../../../globalStyleSheet/globalStyleSheet';
 import GnareIcon from '../../gameImages/GnareMain.png';
 import GameBG from '../../gameImages/GameBG.png';
 import Home_icon from '../../../images/Home_icon.png';
-import Bang2Q9 from '../../gameImages/bang2Images/db_bang2Q9.png';
-import Pagong from '../../gameImages/bang2Images/pagong.png';
-import Pagung from '../../gameImages/bang2Images/pagung.png';
-import Bao from '../../gameImages/bang2Images/bao.png';
+import Bang2Q9 from '../../gameImages/DB_Bang2Images/db_bang2Q9.png';
+import Pagong from '../../gameImages/DB_Bang2Images/pagong.png';
+import Pagung from '../../gameImages/DB_Bang2Images/pagung.png';
+import Bao from '../../gameImages/DB_Bang2Images/bao.png';
 
 class Bang2Question9 extends Component {
     static navigationOptions = {

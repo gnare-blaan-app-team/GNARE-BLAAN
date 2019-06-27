@@ -7,10 +7,10 @@ import {globalStyleSheet} from '../../../globalStyleSheet/globalStyleSheet';
 import GnareIcon from '../../gameImages/GnareMain.png';
 import GameBG from '../../gameImages/GameBG.png';
 import Home_icon from '../../../images/Home_icon.png';
-import Bang3Q11 from '../../gameImages/bang3Images/db_bang3Q11.png';
-import Cooker from '../../gameImages/bang3Images/cooker.png';
-import Cook from '../../gameImages/bang3Images/cook.png';
-import Coke from '../../gameImages/bang3Images/coke.png';
+import Bang3Q11 from '../../gameImages/DB_Bang3Images/db_bang3Q11.png';
+import Cooker from '../../gameImages/DB_Bang3Images/cooker.png';
+import Cook from '../../gameImages/DB_Bang3Images/cook.png';
+import Coke from '../../gameImages/DB_Bang3Images/coke.png';
 
 class Bang3Question11 extends Component {
     static navigationOptions = {

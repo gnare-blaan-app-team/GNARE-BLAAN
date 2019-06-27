@@ -7,10 +7,10 @@ import {globalStyleSheet} from '../../../globalStyleSheet/globalStyleSheet';
 import GnareIcon from '../../gameImages/GnareMain.png';
 import GameBG from '../../gameImages/GameBG.png';
 import Home_icon from '../../../images/Home_icon.png';
-import Bang3Q10 from '../../gameImages/bang3Images/db_bang3Q10.png';
-import Store from '../../gameImages/bang3Images/store.png';
-import Sell from '../../gameImages/bang3Images/sell.png';
-import Vendor from '../../gameImages/bang3Images/vendor.png';
+import Bang3Q10 from '../../gameImages/DB_Bang3Images/db_bang3Q10.png';
+import Store from '../../gameImages/DB_Bang3Images/store.png';
+import Sell from '../../gameImages/DB_Bang3Images/sell.png';
+import Vendor from '../../gameImages/DB_Bang3Images/vendor.png';
 
 class Bang3Question10 extends Component {
     static navigationOptions = {
