@@ -74,7 +74,6 @@ import DadSeTanbu1 from './screens/Games/DadSe/DadSeTanbu1';
 import DadSeTanbu2 from './screens/Games/DadSe/DadSeTanbu2';
 import DadSeTanbu3 from './screens/Games/DadSe/DadSeTanbu3';
 import DadSeProceed from './screens/Games/DadSe/DadSeProceed';
-import DadSeNextLevel from './screens/Games/DadSe/DadSeNextLevel';
 import DadSeMarket from './screens/Games/DadSe/DadSeMarket';
 
 import DadBatak from './screens/Games/dadbatak/DadBatak';
@@ -312,7 +311,6 @@ export default AppNavigator = createStackNavigator(
     dadseTanbu2: DadSeTanbu2,
     dadseTanbu3: DadSeTanbu3,
     dadseProceed: DadSeProceed,
-    dadseNextLevel: DadSeNextLevel,
     dadseMarket: DadSeMarket,
 
     dadbatak: DadBatak,
@@ -403,7 +401,7 @@ export default AppNavigator = createStackNavigator(
   },
 {
 
-    initialRouteName:"dadseNextLevel",
+    initialRouteName:"home",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"
