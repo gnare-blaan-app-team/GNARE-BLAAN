@@ -232,7 +232,7 @@ class Letters extends Component {
     releaseSounds = ()=> {
         if(this.letterSound != null) {
             this.letterSound.release();
-        }
+        } 
         if(this.wordSound != null) {
             this.wordSound.release();
         }
