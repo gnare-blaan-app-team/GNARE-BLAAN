@@ -11,6 +11,8 @@ import Bang3Q10 from '../../gameImages/DB_Bang3Images/db_bang3Q10.png';
 import Store from '../../gameImages/DB_Bang3Images/store.png';
 import Sell from '../../gameImages/DB_Bang3Images/sell.png';
 import Vendor from '../../gameImages/DB_Bang3Images/vendor.png';
+import Gufadyan from '../../gameImages/gufadyan.png';
+import Coinbank from '../../gameImages/Coinbank.png';
 
 class Bang3Question10 extends Component {
     static navigationOptions = {
@@ -75,6 +77,14 @@ class Bang3Question10 extends Component {
                         >
                         </Image>
                     </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.gufadyan}>
+                    <TouchableOpacity>
+                        <Image source={Gufadyan} style={styles.image}></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.coinbankBang}>
+                    <Image source={Coinbank} style={styles.image}></Image>
                 </View>
             </ImageBackground>
         )

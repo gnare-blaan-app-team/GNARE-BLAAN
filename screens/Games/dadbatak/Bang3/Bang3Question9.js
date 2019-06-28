@@ -11,6 +11,8 @@ import Bang3Q9 from '../../gameImages/DB_Bang3Images/db_bang3Q9.png';
 import Carriage from '../../gameImages/DB_Bang3Images/carriage.png';
 import Karriage from '../../gameImages/DB_Bang3Images/karriage.png';
 import Cariage from '../../gameImages/DB_Bang3Images/cariage.png';
+import Gufadyan from '../../gameImages/gufadyan.png';
+import Coinbank from '../../gameImages/Coinbank.png';
 
 class Bang3Question9 extends Component {
     static navigationOptions = {
@@ -75,6 +77,14 @@ class Bang3Question9 extends Component {
                         >
                         </Image>
                     </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.gufadyan}>
+                    <TouchableOpacity>
+                        <Image source={Gufadyan} style={styles.image}></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.coinbankBang}>
+                    <Image source={Coinbank} style={styles.image}></Image>
                 </View>
             </ImageBackground>
         )

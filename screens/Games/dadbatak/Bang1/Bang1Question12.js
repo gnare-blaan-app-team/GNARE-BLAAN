@@ -12,6 +12,8 @@ import K from '../../gameImages/DB_Bang1Images/k.png';
 import G from '../../gameImages/DB_Bang1Images/g.png';
 import B from '../../gameImages/DB_Bang1Images/b.png';
 import Home_icon from '../../../images/Home_icon.png';
+import Gufadyan from '../../gameImages/gufadyan.png';
+import Coinbank from '../../gameImages/Coinbank.png';
 
 class Bang1Question12 extends Component {
     static navigationOptions = {
@@ -85,6 +87,14 @@ class Bang1Question12 extends Component {
                             style={globalStyleSheet.home}
                         ></Image>
                     </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.gufadyan}>
+                    <TouchableOpacity>
+                        <Image source={Gufadyan} style={styles.image}></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.coinbankBang}>
+                    <Image source={Coinbank} style={styles.image}></Image>
                 </View>
             </ImageBackground>
         )
