@@ -168,7 +168,7 @@ class Story1Screen extends Component {
                     </TouchableWithoutFeedback>
 
                     <View style={{position: 'absolute', justifyContent: 'center', top: this.state.controlHide, alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.8)', width: '100%', height: '15%'}}>
-                        <Text style={{color: 'white', fontSize: 25}}>Story 1</Text>
+                        <Text style={{color: 'white', fontSize: 25}}>Dad Kafye Gwè di kat du - Biyaya sa bawat araw </Text>
                     </View>
 
                     <View style={{position: 'absolute', top: this.state.hideSub, left: '88%', height: '10%', justifyContent: 'center', alignItems: 'center'}}>
