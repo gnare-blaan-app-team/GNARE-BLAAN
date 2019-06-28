@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, ImageBackground, StyleSheet, Image, PanResponder, TouchableOpacity, StatusBar, Animated } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
-import HLetter from '../LettersAssets/H.png';
+import HLetter from '../LettersAssets/tracingH_1.gif';
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
 

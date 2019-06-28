@@ -11,7 +11,7 @@ import PencilIcon from '../../images/Pencil_icon.png';
 
 import trace1 from '../numberTracingGIF/8_1.gif';
 import shaded_8_1 from '../numberTracingImage/shaded_8_1.png';
-
+import trace8 from '../numberTracingImage/8.png';
 
 const screenWidth = Dimensions.get('screen').width;
 const screenHeight = Dimensions.get('screen').height;
@@ -65,32 +65,32 @@ class EightTracing extends Component {
         },
 
         this.line1 = [{
-            x: numberDimension.width * 0.42,
+            x: numberDimension.width * 0.45,
             y: numberDimension.height * 0.11,
         }, {
-            x: numberDimension.width * 0.2,
+            x: numberDimension.width * 0.22,
             y: numberDimension.height * 0.28,
         }, {
             x: numberDimension.width * 0.44,
             y: numberDimension.height * 0.45,
         }, {
-            x: numberDimension.width * 0.8,
+            x: numberDimension.width * 0.81,
             y: numberDimension.height * 0.7,
         }, {
-            x: numberDimension.width * 0.5,
+            x: numberDimension.width * 0.49,
             y: numberDimension.height * 0.89,
         }, {
             x: numberDimension.width * 0.18,
             y: numberDimension.height * 0.7,
         }, {
             x: numberDimension.width * 0.5,
-            y: numberDimension.height * 0.45,
+            y: numberDimension.height * 0.46,
         }, {
-            x: numberDimension.width * 0.76,
+            x: numberDimension.width * 0.77,
             y: numberDimension.height * 0.28,
         }, {
-            x: numberDimension.width * 0.5,
-            y: numberDimension.height * 0.11,
+            x: numberDimension.width * 0.68,
+            y: numberDimension.height * 0.17,
         }, ];
 
         this._val = {x: 0, y: 0};
@@ -196,20 +196,20 @@ class EightTracing extends Component {
                         }
                     }
 
-                    // // Dot 9
-                    // if(this.state.dot8 && !this.state.dot9) {
-                    //     if(e.nativeEvent.locationX >= this.line1[8].x - scope && e.nativeEvent.locationX <= this.line1[8].x + scope) {
-                    //         if(e.nativeEvent.locationY >= this.line1[8].y - scope && e.nativeEvent.locationY <= this.line1[8].y + scope) {
-                    //             //alert('Dot9');
-                    //             this.setState({dot9: true});
-                    //         }
-                    //     }
-                    // }
+                    // Dot 9
+                    if(this.state.dot8 && !this.state.dot9) {
+                        if(e.nativeEvent.locationX >= this.line1[8].x - scope && e.nativeEvent.locationX <= this.line1[8].x + scope) {
+                            if(e.nativeEvent.locationY >= this.line1[8].y - scope && e.nativeEvent.locationY <= this.line1[8].y + scope) {
+                                //alert('Dot9');
+                                this.setState({dot9: true});
+                            }
+                        }
+                    }
                 }                
             },
             onPanResponderRelease: (e, gesture) => {
-                if(this.state.dot8) {
-                    this.setState({arrayMove: [], showShaded: 1, showTracing: 0});
+                if(this.state.dot9) {
+                    this.setState({arrayMove: [], showTracing: 1, tracing: shaded_8_1});
                 } else {
                     //alert('Released');
                     this.setState({arrayMove: [], dot1: false, dot2: false, dot3: false, dot4: false,
@@ -258,63 +258,59 @@ class EightTracing extends Component {
                         {...this.panResponder.panHandlers} >
                     <View style={{position: 'absolute', width: '35%', height: '90%', 
                                 top: '5%', left: '32%', opacity: this.state.showTracing,}}>
-                        <Image source={trace1} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
+                        <Image source={this.state.tracing} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
 
                         {/* <View style={[styles.dot, {top: numberDimension.height * 0.11,
                             left: numberDimension.width * 0.45}]}></View>
                         <View style={[styles.dot, {top: numberDimension.height * 0.28,
-                            left: numberDimension.width * 0.2}]}></View>
+                            left: numberDimension.width * 0.22}]}></View>
                         <View style={[styles.dot, {top: numberDimension.height * 0.45,
                             left: numberDimension.width * 0.44}]}></View>
                         <View style={[styles.dot, {top: numberDimension.height * 0.7,
-                            left: numberDimension.width * 0.8}]}></View>
+                            left: numberDimension.width * 0.81}]}></View>
                         <View style={[styles.dot, {top: numberDimension.height * 0.89,
-                            left: numberDimension.width * 0.5}]}></View>
+                            left: numberDimension.width * 0.49}]}></View>
                         <View style={[styles.dot, {top: numberDimension.height * 0.7,
                             left: numberDimension.width * 0.18}]}></View>
-                        <View style={[styles.dot, {top: numberDimension.height * 0.45,
+                        <View style={[styles.dot, {top: numberDimension.height * 0.46,
                             left: numberDimension.width * 0.5}]}></View>
                         <View style={[styles.dot, {top: numberDimension.height * 0.28,
-                            left: numberDimension.width * 0.76}]}></View>
-                        <View style={[styles.dot, {top: numberDimension.height * 0.11,
-                            left: numberDimension.width * 0.5}]}></View> */}
+                            left: numberDimension.width * 0.77}]}></View>
+                        <View style={[styles.dot, {top: numberDimension.height * 0.17,
+                            left: numberDimension.width * 0.68}]}></View> */}
 
                         {/*
                             this.line1 = [{
                                 x: numberDimension.width * 0.45,
                                 y: numberDimension.height * 0.11,
                             }, {
-                                x: numberDimension.width * 0.2,
+                                x: numberDimension.width * 0.22,
                                 y: numberDimension.height * 0.28,
                             }, {
                                 x: numberDimension.width * 0.44,
                                 y: numberDimension.height * 0.45,
                             }, {
-                                x: numberDimension.width * 0.8,
+                                x: numberDimension.width * 0.81,
                                 y: numberDimension.height * 0.7,
                             }, {
-                                x: numberDimension.width * 0.5,
+                                x: numberDimension.width * 0.49,
                                 y: numberDimension.height * 0.89,
                             }, {
                                 x: numberDimension.width * 0.18,
                                 y: numberDimension.height * 0.7,
                             }, {
                                 x: numberDimension.width * 0.5,
-                                y: numberDimension.height * 0.45,
+                                y: numberDimension.height * 0.46,
                             }, {
-                                x: numberDimension.width * 0.76,
+                                x: numberDimension.width * 0.77,
                                 y: numberDimension.height * 0.28,
                             }, {
-                                x: numberDimension.width * 0.5,
-                                y: numberDimension.height * 0.11,
+                                x: numberDimension.width * 0.68,
+                                y: numberDimension.height * 0.17,
                             }, ];
                         */}
 
 
-                    </View>
-                    <View style={{position: 'absolute', width: '35%', height: '90%', 
-                                top: '5%', left: '32%', opacity: this.state.showShaded}}>
-                        <Image source={shaded_8_1} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
                     </View>
                 </View>
                 {touchTrail}

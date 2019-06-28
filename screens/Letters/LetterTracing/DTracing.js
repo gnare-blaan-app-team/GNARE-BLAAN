@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, ImageBackground, StyleSheet, Image, PanResponder, TouchableOpacity, StatusBar, Animated } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
-import DLetter from '../LettersAssets/D.png';
+import DLetter from '../LettersAssets/tracingD_1.gif';
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
 

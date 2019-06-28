@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, ImageBackground, StyleSheet, Image, PanResponder, TouchableOpacity, StatusBar, Animated } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
-import ALetter from '../LettersAssets/A.png';
+import ALetter from '../LettersAssets/tracingA_1.gif';
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
 
@@ -50,7 +50,7 @@ class ATracing extends Component {
                 
             },
             onPanResponderRelease: (e, gesture) => {
-                
+                this.setState({arrayMove: []});
             }
         });
     }
@@ -71,7 +71,7 @@ class ATracing extends Component {
         let touchTrail = this.state.arrayMove.map((item, key) => {
             return(
                 <View key = { key } {...this.panResponder.panHandlers}
-                    style={[ballStyle.circle, {position: 'absolute', left: item.x - 24, top: item.y - 24}]}>
+                    style={[styles.trace, {position: 'absolute', left: item.x - 24, top: item.y - 24}]}>
                 </View>
             )
         });
@@ -112,14 +112,5 @@ class ATracing extends Component {
         )
     }
 }
-
-const ballStyle = StyleSheet.create({
-    circle: {
-        backgroundColor: 'black',
-        width: 48,
-        height: 48,
-        borderRadius: 48,
-    }
-});
 
 export default withNavigation(ATracing);
