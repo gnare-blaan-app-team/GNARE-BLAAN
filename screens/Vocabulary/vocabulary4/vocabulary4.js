@@ -3,6 +3,8 @@ import { View, Image, StyleSheet, ImageBackground, TouchableOpacity,  } from 're
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
+import Sound from 'react-native-sound';
+
 import Vocab4BG from './vocabulary4Images/vocab4.png';
 import BambooAsset from './vocabulary4Images/bambooAsset.png';
 import BoloAsset from './vocabulary4Images/boloAsset.png';
@@ -32,8 +34,15 @@ import Pig from './vocabulary4Images/pig.png';
 import Plow from './vocabulary4Images/plow.png';
 import Rice from './vocabulary4Images/rice.png';
 import Potato from './vocabulary4Images/sweetpotato.png';
+import SpeakerIcon from '../../images/Speaker_icon.png';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
+Sound.setCategory('Playback');
+
+// Vocab Sound List
+const soundList = ['bamboo', 'bolo', 'carabao', 'chicken', 'corn', 'cow', 'farmland', 
+                    'goat', 'pig', 'plow', 'rice', 'sweetpotato'];
 
 const backgroundList = [Bamboo,Bolo,Carabao,Chicken,Corn,Cow,Farmland,Goat,Pig,Plow,Rice,Potato];
 
@@ -59,36 +68,13 @@ class Vocabulary4 extends Component {
             chickenTop:'59%',
             plowTop:'63%',
             potatoTop:'75%',
+            speakerTop:'1000%',
+            clickSoundIndex:'',
         }
+         // Sounds
+        this.vocabSound = null;
     }
 
-    goBack = () => {
-        const clear = this.state.clearBackground;
-        if (clear == 'gotoVocab4Menu') {
-            this.props.navigation.navigate('vocabularyMenu')
-        }
-        if (clear == 'clear') {
-            this.setState({
-                BackgroundImage: Vocab4BG,
-                clearBackground: 'gotoVocab4Menu',
-                farmlandTop: '36%',
-                carabaoTop: '42%',
-                riceTop: '64.4%',
-                bambooTop: '56%',
-                boloTop: '53%',
-                cowTop: '53%',
-                pigTop: '67%',
-                goatTop: '60%',
-                cornTop: '55%',
-                chickenTop: '59%',
-                plowTop: '63%',
-                potatoTop: '75%',
-            })
-        }
-    }
-    gotoMainMenu = () => {
-        this.props.navigation.navigate('mainMenu');
-    }
    
     changeBackground = (index) => {
         this.setState({
@@ -106,9 +92,77 @@ class Vocabulary4 extends Component {
             chickenTop: '1000%',
             plowTop: '1000%',
             potatoTop: '1000%',
+            speakerTop: '20%',
+            clickSoundIndex:index
         })
+        this.autoPlaySound(index);
     }
 
+    autoPlaySound = (index) => {
+        this.releaseSounds();
+        this.vocabSound = new Sound('vocab4_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+       this.vocabSound.play();
+        });     
+      }
+    
+      releaseSounds = ()=> {
+          if(this.vocabSound != null) {
+              this.vocabSound.release();
+          }
+      }
+    
+      playVocabSound = () => {
+        if(this.vocabSound != null) {
+            this.vocabSound.release();
+        }
+        this.stopSounds();
+        this.vocabSound = new Sound('vocab4_' + soundList[this.state.clickSoundIndex] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+        if (error) {
+            alert('failed to load the sound', error);
+            return;
+        } else {
+            this.vocabSound.play();
+        }});
+      }
+    
+    stopSounds = () => {
+        this.vocabSound.stop();
+      }
+    
+    gotoMainMenu = () =>{
+    const clear = this.state.clearBackground;
+        if (clear == 'clear'){
+            this.stopSounds();
+        }
+        this.props.navigation.navigate('mainMenu');
+    }
+
+    goBack = () => {
+        const clear = this.state.clearBackground;
+        if (clear == 'gotoVocab4Menu') {
+            this.props.navigation.navigate('vocabularyMenu')
+        }
+        if (clear == 'clear') {
+            this.stopSounds();
+            this.setState({
+                BackgroundImage: Vocab4BG,
+                clearBackground: 'gotoVocab4Menu',
+                farmlandTop: '36%',
+                carabaoTop: '42%',
+                riceTop: '64.4%',
+                bambooTop: '56%',
+                boloTop: '53%',
+                cowTop: '53%',
+                pigTop: '67%',
+                goatTop: '60%',
+                cornTop: '55%',
+                chickenTop: '59%',
+                plowTop: '63%',
+                potatoTop: '75%',
+                speakerTop: '1000%',
+            })
+        }
+    }
     render() {
 
         return (
@@ -134,6 +188,20 @@ class Vocabulary4 extends Component {
                         <Image
                             source={Home_icon}
                             style={globalStyleSheet.home}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={{
+                    position: 'absolute',
+                    left: '80%',
+                    top:this.state.speakerTop,
+                    width: '6%',
+                    height: '10%',
+                }}>
+                    <TouchableOpacity onPress={this.playVocabSound}>
+                        <Image
+                            source={SpeakerIcon}
+                            style={globalStyleSheet.A_Speaker_2}
                         ></Image>
                     </TouchableOpacity>
                 </View>

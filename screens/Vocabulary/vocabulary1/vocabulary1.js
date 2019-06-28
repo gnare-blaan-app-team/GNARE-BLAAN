@@ -3,6 +3,8 @@ import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, PanResponde
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
+import Sound from 'react-native-sound';
+
 import Vocab1BG from '../../images/FamilyMemBG.png';
 import LolaAsset from './vocabulary1Images/lolaAsset.png';
 import LoloAsset from './vocabulary1Images/loloAsset.png';
@@ -18,10 +20,16 @@ import Lola from './vocabulary1Images/lola.png';
 import Lolo from './vocabulary1Images/lolo.png';
 import Kaito from './vocabulary1Images/kaito.png';
 import Kaibe from './vocabulary1Images/kaibe.png';
+import SpeakerIcon from '../../images/Speaker_icon.png';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-const BackgroundList = [Tatay,Nanay,Lola,Lola,Kaito,Kaibe];
+Sound.setCategory('Playback');
+
+// Vocab Sound List
+const soundList = ['tatay', 'nanay', 'lolo', 'lola', 'brother', 'sister', ];
+
+const BackgroundList = [Tatay,Nanay,Lolo,Lola,Kaito,Kaibe];
 
 class Vocabulary1 extends Component {
     static navigationOptions = {
@@ -39,19 +47,34 @@ class Vocabulary1 extends Component {
           KaitoTop:'37%',
           KaibeTop: '37%',
           TatayTop:'23%',
+          speakerTop:'1000%',
+          clickSoundIndex:'',
     }
+
+    // Sounds
+    this.vocabSound = null;
+  }
+
+  stopSounds = () => {
+    this.vocabSound.stop();
   }
 
   gotoMainMenu = () =>{
-    this.props.navigation.navigate('mainMenu')
+    const clear = this.state.clearBackground;
+        if (clear == 'clear'){
+            this.stopSounds();
+        }
+        this.props.navigation.navigate('mainMenu');
   }
 
   goBack = () =>{
+
     const clear = this.state.clearBackground;
     if (clear == 'gotoVocab1Menu'){
       this.props.navigation.navigate('vocabularyMenu')
     }
     if(clear == 'clear'){
+      this.stopSounds();
       this.setState({
         BackgroundImage: Vocab1BG,
         NanayTop: '26%',
@@ -61,6 +84,7 @@ class Vocabulary1 extends Component {
         KaibeTop: '37%',
         TatayTop: '23%',
         clearBackground:'gotoVocab1Menu',
+        speakerTop: '1000%',
       })
     }
   }
@@ -75,13 +99,41 @@ class Vocabulary1 extends Component {
       KaitoTop: '1000%',
       KaibeTop: '1000%',
       TatayTop: '1000%',
+      speakerTop: '20%',
       clearBackground:'clear',
+      clickSoundIndex:index
     })
+    this.autoPlaySound(index);
   }
 
-  
+  autoPlaySound = (index) => {
+    this.releaseSounds();
+    this.vocabSound = new Sound('vocab1_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+   this.vocabSound.play();
+    });     
+  }
 
-    render() {
+  releaseSounds = ()=> {
+      if(this.vocabSound != null) {
+          this.vocabSound.release();
+      }
+  }
+
+  playVocabSound = () => {
+    if(this.vocabSound != null) {
+        this.vocabSound.release();
+    }
+    this.stopSounds();
+    this.vocabSound = new Sound('vocab1_' + soundList[this.state.clickSoundIndex] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+        alert('failed to load the sound', error);
+        return;
+    } else {
+        this.vocabSound.play();
+    }});
+  }
+
+  render() {
 
         return (
           <ImageBackground style={{ flex: 1, width: '100%', height: '100%', resizeMode: 'stretch' }}
@@ -106,6 +158,20 @@ class Vocabulary1 extends Component {
                         <Image
                             source={Home_icon}
                             style={globalStyleSheet.home}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={{
+                    position: 'absolute',
+                    left: '80%',
+                    top:this.state.speakerTop,
+                    width: '6%',
+                    height: '10%',
+                }}>
+                    <TouchableOpacity onPress={this.playVocabSound}>
+                        <Image
+                            source={SpeakerIcon}
+                            style={globalStyleSheet.A_Speaker_2}
                         ></Image>
                     </TouchableOpacity>
                 </View>
