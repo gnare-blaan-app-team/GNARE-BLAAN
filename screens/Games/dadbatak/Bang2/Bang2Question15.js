@@ -11,6 +11,8 @@ import Bang2Q15 from '../../gameImages/DB_Bang2Images/db_bang2Q15.png';
 import Agung from '../../gameImages/DB_Bang2Images/agung.png';
 import Agnu from '../../gameImages/DB_Bang2Images/agnu.png';
 import Agong from '../../gameImages/DB_Bang2Images/agong.png';
+import Gufadyan from '../../gameImages/gufadyan.png';
+import Coinbank from '../../gameImages/Coinbank.png';
 
 class Bang2Question15 extends Component {
     static navigationOptions = {
@@ -75,6 +77,14 @@ class Bang2Question15 extends Component {
                         >
                         </Image>
                     </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.gufadyan}>
+                    <TouchableOpacity>
+                        <Image source={Gufadyan} style={styles.image}></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.coinbankBang}>
+                    <Image source={Coinbank} style={styles.image}></Image>
                 </View>
             </ImageBackground>
         )

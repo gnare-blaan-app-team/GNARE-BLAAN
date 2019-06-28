@@ -11,6 +11,8 @@ import Bang3Q4 from '../../gameImages/DB_Bang3Images/db_bang3Q4.png';
 import Playhouse from '../../gameImages/DB_Bang3Images/playhouse.png';
 import Playground from '../../gameImages/DB_Bang3Images/playground.png';
 import Playmate from '../../gameImages/DB_Bang3Images/playmate.png';
+import Gufadyan from '../../gameImages/gufadyan.png';
+import Coinbank from '../../gameImages/Coinbank.png';
 
 class Bang3Question4 extends Component {
     static navigationOptions = {
@@ -75,6 +77,14 @@ class Bang3Question4 extends Component {
                         >
                         </Image>
                     </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.gufadyan}>
+                    <TouchableOpacity>
+                        <Image source={Gufadyan} style={styles.image}></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.coinbankBang}>
+                    <Image source={Coinbank} style={styles.image}></Image>
                 </View>
             </ImageBackground>
         )

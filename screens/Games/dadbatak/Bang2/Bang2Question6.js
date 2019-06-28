@@ -11,6 +11,8 @@ import Bang2Q6 from '../../gameImages/DB_Bang2Images/db_bang2Q6.png';
 import Ipis from '../../gameImages/DB_Bang2Images/ipis.png';
 import Lafish from '../../gameImages/DB_Bang2Images/lafish.png';
 import Lapis from '../../gameImages/DB_Bang2Images/lapis.png';
+import Gufadyan from '../../gameImages/gufadyan.png';
+import Coinbank from '../../gameImages/Coinbank.png';
 
 class Bang2Question6 extends Component {
     static navigationOptions = {
@@ -75,6 +77,14 @@ class Bang2Question6 extends Component {
                         >
                         </Image>
                     </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.gufadyan}>
+                    <TouchableOpacity>
+                        <Image source={Gufadyan} style={styles.image}></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.coinbankBang}>
+                    <Image source={Coinbank} style={styles.image}></Image>
                 </View>
             </ImageBackground>
         )

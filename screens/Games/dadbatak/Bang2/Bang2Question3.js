@@ -11,6 +11,8 @@ import Bang2Q3 from '../../gameImages/DB_Bang2Images/db_bang2Q3.png';
 import Bubuyog from '../../gameImages/DB_Bang2Images/bubuyog.png';
 import Boboyog from '../../gameImages/DB_Bang2Images/boboyog.png';
 import Lamok from '../../gameImages/DB_Bang2Images/lamok.png';
+import Gufadyan from '../../gameImages/gufadyan.png';
+import Coinbank from '../../gameImages/Coinbank.png';
 
 class Bang2Question3 extends Component {
     static navigationOptions = {
@@ -75,6 +77,14 @@ class Bang2Question3 extends Component {
                         >
                         </Image>
                     </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.gufadyan}>
+                    <TouchableOpacity>
+                        <Image source={Gufadyan} style={styles.image}></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={globalStyleSheet.coinbankBang}>
+                    <Image source={Coinbank} style={styles.image}></Image>
                 </View>
             </ImageBackground>
         )
