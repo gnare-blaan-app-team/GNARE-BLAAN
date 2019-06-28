@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler,Animated } from 'react-native';
+
+import Sound from 'react-native-sound';
+
 import { withNavigation } from 'react-navigation';
 import { globalStyleSheet } from '../../globalStyleSheet/globalStyleSheet'
 import BG2 from '../../images/BG.jpg';
@@ -22,6 +25,12 @@ import Legs from './vocabulary2Images/binti.png';
 import Knees from './vocabulary2Images/tuhod.png';
 import Toes from './vocabulary2Images/paa.png';
 import SpeakerIcon from '../../images/Speaker_icon.png';
+
+Sound.setCategory('Playback');
+
+// Vocab Sound List
+const soundList = ['ulo', 'mata', 'buhok', 'ilong', 'bunganga', 'tainga', 'leeg', 'balikat', 'dibdib', 'kamay', 
+                    'baywang', 'daliri', 'binti', 'tuhod', 'paa'];
 
 const partList = [Head, Eyes, Hair, Nose, Mouth, Ears, Neck, Shoulder, Chest, Hand, Hips, Fingers, Legs, Knees, Toes,BG]
 
@@ -53,6 +62,9 @@ class vocabulary2 extends Component {
             speakerTop:'1000%',
             clearBackground:'goVocabMenu',
         }
+
+        // Sounds
+        this.vocabSound = null;
     }
 
     View = (View) => {
@@ -112,7 +124,7 @@ class vocabulary2 extends Component {
         }
     }
 
-    changeBackground = (Background) => {
+    changeBackground = (Background, soundPlay) => {
         this.setState({
             BackgroundImage: partList[Background],
             view1Top: '1000%',
@@ -121,9 +133,42 @@ class vocabulary2 extends Component {
             boyTop: '1000%',
             speakerTop: '20%',
             clearBackground: 'clear',
+            indexSound: soundPlay,
         })
+        this.autoPlaySound(Background);
     }
 
+    autoPlaySound = (index) => {
+        this.releaseSounds();
+        this.vocabSound = new Sound('vocab2_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+       this.vocabSound.play();
+        });     
+    }
+
+    releaseSounds = ()=> {
+        if(this.vocabSound != null) {
+            this.vocabSound.release();
+        }
+    }
+
+    playVocabSound = () => {
+        if(this.vocabSound != null) {
+            this.vocabSound.release();
+        }
+        this.stopSounds();
+        this.vocabSound = new Sound('vocab2_' + soundList[this.state.indexSound] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+        if (error) {
+            alert('failed to load the sound', error);
+            return;
+        } else {
+            this.vocabSound.play();
+        }});
+    }
+
+    stopSounds = () => {
+        this.vocabSound.stop();
+    }
+    
     componentWillMount(){
         this.animatedValue = new Animated.Value(1);
         Animated.spring(this.animatedValue,{
@@ -132,15 +177,21 @@ class vocabulary2 extends Component {
     }
 
     gotoMainMenu = () => {
+        const clear = this.state.clearBackground;
+        if (clear == 'clear'){
+            this.stopSounds();
+        }
         this.props.navigation.navigate('mainMenu');
     }
 
     goBack = () => {
         const clear = this.state.clearBackground;
         if (clear == 'goVocabMenu'){
+
             this.props.navigation.navigate('vocabularyMenu')
         }
         if (clear == 'clear'){
+        this.stopSounds();
           const show = this.state.stillView;
           this.View(show);
           this.setState({
@@ -149,6 +200,7 @@ class vocabulary2 extends Component {
         }
         this.setState({
             BackgroundImage:partList[15],
+            speakerTop:'1000%',
         })
     }
 
@@ -234,7 +286,7 @@ class vocabulary2 extends Component {
                    
                     <View style={{ position: 'absolute', width: '23%', height: '30%', top: '19.30%', left: '38%' }}>
                         <TouchableOpacity onPress={() => {
-                            this.changeBackground(1)
+                            this.changeBackground(1, 1)
                         }}>
                             <Image source={require('./vocabulary2Images/ulo2.png')}
                                 style={{
@@ -247,7 +299,7 @@ class vocabulary2 extends Component {
                     </View>
                     <View style={{ position: 'absolute', width: '7%', height: '12%', top: '27.47%', left: '59%' }}>
                         <TouchableOpacity onPress={() => {
-                            this.changeBackground(2)
+                            this.changeBackground(2, 2)
                         }}>
                             <Image source={require('./vocabulary2Images/ulo3.png')}
                                 style={{
@@ -260,7 +312,7 @@ class vocabulary2 extends Component {
                     </View>
                     <View style={{ position: 'absolute', width: '7%', height: '12%',top: '27.47%', left: '33.20%'}}>
                         <TouchableOpacity onPress={() => {
-                            this.changeBackground(2)
+                            this.changeBackground(2, 2)
                         }}>
                             <Image source={require('./vocabulary2Images/ulo4.png')}
                                 style={{
@@ -274,7 +326,7 @@ class vocabulary2 extends Component {
 
                     <View style={{ position: 'absolute', width: '35%', height: '27%', top: '6%' }}>
                         <TouchableOpacity onPress={() => {
-                            this.changeBackground(0)
+                            this.changeBackground(0, 0)
                         }}>
                             <Image source={require('./vocabulary2Images/ulo1.png')}
                                 style={{
@@ -287,7 +339,7 @@ class vocabulary2 extends Component {
                     </View>
                     <View style={{ position: 'absolute', width: '9%', height: '13%', top: '34%', left: '58.65%' }}>
                         <TouchableOpacity onPress={() => {
-                            this.changeBackground(5)
+                            this.changeBackground(5, 5)
                         }}>
                             <Image source={require('./vocabulary2Images/ulo7.png')}
                                 style={{
@@ -300,7 +352,7 @@ class vocabulary2 extends Component {
                     </View>
                     <View style={{ position: 'absolute', width: '9%', height: '13%', top: '34%', left: '31.65%' }}>
                         <TouchableOpacity onPress={() => {
-                            this.changeBackground(5)
+                            this.changeBackground(5, 5)
                         }}>
                             <Image source={require('./vocabulary2Images/ulo8.png')}
                                 style={{
@@ -314,7 +366,7 @@ class vocabulary2 extends Component {
                     
                     <View style={{ position: 'absolute', width: '9%', height: '13%', top: '36%', left: '45%' }}>
                         <TouchableOpacity onPress={() => {
-                            this.changeBackground(3)
+                            this.changeBackground(3, 3)
                         }}>
                             <Image source={require('./vocabulary2Images/ulo9.png')}
                                 style={{
@@ -327,7 +379,7 @@ class vocabulary2 extends Component {
                     </View>
                     <View style={{ position: 'absolute', width: '12%', height: '9%', top: '43.50%', left: '43.50%'}}>
                         <TouchableOpacity onPress={() => {
-                            this.changeBackground(4)
+                            this.changeBackground(4, 4)
                         }}>
                             <Image source={require('./vocabulary2Images/ulo10.png')}
                                 style={{
@@ -340,7 +392,7 @@ class vocabulary2 extends Component {
                     </View>
                     <View style={{ position: 'absolute', width: '15%', height: '7%', top: '50%', left: '42%',}}>
                         <TouchableOpacity onPress={() => {
-                            this.changeBackground(6)
+                            this.changeBackground(6, 6)
                         }}>
                             <Image source={require('./vocabulary2Images/ulo11.png')}
                                 style={{
@@ -371,7 +423,7 @@ class vocabulary2 extends Component {
                     }}>
                     <View style={{ position: 'absolute', width: '15%', height: '16.50%', top: '29%', left: '34.20%',}}>
                         <TouchableOpacity onPress={() => {
-                            this.changeBackground(7)
+                            this.changeBackground(7, 7)
                         }}>
                             <Image source={require('./vocabulary2Images/dibdib3.png')}
                                 style={{
@@ -384,7 +436,7 @@ class vocabulary2 extends Component {
                     </View>
                     <View style={{ position: 'absolute', width: '15%', height: '16.50%', top: '29%', left: '65.40%',}}>
                         <TouchableOpacity onPress={() => {
-                            this.changeBackground(7)
+                            this.changeBackground(7, 7)
                         }}>
                             <Image source={require('./vocabulary2Images/dibdib2.png')}
                                 style={{
@@ -406,7 +458,7 @@ class vocabulary2 extends Component {
                     </View>
                     <View style={{ position: 'absolute', width: '30%', height: '50%', top: '10%', left: '42%',}}>
                         <TouchableOpacity onPress={() => {
-                            this.changeBackground(8)
+                            this.changeBackground(8, 8)
                         }}>
                             <Image source={require('./vocabulary2Images/dibdib1.png')}
                                 style={{
@@ -419,7 +471,7 @@ class vocabulary2 extends Component {
                     </View>
                     <View style={{ position: 'absolute', width: '15%', height: '40%', top: '37.47%', left: '29.95%',}}>
                         <TouchableOpacity onPress={() => {
-                            this.changeBackground(9)
+                            this.changeBackground(9, 9)
                         }}>
                             <Image source={require('./vocabulary2Images/dibdib5.png')}
                                 style={{
@@ -432,7 +484,7 @@ class vocabulary2 extends Component {
                     </View>
                     <View style={{ position: 'absolute', width: '15%', height: '35%', top: '41.47%', left: '68.06%',}}>
                         <TouchableOpacity onPress={() => {
-                            this.changeBackground(9)
+                            this.changeBackground(9, 9)
                         }}>
                             <Image source={require('./vocabulary2Images/dibdib6.png')}
                                 style={{
@@ -445,7 +497,7 @@ class vocabulary2 extends Component {
                     </View>
                     <View style={{ position: 'absolute',width: '8%', height: '10%', top: '75.30%', left: '73.92%', }}>
                         <TouchableOpacity onPress={() => {
-                            this.changeBackground(11)
+                            this.changeBackground(11, 11)
                         }}>
                             <Image source={require('./vocabulary2Images/dibdib7.png')}
                                 style={{
@@ -458,7 +510,7 @@ class vocabulary2 extends Component {
                     </View>
                     <View style={{ position: 'absolute', width: '8%', height: '10%', top: '77d%', left: '29.70%', }}>
                         <TouchableOpacity onPress={() => {
-                            this.changeBackground(11)
+                            this.changeBackground(11, 11)
                         }}>
                             <Image source={require('./vocabulary2Images/dibdib8.png')}
                                 style={{
@@ -477,7 +529,7 @@ class vocabulary2 extends Component {
                     width: '6%',
                     height: '10%',
                 }}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={this.playVocabSound}>
                         <Image
                             source={SpeakerIcon}
                             style={globalStyleSheet.A_Speaker_2}
@@ -496,7 +548,7 @@ class vocabulary2 extends Component {
                     }}>
                     <View style={{ position: 'absolute', width: '30%', height: '16%', top: '5%', left: '29.70%', }}>
                         <TouchableOpacity onPress={() => {
-                            this.changeBackground(10)
+                            this.changeBackground(10, 10)
                         }}>
                             <Image source={require('./vocabulary2Images/paa1.png')}
                                 style={{
@@ -509,7 +561,7 @@ class vocabulary2 extends Component {
                     </View>
                      <View style={{ position: 'absolute',width: '35%', height: '25%', top: '19.45%', left: '27.43%', }}>
                         <TouchableOpacity onPress={() => {
-                            this.changeBackground(12)
+                            this.changeBackground(12, 12)
                         }}>
                             <Image source={require('./vocabulary2Images/paa2.png')}
                                 style={{
@@ -522,7 +574,7 @@ class vocabulary2 extends Component {
                     </View>
                       <View style={{position: 'absolute',width: '33%', height: '21%', top: '42.60%', left: '28.25%', }}>
                         <TouchableOpacity onPress={() => {
-                            this.changeBackground(13)
+                            this.changeBackground(13, 13)
                         }}>
                             <Image source={require('./vocabulary2Images/paa3.png')}
                                 style={{
@@ -544,7 +596,7 @@ class vocabulary2 extends Component {
                     </View>
                     <View style={{position: 'absolute', width: '37.50%', height: '16%', top: '79%', left: '26.40%', }}>
                         <TouchableOpacity onPress={() => {
-                            this.changeBackground(14)
+                            this.changeBackground(14, 14)
                         }}>
                             <Image source={require('./vocabulary2Images/paa6.png')}
                                 style={{

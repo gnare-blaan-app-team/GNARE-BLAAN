@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler, Text } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
+
+import Sound from 'react-native-sound';
+
 import BG from '../../images/BG.jpg';
 import Vocab3BG from './vocabulary3Images/vocab3.png';
 import BasketAsset from './vocabulary3Images/basketAsset.png';
@@ -22,8 +25,14 @@ import Fishnet from './vocabulary3Images/fishnet.png';
 import Sea from './vocabulary3Images/sea.png';
 import Seashore from './vocabulary3Images/seashore.png';
 import Shrimp from './vocabulary3Images/shrimp.png';
+import SpeakerIcon from '../../images/Speaker_icon.png';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
+Sound.setCategory('Playback');
+
+// Vocab Sound List
+const soundList = ['basket', 'crab', 'eel', 'fish', 'fishnet', 'sea', 'seashore', 'shrimp' ];
 
 const BackgroundList=[Basket,Crab,Eel,Fish,Fishnet,Sea,Seashore,Shrimp];
 
@@ -46,33 +55,13 @@ class Vocabulary3 extends Component {
             seashoreTop3: '40%',
             fishnetTop:'27%',
             shrimpTop:'61%',
-            crabTop:'27%'
+            crabTop:'27%',
+            speakerTop:'1000%',
+            clickSoundIndex:'',
         }
     }
 
-    goBack = () => {
-        const clear = this.state.clearBackground;
-        if (clear == 'gotoVocab3Menu') {
-            this.props.navigation.navigate('vocabularyMenu')
-        }
-        if (clear == 'clear') {
-            this.setState({
-                BackgroundImage: Vocab3BG,
-                clearBackground: 'gotoVocab3Menu',
-                seaTop: '30%',
-                seashoreTop: '25.5%',
-                basketTop: '21%',
-                ealTop: '60%',
-                fishTop: '56%',
-                seashoreTop2: '26%',
-                seashoreTop3: '40%',
-                fishnetTop: '27%',
-                shrimpTop: '61%',
-                crabTop: '27%'
-            })
-        }
-    }
-
+  
     changeBackground = (index) =>{
         this.setState({
             BackgroundImage: BackgroundList[index],
@@ -86,8 +75,75 @@ class Vocabulary3 extends Component {
             fishnetTop: '1000%',
             shrimpTop: '1000%',
             crabTop: '1000%',
+            speakerTop: '20%',
             clearBackground: 'clear',
+            clickSoundIndex:index
         })
+        this.autoPlaySound(index);
+    }
+
+    gotoMainMenu = () =>{
+    const clear = this.state.clearBackground;
+        if (clear == 'clear'){
+            this.stopSounds();
+        }
+        this.props.navigation.navigate('mainMenu');
+    }
+
+    goBack = () => {
+        const clear = this.state.clearBackground;
+        if (clear == 'gotoVocab3Menu') {
+            this.props.navigation.navigate('vocabularyMenu')
+        }
+        if (clear == 'clear') {
+            this.stopSounds();
+            this.setState({
+                BackgroundImage: Vocab3BG,
+                clearBackground: 'gotoVocab3Menu',
+                seaTop: '30%',
+                seashoreTop: '25.5%',
+                basketTop: '21%',
+                ealTop: '60%',
+                fishTop: '56%',
+                seashoreTop2: '26%',
+                seashoreTop3: '40%',
+                fishnetTop: '27%',
+                shrimpTop: '61%',
+                crabTop: '27%',
+                speakerTop:'1000%',
+            })
+        }
+    }
+
+    autoPlaySound = (index) => {
+        this.releaseSounds();
+        this.vocabSound = new Sound('vocab3_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+       this.vocabSound.play();
+        });     
+      }
+    
+      releaseSounds = ()=> {
+          if(this.vocabSound != null) {
+              this.vocabSound.release();
+          }
+      }
+      
+      stopSounds = () => {
+        this.vocabSound.stop();
+      }
+    
+      playVocabSound = () => {
+        if(this.vocabSound != null) {
+            this.vocabSound.release();
+        }
+        this.stopSounds();
+        this.vocabSound = new Sound('vocab3_' + soundList[this.state.clickSoundIndex] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+        if (error) {
+            alert('failed to load the sound', error);
+            return;
+        } else {
+            this.vocabSound.play();
+        }});
     }
 
     render() {
@@ -115,6 +171,20 @@ class Vocabulary3 extends Component {
                         <Image
                             source={Home_icon}
                             style={globalStyleSheet.home}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={{
+                    position: 'absolute',
+                    left: '80%',
+                    top:this.state.speakerTop,
+                    width: '6%',
+                    height: '10%',
+                }}>
+                    <TouchableOpacity onPress={this.playVocabSound}>
+                        <Image
+                            source={SpeakerIcon}
+                            style={globalStyleSheet.A_Speaker_2}
                         ></Image>
                     </TouchableOpacity>
                 </View>
