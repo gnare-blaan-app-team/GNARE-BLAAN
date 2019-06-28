@@ -397,11 +397,11 @@ export default AppNavigator = createStackNavigator(
     ds_bang3Question4: DSBang3Question4,
     ds_bang3Question5: DSBang3Question5,
 
-    bang: Bang
+    bang: Bang,
   },
 {
 
-    initialRouteName:"gameMenu",
+  initialRouteName:"gameMenu",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"

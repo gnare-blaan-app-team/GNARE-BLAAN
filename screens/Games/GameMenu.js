@@ -17,12 +17,12 @@ import Bang3Icon from './gameImages/12Icon_Bang3Lock.png';
 import KastifunIcon from './gameImages/kastifun_icon.png';
 import TanbuIcon from './gameImages/tanbu_icon.png';
 import NextLevel from './gameImages/nextlevel.png'; 
-import CoinBank from './gameImages/coinbank.png'; 
+import CoinBank from './gameImages/bangko.png'; 
 import Market from './gameImages/market.png'; 
 
 const backgroundList = [BG,Slide1,DadseBG]
 
-const Key = '@MyApp:key';
+const prevKey = '@MyApp:prevkey';
 
 const Finish = '@MyApp:finish';
 
@@ -54,30 +54,16 @@ class GameMenu extends Component {
     }
 
     onSave = async () => {
-        const next = Math.floor(Math.random() * 10);
-        const convert = JSON.stringify(next);
-        alert(convert)
-        await AsyncStorage.setItem(Key, convert);
+        await AsyncStorage.setItem(prevKey, convert);
     }
 
     onLoad = async () => {
-        const storedValue = await AsyncStorage.getItem(Key);
+        const storedValue = await AsyncStorage.getItem(prevKey);
         if (storedValue == null){
             this.onSave();
             this.props.navigation.push('bang');
         }else{
             this.props.navigation.push('bang');
-        }
-    }
-
-    onLoad2 = async () => {
-        const finishLevel = await AsyncStorage.getItem(Finish);
-        if (finishLevel == 'Level1Completed') {
-            this.setState({
-                Clickabletanbu2Top: '40%',
-                tanbu2Top: '1000%',
-                
-            })
         }
     }
 
@@ -114,7 +100,6 @@ class GameMenu extends Component {
         this.props.navigation.navigate('dadbatak');
     }
     gotoDadSe = () => {
-        this.onLoad2();
         this.setState({
             BackgroundImage:backgroundList[2],
             dadbatakTop:'1000%',
@@ -143,7 +128,7 @@ class GameMenu extends Component {
         
         const index = this.state.level;
         if(index == 1){
-            this.props.navigation.push('bang');
+            this.onLoad();
         }
         if(index == 2){
             this.props.navigation.push('ds_bang2Question1');

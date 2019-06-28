@@ -24,9 +24,7 @@ class Ending extends Component {
     }
 
     onSave = async () => { 
-        const next = Math.floor(Math.random() * 10);
-        const convert = JSON.stringify(next);
-        await AsyncStorage.setItem(Key, convert);
+        await AsyncStorage.setItem(prevKey, null); 
     }
 
     static navigationOptions = {
