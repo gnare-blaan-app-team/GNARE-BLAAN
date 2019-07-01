@@ -15,7 +15,7 @@ import Home_icon from '../../images/Home_icon.png';
 
 import NextStory from '../flalokImages/NextStory.png';
 import Vocabulary10and11 from '../flalokImages/Vocabulary10&11Btn.png';
-import CultureandArts from '../flalokImages/Culture&ArtsBtn.png';
+import CultureandArts from '../flalokImages/Culture&ArtsButton.png';
 import flalokAfterStory_BG from '../../Games/gameImages/DadSeBG.png';
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js';
