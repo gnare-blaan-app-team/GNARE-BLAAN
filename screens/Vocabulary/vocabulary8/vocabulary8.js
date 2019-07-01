@@ -3,6 +3,8 @@ import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
+import Sound from 'react-native-sound';
+
 import Vocab8BG from './vocabulary8Images/Vocab8.png';
 
 import Back_icon from '../../images/Back_icon.png';
@@ -26,8 +28,15 @@ import Mooner from './vocabulary8Images/moon.png';
 import Morning from './vocabulary8Images/morning.png';
 import Starer from './vocabulary8Images/star.png';
 import Suner from './vocabulary8Images/sun.png';
+import SpeakerIcon from '../../images/Speaker_icon.png';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
+Sound.setCategory('Playback');
+
+// Vocab Sound List
+const soundList = ['afternoon', 'cloud', 'evening', 'goodbye', 'moon', 'morning', 'star', 
+                    'sun'];
 
 const backgroundList = [Afternoon, Clouder, Evening, Goodbyer, Mooner, Morning, Starer, Suner];
 
@@ -49,30 +58,12 @@ class Vocabulary8 extends Component {
             starTop: '30%',
             moonTop: '25%',
             cloudTop: '30%',
+            speakerTop:'1000%',
+            clickSoundIndex:'',
         }
+         // Sounds
+         this.vocabSound = null;
     }
-
-    goBack = () => {
-        const clear = this.state.clearBackground;
-        if (clear == 'gotoVocab8Menu') {
-            this.props.navigation.navigate('vocabularyMenu')
-        }
-        if (clear == 'clear') {
-            this.setState({
-                BackgroundImage: Vocab8BG,
-                clearBackground: 'gotoVocab8Menu',
-                haponTop: '19%',
-                gabiTop: '19%',
-                umagaTop: '19%',
-                sunTop: '22%',
-                goodbyeTop: '45%',
-                starTop: '30%',
-                moonTop: '25%',
-                cloudTop: '30%',
-            })
-        }
-    }
-
 
     changeBackground = (index) => {
         this.setState({
@@ -86,7 +77,73 @@ class Vocabulary8 extends Component {
             starTop: '1000%',
             moonTop: '1000%',
             cloudTop: '1000%',
+            speakerTop: '20%',
+            clickSoundIndex:index
         })
+        this.autoPlaySound(index);
+    }
+
+    
+    autoPlaySound = (index) => {
+        this.releaseSounds();
+        this.vocabSound = new Sound('vocab8_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+       this.vocabSound.play();
+        });     
+    }
+    
+    releaseSounds = ()=> {
+        if(this.vocabSound != null) {
+            this.vocabSound.release();
+        }
+    }
+    
+    playVocabSound = () => {
+        if(this.vocabSound != null) {
+            this.vocabSound.release();
+        }
+        this.stopSounds();
+        this.vocabSound = new Sound('vocab8_' + soundList[this.state.clickSoundIndex] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+        if (error) {
+            alert('failed to load the sound', error);
+            return;
+        } else {
+            this.vocabSound.play();
+        }});
+    }
+    
+    stopSounds = () => {
+        this.vocabSound.stop();
+    }
+    
+    gotoMainMenu = () =>{
+        const clear = this.state.clearBackground;
+        if (clear == 'clear'){
+            this.stopSounds();
+        }
+        this.props.navigation.navigate('mainMenu');
+    }
+
+    goBack = () => {
+        const clear = this.state.clearBackground;
+        if (clear == 'gotoVocab8Menu') {
+            this.props.navigation.navigate('vocabularyMenu')
+        }
+        if (clear == 'clear') {
+            this.stopSounds();
+            this.setState({
+                BackgroundImage: Vocab8BG,
+                clearBackground: 'gotoVocab8Menu',
+                haponTop: '19%',
+                gabiTop: '19%',
+                umagaTop: '19%',
+                sunTop: '22%',
+                goodbyeTop: '45%',
+                starTop: '30%',
+                moonTop: '25%',
+                cloudTop: '30%',
+                speakerTop: '1000%',
+            })
+        }
     }
 
     render() {
@@ -117,6 +174,22 @@ class Vocabulary8 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
+
+                <View style={{
+                    position: 'absolute',
+                    left: '80%',
+                    top:this.state.speakerTop,
+                    width: '6%',
+                    height: '10%',
+                }}>
+                    <TouchableOpacity onPress={this.playVocabSound}>
+                        <Image
+                            source={SpeakerIcon}
+                            style={globalStyleSheet.A_Speaker_2}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                
 
                 <View style={{
                     position: 'absolute',

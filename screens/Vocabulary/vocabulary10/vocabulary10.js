@@ -3,6 +3,8 @@ import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
+import Sound from 'react-native-sound';
+
 import Vocab10BG from './vocabulary10Images/kastifunBG.png';
 import KaibeAsset from './vocabulary10Images/kaibeAsset.png';
 import LoloAsset from './vocabulary10Images/loloAsset.png';
@@ -32,6 +34,13 @@ import Pants from './vocabulary10Images/pants.png';
 import Saul from './vocabulary10Images/saul.png';
 import Skirt from './vocabulary10Images/skirt.png';
 import Tlayong from './vocabulary10Images/tlayong.png';
+import SpeakerIcon from '../../images/Speaker_icon.png';
+
+Sound.setCategory('Playback');
+
+// Vocab Sound List
+const soundList = ['bambooguitar', 'blouse', 'comb', 'earrings', 'galing', 'gong', 'guitar', 
+                    'headcover', 'kulintang', 'logdrum', 'necklace', 'pants', 'saul', 'skirt', 'tlayong'];
 
 const backgroundList = [
     BambooGuitar,
@@ -81,44 +90,13 @@ class Vocabulary10 extends Component {
             headcoverTop: '23%',
             galingTop: '51.5%',
             tlayongTop: '48.5%',
+            speakerTop:'1000%',
+            clickSoundIndex:'',
         }
+         // Sounds
+         this.vocabSound = null;
     }
-
-    goBack = () => {
-        const clear = this.state.clearBackground;
-        if (clear == 'gotoVocab10Menu') {
-            this.props.navigation.navigate('vocabularyMenu')
-        }
-        if (clear == 'clear') {
-            this.setState({
-                BackgroundImage: Vocab10BG,
-                loloTop: '23%',
-                lolaTop: '25%',
-                kaibeTop: '35%',
-                kulintangTop: '70%',
-                gongTop: '32%',
-                logdrumTop: '55%',
-                guitarTop: '70%',
-                bambooguitarTop: '81%',
-                earringsTop: '73%',
-                saulTop: '33.5%',
-                pantsTop: '53.5%',
-                blouseTop: '45.5%',
-                skirtTop: '50.5%',
-                combTop: '34.5%',
-                necklaceTop: '38%',
-                headcoverTop: '23%',
-                galingTop: '51.5%',
-                tlayongTop: '48.5%',
-                clearBackground: 'gotoVocab10Menu',
-            })
-        }
-    }
-
-    gotoMainMenu = () => {
-        this.props.navigation.navigate('mainMenu');
-    }
-
+   
     changeBackground = (index) => {
         this.setState({
             BackgroundImage:backgroundList[index],
@@ -141,7 +119,82 @@ class Vocabulary10 extends Component {
             headcoverTop: '1000%',
             galingTop: '1000%',
             tlayongTop: '1000%',
+            speakerTop: '20%',
+            clickSoundIndex:index
         })
+        this.autoPlaySound(index);
+    }
+ 
+    autoPlaySound = (index) => {
+        this.releaseSounds();
+        this.vocabSound = new Sound('vocab10_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+       this.vocabSound.play();
+        });     
+    }
+    
+    releaseSounds = ()=> {
+        if(this.vocabSound != null) {
+            this.vocabSound.release();
+        }
+    }
+    
+    playVocabSound = () => {
+        if(this.vocabSound != null) {
+            this.vocabSound.release();
+        }
+        this.stopSounds();
+        this.vocabSound = new Sound('vocab10_' + soundList[this.state.clickSoundIndex] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+        if (error) {
+            alert('failed to load the sound', error);
+            return;
+        } else {
+            this.vocabSound.play();
+        }});
+    }
+    
+    stopSounds = () => {
+        this.vocabSound.stop();
+    }
+    
+    gotoMainMenu = () => {
+        const clear = this.state.clearBackground;
+        if (clear == 'clear'){
+            this.stopSounds();
+        }
+        this.props.navigation.navigate('mainMenu');
+    }
+
+    goBack = () => {
+        const clear = this.state.clearBackground;
+        if (clear == 'gotoVocab10Menu') {
+            this.props.navigation.navigate('vocabularyMenu')
+        }
+        if (clear == 'clear') {
+            this.stopSounds();
+            this.setState({
+                BackgroundImage: Vocab10BG,
+                loloTop: '23%',
+                lolaTop: '25%',
+                kaibeTop: '35%',
+                kulintangTop: '70%',
+                gongTop: '32%',
+                logdrumTop: '55%',
+                guitarTop: '70%',
+                bambooguitarTop: '81%',
+                earringsTop: '73%',
+                saulTop: '33.5%',
+                pantsTop: '53.5%',
+                blouseTop: '45.5%',
+                skirtTop: '50.5%',
+                combTop: '34.5%',
+                necklaceTop: '38%',
+                headcoverTop: '23%',
+                galingTop: '51.5%',
+                tlayongTop: '48.5%',
+                clearBackground: 'gotoVocab10Menu',
+                speakerTop: '1000%',
+            })
+        }
     }
 
     render() {
@@ -173,8 +226,20 @@ class Vocabulary10 extends Component {
                     </TouchableOpacity>
                 </View>
 
-
-
+                <View style={{
+                    position: 'absolute',
+                    left: '80%',
+                    top:this.state.speakerTop,
+                    width: '6%',
+                    height: '10%',
+                }}>
+                    <TouchableOpacity onPress={this.playVocabSound}>
+                        <Image
+                            source={SpeakerIcon}
+                            style={globalStyleSheet.A_Speaker_2}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
 
                 <View style={{
                     position: 'absolute',

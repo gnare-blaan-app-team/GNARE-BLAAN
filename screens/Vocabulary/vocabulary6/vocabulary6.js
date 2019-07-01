@@ -3,6 +3,8 @@ import { View, Image, Text, StyleSheet, ImageBackground, TouchableOpacity, BackH
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
+import Sound from 'react-native-sound';
+
 import Vocab6BG from './vocabulary6Images/vocab6.png';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
@@ -17,8 +19,15 @@ import Roof from './vocabulary6Images/roof.png';
 import Wall from './vocabulary6Images/wall.png';
 import Window from './vocabulary6Images/window.png';
 import abu_icon from './vocabulary6Images/Abu.png';
+import SpeakerIcon from '../../images/Speaker_icon.png';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
+Sound.setCategory('Playback');
+
+// Vocab Sound List
+const soundList = ['bedroom', 'door', 'floor', 'house', 'kitchen', 'ladder', 'roof', 
+                    'wall', 'window'];
 
 const backgroundList = [Bedroom,Door,Floor,House,Kitchen,Ladder,Roof,Wall,Window];
 
@@ -42,36 +51,14 @@ class Vocabulary6 extends Component {
             floorTop:'73%',
             ladderTop:'68%',
             clearBackground:'gotoVocab6Menu',
-            kitchenBtnTop:'1000%'
+            kitchenBtnTop:'1000%',
+            speakerTop:'1000%',
+            clickSoundIndex:'',
         }
+        // Sounds
+        this.vocabSound = null;
     }
 
-    goBack = () => {
-        const clear = this.state.clearBackground;
-        if (clear == 'gotoVocab6Menu') {
-            this.props.navigation.navigate('vocabularyMenu')
-        }
-        if (clear == 'clear') {
-            this.setState({
-                BackgroundImage: Vocab6BG,
-                houseTop: '18%',
-                wallTop: '50%',
-                roofTop: '20%',
-                doorTop: '43%',
-                windowTop: '45%',
-                bedroomTop: '48%',
-                kitchenTop: '60%',
-                floorTop: '73%',
-                ladderTop: '68%',
-                kitchenBtnTop:'1000%',
-                clearBackground: 'gotoVocab6Menu'
-            })
-        }
-    }
-
-    gotoVocabulary7 = () => {
-        this.props.navigation.navigate('vocabulary7')
-    }
 
     changeBackground = (index) => {
         this.setState({
@@ -85,8 +72,80 @@ class Vocabulary6 extends Component {
             kitchenTop: '1000%',
             floorTop: '1000%',
             ladderTop: '1000%',
-            clearBackground: 'clear'
+            clearBackground: 'clear',
+            speakerTop: '20%',
+            clickSoundIndex:index
         })
+        this.autoPlaySound(index);
+    }
+
+    autoPlaySound = (index) => {
+        this.releaseSounds();
+        this.vocabSound = new Sound('vocab6_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+       this.vocabSound.play();
+        });     
+    }
+
+    releaseSounds = ()=> {
+        if(this.vocabSound != null) {
+            this.vocabSound.release();
+        }
+    }
+
+    playVocabSound = () => {
+        if(this.vocabSound != null) {
+            this.vocabSound.release();
+        }
+        this.stopSounds();
+        this.vocabSound = new Sound('vocab6_' + soundList[this.state.clickSoundIndex] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+        if (error) {
+            alert('failed to load the sound', error);
+            return;
+        } else {
+            this.vocabSound.play();
+        }});
+    }
+
+    stopSounds = () => {
+        this.vocabSound.stop();
+    }
+    
+    gotoMainMenu = () =>{
+        const clear = this.state.clearBackground;
+        if (clear == 'clear'){
+            this.stopSounds();
+        }
+        this.props.navigation.navigate('mainMenu');
+    }
+
+    goBack = () => {
+        const clear = this.state.clearBackground;
+        if (clear == 'gotoVocab6Menu') {
+            this.props.navigation.navigate('vocabularyMenu')
+        }
+        if (clear == 'clear') {
+            this.stopSounds();
+            this.setState({
+                BackgroundImage: Vocab6BG,
+                houseTop: '18%',
+                wallTop: '50%',
+                roofTop: '20%',
+                doorTop: '43%',
+                windowTop: '45%',
+                bedroomTop: '48%',
+                kitchenTop: '60%',
+                floorTop: '73%',
+                ladderTop: '68%',
+                kitchenBtnTop:'1000%',
+                clearBackground: 'gotoVocab6Menu',
+                speakerTop: '1000%',
+            })
+        }
+    }
+
+    gotoVocabulary7 = () => {
+        this.stopSounds();
+        this.props.navigation.navigate('vocabulary7')
     }
 
     render() {
@@ -117,7 +176,20 @@ class Vocabulary6 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-
+                <View style={{
+                    position: 'absolute',
+                    left: '80%',
+                    top:this.state.speakerTop,
+                    width: '6%',
+                    height: '10%',
+                }}>
+                    <TouchableOpacity onPress={this.playVocabSound}>
+                        <Image
+                            source={SpeakerIcon}
+                            style={globalStyleSheet.A_Speaker_2}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
                 <View style={{position: "absolute", height: hp('78%'), width: wp('65%'), left: '20%', top:this.state.houseTop}}>
                     <TouchableOpacity  onPress={() => {
                         this.changeBackground(3);
