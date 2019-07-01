@@ -169,11 +169,9 @@ class Vocabulary6 extends Component {
                 <View style={{position: "absolute", height: hp('14%'), width: wp('6.5%'), left: '38%', top:this.state.kitchenTop}}>
                     <TouchableOpacity onPress={() => {
                         this.changeBackground(4);
-                        setTimeout(()=>{
-                            this.setState({
-                                kitchenBtnTop:'72%'
-                            })
-                        },1000)
+                        this.setState({
+                            kitchenBtnTop:'72%'
+                        })
                     }}>
                        <Text style={{width:"100%", height:"100%"}}></Text>
                     </TouchableOpacity>
