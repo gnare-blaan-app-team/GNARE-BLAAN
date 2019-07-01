@@ -146,6 +146,19 @@ class Vocabulary8 extends Component {
         }
     }
 
+    componentDidMount() {
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+    }
+
+    componentWillUnmount() {
+        this.backHandler.remove()
+    }
+
+    handleBackPress = () => {
+        this.goBack(); 
+        return true;
+    }
+
     render() {
 
         return (

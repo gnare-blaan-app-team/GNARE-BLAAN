@@ -148,6 +148,19 @@ class Vocabulary6 extends Component {
         this.props.navigation.navigate('vocabulary7')
     }
 
+    componentDidMount() {
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+    }
+
+    componentWillUnmount() {
+        this.backHandler.remove()
+    }
+
+    handleBackPress = () => {
+        this.goBack(); 
+        return true;
+    }
+    
     render() {
 
         return (

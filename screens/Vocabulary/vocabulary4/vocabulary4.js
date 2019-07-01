@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, StyleSheet, ImageBackground, TouchableOpacity,  } from 'react-native';
+import { View, Image, StyleSheet, ImageBackground, TouchableOpacity,  BackHandler} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
@@ -163,6 +163,20 @@ class Vocabulary4 extends Component {
             })
         }
     }
+
+    componentDidMount() {
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+    }
+
+    componentWillUnmount() {
+        this.backHandler.remove()
+    }
+
+    handleBackPress = () => {
+        this.goBack(); 
+        return true;
+    }
+
     render() {
 
         return (
