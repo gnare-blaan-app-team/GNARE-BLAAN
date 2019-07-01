@@ -11,13 +11,12 @@ import Story4_EN from '../flalokVideos/Story4_EN.mp4';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
 
-import SwapENG from '../flalokImages/SwapENG.png';
-import SwapFIL from '../flalokImages/SwapFIL.png';
+
 
 import NextStory from '../flalokImages/NextStory.png';
-import Prayer from '../flalokImages/Prayer.png';
-import Vocabulary from '../flalokImages/Vocabulary.png';
-import flalokAfterStory_BG from '../flalokImages/flalokAfterStory_BG.png';
+import Vocabulary4 from '../flalokImages/Vocabulary4Btn.png';
+import Vocabulary9 from '../flalokImages/Vocabulary9Btn.png';
+import flalokAfterStory_BG from '../../Games/gameImages/DadSeBG.png';
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js';
 
@@ -125,12 +124,12 @@ class Story4Screen extends Component {
         this.props.navigation.navigate('story2');
     }
 
-    gotoVocabulary = () => {
-        this.props.navigation.navigate('vocabularyMenu');
+    gotoVocabulary4 = () => {
+        this.props.navigation.navigate('vocabulary4');
     }
 
-    gotoPrayers = () => {
-        this.props.navigation.navigate('prayersScreen');
+    gotoVocabulary9 = () => {
+        this.props.navigation.navigate('vocabulary9');
     }
 
     hideControl = () => {
@@ -174,7 +173,7 @@ class Story4Screen extends Component {
                         <TouchableOpacity onPress={()=> {
                             this.setState({
                                 videoFile: this.state.videoFile == Story4_FL ? Story4_EN : Story4_FL,
-                                subtitle: this.state.subtitle == ' Filipino' ? ' English' : ' Filipino',
+                                subtitle: this.state.subtitle == ' English' ? ' Filipino' : ' English',
                             });
                             this.handleProgressPress;
                         }}>
@@ -258,18 +257,18 @@ class Story4Screen extends Component {
                         </View>
 
                         <View style={EndStyles.imageTab}>
-                            <TouchableOpacity onPress={this.gotoPrayers}>
+                            <TouchableOpacity onPress={this.gotoVocabulary4}>
                                 <Image
-                                    source={Prayer}
+                                    source={Vocabulary4}
                                     style={EndStyles.image}
                                 ></Image>
                             </TouchableOpacity>
                         </View>
 
                         <View style={EndStyles.imageTab}>
-                            <TouchableOpacity onPress={this.gotoVocabulary}>
+                            <TouchableOpacity onPress={this.gotoVocabulary9}>
                                 <Image
-                                    source={Vocabulary}
+                                    source={Vocabulary9}
                                     style={EndStyles.image}
                                 ></Image>
                             </TouchableOpacity>

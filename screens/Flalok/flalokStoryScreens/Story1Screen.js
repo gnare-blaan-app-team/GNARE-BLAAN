@@ -11,13 +11,12 @@ import Story1_EN from '../flalokVideos/Story1_EN.mp4';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
 
-import SwapENG from '../flalokImages/SwapENG.png';
-import SwapFIL from '../flalokImages/SwapFIL.png';
+
 
 import NextStory from '../flalokImages/NextStory.png';
 import Prayer from '../flalokImages/Prayer.png';
-import Vocabulary from '../flalokImages/Vocabulary.png';
-import flalokAfterStory_BG from '../flalokImages/flalokAfterStory_BG.png';
+import Vocabulary1 from '../flalokImages/Vocabulary1Btn.png';
+import flalokAfterStory_BG from '../../Games/gameImages/DadSeBG.png';
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js';
 
@@ -40,7 +39,7 @@ class Story1Screen extends Component {
             hideHome: '-1000%',
             hideStory: '0%',
 
-            subtitle: ' Filipino',
+            subtitle: ' English',
             hideSub: '-1000%',
 
             controlHide: '-1000%',
@@ -125,8 +124,8 @@ class Story1Screen extends Component {
         this.props.navigation.navigate('story2');
     }
 
-    gotoVocabulary = () => {
-        this.props.navigation.navigate('vocabularyMenu');
+    gotoVocabulary1 = () => {
+        this.props.navigation.navigate('vocabulary1');
     }
 
     gotoPrayers = () => {
@@ -175,7 +174,7 @@ class Story1Screen extends Component {
                         <TouchableOpacity onPress={()=> {
                             this.setState({
                                 videoFile: this.state.videoFile == Story1_FL ? Story1_EN : Story1_FL,
-                                subtitle: this.state.subtitle == ' Filipino' ? ' English' : ' Filipino',
+                                subtitle: this.state.subtitle == ' English' ? ' Filipino' : ' English',
                             });
                             this.handleProgressPress;
                         }}>
@@ -268,9 +267,9 @@ class Story1Screen extends Component {
                         </View>
 
                         <View style={EndStyles.imageTab}>
-                            <TouchableOpacity onPress={this.gotoVocabulary}>
+                            <TouchableOpacity onPress={this.gotoVocabulary1}>
                                 <Image
-                                    source={Vocabulary}
+                                    source={Vocabulary1}
                                     style={EndStyles.image}
                                 ></Image>
                             </TouchableOpacity>
