@@ -68,34 +68,34 @@ class SixTracing extends Component {
 
         this.line1 =[{
             x: numberDimension.width * 0.78,
-            y: numberDimension.height * 0.15,
+            y: numberDimension.height * 0.18,
         }, {
-            x: numberDimension.width * 0.5,
-            y: numberDimension.height * 0.08,
+            x: numberDimension.width * 0.58,
+            y: numberDimension.height * 0.1,
         }, {
-            x: numberDimension.width * 0.2,
+            x: numberDimension.width * 0.22,
             y: numberDimension.height * 0.25,
         }, {
-            x: numberDimension.width * 0.1,
+            x: numberDimension.width * 0.15,
             y: numberDimension.height * 0.5,
         }, {
-            x: numberDimension.width * 0.2,
+            x: numberDimension.width * 0.22,
             y: numberDimension.height * 0.75,
         }, {
             x: numberDimension.width * 0.5,
-            y: numberDimension.height * 0.85,
+            y: numberDimension.height * 0.91,
         }, {
-            x: numberDimension.width * 0.78,
+            x: numberDimension.width * 0.82,
             y: numberDimension.height * 0.75,
         }, {
             x: numberDimension.width * 0.82,
             y: numberDimension.height * 0.55,
         }, {
-            x: numberDimension.width * 0.55,
-            y: numberDimension.height * 0.4,
+            x: numberDimension.width * 0.62,
+            y: numberDimension.height * 0.43,
         }, {
-            x: numberDimension.width * 0.35,
-            y: numberDimension.height * 0.42,
+            x: numberDimension.width * 0.38,
+            y: numberDimension.height * 0.45,
         }, ];
 
         this._val = {x: 0, y: 0};
@@ -120,6 +120,7 @@ class SixTracing extends Component {
                     this.setState({arrayMove: [...this.state.arrayMove, coordinate],
                         touchLength: this.touchLength + 1});
                     
+                    // Dot 1
                     if(!this.state.dot1) {
                         if(e.nativeEvent.locationX >= this.line1[0].x - scope && e.nativeEvent.locationX <= this.line1[0].x + scope) {
                             if(e.nativeEvent.locationY >= this.line1[0].y - scope && e.nativeEvent.locationY <= this.line1[0].y + scope) {
@@ -260,60 +261,60 @@ class SixTracing extends Component {
                                 top: '5%', left: '32%', opacity: this.state.showTracing,}}>
                         <Image source={trace1} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
                         
-                        {/* <View style={[styles.dot, {top: numberDimension.height * 0.15,
+                        {/* <View style={[styles.dot, {top: numberDimension.height * 0.18,
                             left: numberDimension.width * 0.78}]}></View>
-                        <View style={[styles.dot, {top: numberDimension.height * 0.08,
-                            left: numberDimension.width * 0.5}]}></View>
+                        <View style={[styles.dot, {top: numberDimension.height * 0.1,
+                            left: numberDimension.width * 0.58}]}></View>
                         <View style={[styles.dot, {top: numberDimension.height * 0.25,
-                            left: numberDimension.width * 0.18}]}></View>
+                            left: numberDimension.width * 0.22}]}></View>
 
                         <View style={[styles.dot, {top: numberDimension.height * 0.5,
-                            left: numberDimension.width * 0.1}]}></View>
+                            left: numberDimension.width * 0.15}]}></View>
                         <View style={[styles.dot, {top: numberDimension.height * 0.75,
-                            left: numberDimension.width * 0.2}]}></View>
-                        <View style={[styles.dot, {top: numberDimension.height * 0.88,
+                            left: numberDimension.width * 0.22}]}></View>
+                        <View style={[styles.dot, {top: numberDimension.height * 0.91,
                             left: numberDimension.width * 0.5}]}></View>
                         <View style={[styles.dot, {top: numberDimension.height * 0.75,
                             left: numberDimension.width * 0.82}]}></View>
                         <View style={[styles.dot, {top: numberDimension.height * 0.55,
-                            left: numberDimension.width * 0.84}]}></View>
-                        <View style={[styles.dot, {top: numberDimension.height * 0.4,
-                            left: numberDimension.width * 0.6}]}></View>
+                            left: numberDimension.width * 0.82}]}></View>
+                        <View style={[styles.dot, {top: numberDimension.height * 0.43,
+                            left: numberDimension.width * 0.62}]}></View>
                         
-                        <View style={[styles.dot, {top: numberDimension.height * 0.42,
-                            left: numberDimension.width * 0.35}]}></View> */}
+                        <View style={[styles.dot, {top: numberDimension.height * 0.45,
+                            left: numberDimension.width * 0.38}]}></View> */}
 
                         {/*
                             this.line1 =[{
                                 x: numberDimension.width * 0.78,
-                                y: numberDimension.height * 0.15,
+                                y: numberDimension.height * 0.18,
                             }, {
-                                x: numberDimension.width * 0.5,
-                                y: numberDimension.height * 0.08,
+                                x: numberDimension.width * 0.58,
+                                y: numberDimension.height * 0.1,
                             }, {
-                                x: numberDimension.width * 0.2,
+                                x: numberDimension.width * 0.22,
                                 y: numberDimension.height * 0.25,
                             }, {
-                                x: numberDimension.width * 0.1,
+                                x: numberDimension.width * 0.15,
                                 y: numberDimension.height * 0.5,
                             }, {
-                                x: numberDimension.width * 0.2,
+                                x: numberDimension.width * 0.22,
                                 y: numberDimension.height * 0.75,
                             }, {
                                 x: numberDimension.width * 0.5,
-                                y: numberDimension.height * 0.85,
+                                y: numberDimension.height * 0.91,
                             }, {
-                                x: numberDimension.width * 0.78,
+                                x: numberDimension.width * 0.82,
                                 y: numberDimension.height * 0.75,
                             }, {
                                 x: numberDimension.width * 0.82,
                                 y: numberDimension.height * 0.55,
                             }, {
-                                x: numberDimension.width * 0.55,
-                                y: numberDimension.height * 0.4,
+                                x: numberDimension.width * 0.62,
+                                y: numberDimension.height * 0.43,
                             }, {
-                                x: numberDimension.width * 0.35,
-                                y: numberDimension.height * 0.42,
+                                x: numberDimension.width * 0.38,
+                                y: numberDimension.height * 0.45,
                             }, ];
                         */}
 

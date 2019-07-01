@@ -197,6 +197,20 @@ import SevenTracing from './screens/Numbers/NumberTracing/7Tracing';
 import EightTracing from './screens/Numbers/NumberTracing/8Tracing';
 import NineTracing from './screens/Numbers/NumberTracing/9Tracing';
 import TenTracing from './screens/Numbers/NumberTracing/10Tracing';
+import TwentyTracing from './screens/Numbers/NumberTracing/20Tracing';
+import ThirtyTracing from './screens/Numbers/NumberTracing/30Tracing';
+import FourtyTracing from './screens/Numbers/NumberTracing/40Tracing';
+import FiftyTracing from './screens/Numbers/NumberTracing/50Tracing';
+import SixtyTracing from './screens/Numbers/NumberTracing/60Tracing';
+import SeventyTracing from './screens/Numbers/NumberTracing/70Tracing';
+import EightyTracing from './screens/Numbers/NumberTracing/80Tracing';
+import NinetyTracing from './screens/Numbers/NumberTracing/90Tracing';
+import OneHundredTracing from './screens/Numbers/NumberTracing/100Tracing';
+import TwoHundredTracing from './screens/Numbers/NumberTracing/200Tracing';
+import ThreeHundredTracing from './screens/Numbers/NumberTracing/300Tracing';
+import FourHundredTracing from './screens/Numbers/NumberTracing/400Tracing';
+import FiveHundredTracing from './screens/Numbers/NumberTracing/500Tracing';
+import ThousandTracing from './screens/Numbers/NumberTracing/1000Tracing';
 
 
 import Try from './try';
@@ -247,6 +261,20 @@ export default AppNavigator = createStackNavigator(
     tracing8: EightTracing,
     tracing9: NineTracing,
     tracing10: TenTracing,
+    tracing20: TwentyTracing,
+    tracing30: ThirtyTracing,
+    tracing40: FourtyTracing,
+    tracing50: FiftyTracing,
+    tracing60: SixtyTracing,
+    tracing70: SeventyTracing,
+    tracing80: EightyTracing,
+    tracing90: NinetyTracing,
+    tracing100: OneHundredTracing,
+    tracing200: TwoHundredTracing,
+    tracing300: ThreeHundredTracing,
+    tracing400: FourHundredTracing,
+    tracing500: FiveHundredTracing,
+    tracing1000: ThousandTracing,
     
 
 
@@ -405,7 +433,7 @@ export default AppNavigator = createStackNavigator(
     ds_bang3Question4: DSBang3Question4,
     ds_bang3Question5: DSBang3Question5,
 
-    bang: Bang
+    bang: Bang,
   },
 {
 

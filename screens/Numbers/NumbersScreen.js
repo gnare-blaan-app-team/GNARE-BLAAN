@@ -7,7 +7,7 @@ import MenuItem from './NumbersMenu';
 
 import Sound from 'react-native-sound';
 
-import { numberBGList, sentenceNumberBGList, soundList,
+import { numberBGList, sentenceList, soundList,
         numberGlowList } from './numbersImport';
   
 import GoBackIcon from '../images/Back_icon.png';
@@ -24,6 +24,8 @@ import PrevIcon from '../images/Prev_Icon.png';
 
     // Letter Main Background Import
 import imageMainBG from '../images/BG.jpg';
+import sentenceBG from '../images/BG.jpg';
+import black from '../images/black.png';
 
     // Letter Background Imports
 
@@ -38,7 +40,7 @@ const showPencil = '22%';
 const showGlow = '21%';
 const showSpeaker = '25%';
 const showSentence = '80%';
-const showSentenceObject = '20%';
+const showSentenceObject = '22%';
 
 Sound.setCategory('Playback');
 
@@ -62,6 +64,7 @@ class NumberScreen extends Component {
             menuLetterHide: '22%',
 
             //Letter State
+            showSubtitle: 0,
             prevHide: hideLeft,
             nextHide: hideRight,
             pencilHide: hideLeft,
@@ -71,6 +74,7 @@ class NumberScreen extends Component {
             sentenceHide: hideRight,
             sentenceObjectHide: hideLeft,
             indexSound: 0,
+            sentenceScript: sentenceList[0],
 
             glow: Glow_A,
             hideLetterBG: '0%',
@@ -113,18 +117,18 @@ class NumberScreen extends Component {
     }
 
     sentencePage = () => {
-        const letterIndex = this.state.indexSound;
         this.stopAutoPlaySound();
         this.setState({menuLetterHide: '-1000%', 
-                        imageBackground: sentenceNumberBGList[letterIndex], 
+                        imageBackground: sentenceBG,
+                        sentenceScript: sentenceList[this.state.indexSound], 
+                        showSubtitle: 1,
                         prevHide: hideLeft, nextHide: hideRight,
                         glowHide: hideLeft, speakerHide: hideLeft,
                         speaker2Hide: showSpeaker, sentenceHide: hideRight,
                         sentenceObjectHide: showSentenceObject,
-                        pencilHide: hideLeft, prevBG: sentenceNumberBGList[letterIndex]});
-        this.timeoutSound = setTimeout(()=>{
-            this.playSentenceSound();
-        }, 500);
+                        pencilHide: hideLeft, prevBG: sentenceBG});
+        
+        this.playSentenceSound();
     }
 
     handleBackPress = () => {
@@ -159,6 +163,8 @@ class NumberScreen extends Component {
                 return;
             } else {
                 this.sentenceNumberSound.play();
+                this.setState({sentenceScript: Glow_A});
+                this.setState({sentenceScript: sentenceList[this.state.indexSound]});
                 this.setState({glow: Glow_A});
                 this.setState({glow: numberGlowList[this.state.indexSound]});
             }});   
@@ -223,7 +229,7 @@ class NumberScreen extends Component {
     }
 
     goBack = () => {
-        if(this.state.prevBG == sentenceNumberBGList[this.state.indexSound]) {
+        if(this.state.prevBG == sentenceBG) {
             if(this.timeoutSound != null) {
                 clearTimeout(this.timeoutSound);
             }
@@ -233,9 +239,11 @@ class NumberScreen extends Component {
                     prevHide: numberBGList[this.state.indexSound] == numberBGList[0] ? hideLeft : showPrev,
                     pencilHide: showPencil,
                     glowHide: showGlow,
+                    sentenceScript: Glow_A,
                     speakerHide: showSpeaker,
                     sentenceHide: showSentence,
                     nextHide: showNext,
+                    showSubtitle: 0,
                     sentenceObjectHide: hideLeft,
                     speaker2Hide: hideLeft, prevBG: numberBGList[this.state.indexSound]});
         } else {
@@ -263,8 +271,17 @@ class NumberScreen extends Component {
                 <View style={{position: 'absolute', top: '0%', width: '100%', height: '100%'}}>
                     <Image source={imageMainBG} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
                 </View>
+
                 <View style={{position: 'absolute', top: this.state.hideLetterBG, width: '100%', height: '100%'}}>
                     <Image source={this.state.imageBackground} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
+                </View>
+
+                <View style={{position: 'absolute', top: '57.5%', left: '15%', opacity: this.state.showSubtitle,
+                    width: '70%', height: '27.5%', justifyContent: 'center', alignItems: 'center'}}>
+                    <Image source={black} style={{position: 'absolute', width: '100%', height: '100%', 
+                                top: '0%', resizeMode: 'stretch'}}></Image>                    
+                    <Image source={this.state.sentenceScript} style={{width: '95%', height: '95%',
+                            resizeMode: 'stretch'}}></Image>
                 </View>
 
                 {/* Start of Page Letters Code Part */}
@@ -341,7 +358,7 @@ class NumberScreen extends Component {
 
 
                 {/* Sentence Number Obejct Glow */}
-                <View style={{position: 'absolute', left: '37%', top: this.state.sentenceObjectHide, width: '25%', height: '35%',}} >
+                <View style={{position: 'absolute', left: '35%', top: this.state.sentenceObjectHide, width: '30%', height: '35%',}} >
                     <Image style={styles.Glow} source={this.state.glow}/>
                 </View>
 

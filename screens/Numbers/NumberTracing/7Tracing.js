@@ -70,13 +70,13 @@ class SevenTracing extends Component {
 
         this.line1 = [{
             x: numberDimension.width * 0.15,
-            y: numberDimension.height * 0.07,
+            y: numberDimension.height * 0.1,
         }, {
             x: numberDimension.width * 0.5,
-            y: numberDimension.height * 0.07,
+            y: numberDimension.height * 0.1,
         }, {
-            x: numberDimension.width * 0.78,
-            y: numberDimension.height * 0.07,
+            x: numberDimension.width * 0.8,
+            y: numberDimension.height * 0.1,
         }, ];
 
         this.line2 = [{
@@ -239,32 +239,32 @@ class SevenTracing extends Component {
                                 top: '5%', left: '32%', opacity: this.state.showTracing,}}>
                         <Image source={this.state.tracing} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
                             
-                        {/* <View style={[styles.dot, {top: numberDimension.height * 0.07,
+                        <View style={[styles.dot, {top: numberDimension.height * 0.1,
                             left: numberDimension.width * 0.15}]}></View>
-                        <View style={[styles.dot, {top: numberDimension.height * 0.07,
+                        <View style={[styles.dot, {top: numberDimension.height * 0.1,
                             left: numberDimension.width * 0.5}]}></View>
-                        <View style={[styles.dot, {top: numberDimension.height * 0.07,
-                            left: numberDimension.width * 0.8}]}></View> */}
+                        <View style={[styles.dot, {top: numberDimension.height * 0.1,
+                            left: numberDimension.width * 0.8}]}></View>
 
                             {/*
                                 this.line1 = [{
                                     x: numberDimension.width * 0.15,
-                                    y: numberDimension.height * 0.07,
+                                    y: numberDimension.height * 0.1,
                                 }, {
                                     x: numberDimension.width * 0.5,
-                                    y: numberDimension.height * 0.07,
+                                    y: numberDimension.height * 0.1,
                                 }, {
                                     x: numberDimension.width * 0.8,
-                                    y: numberDimension.height * 0.07,
+                                    y: numberDimension.height * 0.1,
                                 }, ];
                             */}
 
-                        {/* <View style={[styles.dot, {top: numberDimension.height * 0.25,
-                                left: numberDimension.width * 0.64}]}></View>
+                        <View style={[styles.dot, {top: numberDimension.height * 0.25,
+                                left: numberDimension.width * 0.69}]}></View>
                         <View style={[styles.dot, {top: numberDimension.height * 0.5,
-                                left: numberDimension.width * 0.45}]}></View>
+                                left: numberDimension.width * 0.48}]}></View>
                         <View style={[styles.dot, {top: numberDimension.height * 0.8,
-                                left: numberDimension.width * 0.34}]}></View> */}
+                                left: numberDimension.width * 0.37}]}></View>
                         
                         {/*
                             this.line2 = [{

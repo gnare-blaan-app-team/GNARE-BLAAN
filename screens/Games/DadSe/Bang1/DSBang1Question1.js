@@ -5,6 +5,7 @@ import { withNavigation } from 'react-navigation';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import {globalStyleSheet} from '../../../globalStyleSheet/globalStyleSheet';
+import { starStyle } from '../star';
 import GameBG from '../../gameImages/GameBG.png';
 import Home_icon from '../../../images/Home_icon.png';
 import GnareIcon from '../../gameImages/GnareMain.png';
@@ -19,10 +20,13 @@ import TransparentFat from '../../gameImages/tranparentFat.png';
 import TransparentLime from '../../gameImages/tranparentLime.png';
 import TransparentSatu from '../../gameImages/tranparentSatu.png';
 import EmptyChoices from '../../gameImages/emptyChoices.png';
-import Star from '../../gameImages/12Icon_Star.png';
 import C1 from '../../gameImages/Q1_Correct.png';
 import * as Animatable from 'react-native-animatable';
-
+import stars from '../../gameImages/12Icon_Star.png';
+import emptyStars from '../../gameImages/13Icon_EmptyStar.png';
+import FadlugIcon from '../../gameImages/fadlug_icon.png';
+import LamwaIcon from '../../gameImages/lamwa_icon.png';
+import GufadyanIcon from '../../gameImages/gufadyan_icon.png';
 
 
 const answer1List = [TransparentIwe,TransparentFat,TransparentLime,TransparentSatu];
@@ -30,6 +34,10 @@ const answer1List = [TransparentIwe,TransparentFat,TransparentLime,TransparentSa
 const choices = [DSB1Lwe, DSB1Fat,DSB1Lime,DSB1Satu];
 
 const Key = '@MyApp:key';
+const Star1 = '@MyApp:Star1';
+const Star2 = '@MyApp:Star2';
+const Star3 = '@MyApp:Star3';
+
 
 class DSBang1Question1 extends Component {
     handleViewRef = ref => this.view = ref;
@@ -53,6 +61,18 @@ class DSBang1Question1 extends Component {
             blackboard: Bang1BoardQ1,
             blackboardHeight:'50%',
             blackboardWidth:'60%',
+            star1Top:'1%',
+            star2Top: '1%',
+            star3Top: '1%',
+            goMinus:'',
+            emptystar1Top:'1000%',
+            emptystar2Top: '1000%',
+            emptystar3Top: '1000%',
+            fadlugTop: '1000%',
+            gufadyanTop: '1000%',
+            lamwaTop: '1000%',
+            smallgofadyanTop:'85%',
+            allstarTop: '1%',
         }
     }
 
@@ -64,10 +84,85 @@ class DSBang1Question1 extends Component {
         this.props.navigation.navigate('dadseMarket')
     }
 
-    onSave = async () => {
-        const next = Math.floor(Math.random() * 10);
-        const convert = JSON.stringify(next);
-        await AsyncStorage.setItem(Key, convert);
+    MinusStar = async (permit) => {
+        const star1 = await AsyncStorage.getItem(Star1);
+        const star2 = await AsyncStorage.getItem(Star2);
+        const star3 = await AsyncStorage.getItem(Star3);
+        if (permit == 'allowed') {
+            if (star1 == null) {
+                this.setState({
+                    star3Top: '1000%',
+                    emptystar3Top: '1%',
+                })
+                await AsyncStorage.setItem(Star1, 'wrong');
+            } else {
+                if (star2 == null) {
+                    this.setState({
+                        star2Top: '1000%',
+                        emptystar2Top: '1%',
+                    })
+                    await AsyncStorage.setItem(Star2, 'wrong');
+                } else {
+                    if (star3 == null) {
+                        setTimeout(() => {
+                            this.setState({
+                                emptystar1Top: '1%',
+                                fadlugTop: '19%',
+                                gufadyanTop: '19%',
+                                lamwaTop: '56%',
+                                choices1Top: '1000%',
+                                choices2Top: '1000%',
+                                choices3Top: '1000%',
+                                choices4Top: '1000%',
+                                emptyChoice: '1000%',
+                                blackboardHeight: '0%',
+                                blackboardWidth: '0%',
+                                smallgofadyanTop: '1000%',
+                                allstarTop: '1000%',
+                            })
+                        }, 1000)
+                        await AsyncStorage.setItem(Star3, 'wrong');
+
+                    }
+                }
+            }
+        }
+
+        if (star1 == 'wrong') {
+            this.setState({
+                star3Top: '1000%',
+                emptystar3Top: '1%',
+            })
+        }
+        if (star2 == 'wrong') {
+            this.setState({
+                star2Top: '1000%',
+                emptystar2Top: '1%',
+            })
+        }
+        if (star3 == 'wrong') {
+            setTimeout(() => {
+                this.setState({
+                    emptystar1Top: '1%',
+                    fadlugTop: '19%',
+                    gufadyanTop: '19%',
+                    lamwaTop: '56%',
+                    choices1Top: '1000%',
+                    choices2Top: '1000%',
+                    choices3Top: '1000%',
+                    choices4Top: '1000%',
+                    emptyChoice: '1000%',
+                    blackboardHeight: '0%',
+                    blackboardWidth: '0%',
+                    smallgofadyanTop: '1000%',
+                    allstarTop: '1000%',
+                })
+            }, 1000)
+        }
+    }
+
+    componentWillMount() {
+        this.MinusStar();
     }
 
     answer(number,status){
@@ -91,11 +186,13 @@ class DSBang1Question1 extends Component {
                     blackboardWidth: '60%',
                 })
                 setTimeout(()=>{
-                    this.props.navigation.push('bang');
+                    this.props.navigation.push('bang',{change:'change'});
                 },2000)
             },1000)
         }else{
+            const open  = 'allowed';
             this.wrong();
+            this.MinusStar(open);
         }
         if(number == 0){
             this.setState({
@@ -159,8 +256,41 @@ class DSBang1Question1 extends Component {
             })
         }
     }
+
+    onSave = async () => {
+        await AsyncStorage.removeItem(Star1);
+        await AsyncStorage.removeItem(Star2);
+        await AsyncStorage.removeItem(Star3);
+    }
+
+    retry = () =>{
+       this.onSave();
+       setTimeout(()=> {
+            this.setState({
+            choices1Top: '68%',
+            choices2Top: '68%',
+            choices3Top: '68%',
+            choices4Top: '68%',
+            allstarTop: '1%',
+            smallgofadyanTop: '85%',
+            fadlugTop: '1000%',
+            gufadyanTop: '1000%',
+            lamwaTop: '1000%',
+            blackboardHeight: '50%',
+            blackboardWidth: '60%',
+            blackboard: Bang1BoardQ1,
+            star1Top: '1%',
+            star2Top: '1%',
+            star3Top: '1%',
+            emptystar1Top: '1000%',
+            emptystar2Top: '1000%',
+            emptystar3Top: '1000%',
+        })
+       },1000)
+    }
     
     render() {
+        console.disableYellowBox = true; 
         return (
             <ImageBackground
                 source={GameBG}
@@ -174,6 +304,7 @@ class DSBang1Question1 extends Component {
                         <Image source={Home_icon} style={globalStyleSheet.home}></Image>
                     </TouchableOpacity>
                 </View>
+               
                 <View style={{
                     position: 'absolute',
                     top: '11.5%',
@@ -236,7 +367,7 @@ class DSBang1Question1 extends Component {
                         <Image source={DSB1Satu} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={globalStyleSheet.gufadyan}>
+                <View style={[globalStyleSheet.gufadyan,{top:this.state.smallgofadyanTop}]}>
                     <TouchableOpacity onPress={this.gotoGufadyan}>
                         <Image source={Gufadyan} style={styles.image}></Image>
                     </TouchableOpacity>
@@ -262,43 +393,53 @@ class DSBang1Question1 extends Component {
                     }}></Image>
                 </View>
                 <View style={{
-                    top: '2%',
+                    width: '10%',
+                    height: '10%',
+                    position:'absolute',
+                    top:this.state.allstarTop,
+                    left:'20%'
+                }}>
+                    <Image source={stars} style={[starStyle.Star1,{top:this.state.star1Top}]}></Image>
+                    <Image source={stars} style={[starStyle.Star2, { top: this.state.star2Top }]}></Image>
+                    <Image source={stars} style={[starStyle.Star3, { top: this.state.star3Top }]}></Image>
+                    <Image source={emptyStars} style={[starStyle.Star1, { top: this.state.emptystar1Top }]}></Image>
+                    <Image source={emptyStars} style={[starStyle.Star2, { top: this.state.emptystar2Top }]}></Image>
+                    <Image source={emptyStars} style={[starStyle.Star3, { top: this.state.emptystar3Top }]}></Image>
+                </View>
+                <View style={{
+                    position: 'absolute',
+                    top: this.state.fadlugTop,
                     left: '18%',
-                    position: 'absolute',
-                    height: hp('10%'),
-                    width: wp('14%'),
+                    height: '31%',
+                    width: '30%',
                 }}>
-                    <Image source={Star} style={{
-                        width: '100%',
-                        height: '100%',
-                        resizeMode: 'contain'
-                    }}></Image>
+                    <TouchableOpacity onPress={()=>{
+                        this.retry();
+                    }}>
+                        <Image source={FadlugIcon} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={{
-                    top: '2%',
-                    left: '25%',
                     position: 'absolute',
-                    height: hp('10%'),
-                    width: wp('14%'),
+                    top: this.state.gufadyanTop,
+                    left: '55%',
+                    height: '31%',
+                    width: '30%',
                 }}>
-                    <Image source={Star} style={{
-                        width: '100%',
-                        height: '100%',
-                        resizeMode: 'contain'
-                    }}></Image>
+                    <TouchableOpacity>
+                        <Image source={GufadyanIcon} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={{
-                    top: '2%',
-                    left: '32%',
                     position: 'absolute',
-                    height: hp('10%'),
-                    width: wp('14%'),
+                    top: this.state.lamwaTop,
+                    left: '36%',
+                    height:'33%',
+                    width: '32%',
                 }}>
-                    <Image source={Star} style={{
-                        width: '100%',
-                        height: '100%',
-                        resizeMode: 'contain'
-                    }}></Image>
+                    <TouchableOpacity>
+                        <Image source={LamwaIcon} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
             </ImageBackground>
         )

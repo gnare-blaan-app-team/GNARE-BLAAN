@@ -48,30 +48,30 @@ import Glow400 from './NumbersGlow/400.gif';
 import Glow500 from './NumbersGlow/500.gif';
 import Glow1000 from './NumbersGlow/1000.gif';
 
-import Sentence1 from './numbersImage/sentence1.png';
-import Sentence2 from './numbersImage/sentence2.png';
-import Sentence3 from './numbersImage/sentence3.png';
-import Sentence4 from './numbersImage/sentence4.png';
-import Sentence5 from './numbersImage/sentence5.png';
-import Sentence6 from './numbersImage/sentence6.png';
-import Sentence7 from './numbersImage/sentence7.png';
-import Sentence8 from './numbersImage/sentence8.png';
-import Sentence9 from './numbersImage/sentence9.png';
-import Sentence10 from './numbersImage/sentence10.png';
-import Sentence20 from './numbersImage/sentence20.png';
-import Sentence30 from './numbersImage/sentence30.png';
-import Sentence40 from './numbersImage/sentence40.png';
-import Sentence50 from './numbersImage/sentence50.png';
-import Sentence60 from './numbersImage/sentence60.png';
-import Sentence70 from './numbersImage/sentence70.png';
-import Sentence80 from './numbersImage/sentence80.png';
-import Sentence90 from './numbersImage/sentence90.png';
-import Sentence100 from './numbersImage/sentence100.png';
-import Sentence200 from './numbersImage/sentence200.png';
-import Sentence300 from './numbersImage/sentence300.png';
-import Sentence400 from './numbersImage/sentence400.png';
-import Sentence500 from './numbersImage/sentence500.png';
-import Sentence1000 from './numbersImage/sentence1000.png';
+import Sentence1 from './numberBackground/1.gif';
+import Sentence2 from './numberBackground/2.gif';
+import Sentence3 from './numberBackground/3.gif';
+import Sentence4 from './numberBackground/4.gif';
+import Sentence5 from './numberBackground/5.gif';
+import Sentence6 from './numberBackground/6.gif';
+import Sentence7 from './numberBackground/7.gif';
+import Sentence8 from './numberBackground/8.gif';
+import Sentence9 from './numberBackground/9.gif';
+import Sentence10 from './numberBackground/10.gif';
+import Sentence20 from './numberBackground/20.gif';
+import Sentence30 from './numberBackground/30.gif';
+import Sentence40 from './numberBackground/40.gif';
+import Sentence50 from './numberBackground/50.gif';
+import Sentence60 from './numberBackground/60.gif';
+import Sentence70 from './numberBackground/70.gif';
+import Sentence80 from './numberBackground/80.gif';
+import Sentence90 from './numberBackground/90.gif';
+import Sentence100 from './numberBackground/100.gif';
+import Sentence200 from './numberBackground/200.gif';
+import Sentence300 from './numberBackground/300.gif';
+import Sentence400 from './numberBackground/400.gif';
+import Sentence500 from './numberBackground/500.gif';
+import Sentence1000 from './numberBackground/1000.gif';
 
 export const soundList = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '20', '30', '40', '50', '60',
 '70', '80', '90', '100', '200', '300', '400', '500', '1000'];
@@ -84,6 +84,6 @@ export const numberGlowList = [Glow1, Glow2, Glow3, Glow4, Glow5, Glow6, Glow7, 
     Glow20, Glow30, Glow40, Glow50, Glow60, Glow70, Glow80, Glow90, Glow100,
     Glow200, Glow300, Glow400, Glow500, Glow1000];
 
-export const sentenceNumberBGList = [Sentence1, Sentence2, Sentence3, Sentence4, Sentence5, Sentence6, Sentence7, Sentence8, Sentence9, Sentence10,
+export const sentenceList = [Sentence1, Sentence2, Sentence3, Sentence4, Sentence5, Sentence6, Sentence7, Sentence8, Sentence9, Sentence10,
         Sentence20, Sentence30, Sentence40, Sentence50, Sentence60, Sentence70, Sentence80, Sentence90, Sentence100,
         Sentence200, Sentence300, Sentence400, Sentence500, Sentence1000];

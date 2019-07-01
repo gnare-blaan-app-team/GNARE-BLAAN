@@ -1,11 +1,15 @@
 import Number_Intro from '../IntroVideos/Number_Intro.mp4';
+import Letter_Intro from '../IntroVideos/Letter_Intro.mp4';
+
 import React, { Component } from 'react';
 import Video from 'react-native-video';
-import { Text, View, TouchableOpacity , ImageBackground, Image } from 'react-native';
+import { Image, View, TouchableOpacity , ImageBackground } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
+import Skip_icon from '../images/skip.png';
+import Replay_icon from '../images/replay.png';
+
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
-import Skip from '../images/skip.png';
 
 class NumberIntroScreen extends Component {
     static navigationOptions = {
@@ -15,22 +19,24 @@ class NumberIntroScreen extends Component {
     constructor() {
         super();
         this.state = {
+            source: Number_Intro,
             paused: false,
             volume: 1,
             muted: false,
             progress: 0,
             duration: 0,
+            showReplay: '-1000%',
         }
     }
 
     handleProgress = progress => {
         this.setState({
-            progress: progress.currentTime / this.state.duration,
+            progress: (progress.currentTime) / this.state.duration,
         });
     };
 
     handleEnd = () => {
-        this.setState({paused: true, volume: 0, muted: true});
+        this.setState({paused: true, volume: 0, muted: true, showReplay: '40%'});
         this.props.navigation.navigate('numbers');
     };
 
@@ -45,13 +51,20 @@ class NumberIntroScreen extends Component {
         this.props.navigation.navigate('numbers');
     }
 
+    replayVideo = () => {
+        this.setState({source: Letter_Intro});
+        setTimeout(()=>{
+            this.setState({source: Number_Intro});
+        }, 200);
+    }
+
     render() {
         return (
             <ImageBackground style={styles.image}>
                 <View style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'black'}}>
                     <Video
                             paused={false}
-                            source={Number_Intro}
+                            source={this.state.source}
                             style={{ width: "100%", height: '100%' }}
                             resizeMode="stretch"
                             volume={this.state.volume}
@@ -65,14 +78,17 @@ class NumberIntroScreen extends Component {
                         />
                 </View>
 
-                <View style={[styles.backContainer, {left: '87%'}]}>
-                    <TouchableOpacity onPress={this.gotoNumberScreen}>
-                        <Image
-                            source={Skip}
-                            style={styles.back}
-                        ></Image>
+                <View style={[styles.sentenceIconContainer, {top: '80%', left: '88%'}]}>
+                    <TouchableOpacity onPress={this.replayVideo}>
+                        <Image source={Replay_icon} style={styles.home} />
                     </TouchableOpacity>
-                </View> 
+                </View>
+
+                <View style={styles.homeContainer}>
+                    <TouchableOpacity onPress={this.gotoNumberScreen}>
+                        <Image source={Skip_icon} style={styles.home} />
+                    </TouchableOpacity>
+                </View>
             </ImageBackground>
         )
     }
