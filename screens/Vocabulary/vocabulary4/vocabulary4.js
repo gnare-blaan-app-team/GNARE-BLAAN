@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, StyleSheet, ImageBackground, TouchableOpacity,  } from 'react-native';
+import { View, Image, StyleSheet, ImageBackground, TouchableOpacity,  BackHandler} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
@@ -103,15 +103,15 @@ class Vocabulary4 extends Component {
         this.vocabSound = new Sound('vocab4_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
        this.vocabSound.play();
         });     
-      }
+    }
     
-      releaseSounds = ()=> {
-          if(this.vocabSound != null) {
-              this.vocabSound.release();
-          }
-      }
+    releaseSounds = ()=> {
+        if(this.vocabSound != null) {
+            this.vocabSound.release();
+        }
+    }
     
-      playVocabSound = () => {
+    playVocabSound = () => {
         if(this.vocabSound != null) {
             this.vocabSound.release();
         }
@@ -123,14 +123,14 @@ class Vocabulary4 extends Component {
         } else {
             this.vocabSound.play();
         }});
-      }
+    }
     
     stopSounds = () => {
         this.vocabSound.stop();
-      }
+    }
     
     gotoMainMenu = () =>{
-    const clear = this.state.clearBackground;
+        const clear = this.state.clearBackground;
         if (clear == 'clear'){
             this.stopSounds();
         }
@@ -163,6 +163,20 @@ class Vocabulary4 extends Component {
             })
         }
     }
+
+    componentDidMount() {
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+    }
+
+    componentWillUnmount() {
+        this.backHandler.remove()
+    }
+
+    handleBackPress = () => {
+        this.goBack(); 
+        return true;
+    }
+
     render() {
 
         return (

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, PanResponder, Text } from 'react-native';
+import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler, PanResponder, Text } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
@@ -55,40 +55,6 @@ class Vocabulary1 extends Component {
     this.vocabSound = null;
   }
 
-  stopSounds = () => {
-    this.vocabSound.stop();
-  }
-
-  gotoMainMenu = () =>{
-    const clear = this.state.clearBackground;
-        if (clear == 'clear'){
-            this.stopSounds();
-        }
-        this.props.navigation.navigate('mainMenu');
-  }
-
-  goBack = () =>{
-
-    const clear = this.state.clearBackground;
-    if (clear == 'gotoVocab1Menu'){
-      this.props.navigation.navigate('vocabularyMenu')
-    }
-    if(clear == 'clear'){
-      this.stopSounds();
-      this.setState({
-        BackgroundImage: Vocab1BG,
-        NanayTop: '26%',
-        LoloTop: '23%',
-        LolaTop: '25%',
-        KaitoTop: '37%',
-        KaibeTop: '37%',
-        TatayTop: '23%',
-        clearBackground:'gotoVocab1Menu',
-        speakerTop: '1000%',
-      })
-    }
-  }
-
 
   changeBackground = (index) =>{
     this.setState({
@@ -133,142 +99,189 @@ class Vocabulary1 extends Component {
     }});
   }
 
+  stopSounds = () => {
+    this.vocabSound.stop();
+  }
+
+  gotoMainMenu = () =>{
+    const clear = this.state.clearBackground;
+        if (clear == 'clear'){
+            this.stopSounds();
+        }
+        this.props.navigation.navigate('mainMenu');
+  }
+
+  goBack = () =>{
+
+    const clear = this.state.clearBackground;
+    if (clear == 'gotoVocab1Menu'){
+      this.props.navigation.navigate('vocabularyMenu')
+    }
+    if(clear == 'clear'){
+      this.stopSounds();
+      this.setState({
+        BackgroundImage: Vocab1BG,
+        NanayTop: '26%',
+        LoloTop: '23%',
+        LolaTop: '25%',
+        KaitoTop: '37%',
+        KaibeTop: '37%',
+        TatayTop: '23%',
+        clearBackground:'gotoVocab1Menu',
+        speakerTop: '1000%',
+      })
+    }
+  }
+
+  componentDidMount() {
+    this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+  }
+
+  componentWillUnmount() {
+    this.backHandler.remove()
+  }
+
+  handleBackPress = () => {
+    this.goBack(); 
+    return true;
+  }
+
   render() {
 
-        return (
-          <ImageBackground style={{ flex: 1, width: '100%', height: '100%', resizeMode: 'stretch' }}
-            source={Vocab1BG}
-          >
-            <View style={{ position: 'absolute', top: '0%', width: '100%', height: '100%' }}>
-              <Image source={Vocab1BG} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
-            </View>
-            <View style={{ position: 'absolute', width: '100%', height: '100%' }}>
-              <Image source={this.state.BackgroundImage} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
-            </View>
-                <View style={globalStyleSheet.backContainer}>
-                    <TouchableOpacity onPress={this.goBack}>
-                        <Image
-                            source={Back_icon}
-                            style={globalStyleSheet.back}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
-                <View style={globalStyleSheet.homeContainer}>
-                    <TouchableOpacity onPress={this.gotoMainMenu}>
-                        <Image
-                            source={Home_icon}
-                            style={globalStyleSheet.home}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
+    return (
+        <ImageBackground style={{ flex: 1, width: '100%', height: '100%', resizeMode: 'stretch' }}
+          source={Vocab1BG}
+        >
+          <View style={{ position: 'absolute', top: '0%', width: '100%', height: '100%' }}>
+            <Image source={Vocab1BG} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
+          </View>
+          <View style={{ position: 'absolute', width: '100%', height: '100%' }}>
+            <Image source={this.state.BackgroundImage} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
+          </View>
+              <View style={globalStyleSheet.backContainer}>
+                  <TouchableOpacity onPress={this.goBack}>
+                      <Image
+                          source={Back_icon}
+                          style={globalStyleSheet.back}
+                      ></Image>
+                  </TouchableOpacity>
+              </View>
+              <View style={globalStyleSheet.homeContainer}>
+                  <TouchableOpacity onPress={this.gotoMainMenu}>
+                      <Image
+                          source={Home_icon}
+                          style={globalStyleSheet.home}
+                      ></Image>
+                  </TouchableOpacity>
+              </View>
+              <View style={{
+                  position: 'absolute',
+                  left: '80%',
+                  top:this.state.speakerTop,
+                  width: '6%',
+                  height: '10%',
+              }}>
+                  <TouchableOpacity onPress={this.playVocabSound}>
+                      <Image
+                          source={SpeakerIcon}
+                          style={globalStyleSheet.A_Speaker_2}
+                      ></Image>
+                  </TouchableOpacity>
+              </View>
                 <View style={{
-                    position: 'absolute',
-                    left: '80%',
-                    top:this.state.speakerTop,
-                    width: '6%',
-                    height: '10%',
-                }}>
-                    <TouchableOpacity onPress={this.playVocabSound}>
+            position: 'absolute',
+            left: '37%',
+            top: this.state.TatayTop,
+            width: '18%',
+            resizeMode: 'cover',
+          }}>
+                    <TouchableOpacity onPress={() => {
+                      this.changeBackground(0);
+                    }}>
                         <Image
-                            source={SpeakerIcon}
-                            style={globalStyleSheet.A_Speaker_2}
+                            source={TatayAsset}
+                            style={styles.tatayImage}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+          <View style={{
+            position: 'absolute',
+            left: '50%',
+            top: this.state.NanayTop
+          }}>
+            <TouchableOpacity onPress={() => {
+              this.changeBackground(1);
+            }}>
+                        <Image
+                            source={NanayAsset}
+                            style={styles.nanayImage}
                         ></Image>
                     </TouchableOpacity>
                 </View>
                   <View style={{
-              position: 'absolute',
-              left: '37%',
-              top: this.state.TatayTop,
-              width: '18%',
-              resizeMode: 'cover',
+            position: 'absolute',
+            left: '32%',
+            top: this.state.LoloTop,
+            width: '11%',
+            resizeMode: 'cover',
+                  }}>
+            <TouchableOpacity onPress={() => {
+              this.changeBackground(2);
             }}>
-                      <TouchableOpacity onPress={() => {
-                        this.changeBackground(0);
-                      }}>
                           <Image
-                              source={TatayAsset}
-                              style={styles.tatayImage}
+                              source={LoloAsset}
+                              style={styles.loloImage}
                           ></Image>
                       </TouchableOpacity>
                   </View>
-            <View style={{
-              position: 'absolute',
-              left: '50%',
-              top: this.state.NanayTop
+
+          <View style={{
+            position: 'absolute',
+            left: '25%',
+            top: this.state.LolaTop,
             }}>
-              <TouchableOpacity onPress={() => {
-                this.changeBackground(1);
-              }}>
+            <TouchableOpacity onPress={() => {
+              this.changeBackground(3);
+            }}>
                           <Image
-                              source={NanayAsset}
-                              style={styles.nanayImage}
+                              source={LolaAsset}
+                              style={styles.lolaImage}
                           ></Image>
                       </TouchableOpacity>
                   </View>
-                    <View style={{
-              position: 'absolute',
-              left: '32%',
-              top: this.state.LoloTop,
-              width: '11%',
-              resizeMode: 'cover',
-                    }}>
-              <TouchableOpacity onPress={() => {
-                this.changeBackground(2);
-              }}>
-                            <Image
-                                source={LoloAsset}
-                                style={styles.loloImage}
-                            ></Image>
-                        </TouchableOpacity>
-                    </View>
 
-            <View style={{
-              position: 'absolute',
-              left: '25%',
-              top: this.state.LolaTop,
-              }}>
-              <TouchableOpacity onPress={() => {
-                this.changeBackground(3);
-              }}>
-                            <Image
-                                source={LolaAsset}
-                                style={styles.lolaImage}
-                            ></Image>
-                        </TouchableOpacity>
-                    </View>
+                  <View style={{
+            position: 'absolute',
+            left: '65%',
+            top: this.state.KaitoTop,
+                  }}>
+            <TouchableOpacity onPress={() => {
+              this.changeBackground(4);
+            }}>
+                          <Image
+                              source={KaitoAsset}
+                              style={styles.kaitoImage}
+                          ></Image>
+                      </TouchableOpacity>
+                  </View>
 
-                    <View style={{
-              position: 'absolute',
-              left: '65%',
-              top: this.state.KaitoTop,
-                    }}>
-              <TouchableOpacity onPress={() => {
-                this.changeBackground(4);
-              }}>
-                            <Image
-                                source={KaitoAsset}
-                                style={styles.kaitoImage}
-                            ></Image>
-                        </TouchableOpacity>
-                    </View>
-
-                    <View style={{
-              position: 'absolute',
-              left: '58%',
-              top: this.state.KaibeTop,
-                    }}>
-              <TouchableOpacity onPress={() => {
-                this.changeBackground(5);
-              }}>
-                            <Image
-                                source={KaibeAsset}
-                                style={styles.kaibeImage}
-                            ></Image>
-                        </TouchableOpacity>
-                    </View>
-            </ImageBackground>
-        )
-    }
+                  <View style={{
+            position: 'absolute',
+            left: '58%',
+            top: this.state.KaibeTop,
+                  }}>
+            <TouchableOpacity onPress={() => {
+              this.changeBackground(5);
+            }}>
+                          <Image
+                              source={KaibeAsset}
+                              style={styles.kaibeImage}
+                          ></Image>
+                      </TouchableOpacity>
+                  </View>
+          </ImageBackground>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
