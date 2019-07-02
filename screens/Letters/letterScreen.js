@@ -223,7 +223,7 @@ class Letters extends Component {
     letterTracing = () => {
         this.handleBackPress();
         const upperCase = soundList[this.state.indexSound].toUpperCase();
-        this.props.navigation.navigate('tracing' + upperCase);
+        this.props.navigation.push('tracing' + upperCase);
     }
 
     gotoMainMenu = () => {

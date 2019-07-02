@@ -252,6 +252,7 @@ class Vocabulary1 extends Component {
 
                   <View style={{
             position: 'absolute',
+            
             left: '65%',
             top: this.state.KaitoTop,
                   }}>

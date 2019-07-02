@@ -15,26 +15,17 @@ import trace2 from '../numberTracingGIF/3_2.gif';
 import shaded_3_1 from '../numberTracingImage/shaded_3_1.png';
 import shaded_3_2 from '../numberTracingImage/shaded_3_2.png';
 
-import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
+import { numberDimension, boardDimension,
+    scopeX, scopeY, trail } from '../numbersImport';
 
 const screenWidth = Dimensions.get('screen').width;
 const screenHeight = Dimensions.get('screen').height;
 
+import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
+
 const shadedLine = [shaded_3_1, shaded_3_2];
 const tracingLine = [trace1, trace2];
 
-const boardDimension = {
-    width: screenWidth * 0.75,
-    height: screenHeight * 0.7,
-};
-
-const numberDimension = {
-    width: boardDimension.width * 0.35,
-    height: boardDimension.height * 0.9,
-}
-
-const scope = 50;
-const trail = 22.5;
 const velocityLimit = 1.2;
 const velocityLimit2 = -1.5; 
 
@@ -45,7 +36,7 @@ class ThreeTracing extends Component {
 
     constructor(props) {
         super(props);
-        this. state = {
+        this.state = {
             pan: new Animated.ValueXY(),
             moveX: 0,
             moveY: 0,
@@ -72,142 +63,102 @@ class ThreeTracing extends Component {
         },
 
         this.line1 = [{
-            x: numberDimension.width * 0.2,
-            y: numberDimension.height * 0.2,
+            x: screenWidth * 0.42,
+            y: screenHeight * 0.35,
         }, {
-            x: numberDimension.width * 0.5,
-            y: numberDimension.height * 0.08,
+            x: screenWidth * 0.5,
+            y: screenHeight * 0.29,
         }, {
-            x: numberDimension.width * 0.77,
-            y: numberDimension.height * 0.3,
+            x: screenWidth * 0.57,
+            y: screenHeight * 0.4,
         }, {
-            x: numberDimension.width * 0.57,
-            y: numberDimension.height * 0.45,
+            x: screenWidth * 0.55,
+            y: screenHeight * 0.47,
         }, ];
 
         this.line2 = [{
-            x: numberDimension.width * 0.7,
-            y: numberDimension.height * 0.5,
+            x: screenWidth * 0.575,
+            y: screenHeight * 0.6,
         }, {
-            x: numberDimension.width * 0.82,
-            y: numberDimension.height * 0.7,
+            x: screenWidth * 0.565,
+            y: screenHeight * 0.73,
         }, {
-            x: numberDimension.width * 0.55,
-            y: numberDimension.height * 0.9,
+            x: screenWidth * 0.5,
+            y: screenHeight * 0.8,
         }, {
-            x: numberDimension.width * 0.25,
-            y: numberDimension.height * 0.83,
+            x: screenWidth * 0.44,
+            y: screenHeight * 0.77,
         }, ];
 
+        this.touch = [];
+
         this._val = {x: 0, y: 0};
-
+        this.touchTimeout = null;
         this.state.pan.addListener((value)=> this._val = value);
-
         this.panResponder = PanResponder.create({
-            onStartShouldSetPanResponder: (e, gesture) => true, 
+            onStartShouldSetPanResponder: (e, gesture) => true,
+            onMoveShoudlSetReponder: (e, gesture) => true,
+            onStartShouldSetPanResponderCapture: (e, gesture) => true,
+            onMoveShoudlSetReponderCapture: (e, gesture) => true,
+            
             onPanResponderMove: (e, gestureState)=> {
+                const moveX = e.nativeEvent.locationX;
+                const moveY = e.nativeEvent.locationY;
+                //this.isTouched(moveX, moveY);
                 //alert('move!');
                 const coordinate = {
                     x: gestureState.moveX,
-                    y: gestureState.moveY
+                    y: gestureState.moveY,
+                    // touchX: e.nativeEvent.locationX,
+                    // touchY: e.nativeEvent.locationY,
                 }
-
-                if(gestureState.vx >= 1.2 || gestureState.vx <= -1.2) {
-                    this.setState({arrayMove: []});
-                }
-                else if(gestureState.vy >= 1.5 || gestureState.vy <= -1.5) {
-                    this.setState({arrayMove: []});
-                }  else {
-                    this.setState({arrayMove: [...this.state.arrayMove, coordinate],
-                        touchLength: this.touchLength + 1});
-
-                    // Dot 1
-                    if(!this.state.dot1) {
-                        //alert('Dot1');
-                        if(e.nativeEvent.locationX >= this.line1[0].x - scope && e.nativeEvent.locationX <= this.line1[0].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[0].y - scope && e.nativeEvent.locationY <= this.line1[0].y + scope) {
-                                //alert('Dot1');
-                                this.setState({dot1: true});
-                            }
-                        }
-                    }
-                    
-                    // Dot 2
-                    if(this.state.dot1 && !this.state.dot2) {
-                        if(e.nativeEvent.locationX >= this.line1[1].x - scope && e.nativeEvent.locationX <= this.line1[1].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[1].y - scope && e.nativeEvent.locationY <= this.line1[1].y + scope) {
-                                //alert('Dot2');
-                                this.setState({dot2: true});
-                            }
-                        }
-                    }
-                    
-                    // Dot 3
-                    if(this.state.dot2 && !this.state.dot3) {
-                        if(e.nativeEvent.locationX >= this.line1[2].x - scope && e.nativeEvent.locationX <= this.line1[2].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[2].y - scope && e.nativeEvent.locationY <= this.line1[2].y + scope) {
-                                //alert('Dot3');
-                                this.setState({dot3: true});
-                            }
-                        }
-                    }
-
-                    // Dot 4
-                    if(this.state.dot3 && !this.state.dot4) {
-                        if(e.nativeEvent.locationX >= this.line1[3].x - scope && e.nativeEvent.locationX <= this.line1[3].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[3].y - scope && e.nativeEvent.locationY <= this.line1[3].y + scope) {
-                                //alert('Dot2');
-                                this.setState({dot4: true});
-                            }
-                        }
-                    }
-                    
-                    // Dot 5
-                    if(this.state.dot4 && !this.state.dot5) {
-                        if(e.nativeEvent.locationX >= this.line2[0].x - scope && e.nativeEvent.locationX <= this.line2[0].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line2[0].y - scope && e.nativeEvent.locationY <= this.line2[0].y + scope) {
-                                //alert('Dot2');
-                                this.setState({dot5: true});
-                            }
-                        }
-                    }
-                    
-                    // Dot 6
-                    if(this.state.dot5 && !this.state.dot6) {
-                        if(e.nativeEvent.locationX >= this.line2[1].x - scope && e.nativeEvent.locationX <= this.line2[1].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line2[1].y - scope && e.nativeEvent.locationY <= this.line2[1].y + scope) {
-                                //alert('Dot3');
-                                this.setState({dot6: true});
-                            }
-                        }
-                    }
-
-                    // Dot 7
-                    if(this.state.dot6 && !this.state.dot7) {
-                        if(e.nativeEvent.locationX >= this.line2[2].x - scope && e.nativeEvent.locationX <= this.line2[2].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line2[2].y - scope && e.nativeEvent.locationY <= this.line2[2].y + scope) {
-                                //alert('Dot2');
-                                this.setState({dot7: true});
-                            }
-                        }
-                    }
-                    
-                    // Dot 8
-                    if(this.state.dot7 && !this.state.dot8) {
-                        if(e.nativeEvent.locationX >= this.line2[3].x - scope && e.nativeEvent.locationX <= this.line2[3].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line2[3].y - scope && e.nativeEvent.locationY <= this.line2[3].y + scope) {
-                                //alert('Dot2');
-                                this.setState({dot8: true});
-                            }
-                        }
-                    }
-                }                
+                //this.touch.push(coordinate);
+                if(!this.state.dot1) {
+                    this.setState({dot1: 
+                        ((gestureState.moveX >= this.line1[0].x - scopeX && gestureState.moveX <= this.line1[0].x + scopeX) && 
+                        (gestureState.moveY >= this.line1[0].y - scopeY && gestureState.moveY <= this.line1[0].y + scopeY)) ? true : false});
+                
+                } else if(this.state.dot1 && !this.state.dot2) {
+                    this.setState({dot2: 
+                        ((gestureState.moveX >= this.line1[1].x - scopeX && gestureState.moveX <= this.line1[1].x + scopeX) && 
+                        (gestureState.moveY >= this.line1[1].y - scopeY && gestureState.moveY <= this.line1[1].y + scopeY)) ? true : false});
+                
+                } else if(this.state.dot2 && !this.state.dot3) {
+                    this.setState({dot3: 
+                        ((gestureState.moveX >= this.line1[2].x - scopeX && gestureState.moveX <= this.line1[2].x + scopeX) && 
+                        (gestureState.moveY >= this.line1[2].y - scopeY && gestureState.moveY <= this.line1[2].y + scopeY)) ? true : false});
+                
+                } else if(this.state.dot3 && !this.state.dot4) {
+                    this.setState({dot4: 
+                        ((gestureState.moveX >= this.line1[3].x - scopeX && gestureState.moveX <= this.line1[3].x + scopeX) && 
+                        (gestureState.moveY >= this.line1[3].y - scopeY && gestureState.moveY <= this.line1[3].y + scopeY)) ? true : false});
+                
+                } else if(this.state.dot4 && !this.state.dot5) {
+                    this.setState({dot5: 
+                        ((gestureState.moveX >= this.line2[0].x - scopeX && gestureState.moveX <= this.line2[0].x + scopeX) && 
+                        (gestureState.moveY >= this.line2[0].y - scopeY && gestureState.moveY <= this.line2[0].y + scopeY)) ? true : false});
+                
+                } else if(this.state.dot5 && !this.state.dot6) {
+                    this.setState({dot6: 
+                        ((gestureState.moveX >= this.line2[1].x - scopeX && gestureState.moveX <= this.line2[1].x + scopeX) && 
+                        (gestureState.moveY >= this.line2[1].y - scopeY && gestureState.moveY <= this.line2[1].y + scopeY)) ? true : false});
+                
+                } else if(this.state.dot6 && !this.state.dot7) {
+                    this.setState({dot7: 
+                        ((gestureState.moveX >= this.line2[2].x - scopeX && gestureState.moveX <= this.line2[2].x + scopeX) && 
+                        (gestureState.moveY >= this.line2[2].y - scopeY && gestureState.moveY <= this.line2[2].y + scopeY)) ? true : false});
+                
+                } else if(this.state.dot7 && !this.state.dot8) {
+                    this.setState({dot8: 
+                        ((gestureState.moveX >= this.line2[3].x - scopeX && gestureState.moveX <= this.line2[3].x + scopeX) && 
+                        (gestureState.moveY >= this.line2[3].y - scopeY && gestureState.moveY <= this.line2[3].y + scopeY)) ? true : false});
+                } 
+                this.setState({arrayMove: [...this.state.arrayMove, coordinate]});
             },
             onPanResponderRelease: (e, gesture) => {
-                if(this.state.dot3) {
+                if(this.state.dot4) {
                     if(this.state.dot8) {
-                        this.setState({arrayMove: [], showShaded: 1, dot1: false, 
-                            dot2: false, dot3: false, shadedIndex: 1,
+                        this.setState({arrayMove: [], showShaded: 1, shadedIndex: 1,
                             shaded: shadedLine[1], showTracing: 0});
                     } else {
                         this.setState({arrayMove: [], showShaded: 1, dot7: false, 
@@ -216,7 +167,7 @@ class ThreeTracing extends Component {
                             tracing: tracingLine[1]});
                     }
                 } else {
-                //  alert('After Release!');
+                    //alert('After Release!');
                     this.clearBoard();
                 }
             }
@@ -225,7 +176,7 @@ class ThreeTracing extends Component {
 
     gotoMainMenu = () => {
         this.clearBoard();
-        this.props.navigation.navigate('home');
+        this.props.navigation.navigate('mainMenu');
     }
 
     goBack = () => {
@@ -239,89 +190,140 @@ class ThreeTracing extends Component {
             showShaded: 0, shaded: shadedLine[0], tracing: tracingLine[0], showTracing: 1});
     }
 
-    render() {
 
+
+    render() {
         let touchTrail = this.state.arrayMove.map((item, key) => {
+            //this.isTouched(item.touchX, item.touchY);
             return(
-                <View key = { key } {...this.panResponder.panHandlers}
-                    style={[styles.trace, {left: item.x - trail, top: item.y - trail,
-                        width: 45, height: 45, borderRadius: 45}]}>
+                <View key = { key }
+                    style={[styles.trace, {left: item.x - trail, top: item.y - trail,}]}>
                 </View>
             )
         });
-
         StatusBar.setHidden(true);
         return (
             <ImageBackground source={imageBG} style={styles.image} >
                 <Image source={imageBG} style={{position: 'absolute', width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
 
                 <View style={{position: 'absolute', 
-                        width: '75%', height: '70%', top: '20%', left: '12.5%', backgroundColor: 'rgba(255, 255, 255, 0.000000001)'}}
+                        width: boardDimension.width, height: boardDimension.height, top: '20%', left: '12.5%'
+                        , backgroundColor: 'rgba(255, 255, 255, 0.000001'}}
                         {...this.panResponder.panHandlers} >
-                    <View style={{position: 'absolute', width: '35%', height: '90%', 
+                    <View style={{position: 'absolute', width: numberDimension.width, height: numberDimension.height,
+                            
                                 top: '5%', left: '32%', opacity: this.state.showTracing,}}>
                         <Image source={this.state.tracing} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
                         
-
-                        {/* <View style={[styles.dot, {top: numberDimension.height * 0.2,
-                            left: numberDimension.width * 0.2}]}></View>
-                        <View style={[styles.dot, {top: numberDimension.height * 0.08,
-                            left: numberDimension.width * 0.5}]}></View>
+                        {/* <View style={[styles.dot, {top: screenHeight * 0.13,
+                            left: screenWidth * 0.3}]}></View>
+                        <View style={[styles.dot, {top: numberDimension.height * 0.11,
+                            left: numberDimension.width * 0.62}]}></View>
                         <View style={[styles.dot, {top: numberDimension.height * 0.3,
                             left: numberDimension.width * 0.77}]}></View>
-                        <View style={[styles.dot, {top: numberDimension.height * 0.45,
-                            left: numberDimension.width * 0.57}]}></View> */}
+                        <View style={[styles.dot, {top: numberDimension.height * 0.35,
+                            left: numberDimension.width * 0.7}]}></View> */}
 
                         {/*
                             this.line1 = [{
-                                x: numberDimension * 0.2,
-                                y: numberDimension * 0.2,
+                                x: numberDimension.width * 0.3,
+                                y: numberDimension.height * 0.13,
                             }, {
-                                x: numberDimension * 0.5,
-                                y: numberDimension * 0.08,
+                                x: numberDimension.width * 0.62,
+                                y: numberDimension.height * 0.11,
                             }, {
-                                x: numberDimension * 0.77,
-                                y: numberDimension * 0.3,
+                                x: numberDimension.width * 0.77,
+                                y: numberDimension.height * 0.3,
                             }, {
-                                x: numberDimension * 0.57,
-                                y: numberDimension * 0.45,
+                                x: numberDimension.width * 0.66,
+                                y: numberDimension.height * 0.4,
                             }, ];
                         */}
 
-                        {/* <View style={[styles.dot, {top: numberDimension.height * 0.5,
-                            left: numberDimension.width * 0.7}]}></View>
-                        <View style={[styles.dot, {top: numberDimension.height * 0.7,
+                        {/* <View style={[styles.dot, {top: numberDimension.height * 0.6,
                             left: numberDimension.width * 0.82}]}></View>
+                        <View style={[styles.dot, {top: numberDimension.height * 0.75,
+                            left: numberDimension.width * 0.8}]}></View>
                         <View style={[styles.dot, {top: numberDimension.height * 0.9,
                             left: numberDimension.width * 0.55}]}></View>
-                        <View style={[styles.dot, {top: numberDimension.height * 0.83,
-                            left: numberDimension.width * 0.25}]}></View> */}
+                        <View style={[styles.dot, {top: numberDimension.height * 0.85,
+                            left: numberDimension.width * 0.3}]}></View> */}
 
                         {/*
                             this.line2 = [{
-                                x: numberDimension * 0.7,
-                                y: numberDimension * 0.5,
+                                x: numberDimension.width * 0.77,
+                                y: numberDimension.height * 0.55,
                             }, {
-                                x: numberDimension * 0.82,
-                                y: numberDimension * 0.7,
+                                x: numberDimension.width * 0.75,
+                                y: numberDimension.height * 0.8,
                             }, {
-                                x: numberDimension * 0.55,
-                                y: numberDimension * 0.9,
+                                x: numberDimension.width * 0.55,
+                                y: numberDimension.height * 0.9,
                             }, {
-                                x: numberDimension * 0.25,
-                                y: numberDimension * 0.83,
+                                x: numberDimension.width * 0.27,
+                                y: numberDimension.height * 0.85,
                             }, ];
                         */}
                         
                     </View>
-                    <View style={{position: 'absolute', width: '35%', height: '90%', 
+                    <View style={{position: 'absolute', width: numberDimension.width,
+                                height: numberDimension.height, 
                                 top: '5%', left: '32%', opacity: this.state.showShaded}}>
                         <Image source={this.state.shaded} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
                     </View>
                 </View>
+
+                <View style={[styles.dot, {top: screenHeight * 0.35,
+                    left: screenWidth * 0.42}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.29,
+                    left: screenWidth * 0.5}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.4,
+                    left: screenWidth * 0.57}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.47,
+                    left: screenWidth * 0.55}]}></View>
+                    
+                    {/*
+                        this.line1 = [{
+                            x: screenWidth * 0.42,
+                            y: screenHeight * 0.35,
+                        }, {
+                            x: screenWidth * 0.5,
+                            y: screenHeight * 0.29,
+                        }, {
+                            x: screenWidth * 0.57,
+                            y: screenHeight * 0.4,
+                        }, {
+                            x: screenWidth * 0.55,
+                            y: screenHeight * 0.47,
+                        }, ];
+                    */}
+
+                <View style={[styles.dot, {top: screenHeight * 0.6,
+                    left: screenWidth * 0.575}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.73,
+                    left: screenWidth * 0.565}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.8,
+                    left: screenWidth * 0.5}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.77,
+                    left: screenWidth * 0.44}]}></View>
+                
+                {/*
+                    this.line2 = [{
+                        x: screenWidth * 0.575,
+                        y: screenHeight * 0.6,
+                    }, {
+                        x: screenWidth * 0.565,
+                        y: screenHeight * 0.73,
+                    }, {
+                        x: screenWidth * 0.5,
+                        y: screenHeight * 0.8,
+                    }, {
+                        x: screenWidth * 0.44,
+                        y: screenHeight * 0.77,
+                    }, ];
+                */}
+
                 {touchTrail}
-
-
                 {/* Pencil Button */}
                 <View style={{position: 'absolute', left: '12%', 
                     top: '22%', width: '7%', height: '22%',}} >
