@@ -6,7 +6,7 @@ import ProgressBar from "react-native-progress/Bar";
 import { withNavigation } from 'react-navigation'; 
 import Icon from "react-native-vector-icons/FontAwesome";
 
-import Story3_FL from '../../CultureandArts/cultureandartsVideos/Prayers/morningPrayer.mp4';
+import Story3_FL from '../flalokVideos/Story3_FL.mp4';
 import Story3_EN from '../flalokVideos/Story3_EN.mp4';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
