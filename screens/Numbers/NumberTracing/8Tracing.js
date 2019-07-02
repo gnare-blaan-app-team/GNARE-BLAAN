@@ -13,23 +13,11 @@ import trace1 from '../numberTracingGIF/8_1.gif';
 import shaded_8_1 from '../numberTracingImage/shaded_8_1.png';
 import trace8 from '../numberTracingImage/8.png';
 
+import { numberDimension, boardDimension,
+    scopeX, scopeY, trail } from '../numbersImport';
+
 const screenWidth = Dimensions.get('screen').width;
 const screenHeight = Dimensions.get('screen').height;
-
-const boardDimension = {
-    width: screenWidth * 0.75,
-    height: screenHeight * 0.7,
-};
-
-const numberDimension = {
-    width: boardDimension.width * 0.35,
-    height: boardDimension.height * 0.9,
-}
-
-const scope = 50;
-const trail = 25;
-const velocityLimit = 1.2;
-const velocityLimit2 = -1.5; 
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
 
@@ -61,36 +49,32 @@ class EightTracing extends Component {
             dot6: false,
             dot7: false,
             dot8: false,
-            dot9: false,
         },
 
         this.line1 = [{
-            x: numberDimension.width * 0.45,
-            y: numberDimension.height * 0.11,
+            x: screenWidth * 0.45,
+            y: screenHeight * 0.32,
         }, {
-            x: numberDimension.width * 0.22,
-            y: numberDimension.height * 0.28,
+            x: screenWidth * 0.45,
+            y: screenHeight * 0.495,
         }, {
-            x: numberDimension.width * 0.44,
-            y: numberDimension.height * 0.45,
+            x: screenWidth * 0.57,
+            y: screenHeight * 0.6,
         }, {
-            x: numberDimension.width * 0.81,
-            y: numberDimension.height * 0.7,
+            x: screenWidth * 0.52,
+            y: screenHeight * 0.78,
         }, {
-            x: numberDimension.width * 0.49,
-            y: numberDimension.height * 0.89,
+            x: screenWidth * 0.42,
+            y: screenHeight * 0.72,
         }, {
-            x: numberDimension.width * 0.18,
-            y: numberDimension.height * 0.7,
+            x: screenWidth * 0.48,
+            y: screenHeight * 0.525,
         }, {
-            x: numberDimension.width * 0.5,
-            y: numberDimension.height * 0.46,
+            x: screenWidth * 0.565,
+            y: screenHeight * 0.4,
         }, {
-            x: numberDimension.width * 0.77,
-            y: numberDimension.height * 0.28,
-        }, {
-            x: numberDimension.width * 0.68,
-            y: numberDimension.height * 0.17,
+            x: screenWidth * 0.555,
+            y: screenHeight * 0.35,
         }, ];
 
         this._val = {x: 0, y: 0};
@@ -106,115 +90,63 @@ class EightTracing extends Component {
                     y: gestureState.moveY
                 }
 
-                if(gestureState.vx >= 1.2 || gestureState.vx <= -1.2) {
-                    this.setState({arrayMove: []});
+                if(gestureState.vx >= 2 || gestureState.vx <= -2) {
+                    this.clearBoard();
                 }
-                else if(gestureState.vy >= 1.5 || gestureState.vy <= -1.5) {
-                    this.setState({arrayMove: []});
-                }  else {
-                    this.setState({arrayMove: [...this.state.arrayMove, coordinate],
-                        touchLength: this.touchLength + 1});
-                    
-                    // Dot 1
+                else if(gestureState.vy >= 3 || gestureState.vy <= -3) {
+                    this.clearBoard();
+    
+                } else {
                     if(!this.state.dot1) {
-                        if(e.nativeEvent.locationX >= this.line1[0].x - scope && e.nativeEvent.locationX <= this.line1[0].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[0].y - scope && e.nativeEvent.locationY <= this.line1[0].y + scope) {
-                                //alert('Dot1');
-                                this.setState({dot1: true});
-                            }
-                        }
-                    }
-
-                    // Dot 2
-                    if(this.state.dot1 && !this.state.dot2) {
-                        if(e.nativeEvent.locationX >= this.line1[1].x - scope && e.nativeEvent.locationX <= this.line1[1].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[1].y - scope && e.nativeEvent.locationY <= this.line1[1].y + scope) {
-                                //alert('Dot2');
-                                this.setState({dot2: true});
-                            }
-                        }
-                    }
-
-                    // Dot 3
-                    if(this.state.dot2 && !this.state.dot3) {
-                        if(e.nativeEvent.locationX >= this.line1[2].x - scope && e.nativeEvent.locationX <= this.line1[2].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[2].y - scope && e.nativeEvent.locationY <= this.line1[2].y + scope) {
-                                //alert('Dot3');
-                                this.setState({dot3: true});
-                            }
-                        }
-                    }
-
-                    // Dot 4
-                    if(this.state.dot3 && !this.state.dot4) {
-                        if(e.nativeEvent.locationX >= this.line1[3].x - scope && e.nativeEvent.locationX <= this.line1[3].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[3].y - scope && e.nativeEvent.locationY <= this.line1[3].y + scope) {
-                                //alert('Dot4');
-                                this.setState({dot4: true});
-                            }
-                        }
-                    }
-
-                    // Dot 5
-                    if(this.state.dot4 && !this.state.dot5) {
-                        if(e.nativeEvent.locationX >= this.line1[4].x - scope && e.nativeEvent.locationX <= this.line1[4].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[4].y - scope && e.nativeEvent.locationY <= this.line1[4].y + scope) {
-                                //alert('Dot5');
-                                this.setState({dot5: true});
-                            }
-                        }
-                    }
-
-                    // Dot 6
-                    if(this.state.dot5 && !this.state.dot6) {
-                        if(e.nativeEvent.locationX >= this.line1[5].x - scope && e.nativeEvent.locationX <= this.line1[5].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[5].y - scope && e.nativeEvent.locationY <= this.line1[5].y + scope) {
-                                //alert('Dot6');
-                                this.setState({dot6: true});
-                            }
-                        }
-                    }
-
-                    // Dot 7
-                    if(this.state.dot6 && !this.state.dot7) {
-                        if(e.nativeEvent.locationX >= this.line1[6].x - scope && e.nativeEvent.locationX <= this.line1[6].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[6].y - scope && e.nativeEvent.locationY <= this.line1[6].y + scope) {
-                                //alert('Dot7');
-                                this.setState({dot7: true});
-                            }
-                        }
-                    }
-
-                    // Dot 8
-                    if(this.state.dot7 && !this.state.dot8) {
-        
-                         if(e.nativeEvent.locationX >= this.line1[7].x - scope && e.nativeEvent.locationX <= this.line1[7].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[7].y - scope && e.nativeEvent.locationY <= this.line1[7].y + scope) {
-                                //alert('Dot8');
-                                this.setState({dot8: true});
-                            }
-                        }
-                    }
-
-                    // Dot 9
-                    if(this.state.dot8 && !this.state.dot9) {
-                        if(e.nativeEvent.locationX >= this.line1[8].x - scope && e.nativeEvent.locationX <= this.line1[8].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[8].y - scope && e.nativeEvent.locationY <= this.line1[8].y + scope) {
-                                //alert('Dot9');
-                                this.setState({dot9: true});
-                            }
-                        }
-                    }
-                }                
+                        this.setState({dot1: 
+                            ((gestureState.moveX >= this.line1[0].x - scopeX && gestureState.moveX <= this.line1[0].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[0].y - scopeY && gestureState.moveY <= this.line1[0].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot1 && !this.state.dot2) {
+                        this.setState({dot2: 
+                            ((gestureState.moveX >= this.line1[1].x - scopeX && gestureState.moveX <= this.line1[1].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[1].y - scopeY && gestureState.moveY <= this.line1[1].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot2 && !this.state.dot3) {
+                        this.setState({dot3: 
+                            ((gestureState.moveX >= this.line1[2].x - scopeX && gestureState.moveX <= this.line1[2].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[2].y - scopeY && gestureState.moveY <= this.line1[2].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot3 && !this.state.dot4) {
+                        this.setState({dot4: 
+                            ((gestureState.moveX >= this.line1[3].x - scopeX && gestureState.moveX <= this.line1[3].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[3].y - scopeY && gestureState.moveY <= this.line1[3].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot4 && !this.state.dot5) {
+                        this.setState({dot5: 
+                            ((gestureState.moveX >= this.line1[4].x - scopeX && gestureState.moveX <= this.line1[4].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[4].y - scopeY && gestureState.moveY <= this.line1[4].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot5 && !this.state.dot6) {
+                        this.setState({dot6: 
+                            ((gestureState.moveX >= this.line1[5].x - scopeX && gestureState.moveX <= this.line1[5].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[5].y - scopeY && gestureState.moveY <= this.line1[5].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot6 && !this.state.dot7) {
+                        this.setState({dot7: 
+                            ((gestureState.moveX >= this.line1[6].x - scopeX && gestureState.moveX <= this.line1[6].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[6].y - scopeY && gestureState.moveY <= this.line1[6].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot7 && !this.state.dot8) {
+                        this.setState({dot8: 
+                            ((gestureState.moveX >= this.line1[7].x - scopeX && gestureState.moveX <= this.line1[7].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[7].y - scopeY && gestureState.moveY <= this.line1[7].y + scopeY)) ? true : false});
+                    
+                    } 
+                        this.setState({arrayMove: [...this.state.arrayMove, coordinate]});
+                } 
             },
             onPanResponderRelease: (e, gesture) => {
-                if(this.state.dot9) {
+                if(this.state.dot8) {
                     this.setState({arrayMove: [], showTracing: 1, tracing: shaded_8_1});
                 } else {
                     //alert('Released');
-                    this.setState({arrayMove: [], dot1: false, dot2: false, dot3: false, dot4: false,
-                        dot5: false, dot6: false, dot7: false, dot8: false, dot9: false, showTracing: 1, 
-                        showShaded: 0, tracing: trace1});
+                    this.clearBoard();
                 }
             }
         });
@@ -222,7 +154,7 @@ class EightTracing extends Component {
 
     gotoMainMenu = () => {
         this.clearBoard();
-        this.props.navigation.navigate('home');
+        this.props.navigation.navigate('mainMenu');
     }
 
     goBack = () => {
@@ -233,7 +165,7 @@ class EightTracing extends Component {
     clearBoard = () => {
         this.setState({arrayMove: [], dot1: false, dot2: false, dot3: false, 
             dot4: false, dot5: false, dot6: false, dot7: false, dot8: false, 
-            dot9: false, showShaded: 0, showTracing: 1});
+            showShaded: 0, showTracing: 1});
         this.setState({tracing: trace1});
     }
 
@@ -254,9 +186,11 @@ class EightTracing extends Component {
                 <Image source={imageBG} style={{position: 'absolute', width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
 
                 <View style={{position: 'absolute', 
-                        width: '75%', height: '70%', top: '20%', left: '12.5%', backgroundColor: 'rgba(255, 255, 255, 0.000000001)'}}
+                        width: boardDimension.width, height: boardDimension.height, top: '20%', left: '12.5%', 
+                        backgroundColor: 'rgba(255, 255, 255, 0.000000001)'}}
                         {...this.panResponder.panHandlers} >
-                    <View style={{position: 'absolute', width: '35%', height: '90%', 
+                    <View style={{position: 'absolute', width: numberDimension.width, 
+                                height: numberDimension.height, 
                                 top: '5%', left: '32%', opacity: this.state.showTracing,}}>
                         <Image source={this.state.tracing} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
 
@@ -313,6 +247,52 @@ class EightTracing extends Component {
 
                     </View>
                 </View>
+
+                <View style={[styles.dot, {top: screenHeight * 0.32,
+                    left: screenWidth * 0.45}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.495,
+                    left: screenWidth * 0.45}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.6,
+                    left: screenWidth * 0.57}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.78,
+                    left: screenWidth * 0.52}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.72,
+                    left: screenWidth * 0.42}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.525,
+                    left: screenWidth * 0.48}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.4,
+                    left: screenWidth * 0.565}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.35,
+                    left: screenWidth * 0.555}]}></View>
+
+                    {/*
+                        this.line1 = [{
+                            x: screenWidth * 0.45,
+                            y: screenHeight * 0.32,
+                        }, {
+                            x: screenWidth * 0.45,
+                            y: screenHeight * 0.495,
+                        }, {
+                            x: screenWidth * 0.57,
+                            y: screenHeight * 0.6,
+                        }, {
+                            x: screenWidth * 0.52,
+                            y: screenHeight * 0.78,
+                        }, {
+                            x: screenWidth * 0.42,
+                            y: screenHeight * 0.72,
+                        }, {
+                            x: screenWidth * 0.48,
+                            y: screenHeight * 0.525,
+                        }, , {
+                            x: screenWidth * 0.565,
+                            y: screenHeight * 0.4,
+                        }, {
+                            x: screenWidth * 0.555,
+                            y: screenHeight * 0.35,
+                        }, ];
+                    */}
+
                 {touchTrail}
 
 

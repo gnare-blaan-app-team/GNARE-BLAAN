@@ -204,6 +204,19 @@ class vocabulary2 extends Component {
         })
     }
 
+    componentDidMount() {
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+    }
+    
+    componentWillUnmount() {
+    this.backHandler.remove()
+    }
+
+    handleBackPress = () => {
+    this.goBack(); 
+    return true;
+    }
+
     render() {
         return (
             <ImageBackground style={{ flex: 1, width: '100%', height: '100%', resizeMode: 'stretch' }}

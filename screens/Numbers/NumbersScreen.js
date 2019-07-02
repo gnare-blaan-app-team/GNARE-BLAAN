@@ -24,7 +24,7 @@ import PrevIcon from '../images/Prev_Icon.png';
 
     // Letter Main Background Import
 import imageMainBG from '../images/BG.jpg';
-import sentenceBG from '../images/BG.jpg';
+import sentenceBG from '../images/BG_1.jpg';
 import black from '../images/black.png';
 
     // Letter Background Imports
