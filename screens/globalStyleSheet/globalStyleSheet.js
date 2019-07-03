@@ -189,21 +189,12 @@ export const globalStyleSheet = {
         resizeMode: 'contain',
     },
 
-    //HomePage Container
-    HomePageContainer: {
-        position: 'absolute',
-        top: '80%',
-        left: wp('11.28%'),
-        width: '80%',
-        height: '20%',
-    },
-
     //HomePage Items
     HomePageItems: {
         margin: 5,
         marginBottom: 0,
-        width: '25%',
-        height: '40%',
+        width: '20%',
+        height: '30%',
     },
 
     //HomePage Touch
