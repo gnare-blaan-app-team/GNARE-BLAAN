@@ -2,11 +2,14 @@ import React,{Component} from 'react';
 import { ImageBackground, TouchableOpacity, View, Image, Text, StatusBar, Dimensions, Animated} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js';
+import Sound from 'react-native-sound';
 
 import HomepageBackground from './images/GnareMain.gif';
 import About_icon from "./images/Icon_About.png";
 import Like_icon from "./images/Icon_Like.png";
 import Share_icon from "./images/Icon_Share.png";
+
+Sound.setCategory('Playback');
 
 class FadeInView extends React.Component {
     state = {
