@@ -95,7 +95,7 @@ export const numberDimension = {
 
 export const scopeX = screenWidth * 0.04;
 export const scopeY = screenHeight * 0.05;
-export const trail = 25;
+export const trail = screenWidth * 0.025;
 export const velocityLimit = 1.2;
 export const velocityLimit2 = -1.5; 
 

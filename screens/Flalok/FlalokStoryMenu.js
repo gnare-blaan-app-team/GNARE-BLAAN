@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { ImageBackground, TouchableOpacity, View, Image} from 'react-native';
+import { ImageBackground, TouchableOpacity, View, Image, Text} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 
@@ -79,7 +79,7 @@ class FlalokStoryMenu extends Component {
                                     </TouchableOpacity>
                                 </View>
 
-                                <View style={[styles.itemSize, {height: '90%', marginRight: '10%', backgroundColor: 'red'}]} >
+                                <View style={[styles.itemSize, {height: '90%', marginRight: '10%'}]} >
                                     <TouchableOpacity  onPress={this.gotoStory3} >
                                         <Image style={styles.imageSizeStoryMenu} source={Story2} />
                                     </TouchableOpacity>

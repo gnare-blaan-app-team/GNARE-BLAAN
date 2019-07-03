@@ -1,10 +1,38 @@
 import React, { Component } from 'react';
-import { View, ImageBackground, StyleSheet, Image, PanResponder, TouchableOpacity, StatusBar, Animated } from 'react-native';
+import { View, ImageBackground, Dimensions, Image, 
+    PanResponder, TouchableOpacity, StatusBar, Animated } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
-import Letter from '../LettersAssets/tracingU_1.gif';
+import ULetter_1 from '../LettersAssets/tracingU_1.gif';
+import ULetter_2 from '../LettersAssets/tracingU_2.gif';
+import ULetter_3 from '../LettersAssets/tracingU_3.gif';
+
+import shaded_U_1 from '../LettersAssets/shaded_U_1.png';
+import shaded_U_2 from '../LettersAssets/shaded_U_2.png';
+import shaded_U_3 from '../LettersAssets/shaded_U_3.png';
+
+import PencilIcon from '../../images/Pencil_icon.png';
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
+
+import { scopeX, scopeY, trail } from '../letterImport';
+
+const tracingLine = [ULetter_1, ULetter_2, ULetter_3, ];
+const shadedLine = [shaded_U_1, shaded_U_2, shaded_U_3];
+
+const screenWidth = Dimensions.get('screen').width;
+const screenHeight = Dimensions.get('screen').height;
+
+const boardDimension = {
+    width: screenWidth * 0.75,
+    height: screenHeight * 0.7,
+};
+
+const numberDimension = {
+    width: boardDimension.width * 0.7,
+    height: boardDimension.height * 0.9,
+}
+
 
 class UTracing extends Component {
     static navigationOptions = {
@@ -18,8 +46,60 @@ class UTracing extends Component {
             moveX: 0,
             moveY: 0,
             arrayMove: [],
+            tracing: tracingLine[0],
+            showShaded: 0,
+            shaded: shadedLine[0],
+            showTracing: 1,
             touchLength: 0,
+
+            dot1: false,
+            dot2: false,
+            dot3: false,
+            dot4: false,
+            dot5: false,
+            dot6: false,
+            dot7: false,
+            dot8: false,
+            fot9: false,
+            dot10: false,
+            dot11: false,
         },
+
+        // Dots Location
+        this.line1 = [{
+            x: screenWidth * 0.275,
+            y: screenHeight * 0.35,
+        }, {
+            x: screenWidth * 0.275,
+            y: screenHeight * 0.52,
+        }, {
+            x: screenWidth * 0.31,
+            y: screenHeight * 0.76,
+        }, {
+            x: screenWidth * 0.445,
+            y: screenHeight * 0.738,
+        }, {
+            x: screenWidth * 0.462,
+            y: screenHeight * 0.54,
+        }, {
+            x: screenWidth * 0.462,
+            y: screenHeight * 0.37,
+        }, {
+            x: screenWidth * 0.58,
+            y: screenHeight * 0.5,
+        }, {
+            x: screenWidth * 0.59,
+            y: screenHeight * 0.73,
+        }, {
+            x: screenWidth * 0.64,
+            y: screenHeight * 0.787,
+        }, {
+            x: screenWidth * 0.725,
+            y: screenHeight * 0.49,
+        }, {
+            x: screenWidth * 0.725,
+            y: screenHeight * 0.73,
+        }, ];
 
         this._val = {x: 0, y: 0};
 
@@ -27,43 +107,114 @@ class UTracing extends Component {
 
         this.panResponder = PanResponder.create({
             onStartShouldSetPanResponder: (e, gesture) => true, 
-            onPanResponderMove: (e, gesture)=> {
+            onPanResponderMove: (e, gestureState)=> {
                 //alert('move!');
                 const coordinate = {
-                    x: gesture.moveX,
-                    y: gesture.moveY
+                    x: gestureState.moveX,
+                    y: gestureState.moveY
                 }
 
-                if(gesture.vx >= 1) {
-                    this.setState({arrayMove: [],
-                        touchLength: 0});
+                if(gestureState.vx >= 2 || gestureState.vx <= -2) {
+                    this.clearBoard();
                 }
-                else if(gesture.vy >= 1.5) {
-                    this.setState({arrayMove: [],
-                        touchLength: 0});
+                else if(gestureState.vy >= 3 || gestureState.vy <= -3) {
+                    this.clearBoard();
+    
                 } else {
-                    this.setState({arrayMove: [...this.state.arrayMove, coordinate],
-                        touchLength: this.touchLength + 1});
+                    if(!this.state.dot1) {
+                        this.setState({dot1: 
+                            ((gestureState.moveX >= this.line1[0].x - scopeX && gestureState.moveX <= this.line1[0].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[0].y - scopeY && gestureState.moveY <= this.line1[0].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot1 && !this.state.dot2) {
+                        this.setState({dot2: 
+                            ((gestureState.moveX >= this.line1[1].x - scopeX && gestureState.moveX <= this.line1[1].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[1].y - scopeY && gestureState.moveY <= this.line1[1].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot2 && !this.state.dot3) {
+                        this.setState({dot3: 
+                            ((gestureState.moveX >= this.line1[2].x - scopeX && gestureState.moveX <= this.line1[2].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[2].y - scopeY && gestureState.moveY <= this.line1[2].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot3 && !this.state.dot4) {
+                        this.setState({dot4: 
+                            ((gestureState.moveX >= this.line1[3].x - scopeX && gestureState.moveX <= this.line1[3].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[3].y - scopeY && gestureState.moveY <= this.line1[3].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot4 && !this.state.dot5) {
+                        this.setState({dot5: 
+                            ((gestureState.moveX >= this.line1[4].x - scopeX && gestureState.moveX <= this.line1[4].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[4].y - scopeY && gestureState.moveY <= this.line1[4].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot5 && !this.state.dot6) {
+                        this.setState({dot6: 
+                            ((gestureState.moveX >= this.line1[5].x - scopeX && gestureState.moveX <= this.line1[5].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[5].y - scopeY && gestureState.moveY <= this.line1[5].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot6 && !this.state.dot7) {
+                        this.setState({dot7: 
+                            ((gestureState.moveX >= this.line1[6].x - scopeX && gestureState.moveX <= this.line1[6].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[6].y - scopeY && gestureState.moveY <= this.line1[6].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot7 && !this.state.dot8) {
+                        this.setState({dot8: 
+                            ((gestureState.moveX >= this.line1[7].x - scopeX && gestureState.moveX <= this.line1[7].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[7].y - scopeY && gestureState.moveY <= this.line1[7].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot8 && !this.state.dot9) {
+                        this.setState({dot9: 
+                            ((gestureState.moveX >= this.line1[8].x - scopeX && gestureState.moveX <= this.line1[8].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[8].y - scopeY && gestureState.moveY <= this.line1[8].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot9 && !this.state.dot10) {
+                        this.setState({dot10: 
+                            ((gestureState.moveX >= this.line1[9].x - scopeX && gestureState.moveX <= this.line1[9].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[9].y - scopeY && gestureState.moveY <= this.line1[9].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot10 && !this.state.dot11) {
+                        this.setState({dot11: 
+                            ((gestureState.moveX >= this.line1[10].x - scopeX && gestureState.moveX <= this.line1[10].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[10].y - scopeY && gestureState.moveY <= this.line1[10].y + scopeY)) ? true : false});
+                    
+                    } 
+                        this.setState({arrayMove: [...this.state.arrayMove, coordinate]});
                 }
-
-                
-                
             },
             onPanResponderRelease: (e, gesture) => {
-                
+                if(this.state.dot6) {
+                    if(this.state.dot9) {
+                        if(this.state.dot11) {
+                            this.setState({arrayMove: [], shaded: shadedLine[2], showShaded: 1, 
+                                showTracing: 0,});
+                        } else {
+                            this.setState({arrayMove: [], dot10: false,
+                                shaded: shadedLine[1], showShaded: 1, dot11: false, tracing: tracingLine[2]});
+                        }
+                    } else {
+                        this.setState({arrayMove: [], dot7: false, dot8: false, dot9: false,
+                            shaded: shadedLine[0], showShaded: 1, tracing: tracingLine[1]});
+                    }
+                } else {
+                    this.clearBoard();
+                }
             }
         });
     }
 
     gotoMainMenu = () => {
-       // this.bg.stop();
-       this.setState({arrayMove: []});
-        this.props.navigation.navigate('home');
+        this.clearBoard();
+        this.props.navigation.navigate('mainMenu');
     }
 
     goBack = () => {
-        this.setState({arrayMove: []});
+        this.clearBoard();
         this.props.navigation.navigate('letters');
+    }
+
+    clearBoard = () => {
+        this.setState({arrayMove: [], dot1: false, dot2: false, dot3: false, dot4: false, dot5: false, dot6: false,
+            dot7: false, dot8: false, dot9: false, dot10: false, dot11: false, shaded: shadedLine[0], showShaded: 0,
+            tracing: tracingLine[0], showTracing: 1, tracing: tracingLine[0]});
     }
 
     render() {
@@ -71,7 +222,8 @@ class UTracing extends Component {
         let touchTrail = this.state.arrayMove.map((item, key) => {
             return(
                 <View key = { key } {...this.panResponder.panHandlers}
-                    style={[ballStyle.circle, {position: 'absolute', left: item.x - 20, top: item.y - 20}]}>
+                    style={[styles.trace, {position: 'absolute', left: item.x - trail, 
+                    top: item.y - trail}]}>
                 </View>
             )
         });
@@ -82,13 +234,94 @@ class UTracing extends Component {
                 <Image source={require('../../images/BG.jpg')} style={{position: 'absolute', width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
 
                 <View {...this.panResponder.panHandlers} style={{position: 'absolute', 
-                        width: '75%', height: '70%', top: '20%', left: '12.5%'}}>
-                    <View style={{position: 'absolute', width: '70%', height: '80%', top: '10%', left: '15%'}}>
-                        <Image source={Letter} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
+                        width: boardDimension.width, height: boardDimension.height, 
+                        top: '20%', left: '12.5%', backgroundColor: 'rgba(255, 255, 255, 0.000000001)'}}>
+                    <View style={{position: 'absolute', width: numberDimension.width, 
+                        opacity: this.state.showTracing,
+                        height: numberDimension.height, top: '5%', left: '15%'}}>
+                        <Image source={this.state.tracing} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
+                    </View>
+                    <View style={{position: 'absolute', width: numberDimension.width,
+                        opacity: this.state.showShaded, 
+                        height: numberDimension.height, top: '5%', left: '15%'}}>
+                        <Image source={this.state.shaded} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
                     </View>
                 </View>
 
+                <View style={[styles.dot, {top: screenHeight * 0.35,
+                    left: screenWidth * 0.275}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.52,
+                    left: screenWidth * 0.275}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.76,
+                    left: screenWidth * 0.31}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.738,
+                    left: screenWidth * 0.445}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.54,
+                    left: screenWidth * 0.462}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.37,
+                    left: screenWidth * 0.462}]}></View>
+
+                {/*
+                    this.line1 = [{
+                        x: screenWidth * 0.275,
+                        y: screenHeight * 0.35,
+                    }, {
+                        x: screenWidth * 0.275,
+                        y: screenHeight * 0.52,
+                    }, {
+                        x: screenWidth * 0.31,
+                        y: screenHeight * 0.76,
+                    }, {
+                        x: screenWidth * 0.445,
+                        y: screenHeight * 0.738,
+                    }, {
+                        x: screenWidth * 0.462,
+                        y: screenHeight * 0.54,
+                    }, {
+                        x: screenWidth * 0.462,
+                        y: screenHeight * 0.37,
+                    }, {
+                        x: screenWidth * 0.58,
+                        y: screenHeight * 0.5,
+                    }, {
+                        x: screenWidth * 0.59,
+                        y: screenHeight * 0.73,
+                    }, {
+                        x: screenWidth * 0.64,
+                        y: screenHeight * 0.787,
+                    }, {
+                        x: screenWidth * 0.725,
+                        y: screenHeight * 0.49,
+                    }, {
+                        x: screenWidth * 0.725,
+                        y: screenHeight * 0.73,
+                    }, ];
+                */}
+
+                <View style={[styles.dot, {top: screenHeight * 0.5,
+                    left: screenWidth * 0.58}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.73,
+                    left: screenWidth * 0.59}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.787,
+                    left: screenWidth * 0.64}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.49,
+                    left: screenWidth * 0.725}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.73,
+                    left: screenWidth * 0.725}]}></View>
+                
+
                 {touchTrail}
+
+                {/* Pencil Button */}
+                <View style={{position: 'absolute', left: '12%', 
+                    top: '22%', width: '7%', height: '22%',}} >
+                    <TouchableOpacity onPress={this.clearBoard}>
+                        <Image
+                        source={PencilIcon}
+                            style={styles.containImage}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
                 
                 <View style={styles.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
@@ -112,14 +345,5 @@ class UTracing extends Component {
         )
     }
 }
-
-const ballStyle = StyleSheet.create({
-    circle: {
-        backgroundColor: 'black',
-        width: 45,
-        height: 45,
-        borderRadius: 45,
-    }
-});
 
 export default withNavigation(UTracing);
