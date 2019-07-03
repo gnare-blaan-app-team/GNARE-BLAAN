@@ -21,6 +21,7 @@ import shaded_0 from '../numberTracingImage/shaded_0.png';
 import trace4 from '../numberTracingGIF/0.gif';
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
+import { scopeX, scopeY, trail, } from '../numbersImport';
 
 const screenWidth = Dimensions.get('screen').width;
 const screenHeight = Dimensions.get('screen').height;
@@ -42,11 +43,6 @@ const numberDimension2 = {
     width: boardDimension.width * 0.3,
     height: boardDimension.height * 0.9,
 }
-
-const scope = 50;
-const trail = 22.5;
-const velocityLimit = 1.2;
-const velocityLimit2 = -1.5; 
 
 class FourHundredTracing extends Component {
     static navigationOptions = {
@@ -85,68 +81,53 @@ class FourHundredTracing extends Component {
             dot12: false,
             dot13: false,
             dot14: false,
-            dot15: false,
-            dot16: false,
-            dot17: false,
-            dot18: false,
-            dot19: false,
-            dot20: false,
-            dot21: false,
         },
 
         // Dots Locations
         this.line1 = [{
-            x: numberDimension.width * 0.65,
-            y: numberDimension.height * 0.12,
+            x: screenWidth * 0.3,
+            y: screenHeight * 0.38,
         }, {
-            x: numberDimension.width * 0.45,
-            y: numberDimension.height * 0.32,
+            x: screenWidth * 0.23,
+            y: screenHeight * 0.55,
         }, {
-            x: numberDimension.width * 0.19,
-            y: numberDimension.height * 0.6,
-        }, ];
-
-        this.line2 = [{
-            x: numberDimension.width * 0.27,
-            y: numberDimension.height * 0.67,
+            x: screenWidth * 0.26,
+            y: screenHeight * 0.655,
         }, {
-            x: numberDimension.width * 0.5,
-            y: numberDimension.height * 0.67,
+            x: screenWidth * 0.33,
+            y: screenHeight * 0.655,
+        },{
+            x: screenWidth * 0.34,
+            y: screenHeight * 0.38,
         }, {
-            x: numberDimension.width * 0.75,
-            y: numberDimension.height * 0.67,
-        }, ];
-
-
-        this.line3 = [{
-            x: numberDimension.width * 0.68,
-            y: numberDimension.height * 0.3,
+            x: screenWidth * 0.34,
+            y: screenHeight * 0.7,
+        },
+        {
+            x: screenWidth * 0.45,
+            y: screenHeight * 0.35,
         }, {
-            x: numberDimension.width * 0.68,
-            y: numberDimension.height * 0.55,
+            x: screenWidth * 0.44,
+            y: screenHeight * 0.7,
         }, {
-            x: numberDimension.width * 0.68,
-            y: numberDimension.height * 0.8,
-        }, ];
-
-        this.line4 = [{
-            x: numberDimension2.width * 0.5,
-            y: numberDimension2.height * 0.12,
+            x: screenWidth * 0.55,
+            y: screenHeight * 0.74,
         }, {
-            x: numberDimension2.width * 0.2,
-            y: numberDimension2.height * 0.35,
+            x: screenWidth * 0.56,
+            y: screenHeight * 0.4,
+        }, 
+        {
+            x: screenWidth * 0.675,
+            y: screenHeight * 0.35,
         }, {
-            x: numberDimension2.width * 0.2,
-            y: numberDimension2.height * 0.7,
+            x: screenWidth * 0.665,
+            y: screenHeight * 0.7,
         }, {
-            x: numberDimension2.width * 0.5,
-            y: numberDimension2.height * 0.9,
+            x: screenWidth * 0.775,
+            y: screenHeight * 0.74,
         }, {
-            x: numberDimension2.width * 0.78,
-            y: numberDimension2.height * 0.68,
-        }, {
-            x: numberDimension2.width * 0.78,
-            y: numberDimension2.height * 0.28,
+            x: screenWidth * 0.785,
+            y: screenHeight * 0.4,
         }, ];
 
         this._val = {x: 0, y: 0};
@@ -162,261 +143,112 @@ class FourHundredTracing extends Component {
                     y: gestureState.moveY
                 }
 
-                if(gestureState.vx >= 1.2 || gestureState.vx <= -1.2) {
+                if(gestureState.vx >= 2 || gestureState.vx <= -2) {
                     this.clearBoard();
                 }
-                else if(gestureState.vy >= 1.5 || gestureState.vy <= -1.5) {
+                else if(gestureState.vy >= 3 || gestureState.vy <= -3) {
                     this.clearBoard();
+    
                 } else {
-                    this.setState({arrayMove: [...this.state.arrayMove, coordinate],
-                        touchLength: this.touchLength + 1});
+                    if(!this.state.dot1) {
+                        this.setState({dot1: 
+                            ((gestureState.moveX >= this.line1[0].x - scopeX && gestureState.moveX <= this.line1[0].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[0].y - scopeY && gestureState.moveY <= this.line1[0].y + scopeY)) ? true : false});
                     
-                    // Dot 1
-                    if((gestureState.moveX < (screenWidth / 2) - (screenWidth * 0.1)) && !this.state.dot9) {
-                        // Dot 1
-                        if(!this.state.dot1) {
-                            //alert('Dot1');
-                            if(e.nativeEvent.locationX >= this.line1[0].x - scope && e.nativeEvent.locationX <= this.line1[0].x + scope) {
-                                if(e.nativeEvent.locationY >= this.line1[0].y - scope && e.nativeEvent.locationY <= this.line1[0].y + scope) {
-                                    //alert('Dot1');
-                                    this.setState({dot1: true});
-                                }
-                            }
-                        }
-                        
-                        // Dot 2
-                        if(this.state.dot1 && !this.state.dot2) {
-                            if(e.nativeEvent.locationX >= this.line1[1].x - scope && e.nativeEvent.locationX <= this.line1[1].x + scope) {
-                                if(e.nativeEvent.locationY >= this.line1[1].y - scope && e.nativeEvent.locationY <= this.line1[1].y + scope) {
-                                    //alert('Dot2');
-                                    this.setState({dot2: true});
-                                }
-                            }
-                        }
-                        
-                        // Dot 3
-                        if(this.state.dot2 && !this.state.dot3) {
-                            if(e.nativeEvent.locationX >= this.line1[2].x - scope && e.nativeEvent.locationX <= this.line1[2].x + scope) {
-                                if(e.nativeEvent.locationY >= this.line1[2].y - scope && e.nativeEvent.locationY <= this.line1[2].y + scope) {
-                                    //alert('Dot3');
-                                    this.setState({dot3: true});
-                                }
-                            }
-                        }
-
-                        // Dot 4
-                        if(this.state.dot3 && !this.state.dot4) {
-                            if(e.nativeEvent.locationX >= this.line2[0].x - scope && e.nativeEvent.locationX <= this.line2[0].x + scope) {
-                                if(e.nativeEvent.locationY >= this.line2[0].y - scope && e.nativeEvent.locationY <= this.line2[0].y + scope) {
-                                    //alert('Dot2');
-                                    this.setState({dot4: true});
-                                }
-                            }
-                        }
-                        
-                        // Dot 5
-                        if(this.state.dot4 && !this.state.dot5) {
-                            if(e.nativeEvent.locationX >= this.line2[1].x - scope && e.nativeEvent.locationX <= this.line2[1].x + scope) {
-                                if(e.nativeEvent.locationY >= this.line2[1].y - scope && e.nativeEvent.locationY <= this.line2[1].y + scope) {
-                                    //alert('Dot2');
-                                    this.setState({dot5: true});
-                                }
-                            }
-                        }
-                        
-                        // Dot 6
-                        if(this.state.dot5 && !this.state.dot6) {
-                            if(e.nativeEvent.locationX >= this.line2[2].x - scope && e.nativeEvent.locationX <= this.line2[2].x + scope) {
-                                if(e.nativeEvent.locationY >= this.line2[2].y - scope && e.nativeEvent.locationY <= this.line2[2].y + scope) {
-                                    //alert('Dot3');
-                                    this.setState({dot6: true});
-                                }
-                            }
-                        }
-
-                        // Dot 7
-                        if(this.state.dot6 && !this.state.dot7) {
-                            if(e.nativeEvent.locationX >= this.line3[0].x - scope && e.nativeEvent.locationX <= this.line3[0].x + scope) {
-                                if(e.nativeEvent.locationY >= this.line3[0].y - scope && e.nativeEvent.locationY <= this.line3[0].y + scope) {
-                                    //alert('Dot2');
-                                    this.setState({dot7: true});
-                                }
-                            }
-                        }
-                        
-                        // Dot 8
-                        if(this.state.dot7 && !this.state.dot8) {
-                            if(e.nativeEvent.locationX >= this.line3[1].x - scope && e.nativeEvent.locationX <= this.line3[1].x + scope) {
-                                if(e.nativeEvent.locationY >= this.line3[1].y - scope && e.nativeEvent.locationY <= this.line3[1].y + scope) {
-                                    //alert('Dot2');
-                                    this.setState({dot8: true});
-                                }
-                            }
-                        }
-                        
-                        // Dot 9
-                        if(this.state.dot8 && !this.state.dot9) {
-                            if(e.nativeEvent.locationX >= this.line3[2].x - scope && e.nativeEvent.locationX <= this.line3[2].x + scope) {
-                                if(e.nativeEvent.locationY >= this.line3[2].y - scope && e.nativeEvent.locationY <= this.line3[2].y + scope) {
-                                    //alert('Dot3');
-                                    this.setState({dot9: true});
-                                }
-                            }
-                        }
-                    } else {
-
-                        // Trace Number Two
-                        if((gestureState.moveX < (screenWidth / 2) + (screenWidth * 0.1)) && this.state.dot9) {
-                            // Dot 7
-                            if(!this.state.dot10 && this.state.dot9) {
-                                if(e.nativeEvent.locationX >= this.line4[0].x - scope && e.nativeEvent.locationX <= this.line4[0].x + scope) {
-                                    if(e.nativeEvent.locationY >= this.line4[0].y - scope && e.nativeEvent.locationY <= this.line4[0].y + scope) {
-                                        //alert('Dot 7');
-                                        this.setState({dot10: true});
-                                    }
-                                }
-                            }
-
-                            // Dot 8
-                            if(this.state.dot10 && !this.state.dot11) {
-                                if(e.nativeEvent.locationX >= this.line4[1].x - scope && e.nativeEvent.locationX <= this.line4[1].x + scope) {
-                                    if(e.nativeEvent.locationY >= this.line4[1].y - scope && e.nativeEvent.locationY <= this.line4[1].y + scope) {
-                                        //alert('Dot 8');
-                                        this.setState({dot11: true});
-                                    }
-                                }
-                            }
-                            // Dot 9
-                            if(this.state.dot11 && !this.state.dot12) {
-                                if(e.nativeEvent.locationX >= this.line4[2].x - scope && e.nativeEvent.locationX <= this.line4[2].x + scope) {
-                                    if(e.nativeEvent.locationY >= this.line4[2].y - scope && e.nativeEvent.locationY <= this.line4[2].y + scope) {
-                                        //alert('Dot 9');
-                                        this.setState({dot12: true});
-                                    }
-                                }
-                            }
-                            
-                            // Dot 10
-                            if(this.state.dot12 && !this.state.dot13) {
-                                if(e.nativeEvent.locationX >= this.line4[3].x - scope && e.nativeEvent.locationX <= this.line4[3].x + scope) {
-                                    if(e.nativeEvent.locationY >= this.line4[3].y - scope && e.nativeEvent.locationY <= this.line4[3].y + scope) {
-                                        //alert('Dot 10');
-                                        this.setState({dot13: true});
-                                    }
-                                }
-                            }
-                            
-                            // Dot 11
-                            if(this.state.dot13 && !this.state.dot14) {
-                                if(e.nativeEvent.locationX >= this.line4[4].x - scope && e.nativeEvent.locationX <= this.line4[4].x + scope) {
-                                    if(e.nativeEvent.locationY >= this.line4[4].y - scope && e.nativeEvent.locationY <= this.line4[4].y + scope) {
-                                        //alert('Dot 12');
-                                        this.setState({dot14: true});
-                                    }
-                                }
-                            }
-                            
-                            // Dot 12
-                            if(this.state.dot14 && !this.state.dot15) {
-                                if(e.nativeEvent.locationX >= this.line4[5].x - scope && e.nativeEvent.locationX <= this.line4[5].x + scope) {
-                                    if(e.nativeEvent.locationY >= this.line4[5].y - scope && e.nativeEvent.locationY <= this.line4[5].y + scope) {
-                                        //alert('Dot 12');
-                                        this.setState({dot15: true});
-                                    }
-                                }
-                            }
-
-                        // Trace Number Three, Zero (2)
-                        }
-
-                        else if(this.state.tracing2 == shadedLine[3]) {
-                            // Dot 7
-                            if(!this.state.dot16 && this.state.dot15) {
-                                if(e.nativeEvent.locationX >= this.line4[0].x - scope && e.nativeEvent.locationX <= this.line4[0].x + scope) {
-                                    if(e.nativeEvent.locationY >= this.line4[0].y - scope && e.nativeEvent.locationY <= this.line4[0].y + scope) {
-                                        //alert('Dot 7');
-                                        this.setState({dot16: true});
-                                    }
-                                }
-                            }
-
-                            // Dot 8
-                            if(this.state.dot16 && !this.state.dot17) {
-                                if(e.nativeEvent.locationX >= this.line4[1].x - scope && e.nativeEvent.locationX <= this.line4[1].x + scope) {
-                                    if(e.nativeEvent.locationY >= this.line4[1].y - scope && e.nativeEvent.locationY <= this.line4[1].y + scope) {
-                                        //alert('Dot 8');
-                                        this.setState({dot17: true});
-                                    }
-                                }
-                            }
-                            // Dot 9
-                            if(this.state.dot17 && !this.state.dot18) {
-                                if(e.nativeEvent.locationX >= this.line4[2].x - scope && e.nativeEvent.locationX <= this.line4[2].x + scope) {
-                                    if(e.nativeEvent.locationY >= this.line4[2].y - scope && e.nativeEvent.locationY <= this.line4[2].y + scope) {
-                                        //alert('Dot 9');
-                                        this.setState({dot18: true});
-                                    }
-                                }
-                            }
-                            
-                            // Dot 10
-                            if(this.state.dot18 && !this.state.dot19) {
-                                if(e.nativeEvent.locationX >= this.line4[3].x - scope && e.nativeEvent.locationX <= this.line4[3].x + scope) {
-                                    if(e.nativeEvent.locationY >= this.line4[3].y - scope && e.nativeEvent.locationY <= this.line4[3].y + scope) {
-                                        //alert('Dot 10');
-                                        this.setState({dot19: true});
-                                    }
-                                }
-                            }
-                            
-                            // Dot 11
-                            if(this.state.dot19 && !this.state.dot20) {
-                                if(e.nativeEvent.locationX >= this.line4[4].x - scope && e.nativeEvent.locationX <= this.line4[4].x + scope) {
-                                    if(e.nativeEvent.locationY >= this.line4[4].y - scope && e.nativeEvent.locationY <= this.line4[4].y + scope) {
-                                        //alert('Dot 12');
-                                        this.setState({dot20: true});
-                                    }
-                                }
-                            }
-                            
-                            // Dot 12
-                            if(this.state.dot20 && !this.state.dot21) {
-                                if(e.nativeEvent.locationX >= this.line4[5].x - scope && e.nativeEvent.locationX <= this.line4[5].x + scope) {
-                                    if(e.nativeEvent.locationY >= this.line4[5].y - scope && e.nativeEvent.locationY <= this.line4[5].y + scope) {
-                                        //alert('Dot 12');
-                                        this.setState({dot21: true});
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    } else if(this.state.dot1 && !this.state.dot2) {
+                        this.setState({dot2: 
+                            ((gestureState.moveX >= this.line1[1].x - scopeX && gestureState.moveX <= this.line1[1].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[1].y - scopeY && gestureState.moveY <= this.line1[1].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot2 && !this.state.dot3) {
+                        this.setState({dot3: 
+                            ((gestureState.moveX >= this.line1[2].x - scopeX && gestureState.moveX <= this.line1[2].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[2].y - scopeY && gestureState.moveY <= this.line1[2].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot3 && !this.state.dot4) {
+                        this.setState({dot4: 
+                            ((gestureState.moveX >= this.line1[3].x - scopeX && gestureState.moveX <= this.line1[3].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[3].y - scopeY && gestureState.moveY <= this.line1[3].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot4 && !this.state.dot5) {
+                        this.setState({dot5: 
+                            ((gestureState.moveX >= this.line1[4].x - scopeX && gestureState.moveX <= this.line1[4].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[4].y - scopeY && gestureState.moveY <= this.line1[4].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot5 && !this.state.dot6) {
+                        this.setState({dot6: 
+                            ((gestureState.moveX >= this.line1[5].x - scopeX && gestureState.moveX <= this.line1[5].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[5].y - scopeY && gestureState.moveY <= this.line1[5].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot6 && !this.state.dot7) {
+                        this.setState({dot7: 
+                            ((gestureState.moveX >= this.line1[6].x - scopeX && gestureState.moveX <= this.line1[6].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[6].y - scopeY && gestureState.moveY <= this.line1[6].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot7 && !this.state.dot8) {
+                        this.setState({dot8: 
+                            ((gestureState.moveX >= this.line1[7].x - scopeX && gestureState.moveX <= this.line1[7].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[7].y - scopeY && gestureState.moveY <= this.line1[7].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot8 && !this.state.dot9) {
+                        this.setState({dot9: 
+                            ((gestureState.moveX >= this.line1[8].x - scopeX && gestureState.moveX <= this.line1[8].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[8].y - scopeY && gestureState.moveY <= this.line1[8].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot9 && !this.state.dot10) {
+                        this.setState({dot10: 
+                            ((gestureState.moveX >= this.line1[9].x - scopeX && gestureState.moveX <= this.line1[9].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[9].y - scopeY && gestureState.moveY <= this.line1[9].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot10 && !this.state.dot11) {
+                        this.setState({dot11: 
+                            ((gestureState.moveX >= this.line1[10].x - scopeX && gestureState.moveX <= this.line1[10].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[10].y - scopeY && gestureState.moveY <= this.line1[10].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot11 && !this.state.dot12) {
+                        this.setState({dot12: 
+                            ((gestureState.moveX >= this.line1[11].x - scopeX && gestureState.moveX <= this.line1[11].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[11].y - scopeY && gestureState.moveY <= this.line1[11].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot12 && !this.state.dot13) {
+                        this.setState({dot13: 
+                            ((gestureState.moveX >= this.line1[12].x - scopeX && gestureState.moveX <= this.line1[12].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[12].y - scopeY && gestureState.moveY <= this.line1[12].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot13 && !this.state.dot14) {
+                        this.setState({dot14: 
+                            ((gestureState.moveX >= this.line1[13].x - scopeX && gestureState.moveX <= this.line1[13].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[13].y - scopeY && gestureState.moveY <= this.line1[13].y + scopeY)) ? true : false});
+                    
+                    } 
+                        this.setState({arrayMove: [...this.state.arrayMove, coordinate]});
                 }
             },
             onPanResponderRelease: (e, gesture) => {
-                if(this.state.dot3) {
-                    if(this.state.dot6) {
-                        if(this.state.dot9) {
-                            if(this.state.dot15) {
-                                if(this.state.dot21) {
+                if(this.state.dot2) {
+                    if(this.state.dot4) {
+                        if(this.state.dot6) {
+                            if(this.state.dot10) {
+                                if(this.state.dot14) {
                                     this.setState({arrayMove: [], tracing3: shadedLine[3]});
                                 } else {
                                     this.setState({arrayMove: [], tracing3: tracingLine[3],
                                         tracing2: shadedLine[3],
-                                        dot16: false, dot17: false, dot18: false,
-                                        dot19: false, dot20: false, dot21: false});
+                                        dot11: false, dot12: false, dot13: false,
+                                        dot14: false});
                                 }
                             } else {
                                 this.setState({arrayMove: [], tracing2: tracingLine[3], shaded: shadedLine[2],
-                                    showTracing: 0, dot10: false, dot11: false, dot12: false,
-                                    dot13: false, dot14: false, dot15: false});
+                                    showTracing: 0, dot10: false, dot8: false, dot9: false,
+                                    dot7: false,});
                             }
                         } else {
                             this.setState({arrayMove: [], shaded: shadedLine[1], tracing: tracingLine[2],
-                                    showShaded: 1, dot7: false, dot8: false, dot9: false,});
+                                    showShaded: 1, dot6: false, dot5: false,});
                         }
                     } else {
                         this.setState({arrayMove: [], showShaded: 1, shaded: shadedLine[0],
-                         tracing: tracingLine[1], dot4: false, dot5: false, dot6: false});
+                         tracing: tracingLine[1], dot4: false, dot3: false,});
                     }
                 } else {
                     this.clearBoard();
@@ -438,8 +270,7 @@ class FourHundredTracing extends Component {
     clearBoard = () => {
         this.setState({arrayMove: [], dot1: false, dot2: false, dot3: false, dot4: false, dot5: false, dot6: false,
             dot7: false, dot8: false, dot9: false, dot10: false, dot11: false, dot12: false,
-            dot13: false, dot14: false, dot15: false, dot16: false, dot17: false, dot18: false,
-            dot19: false, dot20: false, dot21: false,
+            dot13: false, dot14: false,
             showShaded: 0, shaded: shadedLine[0], tracing: tracingLine[0], showTracing: 1,
             tracing2: traceZero, tracing3: traceZero});
     }
@@ -460,28 +291,114 @@ class FourHundredTracing extends Component {
                 <Image source={imageBG} style={{position: 'absolute', width: '100%', height: '100%', resizeMode: 'stretch', top: '0%'}}></Image>
 
                 <View style={{position: 'absolute', 
-                        width: '75%', height: '70%', top: '20%', left: '12.5%', backgroundColor: 'rgba(255, 255, 255, 0.000000001)'}}
+                        width: boardDimension.width, height: boardDimension.height, 
+                        top: '20%', left: '12.5%', backgroundColor: 'rgba(255, 255, 255, 0.000000001)'}}
                         {...this.panResponder.panHandlers} >
-                    <View style={{position: 'absolute', width: '35%', height: '90%', 
+                    <View style={{position: 'absolute', width: numberDimension.width, 
+                                height: numberDimension.height, 
                                 top: '5%', left: '5%', opacity: this.state.showTracing,}}>
                         <Image source={this.state.tracing} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
                     </View>
 
-                    <View style={{position: 'absolute', width: '35%', height: '90%', 
+                    <View style={{position: 'absolute', width: numberDimension.width, 
+                                height: numberDimension.height, 
                                 top: '5%', left: '5%', opacity: this.state.showShaded}}>
                         <Image source={this.state.shaded} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
                     </View>
 
-                    <View style={{position: 'absolute', width: '30%', height: '90%', 
+                    <View style={{position: 'absolute', width: numberDimension2.width, 
+                                height: numberDimension2.height, 
                                 top: '5%', left: '37.5%',}}>
                         <Image source={this.state.tracing2} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
                     </View>
 
-                    <View style={{position: 'absolute', width: '30%', height: '90%', 
+                    <View style={{position: 'absolute', width: numberDimension2.width, 
+                                height: numberDimension2.height, 
                                 top: '5%', left: '67.5%',}}>
                         <Image source={this.state.tracing3} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
                     </View>
+
                 </View>
+
+                <View style={[styles.dot, {top: screenHeight * 0.38,
+                    left: screenWidth * 0.3}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.55,
+                    left: screenWidth * 0.23}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.655,
+                    left: screenWidth * 0.26}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.655,
+                    left: screenWidth * 0.33}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.38,
+                    left: screenWidth * 0.34}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.7,
+                    left: screenWidth * 0.34}]}></View>
+
+                {/*
+                    this.line1 = [{
+                        x: screenWidth * 0.3,
+                        y: screenHeight * 0.38,
+                    }, {
+                        x: screenWidth * 0.23,
+                        y: screenHeight * 0.55,
+                    }, {
+                        x: screenWidth * 0.26,
+                        y: screenHeight * 0.655,
+                    }, {
+                        x: screenWidth * 0.33,
+                        y: screenHeight * 0.655,
+                    },{
+                        x: screenWidth * 0.34,
+                        y: screenHeight * 0.38,
+                    }, {
+                        x: screenWidth * 0.34,
+                        y: screenHeight * 0.7,
+                    },
+                    {
+                        x: screenWidth * 0.45,
+                        y: screenHeight * 0.35,
+                    }, {
+                        x: screenWidth * 0.44,
+                        y: screenHeight * 0.7,
+                    }, {
+                        x: screenWidth * 0.55,
+                        y: screenHeight * 0.74,
+                    }, {
+                        x: screenWidth * 0.56,
+                        y: screenHeight * 0.4,
+                    }, 
+                    {
+                        x: screenWidth * 0.675,
+                        y: screenHeight * 0.35,
+                    }, {
+                        x: screenWidth * 0.665,
+                        y: screenHeight * 0.7,
+                    }, {
+                        x: screenWidth * 0.775,
+                        y: screenHeight * 0.74,
+                    }, {
+                        x: screenWidth * 0.785,
+                        y: screenHeight * 0.4,
+                    }, ];
+                */}
+
+                <View style={[styles.dot, {top: screenHeight * 0.35,
+                    left: screenWidth * 0.47}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.7,
+                    left: screenWidth * 0.46}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.74,
+                    left: screenWidth * 0.57}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.4,
+                    left: screenWidth * 0.58}]}></View>
+
+                <View style={[styles.dot, {top: screenHeight * 0.35,
+                    left: screenWidth * 0.695}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.7,
+                    left: screenWidth * 0.685}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.74,
+                    left: screenWidth * 0.795}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.4,
+                    left: screenWidth * 0.805}]}></View>
+
                 {touchTrail}
                 
                 

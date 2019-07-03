@@ -1,3 +1,5 @@
+import { Dimensions } from 'react-native';
+
 import Number1 from './numberBackground/number1.png';
 import Number2 from './numberBackground/number2.png';
 import Number3 from './numberBackground/number3.png';
@@ -72,6 +74,25 @@ import Sentence300 from './numberBackground/300.gif';
 import Sentence400 from './numberBackground/400.gif';
 import Sentence500 from './numberBackground/500.gif';
 import Sentence1000 from './numberBackground/1000.gif';
+
+const screenWidth = Dimensions.get('screen').width;
+const screenHeight = Dimensions.get('screen').height;
+
+export const boardDimension = {
+    width: screenWidth * 0.75,
+    height: screenHeight * 0.7,
+};
+
+export const numberDimension = {
+    width: boardDimension.width * 0.35,
+    height: boardDimension.height * 0.9,
+}
+
+export const scopeX = screenWidth * 0.04;
+export const scopeY = screenHeight * 0.05;
+export const trail = 25;
+export const velocityLimit = 1.2;
+export const velocityLimit2 = -1.5; 
 
 export const soundList = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '20', '30', '40', '50', '60',
 '70', '80', '90', '100', '200', '300', '400', '500', '1000'];

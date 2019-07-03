@@ -13,24 +13,11 @@ import trace1 from '../numberTracingGIF/6_1.gif';
 import shaded_6_1 from '../numberTracingImage/shaded_6_1.png';
 import numberSix from '../numberTracingImage/6.png';
 
+import { numberDimension, boardDimension,
+    scopeX, scopeY, trail } from '../numbersImport';
 
 const screenWidth = Dimensions.get('screen').width;
 const screenHeight = Dimensions.get('screen').height;
-
-const boardDimension = {
-    width: screenWidth * 0.75,
-    height: screenHeight * 0.7,
-};
-
-const numberDimension = {
-    width: boardDimension.width * 0.35,
-    height: boardDimension.height * 0.9,
-}
-
-const scope = 50;
-const trail = 30;
-const velocityLimit = 1.2;
-const velocityLimit2 = -1.5;
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
 
@@ -60,42 +47,26 @@ class SixTracing extends Component {
             dot4: false,
             dot5: false,
             dot6: false,
-            dot7: false,
-            dot8: false,
-            dot9: false,
-            dot10: false
         },
 
-        this.line1 =[{
-            x: numberDimension.width * 0.78,
-            y: numberDimension.height * 0.18,
+        this.line1 = [{
+            x: screenWidth * 0.5,
+            y: screenHeight * 0.29,
         }, {
-            x: numberDimension.width * 0.58,
-            y: numberDimension.height * 0.1,
+            x: screenWidth * 0.415,
+            y: screenHeight * 0.45,
         }, {
-            x: numberDimension.width * 0.22,
-            y: numberDimension.height * 0.25,
+            x: screenWidth * 0.415,
+            y: screenHeight * 0.65,
         }, {
-            x: numberDimension.width * 0.15,
-            y: numberDimension.height * 0.5,
+            x: screenWidth * 0.5,
+            y: screenHeight * 0.81,
         }, {
-            x: numberDimension.width * 0.22,
-            y: numberDimension.height * 0.75,
+            x: screenWidth * 0.585,
+            y: screenHeight * 0.65,
         }, {
-            x: numberDimension.width * 0.5,
-            y: numberDimension.height * 0.91,
-        }, {
-            x: numberDimension.width * 0.82,
-            y: numberDimension.height * 0.75,
-        }, {
-            x: numberDimension.width * 0.82,
-            y: numberDimension.height * 0.55,
-        }, {
-            x: numberDimension.width * 0.62,
-            y: numberDimension.height * 0.43,
-        }, {
-            x: numberDimension.width * 0.38,
-            y: numberDimension.height * 0.45,
+            x: screenWidth * 0.55,
+            y: screenHeight * 0.52,
         }, ];
 
         this._val = {x: 0, y: 0};
@@ -111,110 +82,50 @@ class SixTracing extends Component {
                     y: gestureState.moveY
                 }
 
-                if(gestureState.vx >= 1.2 || gestureState.vx <= -1.2) {
+                if(gestureState.vx >= 2 || gestureState.vx <= -2) {
                     this.clearBoard();
                 }
-                else if(gestureState.vy >= 1.5 || gestureState.vy <= -1.5) {
+                else if(gestureState.vy >= 3 || gestureState.vy <= -3) {
                     this.clearBoard();
+    
                 } else {
-                    this.setState({arrayMove: [...this.state.arrayMove, coordinate],
-                        touchLength: this.touchLength + 1});
-                    
-                    // Dot 1
                     if(!this.state.dot1) {
-                        if(e.nativeEvent.locationX >= this.line1[0].x - scope && e.nativeEvent.locationX <= this.line1[0].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[0].y - scope && e.nativeEvent.locationY <= this.line1[0].y + scope) {
-                                //alert('Dot1');
-                                this.setState({dot1: true});
-                            }
-                        }
+                        this.setState({dot1: 
+                            ((gestureState.moveX >= this.line1[0].x - scopeX && gestureState.moveX <= this.line1[0].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[0].y - scopeY && gestureState.moveY <= this.line1[0].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot1 && !this.state.dot2) {
+                        this.setState({dot2: 
+                            ((gestureState.moveX >= this.line1[1].x - scopeX && gestureState.moveX <= this.line1[1].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[1].y - scopeY && gestureState.moveY <= this.line1[1].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot2 && !this.state.dot3) {
+                        this.setState({dot3: 
+                            ((gestureState.moveX >= this.line1[2].x - scopeX && gestureState.moveX <= this.line1[2].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[2].y - scopeY && gestureState.moveY <= this.line1[2].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot3 && !this.state.dot4) {
+                        this.setState({dot4: 
+                            ((gestureState.moveX >= this.line1[3].x - scopeX && gestureState.moveX <= this.line1[3].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[3].y - scopeY && gestureState.moveY <= this.line1[3].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot4 && !this.state.dot5) {
+                        this.setState({dot5: 
+                            ((gestureState.moveX >= this.line1[4].x - scopeX && gestureState.moveX <= this.line1[4].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[4].y - scopeY && gestureState.moveY <= this.line1[4].y + scopeY)) ? true : false});
+                    
+                    } else if(this.state.dot5 && !this.state.dot6) {
+                        this.setState({dot6: 
+                            ((gestureState.moveX >= this.line1[5].x - scopeX && gestureState.moveX <= this.line1[5].x + scopeX) && 
+                            (gestureState.moveY >= this.line1[5].y - scopeY && gestureState.moveY <= this.line1[5].y + scopeY)) ? true : false});
+                    
                     }
-
-                    if(this.state.dot1 && !this.state.dot2) {
-                        if(e.nativeEvent.locationX >= this.line1[1].x - scope && e.nativeEvent.locationX <= this.line1[1].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[1].y - scope && e.nativeEvent.locationY <= this.line1[1].y + scope) {
-                                //alert('Dot2');
-                                this.setState({dot2: true});
-                            }
-                        }
-                    }
-
-                    if(this.state.dot2 && !this.state.dot3) {
-                        if(e.nativeEvent.locationX >= this.line1[2].x - scope && e.nativeEvent.locationX <= this.line1[2].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[2].y - scope && e.nativeEvent.locationY <= this.line1[2].y + scope) {
-                                //alert('Dot3');
-                                this.setState({dot3: true});
-                            }
-                        }
-                    }
-
-                    if(this.state.dot3 && !this.state.dot4) {
-                        if(e.nativeEvent.locationX >= this.line1[3].x - scope && e.nativeEvent.locationX <= this.line1[3].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[3].y - scope && e.nativeEvent.locationY <= this.line1[3].y + scope) {
-                                //alert('Dot4');
-                                this.setState({dot4: true});
-                            }
-                        }
-                    }
-
-                    if(this.state.dot4 && !this.state.dot5) {
-                        if(e.nativeEvent.locationX >= this.line1[4].x - scope && e.nativeEvent.locationX <= this.line1[4].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[4].y - scope && e.nativeEvent.locationY <= this.line1[4].y + scope) {
-                                //alert('Dot5');
-                                this.setState({dot5: true});
-                            }
-                        }
-                    }
-
-                    if(this.state.dot5 && !this.state.dot6) {
-                        if(e.nativeEvent.locationX >= this.line1[5].x - scope && e.nativeEvent.locationX <= this.line1[5].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[5].y - scope && e.nativeEvent.locationY <= this.line1[5].y + scope) {
-                                //alert('Dot6');
-                                this.setState({dot6: true});
-                            }
-                        }
-                    }
-
-                    if(this.state.dot6 && !this.state.dot7) {
-                        if(e.nativeEvent.locationX >= this.line1[6].x - scope && e.nativeEvent.locationX <= this.line1[6].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[6].y - scope && e.nativeEvent.locationY <= this.line1[6].y + scope) {
-                                //alert('Dot7');
-                                this.setState({dot7: true});
-                            }
-                        }
-                    }
-
-                    if(this.state.dot7 && !this.state.dot8) {
-                        if(e.nativeEvent.locationX >= this.line1[7].x - scope && e.nativeEvent.locationX <= this.line1[7].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[7].y - scope && e.nativeEvent.locationY <= this.line1[7].y + scope) {
-                                //alert('Dot8');
-                                this.setState({dot8: true});
-                            }
-                        }
-                    }
-
-                    if(this.state.dot8 && !this.state.dot9) {
-                        if(e.nativeEvent.locationX >= this.line1[8].x - scope && e.nativeEvent.locationX <= this.line1[8].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[8].y - scope && e.nativeEvent.locationY <= this.line1[8].y + scope) {
-                                //alert('Dot9');
-                                this.setState({dot9: true});
-                            }
-                        }
-                    }
-
-                    if(this.state.dot9 && !this.state.dot10) {
-                        if(e.nativeEvent.locationX >= this.line1[9].x - scope && e.nativeEvent.locationX <= this.line1[9].x + scope) {
-                            if(e.nativeEvent.locationY >= this.line1[9].y - scope && e.nativeEvent.locationY <= this.line1[9].y + scope) {
-                                //alert('Dot9');
-                                this.setState({dot10: true});
-                            }
-                        }
-                    }
-                }                
+                        this.setState({arrayMove: [...this.state.arrayMove, coordinate]});
+                }           
             },
             onPanResponderRelease: (e, gesture) => {
-                if(this.state.dot10) {
-                    this.setState({arrayMove: [], showShaded: 1, showTracing: 0,});
+                if(this.state.dot6) {
+                    this.setState({arrayMove: [], tracing: shaded_6_1});
                 } else {
                    this.clearBoard();
                 }
@@ -234,9 +145,8 @@ class SixTracing extends Component {
 
     clearBoard = () => {
         this.setState({arrayMove: [], dot1: false, dot2: false, dot3: false, 
-            dot4: false, dot5: false, dot6: false, dot7: false, dot8: false, 
-            dot9: false, dot10: false, showShaded: 0, showTracing: 1, tracing: numberSix});
-        this.setState({tracing: trace1});
+            dot4: false, dot5: false, dot6: false, showShaded: 0, showTracing: 1, 
+            tracing: trace1});
     }
 
     render() {
@@ -255,11 +165,12 @@ class SixTracing extends Component {
                 <Image source={imageBG} style={{position: 'absolute', width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
 
                 <View style={{position: 'absolute', 
-                        width: '75%', height: '70%', top: '20%', left: '12.5%', backgroundColor: 'rgba(255, 255, 255, 0.000000001)'}}
+                        width: boardDimension.width, height: boardDimension.height, top: '20%', left: '12.5%', backgroundColor: 'rgba(255, 255, 255, 0.000000001)'}}
                         {...this.panResponder.panHandlers} >
-                    <View style={{position: 'absolute', width: '35%', height: '90%', 
+                    <View style={{position: 'absolute', width: numberDimension.width, 
+                                height: numberDimension.height, 
                                 top: '5%', left: '32%', opacity: this.state.showTracing,}}>
-                        <Image source={trace1} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
+                        <Image source={this.state.tracing} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
                         
                         {/* <View style={[styles.dot, {top: numberDimension.height * 0.18,
                             left: numberDimension.width * 0.78}]}></View>
@@ -319,13 +230,44 @@ class SixTracing extends Component {
                         */}
 
                     </View>
-
-
-                    <View style={{position: 'absolute', width: '35%', height: '90%', 
-                                top: '5%', left: '32%', opacity: this.state.showShaded}}>
-                        <Image source={shaded_6_1} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
-                    </View>
                 </View>
+
+
+                <View style={[styles.dot, {top: screenHeight * 0.29, 
+                    left: screenWidth * 0.5}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.45, 
+                    left: screenWidth * 0.415}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.65, 
+                    left: screenWidth * 0.415}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.81, 
+                    left: screenWidth * 0.5}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.65, 
+                    left: screenWidth * 0.585}]}></View>
+                <View style={[styles.dot, {top: screenHeight * 0.52, 
+                    left: screenWidth * 0.55}]}></View>
+
+                    {/*
+                        this.line1 = [{
+                            x: screenWidth * 0.5,
+                            y: screenHeight * 0.29,
+                        }, {
+                            x: screenWidth * 0.415,
+                            y: screenHeight * 0.45,
+                        }, {
+                            x: screenWidth * 0.415,
+                            y: screenHeight * 0.65,
+                        }, {
+                            x: screenWidth * 0.5,
+                            y: screenHeight * 0.81,
+                        }, {
+                            x: screenWidth * 0.585,
+                            y: screenHeight * 0.65,
+                        }, {
+                            x: screenWidth * 0.55,
+                            y: screenHeight * 0.52,
+                        }, ];
+                */}
+
                 {touchTrail}
 
                 {/* Pencil Button */}

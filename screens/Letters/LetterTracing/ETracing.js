@@ -116,9 +116,9 @@ class ETracing extends Component {
 const ballStyle = StyleSheet.create({
     circle: {
         backgroundColor: 'black',
-        width: 45,
-        height: 45,
-        borderRadius: 45,
+        width: 40,
+        height: 40,
+        borderRadius: 40,
     }
 });
 
