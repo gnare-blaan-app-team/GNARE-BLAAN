@@ -225,6 +225,12 @@ class GameMenu extends Component {
         
     }
 
+    market = () => {
+        // if (this.state.level == 'dadsePart'){
+        //     this.props.navigation.navigate('dadseMarket');
+        // }     
+    }
+
     render() {
         console.disableYellowBox = true; 
         const { navigation } = this.props;
@@ -406,7 +412,7 @@ class GameMenu extends Component {
                     height: hp('16%'),
                     width: wp('28%'),
                 }}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={this.market}>
                         <Image source={Market} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>

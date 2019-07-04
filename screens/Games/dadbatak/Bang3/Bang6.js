@@ -532,7 +532,35 @@ const stageNumber = [0,1,2,3,4,5,6,7,8,9,10,11];
 
 const questionAnswered = [];
 
-const audio = ['number_1','number_2','number_3','number_4','number_5','number_6','number_7','number_8','number_9','number_10'];
+const audio = [
+    'dadbatak3_paaralan',
+    'dadbatak3_hospital',
+    'dadbatak3_simbahan',
+    'dadbatak3_palaruan',
+    'dadbatak3_guro',
+    'dadbatak3_doctor',
+    'dadbatak3_carpenter',
+    'dadbatak3_fisherman',
+    'dadbatak3_kalesa',
+    'dadbatak3_tindera',
+    'dadbatak3_cook',
+    'dadbatak3_bumbero',
+];
+
+audioIndex = [
+    'Choicesschool',
+    'Choiceshospital',
+    'Choiceschurch',
+    'Choicesplayground',
+    'Choicesteacher',
+    'Choicesdoctor',
+    'Choicescarpenter',
+    'Choicesfisherman',
+    'Choicescarriage',
+    'Choicesvendor',
+    'Choicescook',
+    'Choicesfireman'
+]
 
 //playsound
 //answer
@@ -588,105 +616,18 @@ class Bang extends Component {
     }
 
     playSound = (index) => {
-        if (index == 'choiceSatu') {
-            const answerAudio = new Sound(audio[0] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    alert('failed to load the sound', error);
-                    return;
-                } else {
-                    answerAudio.play();
-                }
-            });
-        }
-        if (index == 'choiceLwe') {
-            const answerAudio = new Sound(audio[1] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    alert('failed to load the sound', error);
-                    return;
-                } else {
-                    answerAudio.play();
-                }
-            });
-        }
-        if (index == 'choiceTlu') {
-            const answerAudio = new Sound(audio[2] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    alert('failed to load the sound', error);
-                    return;
-                } else {
-                    answerAudio.play();
-                }
-            });
-        }
-        if (index == 'choiceFat') {
-            const answerAudio = new Sound(audio[3] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    alert('failed to load the sound', error);
-                    return;
-                } else {
-                    answerAudio.play();
-                }
-            });
-        }
-        if (index == 'choiceLime') {
-            const answerAudio = new Sound(audio[4] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    alert('failed to load the sound', error);
-                    return;
-                } else {
-                    answerAudio.play();
-                }
-            });
-        }
-        if (index == 'choiceNam') {
-            const answerAudio = new Sound(audio[5] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    alert('failed to load the sound', error);
-                    return;
-                } else {
-                    answerAudio.play();
-                }
-            });
-        }
-        if (index == 'choiceFitu') {
-            const answerAudio = new Sound(audio[6] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    alert('failed to load the sound', error);
-                    return;
-                } else {
-                    answerAudio.play();
-                }
-            });
-        }
-        if (index == 'choiceWalu') {
-            const answerAudio = new Sound(audio[7] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    alert('failed to load the sound', error);
-                    return;
-                } else {
-                    answerAudio.play();
-                }
-            });
-        }
-        if (index == 'choiceSyem') {
-            const answerAudio = new Sound(audio[8] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    alert('failed to load the sound', error);
-                    return;
-                } else {
-                    answerAudio.play();
-                }
-            });
-        }
-        if (index == 'choiceSfalo') {
-            const answerAudio = new Sound(audio[9] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    alert('failed to load the sound', error);
-                    return;
-                } else {
-                    answerAudio.play();
-                }
-            });
+        for (var a = 0; a <= audio.length; a++) {
+            if (index == audioIndex[a]) {
+                const set = a;
+                const answerAudio = new Sound(audio[set] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+                    if (error) {
+                        alert('failed to load the sound', error);
+                        return;
+                    } else {
+                        answerAudio.play();
+                    }
+                });
+            }
         }
   }
 
@@ -831,7 +772,7 @@ class Bang extends Component {
                                choice4Top: '75%'
                            });
                        }, 1300)
-                   }, 6500)
+                   }, 3000)
                }, 2000)
            }else{
                this.answer(this.state.getChoice1Name);
@@ -881,7 +822,7 @@ class Bang extends Component {
                                 choice4Top: '75%'
                             });
                         }, 1300)
-                    }, 6500)
+                    }, 3000)
                 }, 2000)
             } else {
                 this.wrong();
@@ -931,7 +872,7 @@ class Bang extends Component {
                                 choice4Top: '75%'
                             });
                         }, 1300)
-                    }, 6500)
+                    }, 3000)
                 }, 2000)
             } else {
                 this.wrong();

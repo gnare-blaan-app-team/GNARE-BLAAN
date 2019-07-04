@@ -299,7 +299,7 @@ export default AppNavigator = createStackNavigator(
   },
 {
 
-  initialRouteName:"bang3",
+  initialRouteName:"home",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"

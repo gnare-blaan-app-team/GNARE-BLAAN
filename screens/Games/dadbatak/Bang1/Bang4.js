@@ -276,6 +276,7 @@ const combine = [
         choice3String: choiceList[13].choicestring,
         choice4String: choiceList[2].choicestring,
         answer: 'choiceAccent',
+        sound: 'choiceAccent',
         description: Answer1,
         leftPosition:'48%',
     },
@@ -290,6 +291,7 @@ const combine = [
         choice3String: choiceList[13].choicestring,
         choice4String: choiceList[11].choicestring,
         answer: 'choiceUccent',
+        sound: 'choiceUccent',
         description: Answer2,
         leftPosition: '47%',
     },
@@ -304,6 +306,7 @@ const combine = [
         choice3String: choiceList[14].choicestring,
         choice4String: choiceList[11].choicestring,
         answer: 'choiceU',
+        sound: 'choiceU',
         description: Answer3,
         leftPosition: '46%',
     },
@@ -318,6 +321,7 @@ const combine = [
         choice3String: choiceList[0].choicestring,
         choice4String: choiceList[11].choicestring,
         answer: 'choiceA',
+        sound: 'choiceA',
         description: Answer4,
         leftPosition: '47.50%',
     },
@@ -332,6 +336,7 @@ const combine = [
         choice3String: choiceList[13].choicestring,
         choice4String: choiceList[2].choicestring,
         answer: 'choiceA',
+        sound: 'choiceAA',
         description: Answer5,
         leftPosition: '47.60%',
     },
@@ -346,6 +351,7 @@ const combine = [
         choice3String: choiceList[13].choicestring,
         choice4String: choiceList[11].choicestring,
         answer: 'choiceE',
+        sound: 'choiceE',
         description: Answer6,
         leftPosition: '47.60%',
     },
@@ -360,6 +366,7 @@ const combine = [
         choice3String: choiceList[12].choicestring,
         choice4String: choiceList[10].choicestring,
         answer: 'choiceW',
+        sound: 'choiceW',
         description: Answer7,
         leftPosition: '44%',
     },
@@ -374,6 +381,7 @@ const combine = [
         choice3String: choiceList[3].choicestring,
         choice4String: choiceList[9].choicestring,
         answer: 'choiceH',
+        sound: 'choiceH',
         description: Answer8,
         leftPosition: '45.20%',
     },
@@ -388,6 +396,7 @@ const combine = [
         choice3String: choiceList[13].choicestring,
         choice4String: choiceList[6].choicestring,
         answer: 'choiceE2ccent',
+        sound: 'choiceE2ccent',
         description: Answer9,
         leftPosition: '45.50%',
     },
@@ -402,6 +411,7 @@ const combine = [
         choice3String: choiceList[6].choicestring,
         choice4String: choiceList[11].choicestring,
         answer: 'choiceAccent',
+        sound: 'choiceE2ccent2',
         description: Answer10,
         leftPosition: '48%',
     },
@@ -416,6 +426,7 @@ const combine = [
         choice3String: choiceList[3].choicestring,
         choice4String: choiceList[10].choicestring,
         answer: 'choiceL',
+        sound: 'choiceL',
         description: Answer11,
         leftPosition: '46%',
     },
@@ -430,6 +441,7 @@ const combine = [
          choice3String: choiceList[8].choicestring,
          choice4String: choiceList[3].choicestring,
          answer: 'choiceK',
+         sound: 'choiceK',
         description: Answer12,
          leftPosition: '48%',
     }
@@ -439,7 +451,35 @@ const stageNumber = [0,1,2,3,4,5,6,7,8,9,10,11];
 
 const questionAnswered = [];
 
-const audio = ['number_1','number_2','number_3','number_4','number_5','number_6','number_7','number_8','number_9','number_10'];
+const audio = [
+    'dadbatak1_bata',
+    'dadbatak1_pusa',
+    'dadbatak1_araw',
+    'dadbatak1_isda',
+    'dadbatak1_pinto',
+    'dadbatak1_buwan',
+    'dadbatak1_suklay',
+    'dadbatak1_dagat',
+    'dadbatak1_tubig',
+    'dadbatak1_kabayo',
+    'dadbatak1_langgam',
+    'dadbatak1_buhok',
+];
+
+const audioIndex = [
+    'choiceAccent',
+    'choiceUccent',
+    'choiceU',
+    'choiceA',
+    'choiceAA',
+    'choiceE',
+    'choiceW',
+    'choiceH',
+    'choiceE2ccent',
+    'choiceE2ccent2',
+    'choiceL',
+    'choiceK',
+]
 
 //playsound
 //answer
@@ -485,6 +525,7 @@ class Bang4 extends Component {
             gufadyanTop:'1000%',
             lamwaTop:'1000%',
             Balance:0,
+            soundName:'',
         }
     }
 
@@ -495,105 +536,18 @@ class Bang4 extends Component {
     }
 
     playSound = (index) => {
-        if (index == 620) {
-            const answerAudio = new Sound(audio[0] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    alert('failed to load the sound', error);
-                    return;
-                } else {
-                    answerAudio.play();
-                }
-            });
-        }
-        if (index == 621) {
-            const answerAudio = new Sound(audio[1] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    alert('failed to load the sound', error);
-                    return;
-                } else {
-                    answerAudio.play();
-                }
-            });
-        }
-        if (index == 622) {
-            const answerAudio = new Sound(audio[2] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    alert('failed to load the sound', error);
-                    return;
-                } else {
-                    answerAudio.play();
-                }
-            });
-        }
-        if (index == 623) {
-            const answerAudio = new Sound(audio[3] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    alert('failed to load the sound', error);
-                    return;
-                } else {
-                    answerAudio.play();
-                }
-            });
-        }
-        if (index == 624) {
-            const answerAudio = new Sound(audio[4] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    alert('failed to load the sound', error);
-                    return;
-                } else {
-                    answerAudio.play();
-                }
-            });
-        }
-        if (index == 625) {
-            const answerAudio = new Sound(audio[5] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    alert('failed to load the sound', error);
-                    return;
-                } else {
-                    answerAudio.play();
-                }
-            });
-        }
-        if (index == 626) {
-            const answerAudio = new Sound(audio[6] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    alert('failed to load the sound', error);
-                    return;
-                } else {
-                    answerAudio.play();
-                }
-            });
-        }
-        if (index == 627) {
-            const answerAudio = new Sound(audio[7] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    alert('failed to load the sound', error);
-                    return;
-                } else {
-                    answerAudio.play();
-                }
-            });
-        }
-        if (index == 628) {
-            const answerAudio = new Sound(audio[8] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    alert('failed to load the sound', error);
-                    return;
-                } else {
-                    answerAudio.play();
-                }
-            });
-        }
-        if (index == 629) {
-            const answerAudio = new Sound(audio[9] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    alert('failed to load the sound', error);
-                    return;
-                } else {
-                    answerAudio.play();
-                }
-            });
+        for(var a = 0; a<=audio.length;a++){
+            if(index == audioIndex[a]){
+                const set = a;
+                const answerAudio = new Sound(audio[set] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+                    if (error) {
+                        alert('failed to load the sound', error);
+                        return;
+                    } else {
+                        answerAudio.play();
+                    }
+                });
+            }
         }
   }
 
@@ -712,7 +666,7 @@ class Bang4 extends Component {
                this.correct(this.state.getChoice1Name);
                this.Animatecorrect();
                setTimeout(() => {
-                   this.playSound(this.state.getChoice1Name);
+                   this.playSound(this.state.soundName);
                    this.setState({
                        answerTop: '1000%',
                        blackboardTop: '1000%',
@@ -738,7 +692,7 @@ class Bang4 extends Component {
                                choice4Top: '75%'
                            });
                        }, 1300)
-                   }, 6500)
+                   }, 3000)
                }, 2000)
            }else{
                this.answer(this.state.getChoice1Name);
@@ -762,7 +716,7 @@ class Bang4 extends Component {
                 this.correct(this.state.getChoice2Name);
                 this.Animatecorrect();
                 setTimeout(() => {
-                    this.playSound(this.state.getChoice2Name);
+                    this.playSound(this.state.soundName);
                     this.setState({
                         answerTop: '1000%',
                         blackboardTop: '1000%',
@@ -788,7 +742,7 @@ class Bang4 extends Component {
                                 choice4Top: '75%'
                             });
                         }, 1300)
-                    }, 6500)
+                    }, 3000)
                 }, 2000)
             } else {
                 this.wrong();
@@ -812,7 +766,7 @@ class Bang4 extends Component {
                 this.correct(this.state.getChoice3Name);
                 this.Animatecorrect();
                 setTimeout(() => {
-                    this.playSound(this.state.getChoice3Name);
+                    this.playSound(this.state.soundName);
                     this.setState({
                         answerTop: '1000%',
                         blackboardTop: '1000%',
@@ -838,7 +792,7 @@ class Bang4 extends Component {
                                 choice4Top: '75%'
                             });
                         }, 1300)
-                    }, 6500)
+                    }, 3000)
                 }, 2000)
             } else {
                 this.wrong();
@@ -862,7 +816,7 @@ class Bang4 extends Component {
                 this.correct(this.state.getChoice4Name);
                 this.Animatecorrect();
                 setTimeout(() => {
-                    this.playSound(this.state.getChoice4Name);
+                    this.playSound(this.state.soundName);
                     this.setState({
                         answerTop: '1000%',
                         blackboardTop: '1000%',
@@ -888,7 +842,7 @@ class Bang4 extends Component {
                                 choice4Top: '75%'
                             });
                         }, 1300)
-                    }, 6500)
+                    }, 3000)
                 }, 2000)
             } else {
                 this.wrong();
@@ -1044,7 +998,7 @@ class Bang4 extends Component {
     }
 
     render() {
-        const show = combine[this.state.randomQuestion ]; 
+        const show = combine[this.state.randomQuestion ];
         const convert1 = show.choice1String;
         this.state.getChoice1Name = convert1;
         const convert2 = show.choice2String;
@@ -1055,6 +1009,8 @@ class Bang4 extends Component {
         this.state.getChoice4Name = convert4;
         const answer = show.answer;
         this.state.answer = answer;
+        const sound = show.sound;
+        this.state.soundName = sound;
         return (
             <ImageBackground
                 source={GameBG}
