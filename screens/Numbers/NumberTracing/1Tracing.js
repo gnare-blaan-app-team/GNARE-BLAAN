@@ -197,7 +197,8 @@ class OneTracing extends Component {
                 <Image source={imageBG} style={{position: 'absolute', width: '100%', height: '100%', resizeMode: 'stretch', top: '0%'}}></Image>
 
                 <View style={{position: 'absolute', 
-                        width: boardDimension.width, height: boardDimension.height, top: '20%', left: '12.5%', backgroundColor: 'rgba(255, 255, 255, 0.000000001)'}}
+                        width: boardDimension.width, height: boardDimension.height, top: '20%', left: '12.5%', 
+                        backgroundColor: 'rgba(255, 255, 255, 0.000000001)'}}
                         {...this.panResponder.panHandlers} >
                     <View style={{position: 'absolute', width: numberDimension.width, height: numberDimension.height, 
                                 top: '5%', left: '30%', opacity: this.state.showTracing,}}>

@@ -7,8 +7,6 @@ import HomepageBackground from './images/GnareMain.gif';
 import About_icon from "./images/Icon_About.png";
 import Like_icon from "./images/Icon_Like.png";
 import Share_icon from "./images/Icon_Share.png";
-import { tsExportAssignment } from '@babel/types';
-import { widthPercentageToDP } from 'react-native-responsive-screen';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
@@ -25,7 +23,7 @@ class Homescreen extends Component{
 
   _moveAnimation = () => {
     Animated.timing(this.state.yValue, {
-      toValue: 500,
+      toValue: hp('90%'),
       duration: 4500,
       easing: Easing.linear,
     }).start();
@@ -52,8 +50,8 @@ class Homescreen extends Component{
                     </View>
                     <Animated.View style={[{bottom: this.state.yValue}]}>
                       <View style={{
-                      bottom: '-270%',
-                      height: '50%',
+                      bottom: hp('-132%'),
+                      height: hp('30%'),
                       left: wp('1.5%'),
                       }}>
                           {this._moveAnimation()}
