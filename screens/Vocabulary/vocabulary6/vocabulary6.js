@@ -18,7 +18,7 @@ import Ladder from './vocabulary6Images/ladder.png';
 import Roof from './vocabulary6Images/roof.png';  
 import Wall from './vocabulary6Images/wall.png';
 import Window from './vocabulary6Images/window.png';
-import abu_icon from './vocabulary6Images/Abu.png';
+import abu_icon from './vocabulary6Images/abuh.png';
 import SpeakerIcon from '../../images/Speaker_icon.png';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
