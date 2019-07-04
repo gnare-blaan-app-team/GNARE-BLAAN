@@ -262,7 +262,7 @@ class Vocabulary6 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={{position:'absolute',top:this.state.kitchenBtnTop, left: '20.8%'}}>
+                <View style={{position:'absolute',top:this.state.kitchenBtnTop, left: wp('22.5%')}}>
                     <TouchableOpacity onPress={this.gotoVocabulary7}>
                         <Image source={abu_icon} style={{height: hp('10%'), resizeMode: 'contain'}}/>
                     </TouchableOpacity>
