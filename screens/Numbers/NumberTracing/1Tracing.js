@@ -18,11 +18,14 @@ import { scopeX, scopeY, trail } from '../numbersImport';
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
 
-const velocityLimit = 1.2;
-const velocityLimit2 = -1.5; 
+const shadedLine = [shaded_1_1, shaded_1_2];
+const tracingLine = [trace1, trace2];
 
 const screenWidth = Dimensions.get('screen').width;
 const screenHeight = Dimensions.get('screen').height;
+
+const velocityLimit = 1.2;
+const velocityLimit2 = -1.5; 
 
 const boardDimension = {
     width: screenWidth * 0.75,
