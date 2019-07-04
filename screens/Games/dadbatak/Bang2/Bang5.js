@@ -960,7 +960,7 @@ class Bang5 extends Component {
                     blackboardTop: '1000%',
                 });
                 const store = JSON.stringify(random);
-                await AsyncStorage.setItem(RandomKey, store);
+                await AsyncStorage.setItem(DadbatakBang2, store);
                 this.setState({ 
                     randomQuestion: random,
                     choice1Top: '75%',//75%

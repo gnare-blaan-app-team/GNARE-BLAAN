@@ -312,7 +312,7 @@ const stageNumber = [0,1,2,3,4,5,6,7,8,9];
 
 const questionAnswered = [];
 
-const audio = ['number_1','number_2','number_3','number_4','number_5','number_6','number_7','number_8','number_9','number_10'];
+const audio = ['dadse_1', 'dadse_2', 'dadse_3', 'dadse_4', 'dadse_5', 'dadse_6', 'dadse_7', 'dadse_8', 'dadse_9','dadse_10'];
 
 //playsound
 //answer
@@ -608,7 +608,7 @@ class Bang extends Component {
                                choice4Top: '75%'
                            });
                        }, 1300)
-                   }, 6500)
+                   }, 3000)
                }, 2000)
            }else{
                this.answer(this.state.getChoice1Name);
@@ -658,7 +658,7 @@ class Bang extends Component {
                                 choice4Top: '75%'
                             });
                         }, 1300)
-                    }, 6500)
+                    }, 3000)
                 }, 2000)
             } else {
                 this.wrong();
@@ -708,7 +708,7 @@ class Bang extends Component {
                                 choice4Top: '75%'
                             });
                         }, 1300)
-                    }, 6500)
+                    }, 3000)
                 }, 2000)
             } else {
                 this.wrong();
@@ -758,7 +758,7 @@ class Bang extends Component {
                                 choice4Top: '75%'
                             });
                         }, 1300)
-                    }, 6500)
+                    }, 3000)
                 }, 2000)
             } else {
                 this.wrong();

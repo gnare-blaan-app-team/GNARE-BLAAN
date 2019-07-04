@@ -732,7 +732,7 @@ class Bang extends Component {
         stageNumber.splice(randomizer,1);
         var random = use;
         if (Reach5 == 5){
-            this.props.navigation.push('gameMenu', { show: 'DadBatak' ,show3DB:'DadBatak2'});
+            this.props.navigation.push('gameMenu', { show: 'DadBatak', show3DB: 'DadBatak2' });
             const stage2 = 'unlock';
             await AsyncStorage.removeItem(QuestionDone);
             await AsyncStorage.removeItem(DadbatakBang3);
@@ -787,7 +787,7 @@ class Bang extends Component {
                     blackboardTop: '1000%',
                 });
                 const store = JSON.stringify(random);
-                await AsyncStorage.setItem(RandomKey, store);
+                await AsyncStorage.setItem(DadbatakBang3, store);
                 this.setState({ 
                     randomQuestion: random,
                     choice1Top: '75%',//75%

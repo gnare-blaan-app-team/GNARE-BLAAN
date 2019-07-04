@@ -163,10 +163,10 @@ const answer = [
     'choiceSfalo',
 ];
 
-const combine = [
-    combine1 = { //answer choice2
-        blackboard:blackboardList[0],
-        choices1:choiceList[4].choice,
+   const combine = [
+    combine1 = {
+        blackboard: blackboardList[0],
+        choices1: choiceList[4].choice,
         choices2: choiceList[3].choice,
         choices3: choiceList[5].choice,
         choices4: choiceList[8].choice,
@@ -174,10 +174,10 @@ const combine = [
         choice2String: choiceList[3].choicestring,
         choice3String: choiceList[5].choicestring,
         choice4String: choiceList[8].choicestring,
-        answer: 'choiceFat',
+           answer: 'choiceFat',
         description: Answer1
     },
-    combine2 = { //answer choice1
+    combine2 = {
         blackboard: blackboardList[1],
         choices1: choiceList[4].choice,
         choices2: choiceList[6].choice,
@@ -190,7 +190,7 @@ const combine = [
         answer: 'choiceLime',
         description: Answer2
     },
-    combine3 = { //answer choice3
+    combine3 = {
         blackboard: blackboardList[2],
         choices1: choiceList[6].choice,
         choices2: choiceList[4].choice,
@@ -203,7 +203,7 @@ const combine = [
         answer: 'choiceNam',
         description: Answer3
     },
-    combine4 = { //answer choice2
+    combine4 = {
         blackboard: blackboardList[3],
         choices1: choiceList[1].choice,
         choices2: choiceList[6].choice,
@@ -216,33 +216,38 @@ const combine = [
         answer: 'choiceFitu',
         description: Answer4
     },
-    combine5 = { //answer choice3
+    combine5 = {
         blackboard: blackboardList[4],
-        choices1: choiceList[7].choice.choice,
-        choices2: choiceList[3].choice.choice,
-        choices3: choiceList[8].choice.choice,
-        choices4: choiceList[5].choice.choice,
-        choice1String: choiceList[7].choicestring,
-        choice2String: choiceList[3].choicestring,
+        choices1: choiceList[1].choice,
+        choices2: choiceList[2].choice,
+        choices3: choiceList[8].choice,
+        choices4: choiceList[3].choice,
+        choice1String: choiceList[1].choicestring,
+        choice2String: choiceList[2].choicestring,
         choice3String: choiceList[8].choicestring,
-        choice4String: choiceList[5].choicestring,
+        choice4String: choiceList[3].choicestring,
         answer: 'choiceSyem',
         description: Answer5
     },
-    combine6 = { //answer choice3
-        blackboard: blackboardList[4],
-        choices1: choiceList[7].choice,
-        choices2: choiceList[3].choice,
-        choices3: choiceList[8].choice,
-        choices4: choiceList[5].choice,
-        answer: 628,
-        description: Answer5
+    combine6 = {
+        blackboard: blackboardList[1],
+        choices1: choiceList[6].choice,
+        choices2: choiceList[5].choice,
+        choices3: choiceList[2].choice,
+        choices4: choiceList[8].choice,
+        choice1String: choiceList[6].choicestring,
+        choice2String: choiceList[5].choicestring,
+        choice3String: choiceList[2].choicestring,
+        choice4String: choiceList[8].choicestring,
+        answer: 'choiceNam',
+        description: Answer2
     },
+    
 ];
 
 const questionAnswered = [];
 
-const audio = ['number_4','number_5','number_6','number_7','number_9'];
+const audio = ['dadse_4', 'dadse_5', 'dadse_6','dadse_7','dadse_9'];
 
 //playsound
 //answer
@@ -267,10 +272,10 @@ class Bang3 extends Component {
             getChoice3Name: '',
             getChoice4Name: '',
             answer:'',
-            choice1Top: '1000%',//75%
-            choice2Top: '1000%',//75%
-            choice3Top: '1000%',//75%
-            choice4Top: '1000%',//75%
+            choice1Top: '75%',//75%
+            choice2Top: '75%',//75%
+            choice3Top: '75%',//75%
+            choice4Top: '75%',//75%
             emptyChoiceLeft: '1000%',
             randomQuestion:0,
             answerTop: '1000%', //53%
@@ -431,7 +436,7 @@ class Bang3 extends Component {
         
     }
     if (this.state.nextQuestion == 5) {
-        this.props.navigation.push('gameMenu', { show: 'Dadse' });
+        this.props.navigation.push('gameMenu', { show: 'Dadse', show3: 'Dadse2' });
         await AsyncStorage.removeItem(Random);
         this.state.nextQuestion = 0;
     }
@@ -490,7 +495,7 @@ class Bang3 extends Component {
                                choice4Top: '75%'
                            });
                        }, 1300)
-                   }, 7000)
+                   }, 3000)
                }, 2000)
            }else{
                this.answer(this.state.getChoice1Name);
@@ -540,7 +545,7 @@ class Bang3 extends Component {
                                 choice4Top: '75%'
                             });
                         }, 1300)
-                    }, 7000)
+                    }, 3000)
                 }, 2000)
             } else {
                 this.wrong();
@@ -590,7 +595,7 @@ class Bang3 extends Component {
                                 choice4Top: '75%'
                             });
                         }, 1300)
-                    }, 7000)
+                    }, 3000)
                 }, 2000)
             } else {
                 this.wrong();
@@ -795,7 +800,7 @@ class Bang3 extends Component {
     }
 
     render() {
-        const show = combine[this.state.nextQuestion];
+        const show = combine[this.state.nextQuestion];//
         const convert1 = show.choice1String;
         this.state.getChoice1Name = convert1;
         const convert2 = show.choice2String;
