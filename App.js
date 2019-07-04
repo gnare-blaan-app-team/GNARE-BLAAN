@@ -7,6 +7,7 @@ import Numbers from './screens/Numbers/NumbersScreen';
 
 import NumberIntroScreen from './screens/Numbers/NumberIntroScreen';
 import LetterIntroScreen from './screens/Letters/LetterIntroScreen';
+import GameIntroScreen from './screens/Games/GameIntroScreen';
 
 // Flalok Stories Import
 
@@ -266,6 +267,9 @@ export default AppNavigator = createStackNavigator(
     kastifun2Screen: Kastifun2_Screen,
 
     //Games
+
+    gameIntro: GameIntroScreen,
+
     gameMenu: GameMenu,
     dadseProceed: DadSeProceed,
     dadseMarket: DadSeMarket,

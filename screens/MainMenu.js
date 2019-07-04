@@ -41,7 +41,7 @@ class Mainmenu extends Component {
     }
 
     gotoGame = () => {
-        this.props.navigation.push('gameMenu');
+        this.props.navigation.push('gameIntro');
     }
 
     render() {
