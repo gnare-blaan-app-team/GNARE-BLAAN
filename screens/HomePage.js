@@ -7,8 +7,6 @@ import HomepageBackground from './images/GnareMain.gif';
 import About_icon from "./images/Icon_About.png";
 import Like_icon from "./images/Icon_Like.png";
 import Share_icon from "./images/Icon_Share.png";
-import { tsExportAssignment } from '@babel/types';
-import { widthPercentageToDP } from 'react-native-responsive-screen';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
