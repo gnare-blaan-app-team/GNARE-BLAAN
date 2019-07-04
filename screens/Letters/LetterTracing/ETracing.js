@@ -520,16 +520,5 @@ class ETracing extends Component {
     }
 }
 
-<<<<<<< HEAD
-const ballStyle = StyleSheet.create({
-    circle: {
-        backgroundColor: 'black',
-        width: 40,
-        height: 40,
-        borderRadius: 40,
-    }
-});
 
-=======
->>>>>>> 227576d3157a96e6e3d8046c2c4bfd5e394042b0
 export default withNavigation(ETracing);
