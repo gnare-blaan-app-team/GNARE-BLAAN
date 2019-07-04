@@ -220,7 +220,7 @@ class FourtyTracing extends Component {
 
     gotoMainMenu = () => {
         this.clearBoard();
-        this.props.navigation.navigate('home');
+        this.props.navigation.navigate('mainMenu');
     }
 
     goBack = () => {

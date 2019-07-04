@@ -2,6 +2,9 @@
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { Dimensions } from 'react-native';
 
+const screenWidth = Dimensions.get('screen').width;
+const screenHeight = Dimensions.get('screen').height;
+
 export const globalStyleSheet = {
 
     // Image Background
@@ -18,14 +21,14 @@ export const globalStyleSheet = {
     trace: {
         position: 'absolute',
         backgroundColor: '#ffea00',
-        width: 60,
-        height: 60,
-        borderRadius: 60,
+        width: screenWidth * 0.06,
+        height: screenWidth * 0.06,
+        borderRadius: screenWidth * 0.06,
     },
 
     dot: {
         position: 'absolute',
-        backgroundColor: '#ffea00',
+        // backgroundColor: '#ffea00',
         width: 20,
         height: 20,
         borderRadius: 20,
@@ -186,21 +189,12 @@ export const globalStyleSheet = {
         resizeMode: 'contain',
     },
 
-    //HomePage Container
-    HomePageContainer: {
-        position: 'absolute',
-        top: '80%',
-        left: '10%',
-        width: '80%',
-        height: '20%',
-    },
-
     //HomePage Items
     HomePageItems: {
         margin: 5,
         marginBottom: 0,
-        width: '25%',
-        height: '40%',
+        width: '20%',
+        height: '30%',
     },
 
     //HomePage Touch

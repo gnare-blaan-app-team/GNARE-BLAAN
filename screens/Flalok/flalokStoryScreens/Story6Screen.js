@@ -11,13 +11,12 @@ import Story6_EN from '../flalokVideos/Story6_EN.mp4';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
 
-import SwapENG from '../flalokImages/SwapENG.png';
-import SwapFIL from '../flalokImages/SwapFIL.png';
+
 
 import NextStory from '../flalokImages/NextStory.png';
-import Prayer from '../flalokImages/Prayer.png';
-import Vocabulary from '../flalokImages/Vocabulary.png';
-import flalokAfterStory_BG from '../flalokImages/flalokAfterStory_BG.png';
+import Vocabulary10and11 from '../flalokImages/Vocabulary10&11Btn.png';
+import CultureandArts from '../flalokImages/Culture&ArtsBtn.png';
+import flalokAfterStory_BG from '../../Games/gameImages/DadSeBG.png';
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js';
 
@@ -40,7 +39,7 @@ class Story6Screen extends Component {
             hideHome: '-1000%',
             hideStory: '0%',
 
-            subtitle: ' Filipino',
+            subtitle: ' English',
             hideSub: '-1000%',
 
             controlHide: '-1000%',
@@ -125,12 +124,12 @@ class Story6Screen extends Component {
         this.props.navigation.navigate('story2');
     }
 
-    gotoVocabulary = () => {
-        this.props.navigation.navigate('vocabularyMenu');
+    gotoVocabulary10and11 = () => {
+        this.props.navigation.navigate('vocabulary10');
     }
 
-    gotoPrayers = () => {
-        this.props.navigation.navigate('prayersScreen');
+    gotoCultureandArts = () => {
+        this.props.navigation.navigate('cultureandarts');
     }
 
     hideControl = () => {
@@ -175,7 +174,7 @@ class Story6Screen extends Component {
                         <TouchableOpacity onPress={()=> {
                             this.setState({
                                 videoFile: this.state.videoFile == Story6_FL ? Story6_EN : Story6_FL,
-                                subtitle: this.state.subtitle == ' Filipino' ? ' English' : ' Filipino',
+                                subtitle: this.state.subtitle == ' English' ? ' Filipino' : ' English',
                             });
                             this.handleProgressPress;
                         }}>
@@ -259,18 +258,18 @@ class Story6Screen extends Component {
                         </View>
 
                         <View style={EndStyles.imageTab}>
-                            <TouchableOpacity onPress={this.gotoPrayers}>
+                            <TouchableOpacity onPress={this.gotoVocabulary10and11}>
                                 <Image
-                                    source={Prayer}
+                                    source={Vocabulary10and11}
                                     style={EndStyles.image}
                                 ></Image>
                             </TouchableOpacity>
                         </View>
 
                         <View style={EndStyles.imageTab}>
-                            <TouchableOpacity onPress={this.gotoVocabulary}>
+                            <TouchableOpacity onPress={this.gotoCultureandArts}>
                                 <Image
-                                    source={Vocabulary}
+                                    source={CultureandArts}
                                     style={EndStyles.image}
                                 ></Image>
                             </TouchableOpacity>

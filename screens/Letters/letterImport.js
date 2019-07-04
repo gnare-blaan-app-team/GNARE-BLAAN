@@ -1,3 +1,5 @@
+import { Dimensions } from 'react-native';
+
 import sentenceSubtitleA from './lettersGlow/sentenceA.gif';
 import sentenceSubtitleB from './lettersGlow/sentenceB.gif';
 import sentenceSubtitleD from './lettersGlow/sentenceD.gif';
@@ -77,6 +79,25 @@ import T from './lettersGlow/T.gif';
 import U from './lettersGlow/U.gif';
 import W from './lettersGlow/W.gif';
 import Y from './lettersGlow/Y.gif';
+
+const screenWidth = Dimensions.get('screen').width;
+const screenHeight = Dimensions.get('screen').height;
+
+export const boardDimension = {
+    width: screenWidth * 0.75,
+    height: screenHeight * 0.7,
+};
+
+export const numberDimension = {
+    width: boardDimension.width * 0.7,
+    height: boardDimension.height * 0.9,
+}
+
+export const scopeX = screenWidth * 0.04;
+export const scopeY = screenHeight * 0.05;
+export const trail = screenWidth * 0.025;
+export const velocityLimit = 1.2;
+export const velocityLimit2 = -1.5; 
 
 // Letter Sound List
 export const soundList = ['a', 'b', 'd', 'e', 'f', 'g', 'h', 'i', 'k', 'l', 'm', 'n', 'o', 's', 't',

@@ -11,13 +11,12 @@ import Story3_EN from '../flalokVideos/Story3_EN.mp4';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
 
-import SwapENG from '../flalokImages/SwapENG.png';
-import SwapFIL from '../flalokImages/SwapFIL.png';
+
 
 import NextStory from '../flalokImages/NextStory.png';
-import Prayer from '../flalokImages/Prayer.png';
-import Vocabulary from '../flalokImages/Vocabulary.png';
-import flalokAfterStory_BG from '../flalokImages/flalokAfterStory_BG.png';
+import Vocabulary3 from '../flalokImages/Vocabulary3Btn.png';
+import Vocabulary5 from '../flalokImages/Vocabulary5Btn.png';
+import flalokAfterStory_BG from '../../Games/gameImages/DadSeBG.png';
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js';
 
@@ -40,7 +39,7 @@ class Story3Screen extends Component {
             hideHome: '-1000%',
             hideStory: '0%',
 
-            subtitle: ' Filipino',
+            subtitle: ' English',
             hideSub: '-1000%',
 
             controlHide: '-1000%',
@@ -125,12 +124,12 @@ class Story3Screen extends Component {
         this.props.navigation.navigate('story2');
     }
 
-    gotoVocabulary = () => {
-        this.props.navigation.navigate('vocabularyMenu');
+    gotoVocabulary3 = () => {
+        this.props.navigation.navigate('vocabulary3');
     }
 
-    gotoPrayers = () => {
-        this.props.navigation.navigate('prayersScreen');
+    gotoVocabulary3 = () => {
+        this.props.navigation.navigate('vocabulary5');
     }
 
     hideControl = () => {
@@ -175,7 +174,7 @@ class Story3Screen extends Component {
                         <TouchableOpacity onPress={()=> {
                             this.setState({
                                 videoFile: this.state.videoFile == Story3_FL ? Story3_EN : Story3_FL,
-                                subtitle: this.state.subtitle == ' Filipino' ? ' English' : ' Filipino',
+                                subtitle: this.state.subtitle == ' English' ? ' Filipino' : ' English',
                             });
                             this.handleProgressPress;
                         }}>
@@ -259,18 +258,18 @@ class Story3Screen extends Component {
                         </View>
 
                         <View style={EndStyles.imageTab}>
-                            <TouchableOpacity onPress={this.gotoPrayers}>
+                            <TouchableOpacity onPress={this.gotoVocabulary3}>
                                 <Image
-                                    source={Prayer}
+                                    source={Vocabulary3}
                                     style={EndStyles.image}
                                 ></Image>
                             </TouchableOpacity>
                         </View>
 
                         <View style={EndStyles.imageTab}>
-                            <TouchableOpacity onPress={this.gotoVocabulary}>
+                            <TouchableOpacity onPress={this.gotoVocabulary5}>
                                 <Image
-                                    source={Vocabulary}
+                                    source={Vocabulary5}
                                     style={EndStyles.image}
                                 ></Image>
                             </TouchableOpacity>

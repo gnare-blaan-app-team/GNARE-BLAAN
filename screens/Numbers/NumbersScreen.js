@@ -24,7 +24,8 @@ import PrevIcon from '../images/Prev_Icon.png';
 
     // Letter Main Background Import
 import imageMainBG from '../images/BG.jpg';
-import sentenceBG from '../images/BG.jpg';
+import sentenceBG from '../images/BG_1.jpg';
+import numberMainBG from '../images/BG1.jpg';
 import black from '../images/black.png';
 
     // Letter Background Imports
@@ -59,7 +60,7 @@ class NumberScreen extends Component {
 
             //Background State
             imageBackground: imageMainBG,
-
+            numberMainBG: numberMainBG,
             //Letter Menu State
             menuLetterHide: '22%',
 
@@ -92,7 +93,7 @@ class NumberScreen extends Component {
         this.stopAutoPlaySound();
         this.setState({menuLetterHide: imageBG == imageMainBG ? '22%' : '-1000%', 
                         prevHide: imageBG == numberBGList[0] ? hideLeft : showPrev,
-                        imageBackground: imageBG,
+                        imageBackground: imageBG, numberMainBG: imageBG != imageMainBG ? numberMainBG : imageMainBG,
                         nextHide: imageBG == imageMainBG ? hideRight : showNext,
                         glowHide: imageBG == imageMainBG ? hideLeft : showGlow,
                         speakerHide: imageBG == imageMainBG ? hideLeft : showSpeaker,
@@ -253,6 +254,7 @@ class NumberScreen extends Component {
             } else {
                 this.stopAutoPlaySound();
                 this.setState({menuLetterHide: '22%', imageBackground: imageMainBG,
+                            numberMainBG: imageMainBG,
                             prevHide: hideLeft,
                             pencilHide: hideLeft,
                             glowHide: hideLeft,
@@ -269,7 +271,7 @@ class NumberScreen extends Component {
 
             <ImageBackground source={imageMainBG} style={{flex: 1, width: '100%', height: '100%', resizeMode: 'stretch'}}>
                 <View style={{position: 'absolute', top: '0%', width: '100%', height: '100%'}}>
-                    <Image source={imageMainBG} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
+                    <Image source={this.state.numberMainBG} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
                 </View>
 
                 <View style={{position: 'absolute', top: this.state.hideLetterBG, width: '100%', height: '100%'}}>

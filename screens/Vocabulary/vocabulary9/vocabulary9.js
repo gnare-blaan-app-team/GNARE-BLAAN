@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler, Text } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
+
+import Sound from 'react-native-sound';
+
 import Vocab9BG from './vocabulary9Images/calendarBG.png';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
@@ -38,6 +41,14 @@ import Day6 from './vocabulary9Images/saturday.png';
 import Day7 from './vocabulary9Images/sunday.png';
 import NextIcon from '../../images/Next_Icon.png';
 import PrevIcon from '../../images/Prev_Icon.png';
+import SpeakerIcon from '../../images/Speaker_icon.png';
+
+Sound.setCategory('Playback');
+
+// Vocab Sound List
+const soundList = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 
+                    'august', 'september', 'october', 'november', 'december', 
+                    'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
@@ -88,8 +99,68 @@ class Vocabulary9 extends Component {
             calendarTop:'18%',
             NextTop: '40%',
             day:0,
-            clearBackground:'gotoVocab9Menu'
+            clearBackground:'gotoVocab9Menu',
+            speakerTop:'1000%',
         }
+    }
+
+
+    day = (index, soundPlay) => {
+        this.setState({
+            BackgroundImage:daylist[index],
+            clearBackground: 'clear',
+            prevTop: '1000%',
+            calendarTop: '1000%',
+            NextTop: '1000%',
+            speakerTop: '20%',
+            clickSoundIndex:soundPlay
+        })
+        this.autoPlaySound(soundPlay);
+    }
+
+    gotoMonth = () => {
+        const index = this.state.counter;
+        this.setState({
+            BackgroundImage:monthList[index],
+            calendarTop:'1000%',
+            NextTop:'1000%',
+            prevTop:'1000%',
+            clearBackground: 'clear',
+            speakerTop: '20%',
+            clickSoundIndex:index
+        })
+        this.autoPlaySound(index);
+    }
+
+    autoPlaySound = (index) => {
+        this.releaseSounds();
+        this.vocabSound = new Sound('vocab9_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+       this.vocabSound.play();
+        });     
+    }
+    
+    releaseSounds = ()=> {
+        if(this.vocabSound != null) {
+            this.vocabSound.release();
+        }
+    }
+    
+    playVocabSound = () => {
+        if(this.vocabSound != null) {
+            this.vocabSound.release();
+        }
+        this.stopSounds();
+        this.vocabSound = new Sound('vocab9_' + soundList[this.state.clickSoundIndex] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+        if (error) {
+            alert('failed to load the sound', error);
+            return;
+        } else {
+            this.vocabSound.play();
+        }});
+    }
+    
+    stopSounds = () => {
+        this.vocabSound.stop();
     }
 
     gotoNextPage = () => {
@@ -106,16 +177,7 @@ class Vocabulary9 extends Component {
             });
         }     
     }
-    gotoMonth = () => {
-        const index = this.state.counter;
-        this.setState({
-            BackgroundImage:monthList[index],
-            calendarTop:'1000%',
-            NextTop:'1000%',
-            prevTop:'1000%',
-            clearBackground: 'clear'
-        })
-    }
+
     goPrev = () => {
         const index = this.state.counter - 1;
         if (index >= 0) {
@@ -130,6 +192,14 @@ class Vocabulary9 extends Component {
             });
         }
     }
+    
+    gotoMainMenu = () =>{
+        const clear = this.state.clearBackground;
+        if (clear == 'clear'){
+            this.stopSounds();
+        }
+        this.props.navigation.navigate('mainMenu');
+    }
 
     goBack = () => {
         const clear = this.state.clearBackground;
@@ -137,6 +207,7 @@ class Vocabulary9 extends Component {
             this.props.navigation.navigate('vocabularyMenu')
         }
         if (clear == 'clear') {
+            this.stopSounds();
             this.setState({
                 BackgroundImage: Vocab9BG,
                 clearBackground: 'gotoVocab9Menu',
@@ -144,22 +215,24 @@ class Vocabulary9 extends Component {
                 calendarTop: '18%',
                 NextTop: '40%',
                 getDate: 'getDate',
+                speakerTop: '1000%',
             })
         }
     }
-    gotoMainMenu = () =>{
-        this.props.navigation.navigate('mainMenu')
+
+    componentDidMount() {
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
     }
 
-    day = (index) => {
-        this.setState({
-            BackgroundImage:daylist[index],
-            clearBackground: 'clear',
-            prevTop: '1000%',
-            calendarTop: '1000%',
-            NextTop: '1000%',
-        })
+    componentWillUnmount() {
+        this.backHandler.remove()
     }
+
+    handleBackPress = () => {
+        this.goBack(); 
+        return true;
+    }
+    
     render() {
 
         return (
@@ -193,6 +266,21 @@ class Vocabulary9 extends Component {
 
                 <View style={{
                     position: 'absolute',
+                    left: '80%',
+                    top:this.state.speakerTop,
+                    width: '6%',
+                    height: '10%',
+                }}>
+                    <TouchableOpacity onPress={this.playVocabSound}>
+                        <Image
+                            source={SpeakerIcon}
+                            style={globalStyleSheet.A_Speaker_2}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{
+                    position: 'absolute',
                     top: this.state.calendarTop
                 }}>
                     <TouchableOpacity onPress={this.gotoMonth}>
@@ -206,7 +294,7 @@ class Vocabulary9 extends Component {
                         ></Image>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={()=>{
-                        this.day(6);
+                        this.day(6, 18);
                     }} style={{
                         position:'absolute',
                         left:'12.50%',
@@ -216,7 +304,7 @@ class Vocabulary9 extends Component {
                        }}>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        this.day(0);
+                        this.day(0, 12);
                     }} style={{
                         position: 'absolute',
                         left: '24%',
@@ -226,7 +314,7 @@ class Vocabulary9 extends Component {
                     }}>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        this.day(1);
+                        this.day(1, 13);
                     }} style={{
                         position: 'absolute',
                         left: '35%',
@@ -236,7 +324,7 @@ class Vocabulary9 extends Component {
                     }}>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        this.day(2);
+                        this.day(2, 14);
                     }} style={{
                         position: 'absolute',
                         left: '46%',
@@ -246,7 +334,7 @@ class Vocabulary9 extends Component {
                     }}>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        this.day(3);
+                        this.day(3, 15);
                     }} style={{
                         position: 'absolute',
                         left: '57%',
@@ -256,7 +344,7 @@ class Vocabulary9 extends Component {
                     }}>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        this.day(4);
+                        this.day(4, 16);
                     }} style={{
                         position: 'absolute',
                         left: '68%',
@@ -266,7 +354,7 @@ class Vocabulary9 extends Component {
                     }}>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        this.day(5);
+                        this.day(5, 17);
                     }} style={{
                         position: 'absolute',
                         left: '79%',

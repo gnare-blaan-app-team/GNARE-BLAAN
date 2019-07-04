@@ -1,2 +1,2 @@
 # GNARE-BLAAN
-A mobile for Blaan Tribe
+A mobile application for Blaan Tribe

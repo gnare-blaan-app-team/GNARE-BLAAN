@@ -22,6 +22,7 @@ import PrevIcon from '../images/Prev_Icon.png';
 
     // Letter Main Background Import
 import imageMainBG from '../images/BG.jpg';
+import letterMainBG from '../images/BG1.jpg';
 import black from '../images/black.png';
 
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
@@ -53,6 +54,7 @@ class Letters extends Component {
 
             //Background State
             imageBackground: imageMainBG,
+            letterMainBG: letterMainBG,
             showSubtitle: 0,
             sentenceScript: sentenceSubtitleList[0],
 
@@ -89,7 +91,7 @@ class Letters extends Component {
         this.stopAutoPlaySound();
         this.setState({menuLetterHide: imageBG == imageMainBG ? '22%' : '-1000%', 
                         prevHide: imageBG == letterBGList[0] ? hideLeft : showPrev,
-                        imageBackground: imageBG,
+                        imageBackground: imageBG, letterMainBG: imageBG != imageMainBG ? letterMainBG : imageMainBG,
                         nextHide: imageBG == imageMainBG ? hideRight : showNext,
                         glowHide: imageBG == imageMainBG ? hideLeft : showGlow,
                         speakerHide: imageBG == imageMainBG ? hideLeft : showSpeaker,
@@ -223,7 +225,7 @@ class Letters extends Component {
     letterTracing = () => {
         this.handleBackPress();
         const upperCase = soundList[this.state.indexSound].toUpperCase();
-        this.props.navigation.navigate('tracing' + upperCase);
+        this.props.navigation.push('tracing' + upperCase);
     }
 
     gotoMainMenu = () => {
@@ -298,6 +300,7 @@ class Letters extends Component {
             } else {
                 this.stopAutoPlaySound();
                 this.setState({menuLetterHide: '22%', imageBackground: imageMainBG,
+                            letterScreen: imageMainBG,
                             prevHide: hideLeft,
                             pencilHide: hideLeft,
                             glowHide: hideLeft,
@@ -314,7 +317,7 @@ class Letters extends Component {
 
             <ImageBackground source={imageMainBG} style={{flex: 1, width: '100%', height: '100%', resizeMode: 'stretch'}}>
                 <View style={{position: 'absolute', top: '0%', width: '100%', height: '100%'}}>
-                    <Image source={imageMainBG} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
+                    <Image source={this.state.letterMainBG} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
                 </View>
                 <View style={{position: 'absolute', top: this.state.hideLetterBG, width: '100%', height: '100%'}}>
                     <Image source={this.state.imageBackground} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>

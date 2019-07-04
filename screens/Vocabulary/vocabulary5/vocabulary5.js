@@ -3,6 +3,7 @@ import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
+import Sound from 'react-native-sound';
 import Vocab5BG from './vocabulary5Images/Vocab5.png';
 
 import Back_icon from '../../images/Back_icon.png';
@@ -29,8 +30,16 @@ import Salamander from './vocabulary5Images/salamander.png';
 import Spear from './vocabulary5Images/spear.png';
 import Tree from './vocabulary5Images/tree.png';
 import Waterfall from './vocabulary5Images/waterfall.png';
+import SpeakerIcon from '../../images/Speaker_icon.png';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
+
+Sound.setCategory('Playback');
+
+// Vocab Sound List
+const soundList = ['ax', 'bow', 'hawk', 'hornbill', 'mountain', 'river', 'salamander', 
+                    'spear', 'tree', 'waterfall'];
 
 const backgroundList = [Axe,Bow,Hawk,Hornbill,Mountain,River,Salamander,Spear,Tree,Waterfall];
 
@@ -53,36 +62,14 @@ class Vocabulary5 extends Component {
             salamanderTop:'61%',
             axeTop:'72%',
             hornbillTop:'23%',
-            clearBackground:'gotoVocab5Menu'
+            clearBackground:'gotoVocab5Menu',
+            speakerTop:'1000%',
+            clickSoundIndex:'',
         }
+        // Sounds
+        this.vocabSound = null;
     }
 
-    gotoMainMenu = () => {
-        this.props.navigation.navigate('mainMenu')
-    }
-
-    goBack = () => {
-        const clear = this.state.clearBackground;
-        if (clear == 'gotoVocab5Menu') {
-            this.props.navigation.navigate('vocabularyMenu')
-        }
-        if (clear == 'clear') {
-            this.setState({
-                BackgroundImage: Vocab5BG,
-                mountainLeft: '12.7%',
-                treeTop: '19%',
-                fallsTop: '19%',
-                ilogTop: '48.5%',
-                lawinTop: '19%',
-                bowTop: '66%',
-                spearTop: '56%',
-                salamanderTop: '61%',
-                axeTop: '72%',
-                hornbillTop: '23%',
-                clearBackground: 'gotoVocab5Menu',
-            })
-        }
-    }
 
    changeBackground = (index) => {
     this.setState({
@@ -98,10 +85,89 @@ class Vocabulary5 extends Component {
         axeTop: '1000%',
         hornbillTop: '1000%',
         clearBackground: 'clear',
+        speakerTop: '20%',
+        clickSoundIndex:index
         
     })
+    this.autoPlaySound(index);
    }
 
+   autoPlaySound = (index) => {
+        this.releaseSounds();
+        this.vocabSound = new Sound('vocab5_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+        this.vocabSound.play();
+        });     
+    }
+
+    releaseSounds = ()=> {
+        if(this.vocabSound != null) {
+            this.vocabSound.release();
+        }
+    }
+    
+    playVocabSound = () => {
+        if(this.vocabSound != null) {
+            this.vocabSound.release();
+        }
+        this.stopSounds();
+        this.vocabSound = new Sound('vocab5_' + soundList[this.state.clickSoundIndex] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+        if (error) {
+            alert('failed to load the sound', error);
+            return;
+        } else {
+            this.vocabSound.play();
+        }});
+    }
+    
+    stopSounds = () => {
+        this.vocabSound.stop();
+    }
+
+    gotoMainMenu = () => {
+        const clear = this.state.clearBackground;
+        if (clear == 'clear'){
+            this.stopSounds();
+        }
+        this.props.navigation.navigate('mainMenu');
+    }
+
+    goBack = () => {
+        const clear = this.state.clearBackground;
+        if (clear == 'gotoVocab5Menu') {
+            this.props.navigation.navigate('vocabularyMenu')
+        }
+        if (clear == 'clear') {
+            this.stopSounds();
+            this.setState({
+                BackgroundImage: Vocab5BG,
+                mountainLeft: '12.7%',
+                treeTop: '19%',
+                fallsTop: '19%',
+                ilogTop: '48.5%',
+                lawinTop: '19%',
+                bowTop: '66%',
+                spearTop: '56%',
+                salamanderTop: '61%',
+                axeTop: '72%',
+                hornbillTop: '23%',
+                clearBackground: 'gotoVocab5Menu',
+                speakerTop: '1000%',
+            })
+        }
+    }
+
+    componentDidMount() {
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+    }
+
+    componentWillUnmount() {
+        this.backHandler.remove()
+    }
+
+    handleBackPress = () => {
+        this.goBack(); 
+        return true;
+    }
 
     render() {
 
@@ -133,7 +199,20 @@ class Vocabulary5 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-
+                <View style={{
+                    position: 'absolute',
+                    left: '80%',
+                    top:this.state.speakerTop,
+                    width: '6%',
+                    height: '10%',
+                }}>
+                    <TouchableOpacity onPress={this.playVocabSound}>
+                        <Image
+                            source={SpeakerIcon}
+                            style={globalStyleSheet.A_Speaker_2}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
                 <View style={{
                     position: 'absolute',
                     width: '60%',
