@@ -6,7 +6,8 @@ import EndingVideo from "../../gameImages/ending.mp4";
 
 import { withNavigation } from 'react-navigation'; 
 
-const Key = '@MyApp:key';
+const RandomKey = '@MyApp:RandomKey';
+const Stage2 = '@MyApp:Stage2';
 
 class Ending extends Component {
     
@@ -24,23 +25,24 @@ class Ending extends Component {
     }
 
     onSave = async () => { 
-        await AsyncStorage.setItem(prevKey, null); 
+        await AsyncStorage.removeItem(RandomKey);
     }
 
     static navigationOptions = {
         header:null,
     }
 
-    handleEnd = () => {
+    handleEnd = async () => {
         this.onSave();
         this.props.navigation.push('gameMenu', { show: 'Dadse' });
+        const store = 'unlock';
+        await AsyncStorage.setItem(Stage2, store);
     }
 
     render() {
 
         return (
             <ImageBackground style={videoStyle.container}>
-                
                 <View style={{position: 'absolute', width: '100%', height: '100%',}}>
                     <TouchableWithoutFeedback onPress={this.hideControl}>
                         <Video

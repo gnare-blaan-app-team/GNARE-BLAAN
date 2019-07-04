@@ -15,11 +15,22 @@ import shaded_1_1 from '../numberTracingImage/shaded_1_1.png';
 import shaded_1_2 from '../numberTracingImage/shaded_1_2.png';
 
 import { scopeX, scopeY, trail } from '../numbersImport';
+<<<<<<< HEAD
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
 
 const shadedLine = [shaded_1_1, shaded_1_2];
 const tracingLine = [trace1, trace2];
+
+const screenWidth = Dimensions.get('screen').width;
+const screenHeight = Dimensions.get('screen').height;
+=======
+
+import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
+>>>>>>> 227576d3157a96e6e3d8046c2c4bfd5e394042b0
+
+const velocityLimit = 1.2;
+const velocityLimit2 = -1.5; 
 
 const screenWidth = Dimensions.get('screen').width;
 const screenHeight = Dimensions.get('screen').height;
@@ -194,8 +205,12 @@ class OneTracing extends Component {
                 <Image source={imageBG} style={{position: 'absolute', width: '100%', height: '100%', resizeMode: 'stretch', top: '0%'}}></Image>
 
                 <View style={{position: 'absolute', 
+<<<<<<< HEAD
+                        width: boardDimension.width, height: boardDimension.height, top: '20%', left: '12.5%', backgroundColor: 'rgba(255, 255, 255, 0.000000001)'}}
+=======
                         width: boardDimension.width, height: boardDimension.height, top: '20%', left: '12.5%', 
                         backgroundColor: 'rgba(255, 255, 255, 0.000000001)'}}
+>>>>>>> 227576d3157a96e6e3d8046c2c4bfd5e394042b0
                         {...this.panResponder.panHandlers} >
                     <View style={{position: 'absolute', width: numberDimension.width, height: numberDimension.height, 
                                 top: '5%', left: '30%', opacity: this.state.showTracing,}}>
