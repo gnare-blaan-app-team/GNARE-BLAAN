@@ -23,7 +23,7 @@ class Homescreen extends Component{
 
   _moveAnimation = () => {
     Animated.timing(this.state.yValue, {
-      toValue: 500,
+      toValue: hp('90%'),
       duration: 4500,
       easing: Easing.linear,
     }).start();
@@ -50,8 +50,8 @@ class Homescreen extends Component{
                     </View>
                     <Animated.View style={[{bottom: this.state.yValue}]}>
                       <View style={{
-                      bottom: '-270%',
-                      height: '50%',
+                      bottom: hp('-132%'),
+                      height: hp('30%'),
                       left: wp('1.5%'),
                       }}>
                           {this._moveAnimation()}
