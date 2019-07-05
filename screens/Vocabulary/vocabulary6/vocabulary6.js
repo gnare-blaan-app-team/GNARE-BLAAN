@@ -57,6 +57,8 @@ class Vocabulary6 extends Component {
         }
         // Sounds
         this.vocabSound = null;
+        this.timeoutSound = null;
+        this.timeoutBtn = null;
     }
 
 
@@ -81,10 +83,12 @@ class Vocabulary6 extends Component {
 
     autoPlaySound = (index) => {
         this.releaseSounds();
-        this.vocabSound = new Sound('vocab6_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-            setTimeout(()=> {this.vocabSound.play()}, 200);
-        });     
-    }
+        this.timeoutSound = setTimeout(()=> {
+          this.vocabSound = new Sound('vocab6_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+            this.vocabSound.play();
+          });  
+        }, 1000);   
+      }
 
     releaseSounds = ()=> {
         if(this.vocabSound != null) {
@@ -96,6 +100,9 @@ class Vocabulary6 extends Component {
         if(this.vocabSound != null) {
             this.vocabSound.release();
         }
+        if(this.timeoutSound != null){
+            clearTimeout(this.timeoutSound);
+          }
         this.stopSounds();
         this.vocabSound = new Sound('vocab6_' + soundList[this.state.clickSoundIndex] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
         if (error) {
@@ -107,8 +114,10 @@ class Vocabulary6 extends Component {
     }
 
     stopSounds = () => {
-        this.vocabSound.stop();
-    }
+        if (this.vocabSound != null){
+          this.vocabSound.stop();
+        }
+      }
     
     gotoMainMenu = () =>{
         const clear = this.state.clearBackground;
@@ -141,10 +150,19 @@ class Vocabulary6 extends Component {
                 speakerTop: '1000%',
             })
         }
+        if(this.timeoutSound != null){
+            clearTimeout(this.timeoutSound);
+          }
+        if(this.timeoutBtn != null){
+            clearTimeout(this.timeoutBtn);
+          }
     }
 
     gotoVocabulary7 = () => {
         this.stopSounds();
+        if(this.timeoutSound != null){
+            clearTimeout(this.timeoutSound);
+          }
         this.props.navigation.navigate('vocabulary7')
     }
 
@@ -254,9 +272,14 @@ class Vocabulary6 extends Component {
                 <View style={{position: "absolute", height: hp('14%'), width: wp('6.5%'), left: '38%', top:this.state.kitchenTop}}>
                     <TouchableOpacity onPress={() => {
                         this.changeBackground(4);
-                        this.setState({
-                            kitchenBtnTop:'72%'
-                        })
+                        this.timeoutBtn = setTimeout(()=> {
+                            this.setState({
+                                kitchenBtnTop:'72%'
+                            })
+                        }, 300);
+                        // this.setState({
+                        //     kitchenBtnTop:'72%'
+                        // })
                     }}>
                        <Text style={{width:"100%", height:"100%"}}></Text>
                     </TouchableOpacity>
