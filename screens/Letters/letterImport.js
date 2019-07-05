@@ -4,7 +4,7 @@ import sentenceSubtitleA from './lettersGlow/sentenceA.gif';
 import sentenceSubtitleB from './lettersGlow/sentenceB.gif';
 import sentenceSubtitleD from './lettersGlow/sentenceD.gif';
 import sentenceSubtitleE from './lettersGlow/sentenceE.gif';
-import sentenceSubtitleF from './lettersGlow/sentenceE.gif';
+import sentenceSubtitleF from './lettersGlow/sentenceF.gif';
 import sentenceSubtitleG from './lettersGlow/sentenceG.gif';
 import sentenceSubtitleH from './lettersGlow/sentenceH.gif';
 import sentenceSubtitleI from './lettersGlow/sentenceI.gif';

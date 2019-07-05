@@ -10,9 +10,6 @@ import Share_icon from "./images/Icon_Share.png";
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-
-const screenWidth = Dimensions.get('screen').width;
-
 class Homescreen extends Component{
   constructor(props) {
     super (props);
