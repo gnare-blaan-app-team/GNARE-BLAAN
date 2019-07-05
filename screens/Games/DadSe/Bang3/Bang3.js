@@ -367,13 +367,13 @@ class Bang3 extends Component {
         }
         if(index == 'addBalance'){
             if(this.state.Balance == 0){
-                const value = 2;
+                const value = 6;
                 const convertValue = JSON.stringify(value);
                 this.setState({Balance:convertValue});
                 await AsyncStorage.setItem(CoinBalance, convertValue); 
             }else{
                 const convertToNumber = Number(this.state.Balance);
-                this.state.Balance = convertToNumber + 2;
+                this.state.Balance = convertToNumber + 6;
                 const convertValue = JSON.stringify(this.state.Balance);
                  await AsyncStorage.setItem(CoinBalance, convertValue); 
             }
