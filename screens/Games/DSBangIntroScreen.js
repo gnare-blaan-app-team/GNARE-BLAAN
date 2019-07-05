@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import { StyleSheet, AsyncStorage, View, Image, ImageBackground, TouchableWithoutFeedback, TouchableOpacity} from "react-native";
 
 import Video from "react-native-video";
-import EndingVideo from "../../gameImages/ending.mp4";
-
+import DSBang_Intro from '../IntroVideos/DSBang_Intro.mp4';
+import { globalStyleSheet as styles } from '../globalStyleSheet/globalStyleSheet.js';
 import { withNavigation } from 'react-navigation'; 
+
+import Skip_icon from '../images/skip.png';
 
 const RandomKey = '@MyApp:RandomKey';
 const Stage2 = '@MyApp:Stage2';
 
-class Ending extends Component {
+class DSBangIntroScreen extends Component {
     
     constructor () {
         super();
@@ -24,19 +26,17 @@ class Ending extends Component {
         };
     }
 
-    onSave = async () => { 
-        await AsyncStorage.removeItem(RandomKey);
-    }
 
     static navigationOptions = {
         header:null,
     }
 
-    handleEnd = async () => {
-        this.onSave();
-        this.props.navigation.navigate('gameMenu', { show: 'Dadse' });
-        const store = 'unlock';
-        await AsyncStorage.setItem(Stage2, store);
+    handleEnd = () => {
+        this.props.navigation.navigate('gameMenu');
+    }
+
+    gotoBangScreen = () => {
+        this.props.navigation.navigate('gameMenu');
     }
 
     render() {
@@ -47,7 +47,7 @@ class Ending extends Component {
                     <TouchableWithoutFeedback onPress={this.hideControl}>
                         <Video
                             paused={this.state.paused}
-                            source={EndingVideo}
+                            source={DSBang_Intro}
                             
                             style={{ width: "100%", height: '100%' }}
                             resizeMode="stretch"
@@ -62,6 +62,12 @@ class Ending extends Component {
                             }}
                         />
                     </TouchableWithoutFeedback>
+                </View>
+
+                <View style={styles.homeContainer}>
+                    <TouchableOpacity onPress={this.gotoBangScreen}>
+                        <Image source={Skip_icon} style={styles.home} />
+                    </TouchableOpacity>
                 </View>
             </ImageBackground>
         );
@@ -82,4 +88,4 @@ const videoStyle = StyleSheet.create({
     },
 });
 
-export default withNavigation(Ending);
+export default withNavigation(DSBangIntroScreen);

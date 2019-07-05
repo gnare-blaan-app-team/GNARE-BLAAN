@@ -8,6 +8,7 @@ import Numbers from './screens/Numbers/NumbersScreen';
 import NumberIntroScreen from './screens/Numbers/NumberIntroScreen';
 import LetterIntroScreen from './screens/Letters/LetterIntroScreen';
 import GameIntroScreen from './screens/Games/GameIntroScreen';
+import DSBangIntroScreen from './screens/Games/DSBangIntroScreen';
 
 // Flalok Stories Import
 
@@ -269,6 +270,7 @@ export default AppNavigator = createStackNavigator(
     //Games
 
     gameIntro: GameIntroScreen,
+    dsbangIntro: DSBangIntroScreen,
 
     gameMenu: GameMenu,
     dadseProceed: DadSeProceed,

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AsyncStorage, View, Image, StyleSheet, TouchableOpacity , ImageBackground } from 'react-native';
+import { AsyncStorage, View, Image, StyleSheet, TouchableOpacity, ImageBackground, Animated, Text } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
@@ -19,9 +19,14 @@ import KastifunIcon from './gameImages/kastifun_icon.png';
 import TanbuIcon from './gameImages/tanbu_icon.png';
 import NextLevel from './gameImages/nextlevel.png'; 
 import CoinBank from './gameImages/bangko.png'; 
-import Market from './gameImages/market.png'; 
-
+import Market from './gameImages/market.png';
+import blackboard from './gameImages/background.png'; 
+import kaito from './gameImages/kaitoGame.png'; 
+import kaibe from './gameImages/kaibeGame.png'; 
 import DadBatakBG from './gameImages/DadBatakBG.png';
+import close from './gameImages/x_icon.png';
+import player from './gameImages/player_icon.png';
+
 
 const backgroundList = [BG,Slide1,DadseBG,DadBatakBG]
 
@@ -41,7 +46,7 @@ class GameMenu extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            BackgroundImage: backgroundList[1],
+            BackgroundImage: backgroundList[0],
             clearBackground: 'gotoGameMenu',
             dadbatakTop: '7%',
             dadseTop:'7%',
@@ -60,6 +65,17 @@ class GameMenu extends Component {
             coinBankTop:'1000%',
             marketTop:'1000%',
             passIndex:'',
+            profile:'',
+            kaitoTop: '21%',
+            kaitoLeft: '15%',
+            kaibeTop: '24%',
+            kaibeLeft: '60%',
+            profileTop: '0%',
+            player1:'Player 1',
+            player2: 'Player 2',
+            player3: 'Player 3',
+            player4: 'Player 4',
+            player5: 'Player 5',
         }
     }
 
@@ -98,8 +114,22 @@ class GameMenu extends Component {
            }
     }
 
+    componentWillMount(){
+        this.animatedValue = new Animated.Value(0);
+    }
+
     componentDidMount(){
         const showIt = this.state.show;
+        const showProfile = this.state.profile;
+        if (showProfile == 'showProfile'){
+            Animated.spring(this.animatedValue, {
+                toValue: 1
+            }).start()
+        }else{
+            this.setState({
+                profileTop:'1000%'
+            })
+        }
         if (showIt == 'Dadse'){
             this.setState({
                 BackgroundImage: backgroundList[2],
@@ -157,7 +187,7 @@ class GameMenu extends Component {
 
     gotoDadBatak = () => {
         this.setState({
-            BackgroundImage: backgroundList[3],
+            kaibeTop: '1000%',
             dadbatakTop: '1000%',
             dadseTop: '1000%',
             tanbu1Top: '22%',
@@ -170,8 +200,10 @@ class GameMenu extends Component {
     }
 
     gotoDadSe = () => {
+        this.props.navigation.navigate('dsbangIntro');
         this.setState({
-            BackgroundImage:backgroundList[2],
+            kaitoTop:'1000%',
+            kaibeLeft:'15%',
             dadbatakTop:'1000%',
             dadseTop:'1000%',
             tanbu1Top: '22%',
@@ -225,6 +257,17 @@ class GameMenu extends Component {
         
     }
 
+    closeProfile = () => {
+        Animated.spring(this.animatedValue, {
+            toValue: .0
+        }).start();
+        setTimeout (()=>{
+            this.setState({
+                profileTop: '1000%',
+            })
+            this.state.profile = 'none';
+        },500)
+    }
     market = () => {
         // if (this.state.level == 'dadsePart'){
         //     this.props.navigation.navigate('dadseMarket');
@@ -237,9 +280,14 @@ class GameMenu extends Component {
         const itemId = navigation.getParam('show', 'NO-ID');
         const itemId2 = navigation.getParam('show3', 'NO-ID');
         const itemId3 = navigation.getParam('show3DB', 'NO-ID');
+        const getParam = navigation.getParam('openProfile', 'NO-ID');
         this.state.show = itemId;
         this.state.show3 = itemId2;
         this.state.show4 = itemId3;
+        this.state.profile = getParam;
+        const animatedStyle  = {
+            transform: [{scale:this.animatedValue}]
+        }
         return (
             <ImageBackground style={{ flex: 1, width: '100%', height: '100%', resizeMode: 'stretch' }}
                 source={BG}
@@ -416,6 +464,80 @@ class GameMenu extends Component {
                         <Image source={Market} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>
+                <View style={{ position: 'absolute', width: '30%', height: '80%', top: this.state.kaitoTop, left: this.state.kaitoLeft }}>
+                    <Image source={kaito} style={{ resizeMode: 'contain', width: '100%', height: '100%' }} />
+                </View>
+                <View style={{ position: 'absolute', width: '30%', height: '80%', top: this.state.kaibeTop, left: this.state.kaibeLeft }}>
+                    <Image source={kaibe} style={{ resizeMode: 'contain', width: '100%', height: '100%' }} />
+                </View>
+                <Animated.View style={[{
+                    position:'absolute',
+                    left:'0%',
+                    top:this.state.profileTop,
+                    width:'100%',
+                    height:'100%',
+                    backgroundColor:'rgba(0,0,0)',
+                    backgroundColor: 'rgba(0,0,0,0.4)',
+                },animatedStyle]}>
+                    <View
+                     style={{
+                        margin:'2%',
+                         padding:'5%',
+                         left:'4%'
+                     }}
+                     >  
+                         <Image source={blackboard} style={{resizeMode:'contain',width:'90%',height:'90%'}} />
+                        
+                        <View style={{ position: 'absolute', width: '10%', height: '15%', top:'10%', left: '90%'}}>
+                            <TouchableOpacity onPress={this.closeProfile}>
+                                <Image source={close} style={{ resizeMode: 'contain', width: '100%', height: '100%' }} />
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{position:'absolute',width:'30%',height:'20%',top:'30%',left:'15%'}}>
+                            <TouchableOpacity>
+                                <Image source={player} style={{resizeMode:'contain',width:'100%',height:'100%'}}/>
+                                <View style={{ position: 'absolute', top: '20%', left: '27%' }}>
+                                    <Text style={{ color: 'white', fontSize: 30 }}>{this.state.player1}</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{ position: 'absolute', width: '30%', height: '20%', top: '50%', left: '15%' }}>
+                            <TouchableOpacity>
+                                <Image source={player} style={{ resizeMode: 'contain', width: '100%', height: '100%' }} />
+                                <View style={{ position: 'absolute', top: '20%', left: '27%' }}>
+                                    <Text style={{ color: 'white', fontSize: 30 }}>{this.state.player2}</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{ position: 'absolute', width: '30%', height: '20%', top: '30%', left: '55%' }}>
+                            <TouchableOpacity>
+                                <Image source={player} style={{ resizeMode: 'contain', width: '100%', height: '100%' }} />
+                                <View style={{ position: 'absolute', top: '20%', left: '27%' }}>
+                                    <Text style={{ color: 'white', fontSize: 30 }}>{this.state.player3}</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{ position: 'absolute', width: '30%', height: '20%', top: '50%', left: '55%' }}>
+                            <TouchableOpacity>
+                                <Image source={player} style={{ resizeMode: 'contain', width: '100%', height: '100%' }} />
+                                <View style={{ position: 'absolute', top: '20%', left: '27%' }}>
+                                    <Text style={{ color: 'white', fontSize: 30 }}>{this.state.player4}</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{ position: 'absolute', width: '30%', height: '20%', top: '70%', left: '35%' }}>
+                            <TouchableOpacity>
+                                <Image source={player} style={{ resizeMode: 'contain', width: '100%', height: '100%' }} />
+                                <View style={{ position: 'absolute', top: '20%', left: '27%' }}>
+                                    <Text style={{ color: 'white', fontSize: 30 }}>{this.state.player5}</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{ position: 'absolute',top:'17%',left:'40%' }}>
+                            <Text style={{color:'white',fontSize:30}}>Select Profile</Text>
+                        </View>
+                    </View>
+                </Animated.View>
             </ImageBackground>
         )
     }
