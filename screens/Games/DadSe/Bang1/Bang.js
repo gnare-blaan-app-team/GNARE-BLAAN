@@ -355,7 +355,7 @@ class Bang extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.onLoad();
         this.minusStar();
         this.checkBalance();
@@ -834,8 +834,8 @@ class Bang extends Component {
                star3Top: '1000%',
                emptyStar3Top: '1%',
            })
-}
-        this.StarAnimation();
+        }
+
         if(index == 'minus'){
             if(storedValue1 == null){
             await AsyncStorage.setItem(Star1, wrong);
@@ -876,7 +876,9 @@ class Bang extends Component {
                 }
             }
         }
+            this.StarAnimation();
         }
+        
     }
 
     retry = async () => {
