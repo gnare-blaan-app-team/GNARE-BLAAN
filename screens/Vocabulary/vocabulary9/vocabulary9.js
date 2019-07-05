@@ -135,7 +135,7 @@ class Vocabulary9 extends Component {
     autoPlaySound = (index) => {
         this.releaseSounds();
         this.vocabSound = new Sound('vocab9_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-       this.vocabSound.play();
+            setTimeout(()=> {this.vocabSound.play()}, 200);
         });     
     }
     

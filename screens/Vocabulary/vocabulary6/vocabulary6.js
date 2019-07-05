@@ -82,7 +82,7 @@ class Vocabulary6 extends Component {
     autoPlaySound = (index) => {
         this.releaseSounds();
         this.vocabSound = new Sound('vocab6_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-       this.vocabSound.play();
+            setTimeout(()=> {this.vocabSound.play()}, 200);
         });     
     }
 
