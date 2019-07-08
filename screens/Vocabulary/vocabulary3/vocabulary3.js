@@ -204,7 +204,7 @@ class Vocabulary3 extends Component {
                 <View style={{
                     position: 'absolute',
                     top: this.state.seaTop,
-                    left: '10%',
+                    left: '11.5%',
                     justifyContent: 'center',
                 }}>
                     <TouchableOpacity onPress={() => {
@@ -378,7 +378,7 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     seaImage: {
-        width: wp('80%'),
+        width: wp('78%'),
         height: hp('31%'),
         resizeMode: 'contain',
     },
