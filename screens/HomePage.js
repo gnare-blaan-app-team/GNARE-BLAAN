@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { ImageBackground, TouchableOpacity, View, Image, Text, StatusBar, Dimensions, Animated, Easing} from 'react-native';
+import { ImageBackground, TouchableOpacity, View, Image, Text, StatusBar, AsyncStorage} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js';
 
@@ -8,27 +8,39 @@ import About_icon from "./images/Icon_About.png";
 import Like_icon from "./images/Icon_Like.png";
 import Share_icon from "./images/Icon_Share.png";
 
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import Sound from 'react-native-sound';
+
+export let sound = new Sound('blaanbg.mp3', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+        alert('failed to load the sound', error);
+        return;
+    } else {
+        try{
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
+}});
 
 class Homescreen extends Component{
-  constructor(props) {
-    super (props);
-    this.state = {
-      yValue: new Animated.Value(0),
-    }
-  }
-
-  _moveAnimation = () => {
-    Animated.timing(this.state.yValue, {
-      toValue: hp('90%'),
-      duration: 4500,
-      easing: Easing.linear,
-    }).start();
-
-  }
 
     static navigationOptions = {
         header:null,
+    }
+
+    constructor(props) {
+        super(props);
+        
+    }
+
+    componentDidMount() {
+        try{
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
     }
 
     gotoMainMenu = () => {
@@ -45,32 +57,30 @@ class Homescreen extends Component{
                        <Text style={{width:"100%", height:"100%"}}></Text>
                     </TouchableOpacity>
                     </View>
-                    <Animated.View style={[{bottom: this.state.yValue}]}>
-                      <View style={{
-                      bottom: hp('-132%'),
-                      height: hp('30%'),
-                      left: wp('1.5%'),
-                      }}>
-                          {this._moveAnimation()}
-                            <View style={styles.row}>
-                                <View style={styles.HomePageItems} >
-                                    <TouchableOpacity>
-                                        <Image style={styles.imageSizeStoryMenu} source={Like_icon} />
-                                    </TouchableOpacity>
-                                </View>
-                                <View style={styles.HomePageItems} >
-                                    <TouchableOpacity>
-                                        <Image style={styles.imageSizeStoryMenu} source={Share_icon} />
-                                    </TouchableOpacity>
-                                </View>
-                                <View style={styles.HomePageItems} >
-                                    <TouchableOpacity>
-                                        <Image style={styles.imageSizeStoryMenu} source={About_icon} />
-                                    </TouchableOpacity>
-                                </View>
+                    <View style={styles.HomePageContainer}>
+                        <View style={styles.Hometouch}>
+                            <TouchableOpacity  onPress={this.gotoMainMenu} />
+                        </View>
+                        <View style={styles.row}>
+                            <View style={styles.HomePageItems} >
+                                <TouchableOpacity>
+                                    <Image style={styles.imageSizeStoryMenu} source={Like_icon} />
+                                </TouchableOpacity>
                             </View>
-                          </View>
-                    </Animated.View>
+
+                            <View style={styles.HomePageItems} >
+                                <TouchableOpacity>
+                                    <Image style={styles.imageSizeStoryMenu} source={Share_icon} />
+                                </TouchableOpacity>
+                            </View>
+
+                            <View style={styles.HomePageItems} >
+                                <TouchableOpacity>
+                                    <Image style={styles.imageSizeStoryMenu} source={About_icon} />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </View>
             </ImageBackground>
         );
     }

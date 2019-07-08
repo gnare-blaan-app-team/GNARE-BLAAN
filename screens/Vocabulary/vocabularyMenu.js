@@ -17,11 +17,20 @@ import Kastifun_icon from './vocabularyMenuImages/Vocab10.png';
 import VocabularyItem from './vocabularyItem';
 import NextIcon from '../images/Next_Icon.png';
 import PrevIcon from '../images/Prev_Icon.png';
-
+import {sound} from '../HomePage';
 
 class vocabularyMenu extends Component {
     static navigationOptions = {
         header:null,
+    }
+
+    componentDidMount() {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+
+        }
     }
 
     constructor(props) {
@@ -35,40 +44,113 @@ class vocabularyMenu extends Component {
     }
 
     gotoMainMenu = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+            clearTimeout(this.BGSound);
+        } catch(error) {
+
+        }
         this.props.navigation.navigate('mainMenu');
     }
     vocabulary1 = () => {
+        try {
+            sound.setVolume(0);
+            sound.stop();
+        } catch(error) {
+
+        }
         this.props.navigation.push('vocabulary1');
     }
     vocabulary2 = () => {
+        try {
+            sound.setVolume(0);
+            sound.stop();
+        } catch(error) {
+
+        }
         this.props.navigation.push('vocabulary2');
     }
     vocabulary3 = () => {
+        try {
+            sound.setVolume(0);
+            sound.stop();
+        } catch(error) {
+
+        }
         this.props.navigation.push('vocabulary3');
     }
     vocabulary4 = () => {
+        try {
+            sound.setVolume(0);
+            sound.stop();
+        } catch(error) {
+
+        }
         this.props.navigation.push('vocabulary4');
     }
     vocabulary5 = () => {
+        try {
+            sound.setVolume(0);
+            sound.stop();
+        } catch(error) {
+
+        }
         this.props.navigation.push('vocabulary5');
     }
     vocabulary6 = () => {
+        try {
+            sound.setVolume(0);
+            sound.stop();
+        } catch(error) {
+
+        }
         this.props.navigation.push('vocabulary6');
     }
     vocabulary7 = () => {
+        try {
+            sound.setVolume(0);
+            sound.stop();
+        } catch(error) {
+
+        }
         this.props.navigation.push('vocabulary7');
     }
     vocabulary8 = () => {
+        try {
+            sound.setVolume(0);
+            sound.stop();
+        } catch(error) {
+
+        }
         this.props.navigation.push('vocabulary8');
     }
     vocabulary9 = () => {
+        try {
+            sound.setVolume(0);
+            sound.stop();
+        } catch(error) {
+
+        }
         this.props.navigation.push('vocabulary9');
     }
     vocabulary10 = () => {
+        try {
+            sound.setVolume(0);
+            sound.stop();
+        } catch(error) {
+
+        }
         this.props.navigation.push('vocabulary10');
     }
 
     goBack = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+
+        }
         this.props.navigation.navigate('mainMenu');
     }
     gotoNextPage = () => {

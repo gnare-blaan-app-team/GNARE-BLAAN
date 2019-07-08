@@ -97,215 +97,107 @@ const blackboardList = [
 ];
 
 const choiceList = [
-    {
-        choice: choiceSatu,
-        choicestring: 'choiceSatu',
-    },
-    {
-        choice: choiceLwe,
-        choicestring: 'choiceLwe'
-    },
-    {
-        choice: choiceTlu,
-        choicestring: 'choiceTlu'
-    },
-    {
-        choice: choiceFat,
-        choicestring: 'choiceFat'
-    },
-    {
-        choice: choiceLime,
-        choicestring: 'choiceLime'
-    },
-    {
-        choice: choiceNam,
-        choicestring: 'choiceNam'
-    },
-    {
-        choice: choiceFitu,
-        choicestring: 'choiceFitu'
-    },
-    {
-        choice: choiceWalu,
-        choicestring: 'choiceWalu'
-    },
-    {
-        choice: choiceSyem,
-        choicestring: 'choiceSyem'
-    },
-    {
-        choice: choiceSfalo,
-        choicestring: 'choiceSfalo'
-    },
-];
-
-const tranparent = [
-    transparentSatu,
-    transparentLwe,
-    transparentTlu,
-    transparentFat,
-    transparentLime,
-    transparentNam,
-    transparentFitu,
-    transparentWalu,
-    transparentSyem,
-    transparentSfalo,
-];
-const correct = [
-    correctSatu,
-    correctLwe,
-    correctTlu,
-    correctFat,
-    correctLime,
-    correctNam,
-    correctFitu,
-    correctWalu,
-    correctSyem,
-    correctSfalo,
-];
-
-const answer = [
-    'choiceSatu',
-    'choiceLwe',
-    'choiceTlu',
-    'choiceFat',
-    'choiceLime',
-    'choiceNam',
-    'choiceFitu',
-    'choiceWalu',
-    'choiceSyem',
-    'choiceSfalo',
-];
+    choiceSatu, 
+    choiceLwe, 
+    choiceTlu, 
+    choiceFat, 
+    choiceLime, 
+    choiceNam,
+    choiceFitu,
+    choiceWalu, 
+    choiceSyem, 
+    choiceSfalo]
+    ;
 
 const combine = [
     combine1 = {
         blackboard:blackboardList[0],
-        choices1:choiceList[1].choice,
-        choices2: choiceList[3].choice,
-        choices3: choiceList[4].choice,
-        choices4: choiceList[0].choice,
-        choice1String: choiceList[1].choicestring,
-        choice2String: choiceList[3].choicestring,
-        choice3String: choiceList[4].choicestring,
-        choice4String: choiceList[0].choicestring,
-        answer: 'choiceSatu',
+        choices1:choiceList[1],
+        choices2: choiceList[3],
+        choices3: choiceList[4],
+        choices4: choiceList[0],
+        answer: 671,
         description: Answer1
     },
     combine2 = {
         blackboard: blackboardList[1],
-        choices1: choiceList[4].choice,
-        choices2: choiceList[3].choice,
-        choices3: choiceList[1].choice,
-        choices4: choiceList[7].choice,
-        choice1String: choiceList[4].choicestring,
-        choice2String: choiceList[3].choicestring,
-        choice3String: choiceList[1].choicestring,
-        choice4String: choiceList[7].choicestring,
-        answer: 'choiceLwe',
+        choices1: choiceList[4],
+        choices2: choiceList[3],
+        choices3: choiceList[1],
+        choices4: choiceList[7],
+        answer: 672,
         description: Answer2
     },
     combine3 = {
         blackboard: blackboardList[2],
-        choices1: choiceList[4].choice,
-        choices2: choiceList[2].choice,
-        choices3: choiceList[1].choice,
-        choices4: choiceList[7].choice,
-        choice1String: choiceList[4].choicestring,
-        choice2String: choiceList[2].choicestring,
-        choice3String: choiceList[1].choicestring,
-        choice4String: choiceList[7].choicestring,
-        answer: 'choiceTlu',
+        choices1: choiceList[4],
+        choices2: choiceList[2],
+        choices3: choiceList[1],
+        choices4: choiceList[7],
+        answer: 673,
         description: Answer3
     },
     combine4 = {
         blackboard: blackboardList[3],
-        choices1: choiceList[2].choice,
-        choices2: choiceList[4].choice,
-        choices3: choiceList[3].choice,
-        choices4: choiceList[7].choice,
-        choice1String: choiceList[2].choicestring,
-        choice2String: choiceList[4].choicestring,
-        choice3String: choiceList[3].choicestring,
-        choice4String: choiceList[7].choicestring,
-        answer: 'choiceFat',
+        choices1: choiceList[2],
+        choices2: choiceList[4],
+        choices3: choiceList[3],
+        choices4: choiceList[7],
+        answer: 674,
         description: Answer4
     },
     combine5 = {
         blackboard: blackboardList[4],
-        choices1: choiceList[1].choice,
-        choices2: choiceList[4].choice,
-        choices3: choiceList[3].choice,
-        choices4: choiceList[7].choice,
-        choice1String: choiceList[1].choicestring,
-        choice2String: choiceList[4].choicestring,
-        choice3String: choiceList[3].choicestring,
-        choice4String: choiceList[7].choicestring,
-        answer: 'choiceLime',
+        choices1: choiceList[1],
+        choices2: choiceList[4],
+        choices3: choiceList[3],
+        choices4: choiceList[7],
+        answer: 675,
         description: Answer5
     },
     combine6 = {
         blackboard: blackboardList[5],
-        choices1: choiceList[6].choice,
-        choices2: choiceList[5].choice,
-        choices3: choiceList[2].choice,
-        choices4: choiceList[8].choice,
-        choice1String: choiceList[6].choicestring,
-        choice2String: choiceList[5].choicestring,
-        choice3String: choiceList[2].choicestring,
-        choice4String: choiceList[8].choicestring,
-        answer: 'choiceNam',
+        choices1: choiceList[6],
+        choices2: choiceList[5],
+        choices3: choiceList[2],
+        choices4: choiceList[8],
+        answer: 676,
         description: Answer6
     },
     combine7 = {
         blackboard: blackboardList[6],
-        choices1: choiceList[6].choice,
-        choices2: choiceList[7].choice,
-        choices3: choiceList[8].choice,
-        choices4: choiceList[5].choice,
-        choice1String: choiceList[6].choicestring,
-        choice2String: choiceList[7].choicestring,
-        choice3String: choiceList[8].choicestring,
-        choice4String: choiceList[5].choicestring,
-        answer: 'choiceFitu',
+        choices1: choiceList[6],
+        choices2: choiceList[7],
+        choices3: choiceList[8],
+        choices4: choiceList[5],
+        answer: 677,
         description: Answer7
     },
     combine8 = {
         blackboard: blackboardList[7],
-        choices1: choiceList[5].choice,
-        choices2: choiceList[8].choice,
-        choices3: choiceList[7].choice,
-        choices4: choiceList[9].choice,
-        choice1String: choiceList[5].choicestring,
-        choice2String: choiceList[8].choicestring,
-        choice3String: choiceList[7].choicestring,
-        choice4String: choiceList[9].choicestring,
-        answer: 'choiceWalu',
+        choices1: choiceList[5],
+        choices2: choiceList[8],
+        choices3: choiceList[7],
+        choices4: choiceList[9],
+        answer: 678,
         description: Answer8
     },
     combine9 = {
         blackboard: blackboardList[8],
-        choices1: choiceList[7].choice,
-        choices2: choiceList[2].choice,
-        choices3: choiceList[5].choice,
-        choices4: choiceList[8].choice,
-        choice1String: choiceList[7].choicestring,
-        choice2String: choiceList[2].choicestring,
-        choice3String: choiceList[5].choicestring,
-        choice4String: choiceList[8].choicestring,
-        answer: 'choiceSyem',
+        choices1: choiceList[7],
+        choices2: choiceList[2],
+        choices3: choiceList[5],
+        choices4: choiceList[8],
+        answer: 679,
         description: Answer9
     },
     combine10 = {
         blackboard: blackboardList[9],
-        choices1: choiceList[5].choice,
-        choices2: choiceList[9].choice,
-        choices3: choiceList[8].choice,
-        choices4: choiceList[6].choice,
-        choice1String: choiceList[5].choicestring,
-        choice2String: choiceList[9].choicestring,
-        choice3String: choiceList[8].choicestring,
-        choice4String: choiceList[6].choicestring,
-        answer: 'choiceSfalo',
+        choices1: choiceList[5],
+        choices2: choiceList[9],
+        choices3: choiceList[8],
+        choices4: choiceList[6],
+        answer: 680,
         description: Answer10
     }
 ];
@@ -314,7 +206,7 @@ const stageNumber = [0,1,2,3,4,5,6,7,8,9];
 
 const questionAnswered = [];
 
-const audio = ['dadse_1', 'dadse_2', 'dadse_3', 'dadse_4', 'dadse_5', 'dadse_6', 'dadse_7', 'dadse_8', 'dadse_9', 'dadse_10'];
+const audio = ['number_1','number_2','number_3','number_4','number_5','number_6','number_7','number_8','number_9','number_10'];
 
 //playsound
 //answer
@@ -326,7 +218,6 @@ class Bang2 extends Component {
     handleViewRef = ref => this.view = ref;
     wrong = () => this.view.tada();
     Animatecorrect = () => this.view.pulse();
-    StarAnimation = () => this.view.shake();
     static navigationOptions = {
         header: null,
     }
@@ -370,7 +261,7 @@ class Bang2 extends Component {
     }
 
     playSound = (index) => {
-        if (index == 'choiceSatu') {
+        if (index == 671) {
             const answerAudio = new Sound(audio[0] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
@@ -380,7 +271,7 @@ class Bang2 extends Component {
                 }
             });
         }
-        if (index == 'choiceLwe') {
+        if (index == 672) {
             const answerAudio = new Sound(audio[1] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
@@ -390,7 +281,7 @@ class Bang2 extends Component {
                 }
             });
         }
-        if (index == 'choiceTlu') {
+        if (index == 673) {
             const answerAudio = new Sound(audio[2] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
@@ -400,7 +291,7 @@ class Bang2 extends Component {
                 }
             });
         }
-        if (index == 'choiceFat') {
+        if (index == 674) {
             const answerAudio = new Sound(audio[3] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
@@ -410,7 +301,7 @@ class Bang2 extends Component {
                 }
             });
         }
-        if (index == 'choiceLime') {
+        if (index == 675) {
             const answerAudio = new Sound(audio[4] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
@@ -420,7 +311,7 @@ class Bang2 extends Component {
                 }
             });
         }
-        if (index == 'choiceNam') {
+        if (index == 676) {
             const answerAudio = new Sound(audio[5] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
@@ -430,7 +321,7 @@ class Bang2 extends Component {
                 }
             });
         }
-        if (index == 'choiceFitu') {
+        if (index == 677) {
             const answerAudio = new Sound(audio[6] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
@@ -440,7 +331,7 @@ class Bang2 extends Component {
                 }
             });
         }
-        if (index == 'choiceWalu') {
+        if (index == 678) {
             const answerAudio = new Sound(audio[7] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
@@ -450,7 +341,7 @@ class Bang2 extends Component {
                 }
             });
         }
-        if (index == 'choiceSyem') {
+        if (index == 679) {
             const answerAudio = new Sound(audio[8] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
@@ -460,7 +351,7 @@ class Bang2 extends Component {
                 }
             });
         }
-        if (index == 'choiceSfalo') {
+        if (index == 680) {
             const answerAudio = new Sound(audio[9] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
@@ -514,10 +405,9 @@ class Bang2 extends Component {
         stageNumber.splice(randomizer,1);
         var random = use;
         if (Reach5 == 5){
-            this.props.navigation.push('gameMenu', { show: 'Dadse', show3:'Dadse2' });
+            this.props.navigation.push('gameMenu', { show: 'Dadse' });
             await AsyncStorage.removeItem(QuestionDone);
             await AsyncStorage.setItem(Stage3, 'unlock');
-            
        } 
             if(storedValue == null){
                 const store = JSON.stringify(random);
@@ -612,7 +502,7 @@ class Bang2 extends Component {
                                choice4Top: '75%'
                            });
                        }, 1300)
-                   }, 3000)
+                   }, 6500)
                }, 2000)
            }else{
                this.answer(this.state.getChoice1Name);
@@ -662,7 +552,7 @@ class Bang2 extends Component {
                                 choice4Top: '75%'
                             });
                         }, 1300)
-                    }, 3000)
+                    }, 6500)
                 }, 2000)
             } else {
                 this.wrong();
@@ -712,7 +602,7 @@ class Bang2 extends Component {
                                 choice4Top: '75%'
                             });
                         }, 1300)
-                    }, 3000)
+                    }, 6500)
                 }, 2000)
             } else {
                 this.wrong();
@@ -762,7 +652,7 @@ class Bang2 extends Component {
                                 choice4Top: '75%'
                             });
                         }, 1300)
-                    }, 3000)
+                    }, 6500)
                 }, 2000)
             } else {
                 this.wrong();
@@ -784,19 +674,115 @@ class Bang2 extends Component {
     }
 
     answer = (index) => {
-        for (var a = 0; a <= answer.length; a++) {
-            if (index == answer[a]) {
-                const get = a;
+        if (index == 671) {
+            this.setState({
+                answerImage: transparentSatu,
+                answerTop: '50%',
+            })
+            setTimeout(() => {
                 this.setState({
-                    answerImage: tranparent[get],
-                    answerTop: '49%',
+                    answerTop: '1000%',
                 })
-                setTimeout(() => {
-                    this.setState({
-                        answerTop: '1000%',
-                    })
-                }, 1000)
-            }
+            }, 1000)
+        }
+        if(index == 672){
+            this.setState({
+                answerImage:transparentLwe,
+                answerTop:'50%',
+            })
+            setTimeout(()=>{
+                this.setState({
+                    answerTop: '1000%',
+                })
+            },1000)
+        }
+        if (index == 673) {
+            this.setState({
+                answerImage: transparentTlu,
+                 answerTop:'50%',
+            })
+            setTimeout(() => {
+                this.setState({
+                    answerTop: '1000%',
+                })
+            }, 1000)
+        }
+        if (index == 674) {
+            this.setState({
+                answerImage: transparentFat,
+                 answerTop:'50%',
+            })
+            setTimeout(() => {
+                this.setState({
+                    answerTop: '1000%',
+                })
+            }, 1000)
+        }
+        if (index == 675) {
+            this.setState({
+                answerImage: transparentLime,
+                 answerTop:'50%',
+            })
+            setTimeout(() => {
+                this.setState({
+                    answerTop: '1000%',
+                })
+            }, 1000)
+        }
+        if (index == 676) {
+            this.setState({
+                answerImage: transparentNam,
+                 answerTop:'50%',
+            })
+            setTimeout(() => {
+                this.setState({
+                    answerTop: '1000%',
+                })
+            }, 1000)
+        }
+        if (index == 677) {
+            this.setState({
+                answerImage: transparentFitu,
+                 answerTop:'50%',
+            })
+            setTimeout(() => {
+                this.setState({
+                    answerTop: '1000%',
+                })
+            }, 1000)
+        }
+        if (index == 678) {
+            this.setState({
+                answerImage: transparentWalu,
+                 answerTop:'50%',
+            })
+            setTimeout(() => {
+                this.setState({
+                    answerTop: '1000%',
+                })
+            }, 1000)
+        }
+        if (index == 679) {
+            this.setState({
+                answerImage: transparentSyem,
+                 answerTop:'50%',
+            })
+            setTimeout(() => {
+                this.setState({
+                    answerTop: '1000%',
+                })
+            }, 1000)
+        }
+        if (index == 680) {
+            this.setState({
+                answerImage: transparentSfalo,
+                 answerTop:'50%',
+            })
+            setTimeout(() => {
+                this.setState({
+                    answerTop: '1000%',
+                })
+            }, 1000)
         }
     }
 
@@ -806,19 +792,65 @@ class Bang2 extends Component {
         questionAnswered.push(1);
         const value = JSON.stringify(questionAnswered.length);
         await AsyncStorage.setItem(QuestionDone, value);
-        for (var a = 0; a <= answer.length; a++) {
-            if (index == answer[a]) {
-                const get = a;
-                this.setState({
-                    answerImage: correct[get],
-                    answerTop: '49%',
-                })
-                setTimeout(() => {
-                    this.setState({
-                        answerTop: '1000%',
-                    })
-                }, 1000)
-            }
+          if(index == 671){
+            this.setState({
+                answerImage: correctSatu,
+                answerTop:'50%',
+            })
+        }
+        if(index == 672){
+            this.setState({
+                answerImage: correctLwe,
+                  answerTop:'50%',
+            })
+        }
+        if (index == 673) {
+            this.setState({
+                answerImage: correctTlu,
+                  answerTop:'50%',
+            })
+        }
+        if (index == 674) {
+            this.setState({
+                answerImage: correctFat,
+                  answerTop:'50%',
+            })
+        }
+        if (index == 675 ){
+            this.setState({
+                answerImage: correctLime,
+                  answerTop:'50%',
+            })
+        }
+        if (index == 676) {
+            this.setState({
+                answerImage: correctNam,
+                  answerTop:'50%',
+            })
+        }
+        if (index == 677) {
+            this.setState({
+                answerImage: correctFitu,
+                  answerTop:'50%',
+            })
+        }
+        if (index == 678) {
+            this.setState({
+                answerImage: correctWalu,
+                  answerTop:'50%',
+            })
+        }
+        if (index == 679) {
+            this.setState({
+                answerImage: correctSyem,
+                  answerTop:'50%',
+            })
+        }
+        if (index == 680) {
+            this.setState({
+                answerImage: correctSfalo,
+                  answerTop:'50%',
+            })
         }
     }
 
@@ -847,7 +879,6 @@ class Bang2 extends Component {
         
 
 }
-        this.StarAnimation();
         if(index == 'minus'){
             if(storedValue1 == null){
             await AsyncStorage.setItem(Star1, wrong);
@@ -918,15 +949,15 @@ class Bang2 extends Component {
 
     render() {
         const show = combine[this.state.randomQuestion];
-        const convert1 = show.choice1String;
+        const convert1 = JSON.stringify(show.choices1);
         this.state.getChoice1Name = convert1;
-        const convert2 = show.choice2String;
+        const convert2 = JSON.stringify(show.choices2);
         this.state.getChoice2Name = convert2;
-        const convert3 = show.choice3String;
+         const convert3 = JSON.stringify(show.choices3);
         this.state.getChoice3Name = convert3;
-        const convert4 = show.choice4String;
+          const convert4 = JSON.stringify(show.choices4);
         this.state.getChoice4Name = convert4;
-        const answer = show.answer;
+        const answer = JSON.stringify(show.answer);
         this.state.answer = answer;
         return (
             <ImageBackground
@@ -1064,14 +1095,14 @@ class Bang2 extends Component {
                         resizeMode: 'contain',
                     }}></Image>
                 </Animatable.View>
-                <Animatable.View ref={this.handleViewRef} style={{ position: 'absolute', left: '25%', width: '20%', height: '12%', top: '2%', }}>
-                    <Image source={stars} style={{ resizeMode: 'contain', position: 'absolute', top: this.state.star1Top }} />
-                    <Image source={stars} style={{ resizeMode: 'contain', position: 'absolute', left: '34%', top: this.state.star2Top }} />
-                    <Image source={stars} style={{ resizeMode: 'contain', position: 'absolute', left: '69%', top: this.state.star3Top }} />
+               <View style={{position:'absolute',width:'50%',height:'50%',top:'2%'}}>
+                    <Image source={stars} style={{resizeMode:'contain',position:'absolute',top:this.state.star1Top}}/>
+                    <Image source={stars} style={{ resizeMode: 'contain', position: 'absolute', left: '14%', top: this.state.star2Top}}/>
+                    <Image source={stars} style={{ resizeMode: 'contain', position: 'absolute', left: '28%', top: this.state.star3Top }} />
                     <Image source={emptyStars} style={{ resizeMode: 'contain', position: 'absolute', top: this.state.emptyStar1Top }} />
-                    <Image source={emptyStars} style={{ resizeMode: 'contain', position: 'absolute', left: '34%', top: this.state.emptyStar2Top }} />
-                    <Image source={emptyStars} style={{ resizeMode: 'contain', position: 'absolute', left: '69%', top: this.state.emptyStar3Top }} />
-                </Animatable.View>
+                    <Image source={emptyStars} style={{ resizeMode: 'contain', position: 'absolute', left: '14%', top: this.state.emptyStar2Top }} />
+                    <Image source={emptyStars} style={{ resizeMode: 'contain', position: 'absolute', left: '28%', top: this.state.emptyStar3Top }} />
+               </View>
                <View style={{
                     position:'absolute',
                     width:'30%',
@@ -1111,21 +1142,21 @@ class Bang2 extends Component {
                             source={LamwaIcon} />
                     </TouchableOpacity>
                 </View>
-                 <View style={{
+                <View style={{
                     position:'absolute',
-                    width:'17%',
-                    height:'24%',
+                    width:'25%',
+                    height:'20%',
                     top:'75%',
-                    left:'1%',
+                    left:'-3%'
                 }}> 
                     <Image source={Coins} style={{width:'100%',height:'100%',resizeMode:'contain'}}/>
                     <View style={{
                         position:'absolute',
-                        top:'20%',
-                        left:'40%',
+                        top:'12%',
+                        left:'45%',
                     }}>
                         <Text style={{
-                            fontSize:20,
+                            fontSize:23,
                             color:'#ffea00'
                         }}>{this.state.Balance}.00</Text>
                     </View>

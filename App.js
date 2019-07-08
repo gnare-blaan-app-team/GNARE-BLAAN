@@ -7,8 +7,6 @@ import Numbers from './screens/Numbers/NumbersScreen';
 
 import NumberIntroScreen from './screens/Numbers/NumberIntroScreen';
 import LetterIntroScreen from './screens/Letters/LetterIntroScreen';
-import GameIntroScreen from './screens/Games/GameIntroScreen';
-import DSBangIntroScreen from './screens/Games/DSBangIntroScreen';
 
 // Flalok Stories Import
 
@@ -77,8 +75,57 @@ import DadSeBankQuestion from './screens/Games/DadSe/DadSeBankQuestion';
 import DadSeEnd from './screens/Games/DadSe/DadSeEnd';
 
 import DadBatak from './screens/Games/dadbatak/DadBatak';
+import DadBatakTanbu1 from './screens/Games/dadbatak/Tanbu1';
+import DadBatakTanbu2 from './screens/Games/dadbatak/Tanbu2';
+import DadBatakTanbu3 from './screens/Games/dadbatak/Tanbu3';
 import DadBatakProceed from './screens/Games/dadbatak/DadBatakProceed';
 import DadBatakMarket from './screens/Games/dadbatak/DadBatakMarket';
+
+//Dad Batak - Bang 1
+import Bang1Question1 from './screens/Games/dadbatak/Bang1/Bang1Question1';
+import Bang1Question2 from './screens/Games/dadbatak/Bang1/Bang1Question2';
+import Bang1Question3 from './screens/Games/dadbatak/Bang1/Bang1Question3';
+import Bang1Question4 from './screens/Games/dadbatak/Bang1/Bang1Question4';
+import Bang1Question5 from './screens/Games/dadbatak/Bang1/Bang1Question5';
+import Bang1Question6 from './screens/Games/dadbatak/Bang1/Bang1Question6';
+import Bang1Question7 from './screens/Games/dadbatak/Bang1/Bang1Question7';
+import Bang1Question8 from './screens/Games/dadbatak/Bang1/Bang1Question8';
+import Bang1Question9 from './screens/Games/dadbatak/Bang1/Bang1Question9';
+import Bang1Question10 from './screens/Games/dadbatak/Bang1/Bang1Question10';
+import Bang1Question11 from './screens/Games/dadbatak/Bang1/Bang1Question11';
+import Bang1Question12 from './screens/Games/dadbatak/Bang1/Bang1Question12';
+
+//Dad Batak - Bang 2
+import Bang2Question1 from './screens/Games/dadbatak/Bang2/Bang2Question1';
+import Bang2Question2 from './screens/Games/dadbatak/Bang2/Bang2Question2';
+import Bang2Question3 from './screens/Games/dadbatak/Bang2/Bang2Question3';
+import Bang2Question4 from './screens/Games/dadbatak/Bang2/Bang2Question4';
+import Bang2Question5 from './screens/Games/dadbatak/Bang2/Bang2Question5';
+import Bang2Question6 from './screens/Games/dadbatak/Bang2/Bang2Question6';
+import Bang2Question7 from './screens/Games/dadbatak/Bang2/Bang2Question7';
+import Bang2Question8 from './screens/Games/dadbatak/Bang2/Bang2Question8';
+import Bang2Question9 from './screens/Games/dadbatak/Bang2/Bang2Question9';
+import Bang2Question10 from './screens/Games/dadbatak/Bang2/Bang2Question10';
+import Bang2Question11 from './screens/Games/dadbatak/Bang2/Bang2Question11';
+import Bang2Question12 from './screens/Games/dadbatak/Bang2/Bang2Question12';
+import Bang2Question13 from './screens/Games/dadbatak/Bang2/Bang2Question13';
+import Bang2Question14 from './screens/Games/dadbatak/Bang2/Bang2Question14';
+import Bang2Question15 from './screens/Games/dadbatak/Bang2/Bang2Question15';
+import Bang2Question16 from './screens/Games/dadbatak/Bang2/Bang2Question16';
+
+//Dad Batak - Bang 3
+import Bang3Question1 from './screens/Games/dadbatak/Bang3/Bang3Question1';
+import Bang3Question2 from './screens/Games/dadbatak/Bang3/Bang3Question2';
+import Bang3Question3 from './screens/Games/dadbatak/Bang3/Bang3Question3';
+import Bang3Question4 from './screens/Games/dadbatak/Bang3/Bang3Question4';
+import Bang3Question5 from './screens/Games/dadbatak/Bang3/Bang3Question5';
+import Bang3Question6 from './screens/Games/dadbatak/Bang3/Bang3Question6';
+import Bang3Question7 from './screens/Games/dadbatak/Bang3/Bang3Question7';
+import Bang3Question8 from './screens/Games/dadbatak/Bang3/Bang3Question8';
+import Bang3Question9 from './screens/Games/dadbatak/Bang3/Bang3Question9';
+import Bang3Question10 from './screens/Games/dadbatak/Bang3/Bang3Question10';
+import Bang3Question11 from './screens/Games/dadbatak/Bang3/Bang3Question11';
+import Bang3Question12 from './screens/Games/dadbatak/Bang3/Bang3Question12';
 
 //Dad Se - Bang 1
 import Bang from './screens/Games/DadSe/Bang1/Bang';
@@ -94,11 +141,6 @@ import Bang3 from './screens/Games/DadSe/Bang3/Bang3';
 //Dad Batak - Bang 4
 import Bang4 from './screens/Games/dadbatak/Bang1/Bang4';
 
-//Dad Batak - Bang 5
-import Bang5 from './screens/Games/dadbatak/Bang2/Bang5';
-
-//Dad Batak - Bang 5
-import Bang6 from './screens/Games/dadbatak/Bang3/Bang6';
 
 
 //Letter Tracing
@@ -147,6 +189,10 @@ import ThreeHundredTracing from './screens/Numbers/NumberTracing/300Tracing';
 import FourHundredTracing from './screens/Numbers/NumberTracing/400Tracing';
 import FiveHundredTracing from './screens/Numbers/NumberTracing/500Tracing';
 import ThousandTracing from './screens/Numbers/NumberTracing/1000Tracing';
+
+
+import Try from './try';
+
 
 useScreens();
 
@@ -268,10 +314,6 @@ export default AppNavigator = createStackNavigator(
     kastifun2Screen: Kastifun2_Screen,
 
     //Games
-
-    gameIntro: GameIntroScreen,
-    dsbangIntro: DSBangIntroScreen,
-
     gameMenu: GameMenu,
     dadseProceed: DadSeProceed,
     dadseMarket: DadSeMarket,
@@ -285,16 +327,56 @@ export default AppNavigator = createStackNavigator(
 
     //Dad Batak - Bang 1
     bang4: Bang4,
+    db_bang1Question1: Bang1Question1,
+    db_bang1Question2: Bang1Question2,
+    db_bang1Question3: Bang1Question3,
+    db_bang1Question4: Bang1Question4,
+    db_bang1Question5: Bang1Question5,
+    db_bang1Question6: Bang1Question6,
+    db_bang1Question7: Bang1Question7,
+    db_bang1Question8: Bang1Question8,
+    db_bang1Question9: Bang1Question9,
+    db_bang1Question10: Bang1Question10,
+    db_bang1Question11: Bang1Question11,
+    db_bang1Question12: Bang1Question12,
 
     //Dad Batak - Bang 2
-    bang5: Bang5,
+    db_bang2Question1: Bang2Question1,
+    db_bang2Question2: Bang2Question2,
+    db_bang2Question3: Bang2Question3,
+    db_bang2Question4: Bang2Question4,
+    db_bang2Question5: Bang2Question5,
+    db_bang2Question6: Bang2Question6,
+    db_bang2Question7: Bang2Question7,
+    db_bang2Question8: Bang2Question8,
+    db_bang2Question9: Bang2Question9,
+    db_bang2Question10: Bang2Question10,
+    db_bang2Question11: Bang2Question11,
+    db_bang2Question12: Bang2Question12,
+    db_bang2Question13: Bang2Question13,
+    db_bang2Question14: Bang2Question14,
+    db_bang2Question15: Bang2Question15,
+    db_bang2Question16: Bang2Question16,
 
-     //Dad Batak - Bang 3
-    bang6: Bang6,
+    //Dad Batak - Bang 3
+    db_bang3Question1: Bang3Question1,
+    db_bang3Question2: Bang3Question2,
+    db_bang3Question3: Bang3Question3,
+    db_bang3Question4: Bang3Question4,
+    db_bang3Question5: Bang3Question5,
+    db_bang3Question6: Bang3Question6,
+    db_bang3Question7: Bang3Question7,
+    db_bang3Question8: Bang3Question8,
+    db_bang3Question9: Bang3Question9,
+    db_bang3Question10: Bang3Question10,
+    db_bang3Question11: Bang3Question11,
+    db_bang3Question12: Bang3Question12,
 
     //Dad Se - Bang 1
     bang: Bang,
     ending: EndingVideo,
+  
+  
 
     //Dad Se - Bang 2
     bang2: Bang2,
@@ -305,10 +387,10 @@ export default AppNavigator = createStackNavigator(
   },
 {
 
-  initialRouteName:"home",
+    initialRouteName: "home",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"
-}
+  }
 }
 );

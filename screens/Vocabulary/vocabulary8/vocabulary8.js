@@ -63,7 +63,6 @@ class Vocabulary8 extends Component {
         }
          // Sounds
          this.vocabSound = null;
-         this.timeoutSound = null;
     }
 
     changeBackground = (index) => {
@@ -87,13 +86,10 @@ class Vocabulary8 extends Component {
     
     autoPlaySound = (index) => {
         this.releaseSounds();
-        this.timeoutSound = setTimeout(()=> {
-          this.vocabSound = new Sound('vocab8_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-            this.vocabSound.play();
-          });  
-        }, 1000);   
-      }
-    
+        this.vocabSound = new Sound('vocab8_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+       this.vocabSound.play();
+        });     
+    }
     
     releaseSounds = ()=> {
         if(this.vocabSound != null) {
@@ -105,9 +101,6 @@ class Vocabulary8 extends Component {
         if(this.vocabSound != null) {
             this.vocabSound.release();
         }
-        if(this.timeoutSound != null){
-            clearTimeout(this.timeoutSound);
-          }
         this.stopSounds();
         this.vocabSound = new Sound('vocab8_' + soundList[this.state.clickSoundIndex] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
         if (error) {
@@ -119,10 +112,8 @@ class Vocabulary8 extends Component {
     }
     
     stopSounds = () => {
-        if (this.vocabSound != null){
-          this.vocabSound.stop();
-        }
-      }
+        this.vocabSound.stop();
+    }
     
     gotoMainMenu = () =>{
         const clear = this.state.clearBackground;
@@ -153,9 +144,6 @@ class Vocabulary8 extends Component {
                 speakerTop: '1000%',
             })
         }
-        if(this.timeoutSound != null){
-            clearTimeout(this.timeoutSound);
-          }
     }
 
     componentDidMount() {

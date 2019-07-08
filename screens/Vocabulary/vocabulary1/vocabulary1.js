@@ -53,7 +53,6 @@ class Vocabulary1 extends Component {
 
     // Sounds
     this.vocabSound = null;
-    this.timeoutSound = null;
   }
 
 
@@ -75,11 +74,9 @@ class Vocabulary1 extends Component {
 
   autoPlaySound = (index) => {
     this.releaseSounds();
-    this.timeoutSound = setTimeout(()=> {
-      this.vocabSound = new Sound('vocab1_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-        this.vocabSound.play();
-      });  
-    }, 1000);   
+    this.vocabSound = new Sound('vocab1_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+   this.vocabSound.play();
+    });     
   }
 
   releaseSounds = ()=> {
@@ -92,9 +89,6 @@ class Vocabulary1 extends Component {
     if(this.vocabSound != null) {
         this.vocabSound.release();
     }
-    if(this.timeoutSound != null){
-      clearTimeout(this.timeoutSound);
-    }
     this.stopSounds();
     this.vocabSound = new Sound('vocab1_' + soundList[this.state.clickSoundIndex] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
     if (error) {
@@ -106,9 +100,7 @@ class Vocabulary1 extends Component {
   }
 
   stopSounds = () => {
-    if (this.vocabSound != null){
-      this.vocabSound.stop();
-    }
+    this.vocabSound.stop();
   }
 
   gotoMainMenu = () =>{
@@ -120,6 +112,7 @@ class Vocabulary1 extends Component {
   }
 
   goBack = () =>{
+
     const clear = this.state.clearBackground;
     if (clear == 'gotoVocab1Menu'){
       this.props.navigation.navigate('vocabularyMenu')
@@ -137,9 +130,6 @@ class Vocabulary1 extends Component {
         clearBackground:'gotoVocab1Menu',
         speakerTop: '1000%',
       })
-    }
-    if(this.timeoutSound != null){
-      clearTimeout(this.timeoutSound);
     }
   }
 

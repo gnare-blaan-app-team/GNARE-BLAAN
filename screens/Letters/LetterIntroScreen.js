@@ -10,6 +10,7 @@ import Skip_icon from '../images/skip.png';
 import Replay_icon from '../images/replay.png';
 
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
+import {sound} from '../HomePage';
 
 class LetterIntroScreen extends Component {
     static navigationOptions = {
@@ -25,6 +26,15 @@ class LetterIntroScreen extends Component {
             volume: 1,
             duration: 0,
             muted: false,
+        }
+    }
+
+    componentDidMount(){
+        try {
+            sound.setVolume(0);
+            sound.play();
+        } catch(error) {
+            
         }
     }
 

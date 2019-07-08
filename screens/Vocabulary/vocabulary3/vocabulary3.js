@@ -59,10 +59,6 @@ class Vocabulary3 extends Component {
             speakerTop:'1000%',
             clickSoundIndex:'',
         }
-
-        //Sounds
-        this.vocabSound = null;
-        this.timeoutSound = null;
     }
 
   
@@ -97,16 +93,10 @@ class Vocabulary3 extends Component {
     goBack = () => {
         const clear = this.state.clearBackground;
         if (clear == 'gotoVocab3Menu') {
-            if (this.timeoutSound != null){
-                clearTimeout(this.timeoutSound);
-            }
             this.props.navigation.navigate('vocabularyMenu')
         }
         if (clear == 'clear') {
             this.stopSounds();
-            if (this.timeoutSound != null){
-                clearTimeout(this.timeoutSound);
-            }
             this.setState({
                 BackgroundImage: Vocab3BG,
                 clearBackground: 'gotoVocab3Menu',
@@ -123,18 +113,13 @@ class Vocabulary3 extends Component {
                 speakerTop:'1000%',
             })
         }
-        if (this.timeoutSound != null){
-            clearTimeout(this.timeoutSound);
-        }
     }
 
     autoPlaySound = (index) => {
         this.releaseSounds();
-        this.timeoutSound = setTimeout(()=> {
-          this.vocabSound = new Sound('vocab3_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-            this.vocabSound.play();
-          });  
-        }, 1000);   
+        this.vocabSound = new Sound('vocab3_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+       this.vocabSound.play();
+        });     
       }
     
       releaseSounds = ()=> {
@@ -144,17 +129,12 @@ class Vocabulary3 extends Component {
       }
       
       stopSounds = () => {
-        if (this.vocabSound != null){
-          this.vocabSound.stop();
-        }
+        this.vocabSound.stop();
       }
     
       playVocabSound = () => {
         if(this.vocabSound != null) {
             this.vocabSound.release();
-        }
-        if(this.timeoutSound != null){
-            clearTimeout(this.timeoutSound);
         }
         this.stopSounds();
         this.vocabSound = new Sound('vocab3_' + soundList[this.state.clickSoundIndex] + '.mp3', Sound.MAIN_BUNDLE, (error) => {

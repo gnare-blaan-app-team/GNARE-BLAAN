@@ -8,7 +8,7 @@ import MenuItem from './NumbersMenu';
 import Sound from 'react-native-sound';
 
 import { numberBGList, sentenceList, soundList,
-        numberGlowList } from './numbersImport';
+        numberGlowList, glowImageList } from './numbersImport';
   
 import GoBackIcon from '../images/Back_icon.png';
 import HomeIcon from '../images/Home_icon.png';
@@ -31,6 +31,7 @@ import black from '../images/black.png';
     // Letter Background Imports
 
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
+import {sound} from '../HomePage';
 
     // Hiding Components
 const hideLeft = '-1000%';
@@ -77,7 +78,7 @@ class NumberScreen extends Component {
             indexSound: 0,
             sentenceScript: sentenceList[0],
 
-            glow: Glow_A,
+            glow: glowImageList[0],
             hideLetterBG: '0%',
             prevBG: imageMainBG,
         },
@@ -87,6 +88,15 @@ class NumberScreen extends Component {
         this.sentenceNumberSound = null;
         this.objectGlow = null;
         this.timeoutSound = null;
+    }
+
+    componentDidMount() {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
     }
 
     changeBackground = (imageBG, soundPlay) => {
@@ -100,6 +110,21 @@ class NumberScreen extends Component {
                         sentenceHide: imageBG == imageMainBG ? hideRight : showSentence,
                         pencilHide: imageBG == imageMainBG ? hideLeft : showPencil,
                         indexSound: soundPlay, });
+        if(imageBG != imageMainBG) {
+            try {
+                sound.setVolume(0);
+                sound.stop();
+            } catch(error) {
+                
+            }
+        } else {
+            try {
+                sound.setVolume(0.2);
+                sound.play();
+            } catch(error) {
+                
+            }
+        }
         this.autoPlaySound();
     }
 
@@ -133,13 +158,17 @@ class NumberScreen extends Component {
     }
 
     handleBackPress = () => {
-        if(this.timeoutSound != null) {
-            clearTimeout(this.timeoutSound);
+        try {
+            if(this.timeoutSound != null) {
+                clearTimeout(this.timeoutSound);
+            }
+            this.stopAutoPlaySound();
+            this.releaseSounds();
+            this.numberSound = null;
+            this.sentenceNumberSound = null;
+        } catch(error) {
+
         }
-        this.stopAutoPlaySound();
-        this.releaseSounds();
-        this.numberSound = null;
-        this.sentenceNumberSound = null;
     }
 
     playNumberSound = () => {
@@ -149,10 +178,14 @@ class NumberScreen extends Component {
                 alert('failed to load the sound', error);
                 return;
             } else {
-                this.numberSound.play();
-                this.setState({glow: Glow_A});
+                try{
+                    this.numberSound.play();
+                } catch(error) {
+                    
+                }
+                this.setState({glow: glowImageList[this.state.indexSound]});
                 this.setState({glow: numberGlowList[this.state.indexSound]});
-            }});   
+            }});
     }
 
 
@@ -163,108 +196,149 @@ class NumberScreen extends Component {
                 alert('failed to load the sound', error);
                 return;
             } else {
-                this.sentenceNumberSound.play();
-                this.setState({sentenceScript: Glow_A});
+                try {
+                    this.sentenceNumberSound.play();
+                } catch(error) {
+                    
+                }
+                this.setState({sentenceScript: glowImageList[this.state.indexSound]});
                 this.setState({sentenceScript: sentenceList[this.state.indexSound]});
-                this.setState({glow: Glow_A});
+                this.setState({glow: glowImageList[this.state.indexSound]});
                 this.setState({glow: numberGlowList[this.state.indexSound]});
             }});   
     }
 
     letterTracing = () => {
-        this.handleBackPress();
-        this.props.navigation.push('tracing' + soundList[this.state.indexSound]);
+        try {
+            this.handleBackPress();
+            this.props.navigation.push('tracing' + soundList[this.state.indexSound]);
+        } catch(error) {
+
+        }
     }
 
 
     gotoMainMenu = () => {
         this.handleBackPress();
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         this.props.navigation.navigate('mainMenu');
     }
 
     goNext = () => {
-        let letterNum = this.state.indexSound;
-        let nextPage = letterNum + 1;
-        let nextBG = numberBGList[nextPage];
-        this.stopAutoPlaySound();
+        try {
+            let letterNum = this.state.indexSound;
+            let nextPage = letterNum + 1;
+            let nextBG = numberBGList[nextPage];
+            this.stopAutoPlaySound();
 
-        if(nextPage < 24) {
-            this.changeBackground(nextBG, nextPage);
-        } else {
-            this.changeBackground(numberBGList[0], 0);
+            if(nextPage < 24) {
+                this.changeBackground(nextBG, nextPage);
+            } else {
+                this.changeBackground(numberBGList[0], 0);
+            }
+        } catch(error) {
+
         }
     }
 
     releaseSounds = () => {
-        if(this.numberSound != null) {
-            this.numberSound.release();
-        }
-        if(this.sentenceNumberSound != null) {
-            this.sentenceNumberSound.release();
+        try {
+            if(this.numberSound != null) {
+                this.numberSound.release();
+            }
+            if(this.sentenceNumberSound != null) {
+                this.sentenceNumberSound.release();
+            }
+        } catch(error) {
+            //alert('Something went wrong...');
         }
     }
 
     stopSounds = () => {
-        if(this.numberSound != null) {
-            this.numberSound.setVolume(0.2);
-            this.numberSound.pause();
-        }
-        if(this.sentenceNumberSound != null) {
-            this.sentenceNumberSound.setVolume(0.2);
-            this.sentenceNumberSound.pause();
+        try {
+            if(this.numberSound != null) {
+                this.numberSound.setVolume(0.2);
+                this.numberSound.pause();
+            }
+            if(this.sentenceNumberSound != null) {
+                this.sentenceNumberSound.setVolume(0.2);
+                this.sentenceNumberSound.pause();
+            }
+        } catch(error) {
+            //alert('Something went wrong...');
         }
     }
 
     goPrev = () => {
-        const letterNum = this.state.indexSound;
-        const prevPage = letterNum - 1;
-        this.stopAutoPlaySound();
-        const prevBG = numberBGList[prevPage];
-        this.setState({prevSound: letterNum});
+        try {
+            const letterNum = this.state.indexSound;
+            const prevPage = letterNum - 1;
+            this.stopAutoPlaySound();
+            const prevBG = numberBGList[prevPage];
+            this.setState({prevSound: letterNum});
 
-        if(prevPage > 0) {
-            this.changeBackground(prevBG, prevPage);
-        } else {
-            this.changeBackground(numberBGList[0], 0);
+            if(prevPage > 0) {
+                this.changeBackground(prevBG, prevPage);
+            } else {
+                this.changeBackground(numberBGList[0], 0);
+            }
+        } catch(error) {
+           // alert('Something went wrong...');
         }
     }
 
     goBack = () => {
-        if(this.state.prevBG == sentenceBG) {
-            if(this.timeoutSound != null) {
-                clearTimeout(this.timeoutSound);
-            }
-            this.stopAutoPlaySound();
-            this.setState({menuLetterHide: '-1000%', 
-                    imageBackground: numberBGList[this.state.indexSound],
-                    prevHide: numberBGList[this.state.indexSound] == numberBGList[0] ? hideLeft : showPrev,
-                    pencilHide: showPencil,
-                    glowHide: showGlow,
-                    sentenceScript: Glow_A,
-                    speakerHide: showSpeaker,
-                    sentenceHide: showSentence,
-                    nextHide: showNext,
-                    showSubtitle: 0,
-                    sentenceObjectHide: hideLeft,
-                    speaker2Hide: hideLeft, prevBG: numberBGList[this.state.indexSound]});
-        } else {
-            if(this.state.imageBackground == imageMainBG) {
-                this.handleBackPress();
-                this.props.navigation.navigate('mainMenu');
-            } else {
-                this.stopAutoPlaySound();
-                this.setState({menuLetterHide: '22%', imageBackground: imageMainBG,
-                            numberMainBG: imageMainBG,
-                            prevHide: hideLeft,
-                            pencilHide: hideLeft,
-                            glowHide: hideLeft,
-                            speakerHide: hideLeft,
-                            sentenceHide: hideRight,
-                            nextHide: hideRight,
-                            speaker2Hide: hideLeft});
+        try {
+            if(this.state.prevBG == sentenceBG) {
+                if(this.timeoutSound != null) {
+                    clearTimeout(this.timeoutSound);
                 }
+                this.stopAutoPlaySound();
+                this.setState({menuLetterHide: '-1000%', 
+                        imageBackground: numberBGList[this.state.indexSound],
+                        prevHide: numberBGList[this.state.indexSound] == numberBGList[0] ? hideLeft : showPrev,
+                        pencilHide: showPencil,
+                        glowHide: showGlow,
+                        sentenceScript: Glow_A,
+                        speakerHide: showSpeaker,
+                        sentenceHide: showSentence,
+                        nextHide: showNext,
+                        showSubtitle: 0,
+                        sentenceObjectHide: hideLeft,
+                        speaker2Hide: hideLeft, prevBG: numberBGList[this.state.indexSound]});
+            } else {
+                if(this.state.imageBackground == imageMainBG) {
+                    this.handleBackPress();
+                    this.props.navigation.navigate('mainMenu');
+                } else {
+                    this.stopAutoPlaySound();
+                    try {
+                        sound.setVolume(0.2);
+                        sound.play();
+                    } catch(error) {
+                        
+                    }
+                    this.setState({menuLetterHide: '22%', imageBackground: imageMainBG,
+                                numberMainBG: imageMainBG,
+                                prevHide: hideLeft,
+                                pencilHide: hideLeft,
+                                glowHide: hideLeft,
+                                speakerHide: hideLeft,
+                                sentenceHide: hideRight,
+                                nextHide: hideRight,
+                                speaker2Hide: hideLeft});
+                    }
             }
+
+        } catch(error) {
+
         }
+    }
 
     render() {
         return (

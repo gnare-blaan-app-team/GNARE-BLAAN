@@ -11,14 +11,14 @@ import Story1_EN from '../flalokVideos/Story1_EN.mp4';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
 
-
-
 import NextStory from '../flalokImages/NextStory.png';
 import Prayer from '../flalokImages/Prayer.png';
 import Vocabulary1 from '../flalokImages/Vocabulary1Btn.png';
 import flalokAfterStory_BG from '../../Games/gameImages/DadSeBG.png';
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js';
+
+import { sound } from '../../HomePage';
 
 function secondsToTime(time) {
     return ~~(time / 60) + ":" + (time % 60 < 10 ? "0" : "") + time % 60;
@@ -56,6 +56,15 @@ class Story1Screen extends Component {
 
     static navigationOptions = {
         header:null,
+    }
+
+    componentDidMount(){
+        try {
+            sound.setVolume(0);
+            sound.play();
+        } catch(error) {
+            
+        }
     }
 
     handleMainButtonTouch = () => {
@@ -112,10 +121,22 @@ class Story1Screen extends Component {
     };
 
     goBack = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         this.props.navigation.navigate('flalok');
     }
 
     gotoMainMenu = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         this.props.navigation.navigate('mainMenu');
     }
 
@@ -125,6 +146,12 @@ class Story1Screen extends Component {
     }
 
     gotoVocabulary1 = () => {
+        try {
+            sound.setVolume(0);
+            sound.play();
+        } catch(error) {
+            
+        }
         this.props.navigation.navigate('vocabulary1');
     }
 
