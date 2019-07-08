@@ -21,8 +21,6 @@ import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleShee
 
 import { scopeX, scopeY, trail } from '../letterImport';
 
-import {sound} from '../../HomePage';
-
 const tracingLine = [ALetter_1, ALetter_2, ALetter_3, ALetter_4, ALetter_5,];
 const shadedLine = [shaded_A_1, shaded_A_2, shaded_A_3, shaded_A_4, shaded_A_5,];
 
@@ -41,16 +39,6 @@ const numberDimension = {
 
 
 class ATracing extends Component {
-
-    componentDidMount() {
-        try {
-            sound.setVolume(0.05);
-            sound.play();
-        } catch(error) {
-            
-        }
-    }
-
     static navigationOptions = {
         header: null,
     }
@@ -234,12 +222,6 @@ class ATracing extends Component {
 
     goBack = () => {
         this.clearBoard();
-        try{
-            sound.setVolume(0);
-            sound.play();
-        } catch(error) {
-
-        }
         this.props.navigation.navigate('letters');
     }
 

@@ -10,7 +10,6 @@ import Skip_icon from '../images/skip.png';
 import Replay_icon from '../images/replay.png';
 
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
-import {sound} from '../HomePage';
 
 class NumberIntroScreen extends Component {
     static navigationOptions = {
@@ -27,15 +26,6 @@ class NumberIntroScreen extends Component {
             progress: 0,
             duration: 0,
             showReplay: '-1000%',
-        }
-    }
-
-    componentDidMount(){
-        try {
-            sound.setVolume(0.2);
-            sound.play();
-        } catch(error) {
-            
         }
     }
 

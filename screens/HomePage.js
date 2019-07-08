@@ -20,6 +20,7 @@ export let sound = new Sound('blaanbg.mp3', Sound.MAIN_BUNDLE, (error) => {
         try{
             sound.setVolume(0.2);
             sound.play();
+            sound.setNumberOfLoops(-1);
         } catch(error) {
             
         }
@@ -73,7 +74,7 @@ class Homescreen extends Component{
                     <Animated.View style={[{bottom: this.state.yValue}]}>
                       <View style={{
                       bottom: hp('-132%'),
-                      height: hp('25%'),
+                      height: hp('30%'),
                       left: wp('1.5%'),
                       }}>
                           {this._moveAnimation()}

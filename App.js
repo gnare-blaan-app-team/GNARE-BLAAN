@@ -7,6 +7,7 @@ import Numbers from './screens/Numbers/NumbersScreen';
 
 import NumberIntroScreen from './screens/Numbers/NumberIntroScreen';
 import LetterIntroScreen from './screens/Letters/LetterIntroScreen';
+import SponsorIntroScreen from './screens/SponsorPage';
 
 // Flalok Stories Import
 
@@ -205,6 +206,8 @@ export default AppNavigator = createStackNavigator(
     letters: LetterScreen,
     numbers: Numbers,
 
+    // Sponsor
+    sponsorIntroScreen: SponsorIntroScreen,
 
     // Letters
     letterIntro: LetterIntroScreen,
@@ -389,7 +392,7 @@ export default AppNavigator = createStackNavigator(
   },
 {
 
-    initialRouteName: "home",
+    initialRouteName: "sponsorIntroScreen",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"

@@ -8,7 +8,7 @@ import MenuItem from './NumbersMenu';
 import Sound from 'react-native-sound';
 
 import { numberBGList, sentenceList, soundList,
-        numberGlowList, glowImageList } from './numbersImport';
+        numberGlowList } from './numbersImport';
   
 import GoBackIcon from '../images/Back_icon.png';
 import HomeIcon from '../images/Home_icon.png';
@@ -31,7 +31,6 @@ import black from '../images/black.png';
     // Letter Background Imports
 
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
-import {sound} from '../HomePage';
 
     // Hiding Components
 const hideLeft = '-1000%';
@@ -78,7 +77,7 @@ class NumberScreen extends Component {
             indexSound: 0,
             sentenceScript: sentenceList[0],
 
-            glow: glowImageList[0],
+            glow: Glow_A,
             hideLetterBG: '0%',
             prevBG: imageMainBG,
         },
@@ -88,15 +87,6 @@ class NumberScreen extends Component {
         this.sentenceNumberSound = null;
         this.objectGlow = null;
         this.timeoutSound = null;
-    }
-
-    componentDidMount() {
-        try {
-            sound.setVolume(0.2);
-            sound.play();
-        } catch(error) {
-            
-        }
     }
 
     changeBackground = (imageBG, soundPlay) => {
@@ -110,21 +100,6 @@ class NumberScreen extends Component {
                         sentenceHide: imageBG == imageMainBG ? hideRight : showSentence,
                         pencilHide: imageBG == imageMainBG ? hideLeft : showPencil,
                         indexSound: soundPlay, });
-        if(imageBG != imageMainBG) {
-            try {
-                sound.setVolume(0);
-                sound.stop();
-            } catch(error) {
-                
-            }
-        } else {
-            try {
-                sound.setVolume(0.2);
-                sound.play();
-            } catch(error) {
-                
-            }
-        }
         this.autoPlaySound();
     }
 
@@ -158,17 +133,13 @@ class NumberScreen extends Component {
     }
 
     handleBackPress = () => {
-        try {
-            if(this.timeoutSound != null) {
-                clearTimeout(this.timeoutSound);
-            }
-            this.stopAutoPlaySound();
-            this.releaseSounds();
-            this.numberSound = null;
-            this.sentenceNumberSound = null;
-        } catch(error) {
-
+        if(this.timeoutSound != null) {
+            clearTimeout(this.timeoutSound);
         }
+        this.stopAutoPlaySound();
+        this.releaseSounds();
+        this.numberSound = null;
+        this.sentenceNumberSound = null;
     }
 
     playNumberSound = () => {
@@ -178,14 +149,10 @@ class NumberScreen extends Component {
                 alert('failed to load the sound', error);
                 return;
             } else {
-                try{
-                    this.numberSound.play();
-                } catch(error) {
-                    
-                }
-                this.setState({glow: glowImageList[this.state.indexSound]});
+                this.numberSound.play();
+                this.setState({glow: Glow_A});
                 this.setState({glow: numberGlowList[this.state.indexSound]});
-            }});
+            }});   
     }
 
 
@@ -196,149 +163,108 @@ class NumberScreen extends Component {
                 alert('failed to load the sound', error);
                 return;
             } else {
-                try {
-                    this.sentenceNumberSound.play();
-                } catch(error) {
-                    
-                }
-                this.setState({sentenceScript: glowImageList[this.state.indexSound]});
+                this.sentenceNumberSound.play();
+                this.setState({sentenceScript: Glow_A});
                 this.setState({sentenceScript: sentenceList[this.state.indexSound]});
-                this.setState({glow: glowImageList[this.state.indexSound]});
+                this.setState({glow: Glow_A});
                 this.setState({glow: numberGlowList[this.state.indexSound]});
             }});   
     }
 
     letterTracing = () => {
-        try {
-            this.handleBackPress();
-            this.props.navigation.push('tracing' + soundList[this.state.indexSound]);
-        } catch(error) {
-
-        }
+        this.handleBackPress();
+        this.props.navigation.push('tracing' + soundList[this.state.indexSound]);
     }
 
 
     gotoMainMenu = () => {
         this.handleBackPress();
-        try {
-            sound.setVolume(0.2);
-            sound.play();
-        } catch(error) {
-            
-        }
         this.props.navigation.navigate('mainMenu');
     }
 
     goNext = () => {
-        try {
-            let letterNum = this.state.indexSound;
-            let nextPage = letterNum + 1;
-            let nextBG = numberBGList[nextPage];
-            this.stopAutoPlaySound();
+        let letterNum = this.state.indexSound;
+        let nextPage = letterNum + 1;
+        let nextBG = numberBGList[nextPage];
+        this.stopAutoPlaySound();
 
-            if(nextPage < 24) {
-                this.changeBackground(nextBG, nextPage);
-            } else {
-                this.changeBackground(numberBGList[0], 0);
-            }
-        } catch(error) {
-
+        if(nextPage < 24) {
+            this.changeBackground(nextBG, nextPage);
+        } else {
+            this.changeBackground(numberBGList[0], 0);
         }
     }
 
     releaseSounds = () => {
-        try {
-            if(this.numberSound != null) {
-                this.numberSound.release();
-            }
-            if(this.sentenceNumberSound != null) {
-                this.sentenceNumberSound.release();
-            }
-        } catch(error) {
-            //alert('Something went wrong...');
+        if(this.numberSound != null) {
+            this.numberSound.release();
+        }
+        if(this.sentenceNumberSound != null) {
+            this.sentenceNumberSound.release();
         }
     }
 
     stopSounds = () => {
-        try {
-            if(this.numberSound != null) {
-                this.numberSound.setVolume(0.2);
-                this.numberSound.pause();
-            }
-            if(this.sentenceNumberSound != null) {
-                this.sentenceNumberSound.setVolume(0.2);
-                this.sentenceNumberSound.pause();
-            }
-        } catch(error) {
-            //alert('Something went wrong...');
+        if(this.numberSound != null) {
+            this.numberSound.setVolume(0.2);
+            this.numberSound.pause();
+        }
+        if(this.sentenceNumberSound != null) {
+            this.sentenceNumberSound.setVolume(0.2);
+            this.sentenceNumberSound.pause();
         }
     }
 
     goPrev = () => {
-        try {
-            const letterNum = this.state.indexSound;
-            const prevPage = letterNum - 1;
-            this.stopAutoPlaySound();
-            const prevBG = numberBGList[prevPage];
-            this.setState({prevSound: letterNum});
+        const letterNum = this.state.indexSound;
+        const prevPage = letterNum - 1;
+        this.stopAutoPlaySound();
+        const prevBG = numberBGList[prevPage];
+        this.setState({prevSound: letterNum});
 
-            if(prevPage > 0) {
-                this.changeBackground(prevBG, prevPage);
-            } else {
-                this.changeBackground(numberBGList[0], 0);
-            }
-        } catch(error) {
-           // alert('Something went wrong...');
+        if(prevPage > 0) {
+            this.changeBackground(prevBG, prevPage);
+        } else {
+            this.changeBackground(numberBGList[0], 0);
         }
     }
 
     goBack = () => {
-        try {
-            if(this.state.prevBG == sentenceBG) {
-                if(this.timeoutSound != null) {
-                    clearTimeout(this.timeoutSound);
-                }
-                this.stopAutoPlaySound();
-                this.setState({menuLetterHide: '-1000%', 
-                        imageBackground: numberBGList[this.state.indexSound],
-                        prevHide: numberBGList[this.state.indexSound] == numberBGList[0] ? hideLeft : showPrev,
-                        pencilHide: showPencil,
-                        glowHide: showGlow,
-                        sentenceScript: Glow_A,
-                        speakerHide: showSpeaker,
-                        sentenceHide: showSentence,
-                        nextHide: showNext,
-                        showSubtitle: 0,
-                        sentenceObjectHide: hideLeft,
-                        speaker2Hide: hideLeft, prevBG: numberBGList[this.state.indexSound]});
-            } else {
-                if(this.state.imageBackground == imageMainBG) {
-                    this.handleBackPress();
-                    this.props.navigation.navigate('mainMenu');
-                } else {
-                    this.stopAutoPlaySound();
-                    try {
-                        sound.setVolume(0.2);
-                        sound.play();
-                    } catch(error) {
-                        
-                    }
-                    this.setState({menuLetterHide: '22%', imageBackground: imageMainBG,
-                                numberMainBG: imageMainBG,
-                                prevHide: hideLeft,
-                                pencilHide: hideLeft,
-                                glowHide: hideLeft,
-                                speakerHide: hideLeft,
-                                sentenceHide: hideRight,
-                                nextHide: hideRight,
-                                speaker2Hide: hideLeft});
-                    }
+        if(this.state.prevBG == sentenceBG) {
+            if(this.timeoutSound != null) {
+                clearTimeout(this.timeoutSound);
             }
-
-        } catch(error) {
-
+            this.stopAutoPlaySound();
+            this.setState({menuLetterHide: '-1000%', 
+                    imageBackground: numberBGList[this.state.indexSound],
+                    prevHide: numberBGList[this.state.indexSound] == numberBGList[0] ? hideLeft : showPrev,
+                    pencilHide: showPencil,
+                    glowHide: showGlow,
+                    sentenceScript: Glow_A,
+                    speakerHide: showSpeaker,
+                    sentenceHide: showSentence,
+                    nextHide: showNext,
+                    showSubtitle: 0,
+                    sentenceObjectHide: hideLeft,
+                    speaker2Hide: hideLeft, prevBG: numberBGList[this.state.indexSound]});
+        } else {
+            if(this.state.imageBackground == imageMainBG) {
+                this.handleBackPress();
+                this.props.navigation.navigate('mainMenu');
+            } else {
+                this.stopAutoPlaySound();
+                this.setState({menuLetterHide: '22%', imageBackground: imageMainBG,
+                            numberMainBG: imageMainBG,
+                            prevHide: hideLeft,
+                            pencilHide: hideLeft,
+                            glowHide: hideLeft,
+                            speakerHide: hideLeft,
+                            sentenceHide: hideRight,
+                            nextHide: hideRight,
+                            speaker2Hide: hideLeft});
+                }
+            }
         }
-    }
 
     render() {
         return (
@@ -356,8 +282,8 @@ class NumberScreen extends Component {
                     width: '70%', height: '27.5%', justifyContent: 'center', alignItems: 'center'}}>
                     <Image source={black} style={{position: 'absolute', width: '100%', height: '100%', 
                                 top: '0%', resizeMode: 'stretch'}}></Image>                    
-                    <Image source={this.state.sentenceScript} style={{width: '95%', height: '95%',
-                            resizeMode: 'stretch'}}></Image>
+                    <Image source={this.state.sentenceScript} style={{width: '130%', height: '70%',
+                            marginLeft:'-3%' ,resizeMode: 'stretch'}}></Image>
                 </View>
 
                 {/* Start of Page Letters Code Part */}

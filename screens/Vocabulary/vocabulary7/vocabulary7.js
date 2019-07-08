@@ -70,6 +70,7 @@ class Vocabulary7 extends Component {
     } 
      // Sounds
      this.vocabSound = null;
+     this.timeoutSound = null;
   }
 
 
@@ -96,11 +97,12 @@ class Vocabulary7 extends Component {
 
   autoPlaySound = (index) => {
     this.releaseSounds();
-    this.vocabSound = new Sound('vocab7_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-    this.vocabSound.play();
-    });     
+    this.timeoutSound = setTimeout(()=> {
+      this.vocabSound = new Sound('vocab7_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+        this.vocabSound.play();
+      });  
+    }, 1000);   
   }
-
   releaseSounds = ()=> {
     if(this.vocabSound != null) {
         this.vocabSound.release();
@@ -110,6 +112,9 @@ class Vocabulary7 extends Component {
   playVocabSound = () => {
     if(this.vocabSound != null) {
         this.vocabSound.release();
+    }
+    if(this.timeoutSound != null){
+      clearTimeout(this.timeoutSound);
     }
     this.stopSounds();
     this.vocabSound = new Sound('vocab7_' + soundList[this.state.clickSoundIndex] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
@@ -122,7 +127,9 @@ class Vocabulary7 extends Component {
   }
 
   stopSounds = () => {
+    if (this.vocabSound != null){
       this.vocabSound.stop();
+    }
   }
 
   gotoMainMenu = () =>{
@@ -156,6 +163,9 @@ class Vocabulary7 extends Component {
         spoonTop: '49%',
         speakerTop: '1000%',
       })
+    }
+    if(this.timeoutSound != null){
+      clearTimeout(this.timeoutSound);
     }
   }
 

@@ -18,7 +18,7 @@ import Ladder from './vocabulary6Images/ladder.png';
 import Roof from './vocabulary6Images/roof.png';  
 import Wall from './vocabulary6Images/wall.png';
 import Window from './vocabulary6Images/window.png';
-import abu_icon from './vocabulary6Images/Abu.png';
+import abu_icon from './vocabulary6Images/abuh.png';
 import SpeakerIcon from '../../images/Speaker_icon.png';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
@@ -57,6 +57,8 @@ class Vocabulary6 extends Component {
         }
         // Sounds
         this.vocabSound = null;
+        this.timeoutSound = null;
+        this.timeoutBtn = null;
     }
 
 
@@ -81,10 +83,12 @@ class Vocabulary6 extends Component {
 
     autoPlaySound = (index) => {
         this.releaseSounds();
-        this.vocabSound = new Sound('vocab6_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-       this.vocabSound.play();
-        });     
-    }
+        this.timeoutSound = setTimeout(()=> {
+          this.vocabSound = new Sound('vocab6_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+            this.vocabSound.play();
+          });  
+        }, 1000);   
+      }
 
     releaseSounds = ()=> {
         if(this.vocabSound != null) {
@@ -96,6 +100,9 @@ class Vocabulary6 extends Component {
         if(this.vocabSound != null) {
             this.vocabSound.release();
         }
+        if(this.timeoutSound != null){
+            clearTimeout(this.timeoutSound);
+          }
         this.stopSounds();
         this.vocabSound = new Sound('vocab6_' + soundList[this.state.clickSoundIndex] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
         if (error) {
@@ -107,8 +114,10 @@ class Vocabulary6 extends Component {
     }
 
     stopSounds = () => {
-        this.vocabSound.stop();
-    }
+        if (this.vocabSound != null){
+          this.vocabSound.stop();
+        }
+      }
     
     gotoMainMenu = () =>{
         const clear = this.state.clearBackground;
@@ -141,10 +150,19 @@ class Vocabulary6 extends Component {
                 speakerTop: '1000%',
             })
         }
+        if(this.timeoutSound != null){
+            clearTimeout(this.timeoutSound);
+          }
+        if(this.timeoutBtn != null){
+            clearTimeout(this.timeoutBtn);
+          }
     }
 
     gotoVocabulary7 = () => {
         this.stopSounds();
+        if(this.timeoutSound != null){
+            clearTimeout(this.timeoutSound);
+          }
         this.props.navigation.navigate('vocabulary7')
     }
 
@@ -254,15 +272,20 @@ class Vocabulary6 extends Component {
                 <View style={{position: "absolute", height: hp('14%'), width: wp('6.5%'), left: '38%', top:this.state.kitchenTop}}>
                     <TouchableOpacity onPress={() => {
                         this.changeBackground(4);
-                        this.setState({
-                            kitchenBtnTop:'72%'
-                        })
+                        this.timeoutBtn = setTimeout(()=> {
+                            this.setState({
+                                kitchenBtnTop:'72%'
+                            })
+                        }, 300);
+                        // this.setState({
+                        //     kitchenBtnTop:'72%'
+                        // })
                     }}>
                        <Text style={{width:"100%", height:"100%"}}></Text>
                     </TouchableOpacity>
                 </View>
 
-                <View style={{position:'absolute',top:this.state.kitchenBtnTop, left: '20.8%'}}>
+                <View style={{position:'absolute',top:this.state.kitchenBtnTop, left: wp('22.5%')}}>
                     <TouchableOpacity onPress={this.gotoVocabulary7}>
                         <Image source={abu_icon} style={{height: hp('10%'), resizeMode: 'contain'}}/>
                     </TouchableOpacity>

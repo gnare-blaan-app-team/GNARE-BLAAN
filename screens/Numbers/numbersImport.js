@@ -75,36 +75,6 @@ import Sentence400 from './numberBackground/400.gif';
 import Sentence500 from './numberBackground/500.gif';
 import Sentence1000 from './numberBackground/1000.gif';
 
-import Glow_1 from './NumbersGlow/1img.png';
-import Glow_2 from './NumbersGlow/2img.png';
-import Glow_3 from './NumbersGlow/3img.png';
-import Glow_4 from './NumbersGlow/4img.png';
-import Glow_5 from './NumbersGlow/5img.png';
-import Glow_6 from './NumbersGlow/6img.png';
-import Glow_7 from './NumbersGlow/7img.png';
-import Glow_8 from './NumbersGlow/8img.png';
-import Glow_9 from './NumbersGlow/9img.png';
-import Glow_10 from './NumbersGlow/10img.png';
-import Glow_20 from './NumbersGlow/20img.png';
-import Glow_30 from './NumbersGlow/30img.png';
-import Glow_40 from './NumbersGlow/40img.png';
-import Glow_50 from './NumbersGlow/50img.png';
-import Glow_60 from './NumbersGlow/60img.png';
-import Glow_70 from './NumbersGlow/70img.png';
-import Glow_80 from './NumbersGlow/80img.png';
-import Glow_90 from './NumbersGlow/90img.png';
-import Glow_100 from './NumbersGlow/100img.png';
-import Glow_200 from './NumbersGlow/200img.png';
-import Glow_300 from './NumbersGlow/300img.png';
-import Glow_400 from './NumbersGlow/400img.png';
-import Glow_500 from './NumbersGlow/500img.png';
-import Glow_1000 from './NumbersGlow/1000img.png';
-
-
-export const glowImageList = [Glow_1, Glow_2, Glow_3, Glow_4, Glow_5, Glow_6, Glow_7, Glow_8, Glow_9, Glow_10,
-    Glow_20, Glow_30, Glow_40, Glow_50, Glow_60, Glow_70, Glow_80, Glow_90, Glow_100, Glow_200, Glow_300,
-    Glow_400, Glow_500, Glow_1000];
-
 const screenWidth = Dimensions.get('screen').width;
 const screenHeight = Dimensions.get('screen').height;
 

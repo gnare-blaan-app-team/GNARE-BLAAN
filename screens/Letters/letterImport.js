@@ -80,30 +80,6 @@ import U from './lettersGlow/U.gif';
 import W from './lettersGlow/W.gif';
 import Y from './lettersGlow/Y.gif';
 
-import glowImageA from './lettersGlow/Aimg.png';
-import glowImageB from './lettersGlow/Bimg.png';
-import glowImageD from './lettersGlow/Dimg.png';
-import glowImageE from './lettersGlow/Eimg.png';
-import glowImageF from './lettersGlow/Fimg.png';
-import glowImageG from './lettersGlow/Gimg.png';
-import glowImageH from './lettersGlow/Himg.png';
-import glowImageI from './lettersGlow/Iimg.png';
-import glowImageK from './lettersGlow/Kimg.png';
-import glowImageL from './lettersGlow/Limg.png';
-import glowImageM from './lettersGlow/Mimg.png';
-import glowImageN from './lettersGlow/Nimg.png';
-import glowImageO from './lettersGlow/Oimg.png';
-import glowImageS from './lettersGlow/Simg.png';
-import glowImageT from './lettersGlow/Timg.png';
-import glowImageU from './lettersGlow/Uimg.png';
-import glowImageW from './lettersGlow/Wimg.png';
-import glowImageY from './lettersGlow/Yimg.png';
-
-
-export const glowImageList = [glowImageA, glowImageB, glowImageD, glowImageE, glowImageF, 
-    glowImageG, glowImageH, glowImageI, glowImageK, glowImageL, glowImageM, glowImageN,
-    glowImageO, glowImageS, glowImageT, glowImageU, glowImageW, glowImageY];
-
 const screenWidth = Dimensions.get('screen').width;
 const screenHeight = Dimensions.get('screen').height;
 

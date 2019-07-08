@@ -21,17 +21,17 @@ export const globalStyleSheet = {
     trace: {
         position: 'absolute',
         backgroundColor: '#ffea00',
-        width: screenWidth * 0.05,
-        height: screenWidth * 0.05,
-        borderRadius: screenWidth * 0.05,
+        width: screenWidth * 0.06,
+        height: screenWidth * 0.06,
+        borderRadius: screenWidth * 0.06,
     },
 
     dot: {
-        opacity: 0,
         position: 'absolute',
-        backgroundColor: '#ffea00',
-        width: 5,
-        height: 5,
+        // backgroundColor: '#ffea00',
+        width: 20,
+        height: 20,
+        borderRadius: 20,
     },
 
     image2: {
@@ -189,21 +189,12 @@ export const globalStyleSheet = {
         resizeMode: 'contain',
     },
 
-    //HomePage Container
-    HomePageContainer: {
-        position: 'absolute',
-        top: '80%',
-        left: '10%',
-        width: '80%',
-        height: '20%',
-    },
-
     //HomePage Items
     HomePageItems: {
         margin: 5,
         marginBottom: 0,
-        width: '25%',
-        height: '40%',
+        width: '20%',
+        height: '30%',
     },
 
     //HomePage Touch
@@ -426,7 +417,7 @@ export const globalStyleSheet = {
         justifyContent: 'center',
     },
 
-    //Dad Batak
+    //Games
     gnareIconStyle: {
         position: 'absolute',
         top: hp('5%'),
@@ -434,11 +425,195 @@ export const globalStyleSheet = {
         height: hp('12%'),
         width: wp('10%'),
     },
+    coinbankBang: {
+        position: 'absolute',
+        bottom: hp('4%'),
+        left: wp('5%'),
+        height: hp('15%'),
+        width: wp('12%'),
+    },
     questionStyle: {
         position: 'absolute',
         top: '15%',
         width: wp('55%'),
         height: hp('45%')
+    },
+    gufadyan: {
+        position: 'absolute',
+        top: '85%',
+        left:'73%',
+        height: hp('9%'),
+        width: wp('19%'),
+    },
+    fadlugStyle: {
+        position: 'absolute',
+        top: '19%',
+        left:'18%',
+        height: hp('31%'),
+        width: wp('30%'),
+    },
+    gufadyanStyle: {
+        position: 'absolute',
+        top: '19%',
+        left:'55%',
+        height: hp('31%'),
+        width: wp('30%'),
+    },
+    lamwaStyle: {
+        position: 'absolute',
+        top: '56%',
+        left:'36%',
+        height: hp('33%'),
+        width: wp('32%'),
+    },
+    kwartoStyle: {
+        position: 'absolute',
+        top: '8%',
+        left: '12%',
+        height: hp('89%'),
+        width: wp('80%'),
+    },
+
+    //Market Items
+    item1Style: {
+        position: 'absolute',
+        top: '6.5%',
+        left: '11.5%',
+        height: hp('17%'),
+        width: wp('16%'),
+    },
+    item1Image: {
+        position: 'absolute',
+        top: '10.5%',
+        left: '14%',
+        height: hp('9%'),
+        width: wp('9%'),
+        justifyContent: 'center',
+    },
+    item2Style: {
+        position: 'absolute',
+        top: '26%',
+        left: '11.5%',
+        height: hp('17%'),
+        width: wp('16%'),
+    },
+    item2Image: {
+        position: 'absolute',
+        top: '27%',
+        left: '10.5%',
+        height: hp('15%'),
+        width: wp('15%'),
+        justifyContent: 'center',
+    },
+    item3Style: {
+        position: 'absolute',
+        top: '46%',
+        left: '11.5%',
+        height: hp('17%'),
+        width: wp('16%'),
+    },
+    item3Image: {
+        position: 'absolute',
+        top: '47%',
+        left: '10.5%',
+        height: hp('15%'),
+        width: wp('15%'),
+        justifyContent: 'center',
+    },
+    item4Style: {
+        position: 'absolute',
+        top: '66%',
+        left: '11.5%',
+        height: hp('17%'),
+        width: wp('16%'),
+    },
+    item4Image: {
+        position: 'absolute',
+        top: '69%',
+        left: '12%',
+        height: hp('13%'),
+        width: wp('13%'),
+        justifyContent: 'center',
+    },
+    item5Style: {
+        position: 'absolute',
+        top: '16%',
+        left: '69.5%',
+        height: hp('17%'),
+        width: wp('16%'),
+    },
+    item5Image: {
+        position: 'absolute',
+        top: '18%',
+        left: '69.5%',
+        height: hp('13%'),
+        width: wp('13%'),
+        justifyContent: 'center',
+    },
+    item6Style: {
+        position: 'absolute',
+        top: '36%',
+        left: '69.5%',
+        height: hp('17%'),
+        width: wp('16%'),
+    },
+    item6Image: {
+        position: 'absolute',
+        top: '39%',
+        left: '69.5%',
+        height: hp('13%'),
+        width: wp('13%'),
+        justifyContent: 'center',
+    },
+    item7Style: {
+        position: 'absolute',
+        top: '56%',
+        left: '69.5%',
+        height: hp('17%'),
+        width: wp('16%'),
+    },
+    item7Image: {
+        position: 'absolute',
+        top: '59%',
+        left: '69.5%',
+        height: hp('13%'),
+        width: wp('13%'),
+        justifyContent: 'center',
+    },
+    coinbankStyle: {
+        position: 'absolute',
+        top: '-8%',
+        left: '87%',
+        height: hp('15%'),
+        width: wp('12%'),
+    },
+    mayadStyle: {
+        position: 'absolute',
+        top: '85%',
+        left: '29.5%',
+        height: hp('14%'),
+        width: wp('10.5%'),
+    },
+    fuleStyle: {
+        position: 'absolute',
+        top: '85%',
+        left: '43.5%',
+        height: hp('14%'),
+        width: wp('10.5%'),
+    },
+    xbuttonStyle: {
+        position: 'absolute',
+        top: '85%',
+        left: '57.5%',
+        height: hp('14%'),
+        width: wp('10.5%'),
+    },
+    barEmptyStyle: {
+        position: 'absolute',
+        top: '18%',
+        left: '83%',
+        height: hp('75%'),
+        width: wp('8%'),
     },
 
     //Dad Batak - Bang 1 Styles for Choices
@@ -468,6 +643,52 @@ export const globalStyleSheet = {
         top: '67%',
         left: '27%',
         width: wp('10%'),
+        height: hp('12%')
+    },
+
+    //Dad Batak - Bang 2 Styles for Choices
+    db_b2_choice1Style: {
+        position: 'absolute',
+        top: '67%',
+        left: '22.5%',
+        width: wp('17%'),
+        height: hp('12%')
+    },
+    db_b2_choice2Style: {
+        position: 'absolute',
+        top: '67%',
+        left:'41.5%',
+        width: wp('17%'),
+        height: hp('12%')
+    },
+    db_b2_choice3Style: {
+        position: 'absolute',
+        top: '67%',
+        left:'60.5%',
+        width: wp('17%'),
+        height: hp('12%')
+    },
+
+    //Dad Batak - Bang 3 Styles for Choices
+    db_b3_choice1Style: {
+        position: 'absolute',
+        top: '67%',
+        left: '22.5%',
+        width: wp('17%'),
+        height: hp('12%')
+    },
+    db_b3_choice2Style: {
+        position: 'absolute',
+        top: '67%',
+        left:'41.5%',
+        width: wp('17%'),
+        height: hp('12%')
+    },
+    db_b3_choice3Style: {
+        position: 'absolute',
+        top: '67%',
+        left:'60.5%',
+        width: wp('17%'),
         height: hp('12%')
     },
 
@@ -507,12 +728,5 @@ export const globalStyleSheet = {
         height: hp('10%'),
         width: wp('14%'),
     },
-    gufadyan: {
-        position: 'absolute',
-        top: '85%',
-        left:'73%',
-        height: hp('9%'),
-        width: wp('19%'),
-    }
 
 };

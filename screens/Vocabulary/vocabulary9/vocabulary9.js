@@ -102,6 +102,9 @@ class Vocabulary9 extends Component {
             clearBackground:'gotoVocab9Menu',
             speakerTop:'1000%',
         }
+
+        this.vocabSound = null;
+        this.timeoutSound = null;
     }
 
 
@@ -134,10 +137,12 @@ class Vocabulary9 extends Component {
 
     autoPlaySound = (index) => {
         this.releaseSounds();
-        this.vocabSound = new Sound('vocab9_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-       this.vocabSound.play();
-        });     
-    }
+        this.timeoutSound = setTimeout(()=> {
+          this.vocabSound = new Sound('vocab9_' + soundList[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+            this.vocabSound.play();
+          });  
+        }, 1000);   
+      }
     
     releaseSounds = ()=> {
         if(this.vocabSound != null) {
@@ -149,6 +154,9 @@ class Vocabulary9 extends Component {
         if(this.vocabSound != null) {
             this.vocabSound.release();
         }
+        if(this.timeoutSound != null){
+            clearTimeout(this.timeoutSound);
+          }
         this.stopSounds();
         this.vocabSound = new Sound('vocab9_' + soundList[this.state.clickSoundIndex] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
         if (error) {
@@ -160,8 +168,10 @@ class Vocabulary9 extends Component {
     }
     
     stopSounds = () => {
-        this.vocabSound.stop();
-    }
+        if (this.vocabSound != null){
+          this.vocabSound.stop();
+        }
+      }
 
     gotoNextPage = () => {
         const index = this.state.counter + 1;
@@ -218,6 +228,9 @@ class Vocabulary9 extends Component {
                 speakerTop: '1000%',
             })
         }
+        if(this.timeoutSound != null){
+            clearTimeout(this.timeoutSound);
+          }
     }
 
     componentDidMount() {

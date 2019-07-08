@@ -11,7 +11,7 @@ import GlowA from './lettersGlow/GlowA.gif';
 import Glow_A from './lettersGlow/Glow_A.png';
 
 import { soundList, sentenceBGList, sentenceSubtitleList,
-        letterBGList, glowGIFList, glowImageList } from './letterImport';
+        letterBGList, glowGIFList } from './letterImport';
 
     // Letter Components Imports
 import SentenceIcon from '../images/Letters_Info_Icon.png';
@@ -26,8 +26,6 @@ import letterMainBG from '../images/BG1.jpg';
 import black from '../images/black.png';
 
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
-
-import {sound} from '../HomePage';
 
     // Hiding Components
 const hideLeft = '-1000%';
@@ -73,7 +71,7 @@ class Letters extends Component {
             sentenceHide: hideRight,
             indexSound: 0,
 
-            glow: glowImageList[0],
+            glow: Glow_A,
             hideLetterBG: '0%',
             prevBG: imageMainBG,
         },
@@ -89,15 +87,6 @@ class Letters extends Component {
         this.timeoutSound = null;
     }
 
-    componentDidMount() {
-        try {
-            sound.setVolume(0.2);
-            sound.play();
-        } catch(error) {
-            
-        }
-    }
-
     changeBackground = (imageBG, soundPlay) => {
         this.stopAutoPlaySound();
         this.setState({menuLetterHide: imageBG == imageMainBG ? '22%' : '-1000%', 
@@ -110,21 +99,6 @@ class Letters extends Component {
                         pencilHide: imageBG == imageMainBG ? hideLeft : showPencil,
                         indexSound: soundPlay, glow: glowGIFList[soundPlay],
                         });
-        if(imageBG != imageMainBG) {
-            try {
-                sound.setVolume(0);
-                sound.play();
-            } catch(error) {
-                
-            }
-        } else {
-            try {
-                sound.setVolume(0.2);
-                sound.play();
-            } catch(error) {
-                
-            }
-        }
         this.autoPlaySound();
     }
 
@@ -148,7 +122,7 @@ class Letters extends Component {
                 } else {
                     this.wordSound.play();
                 }});
-                this.setState({glow: glowImageList[this.state.indexSound]});
+                this.setState({glow: Glow_A});
                 this.setState({glow: glowGIFList[this.state.indexSound]});
         }, 5000);
     }
@@ -227,7 +201,7 @@ class Letters extends Component {
                 return;
             } else {
                 this.sentenceSound.play();
-                this.setState({sentenceScript: glowImageList[this.state.indexSound]});
+                this.setState({sentenceScript: Glow_A});
                 this.setState({sentenceScript: sentenceSubtitleList[this.state.indexSound]});
             }});
     }
@@ -243,7 +217,7 @@ class Letters extends Component {
                 return;
             } else {
                 this.wordSound.play();
-                this.setState({glow: glowImageList[this.state.indexSound]});
+                this.setState({glow: Glow_A});
                 this.setState({glow: glowGIFList[this.state.indexSound]});
             }});
     }
@@ -256,12 +230,6 @@ class Letters extends Component {
 
     gotoMainMenu = () => {
         this.handleBackPress();
-        try {
-            sound.setVolume(0.2);
-            sound.play();
-        } catch(error) {
-            
-        }
         this.props.navigation.navigate('mainMenu');
     }
 
@@ -330,12 +298,6 @@ class Letters extends Component {
                 this.handleBackPress();
                 this.props.navigation.navigate('mainMenu');
             } else {
-                try {
-                    sound.setVolume(0.2);
-                    sound.play();
-                } catch(error) {
-                    
-                }
                 this.stopAutoPlaySound();
                 this.setState({menuLetterHide: '22%', imageBackground: imageMainBG,
                             letterScreen: imageMainBG,
@@ -365,8 +327,8 @@ class Letters extends Component {
                     width: '70%', height: '27.5%', justifyContent: 'center', alignItems: 'center'}}>
                     <Image source={black} style={{position: 'absolute', width: '100%', height: '100%', 
                                 top: '0%', resizeMode: 'stretch'}}></Image>                    
-                    <Image source={this.state.sentenceScript} style={{width: '95%', height: '95%',
-                            resizeMode: 'stretch'}}></Image>
+                    <Image source={this.state.sentenceScript} style={{width: '130%', height: '70%',
+                            marginLeft:'-3%' ,resizeMode: 'stretch'}}></Image>
                 </View>
 
 
