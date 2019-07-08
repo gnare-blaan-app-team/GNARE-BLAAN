@@ -32,8 +32,7 @@ class SponsorPage extends Component {
             duration: 0,
             muted: false,
             volume: 1,
-
-            myKey: true,
+            
         };
 
       
@@ -43,22 +42,6 @@ class SponsorPage extends Component {
         header:null,
     }
 
-    async getKey() {
-        try {
-          const value = await AsyncStorage.getItem('@MySuperStore:key');
-          this.setState({myKey: value});
-        } catch (error) {
-            alert('test');
-        }
-      }
-    
-    // async saveKey(value) {
-    //     try {
-    //       await AsyncStorage.setItem('@MySuperStore:key', value);
-    //     } catch (error) {
-    //       console.log("Error saving data" + error);
-    //     }
-    //   }
 
     handleMainButtonTouch = () => {
         if (this.state.progress >= 1) {
