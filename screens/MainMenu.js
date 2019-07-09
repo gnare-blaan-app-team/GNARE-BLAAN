@@ -6,8 +6,6 @@ import Sound from 'react-native-sound';
 
 import {sound} from './HomePage';
 
-import Sound from 'react-native-sound';
-
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js'; 
 Sound.setCategory('Playback');
 
@@ -16,12 +14,6 @@ class Mainmenu extends Component {
         header: null,
     }
 
-<<<<<<< HEAD
-    constructor(props) {
-        super(props);
-        // Sounds
-        this.clickSound = null;
-=======
     componentDidMount() {
         try {
             sound.setVolume(0.2);
@@ -29,7 +21,6 @@ class Mainmenu extends Component {
         } catch(error) {
 
         }
->>>>>>> 58df824921c65a5f5e6d1bccf4f1883854008aca
     }
 
     gotoLetters = () => {
