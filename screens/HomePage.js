@@ -63,6 +63,29 @@ class Homescreen extends Component{
         
     }
 
+    _storeData = async () => {
+        try {
+          await AsyncStorage.setItem('@MyApp:FreshOpen', 'I have watched the sponsor page');
+        } catch (error) {
+          // Error saving data
+        }
+      };
+
+    _retrieveData = async () => {
+        try {
+        const value = await AsyncStorage.getItem('@MyApp:FreshOpen');
+        if (value !== null) {
+            this.state.changeScene = 1;
+        } else {
+            this._storeData();
+        }
+        } catch (error) {
+        // Error retrieving data
+        }
+    };
+
+    
+
     _moveAnimation = () => {
         Animated.timing(this.state.yValue, {
           toValue: hp('90%'),
@@ -73,6 +96,7 @@ class Homescreen extends Component{
       }
 
     componentDidMount() {
+        this._retrieveData();
         StatusBar.setHidden(true);
         try{
             sound.setVolume(0.2);
@@ -113,6 +137,10 @@ class Homescreen extends Component{
             hideStory: '-1000%'});
             this.state.changeScene = 1;
     };
+
+    // removeItem = () => {
+    //     AsyncStorage.removeItem('@MyApp:FreshOpen');
+    // }
 
     sceneShow() {
         if (this.state.changeScene == 0){
@@ -194,6 +222,7 @@ class Homescreen extends Component{
     }
 
     render(){
+        console.disableYellowBox = true; 
         return(
         this.sceneShow()
         );
