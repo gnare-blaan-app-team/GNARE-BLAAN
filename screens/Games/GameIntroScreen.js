@@ -29,10 +29,12 @@ class GameIntroScreen extends Component {
     }
 
     handleEnd = () => {
+        this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.navigate('gameMenu', { openProfile: 'showProfile' });
     };
 
     gotoGameScreen = () => {
+        this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.navigate('gameMenu', { openProfile: 'showProfile' });
     }
 
