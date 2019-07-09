@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { ImageBackground, TouchableOpacity, View, Image, Text, StatusBar, Dimensions, Animated, Easing} from 'react-native';
+import { ImageBackground, TouchableOpacity, View, Image, Text, StatusBar, AsyncStorage, Animated, Easing} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js';
 
@@ -8,27 +8,53 @@ import About_icon from "./images/Icon_About.png";
 import Like_icon from "./images/Icon_Like.png";
 import Share_icon from "./images/Icon_Share.png";
 
+import Sound from 'react-native-sound';
+
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
+export let sound = new Sound('blaanbg.mp3', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+        alert('failed to load the sound', error);
+        return;
+    } else {
+        try{
+            sound.setVolume(0.2);
+            sound.play();
+            sound.setNumberOfLoops(-1);
+        } catch(error) {
+            
+        }
+}});
+
 class Homescreen extends Component{
-  constructor(props) {
-    super (props);
-    this.state = {
-      yValue: new Animated.Value(0),
-    }
-  }
-
-  _moveAnimation = () => {
-    Animated.timing(this.state.yValue, {
-      toValue: hp('90%'),
-      duration: 4500,
-      easing: Easing.linear,
-    }).start();
-
-  }
 
     static navigationOptions = {
         header:null,
+    }
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            yValue: new Animated.Value(0),
+        }
+    }
+
+    _moveAnimation = () => {
+        Animated.timing(this.state.yValue, {
+          toValue: hp('90%'),
+          duration: 4500,
+          easing: Easing.linear,
+        }).start();
+    
+      }
+
+    componentDidMount() {
+        try{
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
     }
 
     gotoMainMenu = () => {

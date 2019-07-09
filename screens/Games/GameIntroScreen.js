@@ -28,26 +28,12 @@ class GameIntroScreen extends Component {
         }
     }
 
-    handleProgress = progress => {
-        this.setState({
-            progress: progress.currentTime / this.state.duration,
-        });
-    };
-
     handleEnd = () => {
-        this.setState({paused: true, volume: 0, muted: true});
-        this.props.navigation.navigate('gameMenu');
-    };
-
-    handleLoad = meta => {
-        this.setState({
-            duration: meta.duration,
-        });
+        this.props.navigation.navigate('gameMenu', { openProfile: 'showProfile' });
     };
 
     gotoGameScreen = () => {
-        this.setState({paused: true, volume: 0, muted: true});
-        this.props.navigation.navigate('gameMenu');
+        this.props.navigation.navigate('gameMenu', { openProfile: 'showProfile' });
     }
 
     // replayVideo = () => {

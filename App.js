@@ -8,6 +8,8 @@ import Numbers from './screens/Numbers/NumbersScreen';
 import NumberIntroScreen from './screens/Numbers/NumberIntroScreen';
 import LetterIntroScreen from './screens/Letters/LetterIntroScreen';
 import GameIntroScreen from './screens/Games/GameIntroScreen';
+import DSBangIntroScreen from './screens/Games/DSBangIntroScreen';
+import SponsorIntroScreen from './screens/SponsorPage';
 
 // Flalok Stories Import
 
@@ -66,6 +68,7 @@ import Chant2_Screen from './screens/CultureandArts/cultureandartsScreens/chants
 import Chant3_Screen from './screens/CultureandArts/cultureandartsScreens/chants/chants3Screen';
 import Kastifun1_Screen from './screens/CultureandArts/cultureandartsScreens/kastifun/kastifun1Screen';
 import Kastifun2_Screen from './screens/CultureandArts/cultureandartsScreens/kastifun/kastifun2Screen';
+import Kastifun3_Screen from './screens/CultureandArts/cultureandartsScreens/kastifun/kastifun3Screen';
 
 // Games
 import GameMenu from './screens/Games/GameMenu';
@@ -156,6 +159,9 @@ export default AppNavigator = createStackNavigator(
     mainMenu: MainMenu,
     letters: LetterScreen,
     numbers: Numbers,
+
+    // Sponsor
+    sponsorIntroScreen: SponsorIntroScreen,
 
 
     // Letters
@@ -265,10 +271,12 @@ export default AppNavigator = createStackNavigator(
     chant3Screen: Chant3_Screen,
     kastifun1Screen: Kastifun1_Screen,
     kastifun2Screen: Kastifun2_Screen,
+    kastifun3Screen: Kastifun3_Screen,
 
     //Games
 
     gameIntro: GameIntroScreen,
+    dsbangIntro: DSBangIntroScreen,
 
     gameMenu: GameMenu,
     dadseProceed: DadSeProceed,
@@ -303,7 +311,7 @@ export default AppNavigator = createStackNavigator(
   },
 {
 
-  initialRouteName:"home",
+  initialRouteName:"sponsorIntroScreen",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"

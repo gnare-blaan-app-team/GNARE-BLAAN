@@ -81,7 +81,7 @@ class FlalokStoryMenu extends Component {
 
                                 <View style={[styles.itemSize, {height: '90%', marginRight: '10%'}]} >
                                     <TouchableOpacity  onPress={this.gotoStory3} >
-                                        <Image style={styles.imageSizeStoryMenu} source={Story2} />
+                                        <Image style={styles.imageSizeStoryMenu} source={Story3} />
                                     </TouchableOpacity>
                                 </View>
                             </View>

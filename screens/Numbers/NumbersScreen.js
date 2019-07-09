@@ -282,8 +282,8 @@ class NumberScreen extends Component {
                     width: '70%', height: '27.5%', justifyContent: 'center', alignItems: 'center'}}>
                     <Image source={black} style={{position: 'absolute', width: '100%', height: '100%', 
                                 top: '0%', resizeMode: 'stretch'}}></Image>                    
-                    <Image source={this.state.sentenceScript} style={{width: '95%', height: '95%',
-                            resizeMode: 'stretch'}}></Image>
+                    <Image source={this.state.sentenceScript} style={{width: '130%', height: '70%',
+                            marginLeft:'-3%' ,resizeMode: 'stretch'}}></Image>
                 </View>
 
                 {/* Start of Page Letters Code Part */}

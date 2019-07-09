@@ -345,7 +345,7 @@ class Bang2 extends Component {
             choice3Top: '1000%',//75%
             choice4Top: '1000%',//75%
             emptyChoiceLeft: '1000%',
-            randomQuestion:0,
+            randomQuestion2:0,
             answerTop: '1000%', //53%
             answerImage: transparentFat,
             descriptionTop:'1000%',
@@ -523,7 +523,7 @@ class Bang2 extends Component {
                 const store = JSON.stringify(random);
                 await AsyncStorage.setItem(RandomKey2, store);
                 this.setState({ 
-                    randomQuestion: random,
+                    randomQuestion2: random,
                     choice1Top: '75%',//75%
                     choice2Top: '75%',//75%
                     choice3Top: '75%',//75%
@@ -532,7 +532,7 @@ class Bang2 extends Component {
                 });
             }else{
                 this.setState({ 
-                    randomQuestion: storedValue,
+                    randomQuestion2: storedValue,
                     choice1Top: '75%',//75%
                     choice2Top: '75%',//75%
                     choice3Top: '75%',//75%
@@ -917,7 +917,7 @@ class Bang2 extends Component {
     }
 
     render() {
-        const show = combine[this.state.randomQuestion];
+        const show = combine[this.state.randomQuestion2];//this.state.randomQuestion
         const convert1 = show.choice1String;
         this.state.getChoice1Name = convert1;
         const convert2 = show.choice2String;
