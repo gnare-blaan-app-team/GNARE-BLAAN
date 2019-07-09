@@ -40,14 +40,9 @@ import KaibeUlel from '../gameImages/Market/KaibeUlel.png';
 const screenWidth = Dimensions.get('screen').width;
 const screenHeight = Dimensions.get('screen').height;
 
-const CoinBalance = '@MyApp:CoinBalance';
-const showLbung = '@MyApp:showLbung';
-const showDafeng = '@MyApp:showDafeng';
-const showUlel = '@MyApp:showUlel';
-const showSwatSlah = '@MyApp:showSwatSlah';
-const showTlayong = '@MyApp:showTlayong';
-const showKulangTana = '@MyApp:showKulangTana';
-const showSlah = '@MyApp:showSlah';
+const clothWidth = screenWidth * 0.05;
+const clothHeight = screenHeight * 0.1;
+let fule = [];
 
 class DadSeMarket extends Component {
 
@@ -145,8 +140,7 @@ class DadSeMarket extends Component {
         this.swatResponder = PanResponder.create({
             onStartShouldSetPanResponder: (e, gesture)=> true,
             onPanResponderMove: (e, gesture)=> {
-                this.setState({swatX: gesture.moveX - ((screenWidth * 0.05)/2), 
-                    swatY: gesture.moveY - ((screenHeight * 0.1)/2)});
+                this.setState({swatX: gesture.moveX - (clothWidth/2), swatY: gesture.moveY - (clothHeight/2)});
             },
             onPanResponderRelease: (e, gesture)=> {
                 if(gesture.moveX >= (screenWidth * 0.49) - (screenWidth * 0.05) && 
@@ -603,14 +597,6 @@ class DadSeMarket extends Component {
                 </View>
             </ImageBackground>
         )
-    }
-}
-
-const clothStyle = {
-    clothing: {
-        width: '100%',
-        height: '100%',
-        resizeMode: 'contain',
     }
 }
 
