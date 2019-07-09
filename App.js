@@ -10,7 +10,6 @@ import NumberIntroScreen from './screens/Numbers/NumberIntroScreen';
 import LetterIntroScreen from './screens/Letters/LetterIntroScreen';
 import GameIntroScreen from './screens/Games/GameIntroScreen';
 import DSBangIntroScreen from './screens/Games/DSBangIntroScreen';
-import SponsorIntroScreen from './screens/SponsorPage';
 
 // Flalok Stories Import
 
@@ -163,9 +162,6 @@ export default AppNavigator = createStackNavigator(
     letters: LetterScreen,
     numbers: Numbers,
     about: About,
-
-    // Sponsor
-    sponsorIntroScreen: SponsorIntroScreen,
 
 
     // Letters
