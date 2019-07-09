@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Image, ImageBackground, TouchableWithoutFeedback} from "react-native";
+import { StyleSheet, View, Image, ImageBackground, TouchableWithoutFeedback, StatusBar, BackHandler} from "react-native";
 import Video from "react-native-video";
 import {AsyncStorage} from 'react-native';
 import { withNavigation } from 'react-navigation'; 
@@ -33,15 +33,39 @@ class SponsorPage extends Component {
             muted: false,
             volume: 1,
             
+            
         };
 
-      
+      sound = null;
     }
 
     static navigationOptions = {
         header:null,
     }
 
+    componentDidMount() {
+        if (this.backHandler == null) {
+            this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress); 
+        }
+        if (sound != null) {
+            sound.stop();
+        }
+    }
+
+    handleBackPress = () => {
+        this.goBack();
+    }
+
+    goBack = () =>{
+        if((sound != null)){
+            sound.stop();
+        }
+        BackHandler.exitApp();
+    }
+
+    getFreshOpen(){
+        AsyncStorage.getItem();
+    }
 
     handleMainButtonTouch = () => {
         if (this.state.progress >= 1) {
@@ -85,6 +109,7 @@ class SponsorPage extends Component {
 
     handleEnd = () => {
         this.setState({ paused: true});
+        this.backHandler.remove();
         this.props.navigation.navigate('home');
     };
 
@@ -104,6 +129,7 @@ class SponsorPage extends Component {
             
             <ImageBackground style={videoStyle.container}>
                 <View style={{position: 'absolute', width: '100%', height: '100%', top: this.state.hideStory, opacity: this.state.opacityVideo}}>
+                <StatusBar hidden={true} />
                     <TouchableWithoutFeedback>
                         <Video
                             paused={this.state.paused}
@@ -122,17 +148,7 @@ class SponsorPage extends Component {
                             }}
                         />
                     </TouchableWithoutFeedback>
-                    <View style={{backgroundColor: "rgba(0, 0, 0, 0.8)",
-                        height: '15%',
-                        left: 0,
-                        bottom: this.state.controlHide,
-                        right: 0,
-                        position: "absolute",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        paddingHorizontal: 10,}}>
-                    </View>
+                    
                 </View>
 
                 <Image source={cultureandarts_BG} style={{position: 'absolute', top: this.state.hideVideo, opacity: this.state.opacityNext, width: '100%', height: '100%'}} />

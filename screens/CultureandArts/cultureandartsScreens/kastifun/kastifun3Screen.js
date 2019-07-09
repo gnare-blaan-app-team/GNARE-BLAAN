@@ -6,7 +6,7 @@ import ProgressBar from "react-native-progress/Bar";
 import { withNavigation } from 'react-navigation'; 
 import Icon from "react-native-vector-icons/FontAwesome";
 
-import Kastifun3_video from '../../cultureandartsVideos/Kastifun/blaanDance.mp4';
+import Kastifun3_video from '../../cultureandartsVideos/Kastifun/blaanDance2.mp4';
 import Back_icon from '../../../images/Back_icon.png';
 import Home_icon from '../../../images/Home_icon.png';
 

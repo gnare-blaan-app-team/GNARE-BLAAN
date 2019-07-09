@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, TouchableOpacity , Animated, 
+import { Text, View, Image, StyleSheet, StatusBar, TouchableOpacity , Animated, 
     ImageBackground, PanResponder, Dimensions, AsyncStorage} from 'react-native';
 import { withNavigation } from 'react-navigation';
-
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet';
 import GameBG from '../gameImages/GameBG.png';
 import Home_icon from '../../images/Home_icon.png';
+import Back_icon from '../../images/Back_icon.png';
+
 import GnareIcon from '../gameImages/GnareMain.png';
 import KwartoBG from '../gameImages/KwartoBG.png';
 import DSKaibe from '../gameImages/Market/DS_Kaibe.png';
@@ -40,14 +40,9 @@ import KaibeUlel from '../gameImages/Market/KaibeUlel.png';
 const screenWidth = Dimensions.get('screen').width;
 const screenHeight = Dimensions.get('screen').height;
 
-const CoinBalance = '@MyApp:CoinBalance';
-const showLbung = '@MyApp:showLbung';
-const showDafeng = '@MyApp:showDafeng';
-const showUlel = '@MyApp:showUlel';
-const showSwatSlah = '@MyApp:showSwatSlah';
-const showTlayong = '@MyApp:showTlayong';
-const showKulangTana = '@MyApp:showKulangTana';
-const showSlah = '@MyApp:showSlah';
+const clothWidth = screenWidth * 0.05;
+const clothHeight = screenHeight * 0.1;
+let fule = [];
 
 class DadSeMarket extends Component {
 
@@ -71,50 +66,72 @@ class DadSeMarket extends Component {
             showKulangTana2: 1,
 
             pan: new Animated.ValueXY(),
-            swatX: screenWidth * 0.272,
-            swatY: screenHeight * 0.15,
+            swatX: '27.5%',
+            swatY: '17%',
 
-            ulelX: screenWidth * 0.255,
-            ulelY: screenHeight * 0.3,
+            ulelX: '25%',
+            ulelY: '33%',
 
-            lbungX: screenWidth * 0.26,
-            lbungY: screenHeight * 0.5,
+            lbungX: '26%',
+            lbungY: '54%',
 
-            tlayongX: screenWidth * 0.26,
-            tlayongY: screenHeight * 0.69,
+            tlayongX: '26%',
+            tlayongY: '74%',
 
-            dafengX: screenWidth * 0.625,
-            dafengY: screenHeight * 0.21,
+            dafengX: '64%',
+            dafengY: '22%',
 
-            kulangTanaX: screenWidth * 0.625,
-            kulangTanaY: screenHeight * 0.41,
+            kulangTanaX: '64%',
+            kulangTanaY: '42%',
 
-            slahX: screenWidth * 0.625,
-            slahY: screenHeight * 0.6,
-            index: -1,
+            slahX: '64%',
+            slahY: '62%',
+            index: 0,
+            fule: [],
         };
 
         this.clothing = [{
-            x: screenWidth * 0.272,
-            y: screenHeight * 0.145,
+            x: '27.5%',
+            y: '17%',
+            width: screenWidth * 0.05,
+            height: screenHeight * 0.09,
+            price: 10,
         }, {
-            x: screenWidth * 0.255,
-            y: screenHeight * 0.3,
+            x: '25%',
+            y: '33%',
+            width: screenWidth * 0.1,
+            height: screenHeight * 0.16,
+            price: 5,
         }, {
-            x: screenWidth * 0.26,
-            y: screenHeight * 0.5,
+            x: '26%',
+            y: '54%',
+            width: screenWidth * 0.08,
+            height: screenHeight * 0.13,
+            price: 15,
         }, {
-            x: screenWidth * 0.26,
-            y: screenHeight * 0.69,
+            x: '26%',
+            y: '74%',
+            width: screenWidth * 0.08,
+            height: screenHeight * 0.13,
+            price: 15,
         }, {
-            x: screenWidth * 0.625,
-            y: screenHeight * 0.21,
+            x: '64%',
+            y: '22%',
+            width: screenWidth * 0.08,
+            height: screenHeight * 0.13,
+            price: 15,
         }, {
-            x: screenWidth * 0.625,
-            y: screenHeight * 0.41,
+            x: '64%',
+            y: '42%',
+            width: screenWidth * 0.08,
+            height: screenHeight * 0.13,
+            price: 15,
         }, {
-            x: screenWidth * 0.625,
-            y: screenHeight * 0.6,
+            x: '64%',
+            y: '62%',
+            width: screenWidth * 0.08,
+            height: screenHeight * 0.13,
+            price: 10,
         }, ];
 
         this._val = {x: screenWidth * 0.275, y: screenHeight * 0.147};
@@ -123,8 +140,7 @@ class DadSeMarket extends Component {
         this.swatResponder = PanResponder.create({
             onStartShouldSetPanResponder: (e, gesture)=> true,
             onPanResponderMove: (e, gesture)=> {
-                this.setState({swatX: gesture.moveX - ((screenWidth * 0.05)/2), 
-                    swatY: gesture.moveY - ((screenHeight * 0.1)/2)});
+                this.setState({swatX: gesture.moveX - (clothWidth/2), swatY: gesture.moveY - (clothHeight/2)});
             },
             onPanResponderRelease: (e, gesture)=> {
                 if(gesture.moveX >= (screenWidth * 0.49) - (screenWidth * 0.05) && 
@@ -132,7 +148,7 @@ class DadSeMarket extends Component {
                     if(gesture.moveY >= (screenHeight * 0.12) - (screenHeight * 0.05) &&
                     gesture.moveY <= (screenHeight * 0.12) + (screenHeight * 0.05)) {
                         this.setState({showSwatSlah: 1, showSwatSlah2: 0});
-
+                        fule.push(DSSwatSalah);
                     }
                 }
                 this.setState({swatX: this.clothing[0].x, swatY: this.clothing[0].y});
@@ -151,6 +167,7 @@ class DadSeMarket extends Component {
                     if(gesture.moveY >= (screenHeight * 0.2) - (screenHeight * 0.05) &&
                     gesture.moveY <= (screenHeight * 0.2) + (screenHeight * 0.05)) {
                         this.setState({showUlel: 1, showUlel2: 0});
+                        fule.push(DSUlel);
                     }
                 }
                 this.setState({ulelX: this.clothing[1].x, ulelY: this.clothing[1].y});
@@ -169,6 +186,7 @@ class DadSeMarket extends Component {
                     if(gesture.moveY >= (screenHeight * 0.28) - (screenHeight * 0.05) &&
                     gesture.moveY <= (screenHeight * 0.28) + (screenHeight * 0.2)) {
                         this.setState({showLbung: 1, showLbung2: 0});
+                        fule.push(DSLbung);
                     }
                 }
                 this.setState({lbungX: this.clothing[2].x, lbungY: this.clothing[2].y});
@@ -187,6 +205,7 @@ class DadSeMarket extends Component {
                     if(gesture.moveY >= (screenHeight * 0.45) - (screenHeight * 0.05) &&
                     gesture.moveY <= (screenHeight * 0.45) + (screenHeight * 0.05)) {
                         this.setState({showTlayong: 1, showTlayong2: 0});
+                        fule.push(DSTlayong);
                     }
                 }
                 this.setState({tlayongX: this.clothing[3].x, tlayongY: this.clothing[3].y});
@@ -197,7 +216,7 @@ class DadSeMarket extends Component {
             onStartShouldSetPanResponder: (e, gesture)=> true,
             onPanResponderMove: (e, gesture)=> {
                 this.setState({dafengX: gesture.moveX - ((screenWidth * 0.08)/2), 
-                    dafengY: gesture.moveY - ((screenHeight * 0.14)/2)});
+                    dafengY: gesture.moveY - ((screenHeight * 0.13)/2)});
             },
             onPanResponderRelease: (e, gesture)=> {
                 if(gesture.moveX >= (screenWidth * 0.49) - (screenWidth * 0.05) && 
@@ -205,6 +224,7 @@ class DadSeMarket extends Component {
                     if(gesture.moveY >= (screenHeight * 0.45) - (screenHeight * 0.05) &&
                     gesture.moveY <= (screenHeight * 0.45) + (screenHeight * 0.2)) {
                         this.setState({showDafeng: 1, showDafeng2: 0});
+                        fule.push(DSDafeng);
                     }
                 }
                 this.setState({dafengX: this.clothing[4].x, dafengY: this.clothing[4].y});
@@ -223,6 +243,7 @@ class DadSeMarket extends Component {
                     if(gesture.moveY >= (screenHeight * 0.4) - (screenHeight * 0.4) &&
                     gesture.moveY <= (screenHeight * 0.4) + (screenHeight * 0.4)) {
                         this.setState({showKulangTana: 1, showKulangTana2: 0});
+                        fule.push(DSKulangTana);
                     }
                 }
                 this.setState({kulangTanaX: this.clothing[5].x, kulangTanaY: this.clothing[5].y});
@@ -241,6 +262,7 @@ class DadSeMarket extends Component {
                     if(gesture.moveY >= (screenHeight * 0.4) - (screenHeight * 0.4) &&
                     gesture.moveY <= (screenHeight * 0.4) + (screenHeight * 0.4)) {
                         this.setState({showSlah: 1, showSlah2: 0});
+                        fule.push(DSSlah);
                     }
                 }
                 this.setState({slahX: this.clothing[6].x, slahY: this.clothing[6].y});
@@ -252,12 +274,44 @@ class DadSeMarket extends Component {
         header: null,
     }
 
-    fule = () =>{
-        this.setState({showDafeng2: 1, showLbung2: 1, showTlayong2: 1, 
-            showSwatSlah2: 1, showUlel2: 1, showKulangTana2: 1, showSlah2: 1,
-            });
-        this.setState({showUlel: 0, showLbung: 0, showKulangTana: 0, showSlah: 0,
-            showDafeng: 0, showSwatSlah: 0, showTlayong: 0, });
+    fule = () => {
+        switch(fule[fule.length - 1]) {
+            case DSSwatSalah: {
+                this.setState({showSwatSlah2: 1, showSwatSlah: 0});
+                fule.pop();
+                break;
+            };
+            case DSUlel: {
+                this.setState({showUlel2: 1, showUlel: 0});
+                fule.pop();
+                break;
+            };
+            case DSLbung: {
+                this.setState({showLbung2: 1, showLbung: 0});
+                fule.pop();
+                break;
+            };
+            case DSTlayong: {
+                this.setState({showTlayong2: 1, showTlayong: 0});
+                fule.pop();
+                break;
+            };
+            case DSDafeng: {
+                this.setState({showDafeng2: 1, showDafeng: 0});
+                fule.pop();
+                break;
+            };
+            case DSKulangTana: {
+                this.setState({showKulangTana2: 1, showKulangTana: 0});
+                fule.pop();
+                break;
+            };
+            case DSSlah: {
+                this.setState({showSlah2: 1, showSlah: 0});
+                fule.pop();
+                break;
+            };
+        }
     }
 
     componentDidMount() {
@@ -344,165 +398,197 @@ class DadSeMarket extends Component {
     }
     
     render() {
+        StatusBar.setHidden(true);
         const panStyle = {
             transform: this.state.pan.getTranslateTransform()
         }
         return (
-            <ImageBackground
-                source={GameBG}
-                style={styles.image}
-            >
-                <View style={styles.gnareIconStyle}>
+            <ImageBackground source={GameBG} style={styles.image}>
+
+                <View style={{position: 'absolute', width: '70%', height: '90%'}}>
+                    <Image source={KwartoBG} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+
+                <View style={{position: 'absolute', top:'10%', left: '42.5%',
+                    width: '15%', height: '70%'}}>
+                    <Image source={DSKaibe} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+
+                <View style={{position: 'absolute', top:'12.5%', left: '25%',
+                    width: '12%', height: '17%'}}>
+                    <Image source={DSSwatSalah} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+                <View style={{position: 'absolute', top:'32%', left: '25%',
+                    width: '12%', height: '17%'}}>
+                    <Image source={DSUlel} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+                <View style={{position: 'absolute', top:'51.5%', left: '25%',
+                    width: '12%', height: '17%'}}>
+                    <Image source={DSLbung} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+                <View style={{position: 'absolute', top:'71%', left: '25%',
+                    width: '12%', height: '17%'}}>
+                    <Image source={DSTlayong} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+
+                <View style={{position: 'absolute', top:'20%', right: '25%',
+                    width: '12%', height: '17%'}}>
+                    <Image source={DSDafeng} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+                <View style={{position: 'absolute', top:'39.5%', right: '25%',
+                    width: '12%', height: '17%'}}>
+                    <Image source={DSKulangTana} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+                <View style={{position: 'absolute', top:'59%', right: '25%',
+                    width: '12%', height: '17%'}}>
+                    <Image source={DSSlah} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+
+                <View style={{position: 'absolute', top:'2.5%', right: '12%',
+                    width: '12%', height: '17%'}}>
+                    <Image source={Coinbank} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                    <Text style={{position: 'absolute', top: '15%',
+                        left: '40%', fontSize: 15, color: '#ffea00'}}>{this.state.CoinBalance}.0</Text>
+                </View>
+
+                <View style={{position: 'absolute', top:'20%', right: '12%',
+                    width: '8%', height: '70%'}}>
+                    <Image source={DSProgressBarEmpty} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+
+
+                <View style={{position: 'absolute', top:'10%', left: '47%',
+                    width: '6%', height: '8%', opacity: this.state.showSwatSlah}}>
+                    <Image source={KaibeSwatSlah} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+
+                <View style={{position: 'absolute', top:'25%', left: '43%',
+                    width: '14.5%', height: '22%', opacity: this.state.showLbung}}>
+                    <Image source={KaibeLbung} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+
+                <View style={{position: 'absolute', top:'20%', left: '46%',
+                    width: '7%', height: '15%', opacity: this.state.showUlel}}>
+                    <Image source={KaibeUlel} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+                <View style={{position: 'absolute', top:'42%', left: '45%',
+                    width: '10%', height: '32%', opacity: this.state.showDafeng}}>
+                    <Image source={KaibeDafeng} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+
+                <View style={{position: 'absolute', top:'39%', left: '45.5%',
+                    width: '9%', height: '20%', opacity: this.state.showTlayong}}>
+                    <Image source={KaibeTlayong} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+                
+
+                <View style={{position: 'absolute', top:'67%', left: '38%',
+                    width: '8%', height: '13%', opacity: this.state.showSlah}}>
+                    <Image source={Slah} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+
+                <View style={{position: 'absolute', top:'67%', left: '54%',
+                    width: '8%', height: '13%', opacity: this.state.showKulangTana}}>
+                    <Image source={KulangTana} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+
+
+                <View style={{position: 'absolute', top: this.state.swatY, 
+                    left: this.state.swatX, opacity: this.state.showSwatSlah2,
+                    width: '5%', height: '9%'}} {...this.swatResponder.panHandlers}>
+                    <Image source={SwatSalah} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+
+                <View style={{position: 'absolute', top: this.state.ulelY, 
+                    left: this.state.ulelX, opacity: this.state.showUlel2,
+                    width: '10%', height: '16%'}} {...this.ulelResponder.panHandlers}>
+                    <Image source={Ulel} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+
+                <View style={{position: 'absolute', top: this.state.lbungY, 
+                    left: this.state.lbungX, opacity: this.state.showLbung2,
+                    width: '8%', height: '13%'}} {...this.lbungResponder.panHandlers}>
+                    <Image source={Lbung} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+
+                <View style={{position: 'absolute', top: this.state.tlayongY, 
+                    left: this.state.tlayongX, opacity: this.state.showTlayong2,
+                    width: '8%', height: '13%'}} {...this.tlayongResponder.panHandlers}>
+                    <Image source={Tlayong} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+
+                <View style={{position: 'absolute', top: this.state.dafengY, 
+                    left: this.state.dafengX, opacity: this.state.showDafeng2,
+                    width: '8%', height: '13%'}} {...this.dafengResponder.panHandlers}>
+                    <Image source={Dafeng} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+
+                <View style={{position: 'absolute', top: this.state.kulangTanaY, 
+                    left: this.state.kulangTanaX, opacity: this.state.showKulangTana2,
+                    width: '8%', height: '13%'}} {...this.kulangTanaResponder.panHandlers}>
+                    <Image source={KulangTana} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+
+                <View style={{position: 'absolute', top: this.state.slahY, 
+                    left: this.state.slahX, opacity: this.state.showSlah2,
+                    width: '8%', height: '13%'}} {...this.slahResponder.panHandlers}>
+                    <Image source={Slah} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+
+
+
+                <View style={{position: 'absolute', top:'83%', left: '41%',
+                    width: '8%', height: '8%'}}>
+                    <Image source={DSMayad} style={{width: '100%', height: '100%',
+                    resizeMode: 'stretch'}}></Image>
+                </View>
+
+                <View style={{position: 'absolute', top:'83%', right: '41%',
+                    width: '8%', height: '8%'}}>
+                    <TouchableOpacity onPress={this.fule}>
+                        <Image source={DSFule} style={{width: '100%', height: '100%',
+                        resizeMode: 'stretch'}}></Image>
+                    </TouchableOpacity>
+                </View>
+                
+                
+
+                <View style={{position: 'absolute',  left: '3%', 
+                    bottom: '3%', width: '10%', height: '24%'}}>
                     <Image source={GnareIcon} style={styles.image}></Image>
                 </View>
-                
-                <View style={{width: '70%', height: '90%',}}>
-                    <Image source={KwartoBG} style={{width: '100%', height: '100%',
-                        resizeMode: 'contain'}}></Image>
-                    <View style={{top: '0%', width: '100%', height: '100%', position: 'absolute'}}>
-                        <View style={{position: 'absolute', width: '17.5%', height: '80%', top: '5%',
-                            left: '40%'}}>
-                            <Image source={DSKaibe} style={styles.image}></Image>
-                        </View>
 
-                        {/* Mayad */}
-                        {/* Swat Salah */}
-                        <View style={{position: 'absolute', width: '15%', height: '20%', top: '7.5%',
-                            left: '15%'}}>
-                            <Image source={DSSwatSalah} style={styles.image}></Image>
-                        </View>
-                        
-                        {/* Ulel */}
-                        <View style={{position: 'absolute', width: '15%', height: '20%', top: '30%',
-                            left: '15%'}}>
-                            <Image source={DSUlel} style={styles.image}></Image>
-                        </View>
-                        {/* Lbung */}
-                        <View style={{position: 'absolute', width: '15%', height: '20%', top: '52.5%',
-                            left: '15%'}}>
-                            <Image source={DSLbung} style={styles.image}></Image>
-                        </View>
-                        {/* Tlayong */}
-                        <View style={{position: 'absolute', width: '15%', height: '20%', top: '75%',
-                            left: '15%'}}>
-                            <Image source={DSTlayong} style={styles.image}></Image>
-                        </View>
 
-                        {/* Mayad Right */}
-                        <View style={{position: 'absolute', width: '15%', height: '20%', top: '17.5%',
-                            right: '17.5%'}}>
-                            <Image source={DSDafeng} style={styles.image}></Image>
-                        </View>
-                        <View style={{position: 'absolute', width: '15%', height: '20%', top: '41.25%',
-                            right: '17.5%'}}>
-                            <Image source={DSKulangTana} style={styles.image}></Image>
-                        </View>
-                        <View style={{position: 'absolute', width: '15%', height: '20%', top: '65%',
-                            right: '17.5%'}}>
-                            <Image source={DSSlah} style={styles.image}></Image>
-                        </View>
-
-                        
-                        {/* Coins, ProgressBar */}
-                        <View style={{position: 'absolute', width: '10%', height: '80%', top: '15%',
-                            right: '2.5%'}}>
-                            <Image source={DSProgressBarEmpty} style={styles.image}></Image>
-                        </View>
-                        <View style={{position: 'absolute', width: '10%', height: '15%', top: '-2.5%',
-                            right: '2.5%'}}>
-                            <Image source={Coinbank} style={styles.image}></Image>
-                            <Text style={{position: 'absolute', width: '70%', height: '30%',
-                                top: '13%', left: '40%', color: '#ffea00', fontSize: 12}}>{this.state.CoinBalance}.0</Text>
-                        </View>
-
-                        {/* Bottom Buttons */}
-                        <View style={{position: 'absolute', width: '10%', height: '10%', top: '87.5%',
-                            left: '32.2%'}}>
-                            <Image source={DSMayad} style={styles.image}></Image>
-                        </View>
-                        <View style={{position: 'absolute', width: '10%', height: '10%', top: '87.5%',
-                            left: '43.7%'}}>
-                            <TouchableOpacity onPress={this.fule}>
-                                <View style={{width: '100%', height: '100%'}}>
-                                    <Image source={DSFule} style={styles.image}></Image>
-                                </View>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{position: 'absolute', width: '10%', height: '10%', top: '87.5%',
-                            left: '55.2%'}}>
-                            <Image source={DSXButton} style={styles.image}></Image>
-                        </View>
-                    </View>
+                <View style={styles.backContainer}>
+                    <TouchableOpacity onPress={this.gotoDadSe}>
+                        <Image source={Back_icon} style={styles.home}></Image>
+                    </TouchableOpacity>
                 </View>
-
-                
-                <View style={{ position: 'absolute', width: '6%', resizeMode: 'contain',
-                        height: '9%', top: '8.8%', left: '46.1%', opacity: this.state.showSwatSlah,
-                    }}>
-                    <Image source={KaibeSwatSlah} style={clothStyle.clothing}></Image>
-                </View>
-                <View style={{ position: 'absolute', width: '12%', resizeMode: 'contain',
-                        height: '23.3%', top: '24.5%', left: '43.3%', opacity: this.state.showLbung,
-                    }}>
-                    <Image source={KaibeLbung} style={clothStyle.clothing}></Image>
-                </View>
-                <View style={{ position: 'absolute', width: '5.8%', resizeMode: 'contain',
-                        height: '17%', top: '19.9%', left: '45.9%', opacity: this.state.showUlel,
-                    }}>
-                    <Image source={KaibeUlel} style={clothStyle.clothing}></Image>
-                </View>
-                <View style={{ position: 'absolute', width: '8.7%', resizeMode: 'contain',
-                        height: '32.5%', top: '43%', left: '44.9%', opacity: this.state.showDafeng,
-                    }}>
-                    <Image source={KaibeDafeng} style={clothStyle.clothing}></Image>
-                </View>
-                <View style={{ position: 'absolute', width: '8%', resizeMode: 'contain',
-                        height: '20%', top: '40%', left: '45.3%', opacity: this.state.showTlayong,
-                    }}>
-                    <Image source={KaibeTlayong} style={clothStyle.clothing}></Image>
-                </View>
-                <View style={{ position: 'absolute', width: '8%', resizeMode: 'contain',
-                        height: '20%', top: '40%', left: '45.3%', opacity: this.state.showTlayong,
-                    }}>
-                    <Image source={KaibeTlayong} style={clothStyle.clothing}></Image>
-                </View>
-                <View style={{ position: 'absolute', width: '15%', resizeMode: 'contain',
-                        height: '15%', top: '65%', left: '50%', opacity: this.state.showKulangTana,
-                    }}>
-                    <Image source={KulangTana} style={clothStyle.clothing}></Image>
-                </View>
-                <View style={{ position: 'absolute', width: '15%', resizeMode: 'contain',
-                        height: '15%', top: '65%', left: '33%', opacity: this.state.showSlah,
-                    }}>
-                    <Image source={Slah} style={clothStyle.clothing}></Image>
-                </View>
-
-                <View style={{position: 'absolute', top: screenHeight * 0.17,
-                    left: screenWidth * 0.27, width: screenWidth * 0.05, 
-                    height: screenHeight * 0.08,}}>
-                    <Image source={SwatSalah} style={{width: '100%', height: '100%', 
-                        resizeMode: 'stretch'}}></Image>
-                </View>
-
-                <View style={{position: 'absolute', top: screenHeight * 0.38,
-                    left: screenWidth * 0.27, width: screenWidth * 0.05, 
-                    height: screenHeight * 0.08,}}>
-                    <Image source={Ulel} style={{width: '100%', height: '100%', 
-                        resizeMode: 'stretch'}}></Image>
-                </View>
-
-                <View style={[styles.dot,{top: screenHeight * 0.12,
-                    left: screenWidth * 0.49}]}></View>
-                
-                <View style={[styles.dot,{top: screenHeight * 0.2,
-                    left: screenWidth * 0.49}]}></View>
-                
-                <View style={[styles.dot,{top: screenHeight * 0.28,
-                    left: screenWidth * 0.49}]}></View>
-
-                <View style={[styles.dot,{top: screenHeight * 0.45,
-                    left: screenWidth * 0.49}]}></View>
-                
                 
                 <View style={styles.homeContainer}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
@@ -511,14 +597,6 @@ class DadSeMarket extends Component {
                 </View>
             </ImageBackground>
         )
-    }
-}
-
-const clothStyle = {
-    clothing: {
-        width: '100%',
-        height: '100%',
-        resizeMode: 'contain',
     }
 }
 
