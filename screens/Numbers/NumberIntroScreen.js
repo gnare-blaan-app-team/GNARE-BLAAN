@@ -10,6 +10,7 @@ import Skip_icon from '../images/skip.png';
 import Replay_icon from '../images/replay.png';
 
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
+import { sound } from '../HomePage';
 
 class NumberIntroScreen extends Component {
     static navigationOptions = {
@@ -29,6 +30,15 @@ class NumberIntroScreen extends Component {
         }
     }
 
+    componentDidMount(){
+        try {
+            sound.setVolume(0);
+            sound.play();
+        } catch(error) {
+            
+        }
+    }
+
     handleProgress = progress => {
         this.setState({
             progress: (progress.currentTime) / this.state.duration,
@@ -36,6 +46,12 @@ class NumberIntroScreen extends Component {
     };
 
     handleEnd = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         this.setState({paused: true, volume: 0, muted: true, showReplay: '40%'});
         this.props.navigation.navigate('numbers');
     };
@@ -47,11 +63,23 @@ class NumberIntroScreen extends Component {
     };
 
     gotoNumberScreen = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.navigate('numbers');
     }
 
     replayVideo = () => {
+        try {
+            sound.setVolume(0);
+            sound.play();
+        } catch(error) {
+            
+        }
         this.setState({source: Letter_Intro});
         setTimeout(()=>{
             this.setState({source: Number_Intro});

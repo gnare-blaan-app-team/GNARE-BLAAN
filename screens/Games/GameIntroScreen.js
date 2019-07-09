@@ -10,6 +10,7 @@ import Skip_icon from '../images/skip.png';
 import Replay_icon from '../images/replay.png';
 
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
+import { sound } from '../HomePage';
 
 class GameIntroScreen extends Component {
     static navigationOptions = {
@@ -28,12 +29,33 @@ class GameIntroScreen extends Component {
         }
     }
 
+    componentDidMount(){
+        try {
+            sound.setVolume(0);
+            sound.play();
+        } catch(error) {
+            
+        }
+    }
+
     handleEnd = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.navigate('gameMenu', { openProfile: 'showProfile' });
     };
 
     gotoGameScreen = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.navigate('gameMenu', { openProfile: 'showProfile' });
     }

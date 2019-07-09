@@ -4,6 +4,7 @@ import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
 import Sound from 'react-native-sound';
+import { sound } from '../../HomePage';
 import Vocab5BG from './vocabulary5Images/Vocab5.png';
 
 import Back_icon from '../../images/Back_icon.png';
@@ -91,6 +92,12 @@ class Vocabulary5 extends Component {
         
     })
     this.autoPlaySound(index);
+    try {
+        sound.setVolume(0);
+        sound.play();
+    } catch(error) {
+        
+    }
    }
 
    autoPlaySound = (index) => {
@@ -132,6 +139,12 @@ class Vocabulary5 extends Component {
       }
 
     gotoMainMenu = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         const clear = this.state.clearBackground;
         if (clear == 'clear'){
             this.stopSounds();
@@ -140,6 +153,12 @@ class Vocabulary5 extends Component {
     }
 
     goBack = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         const clear = this.state.clearBackground;
         if (clear == 'gotoVocab5Menu') {
             this.props.navigation.navigate('vocabularyMenu')
@@ -169,6 +188,12 @@ class Vocabulary5 extends Component {
 
     componentDidMount() {
         this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
     }
 
     componentWillUnmount() {
