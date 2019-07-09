@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { ImageBackground, TouchableOpacity, View, Image, Text, StatusBar, AsyncStorage, Animated, Easing} from 'react-native';
+import { ImageBackground, TouchableOpacity, View, Image, Text, StatusBar, AsyncStorage, Animated, Easing, BackHandler} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js';
 
@@ -37,6 +37,7 @@ class Homescreen extends Component{
         this.state = {
             yValue: new Animated.Value(0),
         }
+        this.backHandler = null;
     }
 
     _moveAnimation = () => {
@@ -48,22 +49,38 @@ class Homescreen extends Component{
     
       }
 
+    
+
     componentDidMount() {
+        StatusBar.setHidden(true);
         try{
             sound.setVolume(0.2);
             sound.play();
         } catch(error) {
             
         }
+        if (this.backHandler == null) {
+            this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress); 
+        }
+        
+    }
+
+
+    handleBackPress = () => {
+        this.goBack();
+    }
+
+    goBack = () =>{
+        sound.stop();
+        BackHandler.exitApp();
     }
 
     gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
+        this.backHandler.remove();
     }
 
     render(){
-        // alert(Dimensions.get('window').height);
-      StatusBar.setHidden(true);
         return(
             <ImageBackground style={styles.image} source={HomepageBackground}>
                 <View style={{position: "absolute", width:"100%", height:"100%"}}>

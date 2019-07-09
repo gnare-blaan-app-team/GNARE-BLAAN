@@ -49,7 +49,7 @@ class Mainmenu extends Component {
         } catch(error) {
 
         }
-        this.props.navigation.push('home');
+        this.props.navigation.navigate('home');
     }
 
     gotoCultureandArts = () => {
@@ -57,7 +57,7 @@ class Mainmenu extends Component {
     }
 
     goBack = () => {
-        this.props.navigation.push('home');
+        this.props.navigation.navigate('home');
     }
 
     gotoGame = () => {
