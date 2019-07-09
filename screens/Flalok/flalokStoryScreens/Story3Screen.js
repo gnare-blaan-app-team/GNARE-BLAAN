@@ -11,7 +11,7 @@ import Story3_EN from '../flalokVideos/Story3_EN.mp4';
 import Back_icon from '../../images/Back_icon.png';
 import Home_icon from '../../images/Home_icon.png';
 
-
+import { sound } from '../../HomePage';
 
 import NextStory from '../flalokImages/NextStory.png';
 import Vocabulary3 from '../flalokImages/Vocabulary3Btn.png';
@@ -58,6 +58,15 @@ class Story3Screen extends Component {
         header:null,
     }
 
+    componentDidMount(){
+        try {
+            sound.setVolume(0);
+            sound.play();
+        } catch(error) {
+            
+        }
+    }
+
     handleMainButtonTouch = () => {
         if (this.state.progress >= 1) {
             this.player.seek(0);
@@ -99,6 +108,12 @@ class Story3Screen extends Component {
     };
 
     handleEnd = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         this.setState({ paused: true, opacityVideo: 0, opacityNext: 1, 
                     hideVideo: 0, hideTabs: '15%', hideHome: '3%',
                     hideStory: '-1000%'});
@@ -112,16 +127,28 @@ class Story3Screen extends Component {
     };
 
     goBack = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         this.props.navigation.navigate('flalok');
     }
 
     gotoMainMenu = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         this.props.navigation.navigate('mainMenu');
     }
 
 
     gotoNextStory = () => {
-        this.props.navigation.navigate('story2');
+        this.props.navigation.navigate('story4');
     }
 
     gotoVocabulary3 = () => {

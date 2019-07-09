@@ -317,7 +317,7 @@ export default AppNavigator = createStackNavigator(
   },
 {
 
-  initialRouteName:"sponsorIntroScreen",
+  initialRouteName:"flalok",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"
