@@ -4,6 +4,7 @@ import HomeScreen from './screens/HomePage';
 import MainMenu from './screens/MainMenu';
 import LetterScreen from './screens/Letters/letterScreen';
 import Numbers from './screens/Numbers/NumbersScreen';
+import About from './screens/About';
 
 import NumberIntroScreen from './screens/Numbers/NumberIntroScreen';
 import LetterIntroScreen from './screens/Letters/LetterIntroScreen';
@@ -157,6 +158,7 @@ export default AppNavigator = createStackNavigator(
     mainMenu: MainMenu,
     letters: LetterScreen,
     numbers: Numbers,
+    about: About,
 
 
     // Letters
@@ -305,7 +307,7 @@ export default AppNavigator = createStackNavigator(
   },
 {
 
-  initialRouteName:"dadseMarket",
+  initialRouteName:"home",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"

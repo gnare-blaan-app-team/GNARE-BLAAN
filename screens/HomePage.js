@@ -34,6 +34,9 @@ class Homescreen extends Component{
     gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
     }
+    gotoAbout = () => {
+      this.props.navigation.navigate('about');
+    }
 
     render(){
         // alert(Dimensions.get('window').height);
@@ -64,7 +67,7 @@ class Homescreen extends Component{
                                     </TouchableOpacity>
                                 </View>
                                 <View style={styles.HomePageItems} >
-                                    <TouchableOpacity>
+                                    <TouchableOpacity  onPress={this.gotoAbout}>
                                         <Image style={styles.imageSizeStoryMenu} source={About_icon} />
                                     </TouchableOpacity>
                                 </View>
