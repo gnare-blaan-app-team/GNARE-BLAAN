@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Image, StyleSheet, ImageBackground, TouchableOpacity, BackHandler,Animated } from 'react-native';
 
 import Sound from 'react-native-sound';
+import { sound } from '../../HomePage';
 
 import { withNavigation } from 'react-navigation';
 import { globalStyleSheet } from '../../globalStyleSheet/globalStyleSheet'
@@ -137,6 +138,12 @@ class vocabulary2 extends Component {
             indexSound: soundPlay,
         })
         this.autoPlaySound(Background);
+        try {
+            sound.setVolume(0);
+            sound.play();
+        } catch(error) {
+            
+        }
     }
 
     autoPlaySound = (index) => {
@@ -185,6 +192,12 @@ class vocabulary2 extends Component {
     }
 
     gotoMainMenu = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         const clear = this.state.clearBackground;
         if (clear == 'clear'){
             this.stopSounds();
@@ -193,6 +206,12 @@ class vocabulary2 extends Component {
     }
 
     goBack = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         const clear = this.state.clearBackground;
         if (clear == 'goVocabMenu'){
 
@@ -217,10 +236,16 @@ class vocabulary2 extends Component {
 
     componentDidMount() {
         this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
     }
     
     componentWillUnmount() {
-    this.backHandler.remove()
+        this.backHandler.remove()
     }
 
     handleBackPress = () => {

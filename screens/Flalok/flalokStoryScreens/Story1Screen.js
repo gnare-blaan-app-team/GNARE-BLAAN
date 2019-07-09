@@ -108,6 +108,12 @@ class Story1Screen extends Component {
     };
 
     handleEnd = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         this.setState({ paused: true, opacityVideo: 0, opacityNext: 1, 
                     hideVideo: 0, hideTabs: '15%', hideHome: '3%',
                     hideStory: '-1000%'});

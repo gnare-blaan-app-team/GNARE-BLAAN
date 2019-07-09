@@ -5,7 +5,7 @@ import Video from "react-native-video";
 import DSBang_Intro from '../IntroVideos/DSBang_Intro.mp4';
 import { globalStyleSheet as styles } from '../globalStyleSheet/globalStyleSheet.js';
 import { withNavigation } from 'react-navigation'; 
-
+import { sound } from '../HomePage';
 import Skip_icon from '../images/skip.png';
 
 const RandomKey = '@MyApp:RandomKey';
@@ -26,17 +26,37 @@ class DSBangIntroScreen extends Component {
         };
     }
 
-
     static navigationOptions = {
         header:null,
     }
 
+    componentDidMount(){
+        try {
+            sound.setVolume(0);
+            sound.play();
+        } catch(error) {
+            
+        }
+    }
+
     handleEnd = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.navigate('gameMenu');
     }
 
     gotoBangScreen = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.navigate('gameMenu');
     }

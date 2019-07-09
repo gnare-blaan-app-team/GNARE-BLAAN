@@ -11,6 +11,8 @@ import Replay_icon from '../images/replay.png';
 
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 
+import { sound } from '../HomePage';
+
 class LetterIntroScreen extends Component {
     static navigationOptions = {
         header: null,
@@ -28,6 +30,15 @@ class LetterIntroScreen extends Component {
         }
     }
 
+    componentDidMount(){
+        try {
+            sound.setVolume(0);
+            sound.play();
+        } catch(error) {
+            
+        }
+    }
+
     handleProgress = progress => {
         this.setState({
             progress: progress.currentTime / this.state.duration,
@@ -35,6 +46,12 @@ class LetterIntroScreen extends Component {
     };
 
     handleEnd = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.navigate('letters');
     };
@@ -46,11 +63,23 @@ class LetterIntroScreen extends Component {
     };
 
     gotoLetterScreen = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.navigate('letters');
     }
 
     replayVideo = () => {
+        try {
+            sound.setVolume(0);
+            sound.play();
+        } catch(error) {
+            
+        }
         this.setState({source: Number_Intro});
         setTimeout(()=>{
             this.setState({source: Letter_Intro});
