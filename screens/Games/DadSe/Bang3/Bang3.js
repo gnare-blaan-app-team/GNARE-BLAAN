@@ -247,6 +247,7 @@ const answer = [
 
 const questionAnswered = [];
 
+const choiceGame = ['game_wrong', 'game_correct'];
 const audio = ['dadse_4', 'dadse_5', 'dadse_6','dadse_7','dadse_9'];
 
 //playsound
@@ -300,6 +301,16 @@ class Bang3 extends Component {
         this.onLoad();
         this.minusStar();
         this.checkBalance();
+    }
+
+    playChoiceGame = (index) => {
+        this.choiceGame = new Sound(choiceGame[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+        if (error) {
+            alert('failed to load the sound', error);
+            return;
+        } else {
+            this.choiceGame.play();
+        }});
     }
 
     playSound = (index) => {
@@ -667,6 +678,7 @@ class Bang3 extends Component {
     }
 
     answer = (index) => {
+        this.playChoiceGame(0);
         for (var a = 0; a <= answer.length; a++) {
             if (index == answer[a]) {
                 const get = a;
@@ -684,6 +696,8 @@ class Bang3 extends Component {
     }
 
     correct = async (index) => {
+        this.playChoiceGame(1);
+
         const add = 'addBalance';
         this.checkBalance(add);
         questionAnswered.push(1);

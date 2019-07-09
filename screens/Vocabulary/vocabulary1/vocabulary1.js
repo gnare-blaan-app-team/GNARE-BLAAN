@@ -82,12 +82,6 @@ class Vocabulary1 extends Component {
     }, 1000);   
   }
 
-  releaseSounds = ()=> {
-      if(this.vocabSound != null) {
-          this.vocabSound.release();
-      }
-  }
-
   playVocabSound = () => {
     if(this.vocabSound != null) {
         this.vocabSound.release();
@@ -105,6 +99,11 @@ class Vocabulary1 extends Component {
     }});
   }
 
+  releaseSounds = ()=> {
+    if(this.vocabSound != null) {
+        this.vocabSound.release();
+    }
+  }
   stopSounds = () => {
     if (this.vocabSound != null){
       this.vocabSound.stop();
