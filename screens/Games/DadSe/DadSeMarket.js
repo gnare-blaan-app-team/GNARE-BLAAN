@@ -49,9 +49,6 @@ const showTlayong = '@MyApp:showTlayong';
 const showKulangTana = '@MyApp:showKulangTana';
 const showSlah = '@MyApp:showSlah';
 
-const clothWidth = screenWidth * 0.05;
-const clothHeight = screenHeight * 0.1;
-
 class DadSeMarket extends Component {
 
     constructor(props) {
@@ -75,7 +72,7 @@ class DadSeMarket extends Component {
 
             pan: new Animated.ValueXY(),
             swatX: screenWidth * 0.272,
-            swatY: screenHeight * 0.147,
+            swatY: screenHeight * 0.15,
 
             ulelX: screenWidth * 0.255,
             ulelY: screenHeight * 0.3,
@@ -126,7 +123,8 @@ class DadSeMarket extends Component {
         this.swatResponder = PanResponder.create({
             onStartShouldSetPanResponder: (e, gesture)=> true,
             onPanResponderMove: (e, gesture)=> {
-                this.setState({swatX: gesture.moveX - (clothWidth/2), swatY: gesture.moveY - (clothHeight/2)});
+                this.setState({swatX: gesture.moveX - ((screenWidth * 0.05)/2), 
+                    swatY: gesture.moveY - ((screenHeight * 0.1)/2)});
             },
             onPanResponderRelease: (e, gesture)=> {
                 if(gesture.moveX >= (screenWidth * 0.49) - (screenWidth * 0.05) && 
@@ -358,9 +356,9 @@ class DadSeMarket extends Component {
                     <Image source={GnareIcon} style={styles.image}></Image>
                 </View>
                 
-                <View style={{position: 'absolute', width: '70%', height: '90%', 
-                    top: '5%', left: '15%'}}>
-                    <Image source={KwartoBG} style={styles.image}></Image>
+                <View style={{width: '70%', height: '90%',}}>
+                    <Image source={KwartoBG} style={{width: '100%', height: '100%',
+                        resizeMode: 'contain'}}></Image>
                     <View style={{top: '0%', width: '100%', height: '100%', position: 'absolute'}}>
                         <View style={{position: 'absolute', width: '17.5%', height: '80%', top: '5%',
                             left: '40%'}}>
@@ -441,91 +439,56 @@ class DadSeMarket extends Component {
                 <View style={{ position: 'absolute', width: '6%', resizeMode: 'contain',
                         height: '9%', top: '8.8%', left: '46.1%', opacity: this.state.showSwatSlah,
                     }}>
-                    <Image source={KaibeSwatSlah} style={styles.image}></Image>
+                    <Image source={KaibeSwatSlah} style={clothStyle.clothing}></Image>
                 </View>
                 <View style={{ position: 'absolute', width: '12%', resizeMode: 'contain',
                         height: '23.3%', top: '24.5%', left: '43.3%', opacity: this.state.showLbung,
                     }}>
-                    <Image source={KaibeLbung} style={styles.image}></Image>
+                    <Image source={KaibeLbung} style={clothStyle.clothing}></Image>
                 </View>
                 <View style={{ position: 'absolute', width: '5.8%', resizeMode: 'contain',
                         height: '17%', top: '19.9%', left: '45.9%', opacity: this.state.showUlel,
                     }}>
-                    <Image source={KaibeUlel} style={styles.image}></Image>
+                    <Image source={KaibeUlel} style={clothStyle.clothing}></Image>
                 </View>
                 <View style={{ position: 'absolute', width: '8.7%', resizeMode: 'contain',
                         height: '32.5%', top: '43%', left: '44.9%', opacity: this.state.showDafeng,
                     }}>
-                    <Image source={KaibeDafeng} style={styles.image}></Image>
+                    <Image source={KaibeDafeng} style={clothStyle.clothing}></Image>
                 </View>
                 <View style={{ position: 'absolute', width: '8%', resizeMode: 'contain',
                         height: '20%', top: '40%', left: '45.3%', opacity: this.state.showTlayong,
                     }}>
-                    <Image source={KaibeTlayong} style={styles.image}></Image>
+                    <Image source={KaibeTlayong} style={clothStyle.clothing}></Image>
                 </View>
                 <View style={{ position: 'absolute', width: '8%', resizeMode: 'contain',
                         height: '20%', top: '40%', left: '45.3%', opacity: this.state.showTlayong,
                     }}>
-                    <Image source={KaibeTlayong} style={styles.image}></Image>
+                    <Image source={KaibeTlayong} style={clothStyle.clothing}></Image>
                 </View>
                 <View style={{ position: 'absolute', width: '15%', resizeMode: 'contain',
                         height: '15%', top: '65%', left: '50%', opacity: this.state.showKulangTana,
                     }}>
-                    <Image source={KulangTana} style={styles.image}></Image>
+                    <Image source={KulangTana} style={clothStyle.clothing}></Image>
                 </View>
                 <View style={{ position: 'absolute', width: '15%', resizeMode: 'contain',
                         height: '15%', top: '65%', left: '33%', opacity: this.state.showSlah,
                     }}>
-                    <Image source={Slah} style={styles.image}></Image>
+                    <Image source={Slah} style={clothStyle.clothing}></Image>
                 </View>
 
-                <View style={[{ position: 'absolute', width: clothWidth,
-                        height: clothHeight, top: this.state.swatY, 
-                        left: this.state.swatX,  opacity: this.state.showSwatSlah2,
-                    }]} {...this.swatResponder.panHandlers}>
-                    <Image source={SwatSalah} style={styles.image}></Image>
+                <View style={{position: 'absolute', top: screenHeight * 0.17,
+                    left: screenWidth * 0.27, width: screenWidth * 0.05, 
+                    height: screenHeight * 0.08,}}>
+                    <Image source={SwatSalah} style={{width: '100%', height: '100%', 
+                        resizeMode: 'stretch'}}></Image>
                 </View>
 
-                <View style={[{ position: 'absolute', width: screenWidth * 0.09,
-                        height: screenHeight * 0.17, top: this.state.ulelY, 
-                        left: this.state.ulelX, opacity: this.state.showUlel2,
-                    }]} {...this.ulelResponder.panHandlers}>
-                    <Image source={Ulel} style={styles.image}></Image>
-                </View>
-
-                <View style={[{ position: 'absolute', width: screenWidth * 0.08,
-                        height: screenHeight * 0.14, top: this.state.lbungY, 
-                        left: this.state.lbungX, opacity: this.state.showLbung2,
-                    }]} {...this.lbungResponder.panHandlers}>
-                    <Image source={Lbung} style={styles.image}></Image>
-                </View>
-
-                <View style={[{ position: 'absolute', width: screenWidth * 0.08,
-                        height: screenHeight * 0.14, top: this.state.tlayongY, 
-                        left: this.state.tlayongX, opacity: this.state.showTlayong2,
-                    }]} {...this.tlayongResponder.panHandlers}>
-                    <Image source={Tlayong} style={styles.image}></Image>
-                </View>
-
-                <View style={[{ position: 'absolute', width: screenWidth * 0.08,
-                        height: screenHeight * 0.14, top: this.state.dafengY, 
-                        left: this.state.dafengX, opacity: this.state.showDafeng2,
-                    }]} {...this.dafengResponder.panHandlers}>
-                    <Image source={Dafeng} style={styles.image}></Image>
-                </View>
-
-                <View style={[{ position: 'absolute', width: screenWidth * 0.08,
-                        height: screenHeight * 0.14, top: this.state.kulangTanaY, 
-                        left: this.state.kulangTanaX, opacity: this.state.showKulangTana2,
-                    }]} {...this.kulangTanaResponder.panHandlers}>
-                    <Image source={KulangTana} style={styles.image}></Image>
-                </View>
-
-                <View style={[{ position: 'absolute', width: screenWidth * 0.08,
-                        height: screenHeight * 0.14, top: this.state.slahY, 
-                        left: this.state.slahX, opacity: this.state.showSlah2,
-                    }]} {...this.slahResponder.panHandlers}>
-                    <Image source={Slah} style={styles.image}></Image>
+                <View style={{position: 'absolute', top: screenHeight * 0.38,
+                    left: screenWidth * 0.27, width: screenWidth * 0.05, 
+                    height: screenHeight * 0.08,}}>
+                    <Image source={Ulel} style={{width: '100%', height: '100%', 
+                        resizeMode: 'stretch'}}></Image>
                 </View>
 
                 <View style={[styles.dot,{top: screenHeight * 0.12,
@@ -548,6 +511,14 @@ class DadSeMarket extends Component {
                 </View>
             </ImageBackground>
         )
+    }
+}
+
+const clothStyle = {
+    clothing: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'contain',
     }
 }
 
