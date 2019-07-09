@@ -2,12 +2,20 @@ import React, { Component } from 'react';
 import { View, ImageBackground, Text, Image, PanResponder, TouchableOpacity, StatusBar, Animated } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import MenuItem from './MenuItem';
+import Sound from 'react-native-sound';
 
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js'; 
+Sound.setCategory('Playback');
 
 class Mainmenu extends Component {
     static navigationOptions = {
         header: null,
+    }
+
+    constructor(props) {
+        super(props);
+        // Sounds
+        this.clickSound = null;
     }
 
     gotoLetters = () => {
@@ -42,6 +50,26 @@ class Mainmenu extends Component {
 
     gotoGame = () => {
         this.props.navigation.push('gameIntro');
+    }
+
+    playClickSound = () => {
+        if(this.clickSound != null) {
+            this.clickSound.release();
+        }
+        // this.stopSounds();
+        this.clickSound = new Sound('click.mp3', Sound.MAIN_BUNDLE, (error) => {
+        if (error) {
+            alert('failed to load the sound', error);
+            return;
+        } else {
+            this.clickSound.play();
+        }});
+    }
+
+    releaseSounds = ()=> {
+        if(this.clickSound != null) {
+            this.clickSound.release();
+        }
     }
 
     render() {
