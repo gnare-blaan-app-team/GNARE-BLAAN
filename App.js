@@ -313,7 +313,7 @@ export default AppNavigator = createStackNavigator(
   },
 {
 
-  initialRouteName:"sponsorIntroScreen",
+  initialRouteName:"home",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"
