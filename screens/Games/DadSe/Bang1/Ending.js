@@ -34,7 +34,7 @@ class Ending extends Component {
 
     handleEnd = async () => {
         this.onSave();
-        this.props.navigation.navigate('gameMenu', { show: 'Dadse' });
+        this.props.navigation.push('gameMenu', { show: 'Dadse' });
         const store = 'unlock';
         await AsyncStorage.setItem(Stage2, store);
     }

@@ -3,11 +3,24 @@ import { View, ImageBackground, Text, Image, PanResponder, TouchableOpacity, Sta
 import { withNavigation } from 'react-navigation';
 import MenuItem from './MenuItem';
 
+import {sound} from './HomePage';
+
+import Sound from 'react-native-sound';
+
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js'; 
 
 class Mainmenu extends Component {
     static navigationOptions = {
         header: null,
+    }
+
+    componentDidMount() {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+
+        }
     }
 
     gotoLetters = () => {
@@ -19,6 +32,7 @@ class Mainmenu extends Component {
     }
 
     gotoVocabulary = () => {
+        
         this.props.navigation.push('vocabularyMenu');
     }
 
@@ -29,6 +43,12 @@ class Mainmenu extends Component {
 
     gotoMainMenu = () => {
        // this.bg.stop();
+       try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+
+        }
         this.props.navigation.push('home');
     }
 
@@ -59,6 +79,11 @@ class Mainmenu extends Component {
                     <MenuItem itemImage={require('./images/CultureandArts.png')} goto={this.gotoCultureandArts} />
                     <MenuItem itemImage={require('./images/Vocabulary.png')} goto={this.gotoVocabulary}/>
                 </View>
+
+                {/* <View style={{position: 'absolute', width: '70%', height: '30%', top: '65%',
+                            left: '15%'}}>
+                    <Image style={{width: '100%', height: '100%', resizeMode: 'contain'}} source={require('./sampleSentence.gif')}></Image>
+                </View> */}
 
                 <View style={styles.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
