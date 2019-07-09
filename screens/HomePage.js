@@ -79,6 +79,9 @@ class Homescreen extends Component{
         this.props.navigation.navigate('mainMenu');
         this.backHandler.remove();
     }
+    gotoAbout = () => {
+      this.props.navigation.navigate('about');
+    }
 
     render(){
         return(
@@ -107,7 +110,7 @@ class Homescreen extends Component{
                                     </TouchableOpacity>
                                 </View>
                                 <View style={styles.HomePageItems} >
-                                    <TouchableOpacity>
+                                    <TouchableOpacity  onPress={this.gotoAbout}>
                                         <Image style={styles.imageSizeStoryMenu} source={About_icon} />
                                     </TouchableOpacity>
                                 </View>

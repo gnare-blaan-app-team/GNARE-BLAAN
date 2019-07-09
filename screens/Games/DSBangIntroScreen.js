@@ -32,10 +32,12 @@ class DSBangIntroScreen extends Component {
     }
 
     handleEnd = () => {
+        this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.navigate('gameMenu');
     }
 
     gotoBangScreen = () => {
+        this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.navigate('gameMenu');
     }
 
