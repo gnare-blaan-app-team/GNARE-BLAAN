@@ -22,12 +22,9 @@ class About extends Component{
     render(){
         return(
             <ImageBackground style={styles.image} source={AboutBackground}>
-                <View style={styles.homeContainer}>
-                    <TouchableOpacity onPress={this.gotoHome}>
-                        <Image
-                            source={require('./images/Home_icon.png')}
-                            style={styles.home}
-                        ></Image>
+                <View style={{position: "absolute", width:"100%", height:"100%"}}>
+                    <TouchableOpacity  onPress={this.gotoHome}>
+                        <Text style={{width:"100%", height:"100%"}}></Text>
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
