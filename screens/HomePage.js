@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { TouchableWithoutFeedback, StyleSheet, ImageBackground, TouchableOpacity, View, Image, Text, StatusBar, AsyncStorage, Animated, Easing, BackHandler} from 'react-native';
+import { TouchableWithoutFeedback, StyleSheet, ImageBackground, TouchableOpacity, View, Image, Text, StatusBar, AsyncStorage, Animated, Easing, BackHandler, AppState} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Video from "react-native-video";
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js';
@@ -23,6 +23,10 @@ export let sound = new Sound('blaanbg.mp3', Sound.MAIN_BUNDLE, (error) => {
             sound.setVolume(0.2);
             sound.play();
             sound.setNumberOfLoops(-1);
+            setInterval(() => {
+                sound.setVolume(0.2);
+                sound.play();
+            }, (60 * 1000)*3);
         } catch(error) {
             
         }
@@ -59,6 +63,8 @@ class Homescreen extends Component{
             muted: false,
             volume: 1,
         }
+
+        // currentAppState = null;
         // this.backHandler = null;
         
     }
@@ -104,16 +110,30 @@ class Homescreen extends Component{
         } catch(error) {
             
         }
+        AppState.addEventListener('change', this._handleAppStateChange);
         // if (this.backHandler == null) {
         //     this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress); 
         //     // alert('test');
         // }
+        BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
     }
 
-    // handleBackPress = () => {
-    //     sound.stop();
-    //     BackHandler.exitApp();
-    // }
+    handleBackPress = () => {
+        sound.stop();
+        BackHandler.exitApp();
+    }
+    componentWillUnmount() {
+        AppState.removeEventListener('change', this._handleAppStateChange);
+    }
+
+    _handleAppStateChange = (currentAppState) => {
+        if(currentAppState == "background") {
+            sound.pause();
+        } 
+        if(currentAppState == "active") {
+            sound.play();
+        }
+      }
 
 
     handleProgressPress = e => {

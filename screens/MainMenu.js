@@ -16,7 +16,7 @@ class Mainmenu extends Component {
 
     constructor(){
         super();
-        this.backHandler = null;
+        // this.backHandler = null;
     }
 
     componentDidMount() {
@@ -26,34 +26,34 @@ class Mainmenu extends Component {
         } catch(error) {
 
         }
-        if (this.backHandler == null) {
-            this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress); 
-            // alert('test');
-        }
+        // if (this.backHandler == null) {
+        //     this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress); 
+        //     // alert('test');
+        // }
     }
 
-    handleBackPress = () => {
-        return true;
-    }
+    // handleBackPress = () => {
+    //     return true;
+    // }
 
     gotoLetters = () => {
-        BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+        // BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
         this.props.navigation.push('letterIntro');
     }
 
     gotoNumbers = () => {
-        BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+        // BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
         this.props.navigation.push('numberIntro');
     }
 
     gotoVocabulary = () => {
-        BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+        // BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
         
         this.props.navigation.push('vocabularyMenu');
     }
 
     gotoFlalok = () => {
-        BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+        // BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
        // this.bg.stop();
         this.props.navigation.push('flalok');
     }
@@ -66,30 +66,30 @@ class Mainmenu extends Component {
         } catch(error) {
 
         }
-        BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
-        BackHandler.addEventListener('hardwareBackPress', this.handleHomeBackPress);
+        // BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+        // BackHandler.addEventListener('hardwareBackPress', this.handleHomeBackPress);
         this.props.navigation.navigate('home');
     }
 
     gotoCultureandArts = () => {
-        BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+        // BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
         this.props.navigation.push('cultureandarts');
     }
 
     goBack = () => {
         this.props.navigation.navigate('home');
-        this.backHandler.remove();
-        BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
-        BackHandler.addEventListener('hardwareBackPress', this.handleHomeBackPress);
+        // this.backHandler.remove();
+        // BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+        // BackHandler.addEventListener('hardwareBackPress', this.handleHomeBackPress);
     }
 
-    handleHomeBackPress = () => {
-        sound.stop();
-        BackHandler.exitApp();
-    }
+    // handleHomeBackPress = () => {
+    //     sound.stop();
+    //     BackHandler.exitApp();
+    // }
 
     gotoGame = () => {
-        BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress)
+        // BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
         this.props.navigation.push('gameIntro');
     }
 
