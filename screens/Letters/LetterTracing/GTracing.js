@@ -18,6 +18,7 @@ import PencilIcon from '../../images/Pencil_icon.png';
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
 
 import { scopeX, scopeY, trail } from '../letterImport';
+import {sound} from '../../HomePage';
 
 const tracingLine = [GLetter_1, GLetter_2, GLetter_3, GLetter_4,];
 const shadedLine = [shaded_G_1, shaded_G_2, shaded_G_3, shaded_G_4,];
@@ -39,6 +40,15 @@ const numberDimension = {
 class GTracing extends Component {
     static navigationOptions = {
         header: null,
+    }
+
+    componentDidMount() {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+        
+        }
     }
 
     constructor(props) {
@@ -233,6 +243,12 @@ class GTracing extends Component {
 
     goBack = () => {
         this.clearBoard();
+        try {
+            sound.setVolume(0);
+            sound.paused();
+        } catch(error) {
+        
+        }
         this.props.navigation.navigate('letters');
     }
 

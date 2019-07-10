@@ -21,6 +21,8 @@ import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleShee
 
 import { scopeX, scopeY, trail } from '../letterImport';
 
+import { sound } from '../../HomePage';
+
 const tracingLine = [ALetter_1, ALetter_2, ALetter_3, ALetter_4, ALetter_5,];
 const shadedLine = [shaded_A_1, shaded_A_2, shaded_A_3, shaded_A_4, shaded_A_5,];
 
@@ -215,6 +217,15 @@ class ATracing extends Component {
         });
     }
 
+    componentDidMount(){
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
+    }
+
     gotoMainMenu = () => {
         this.clearBoard();
         this.props.navigation.navigate('mainMenu');
@@ -222,6 +233,12 @@ class ATracing extends Component {
 
     goBack = () => {
         this.clearBoard();
+        try {
+            sound.setVolume(0);
+            sound.paused();
+        } catch(error) {
+            
+        }
         this.props.navigation.navigate('letters');
     }
 

@@ -22,6 +22,7 @@ import PencilIcon from '../../images/Pencil_icon.png';
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
 
 import { scopeX, scopeY, trail } from '../letterImport';
+import {sound} from '../../HomePage';
 
 const tracingLine = [KLetter_1, KLetter_2, KLetter_3, KLetter_4, KLetter_5, KLetter_6];
 const shadedLine = [shaded_K_1, shaded_K_2, shaded_K_3, shaded_K_4, shaded_K_5, shaded_K_6,];
@@ -43,6 +44,15 @@ const numberDimension = {
 class KTracing extends Component {
     static navigationOptions = {
         header: null,
+    }
+
+    componentDidMount() {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+        
+        }
     }
 
     constructor(props) {
@@ -255,6 +265,14 @@ class KTracing extends Component {
 
     goBack = () => {
         this.clearBoard();
+        
+            try {
+                sound.setVolume(0);
+                sound.paused();
+            } catch(error) {
+            
+            }
+        
         this.props.navigation.navigate('letters');
     }
 

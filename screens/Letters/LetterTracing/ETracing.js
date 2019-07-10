@@ -26,6 +26,7 @@ import PencilIcon from '../../images/Pencil_icon.png';
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
 
 import { scopeX, scopeY, trail } from '../letterImport';
+import {sound} from '../../HomePage';
 
 const tracingLine = [ELetter_1, ELetter_2, ELetter_3, ELetter_4,
             ELetter_5, ELetter_6, ELetter_7, ELetter_8,];
@@ -46,10 +47,18 @@ const numberDimension = {
     height: boardDimension.height * 0.95,
 }
 
-
 class ETracing extends Component {
     static navigationOptions = {
         header: null,
+    }
+
+    componentDidMount() {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+        
+        }
     }
 
     constructor(props) {
@@ -309,6 +318,12 @@ class ETracing extends Component {
 
     goBack = () => {
         this.clearBoard();
+        try {
+            sound.setVolume(0);
+            sound.paused();
+        } catch(error) {
+            
+        }
         this.props.navigation.navigate('letters');
     }
 

@@ -18,7 +18,7 @@ import shaded_5_2 from '../numberTracingImage/shaded_5_2.png';
 import shaded_5_3 from '../numberTracingImage/shaded_5_3.png';
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js';
-
+import {sound} from '../../HomePage';
 import { numberDimension, boardDimension,
     scopeX, scopeY, trail } from '../numbersImport';
 
@@ -33,6 +33,15 @@ class FiveTracing extends Component {
         header: null,
     }
 
+
+    componentDidMount() {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+        
+        }
+    }
     constructor(props) {
         super(props);
         this. state = {
@@ -173,11 +182,27 @@ class FiveTracing extends Component {
 
     gotoMainMenu = () => {
         this.clearBoard();
+        
+            try {
+                sound.setVolume(0.2);
+                sound.play();
+            } catch(error) {
+            
+            }
+        
         this.props.navigation.navigate('mainMenu');
     }
 
     goBack = () => {
         this.clearBoard();
+        
+        try {
+            sound.setVolume(0);
+            sound.paused();
+        } catch(error) {
+        
+        }
+    
         this.props.navigation.navigate('numbers');
     }
 

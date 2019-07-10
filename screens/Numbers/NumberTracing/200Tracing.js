@@ -21,7 +21,7 @@ import trace3 from '../numberTracingGIF/0.gif';
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
 
 import { scopeX, scopeY, trail, } from '../numbersImport';
-
+import {sound} from '../../HomePage';
 const screenWidth = Dimensions.get('screen').width;
 const screenHeight = Dimensions.get('screen').height;
 
@@ -46,6 +46,15 @@ const numberDimension2 = {
 class TwoHundredTracing extends Component {
     static navigationOptions = {
         header: null,
+    }
+
+    componentDidMount() {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+        
+        }
     }
 
     constructor(props) {
@@ -252,11 +261,27 @@ class TwoHundredTracing extends Component {
 
     gotoMainMenu = () => {
         this.clearBoard();
+        
+            try {
+                sound.setVolume(0.2);
+                sound.play();
+            } catch(error) {
+            
+            }
+        
         this.props.navigation.navigate('mainMenu');
     }
 
     goBack = () => {
         this.clearBoard();
+        
+        try {
+            sound.setVolume(0);
+            sound.paused();
+        } catch(error) {
+        
+        }
+    
         this.props.navigation.navigate('numbers');
     }
 

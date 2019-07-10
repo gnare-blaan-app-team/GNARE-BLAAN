@@ -59,7 +59,7 @@ class Homescreen extends Component{
             muted: false,
             volume: 1,
         }
-        this.backHandler = null;
+        // this.backHandler = null;
         
     }
 
@@ -104,16 +104,16 @@ class Homescreen extends Component{
         } catch(error) {
             
         }
-        if (this.backHandler == null) {
-            this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress); 
-            // alert('test');
-        }
+        // if (this.backHandler == null) {
+        //     this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress); 
+        //     // alert('test');
+        // }
     }
 
-    handleBackPress = () => {
-        sound.stop();
-        BackHandler.exitApp();
-    }
+    // handleBackPress = () => {
+    //     sound.stop();
+    //     BackHandler.exitApp();
+    // }
 
 
     handleProgressPress = e => {
@@ -214,8 +214,9 @@ class Homescreen extends Component{
     }
 
     gotoMainMenu = () => {
-        this.props.navigation.push('mainMenu');
-        this.backHandler.remove();
+        this.props.navigation.navigate('mainMenu');
+        BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+        // this.backHandler.remove();
     }
     gotoAbout = () => {
       this.props.navigation.navigate('about');
