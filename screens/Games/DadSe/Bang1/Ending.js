@@ -3,7 +3,7 @@ import { StyleSheet, AsyncStorage, View, Image, ImageBackground, TouchableWithou
 
 import Video from "react-native-video";
 import EndingVideo from "../../gameImages/ending.mp4";
-
+import { sound } from '../../../HomePage';
 import { withNavigation } from 'react-navigation'; 
 
 const RandomKey = '@MyApp:RandomKey';
@@ -32,9 +32,24 @@ class Ending extends Component {
         header:null,
     }
 
+    componentDidMount(){
+        try {
+            sound.setVolume(0);
+            sound.play();
+        } catch(error) {
+            
+        }
+    }
+
     handleEnd = async () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         this.onSave();
-        this.props.navigation.navigate('gameMenu', { show: 'Dadse' });
+        this.props.navigation.push('gameMenu', { show: 'Dadse' });
         const store = 'unlock';
         await AsyncStorage.setItem(Stage2, store);
     }

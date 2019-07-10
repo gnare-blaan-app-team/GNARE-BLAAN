@@ -314,6 +314,7 @@ const stageNumber = [0,1,2,3,4,5,6,7,8,9];
 
 const questionAnswered = [];
 
+const choiceGame = ['game_wrong', 'game_correct'];
 const audio = ['dadse_1', 'dadse_2', 'dadse_3', 'dadse_4', 'dadse_5', 'dadse_6', 'dadse_7', 'dadse_8', 'dadse_9', 'dadse_10'];
 
 //playsound
@@ -345,7 +346,7 @@ class Bang2 extends Component {
             choice3Top: '1000%',//75%
             choice4Top: '1000%',//75%
             emptyChoiceLeft: '1000%',
-            randomQuestion:0,
+            randomQuestion2:0,
             answerTop: '1000%', //53%
             answerImage: transparentFat,
             descriptionTop:'1000%',
@@ -367,6 +368,16 @@ class Bang2 extends Component {
         this.onLoad();
         this.minusStar();
         this.checkBalance();
+    }
+
+    playChoiceGame = (index) => {
+        this.choiceGame = new Sound(choiceGame[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+        if (error) {
+            alert('failed to load the sound', error);
+            return;
+        } else {
+            this.choiceGame.play();
+        }});
     }
 
     playSound = (index) => {
@@ -523,7 +534,7 @@ class Bang2 extends Component {
                 const store = JSON.stringify(random);
                 await AsyncStorage.setItem(RandomKey2, store);
                 this.setState({ 
-                    randomQuestion: random,
+                    randomQuestion2: random,
                     choice1Top: '75%',//75%
                     choice2Top: '75%',//75%
                     choice3Top: '75%',//75%
@@ -532,7 +543,7 @@ class Bang2 extends Component {
                 });
             }else{
                 this.setState({ 
-                    randomQuestion: storedValue,
+                    randomQuestion2: storedValue,
                     choice1Top: '75%',//75%
                     choice2Top: '75%',//75%
                     choice3Top: '75%',//75%
@@ -784,6 +795,7 @@ class Bang2 extends Component {
     }
 
     answer = (index) => {
+        this.playChoiceGame(0);
         for (var a = 0; a <= answer.length; a++) {
             if (index == answer[a]) {
                 const get = a;
@@ -801,6 +813,8 @@ class Bang2 extends Component {
     }
 
     correct = async (index) => {
+        this.playChoiceGame(1);
+
         const add = 'addBalance';
         this.checkBalance(add);
         questionAnswered.push(1);
@@ -917,7 +931,7 @@ class Bang2 extends Component {
     }
 
     render() {
-        const show = combine[this.state.randomQuestion];
+        const show = combine[this.state.randomQuestion2];//this.state.randomQuestion
         const convert1 = show.choice1String;
         this.state.getChoice1Name = convert1;
         const convert2 = show.choice2String;

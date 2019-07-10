@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AsyncStorage, View, Image, StyleSheet, TouchableOpacity, ImageBackground, Animated, Text } from 'react-native';
+import { AsyncStorage, View, Image, StyleSheet, TouchableOpacity, ImageBackground, Animated, Text, TextInput } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
@@ -24,18 +24,48 @@ import blackboard from './gameImages/background.png';
 import kaito from './gameImages/kaitoGame.png'; 
 import kaibe from './gameImages/kaibeGame.png'; 
 import DadBatakBG from './gameImages/DadBatakBG.png';
-import close from './gameImages/x_icon.png';
 import player from './gameImages/player_icon.png';
+import back from '../images/Back_icon.png';
 
 
-const backgroundList = [BG,Slide1,DadseBG,DadBatakBG]
+const backgroundList = [BG,Slide1,DadseBG,DadBatakBG];
 
-const prevKey = '@MyApp:prevkey';
+const sample = '@MyApp:sample';
+
 
 const Stage2 = '@MyApp:Stage2';
 const Stage3 = '@MyApp:Stage3';
 const DadbatakStage2 = '@MyApp:DadbatakStage2';
 const DadbatakStage3 = '@MyApp:DadbatakStage3';
+const RandomKey = '@MyApp:RandomKey';
+const RandomKey2 = '@MyApp:RandomKey2';
+const Player = '@MyApp:Player';
+const CoinBalance = '@MyApp:CoinBalance';
+const mainStar1 = '@MyApp:mainStar1';
+const mainStar2 = '@MyApp:mainStar2';
+const mainStar3 = '@MyApp:mainStar3';
+
+//player1
+const Player1RandomKey = '@MyApp:Player1RandomKey';
+const Player1Star1 = '@MyApp:Player1Star1';
+const Player1Star2 = '@MyApp:Player1Star2';
+const Player1Star3 = '@MyApp:Player1Star3';
+const Player1CoinBalance = '@MyApp:Player1CoinBalance';
+const Player1QuestionDone = '@MyApp:Player1QuestionDone';
+const Player1RandomKey2 = '@MyApp:Player1RandomKey2';
+const Player1Stage2 = '@MyApp:Player1Stage2';
+const Player1Stage3 = '@MyApp:Player1Stage3';
+
+//player2
+const Player2RandomKey = '@MyApp:Player2RandomKey';
+const Player2Star1 = '@MyApp:Player2Star1';
+const Player2Star2 = '@MyApp:Player2Star2';
+const Player2Star3 = '@MyApp:Player2Star3';
+const Player2CoinBalance = '@MyApp:Player2CoinBalance';
+const Player2QuestionDone = '@MyApp:Player2QuestionDone';
+const Player2RandomKey2 = '@MyApp:Player2RandomKey2';
+const Player2Stage2 = '@MyApp:Player2Stage2';
+const Player2Stage3 = '@MyApp:Player2Stage3';
 
 class GameMenu extends Component {
     
@@ -76,26 +106,60 @@ class GameMenu extends Component {
             player3: 'Player 3',
             player4: 'Player 4',
             player5: 'Player 5',
+            player1Top:'30%',
+            player2Top: '50%',
+            player3Top:'30%',
+            player4Top: '50%',
+            player5Top: '70%',
+            saveTop:'1000%',
+            playerName:'Choose Player',
+            newPlayername:'',
+            playerTextInput:'1000%',
+            playTop:'1000%',
+            backTop: '1000%',
+            playerNameLeft: '40%',
+            getIndex:0,
+            pass1:'',
+            pass2: '',
+            pass3: '',
+            pass4: '',
+            pass5: '',
+            pass6: '',
+            pass7: '',
+            pass8: '',
+            pass9: '',
+            pass10: '',
+            getPass1:'',
+            getPass2:'',
+            getPass3: '',
+            getPass4:'',
+            getPass5:'',
+            getPass6:'',
+            getPass7:'',
+            getPass8: '',
+            getPass9:'',
         }
     }
 
     checkStage = async (index) => {
        if(index == 1){
-           const storedValue = await AsyncStorage.getItem(Stage2);
+           const storedValue = this.state.pass9;//await AsyncStorage.getItem(Stage2);
+           const storedValue2 = this.state.pass10;//await AsyncStorage.getItem(Stage3);
+           if(this.state.pass2 == 'player1'){
                if (storedValue == 'unlock') {
                    this.setState({
                        tanbu2Top: '1000%',
                        Clickabletanbu2Top: '40%'
                    })
                }
-               const storedValue2 = await AsyncStorage.getItem(Stage3);
                if (storedValue2 == 'unlock') {
                    this.setState({
                        tanbu3Top: '1000%',
                        Clickabletanbu3Top: '59%'
                    })
                }
-           }
+           }       
+        }
        if(index == 2){
            const storedValue3 = await AsyncStorage.getItem(DadbatakStage2);
                if (storedValue3 == 'unlock') {
@@ -132,7 +196,8 @@ class GameMenu extends Component {
         }
         if (showIt == 'Dadse'){
             this.setState({
-                BackgroundImage: backgroundList[2],
+                kaitoTop: '1000%',
+                kaibeLeft: '15%',
                 nextLevelTop: '22%',
                 coinBankTop: '40%',
                 marketTop:'59%',
@@ -143,7 +208,7 @@ class GameMenu extends Component {
         }
         if (showIt == 'DadBatak') {
             this.setState({
-                BackgroundImage: backgroundList[3],
+                kaibeTop: '1000%',
                 nextLevelTop: '22%',
                 coinBankTop: '40%',
                 marketTop: '59%',
@@ -234,10 +299,26 @@ class GameMenu extends Component {
       const passIndex = this.state.passIndex;
       if(set == 'dadsePart'){
           if (passIndex == 1) {
-              this.props.navigation.push('bang');
+              this.props.navigation.push('bang',{
+                  getPass: this.state.pass1,
+                  getPass2: this.state.pass2,
+                  getPass3: this.state.pass3,
+                  getPass4: this.state.pass4,
+                  getPass5: this.state.pass5,
+                  getPass6: this.state.pass6,
+                  getPass7: this.state.pass7,
+                  getPass8: this.state.pass8,
+                  getPass9: this.state.pass9,
+              });
           }
           if (passIndex == 2) {
-              this.props.navigation.push('bang2');
+              this.props.navigation.push('bang2',{
+                  getPass8: this.state.pass8,
+                  getPass2:this.state.pass2,
+                  getPass3: this.state.pass3,
+                  getPass4: this.state.pass4,
+                  getPass5: this.state.pass5,
+              });
           }
           if (passIndex == 3) {
               this.props.navigation.push('bang3');
@@ -257,17 +338,100 @@ class GameMenu extends Component {
         
     }
 
-    closeProfile = () => {
+    goToProfile = () => {
+        this.setState({
+            saveTop: '1000%',
+            playerTextInput: '1000%',
+            playTop: '1000%',
+            backTop: '1000%',
+            player1Top: '30%',
+            player2Top: '50%',
+            player3Top: '30%',
+            player4Top: '50%',
+            player5Top: '70%',
+            playerName: 'Choose Player',
+        })
+    }
+
+    settings = async (index) => {
+        this.setState({
+            saveTop: '30%',
+            playTop: '50%',
+            backTop:'10%',
+            player1Top: '1000%',
+            player2Top: '1000%',
+            player3Top: '1000%',
+            player4Top: '1000%',
+            player5Top: '1000%',
+        })
+        let Player = ['Player1','Player2','Player3','Player4','Player5'];
+        this.setState({
+                    playerName:Player[index],
+                    playerNameLeft:'46%',
+                    getIndex: index,
+                });
+       //this.setState
+    }
+
+    play = async () => {
         Animated.spring(this.animatedValue, {
             toValue: .0
         }).start();
-        setTimeout (()=>{
+        setTimeout(() => {
             this.setState({
                 profileTop: '1000%',
             })
             this.state.profile = 'none';
-        },500)
+        }, 1000);
+        const storedValue1_2 = await AsyncStorage.getItem(this.state.playerName + 'RandomKey');
+        const storedValue2_2 = await AsyncStorage.getItem(this.state.playerName + 'Star1');
+        const storedValue3_2 = await AsyncStorage.getItem(this.state.playerName + 'Star2');
+        const storedValue4_2 = await AsyncStorage.getItem(this.state.playerName + 'Star3');
+        const storedValue5_2 = await AsyncStorage.getItem(this.state.playerName + 'CoinBalance');
+        const storedValue6_2 = await AsyncStorage.getItem(this.state.playerName + 'QuestionDone');
+        const storedValue7_2 = await AsyncStorage.getItem(this.state.playerName + 'RandomKey2');
+        const storedValue8_2 = await AsyncStorage.getItem(this.state.playerName + 'Stage2');
+        const storedValue9_2 = await AsyncStorage.getItem(this.state.playerName + 'Stage3');
+
+        const stars = await AsyncStorage.getItem(this.state.playerName + 'Stars');
+       
+        if(stars == null) {
+            await AsyncStorage.setItem(this.state.playerName + 'Stars', 0);
+        }
+        this.setState({
+            pass1: storedValue1_2,
+            pass2: this.state.playerName,
+            pass3: storedValue2_2,
+            pass4: storedValue3_2,
+            pass5: storedValue4_2,
+            pass6: storedValue5_2,
+            pass7: storedValue6_2,
+            pass8: storedValue7_2,
+            pass9: storedValue8_2,
+            pass10: storedValue9_2,
+        });
+
+        
+        await AsyncStorage.setItem(mainStar1, this.state.pass3);
+        await AsyncStorage.setItem(mainStar2, this.state.pass4);
+        await AsyncStorage.setItem(mainStar3, this.state.pass5);
+        await AsyncStorage.setItem(Player, this.state.playerName);
+        await AsyncStorage.setItem(RandomKey, this.state.pass1);
+        await AsyncStorage.setItem(RandomKey2, this.state.pass8);
+        await AsyncStorage.setItem(CoinBalance, this.state.pass6);
+        
+        
+        
     }
+
+    get = async () => {
+       
+    }
+
+    close = () => {
+      
+    }
+
     market = () => {
         // if (this.state.level == 'dadsePart'){
         //     this.props.navigation.navigate('dadseMarket');
@@ -281,6 +445,7 @@ class GameMenu extends Component {
         const itemId2 = navigation.getParam('show3', 'NO-ID');
         const itemId3 = navigation.getParam('show3DB', 'NO-ID');
         const getParam = navigation.getParam('openProfile', 'NO-ID');
+        const getParam2 = navigation.getParam('getbang2', 'NO-ID');
         this.state.show = itemId;
         this.state.show3 = itemId2;
         this.state.show4 = itemId3;
@@ -487,54 +652,79 @@ class GameMenu extends Component {
                      }}
                      >  
                          <Image source={blackboard} style={{resizeMode:'contain',width:'90%',height:'90%'}} />
-                        
-                        <View style={{ position: 'absolute', width: '10%', height: '15%', top:'10%', left: '90%'}}>
-                            <TouchableOpacity onPress={this.closeProfile}>
-                                <Image source={close} style={{ resizeMode: 'contain', width: '100%', height: '100%' }} />
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{position:'absolute',width:'30%',height:'20%',top:'30%',left:'15%'}}>
-                            <TouchableOpacity>
+                        <View style={{position:'absolute',width:'30%',height:'20%',top:this.state.player1Top,left:'15%'}}>
+                            <TouchableOpacity onPress={()=> {
+                                this.settings(0);
+                            }}>
                                 <Image source={player} style={{resizeMode:'contain',width:'100%',height:'100%'}}/>
                                 <View style={{ position: 'absolute', top: '20%', left: '27%' }}>
                                     <Text style={{ color: 'white', fontSize: 30 }}>{this.state.player1}</Text>
                                 </View>
                             </TouchableOpacity>
                         </View>
-                        <View style={{ position: 'absolute', width: '30%', height: '20%', top: '50%', left: '15%' }}>
-                            <TouchableOpacity>
+                        <View style={{ position: 'absolute', width: '30%', height: '20%', top: this.state.player2Top, left: '15%' }}>
+                            <TouchableOpacity onPress={() => {
+                                this.settings(1);
+                            }}>
                                 <Image source={player} style={{ resizeMode: 'contain', width: '100%', height: '100%' }} />
                                 <View style={{ position: 'absolute', top: '20%', left: '27%' }}>
                                     <Text style={{ color: 'white', fontSize: 30 }}>{this.state.player2}</Text>
                                 </View>
                             </TouchableOpacity>
                         </View>
-                        <View style={{ position: 'absolute', width: '30%', height: '20%', top: '30%', left: '55%' }}>
-                            <TouchableOpacity>
+                        <View style={{ position: 'absolute', width: '30%', height: '20%', top: this.state.player3Top, left: '55%' }}>
+                            <TouchableOpacity onPress={() => {
+                                this.settings(2);
+                            }}>
                                 <Image source={player} style={{ resizeMode: 'contain', width: '100%', height: '100%' }} />
                                 <View style={{ position: 'absolute', top: '20%', left: '27%' }}>
                                     <Text style={{ color: 'white', fontSize: 30 }}>{this.state.player3}</Text>
                                 </View>
                             </TouchableOpacity>
                         </View>
-                        <View style={{ position: 'absolute', width: '30%', height: '20%', top: '50%', left: '55%' }}>
-                            <TouchableOpacity>
+                        <View style={{ position: 'absolute', width: '30%', height: '20%', top: this.state.player4Top, left: '55%' }}>
+                            <TouchableOpacity onPress={() => {
+                                this.settings(3);
+                            }}>
                                 <Image source={player} style={{ resizeMode: 'contain', width: '100%', height: '100%' }} />
                                 <View style={{ position: 'absolute', top: '20%', left: '27%' }}>
                                     <Text style={{ color: 'white', fontSize: 30 }}>{this.state.player4}</Text>
                                 </View>
                             </TouchableOpacity>
                         </View>
-                        <View style={{ position: 'absolute', width: '30%', height: '20%', top: '70%', left: '35%' }}>
-                            <TouchableOpacity>
+                        <View style={{ position: 'absolute', width: '30%', height: '20%', top: this.state.player5Top, left: '35%' }}>
+                            <TouchableOpacity onPress={() => {
+                                this.settings(4);
+                            }}>
                                 <Image source={player} style={{ resizeMode: 'contain', width: '100%', height: '100%' }} />
                                 <View style={{ position: 'absolute', top: '20%', left: '27%' }}>
                                     <Text style={{ color: 'white', fontSize: 30 }}>{this.state.player5}</Text>
                                 </View>
                             </TouchableOpacity>
                         </View>
-                        <View style={{ position: 'absolute',top:'17%',left:'40%' }}>
-                            <Text style={{color:'white',fontSize:30}}>Select Profile</Text>
+                        <View style={{ position: 'absolute', width: '30%', height: '20%', top:this.state.saveTop, left: '38%' }}>
+                            <TouchableOpacity>
+                                <Image source={player} style={{ resizeMode: 'contain', width: '100%', height: '100%' }} />
+                                <View style={{ position: 'absolute', top: '25%', left: '32%' }}>
+                                    <Text style={{ color: 'white', fontSize: 30 }}>Reset</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{ position: 'absolute', width: '30%', height: '20%', top:this.state.playTop, left: '38%' }}>
+                            <TouchableOpacity onPress={this.play}>
+                                <Image source={player} style={{ resizeMode: 'contain', width: '100%', height: '100%' }} />
+                                <View style={{ position: 'absolute', top: '25%', left: '38%' }}>
+                                    <Text style={{ color: 'white', fontSize: 30 }}>Play</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{ position: 'absolute', width: '30%', height: '20%', top:this.state.backTop, left: '-5%' }}>
+                            <TouchableOpacity onPress={this.goToProfile}>
+                                <Image source={back} style={{ resizeMode: 'contain', width: '80%', height: '80%' }} />
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{ position: 'absolute',top:'17%',left:this.state.playerNameLeft }}>
+                            <Text style={{color:'white',fontSize:30}}>{this.state.playerName}</Text>
                         </View>
                     </View>
                 </Animated.View>
