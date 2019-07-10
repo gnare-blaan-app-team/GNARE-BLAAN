@@ -297,7 +297,7 @@ class Bang3 extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.onLoad();
         this.minusStar();
         this.checkBalance();

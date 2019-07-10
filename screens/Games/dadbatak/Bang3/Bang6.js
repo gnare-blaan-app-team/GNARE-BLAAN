@@ -609,7 +609,7 @@ class Bang extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.onLoad();
         this.minusStar();
         this.checkBalance();
@@ -782,7 +782,7 @@ class Bang extends Component {
                                choice4Top: '75%'
                            });
                        }, 1300)
-                   }, 3000)
+                   }, 5000)
                }, 2000)
            }else{
                this.answer(this.state.getChoice1Name);
@@ -832,7 +832,7 @@ class Bang extends Component {
                                 choice4Top: '75%'
                             });
                         }, 1300)
-                    }, 3000)
+                    }, 5000)
                 }, 2000)
             } else {
                 this.wrong();
@@ -882,7 +882,7 @@ class Bang extends Component {
                                 choice4Top: '75%'
                             });
                         }, 1300)
-                    }, 3000)
+                    }, 5000)
                 }, 2000)
             } else {
                 this.wrong();

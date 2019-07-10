@@ -529,7 +529,7 @@ class Bang4 extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.onLoad();
         this.minusStar();
         this.checkBalance();

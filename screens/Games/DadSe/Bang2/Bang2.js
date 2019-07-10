@@ -346,7 +346,7 @@ class Bang2 extends Component {
             choice3Top: '1000%',//75%
             choice4Top: '1000%',//75%
             emptyChoiceLeft: '1000%',
-            randomQuestion2:0,
+            randomQuestion:0,
             answerTop: '1000%', //53%
             answerImage: transparentFat,
             descriptionTop:'1000%',
@@ -364,8 +364,8 @@ class Bang2 extends Component {
         }
     }
 
-    componentWillMount() {
-        this.onLoad();
+    componentDidMount() {
+        this.onLoad('checkQuestion');
         this.minusStar();
         this.checkBalance();
     }
@@ -509,139 +509,135 @@ class Bang2 extends Component {
         
     }
 
-    gotoMainMenu = () =>{
+    gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
     }
 
     goBack = () => {
         this.props.navigation.push('gameMenu');
     }
+
+   
     
     onLoad = async (index) => {
-        const storedValue = await AsyncStorage.getItem(RandomKey2);
+        var storedValue = await AsyncStorage.getItem(RandomKey2);
         const Reach5 = await AsyncStorage.getItem(QuestionDone);
         const randomizer = Math.floor(Math.random() * stageNumber.length);
         const use = stageNumber[randomizer];
-        stageNumber.splice(randomizer,1);
+        stageNumber.splice(randomizer, 1);
         var random = use;
-        if (Reach5 == 5){
-            this.props.navigation.push('gameMenu', { show: 'Dadse', show3:'Dadse2' });
-            await AsyncStorage.removeItem(QuestionDone);
-            await AsyncStorage.setItem(Stage3, 'unlock');
-            
-       } 
-            if(storedValue == null){
-                const store = JSON.stringify(random);
-                await AsyncStorage.setItem(RandomKey2, store);
-                this.setState({ 
-                    randomQuestion2: random,
-                    choice1Top: '75%',//75%
-                    choice2Top: '75%',//75%
-                    choice3Top: '75%',//75%
-                    choice4Top: '75%',//75%
-                    blackboardTop: '14%',
-                });
-            }else{
-                this.setState({ 
-                    randomQuestion2: storedValue,
-                    choice1Top: '75%',//75%
-                    choice2Top: '75%',//75%
-                    choice3Top: '75%',//75%
-                    choice4Top: '75%',//75%
-                    blackboardTop: '14%',
-                });
-            }
-            if(index == 'next'){
-                this.setState({
-                    choice1Top: '1000%',//75%
-                    choice2Top: '1000%',//75%
-                    choice3Top: '1000%',//75%
-                    choice4Top: '1000%',//75%
-                    blackboardTop: '1000%',
-                });
-                const store = JSON.stringify(random);
-                await AsyncStorage.setItem(RandomKey2, store);
-                this.setState({ 
-                    randomQuestion: random,
-                    choice1Top: '75%',//75%
-                    choice2Top: '75%',//75%
-                    choice3Top: '75%',//75%
-                    choice4Top: '75%',//75%
-                    blackboardTop: '14%',
-                });
-            }
-            if(index == 'retry'){
-                this.setState({
-                    choice1Top: '1000%',//75%
-                    choice2Top: '1000%',//75%
-                    choice3Top: '1000%',//75%
-                    choice4Top: '1000%',//75%
-                    blackboardTop: '1000%',
-                });
-                const store = JSON.stringify(random);
-                await AsyncStorage.setItem(RandomKey2, store);
-                this.setState({ 
-                    randomQuestion: random,
-                    choice1Top: '75%',//75%
-                    choice2Top: '75%',//75%
-                    choice3Top: '75%',//75%
-                    choice4Top: '75%',//75%
-                    blackboardTop: '14%',
-                });
-            }
+        if (index == 'next') {
+            const store = JSON.stringify(random);
+            await AsyncStorage.setItem(RandomKey2, store);
+            this.setState({
+                randomQuestion: random,
+                choice1Top: '75%',//75%
+                choice2Top: '75%',//75%
+                choice3Top: '75%',//75%
+                choice4Top: '75%',//75%
+                blackboardTop: '14%',
+            });
         }
+        if (Reach5 == 5) {
+            this.props.navigation.push('gameMenu',{ show: 'Dadse', show3: 'Dadse2' });
+            await AsyncStorage.removeItem(QuestionDone);
+        }
+        if (index == 'checkQuestion'){
+          if (storedValue == null) {
+              const store = JSON.stringify(random);
+              await AsyncStorage.setItem(RandomKey2, store);
+              this.setState({
+                  randomQuestion: random,
+                  choice1Top: '75%',//75%
+                  choice2Top: '75%',//75%
+                  choice3Top: '75%',//75%
+                  choice4Top: '75%',//75%
+                  blackboardTop: '14%',
+              });
+          } else {
+              this.setState({
+                  randomQuestion: storedValue,
+                  choice1Top: '75%',//75%
+                  choice2Top: '75%',//75%
+                  choice3Top: '75%',//75%
+                  choice4Top: '75%',//75%
+                  blackboardTop: '14%',
+              });
+          }
+      }
+        
+        if (index == 'retry') {
+            this.setState({
+                choice1Top: '1000%',//75%
+                choice2Top: '1000%',//75%
+                choice3Top: '1000%',//75%
+                choice4Top: '1000%',//75%
+                blackboardTop: '1000%',
+            });
+            const store = JSON.stringify(random);
+            await AsyncStorage.setItem(RandomKey2, store);
+            this.setState({
+                randomQuestion: random,
+                choice1Top: '75%',//75%
+                choice2Top: '75%',//75%
+                choice3Top: '75%',//75%
+                choice4Top: '75%',//75%
+                blackboardTop: '14%',
+            });
+        }
+    }
 
     validate = async (index) => {
-       if(index == 1){
-           if(this.state.getChoice1Name == this.state.answer){
-               this.correct(this.state.getChoice1Name);
-               this.Animatecorrect();
-               setTimeout(() => {
-                   this.playSound(this.state.getChoice1Name);
-                   this.setState({
-                       answerTop: '1000%',
-                       blackboardTop: '1000%',
-                       descriptionTop: '14%',
-                       choice1Top: '1000%',
-                       choice2Top: '1000%',
-                       choice3Top: '1000%',
-                       choice4Top: '1000%'
-                   });
-                   setTimeout(() => {
-                       const next = 'next';
-                       this.onLoad(next);
-                       this.setState({
-                           descriptionTop: '1000%',
-                       });
-                       setTimeout(() => {
-                           this.setState({
-                               answerTop: '1000%',
-                               blackboardTop: '14%',
-                               choice1Top: '75%',
-                               choice2Top: '75%',
-                               choice3Top: '75%',
-                               choice4Top: '75%'
-                           });
-                       }, 1300)
-                   }, 3000)
-               }, 2000)
-           }else{
-               this.answer(this.state.getChoice1Name);
-               this.wrong();
-               const minus = 'minus';
-               this.minusStar(minus);
-               this.setState({
-                   choice1Top: '1000%',
-                   emptyChoiceLeft: '18%',
-               })
-               setTimeout(() => {
-                   this.setState({
-                       choice1Top: '75%',
-                       emptyChoiceLeft: '1000%',
-                   })
-               }, 1000)
-           }
-       }
+        if (index == 1) {
+            if (this.state.getChoice1Name == this.state.answer) {
+                this.correct(this.state.getChoice1Name);
+                this.Animatecorrect();
+                setTimeout(() => {
+                    this.playSound(this.state.getChoice1Name);
+                    this.setState({
+                        answerTop: '1000%',
+                        blackboardTop: '1000%',
+                        descriptionTop: '14%',
+                        choice1Top: '1000%',
+                        choice2Top: '1000%',
+                        choice3Top: '1000%',
+                        choice4Top: '1000%'
+                    });
+                    setTimeout(() => {
+                        const next = 'next';
+                        this.onLoad(next);
+                        this.setState({
+                            descriptionTop: '1000%',
+                        });
+                        setTimeout(() => {
+                            this.setState({
+                                answerTop: '1000%',
+                                blackboardTop: '14%',
+                                choice1Top: '75%',
+                                choice2Top: '75%',
+                                choice3Top: '75%',
+                                choice4Top: '75%'
+                            });
+                        }, 1300)
+                    }, 3000)
+                }, 2000)
+            } else {
+                this.answer(this.state.getChoice1Name);
+                this.wrong();
+                const minus = 'minus';
+                this.minusStar(minus);
+                this.setState({
+                    choice1Top: '1000%',
+                    emptyChoiceLeft: '18%',
+                })
+                setTimeout(() => {
+                    this.setState({
+                        choice1Top: '75%',
+                        emptyChoiceLeft: '1000%',
+                    })
+                }, 1000)
+            }
+        }
         if (index == 2) {
             if (this.state.getChoice2Name == this.state.answer) {
                 this.correct(this.state.getChoice2Name);
@@ -678,18 +674,18 @@ class Bang2 extends Component {
             } else {
                 this.wrong();
                 const minus = 'minus';
-               this.minusStar(minus);
+                this.minusStar(minus);
                 this.answer(this.state.getChoice2Name);
                 this.setState({
                     choice2Top: '1000%',
                     emptyChoiceLeft: '35%',
                 })
-                setTimeout(()=>{
+                setTimeout(() => {
                     this.setState({
                         choice2Top: '75%',
                         emptyChoiceLeft: '1000%',
                     })
-                },1000)
+                }, 1000)
             }
         }
         if (index == 3) {
@@ -728,7 +724,7 @@ class Bang2 extends Component {
             } else {
                 this.wrong();
                 const minus = 'minus';
-               this.minusStar(minus);
+                this.minusStar(minus);
                 this.answer(this.state.getChoice3Name);
                 this.setState({
                     choice3Top: '1000%',
@@ -777,8 +773,8 @@ class Bang2 extends Component {
                 }, 2000)
             } else {
                 this.wrong();
-             const minus = 'minus';
-               this.minusStar(minus);
+                const minus = 'minus';
+                this.minusStar(minus);
                 this.answer(this.state.getChoice4Name);
                 this.setState({
                     choice4Top: '1000%',
@@ -931,7 +927,7 @@ class Bang2 extends Component {
     }
 
     render() {
-        const show = combine[this.state.randomQuestion2];//this.state.randomQuestion
+        const show = combine[this.state.randomQuestion];//this.state.randomQuestion
         const convert1 = show.choice1String;
         this.state.getChoice1Name = convert1;
         const convert2 = show.choice2String;

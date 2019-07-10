@@ -119,6 +119,7 @@ class GameMenu extends Component {
             backTop: '1000%',
             playerNameLeft: '40%',
             getIndex:0,
+            showdadse:'',
         }
     }
 
@@ -164,6 +165,20 @@ class GameMenu extends Component {
     componentDidMount(){
         const showIt = this.state.show;
         const showProfile = this.state.profile;
+        if(this.state.showdadse == 'show'){
+            this.setState({
+                kaitoTop: '1000%',
+                kaibeLeft: '15%',
+                dadbatakTop: '1000%',
+                dadseTop: '1000%',
+                tanbu1Top: '22%',
+                tanbu2Top: '40%',
+                tanbu3Top: '59%',
+                kastifunTop: '77%',
+                level: 'dadsePart'
+            });
+            this.checkStage(1);
+        }
         if (showProfile == 'showProfile'){
             Animated.spring(this.animatedValue, {
                 toValue: 1
@@ -245,18 +260,6 @@ class GameMenu extends Component {
 
     gotoDadSe = () => {
         this.props.navigation.navigate('dsbangIntro');
-        this.setState({
-            kaitoTop:'1000%',
-            kaibeLeft:'15%',
-            dadbatakTop:'1000%',
-            dadseTop:'1000%',
-            tanbu1Top: '22%',
-            tanbu2Top: '40%',
-            tanbu3Top: '59%',
-            kastifunTop: '77%',
-            level:'dadsePart'
-        })
-        this.checkStage(1);
     }
 
     gotoTanbu = (index) => {
@@ -424,11 +427,12 @@ class GameMenu extends Component {
         const itemId2 = navigation.getParam('show3', 'NO-ID');
         const itemId3 = navigation.getParam('show3DB', 'NO-ID');
         const getParam = navigation.getParam('openProfile', 'NO-ID');
-        const getParam2 = navigation.getParam('getbang2', 'NO-ID');
+        const getParam2 = navigation.getParam('showDadseBang', 'NO-ID');
         this.state.show = itemId;
         this.state.show3 = itemId2;
         this.state.show4 = itemId3;
         this.state.profile = getParam;
+        this.state.showdadse = getParam2;
         const animatedStyle  = {
             transform: [{scale:this.animatedValue}]
         }

@@ -787,7 +787,7 @@ class Bang5 extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.onLoad();
         this.minusStar();
         this.checkBalance();
@@ -960,7 +960,7 @@ class Bang5 extends Component {
                                choice4Top: '75%'
                            });
                        }, 1300)
-                   }, 6500)
+                   }, 4000)
                }, 2000)
            }else{
                this.answer(this.state.getChoice1Name);
@@ -1010,7 +1010,7 @@ class Bang5 extends Component {
                                 choice4Top: '75%'
                             });
                         }, 1300)
-                    }, 6500)
+                    }, 4000)
                 }, 2000)
             } else {
                 this.wrong();
@@ -1060,7 +1060,7 @@ class Bang5 extends Component {
                                 choice4Top: '75%'
                             });
                         }, 1300)
-                    }, 6500)
+                    }, 4000)
                 }, 2000)
             } else {
                 this.wrong();
