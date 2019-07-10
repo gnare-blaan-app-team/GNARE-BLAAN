@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ImageBackground, Text, Image, PanResponder, TouchableOpacity, StatusBar, Animated } from 'react-native';
+import { BackHandler,View, ImageBackground, Text, Image, PanResponder, TouchableOpacity, StatusBar, Animated } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import MenuItem from './MenuItem';
 import Sound from 'react-native-sound';
@@ -14,6 +14,11 @@ class Mainmenu extends Component {
         header: null,
     }
 
+    constructor(){
+        super();
+        this.backHandler = null;
+    }
+
     componentDidMount() {
         try {
             sound.setVolume(0.2);
@@ -21,22 +26,34 @@ class Mainmenu extends Component {
         } catch(error) {
 
         }
+        if (this.backHandler == null) {
+            this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress); 
+            // alert('test');
+        }
+    }
+
+    handleBackPress = () => {
+        return true;
     }
 
     gotoLetters = () => {
+        BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
         this.props.navigation.push('letterIntro');
     }
 
     gotoNumbers = () => {
+        BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
         this.props.navigation.push('numberIntro');
     }
 
     gotoVocabulary = () => {
+        BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
         
         this.props.navigation.push('vocabularyMenu');
     }
 
     gotoFlalok = () => {
+        BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
        // this.bg.stop();
         this.props.navigation.push('flalok');
     }
@@ -49,18 +66,30 @@ class Mainmenu extends Component {
         } catch(error) {
 
         }
+        BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+        BackHandler.addEventListener('hardwareBackPress', this.handleHomeBackPress);
         this.props.navigation.navigate('home');
     }
 
     gotoCultureandArts = () => {
+        BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
         this.props.navigation.push('cultureandarts');
     }
 
     goBack = () => {
         this.props.navigation.navigate('home');
+        this.backHandler.remove();
+        BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+        BackHandler.addEventListener('hardwareBackPress', this.handleHomeBackPress);
+    }
+
+    handleHomeBackPress = () => {
+        sound.stop();
+        BackHandler.exitApp();
     }
 
     gotoGame = () => {
+        BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress)
         this.props.navigation.push('gameIntro');
     }
 

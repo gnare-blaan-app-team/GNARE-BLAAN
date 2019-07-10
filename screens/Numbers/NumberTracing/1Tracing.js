@@ -17,6 +17,7 @@ import shaded_1_2 from '../numberTracingImage/shaded_1_2.png';
 import { scopeX, scopeY, trail } from '../numbersImport';
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
+import {sound} from '../../HomePage';
 
 const shadedLine = [shaded_1_1, shaded_1_2];
 const tracingLine = [trace1, trace2];
@@ -40,6 +41,15 @@ const numberDimension = {
 class OneTracing extends Component {
     static navigationOptions = {
         header: null,
+    }
+
+    componentDidMount() {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+        
+        }
     }
 
     constructor(props) {
@@ -166,11 +176,26 @@ class OneTracing extends Component {
 
     gotoMainMenu = () => {
         this.clearBoard();
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+        
+        }
+    
         this.props.navigation.navigate('mainMenu');
     }
 
     goBack = () => {
         this.clearBoard();
+        
+            try {
+                sound.setVolume(0);
+                sound.paused();
+            } catch(error) {
+            
+            }
+        
         this.props.navigation.navigate('numbers');
     }
 

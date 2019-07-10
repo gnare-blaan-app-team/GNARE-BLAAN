@@ -14,6 +14,7 @@ import shaded_I_3 from '../LettersAssets/shaded_I_3.png';
 import PencilIcon from '../../images/Pencil_icon.png';
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
+import {sound} from '../../HomePage';
 
 import { scopeX, scopeY, trail } from '../letterImport';
 
@@ -37,6 +38,15 @@ const numberDimension = {
 class ITracing extends Component {
     static navigationOptions = {
         header: null,
+    }
+
+    componentDidMount() {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+        
+        }
     }
 
     constructor(props) {
@@ -158,6 +168,12 @@ class ITracing extends Component {
 
     goBack = () => {
         this.clearBoard();
+            try {
+                sound.setVolume(0);
+                sound.paused();
+            } catch(error) {
+            
+            }
         this.props.navigation.navigate('letters');
     }
 

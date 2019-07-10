@@ -24,7 +24,7 @@ import PencilIcon from '../../images/Pencil_icon.png';
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
 
 import { scopeX, scopeY, trail } from '../letterImport';
-
+import {sound} from '../../HomePage';
 const tracingLine = [MLetter_1, MLetter_2, MLetter_3, MLetter_4, MLetter_5, MLetter_6, MLetter_7];
 const shadedLine = [shaded_M_1, shaded_M_2, shaded_M_3, shaded_M_4, shaded_M_5, shaded_M_6,
     shaded_M_7];
@@ -46,6 +46,15 @@ const numberDimension = {
 class MTracing extends Component {
     static navigationOptions = {
         header: null,
+    }
+
+    componentDidMount() {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+        
+        }
     }
 
     constructor(props) {
@@ -299,6 +308,14 @@ class MTracing extends Component {
 
     goBack = () => {
         this.clearBoard();
+        //componentDidMount() {
+            try {
+                sound.setVolume(0);
+                sound.paused();
+            } catch(error) {
+            
+            }
+        //}
         this.props.navigation.navigate('letters');
     }
 

@@ -20,6 +20,7 @@ import { numberDimension, boardDimension,
 
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
+import {sound } from '../../HomePage';
 
 const shadedLine = [shaded_2_1, shaded_2_2];
 const tracingLine = [trace1, trace2];
@@ -33,6 +34,15 @@ const screenHeight = Dimensions.get('screen').height;
 class TwoTracing extends Component {
     static navigationOptions = {
         header: null,
+    }
+
+    componentDidMount() {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+        
+        }
     }
 
     constructor(props) {
@@ -166,11 +176,27 @@ class TwoTracing extends Component {
 
     gotoMainMenu = () => {
         this.clearBoard();
+        
+            try {
+                sound.setVolume(0.2);
+                sound.play();
+            } catch(error) {
+            
+            }
+        
         this.props.navigation.navigate('mainMenu');
     }
 
     goBack = () => {
         this.clearBoard();
+        
+            try {
+                sound.setVolume(0);
+                sound.paused();
+            } catch(error) {
+            
+            }
+        
         this.props.navigation.navigate('numbers');
     }
 

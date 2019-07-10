@@ -43,11 +43,15 @@ const screenHeight = Dimensions.get('screen').height;
 const clothWidth = screenWidth * 0.05;
 const clothHeight = screenHeight * 0.1;
 let fule = [];
+let barStack = 0;
 
 class DadSeMarket extends Component {
 
     constructor(props) {
         super(props);
+
+        this.progressBar = ['100%', '100%', '100%', '100%', '100%', ];
+
         this.state = {
             showLbung: 0,
             showLbung2: 1,
@@ -64,6 +68,15 @@ class DadSeMarket extends Component {
             showSlah2: 1,
             showKulangTana: 0,
             showKulangTana2: 1,
+            progressBar: 0,
+
+            kaibeProfile: [],
+
+            bar1: this.progressBar[0],
+            bar2: this.progressBar[1],
+            bar3: this.progressBar[2],
+            bar4: this.progressBar[3],
+            bar5: this.progressBar[4],
 
             pan: new Animated.ValueXY(),
             swatX: '27.5%',
@@ -147,8 +160,12 @@ class DadSeMarket extends Component {
                 gesture.moveX <= (screenWidth * 0.49) + (screenWidth * 0.05)) {
                     if(gesture.moveY >= (screenHeight * 0.12) - (screenHeight * 0.05) &&
                     gesture.moveY <= (screenHeight * 0.12) + (screenHeight * 0.05)) {
-                        this.setState({showSwatSlah: 1, showSwatSlah2: 0});
-                        fule.push(DSSwatSalah);
+                        if(this.state.showSwatSlah2 != 0) {
+                            this.setState({showSwatSlah: 1, showSwatSlah2: 0,
+                                progressBar: this.state.progressBar + 1});
+                                fule.push(DSSwatSalah);
+                                this.fillProgressBar();
+                        }
                     }
                 }
                 this.setState({swatX: this.clothing[0].x, swatY: this.clothing[0].y});
@@ -166,8 +183,12 @@ class DadSeMarket extends Component {
                 gesture.moveX <= (screenWidth * 0.49) + (screenWidth * 0.05)) {
                     if(gesture.moveY >= (screenHeight * 0.2) - (screenHeight * 0.05) &&
                     gesture.moveY <= (screenHeight * 0.2) + (screenHeight * 0.05)) {
-                        this.setState({showUlel: 1, showUlel2: 0});
-                        fule.push(DSUlel);
+                        if(this.state.showUlel2 != 0) {
+                            this.setState({showUlel: 1, showUlel2: 0,
+                                progressBar: this.state.progressBar + 1});
+                            fule.push(DSUlel);
+                            this.fillProgressBar();
+                        }
                     }
                 }
                 this.setState({ulelX: this.clothing[1].x, ulelY: this.clothing[1].y});
@@ -185,8 +206,12 @@ class DadSeMarket extends Component {
                 gesture.moveX <= (screenWidth * 0.49) + (screenWidth * 0.05)) {
                     if(gesture.moveY >= (screenHeight * 0.28) - (screenHeight * 0.05) &&
                     gesture.moveY <= (screenHeight * 0.28) + (screenHeight * 0.2)) {
-                        this.setState({showLbung: 1, showLbung2: 0});
-                        fule.push(DSLbung);
+                        if(this.state.showLbung2 != 0) {
+                            this.setState({showLbung: 1, showLbung2: 0,
+                                progressBar: this.state.progressBar + 1});
+                            fule.push(DSLbung);
+                            this.fillProgressBar();
+                        }
                     }
                 }
                 this.setState({lbungX: this.clothing[2].x, lbungY: this.clothing[2].y});
@@ -204,8 +229,12 @@ class DadSeMarket extends Component {
                 gesture.moveX <= (screenWidth * 0.49) + (screenWidth * 0.05)) {
                     if(gesture.moveY >= (screenHeight * 0.45) - (screenHeight * 0.05) &&
                     gesture.moveY <= (screenHeight * 0.45) + (screenHeight * 0.05)) {
-                        this.setState({showTlayong: 1, showTlayong2: 0});
-                        fule.push(DSTlayong);
+                        if(this.state.showTlayong2 != 0) {
+                            this.setState({showTlayong: 1, showTlayong2: 0,
+                                progressBar: this.state.progressBar + 1});
+                            fule.push(DSTlayong);
+                            this.fillProgressBar();
+                        }
                     }
                 }
                 this.setState({tlayongX: this.clothing[3].x, tlayongY: this.clothing[3].y});
@@ -216,15 +245,19 @@ class DadSeMarket extends Component {
             onStartShouldSetPanResponder: (e, gesture)=> true,
             onPanResponderMove: (e, gesture)=> {
                 this.setState({dafengX: gesture.moveX - ((screenWidth * 0.08)/2), 
-                    dafengY: gesture.moveY - ((screenHeight * 0.13)/2)});
+                    dafengY: gesture.moveY - ((screenHeight * 0.14)/2)});
             },
             onPanResponderRelease: (e, gesture)=> {
                 if(gesture.moveX >= (screenWidth * 0.49) - (screenWidth * 0.05) && 
                 gesture.moveX <= (screenWidth * 0.49) + (screenWidth * 0.05)) {
                     if(gesture.moveY >= (screenHeight * 0.45) - (screenHeight * 0.05) &&
                     gesture.moveY <= (screenHeight * 0.45) + (screenHeight * 0.2)) {
-                        this.setState({showDafeng: 1, showDafeng2: 0});
-                        fule.push(DSDafeng);
+                        if(this.state.showDafeng2 != 0) {
+                            this.setState({showDafeng: 1, showDafeng2: 0,
+                                progressBar: this.state.progressBar + 1});
+                            fule.push(DSDafeng);
+                            this.fillProgressBar();
+                        }
                     }
                 }
                 this.setState({dafengX: this.clothing[4].x, dafengY: this.clothing[4].y});
@@ -242,8 +275,10 @@ class DadSeMarket extends Component {
                 gesture.moveX <= (screenWidth * 0.49) + (screenWidth * 0.05)) {
                     if(gesture.moveY >= (screenHeight * 0.4) - (screenHeight * 0.4) &&
                     gesture.moveY <= (screenHeight * 0.4) + (screenHeight * 0.4)) {
-                        this.setState({showKulangTana: 1, showKulangTana2: 0});
-                        fule.push(DSKulangTana);
+                        if(this.state.showKulangTana2 != 0) {
+                            this.setState({showKulangTana: 1, showKulangTana2: 0});
+                            fule.push(DSKulangTana);
+                        }
                     }
                 }
                 this.setState({kulangTanaX: this.clothing[5].x, kulangTanaY: this.clothing[5].y});
@@ -261,8 +296,11 @@ class DadSeMarket extends Component {
                 gesture.moveX <= (screenWidth * 0.49) + (screenWidth * 0.05)) {
                     if(gesture.moveY >= (screenHeight * 0.4) - (screenHeight * 0.4) &&
                     gesture.moveY <= (screenHeight * 0.4) + (screenHeight * 0.4)) {
-                        this.setState({showSlah: 1, showSlah2: 0});
-                        fule.push(DSSlah);
+                        if(this.state.showSlah2 != 0) {
+                            this.setState({showSlah: 1, showSlah2: 0});
+                            fule.push(DSSlah);
+                        }
+                        
                     }
                 }
                 this.setState({slahX: this.clothing[6].x, slahY: this.clothing[6].y});
@@ -274,30 +312,112 @@ class DadSeMarket extends Component {
         header: null,
     }
 
+    unFillProgressBar = () => {
+        fill = 0;
+        let index = barStack;
+        let progress = setInterval(()=> {
+            fill = fill + 5;
+            
+            switch(index) {
+                case 1: {
+                    this.setState({bar1: fill + '%'});
+                    break;
+                };
+                case 2: {
+                    this.setState({bar2: fill + '%'});
+                    break;
+                };
+                case 3: {
+                    this.setState({bar3: fill + '%'});
+                    break;
+                };
+                case 4: {
+                    this.setState({bar4: fill + '%'});
+                    break;
+                };
+                case 5: {
+                    this.setState({bar5: fill + '%'});
+                    break;
+                };
+            }
+            if(fill >=  100) {
+                fill = 100;
+                clearInterval(progress);
+            }
+        }, 10);
+        barStack--;
+    }
+
+    fillProgressBar = () => {
+        fill = 100;
+        barStack++;
+        let index = barStack;
+        
+        let progress = setInterval(()=> {
+            fill = fill - 5;
+            
+            switch(index) {
+                case 1: {
+                    this.setState({bar1: fill + '%'});
+                    break;
+                };
+                case 2: {
+                    this.setState({bar2: fill + '%'});
+                    break;
+                };
+                case 3: {
+                    this.setState({bar3: fill + '%'});
+                    break;
+                };
+                case 4: {
+                    this.setState({bar4: fill + '%'});
+                    break;
+                };
+                case 5: {
+                    this.setState({bar5: fill + '%'});
+                    break;
+                };
+            }
+            if(fill <= 0) {
+                clearInterval(progress);
+                fill = 0;
+            }
+        }, 10);
+    }
+
     fule = () => {
         switch(fule[fule.length - 1]) {
             case DSSwatSalah: {
+                this.unFillProgressBar();
                 this.setState({showSwatSlah2: 1, showSwatSlah: 0});
                 fule.pop();
                 break;
             };
             case DSUlel: {
+                this.unFillProgressBar();
                 this.setState({showUlel2: 1, showUlel: 0});
+                //this.unfillProgressBar();
                 fule.pop();
                 break;
             };
             case DSLbung: {
+                this.unFillProgressBar();
                 this.setState({showLbung2: 1, showLbung: 0});
+                //this.unfillProgressBar();
                 fule.pop();
                 break;
             };
             case DSTlayong: {
+                this.unFillProgressBar();
                 this.setState({showTlayong2: 1, showTlayong: 0});
+                //this.unfillProgressBar();
                 fule.pop();
                 break;
             };
             case DSDafeng: {
+                this.unFillProgressBar();
                 this.setState({showDafeng2: 1, showDafeng: 0});
+                //this.unfillProgressBar();
                 fule.pop();
                 break;
             };
@@ -318,71 +438,73 @@ class DadSeMarket extends Component {
         this.initClothing();
     }
 
-    initClothing = async () => {
-        const showLbung = '@MyApp:showLbung';
-        const showDafeng = '@MyApp:showDafeng';
-        const showUlel = '@MyApp:showUlel';
-        const showSwatSlah = '@MyApp:showSwatSlah';
-        const showTlayong = '@MyApp:showTlayong';
-        const showKulangTana = '@MyApp:showKulangTana';
-        const showSlah = '@MyApp:showSlah';
-        const CoinBalance = '@MyApp:CoinBalance';
-        try {
-            const coin = await AsyncStorage.getItem(CoinBalance);
-            const dafeng = await AsyncStorage.getItem(showDafeng);
-            const ulel = await AsyncStorage.getItem(showUlel);
-            const swatSlah = await AsyncStorage.getItem(showSwatSlah);
-            const tlayong = await AsyncStorage.getItem(showTlayong);
-            const kulangTana = await AsyncStorage.getItem(showKulangTana);
-            const slah = await AsyncStorage.getItem(showSlah);
-            const lbung = await AsyncStorage.getItem(showLbung);
+    mayad = () => {
+        
+    }
 
-            if(coin == null) {
-                await AsyncStorage.setItem(CoinBalance, 0);
-            } else {
-                this.setState({CoinBalance: coin});
-            }
-            if(dafeng == null) {
-                await AsyncStorage.setItem(showDafeng, 0);
-            } else {
-                this.setState({showDafeng: dafeng});
-                this.setState({showDafeng2: dafeng == 0 ? 1 : 0});
-            }
-            if(ulel == null) {
-                await AsyncStorage.setItem(showUlel, 0);
-            } else {
-                this.setState({showUlel: ulel});
-                this.setState({showUlel2: ulel == 0 ? 1 : 0});
-            }
-            if(swatSlah == null) {
-                await AsyncStorage.setItem(showSwatSlah, 0);
-            } else {
-                this.setState({showSwatSlah: swatSlah});
-                this.setState({showSwatSlah2: swatSlah == 0 ? 1 : 0});
-            }
-            if(tlayong == null) {
-                await AsyncStorage.setItem(showTlayong, 0);
-            } else {
-                this.setState({showTlayong: tlayong});
-                this.setState({showTlayong2: tlayong == 0 ? 1 : 0});
-            }
-            if(kulangTana == null) {
-                await AsyncStorage.setItem(showKulangTana, 0);
-            } else {
-                this.setState({showKulangTana: kulangTana});
-                this.setState({kulangTana: kulangTana == 0 ? 1 : 0});
-            }
-            if(slah == null) {
-                await AsyncStorage.setItem(showSlah, 0);
-            } else {
-                this.setState({showSlah: slah});
-                this.setState({showSlah2: slah == 0 ? 1 : 0});
-            }
-            if(lbung == null) {
-                await AsyncStorage.setItem(showLbung, 0);
-            } else {
-                this.setState({showLbung: lbung});
-                this.setState({showLbung2: lbung == 0 ? 1 : 0});
+    initClothing = async () => {
+        try {
+            const profile = await AsyncStorage.getItem(Player);
+            //const cloths = await AsyncStorage.getItem(KaibeCloths);
+            if(profile != null) {
+                let cloths = await AsyncStorage.getItem(profile + 'KaibeClothing');
+                if(cloths != null) {
+                    let clothing = JSON.parse(cloths);
+                    this.setState({kaibeProfile: clothing});
+
+                    this.setState({showSwatSlah: clothing[0] ? 1 : 0});
+                    this.setState({showSwatSlah2: !clothing[0] ? 1 : 0});
+
+                    this.setState({showUlel: clothing[1] ? 1 : 0});
+                    this.setState({showUlel2: !clothing[1] ? 1 : 0});
+
+                    this.setState({showLbung: clothing[2] ? 1 : 0});
+                    this.setState({showLbung2: !clothing[2] ? 1 : 0});
+
+                    this.setState({showTlayong: clothing[3] ? 1 : 0});
+                    this.setState({showTlayong2: !clothing[3] ? 1 : 0});
+
+                    this.setState({showDafeng: clothing[4] ? 1 : 0});
+                    this.setState({showDafeng2: !clothing[4] ? 1 : 0});
+
+                    this.setState({showKulangTana: clothing[5] ? 1 : 0});
+                    this.setState({showKulangTana2: !clothing[5] ? 1 : 0});
+
+                    this.setState({showSlah: clothing[6] ? 1 : 0});
+                    this.setState({showSlah2: !clothing[6] ? 1 : 0});
+                    for(let i = 0; i < clothing.length - 2; i++) {
+                        if(clothing[i]) {
+                            this.progressBar[i] = '0%';
+                        } else {
+                            this.progressBar[i] = '100%';
+                        }
+                    }
+                    this.setState({bar1: this.progressBar[0], bar2: this.progressBar[1], bar3: this.progressBar[2], 
+                        bar4: this.progressBar[3], bar5: this.progressBar[4], });
+                } else {
+                    let cloth = [false, false, false, false, false, false, false];
+                    await AsyncStorage.setItem(profile + 'KaibeClothing', JSON.stringify(cloth));
+                    this.setState({showSwatSlah: 0});
+                    this.setState({showSwatSlah2: 1});
+
+                    this.setState({showUlel: 0});
+                    this.setState({showUlel2: 1});
+
+                    this.setState({showLbung: 0});
+                    this.setState({showLbung2: 1});
+
+                    this.setState({showTlayong: 0});
+                    this.setState({showTlayong2: 1});
+
+                    this.setState({showDafeng: 0});
+                    this.setState({showDafeng2: 1});
+
+                    this.setState({showKulangTana: 0});
+                    this.setState({showKulangTana2: 1});
+
+                    this.setState({showSlah: 0});
+                    this.setState({showSlah2: 1});
+                }
             }
         } catch (error) {
 
@@ -463,6 +585,40 @@ class DadSeMarket extends Component {
 
                 <View style={{position: 'absolute', top:'20%', right: '12%',
                     width: '8%', height: '70%'}}>
+                        <View style={{position: 'absolute', top: '16%', width: '65%', height: '81%', 
+                        left: '17.5%',
+                        backgroundColor: 'white'}}>
+                        <View style={{ width: '100%', height: '20.5%', top: '1%', 
+                            position: 'absolute',
+                            backgroundColor: '#F1C40F'}}>
+                            <View style={{width: '100%', height: this.state.bar5, backgroundColor: 'white'}}>
+                            </View>
+                        </View>
+                        <View style={{ width: '100%', height: '20%', top: '20.5%', 
+                            position: 'absolute',
+                            backgroundColor: '#F39C12'}}>
+                            <View style={{width: '100%', height: this.state.bar4, backgroundColor: 'white'}}>
+                            </View>
+                        </View>
+                        <View style={{ width: '100%', height: '20%', top: '39.5%', 
+                            position: 'absolute',
+                            backgroundColor: '#E67E22'}}>
+                            <View style={{width: '100%', height: this.state.bar3, backgroundColor: 'white'}}>
+                            </View>
+                        </View>
+                        <View style={{ width: '100%', height: '20%', top: '59.5%', 
+                            position: 'absolute',
+                            backgroundColor: '#D35400'}}>
+                            <View style={{width: '100%', height: this.state.bar2, backgroundColor: 'white'}}>
+                            </View>
+                        </View>
+                        <View style={{ width: '100%', height: '20%', top: '79%', 
+                            position: 'absolute',
+                            backgroundColor: '#C0392B'}}>
+                            <View style={{width: '100%', height: this.state.bar1, backgroundColor: 'white'}}>
+                            </View>
+                        </View>
+                    </View>
                     <Image source={DSProgressBarEmpty} style={{width: '100%', height: '100%',
                     resizeMode: 'stretch'}}></Image>
                 </View>
@@ -599,6 +755,5 @@ class DadSeMarket extends Component {
         )
     }
 }
-
 
 export default withNavigation(DadSeMarket);

@@ -21,6 +21,8 @@ import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleShee
 
 import { scopeX, scopeY, trail } from '../letterImport';
 
+import {sound} from '../../HomePage';
+
 const tracingLine = [FLetter_1, FLetter_2, FLetter_3, FLetter_4, FLetter_5,];
 const shadedLine = [shaded_F_1, shaded_F_2, shaded_F_3, shaded_F_4, shaded_F_5,];
 
@@ -41,6 +43,15 @@ const numberDimension = {
 class FTracing extends Component {
     static navigationOptions = {
         header: null,
+    }
+
+    componentDidMount() {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+        
+        }
     }
 
     constructor(props) {
@@ -240,6 +251,12 @@ class FTracing extends Component {
 
     goBack = () => {
         this.clearBoard();
+        try {
+            sound.setVolume(0);
+            sound.paused();
+        } catch(error) {
+        
+        }
         this.props.navigation.navigate('letters');
     }
 

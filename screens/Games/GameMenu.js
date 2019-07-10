@@ -409,9 +409,12 @@ class GameMenu extends Component {
     }
 
     market = () => {
-        // if (this.state.level == 'dadsePart'){
-        //     this.props.navigation.navigate('dadseMarket');
-        // }     
+        if (this.state.level == 'dadsePart'){
+            this.props.navigation.navigate('dadseMarket');
+        }     
+        if (this.state.level == 'dadbatakPart'){
+            this.props.navigation.navigate('dadbatakmarket');
+        } 
     }
 
     render() {

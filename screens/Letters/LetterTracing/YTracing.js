@@ -20,6 +20,7 @@ import PencilIcon from '../../images/Pencil_icon.png';
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
 
 import { scopeX, scopeY, trail } from '../letterImport';
+import {sound} from '../../HomePage';
 
 const tracingLine = [YLetter_1, YLetter_2, YLetter_3, YLetter_4, YLetter_5,];
 const shadedLine = [shaded_Y_1, shaded_Y_2, shaded_Y_3, shaded_Y_4, shaded_Y_5,];
@@ -41,6 +42,15 @@ const numberDimension = {
 class YTracing extends Component {
     static navigationOptions = {
         header: null,
+    }
+
+    componentDidMount() {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+        
+        }
     }
 
     constructor(props) {
@@ -217,11 +227,27 @@ class YTracing extends Component {
 
     gotoMainMenu = () => {
         this.clearBoard();
+        
+            try {
+                sound.setVolume(0.2);
+                sound.play();
+            } catch(error) {
+            
+            }
+        
         this.props.navigation.navigate('mainMenu');
     }
 
     goBack = () => {
         this.clearBoard();
+        
+            try {
+                sound.setVolume(0);
+                sound.paused();
+            } catch(error) {
+            
+            }
+        
         this.props.navigation.navigate('letters');
     }
 

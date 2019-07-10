@@ -27,6 +27,8 @@ import black from '../images/black.png';
 
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 
+import { sound } from '../HomePage';
+
     // Hiding Components
 const hideLeft = '-1000%';
 const hideRight = '1000%';
@@ -87,6 +89,15 @@ class Letters extends Component {
         this.timeoutSound = null;
     }
 
+    componentDidMount(){
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
+    }
+
     changeBackground = (imageBG, soundPlay) => {
         this.stopAutoPlaySound();
         this.setState({menuLetterHide: imageBG == imageMainBG ? '22%' : '-1000%', 
@@ -99,6 +110,21 @@ class Letters extends Component {
                         pencilHide: imageBG == imageMainBG ? hideLeft : showPencil,
                         indexSound: soundPlay, glow: glowGIFList[soundPlay],
                         });
+        if(imageBG != imageMainBG) {
+            try {
+                sound.setVolume(0);
+                sound.paused();
+            } catch(error) {
+                
+            }
+        } else {
+            try {
+                sound.setVolume(0.2);
+                sound.play();
+            } catch(error) {
+                
+            }
+        }
         this.autoPlaySound();
     }
 
@@ -223,9 +249,19 @@ class Letters extends Component {
     }
 
     letterTracing = () => {
-        this.handleBackPress();
-        const upperCase = soundList[this.state.indexSound].toUpperCase();
-        this.props.navigation.push('tracing' + upperCase);
+        try {
+            this.handleBackPress();
+            try {
+                sound.setVolume(0.5);
+                sound.play();
+            } catch(error) {
+                
+            }
+            const upperCase = soundList[this.state.indexSound].toUpperCase();
+            this.props.navigation.push('tracing' + upperCase);
+        } catch(error) {
+            
+        }
     }
 
     gotoMainMenu = () => {
@@ -296,9 +332,21 @@ class Letters extends Component {
         } else {
             if(this.state.imageBackground == imageMainBG) {
                 this.handleBackPress();
+                try {
+                    sound.setVolume(0.2);
+                    sound.play();
+                } catch(error) {
+                    
+                }
                 this.props.navigation.navigate('mainMenu');
             } else {
                 this.stopAutoPlaySound();
+                try {
+                    sound.setVolume(0.2);
+                    sound.play();
+                } catch(error) {
+                    
+                }
                 this.setState({menuLetterHide: '22%', imageBackground: imageMainBG,
                             letterScreen: imageMainBG,
                             prevHide: hideLeft,

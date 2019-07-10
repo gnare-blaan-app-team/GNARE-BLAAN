@@ -22,7 +22,7 @@ const screenWidth = Dimensions.get('screen').width;
 const screenHeight = Dimensions.get('screen').height;
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
-
+import {sound} from '../../HomePage';
 const shadedLine = [shaded_3_1, shaded_3_2];
 const tracingLine = [trace1, trace2];
 
@@ -32,6 +32,15 @@ const velocityLimit2 = -1.5;
 class ThreeTracing extends Component {
     static navigationOptions = {
         header: null,
+    }
+
+    componentDidMount() {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+        
+        }
     }
 
     constructor(props) {
@@ -176,11 +185,27 @@ class ThreeTracing extends Component {
 
     gotoMainMenu = () => {
         this.clearBoard();
+        
+            try {
+                sound.setVolume(0.2);
+                sound.play();
+            } catch(error) {
+            
+            }
+        
         this.props.navigation.navigate('mainMenu');
     }
 
     goBack = () => {
         this.clearBoard();
+        
+            try {
+                sound.setVolume(0);
+                sound.paused();
+            } catch(error) {
+            
+            }
+        
         this.props.navigation.navigate('numbers');
     }
 

@@ -21,6 +21,8 @@ import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleShee
 
 import { scopeX, scopeY, trail } from '../letterImport';
 
+import {sound} from '../../HomePage';
+
 const tracingLine = [BLetter_1, BLetter_2, BLetter_3, BLetter_4, BLetter_5,];
 const shadedLine = [shaded_B_1, shaded_B_2, shaded_B_3, shaded_B_4, shaded_B_5,];
 
@@ -38,9 +40,18 @@ const numberDimension = {
 }
 
 
+
 class BTracing extends Component {
     static navigationOptions = {
         header: null,
+    }
+    componentDidMount() {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
     }
 
     constructor(props) {
@@ -249,6 +260,12 @@ class BTracing extends Component {
 
     goBack = () => {
         this.clearBoard();
+        try {
+            sound.setVolume(0);
+            sound.paused();
+        } catch(error) {
+            
+        }
         this.props.navigation.navigate('letters');
     }
 

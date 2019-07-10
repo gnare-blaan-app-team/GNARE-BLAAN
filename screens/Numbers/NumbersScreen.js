@@ -31,6 +31,7 @@ import black from '../images/black.png';
     // Letter Background Imports
 
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
+import {sound} from '../HomePage';
 
     // Hiding Components
 const hideLeft = '-1000%';
@@ -89,6 +90,15 @@ class NumberScreen extends Component {
         this.timeoutSound = null;
     }
 
+    componentDidMount(){
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
+    }
+
     changeBackground = (imageBG, soundPlay) => {
         this.stopAutoPlaySound();
         this.setState({menuLetterHide: imageBG == imageMainBG ? '22%' : '-1000%', 
@@ -100,6 +110,21 @@ class NumberScreen extends Component {
                         sentenceHide: imageBG == imageMainBG ? hideRight : showSentence,
                         pencilHide: imageBG == imageMainBG ? hideLeft : showPencil,
                         indexSound: soundPlay, });
+        if(imageBG != imageMainBG) {
+            try {
+                sound.setVolume(0);
+                sound.paused();
+            } catch(error) {
+                
+            }
+        } else {
+            try {
+                sound.setVolume(0.2);
+                sound.play();
+            } catch(error) {
+                
+            }
+        }
         this.autoPlaySound();
     }
 
@@ -172,8 +197,18 @@ class NumberScreen extends Component {
     }
 
     letterTracing = () => {
-        this.handleBackPress();
-        this.props.navigation.push('tracing' + soundList[this.state.indexSound]);
+        try {
+            this.handleBackPress();
+            try {
+                sound.setVolume(0);
+                sound.paused();
+            } catch(error) {
+                
+            }
+            this.props.navigation.push('tracing' + soundList[this.state.indexSound]);
+        } catch(error) {
+
+        }
     }
 
 
@@ -250,8 +285,20 @@ class NumberScreen extends Component {
         } else {
             if(this.state.imageBackground == imageMainBG) {
                 this.handleBackPress();
+                try {
+                    sound.setVolume(0.2);
+                    sound.play();
+                } catch(error) {
+                    
+                }
                 this.props.navigation.navigate('mainMenu');
             } else {
+                try {
+                    sound.setVolume(0.2);
+                    sound.play();
+                } catch(error) {
+                    
+                }
                 this.stopAutoPlaySound();
                 this.setState({menuLetterHide: '22%', imageBackground: imageMainBG,
                             numberMainBG: imageMainBG,

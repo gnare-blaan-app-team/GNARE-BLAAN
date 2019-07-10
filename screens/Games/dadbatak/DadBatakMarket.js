@@ -43,11 +43,15 @@ const screenHeight = Dimensions.get('screen').height;
 const clothWidth = screenWidth * 0.05;
 const clothHeight = screenHeight * 0.1;
 let fule = [];
+let barStack = 0;
 
 class DadBatakMarket extends Component {
 
     constructor(props) {
         super(props);
+
+        this.progressBar = ['100%', '100%', '100%', '100%', '100%', ];
+
         this.state = {
             showLbung: 0,
             showLbung2: 1,
@@ -56,6 +60,7 @@ class DadBatakMarket extends Component {
             showUlel: 0,
             showUlel2: 1,
             showTlayong: 0,
+            showFalimak: 0,
             showTlayong2: 1,
             showSwatSlah: 0,
             showSwatSlah2: 1,
@@ -64,6 +69,12 @@ class DadBatakMarket extends Component {
             showSlah2: 1,
             showKulangTana: 0,
             showKulangTana2: 1,
+
+            bar1: this.progressBar[0],
+            bar2: this.progressBar[1],
+            bar3: this.progressBar[2],
+            bar4: this.progressBar[3],
+            bar5: this.progressBar[4],
 
             pan: new Animated.ValueXY(),
             swatX: '26%',
@@ -81,8 +92,8 @@ class DadBatakMarket extends Component {
             dafengX: '64%',
             dafengY: '22%',
 
-            kulangTanaX: '64%',
-            kulangTanaY: '42%',
+            kulangTanaX: '66%',
+            kulangTanaY: '42.5%',
 
             slahX: '64%',
             slahY: '62%',
@@ -121,8 +132,8 @@ class DadBatakMarket extends Component {
             height: screenHeight * 0.13,
             price: 15,
         }, {
-            x: '64%',
-            y: '42%',
+            x: '66%',
+            y: '42.5%',
             width: screenWidth * 0.08,
             height: screenHeight * 0.13,
             price: 15,
@@ -149,6 +160,7 @@ class DadBatakMarket extends Component {
                     gesture.moveY <= (screenHeight * 0.12) + (screenHeight * 0.05)) {
                         this.setState({showSwatSlah: 1, showSwatSlah2: 0});
                         fule.push(DSSwatSalah);
+                        this.fillProgressBar();
                     }
                 }
                 this.setState({swatX: this.clothing[0].x, swatY: this.clothing[0].y});
@@ -168,6 +180,7 @@ class DadBatakMarket extends Component {
                     gesture.moveY <= (screenHeight * 0.28) + (screenHeight * 0.2)) {
                         this.setState({showLbung: 1, showUlel2: 0});
                         fule.push(DSUlel);
+                        this.fillProgressBar();
                     }
                 }
                 this.setState({ulelX: this.clothing[1].x, ulelY: this.clothing[1].y});
@@ -187,6 +200,7 @@ class DadBatakMarket extends Component {
                     gesture.moveY <= (screenHeight * 0.45) + (screenHeight * 0.05)) {
                         this.setState({showTlayong: 1, showLbung2: 0});
                         fule.push(DSLbung);
+                        this.fillProgressBar();
                     }
                 }
                 this.setState({lbungX: this.clothing[2].x, lbungY: this.clothing[2].y});
@@ -202,10 +216,11 @@ class DadBatakMarket extends Component {
             onPanResponderRelease: (e, gesture)=> {
                 if(gesture.moveX >= (screenWidth * 0.49) - (screenWidth * 0.05) && 
                 gesture.moveX <= (screenWidth * 0.49) + (screenWidth * 0.05)) {
-                    if(gesture.moveY >= (screenHeight * 0.45) - (screenHeight * 0.05) &&
-                    gesture.moveY <= (screenHeight * 0.45) + (screenHeight * 0.05)) {
-                        this.setState({showTlayong: 1, showTlayong2: 0});
+                    if(gesture.moveY >= (screenHeight * 0.35) - (screenHeight * 0.05) &&
+                    gesture.moveY <= (screenHeight * 0.35) + (screenHeight * 0.2)) {
+                        this.setState({showFalimak: 1, showTlayong2: 0});
                         fule.push(DSTlayong);
+                        
                     }
                 }
                 this.setState({tlayongX: this.clothing[3].x, tlayongY: this.clothing[3].y});
@@ -225,6 +240,7 @@ class DadBatakMarket extends Component {
                     gesture.moveY <= (screenHeight * 0.45) + (screenHeight * 0.2)) {
                         this.setState({showDafeng: 1, showDafeng2: 0});
                         fule.push(DSDafeng);
+                        this.fillProgressBar();
                     }
                 }
                 this.setState({dafengX: this.clothing[4].x, dafengY: this.clothing[4].y});
@@ -244,6 +260,7 @@ class DadBatakMarket extends Component {
                     gesture.moveY <= (screenHeight * 0.4) + (screenHeight * 0.4)) {
                         this.setState({showKulangTana: 1, showKulangTana2: 0});
                         fule.push(DSKulangTana);
+                        this.fillProgressBar();
                     }
                 }
                 this.setState({kulangTanaX: this.clothing[5].x, kulangTanaY: this.clothing[5].y});
@@ -292,7 +309,7 @@ class DadBatakMarket extends Component {
                 break;
             };
             case DSTlayong: {
-                this.setState({showTlayong2: 1, showTlayong: 0});
+                this.setState({showTlayong2: 1, showFalimak: 0});
                 fule.pop();
                 break;
             };
@@ -396,6 +413,135 @@ class DadBatakMarket extends Component {
     gotoDadSe = () =>{
         this.props.navigation.navigate('dadse')
     }
+
+    unFillProgressBar = () => {
+        fill = 0;
+        let index = barStack;
+        let progress = setInterval(()=> {
+            fill = fill + 5;
+            
+            switch(index) {
+                case 1: {
+                    this.setState({bar1: fill + '%'});
+                    break;
+                };
+                case 2: {
+                    this.setState({bar2: fill + '%'});
+                    break;
+                };
+                case 3: {
+                    this.setState({bar3: fill + '%'});
+                    break;
+                };
+                case 4: {
+                    this.setState({bar4: fill + '%'});
+                    break;
+                };
+                case 5: {
+                    this.setState({bar5: fill + '%'});
+                    break;
+                };
+            }
+            if(fill >=  100) {
+                fill = 100;
+                clearInterval(progress);
+            }
+        }, 10);
+        barStack--;
+    }
+
+    fillProgressBar = () => {
+        fill = 100;
+        barStack++;
+        let index = barStack;
+        
+        let progress = setInterval(()=> {
+            fill = fill - 5;
+            
+            switch(index) {
+                case 1: {
+                    this.setState({bar1: fill + '%'});
+                    break;
+                };
+                case 2: {
+                    this.setState({bar2: fill + '%'});
+                    break;
+                };
+                case 3: {
+                    this.setState({bar3: fill + '%'});
+                    break;
+                };
+                case 4: {
+                    this.setState({bar4: fill + '%'});
+                    break;
+                };
+                case 5: {
+                    this.setState({bar5: fill + '%'});
+                    break;
+                };
+            }
+            if(fill <= 0) {
+                clearInterval(progress);
+                fill = 0;
+            }
+        }, 10);
+    }
+
+    fule = () => {
+        switch(fule[fule.length - 1]) {
+            case DSSwatSalah: {
+                this.unFillProgressBar();
+                this.setState({showSwatSlah2: 1, showSwatSlah: 0});
+                fule.pop();
+                //this.unfillProgressBar();
+                break;
+            };
+            case DSUlel: {
+                this.unFillProgressBar();
+                this.setState({showUlel2: 1, showLbung: 0});
+                //this.unfillProgressBar();
+                fule.pop();
+                break;
+            };
+            case DSLbung: {
+                this.unFillProgressBar();
+                this.setState({showLbung2: 1, showTlayong: 0});
+                //this.unfillProgressBar();
+                fule.pop();
+                break;
+            };
+            case DSTlayong: {
+                //this.unFillProgressBar();
+                this.setState({showTlayong2: 1, showFalimak: 0});
+                //this.unfillProgressBar();
+                fule.pop();
+                break;
+            };
+            case DSDafeng: {
+                this.unFillProgressBar();
+                this.setState({showDafeng2: 1, showDafeng: 0});
+                //this.unfillProgressBar();
+                fule.pop();
+                break;
+            };
+            case DSKulangTana: {
+                this.unFillProgressBar();
+                this.setState({showKulangTana2: 1, showKulangTana: 0});
+                fule.pop();
+                //this.unfillProgressBar();
+                break;
+            };
+            case DSSlah: {
+                this.setState({showSlah2: 1, showSlah: 0});
+                fule.pop();
+                break;
+            };
+        }
+    }
+
+    componentDidMount() {
+        this.initClothing();
+    }
     
     render() {
         StatusBar.setHidden(true);
@@ -463,6 +609,40 @@ class DadBatakMarket extends Component {
 
                 <View style={{position: 'absolute', top:'20%', right: '12%',
                     width: '8%', height: '70%'}}>
+                    <View style={{position: 'absolute', top: '16%', width: '65%', height: '81%', 
+                        left: '17.5%',
+                        backgroundColor: 'white'}}>
+                        <View style={{ width: '100%', height: '20.5%', top: '1%', 
+                            position: 'absolute',
+                            backgroundColor: '#F1C40F'}}>
+                            <View style={{width: '100%', height: this.state.bar5, backgroundColor: 'white'}}>
+                            </View>
+                        </View>
+                        <View style={{ width: '100%', height: '20%', top: '20.5%', 
+                            position: 'absolute',
+                            backgroundColor: '#F39C12'}}>
+                            <View style={{width: '100%', height: this.state.bar4, backgroundColor: 'white'}}>
+                            </View>
+                        </View>
+                        <View style={{ width: '100%', height: '20%', top: '39.5%', 
+                            position: 'absolute',
+                            backgroundColor: '#E67E22'}}>
+                            <View style={{width: '100%', height: this.state.bar3, backgroundColor: 'white'}}>
+                            </View>
+                        </View>
+                        <View style={{ width: '100%', height: '20%', top: '59.5%', 
+                            position: 'absolute',
+                            backgroundColor: '#D35400'}}>
+                            <View style={{width: '100%', height: this.state.bar2, backgroundColor: 'white'}}>
+                            </View>
+                        </View>
+                        <View style={{ width: '100%', height: '20%', top: '79%', 
+                            position: 'absolute',
+                            backgroundColor: '#C0392B'}}>
+                            <View style={{width: '100%', height: this.state.bar1, backgroundColor: 'white'}}>
+                            </View>
+                        </View>
+                    </View>
                     <Image source={DSProgressBarEmpty} style={{width: '100%', height: '100%',
                     resizeMode: 'stretch'}}></Image>
                 </View>
@@ -497,22 +677,22 @@ class DadBatakMarket extends Component {
                 </View>
                
 
-                <View style={{position: 'absolute', top:'20%', left: '46%',
-                    width: '7%', height: '15%', opacity: this.state.showUlel}}>
-                    <Image source={KaibeUlel} style={{width: '100%', height: '100%',
+                <View style={{position: 'absolute', top:'67%', left: '38%',
+                    width: '8%', height: '13%', opacity: this.state.showFalimak}}>
+                    <Image source={Tlayong} style={{width: '100%', height: '100%',
                     resizeMode: 'stretch'}}></Image>
                 </View>
                 
 
-                <View style={{position: 'absolute', top:'67%', left: '38%',
-                    width: '8%', height: '13%', opacity: this.state.showSlah}}>
-                    <Image source={Slah} style={{width: '100%', height: '100%',
+                <View style={{position: 'absolute', top:'20%', left: '38%',
+                    width: '8%', height: '60%', opacity: this.state.showKulangTana}}>
+                    <Image source={KulangTana} style={{width: '100%', height: '100%',
                     resizeMode: 'stretch'}}></Image>
                 </View>
 
                 <View style={{position: 'absolute', top:'67%', left: '54%',
-                    width: '8%', height: '13%', opacity: this.state.showKulangTana}}>
-                    <Image source={KulangTana} style={{width: '100%', height: '100%',
+                    width: '8%', height: '13%', opacity: this.state.showSlah}}>
+                    <Image source={Slah} style={{width: '100%', height: '100%',
                     resizeMode: 'stretch'}}></Image>
                 </View>
 
@@ -555,7 +735,7 @@ class DadBatakMarket extends Component {
 
                 <View style={{position: 'absolute', top: this.state.kulangTanaY, 
                     left: this.state.kulangTanaX, opacity: this.state.showKulangTana2,
-                    width: '8%', height: '13%'}} {...this.kulangTanaResponder.panHandlers}>
+                    width: '3%', height: '11%'}} {...this.kulangTanaResponder.panHandlers}>
                     <Image source={KulangTana} style={{width: '100%', height: '100%',
                     resizeMode: 'stretch'}}></Image>
                 </View>

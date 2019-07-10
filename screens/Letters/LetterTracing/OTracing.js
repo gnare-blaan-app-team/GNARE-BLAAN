@@ -14,6 +14,7 @@ import PencilIcon from '../../images/Pencil_icon.png';
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
 
 import { scopeX, scopeY, trail } from '../letterImport';
+import {sound} from '../../HomePage';
 
 const tracingLine = [OLetter_1, OLetter_2,];
 const shadedLine = [shaded_O_1, shaded_O_2,];
@@ -35,6 +36,15 @@ const numberDimension = {
 class OTracing extends Component {
     static navigationOptions = {
         header: null,
+    }
+
+    componentDidMount() {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+        
+        }
     }
 
     constructor(props) {
@@ -187,11 +197,27 @@ class OTracing extends Component {
 
     gotoMainMenu = () => {
         this.clearBoard();
+        //componentDidMount() {
+            try {
+                sound.setVolume(0.2);
+                sound.play();
+            } catch(error) {
+            
+            }
+        //}
         this.props.navigation.navigate('mainMenu');
     }
 
     goBack = () => {
         this.clearBoard();
+        
+            try {
+                sound.setVolume(0);
+                sound.paused();
+            } catch(error) {
+            
+            }
+        
         this.props.navigation.navigate('letters');
     }
 

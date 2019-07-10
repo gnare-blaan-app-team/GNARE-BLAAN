@@ -18,7 +18,7 @@ import shaded_H_5 from '../LettersAssets/shaded_H_5.png';
 import PencilIcon from '../../images/Pencil_icon.png';
 
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
-
+import {sound} from '../../HomePage';
 import { scopeX, scopeY, trail } from '../letterImport';
 
 const tracingLine = [HLetter_1, HLetter_2, HLetter_3, HLetter_4, HLetter_5,];
@@ -41,6 +41,15 @@ const numberDimension = {
 class HTracing extends Component {
     static navigationOptions = {
         header: null,
+    }
+
+    componentDidMount() {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+        
+        }
     }
 
     constructor(props) {
