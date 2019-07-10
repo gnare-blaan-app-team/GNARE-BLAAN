@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, ImageBackground, Dimensions, Image, 
-    PanResponder, TouchableOpacity, StatusBar, Animated } from 'react-native';
+    PanResponder, TouchableOpacity, StatusBar, Animated, BackHandler } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
 import ILetter_1 from '../LettersAssets/tracingI_1.gif';

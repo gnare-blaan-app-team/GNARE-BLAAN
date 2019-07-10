@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, ImageBackground, Dimensions, Image, 
-    PanResponder, TouchableOpacity, StatusBar, Animated } from 'react-native';
+    PanResponder, TouchableOpacity, StatusBar, Animated, BackHandler } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
 import GLetter_1 from '../LettersAssets/tracingG_1.gif';
