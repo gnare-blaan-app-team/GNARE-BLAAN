@@ -22,7 +22,7 @@ class NumberIntroScreen extends Component {
         this.state = {
             source: Number_Intro,
             paused: false,
-            volume: 1,
+            volume: .4,
             muted: false,
             progress: 0,
             duration: 0,
