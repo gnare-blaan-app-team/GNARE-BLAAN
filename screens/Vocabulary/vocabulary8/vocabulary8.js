@@ -4,6 +4,7 @@ import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
 import Sound from 'react-native-sound';
+import { sound } from '../../HomePage';
 
 import Vocab8BG from './vocabulary8Images/Vocab8.png';
 
@@ -82,6 +83,12 @@ class Vocabulary8 extends Component {
             clickSoundIndex:index
         })
         this.autoPlaySound(index);
+        try {
+            sound.setVolume(0);
+            sound.play();
+        } catch(error) {
+            
+        }
     }
 
     
@@ -125,6 +132,12 @@ class Vocabulary8 extends Component {
       }
     
     gotoMainMenu = () =>{
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         const clear = this.state.clearBackground;
         if (clear == 'clear'){
             this.stopSounds();
@@ -133,6 +146,12 @@ class Vocabulary8 extends Component {
     }
 
     goBack = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         const clear = this.state.clearBackground;
         if (clear == 'gotoVocab8Menu') {
             this.props.navigation.navigate('vocabularyMenu')
@@ -160,6 +179,12 @@ class Vocabulary8 extends Component {
 
     componentDidMount() {
         this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
     }
 
     componentWillUnmount() {

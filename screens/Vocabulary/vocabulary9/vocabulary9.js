@@ -4,6 +4,7 @@ import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
 import Sound from 'react-native-sound';
+import { sound } from '../../HomePage';
 
 import Vocab9BG from './vocabulary9Images/calendarBG.png';
 import Back_icon from '../../images/Back_icon.png';
@@ -119,6 +120,12 @@ class Vocabulary9 extends Component {
             clickSoundIndex:soundPlay
         })
         this.autoPlaySound(soundPlay);
+        try {
+            sound.setVolume(0);
+            sound.play();
+        } catch(error) {
+            
+        }
     }
 
     gotoMonth = () => {
@@ -133,6 +140,12 @@ class Vocabulary9 extends Component {
             clickSoundIndex:index
         })
         this.autoPlaySound(index);
+        try {
+            sound.setVolume(0);
+            sound.play();
+        } catch(error) {
+            
+        }
     }
 
     autoPlaySound = (index) => {
@@ -204,6 +217,12 @@ class Vocabulary9 extends Component {
     }
     
     gotoMainMenu = () =>{
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         const clear = this.state.clearBackground;
         if (clear == 'clear'){
             this.stopSounds();
@@ -212,6 +231,12 @@ class Vocabulary9 extends Component {
     }
 
     goBack = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         const clear = this.state.clearBackground;
         if (clear == 'gotoVocab9Menu') {
             this.props.navigation.navigate('vocabularyMenu')
@@ -235,6 +260,12 @@ class Vocabulary9 extends Component {
 
     componentDidMount() {
         this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
     }
 
     componentWillUnmount() {

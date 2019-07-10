@@ -4,6 +4,7 @@ import HomeScreen from './screens/HomePage';
 import MainMenu from './screens/MainMenu';
 import LetterScreen from './screens/Letters/letterScreen';
 import Numbers from './screens/Numbers/NumbersScreen';
+import About from './screens/About';
 
 import NumberIntroScreen from './screens/Numbers/NumberIntroScreen';
 import LetterIntroScreen from './screens/Letters/LetterIntroScreen';
@@ -67,6 +68,9 @@ import Chant2_Screen from './screens/CultureandArts/cultureandartsScreens/chants
 import Chant3_Screen from './screens/CultureandArts/cultureandartsScreens/chants/chants3Screen';
 import Kastifun1_Screen from './screens/CultureandArts/cultureandartsScreens/kastifun/kastifun1Screen';
 import Kastifun2_Screen from './screens/CultureandArts/cultureandartsScreens/kastifun/kastifun2Screen';
+import Kastifun3_Screen from './screens/CultureandArts/cultureandartsScreens/kastifun/kastifun3Screen';
+import Kastifun4_Screen from './screens/CultureandArts/cultureandartsScreens/kastifun/kastifun4Screen';
+import Kastifun5_Screen from './screens/CultureandArts/cultureandartsScreens/kastifun/kastifun5Screen';
 
 // Games
 import GameMenu from './screens/Games/GameMenu';
@@ -157,6 +161,7 @@ export default AppNavigator = createStackNavigator(
     mainMenu: MainMenu,
     letters: LetterScreen,
     numbers: Numbers,
+    about: About,
 
 
     // Letters
@@ -266,6 +271,9 @@ export default AppNavigator = createStackNavigator(
     chant3Screen: Chant3_Screen,
     kastifun1Screen: Kastifun1_Screen,
     kastifun2Screen: Kastifun2_Screen,
+    kastifun3Screen: Kastifun3_Screen,
+    kastifun4Screen: Kastifun4_Screen,
+    kastifun5Screen: Kastifun5_Screen,
 
     //Games
 
@@ -305,7 +313,7 @@ export default AppNavigator = createStackNavigator(
   },
 {
 
-  initialRouteName:"mainMenu",
+  initialRouteName:"home",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"

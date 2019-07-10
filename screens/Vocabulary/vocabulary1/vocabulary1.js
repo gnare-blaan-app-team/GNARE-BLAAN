@@ -4,6 +4,7 @@ import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
 import Sound from 'react-native-sound';
+import { sound } from '../../HomePage';
 
 import Vocab1BG from '../../images/FamilyMemBG.png';
 import LolaAsset from './vocabulary1Images/lolaAsset.png';
@@ -71,6 +72,12 @@ class Vocabulary1 extends Component {
       clickSoundIndex:index
     })
     this.autoPlaySound(index);
+    try {
+        sound.setVolume(0);
+        sound.play();
+    } catch(error) {
+        
+    }
   }
 
   autoPlaySound = (index) => {
@@ -80,12 +87,6 @@ class Vocabulary1 extends Component {
         this.vocabSound.play();
       });  
     }, 1000);   
-  }
-
-  releaseSounds = ()=> {
-      if(this.vocabSound != null) {
-          this.vocabSound.release();
-      }
   }
 
   playVocabSound = () => {
@@ -105,6 +106,11 @@ class Vocabulary1 extends Component {
     }});
   }
 
+  releaseSounds = ()=> {
+    if(this.vocabSound != null) {
+        this.vocabSound.release();
+    }
+  }
   stopSounds = () => {
     if (this.vocabSound != null){
       this.vocabSound.stop();
@@ -112,6 +118,12 @@ class Vocabulary1 extends Component {
   }
 
   gotoMainMenu = () =>{
+      try {
+        sound.setVolume(0.2);
+        sound.play();
+    } catch(error) {
+        
+    }
     const clear = this.state.clearBackground;
         if (clear == 'clear'){
             this.stopSounds();
@@ -120,6 +132,12 @@ class Vocabulary1 extends Component {
   }
 
   goBack = () =>{
+      try {
+        sound.setVolume(0.2);
+        sound.play();
+    } catch(error) {
+        
+    }
     const clear = this.state.clearBackground;
     if (clear == 'gotoVocab1Menu'){
       this.props.navigation.navigate('vocabularyMenu')
@@ -145,6 +163,12 @@ class Vocabulary1 extends Component {
 
   componentDidMount() {
     this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+    try {
+        sound.setVolume(0.2);
+        sound.play();
+    } catch(error) {
+        
+    }
   }
 
   componentWillUnmount() {

@@ -30,8 +30,6 @@ import back from '../images/Back_icon.png';
 
 const backgroundList = [BG,Slide1,DadseBG,DadBatakBG];
 
-const sample = '@MyApp:sample';
-
 
 const Stage2 = '@MyApp:Stage2';
 const Stage3 = '@MyApp:Stage3';
@@ -66,6 +64,7 @@ const Player2QuestionDone = '@MyApp:Player2QuestionDone';
 const Player2RandomKey2 = '@MyApp:Player2RandomKey2';
 const Player2Stage2 = '@MyApp:Player2Stage2';
 const Player2Stage3 = '@MyApp:Player2Stage3';
+
 
 class GameMenu extends Component {
     
@@ -111,6 +110,7 @@ class GameMenu extends Component {
             player3Top:'30%',
             player4Top: '50%',
             player5Top: '70%',
+            Nonclickableplayer1:'1000%',
             saveTop:'1000%',
             playerName:'Choose Player',
             newPlayername:'',
@@ -119,33 +119,13 @@ class GameMenu extends Component {
             backTop: '1000%',
             playerNameLeft: '40%',
             getIndex:0,
-            pass1:'',
-            pass2: '',
-            pass3: '',
-            pass4: '',
-            pass5: '',
-            pass6: '',
-            pass7: '',
-            pass8: '',
-            pass9: '',
-            pass10: '',
-            getPass1:'',
-            getPass2:'',
-            getPass3: '',
-            getPass4:'',
-            getPass5:'',
-            getPass6:'',
-            getPass7:'',
-            getPass8: '',
-            getPass9:'',
         }
     }
 
     checkStage = async (index) => {
        if(index == 1){
-           const storedValue = this.state.pass9;//await AsyncStorage.getItem(Stage2);
-           const storedValue2 = this.state.pass10;//await AsyncStorage.getItem(Stage3);
-           if(this.state.pass2 == 'player1'){
+           const storedValue = await AsyncStorage.getItem(Stage2);
+           const storedValue2 = await AsyncStorage.getItem(Stage3);
                if (storedValue == 'unlock') {
                    this.setState({
                        tanbu2Top: '1000%',
@@ -159,7 +139,6 @@ class GameMenu extends Component {
                    })
                }
            }       
-        }
        if(index == 2){
            const storedValue3 = await AsyncStorage.getItem(DadbatakStage2);
                if (storedValue3 == 'unlock') {
@@ -364,17 +343,22 @@ class GameMenu extends Component {
             player4Top: '1000%',
             player5Top: '1000%',
         })
-        let Player = ['Player1','Player2','Player3','Player4','Player5'];
-        this.setState({
-                    playerName:Player[index],
+        var number = [0,1,2,3,4];
+        var Player = ['Player 1','Player 2','Player 3','Player 4','Player 5'];
+        for(a = 0 ; a <= number.length; a++){
+            if(index == number[a]){
+                this.setState({
+                    playerName:Player[a],
                     playerNameLeft:'46%',
-                    getIndex: index,
-                });
-       //this.setState
+                })
+            }
+        }
+        this.state.getIndex = index;
     }
 
     play = async () => {
-        Animated.spring(this.animatedValue, {
+        const index = this.state.getIndex;
+          Animated.spring(this.animatedValue, {
             toValue: .0
         }).start();
         setTimeout(() => {
@@ -422,14 +406,6 @@ class GameMenu extends Component {
         
         
         
-    }
-
-    get = async () => {
-       
-    }
-
-    close = () => {
-      
     }
 
     market = () => {

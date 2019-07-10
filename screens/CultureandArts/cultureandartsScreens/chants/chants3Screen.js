@@ -10,7 +10,7 @@ import Chants3_video from '../../cultureandartsVideos/Chants/dasalNgPasasalamat.
 import Back_icon from '../../../images/Back_icon.png';
 import Home_icon from '../../../images/Home_icon.png';
 
-
+import { sound } from '../../../HomePage';
 import cultureandarts_BG from '../../cultureandartsImages/cultureandarts_BG.jpg';
 
 import {globalStyleSheet as styles} from '../../../globalStyleSheet/globalStyleSheet.js';
@@ -51,6 +51,15 @@ class chants3Screen extends Component {
 
     static navigationOptions = {
         header:null,
+    }
+
+    componentDidMount(){
+        try {
+            sound.setVolume(0);
+            sound.play();
+        } catch(error) {
+            
+        }
     }
 
     handleMainButtonTouch = () => {
@@ -94,6 +103,12 @@ class chants3Screen extends Component {
     };
 
     handleEnd = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         this.setState({ paused: true});
         this.props.navigation.navigate('chantsScreen');
         //his.props.navigation.navigate('endstory');
@@ -106,11 +121,23 @@ class chants3Screen extends Component {
     };
 
     goBack = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         this.props.navigation.navigate('chantsScreen');
         this.handleEnd();
     }
 
     gotoMainMenu = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         this.props.navigation.navigate('mainMenu');
     }
 

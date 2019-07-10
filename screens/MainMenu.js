@@ -2,12 +2,25 @@ import React, { Component } from 'react';
 import { View, ImageBackground, Text, Image, PanResponder, TouchableOpacity, StatusBar, Animated } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import MenuItem from './MenuItem';
+import Sound from 'react-native-sound';
+
+import {sound} from './HomePage';
 
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js'; 
+Sound.setCategory('Playback');
 
 class Mainmenu extends Component {
     static navigationOptions = {
         header: null,
+    }
+
+    componentDidMount() {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+
+        }
     }
 
     gotoLetters = () => {
@@ -19,6 +32,7 @@ class Mainmenu extends Component {
     }
 
     gotoVocabulary = () => {
+        
         this.props.navigation.push('vocabularyMenu');
     }
 
@@ -29,7 +43,13 @@ class Mainmenu extends Component {
 
     gotoMainMenu = () => {
        // this.bg.stop();
-        this.props.navigation.push('home');
+       try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+
+        }
+        this.props.navigation.navigate('home');
     }
 
     gotoCultureandArts = () => {
@@ -37,11 +57,31 @@ class Mainmenu extends Component {
     }
 
     goBack = () => {
-        this.props.navigation.push('home');
+        this.props.navigation.navigate('home');
     }
 
     gotoGame = () => {
         this.props.navigation.push('gameIntro');
+    }
+
+    playClickSound = () => {
+        if(this.clickSound != null) {
+            this.clickSound.release();
+        }
+        // this.stopSounds();
+        this.clickSound = new Sound('click.mp3', Sound.MAIN_BUNDLE, (error) => {
+        if (error) {
+            alert('failed to load the sound', error);
+            return;
+        } else {
+            this.clickSound.play();
+        }});
+    }
+
+    releaseSounds = ()=> {
+        if(this.clickSound != null) {
+            this.clickSound.release();
+        }
     }
 
     render() {
@@ -59,6 +99,11 @@ class Mainmenu extends Component {
                     <MenuItem itemImage={require('./images/CultureandArts.png')} goto={this.gotoCultureandArts} />
                     <MenuItem itemImage={require('./images/Vocabulary.png')} goto={this.gotoVocabulary}/>
                 </View>
+
+                {/* <View style={{position: 'absolute', width: '70%', height: '30%', top: '65%',
+                            left: '15%'}}>
+                    <Image style={{width: '100%', height: '100%', resizeMode: 'contain'}} source={require('./sampleSentence.gif')}></Image>
+                </View> */}
 
                 <View style={styles.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>

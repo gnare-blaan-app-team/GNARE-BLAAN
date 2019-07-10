@@ -4,6 +4,7 @@ import { withNavigation } from 'react-navigation';
 import {globalStyleSheet} from '../../globalStyleSheet/globalStyleSheet';
 
 import Sound from 'react-native-sound';
+import { sound } from '../../HomePage';
 
 import BG from '../../images/BG.jpg';
 import Vocab3BG from './vocabulary3Images/vocab3.png';
@@ -84,10 +85,22 @@ class Vocabulary3 extends Component {
             clickSoundIndex:index
         })
         this.autoPlaySound(index);
+        try {
+            sound.setVolume(0);
+            sound.play();
+        } catch(error) {
+            
+        }
     }
 
     gotoMainMenu = () =>{
-    const clear = this.state.clearBackground;
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
+        const clear = this.state.clearBackground;
         if (clear == 'clear'){
             this.stopSounds();
         }
@@ -95,6 +108,12 @@ class Vocabulary3 extends Component {
     }
 
     goBack = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
         const clear = this.state.clearBackground;
         if (clear == 'gotoVocab3Menu') {
             if (this.timeoutSound != null){
@@ -168,6 +187,12 @@ class Vocabulary3 extends Component {
 
     componentDidMount() {
         this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
     }
 
     componentWillUnmount() {
@@ -224,7 +249,7 @@ class Vocabulary3 extends Component {
                 <View style={{
                     position: 'absolute',
                     top: this.state.seaTop,
-                    left: '10%',
+                    left: '12.5%',
                     justifyContent: 'center',
                 }}>
                     <TouchableOpacity onPress={() => {
@@ -398,7 +423,7 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     seaImage: {
-        width: wp('80%'),
+        width: wp('75%'),
         height: hp('31%'),
         resizeMode: 'contain',
     },
