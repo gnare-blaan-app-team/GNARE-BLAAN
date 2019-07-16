@@ -24,10 +24,9 @@ class VocabularyItem extends Component {
 
 const styles = StyleSheet.create({
     menuItem: {
-        width: '27%',
-        height: '44%',
-        paddingBottom: 20,
-        // borderWidth: 0.5,
+        width: '38%',
+        height: '74%',
+        borderColor:'red',
     },
     image: {
         width: '100%',
