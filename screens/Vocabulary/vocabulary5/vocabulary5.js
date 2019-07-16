@@ -54,6 +54,7 @@ class Vocabulary5 extends Component {
         this.state = {
             BackgroundImage: Vocab5BG,
             mountainLeft:'12.7%',
+            mountainLeft2:'45%',
             treeTop:'19%',
             fallsTop:'19%',
             ilogTop:'48.5%',
@@ -265,6 +266,19 @@ class Vocabulary5 extends Component {
                     </TouchableOpacity>
                 </View>
 
+                {/* <View style={{
+                    position: 'absolute',
+                    width: '20%',
+                    left: this.state.mountainLeft2,
+                    height: '15%',
+                    borderWidth: 0.5,
+                }}>
+                    <TouchableOpacity onPress={() => {
+                        this.changeBackground(4)
+                    }}>
+                    </TouchableOpacity>
+                </View> */}
+
                 <View style={{
                     position: 'absolute',
                     top: this.state.treeTop,
@@ -306,6 +320,7 @@ class Vocabulary5 extends Component {
                     width: '45%',
                     right: '12.6%',
                     height: '40%',
+                    // borderWidth: 0.5,
                 }}>
                     <TouchableOpacity onPress={() => {
                         this.changeBackground(5)
@@ -396,7 +411,7 @@ class Vocabulary5 extends Component {
                     transform: [{ rotate: '-9deg' }]
                 }}>
                     <TouchableOpacity onPress={() => {
-                        this.changeBackground(3)
+                        this.changeBackground(0)
                     }}>
                         <Image
                             source={ItemAxeAsset}

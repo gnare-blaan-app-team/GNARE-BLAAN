@@ -226,7 +226,11 @@ class GameMenu extends Component {
         this.props.navigation.navigate('mainMenu');
       
     }
-    
+
+    gotoHome = () => {
+        this.props.navigation.navigate('home');
+    }
+
     gotoDadBatak = () => {
         // Realm.open({ schema: [PlayerSchema]})
         //     .then(realm => {
@@ -410,13 +414,6 @@ class GameMenu extends Component {
                 <View style={{ position: 'absolute', width: '100%', height: '100%' }}>
                     <Image source={this.state.BackgroundImage} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
                 </View>
-                <View style={styles.gnareIconStyle}>
-                    <Image
-                        source={GnareIcon}
-                        style={styles.image}
-                    >
-                    </Image>
-                </View>
                 <View style={{
                     position: 'absolute',
                     top:this.state.dadbatakTop,
@@ -448,7 +445,9 @@ class GameMenu extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.gnareIconStyle}>
-                    <Image source={GnareIcon} style={styles.image}></Image>
+                    <TouchableOpacity onPress={this.gotoHome}>
+                        <Image source={GnareIcon} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={{
                     position: 'absolute',
@@ -615,7 +614,7 @@ class GameMenu extends Component {
                             width:'30%',
                             height:'15%'
                         }}>
-                            <TouchableOpacity onPress={this.addPlayer}>
+                            <TouchableOpacity onPress={this.play}>
                             <Image source={player} style={{height:'100%',width:'100%',resizeMode:'contain'}}/>
                             <View style={{ position: 'absolute',left: '14%', top: '25%'}}>
                                     <Text style={{ color: 'white', fontSize: 21,}}>CREATE PLAYER</Text>

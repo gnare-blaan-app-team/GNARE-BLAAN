@@ -312,7 +312,7 @@ export default AppNavigator = createStackNavigator(
     
   },
 {
-  initialRouteName:"kastifunScreen",
+  initialRouteName:"home",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"
