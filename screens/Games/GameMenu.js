@@ -244,6 +244,10 @@ class GameMenu extends Component {
         this.props.navigation.navigate('mainMenu');
     }
 
+    gotoHome = () => {
+        this.props.navigation.navigate('home');
+    }
+
     gotoDadBatak = () => {
         this.setState({
             kaibeTop: '1000%',
@@ -446,13 +450,6 @@ class GameMenu extends Component {
                 <View style={{ position: 'absolute', width: '100%', height: '100%' }}>
                     <Image source={this.state.BackgroundImage} style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}></Image>
                 </View>
-                <View style={styles.gnareIconStyle}>
-                    <Image
-                        source={GnareIcon}
-                        style={styles.image}
-                    >
-                    </Image>
-                </View>
                 <View style={{
                     position: 'absolute',
                     top:this.state.dadbatakTop,
@@ -484,7 +481,9 @@ class GameMenu extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.gnareIconStyle}>
-                    <Image source={GnareIcon} style={styles.image}></Image>
+                    <TouchableOpacity onPress={this.gotoHome}>
+                        <Image source={GnareIcon} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={{
                     position: 'absolute',
