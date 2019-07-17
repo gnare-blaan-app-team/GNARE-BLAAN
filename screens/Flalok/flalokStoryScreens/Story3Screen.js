@@ -155,7 +155,7 @@ class Story3Screen extends Component {
         this.props.navigation.navigate('vocabulary3');
     }
 
-    gotoVocabulary3 = () => {
+    gotoVocabulary5 = () => {
         this.props.navigation.navigate('vocabulary5');
     }
 

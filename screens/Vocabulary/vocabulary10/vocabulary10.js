@@ -194,7 +194,7 @@ class Vocabulary10 extends Component {
         }
         const clear = this.state.clearBackground;
         if (clear == 'gotoVocab10Menu') {
-            this.props.navigation.navigate('vocabularyMenu')
+            this.props.navigation.goBack()
         }
         if (clear == 'clear') {
             this.stopSounds();

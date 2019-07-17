@@ -36,7 +36,7 @@ class kastifunScreen extends Component {
     }
 
     goBack = () => {    
-        this.props.navigation.navigate('cultureandarts');
+        this.props.navigation.goBack();
     }
 
     gotoNextPage = (index) => {
