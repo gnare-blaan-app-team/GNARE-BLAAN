@@ -326,6 +326,10 @@ class GameMenu extends Component {
         
     }
 
+    gotoKastifun = () => {
+        this.props.navigation.navigate('kastifunScreen');
+    }
+
     goToProfile = () => {
         this.setState({
             saveTop: '1000%',
@@ -516,9 +520,7 @@ class GameMenu extends Component {
                     height: hp('16%'),
                     width: wp('28%'),
                 }}>
-                    <TouchableOpacity onPress={() => {
-                        this.gotoTanbu(4);
-                    }}>
+                    <TouchableOpacity onPress={this.gotoKastifun}>
                         <Image source={KastifunIcon} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>
