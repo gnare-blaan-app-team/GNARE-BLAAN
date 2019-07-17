@@ -14,10 +14,28 @@ import Story6 from './flalokImages/Story6.png';
 import Flalok_BG from './flalokImages/Flalok_BG.jpg';
 import MenuItem from '../MenuItem';
 
+import NextIcon from '../images/Next_Icon.png';
+import PrevIcon from '../images/Prev_Icon.png';
+
 class FlalokStoryMenu extends Component {
     static navigationOptions = {
         header:null,
         cardStyle: {backgroundColor: 'transperent'},
+    }
+
+    constructor(props){
+        super(props);
+        this.state = {
+            top1: '20%',
+            top2: '20%',
+            top3: '1000%',
+            top4: '1000%',
+            top5: '1000%',
+            top6: '1000%',
+            nextTop:'45%',
+            prevTop:'1000%',
+            get:0,
+        }
     }
 
     gotoStory1 = () => {
@@ -52,6 +70,54 @@ class FlalokStoryMenu extends Component {
         this.props.navigation.push('mainMenu');
     }
 
+    gotoNextPage = (index) => {
+        if (index == 1) {
+            this.setState({
+                nextTop: '45%',
+                prevTop: '45%',
+                top1: '1000%',
+                top2: '1000%',
+                top3: '20%',
+                top4: '20%',
+
+            });
+        }
+        if (index == 2) {
+            this.setState({
+                nextTop: '1000%',
+                prevTop: '45%',
+                top3: '1000%',
+                top4: '1000%',
+                top5: '20%',
+                top6: '20%',
+            });
+        }
+
+    }
+
+    gotoPrevPage = (index) => {
+        if (index == 1) {
+            this.setState({
+                prevTop: '45%',
+                nextTop: '45%',
+                top3: '20%',
+                top4: '20%',
+                top5: '1000%',
+                top6: '1000%',
+            });
+        }
+        if (index == 0) {
+            this.setState({
+                prevTop: '1000%',
+                nextTop: '45%',
+                top1: '20%',
+                top2: '20%',
+                top3: '1000%',
+                top4: '1000%',
+            });
+        }
+    }
+
     render(){
         return (
                 <ImageBackground style={styles.image}
@@ -65,48 +131,86 @@ class FlalokStoryMenu extends Component {
                         <MenuItem itemImage={Story5} goto={this.gotoStory5} />
                         <MenuItem itemImage={Story6} goto={this.gotoStory6} />
                     </View> */}
-                        <View style={styles.CultureandArtsContainer}>
-                            <View style={styles.row}>
-                                <View style={[styles.itemSize, {height: '90%', marginLeft: '10%'}]} >
+                        <View style={{
+                    position: 'absolute',
+                    width: '80%',
+                    height: '70%',
+                    top:'10%'
+                        }}>
+                    <View style={{
+                        position:'absolute',
+                        top:this.state.top1,
+                        left:'2%',
+                        width: '45%',
+                        height: '90%',
+                        
+                    }} >
                                     <TouchableOpacity  onPress={this.gotoStory1} >
                                         <Image style={styles.imageSizeStoryMenu} source={Story1} />
                                     </TouchableOpacity>
                                 </View>
 
-                                <View style={[styles.itemSize, {height: '90%', marginLeft: '-5%', marginRight: '-5%'}]} >
+                    <View style={{
+                        position: 'absolute',
+                        top: this.state.top2,
+                        left:'50%',
+                        width: '45%',
+                        height: '90%',
+                    }} >
                                     <TouchableOpacity  onPress={this.gotoStory2} >
                                         <Image style={styles.imageSizeStoryMenu} source={Story2} />
                                     </TouchableOpacity>
                                 </View>
 
-                                <View style={[styles.itemSize, {height: '90%', marginRight: '10%'}]} >
+                    <View style={{
+                        position: 'absolute',
+                        top: this.state.top3,
+                        left: '2%',
+                        width: '45%',
+                        height: '90%',
+                    }} >
                                     <TouchableOpacity  onPress={this.gotoStory3} >
                                         <Image style={styles.imageSizeStoryMenu} source={Story3} />
                                     </TouchableOpacity>
                                 </View>
-                            </View>
+    
 
-                            <View style={styles.row1}>
-                                <View style={[styles.itemSize, {height: '90%', marginLeft: '10%'}]} >
+                    <View style={{
+                        position: 'absolute',
+                        top: this.state.top4,
+                        left: '50%',
+                        width: '45%',
+                        height: '90%',
+                    }} >
                                     <TouchableOpacity  onPress={this.gotoStory4} >
                                         <Image style={styles.imageSizeStoryMenu} source={Story4} />
                                     </TouchableOpacity>
                                 </View>
 
-                                <View style={[styles.itemSize, {height: '90%', marginLeft: '-5%', marginRight: '-5%'}]} >
+                    <View style={{
+                        position: 'absolute',
+                        top:this.state.top5,
+                        left: '2%',
+                        width: '45%',
+                        height: '90%',
+                    }} >
                                     <TouchableOpacity  onPress={this.gotoStory5} >
                                         <Image style={styles.imageSizeStoryMenu} source={Story5} />
                                     </TouchableOpacity>
                                 </View>
 
-                                <View style={[styles.itemSize, {height: '90%', marginRight: '10%'}]} >
+                    <View style={{
+                        position: 'absolute',
+                        top: this.state.top6,
+                        left: '50%',
+                        width: '45%',
+                        height: '90%',
+                    }} >
                                     <TouchableOpacity  onPress={this.gotoStory6} >
                                         <Image style={styles.imageSizeStoryMenu} source={Story6} />
                                     </TouchableOpacity>
                                 </View>
                             </View>
-                            
-                        </View>
 
 
 
@@ -127,6 +231,40 @@ class FlalokStoryMenu extends Component {
                             ></Image>
                         </TouchableOpacity>
                     </View>
+                <View style={{
+                    position: 'absolute',
+                    left: '90%',
+                    top: this.state.nextTop,
+                    width: '12%',
+                    height: '24%',
+                }}>
+                    <TouchableOpacity onPress={() => {
+                        this.state.get = this.state.get + 1;
+                        this.gotoNextPage(this.state.get);
+                    }}>
+                        <Image
+                            source={NextIcon}
+                            style={styles.next}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={{
+                    position: 'absolute',
+                    left: '1%',
+                    top: this.state.prevTop,
+                    width: '12%',
+                    height: '24%',
+                }}>
+                    <TouchableOpacity onPress={() => {
+                        this.state.get = this.state.get - 1;
+                        this.gotoPrevPage(this.state.get);
+                    }}>
+                        <Image
+                            source={PrevIcon}
+                            style={styles.prev}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
                 </ImageBackground>
         )
     }
