@@ -12,8 +12,12 @@ import GnareIcon from '../gameImages/GnareMain.png';
 import MoneyContainer from '../gameImages/moneyContainer.png';
 import TlasIcon from '../gameImages/tlas_icon.png';
 import Coinbank from '../gameImages/Coinbank.png';
-import Coin from '../gameImages/coin.png';
+import Coin from '../gameImages/moneyCoin.png';
+import money20 from '../gameImages/money20.png';
+import money50 from '../gameImages/money50.png';
+import money100 from '../gameImages/money100.png';
 
+const money = 172;
 
 class DadSeBank extends Component {
     static navigationOptions = {
@@ -23,7 +27,7 @@ class DadSeBank extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            money: 105,
+            coinViewTop: '1000%',
         }
     }
 
@@ -33,7 +37,7 @@ class DadSeBank extends Component {
 
     coinView = () => {
         const coin = [];
-        for( let index=0 ; index < this.state.money; index++) {
+        for( let index=0 ; index < money; index++) {
             coin.push(
                 <Image source={Coin} style={styles.coinImage}></Image>
             )
@@ -41,6 +45,67 @@ class DadSeBank extends Component {
         return coin;
     }
 
+    coinExchange = () => {
+        let moneyExchange = money;
+        const coin = [];
+
+        while (moneyExchange != 0)
+        {
+            if (moneyExchange >= 100)
+            {
+                let counter1 = 0;
+                counter1 = parseInt(moneyExchange/100);
+                
+                for( let index=0 ; index < counter1; index++) {
+                    coin.push(
+                        <Image source={money100} style={styles.moneyImage}></Image>
+                    )
+                    moneyExchange = moneyExchange - 100;
+                }
+            }
+            if (moneyExchange >= 50 && moneyExchange < 100)
+            {
+                let counter2 = 0;
+                counter2 = parseInt(moneyExchange/50);
+
+                for( let index=0 ; index < counter2; index++) {
+                    coin.push(
+                        <Image source={money50} style={styles.moneyImage}></Image>
+                    )
+                    moneyExchange = moneyExchange - 50;
+                }
+            }
+            if (moneyExchange >= 20 && moneyExchange < 50)
+            {
+                let counter3 = 0;
+                counter3 = parseInt(moneyExchange/20);
+
+                for( let index=0 ; index < counter3; index++) {
+                    coin.push(
+                        <Image source={money20} style={styles.moneyImage}></Image>
+                    )
+                    moneyExchange = moneyExchange - 20;
+                }
+            }
+            if (moneyExchange < 20)
+            {
+                for( let index=0 ; index < moneyExchange; index++) {
+                    coin.push(
+                        <Image source={Coin} style={styles.coinImage}></Image>
+                    )
+                    moneyExchange = moneyExchange - 1;
+                }
+            }
+        }
+
+        return coin;
+    }
+
+    tlas = () => {
+        this.setState({
+            coinViewTop:'28.5%',
+        })
+    }
 
 
     render() {
@@ -72,7 +137,7 @@ class DadSeBank extends Component {
                         <Image source={Coinbank} style={styles.image}></Image>
                     </View>
                 <View style={styles.tlasStyle}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={this.tlas}>
                         <Image source={TlasIcon} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>
@@ -86,13 +151,14 @@ class DadSeBank extends Component {
                     flexDirection: 'row',
                     flexWrap: 'wrap',
                     justifyContent: 'flex-start',
+                    resizeMode: 'contain',
                     borderWidth: 0.5 
                 }}>
                         {this.coinView()}
                 </View>
                 <View style={{
                     position: 'absolute',
-                    top: '28.5%',
+                    top:this.state.coinViewTop,
                     left: '53.5%',
                     width: '34%',
                     height: '42%',
@@ -102,7 +168,7 @@ class DadSeBank extends Component {
                     justifyContent: 'flex-start',
                     borderWidth: 0.5 
                 }}>
-                        {this.coinView()}
+                        {this.coinExchange()}
                 </View>
             </ImageBackground>
         )
@@ -117,12 +183,19 @@ const styles = StyleSheet.create({
         resizeMode: 'contain'
     },
     coinImage: {
+        width: wp('2%'),
+        height: hp('4%'),
+        // width: wp('2%'),
+        // height: undefined,
+        // aspectRatio: 1,
+        resizeMode: 'cover'
+    },
+    moneyImage: {
         // width: wp('4%'),
         // height: hp('8%'),
-        width: wp('3%'),
-        height: undefined,
-        aspectRatio: 1,
-        resizeMode: 'cover'
+        width: wp('8%'),
+        height: hp('8%'),
+        resizeMode: 'contain'
     },
     moneyConStyle: {
         position: 'absolute',

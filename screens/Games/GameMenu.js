@@ -222,9 +222,11 @@ class GameMenu extends Component {
     }
 
     gotoMainMenu = () => {
-      
         this.props.navigation.navigate('mainMenu');
-      
+    }
+
+    gotoCoinBank = () => {
+        this.props.navigation.navigate('dadseBank');
     }
 
     gotoHome = () => {
@@ -560,7 +562,7 @@ class GameMenu extends Component {
                     height: hp('16%'),
                     width: wp('28%'),
                 }}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={this.gotoCoinBank}>
                         <Image source={CoinBank} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>

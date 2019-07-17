@@ -1121,7 +1121,7 @@ class Bang extends Component {
                     left: '36%',
                     top: this.state.lamwaTop
                 }}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Image
                             style={{ width: '100%', height: '100%', resizeMode: 'contain' }}
                             source={LamwaIcon} />
