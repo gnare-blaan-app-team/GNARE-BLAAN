@@ -45,8 +45,9 @@ class GameIntroScreen extends Component {
         } catch(error) {
             
         }
+        alert('test');
         this.setState({paused: true, volume: 0, muted: true});
-        this.props.navigation.navigate('gameMenu', { openProfile: 'showProfile' });
+        this.props.navigation.replace('gameMenu', { openProfile: 'showProfile' });
     };
 
     gotoGameScreen = () => {
@@ -57,7 +58,7 @@ class GameIntroScreen extends Component {
             
         }
         this.setState({paused: true, volume: 0, muted: true});
-        this.props.navigation.navigate('gameMenu', { openProfile: 'showProfile' });
+        this.props.navigation.replace('gameMenu', { openProfile: 'showProfile' });
     }
 
     // replayVideo = () => {
