@@ -12,16 +12,37 @@ import GnareIcon from '../gameImages/GnareMain.png';
 import MoneyContainer from '../gameImages/moneyContainer.png';
 import TlasIcon from '../gameImages/tlas_icon.png';
 import Coinbank from '../gameImages/Coinbank.png';
+import Coin from '../gameImages/coin.png';
+
 
 class DadSeBank extends Component {
     static navigationOptions = {
         header: null,
     }
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            money: 105,
+        }
+    }
+
     gotoMainMenu = () =>{
         this.props.navigation.navigate('mainMenu')
     }
-    
+
+    coinView = () => {
+        const coin = [];
+        for( let index=0 ; index < this.state.money; index++) {
+            coin.push(
+                <Image source={Coin} style={styles.coinImage}></Image>
+            )
+        }
+        return coin;
+    }
+
+
+
     render() {
         return (
             <ImageBackground
@@ -55,6 +76,34 @@ class DadSeBank extends Component {
                         <Image source={TlasIcon} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>
+                <View style={{
+                    position: 'absolute',
+                    top: '28.5%',
+                    left: '10%',
+                    width: '34%',
+                    height: '42%',
+                    flex:  1,
+                    flexDirection: 'row',
+                    flexWrap: 'wrap',
+                    justifyContent: 'flex-start',
+                    borderWidth: 0.5 
+                }}>
+                        {this.coinView()}
+                </View>
+                <View style={{
+                    position: 'absolute',
+                    top: '28.5%',
+                    left: '53.5%',
+                    width: '34%',
+                    height: '42%',
+                    flex: 1,
+                    flexDirection: 'row',
+                    flexWrap: 'wrap',
+                    justifyContent: 'flex-start',
+                    borderWidth: 0.5 
+                }}>
+                        {this.coinView()}
+                </View>
             </ImageBackground>
         )
     }
@@ -66,6 +115,14 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         resizeMode: 'contain'
+    },
+    coinImage: {
+        // width: wp('4%'),
+        // height: hp('8%'),
+        width: wp('3%'),
+        height: undefined,
+        aspectRatio: 1,
+        resizeMode: 'cover'
     },
     moneyConStyle: {
         position: 'absolute',
