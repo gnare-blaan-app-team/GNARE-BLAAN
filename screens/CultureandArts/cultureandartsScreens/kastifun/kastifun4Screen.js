@@ -115,6 +115,7 @@ class kastifun4Screen extends Component {
     };
 
     handleLoad = meta => {
+        alert();
         this.setState({
             duration: meta.duration,
         });
@@ -156,7 +157,7 @@ class kastifun4Screen extends Component {
         return (
             <ImageBackground style={videoStyle.container}>
                 
-                <View style={{position: 'absolute', width: '100%', height: '100%', top: this.state.hideStory, opacity: this.state.opacityVideo}}>
+                <View style={{posittion: 'absolute', width: '100%', height: '100%', top: this.state.hideStory, opacity: this.state.opacityVideo}}>
                     <TouchableWithoutFeedback onPress={this.hideControl}>
                         <Video
                             paused={this.state.paused}
@@ -169,10 +170,12 @@ class kastifun4Screen extends Component {
                             onLoad={this.handleLoad}
                             onProgress={this.handleProgress}
                             onEnd={this.handleEnd}
-                            onLoadStart={this.handleLoadStart}
-                            ref={ref => {
-                            this.player = ref;
+                            onError={()=>{
+                                alert();
                             }}
+                            ref={ref => {
+                                this.player = ref;
+                                }}
                         />
                     </TouchableWithoutFeedback>
 
