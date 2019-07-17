@@ -47,7 +47,7 @@ class DSBangIntroScreen extends Component {
             
         }
         this.setState({paused: true, volume: 0, muted: true});
-        this.props.navigation.push('gameMenu',{showDadseBang:'show'});
+        this.props.navigation.replace('gameMenu',{showDadseBang:'show'});
     }
 
     gotoBangScreen = () => {
@@ -58,7 +58,7 @@ class DSBangIntroScreen extends Component {
             
         }
         this.setState({paused: true, volume: 0, muted: true});
-        this.props.navigation.push('gameMenu', { showDadseBang: 'show' });
+        this.props.navigation.replace('gameMenu', { showDadseBang: 'show' });
     }
 
     render() {
