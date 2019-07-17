@@ -281,6 +281,7 @@ class GameMenu extends Component {
         })
         this.state.passIndex = index;
     }
+
     gotoBang = (index) => {
       const set = this.state.level;
       const passIndex = this.state.passIndex;
