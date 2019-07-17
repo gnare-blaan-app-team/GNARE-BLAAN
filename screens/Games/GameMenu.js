@@ -27,6 +27,15 @@ import DadBatakBG from './gameImages/DadBatakBG.png';
 import player from './gameImages/player_icon.png';
 import back from '../images/Back_icon.png';
 
+// const Realm = require('realm');
+
+// const PlayerSchema = {
+//     name: 'Player',
+//     properties: {
+//         playername: 'string',
+//         randomKey: 'string',
+//     }
+// };
 
 const backgroundList = [BG,Slide1,DadseBG,DadBatakBG];
 
@@ -35,35 +44,6 @@ const Stage2 = '@MyApp:Stage2';
 const Stage3 = '@MyApp:Stage3';
 const DadbatakStage2 = '@MyApp:DadbatakStage2';
 const DadbatakStage3 = '@MyApp:DadbatakStage3';
-const RandomKey = '@MyApp:RandomKey';
-const RandomKey2 = '@MyApp:RandomKey2';
-const Player = '@MyApp:Player';
-const CoinBalance = '@MyApp:CoinBalance';
-const mainStar1 = '@MyApp:mainStar1';
-const mainStar2 = '@MyApp:mainStar2';
-const mainStar3 = '@MyApp:mainStar3';
-
-//player1
-const Player1RandomKey = '@MyApp:Player1RandomKey';
-const Player1Star1 = '@MyApp:Player1Star1';
-const Player1Star2 = '@MyApp:Player1Star2';
-const Player1Star3 = '@MyApp:Player1Star3';
-const Player1CoinBalance = '@MyApp:Player1CoinBalance';
-const Player1QuestionDone = '@MyApp:Player1QuestionDone';
-const Player1RandomKey2 = '@MyApp:Player1RandomKey2';
-const Player1Stage2 = '@MyApp:Player1Stage2';
-const Player1Stage3 = '@MyApp:Player1Stage3';
-
-//player2
-const Player2RandomKey = '@MyApp:Player2RandomKey';
-const Player2Star1 = '@MyApp:Player2Star1';
-const Player2Star2 = '@MyApp:Player2Star2';
-const Player2Star3 = '@MyApp:Player2Star3';
-const Player2CoinBalance = '@MyApp:Player2CoinBalance';
-const Player2QuestionDone = '@MyApp:Player2QuestionDone';
-const Player2RandomKey2 = '@MyApp:Player2RandomKey2';
-const Player2Stage2 = '@MyApp:Player2Stage2';
-const Player2Stage3 = '@MyApp:Player2Stage3';
 
 
 class GameMenu extends Component {
@@ -120,6 +100,7 @@ class GameMenu extends Component {
             playerNameLeft: '40%',
             getIndex:0,
             showdadse:'',
+            get:'',
         }
     }
 
@@ -165,6 +146,15 @@ class GameMenu extends Component {
     componentDidMount(){
         const showIt = this.state.show;
         const showProfile = this.state.profile;
+        if (showProfile == 'showProfile') {
+            Animated.spring(this.animatedValue, {
+                toValue: 1
+            }).start()
+        } else {
+            this.setState({
+                profileTop: '1000%'
+            })
+        }
         if(this.state.showdadse == 'show'){
             this.setState({
                 kaitoTop: '1000%',
@@ -178,15 +168,6 @@ class GameMenu extends Component {
                 level: 'dadsePart'
             });
             this.checkStage(1);
-        }
-        if (showProfile == 'showProfile'){
-            Animated.spring(this.animatedValue, {
-                toValue: 1
-            }).start()
-        }else{
-            this.setState({
-                profileTop:'1000%'
-            })
         }
         if (showIt == 'Dadse'){
             this.setState({
@@ -241,7 +222,9 @@ class GameMenu extends Component {
     }
 
     gotoMainMenu = () => {
+      
         this.props.navigation.navigate('mainMenu');
+      
     }
 
     gotoHome = () => {
@@ -249,7 +232,13 @@ class GameMenu extends Component {
     }
 
     gotoDadBatak = () => {
-        this.setState({
+        // Realm.open({ schema: [PlayerSchema]})
+        //     .then(realm => {
+        //         const cars = realm.objects('Player');
+        //         alert(JSON.stringify(cars));
+        //     });
+    
+    this.setState({
             kaibeTop: '1000%',
             dadbatakTop: '1000%',
             dadseTop: '1000%',
@@ -263,6 +252,16 @@ class GameMenu extends Component {
     }
 
     gotoDadSe = () => {
+        // Realm.open({ schema: [PlayerSchema] })
+        //     .then(realm => {
+        //         // Create Realm objects and write to local storage
+        //         realm.write(() => {
+        //             const myCar = realm.create('Player', {
+        //                 playername: 'Honda',
+        //                 randomKey: '1',
+        //             });
+        //         });
+        //     })
         this.props.navigation.navigate('dsbangIntro');
     }
 
@@ -373,46 +372,7 @@ class GameMenu extends Component {
                 profileTop: '1000%',
             })
             this.state.profile = 'none';
-        }, 1000);
-        const storedValue1_2 = await AsyncStorage.getItem(this.state.playerName + 'RandomKey');
-        const storedValue2_2 = await AsyncStorage.getItem(this.state.playerName + 'Star1');
-        const storedValue3_2 = await AsyncStorage.getItem(this.state.playerName + 'Star2');
-        const storedValue4_2 = await AsyncStorage.getItem(this.state.playerName + 'Star3');
-        const storedValue5_2 = await AsyncStorage.getItem(this.state.playerName + 'CoinBalance');
-        const storedValue6_2 = await AsyncStorage.getItem(this.state.playerName + 'QuestionDone');
-        const storedValue7_2 = await AsyncStorage.getItem(this.state.playerName + 'RandomKey2');
-        const storedValue8_2 = await AsyncStorage.getItem(this.state.playerName + 'Stage2');
-        const storedValue9_2 = await AsyncStorage.getItem(this.state.playerName + 'Stage3');
-
-        const stars = await AsyncStorage.getItem(this.state.playerName + 'Stars');
-       
-        if(stars == null) {
-            await AsyncStorage.setItem(this.state.playerName + 'Stars', 0);
-        }
-        this.setState({
-            pass1: storedValue1_2,
-            pass2: this.state.playerName,
-            pass3: storedValue2_2,
-            pass4: storedValue3_2,
-            pass5: storedValue4_2,
-            pass6: storedValue5_2,
-            pass7: storedValue6_2,
-            pass8: storedValue7_2,
-            pass9: storedValue8_2,
-            pass10: storedValue9_2,
-        });
-
-        
-        await AsyncStorage.setItem(mainStar1, this.state.pass3);
-        await AsyncStorage.setItem(mainStar2, this.state.pass4);
-        await AsyncStorage.setItem(mainStar3, this.state.pass5);
-        await AsyncStorage.setItem(Player, this.state.playerName);
-        await AsyncStorage.setItem(RandomKey, this.state.pass1);
-        await AsyncStorage.setItem(RandomKey2, this.state.pass8);
-        await AsyncStorage.setItem(CoinBalance, this.state.pass6);
-        
-        
-        
+        }, 1000);    
     }
 
     market = () => {
@@ -422,6 +382,10 @@ class GameMenu extends Component {
         if (this.state.level == 'dadbatakPart'){
             this.props.navigation.navigate('dadbatakmarket');
         } 
+    }
+
+    addPlayer = () => {
+        
     }
 
     render() {
@@ -634,81 +598,31 @@ class GameMenu extends Component {
                      }}
                      >  
                          <Image source={blackboard} style={{resizeMode:'contain',width:'90%',height:'90%'}} />
-                        <View style={{position:'absolute',width:'30%',height:'20%',top:this.state.player1Top,left:'15%'}}>
-                            <TouchableOpacity onPress={()=> {
-                                this.settings(0);
-                            }}>
-                                <Image source={player} style={{resizeMode:'contain',width:'100%',height:'100%'}}/>
-                                <View style={{ position: 'absolute', top: '20%', left: '27%' }}>
-                                    <Text style={{ color: 'white', fontSize: 30 }}>{this.state.player1}</Text>
-                                </View>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{ position: 'absolute', width: '30%', height: '20%', top: this.state.player2Top, left: '15%' }}>
-                            <TouchableOpacity onPress={() => {
-                                this.settings(1);
-                            }}>
-                                <Image source={player} style={{ resizeMode: 'contain', width: '100%', height: '100%' }} />
-                                <View style={{ position: 'absolute', top: '20%', left: '27%' }}>
-                                    <Text style={{ color: 'white', fontSize: 30 }}>{this.state.player2}</Text>
-                                </View>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{ position: 'absolute', width: '30%', height: '20%', top: this.state.player3Top, left: '55%' }}>
-                            <TouchableOpacity onPress={() => {
-                                this.settings(2);
-                            }}>
-                                <Image source={player} style={{ resizeMode: 'contain', width: '100%', height: '100%' }} />
-                                <View style={{ position: 'absolute', top: '20%', left: '27%' }}>
-                                    <Text style={{ color: 'white', fontSize: 30 }}>{this.state.player3}</Text>
-                                </View>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{ position: 'absolute', width: '30%', height: '20%', top: this.state.player4Top, left: '55%' }}>
-                            <TouchableOpacity onPress={() => {
-                                this.settings(3);
-                            }}>
-                                <Image source={player} style={{ resizeMode: 'contain', width: '100%', height: '100%' }} />
-                                <View style={{ position: 'absolute', top: '20%', left: '27%' }}>
-                                    <Text style={{ color: 'white', fontSize: 30 }}>{this.state.player4}</Text>
-                                </View>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{ position: 'absolute', width: '30%', height: '20%', top: this.state.player5Top, left: '35%' }}>
-                            <TouchableOpacity onPress={() => {
-                                this.settings(4);
-                            }}>
-                                <Image source={player} style={{ resizeMode: 'contain', width: '100%', height: '100%' }} />
-                                <View style={{ position: 'absolute', top: '20%', left: '27%' }}>
-                                    <Text style={{ color: 'white', fontSize: 30 }}>{this.state.player5}</Text>
-                                </View>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{ position: 'absolute', width: '30%', height: '20%', top:this.state.saveTop, left: '38%' }}>
-                            <TouchableOpacity>
-                                <Image source={player} style={{ resizeMode: 'contain', width: '100%', height: '100%' }} />
-                                <View style={{ position: 'absolute', top: '25%', left: '32%' }}>
-                                    <Text style={{ color: 'white', fontSize: 30 }}>Reset</Text>
-                                </View>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{ position: 'absolute', width: '30%', height: '20%', top:this.state.playTop, left: '38%' }}>
+                        <View style={{
+                            position:'absolute',
+                            top:'20%',
+                            left:'50%',
+                            width:'43%',
+                            height:'70%',
+                            borderColor:'white',
+                            borderWidth:1
+                        }}></View>
+                        <View style={{
+                            position:'absolute',
+                            top:'20%',
+                            left:'10%',
+                            width:'30%',
+                            height:'15%'
+                        }}>
                             <TouchableOpacity onPress={this.play}>
-                                <Image source={player} style={{ resizeMode: 'contain', width: '100%', height: '100%' }} />
-                                <View style={{ position: 'absolute', top: '25%', left: '38%' }}>
-                                    <Text style={{ color: 'white', fontSize: 30 }}>Play</Text>
+                            <Image source={player} style={{height:'100%',width:'100%',resizeMode:'contain'}}/>
+                            <View style={{ position: 'absolute',left: '14%', top: '25%'}}>
+                                    <Text style={{ color: 'white', fontSize: 21,}}>CREATE PLAYER</Text>
                                 </View>
                             </TouchableOpacity>
-                        </View>
-                        <View style={{ position: 'absolute', width: '30%', height: '20%', top:this.state.backTop, left: '-5%' }}>
-                            <TouchableOpacity onPress={this.goToProfile}>
-                                <Image source={back} style={{ resizeMode: 'contain', width: '80%', height: '80%' }} />
-                            </TouchableOpacity>
-                        </View>
-                        <View style={{ position: 'absolute',top:'17%',left:this.state.playerNameLeft }}>
-                            <Text style={{color:'white',fontSize:30}}>{this.state.playerName}</Text>
                         </View>
                     </View>
+
                 </Animated.View>
             </ImageBackground>
         )

@@ -312,7 +312,6 @@ export default AppNavigator = createStackNavigator(
     
   },
 {
-
   initialRouteName:"home",
     mode: 'card',
     cardStyle: {
