@@ -31,6 +31,10 @@ class vocabularyMenu extends Component {
             top1:'20%',
             nextTop: '45%',
             prevTop:'1000%',
+            top3:'1000%',
+            top4: '1000%',
+            top5: '1000%',
+            add:0,
         }
     }
 
@@ -55,9 +59,6 @@ class vocabularyMenu extends Component {
     vocabulary6 = () => {
         this.props.navigation.push('vocabulary6');
     }
-    vocabulary7 = () => {
-        this.props.navigation.push('vocabulary7');
-    }
     vocabulary8 = () => {
         this.props.navigation.push('vocabulary8');
     }
@@ -71,21 +72,65 @@ class vocabularyMenu extends Component {
     goBack = () => {
         this.props.navigation.navigate('mainMenu');
     }
-    gotoNextPage = () => {
-        this.setState({
-            top1:'1000%',
-            top2: '20%',
-            nextTop:'1000%',
-            prevTop: '45%',
-        })
+    gotoNextPage = (index) => {
+        if(index == 1){
+            this.setState({
+                top1: '1000%',
+                top2: '20%',
+                nextTop: '45%',
+                prevTop: '45%',
+            })
+        }else if(index == 2){
+            this.setState({
+                top2: '1000%',
+                top3: '20%',
+                nextTop: '45%',
+                prevTop: '45%',
+            })
+        }else if(index == 3){
+            this.setState({
+                top3: '1000%',
+                top4: '20%',
+                nextTop: '45%',
+                prevTop: '45%',
+            })
+        } else if (index == 4) {
+            this.setState({
+                top4: '1000%',
+                top5: '20%',
+                nextTop: '1000%',
+                prevTop: '45%',
+            })
+        }
     }
-    goPrev = () => {
-        this.setState({
-            top2: '1000%',
-            top1: '20%',
-            prevTop: '1000%',
-            nextTop: '45%',
-        })
+
+    gotoPrevPage = (index) => {
+        if (index == 3) {
+            this.setState({
+                top5: '1000%',
+                top4: '20%',
+                nextTop: '45%',
+            })
+        } else if (index == 2) {
+            this.setState({
+                top4: '1000%',
+                top3: '20%',
+                nextTop: '45%',
+            })
+        } else if (index == 1) {
+            this.setState({
+                top3: '1000%',
+                top2: '20%',
+                nextTop: '45%',
+            })
+        } else if (index == 0) {
+            this.setState({
+                top2: '1000%',
+                top1: '20%',
+                nextTop: '45%',
+                prevTop: '1000%',
+            })
+        } 
     }
     render(){
         return(
@@ -101,9 +146,6 @@ class vocabularyMenu extends Component {
                     }}>
                     <VocabularyItem itemImage={MembersFamily_icon} goto={this.vocabulary1} />
                     <VocabularyItem itemImage={BodyParts_icon} goto={this.vocabulary2} />
-                    <VocabularyItem itemImage={FishingTools_icon} goto={this.vocabulary3} />
-                    <VocabularyItem itemImage={FarmingTools_icon} goto={this.vocabulary4} />
-                    <VocabularyItem itemImage={Mountains_icon} goto={this.vocabulary5} />
                 </View>
                 <View style={{
                     justifyContent: 'center',
@@ -114,11 +156,42 @@ class vocabularyMenu extends Component {
                     flexDirection: 'row',
                     flexWrap: 'wrap',
                     }}>
+                    <VocabularyItem itemImage={FishingTools_icon} goto={this.vocabulary3} />
+                    <VocabularyItem itemImage={FarmingTools_icon} goto={this.vocabulary4} />
+                </View>
+                <View style={{
+                    justifyContent: 'center',
+                    position: 'absolute',
+                    top: this.state.top3,
+                    width: '98%',
+                    height: '80%',
+                    flexDirection: 'row',
+                    flexWrap: 'wrap',
+                }}>
+                    <VocabularyItem itemImage={Mountains_icon} goto={this.vocabulary5} />
                     <VocabularyItem itemImage={HouseParts_icon} goto={this.vocabulary6} />
-                    
+                </View>
+                <View style={{
+                    justifyContent: 'center',
+                    position: 'absolute',
+                    top: this.state.top4,
+                    width: '98%',
+                    height: '80%',
+                    flexDirection: 'row',
+                    flexWrap: 'wrap',
+                }}>
                     <VocabularyItem itemImage={GreetingsHeavenlyBodies_icon} goto={this.vocabulary8} />
-                    {/* <VocabularyItem/> */}
                     <VocabularyItem itemImage={Calendar_icon} goto={this.vocabulary9} />
+                </View>
+                <View style={{
+                    justifyContent: 'center',
+                    position: 'absolute',
+                    top: this.state.top5,
+                    width: '98%',
+                    height: '80%',
+                    flexDirection: 'row',
+                    flexWrap: 'wrap',
+                }}>
                     <VocabularyItem itemImage={Kastifun_icon} goto={this.vocabulary10} />
                 </View>
                 <View style={styles.backContainer}>
@@ -135,7 +208,10 @@ class vocabularyMenu extends Component {
                     top: this.state.nextTop,
                     width: '12%',
                     height: '24%',}}>
-                    <TouchableOpacity onPress={this.gotoNextPage}>
+                    <TouchableOpacity onPress={()=> {
+                        this.state.add = this.state.add + 1;
+                        this.gotoNextPage(this.state.add);
+                    }}>
                         <Image
                             source={NextIcon}
                             style={styles.next}
@@ -156,7 +232,10 @@ class vocabularyMenu extends Component {
                     top: this.state.prevTop,
                     width: '12%',
                     height: '24%',}}>
-                    <TouchableOpacity onPress={this.goPrev}>
+                    <TouchableOpacity onPress={() => {
+                        this.state.add = this.state.add - 1;
+                        this.gotoPrevPage(this.state.add);
+                    }}>
                         <Image
                             source={PrevIcon}
                             style={styles.prev}

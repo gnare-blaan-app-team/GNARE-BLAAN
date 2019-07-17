@@ -934,7 +934,7 @@ class Bang extends Component {
                 const get = a;
                 this.setState({
                     answerImage: correct[get],
-                    answerTop: '51%',
+                    answerTop: '53%',
                 })
                 setTimeout(() => {
                     this.setState({
@@ -1157,7 +1157,7 @@ class Bang extends Component {
                 <Animatable.View ref={this.handleViewRef} 
                 style={{
                     position: 'absolute',
-                    width: '10%',
+                    width: '20%',
                     height: '10%',
                     top:this.state.answerTop,
                 }}>

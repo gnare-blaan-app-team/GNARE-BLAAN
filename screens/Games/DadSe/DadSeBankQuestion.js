@@ -28,8 +28,10 @@ class DadSeBankQuestion extends Component {
                 source={GameBG}
                 style={globalStyleSheet.image}
             >
-                <View style={globalStyleSheet.gnareIconStyle}>
-                    <Image source={GnareIcon} style={styles.image}></Image>
+                <View style={styles.gnareIconStyle}>
+                    <TouchableOpacity onPress={this.gotoHome}>
+                        <Image source={GnareIcon} style={styles.image}></Image>
+                    </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.homeContainer}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
