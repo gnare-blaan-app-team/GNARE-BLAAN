@@ -104,17 +104,6 @@ class Mainmenu extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-
-                {/* <View style={styles.homeContainer}>
-                    <TouchableOpacity onPress={this.gotoMainMenu}>
-                        <Image
-                            source={require('./images/Home_icon.png')}
-                            style={styles.home}
-                        ></Image>
-                    </TouchableOpacity>
-                </View> */}
-
-
             </ImageBackground>
         )
     }

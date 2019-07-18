@@ -65,10 +65,6 @@ class Homescreen extends Component{
 
             animDuration: 4500,
         }
-
-        // currentAppState = null;
-        // this.backHandler = null;
-        
     }
 
     _storeData = async () => {
@@ -113,10 +109,6 @@ class Homescreen extends Component{
             
         }
         AppState.addEventListener('change', this._handleAppStateChange);
-        // if (this.backHandler == null) {
-        //     this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress); 
-        //     // alert('test');
-        // }
         BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
     }
 
@@ -244,7 +236,6 @@ class Homescreen extends Component{
         }
         this.props.navigation.navigate('mainMenu');
         BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
-        // this.backHandler.remove();
     }
     gotoAbout = () => {
       this.props.navigation.navigate('about');

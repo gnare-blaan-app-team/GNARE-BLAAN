@@ -457,9 +457,18 @@ class GameMenu extends Component {
                         </Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.gnareIconStyle}>
+                <View style={[{
+                    position: 'absolute',
+                    left: '2%',
+                    top: '3%',
+                    width: '14%',
+                    height: '28%',}]}>
                     <TouchableOpacity onPress={this.gotoHome}>
-                        <Image source={GnareIcon} style={styles.image}></Image>
+                        <Image source={GnareIcon} style={[{
+                            width: '75%',
+                            height: '75%',
+                            resizeMode: 'contain',}]}>
+                        </Image>
                     </TouchableOpacity>
                 </View>
                 <View style={{
