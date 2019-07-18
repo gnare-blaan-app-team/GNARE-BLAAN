@@ -35,6 +35,10 @@ class DadSeBank extends Component {
         this.props.navigation.navigate('mainMenu')
     }
 
+    gotoHome = () =>{
+        this.props.navigation.navigate('home')
+    }
+
     coinView = () => {
         const coin = [];
         for( let index=0 ; index < money; index++) {
@@ -122,9 +126,9 @@ class DadSeBank extends Component {
                         <Image source={Home_icon} style={globalStyleSheet.home}></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={globalStyleSheet.backContainer}>
-                    <TouchableOpacity>
-                        <Image source={Back_icon} style={globalStyleSheet.back}></Image>
+                <View style={styles.gnareIconStyle}>
+                    <TouchableOpacity onPress={this.gotoHome}>
+                        <Image source={GnareIcon} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.moneyConStyle}>
@@ -177,6 +181,13 @@ class DadSeBank extends Component {
 
 
 const styles = StyleSheet.create({
+    gnareIconStyle: {
+        position: 'absolute',
+        top: hp('5%'),
+        left: wp('2%'),
+        height: hp('12%'),
+        width: wp('10%'),
+    },
     image: {
         width: '100%',
         height: '100%',

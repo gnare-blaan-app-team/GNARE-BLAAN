@@ -1,4 +1,4 @@
-import GameIntro_EN from '../IntroVideos/GameIntro_EN.mp4';
+import GameIntro_FIL from '../IntroVideos/GameIntro_FIL.mp4';
 import Number_Intro from '../IntroVideos/Number_Intro.mp4';
 
 import React, { Component } from 'react';
@@ -15,6 +15,7 @@ import { sound } from '../HomePage';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import DadBatak from './gameImages/1Icon_DadBatak.png';
 import DadSe from './gameImages/1Icon_DadSe.png';
+import GnareIcon from './gameImages/GnareMain.png';
 
 class GameIntroScreen extends Component {
     static navigationOptions = {
@@ -27,7 +28,7 @@ class GameIntroScreen extends Component {
             dadbatakTop: '5%',
             dadseTop:'5%',
             paused: false,
-            source: GameIntro_EN,
+            source: GameIntro_FIL,
             progress: 0,
             volume: 1,
             duration: 0,
@@ -64,6 +65,10 @@ class GameIntroScreen extends Component {
         }
         this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.replace('gameMenu', { openProfile: 'showProfile' });
+    }
+
+    gotoHome = () => {
+        this.props.navigation.navigate('home');
     }
 
     // replayVideo = () => {
@@ -123,6 +128,20 @@ class GameIntroScreen extends Component {
                     width: wp('33%'),
                 }}>
                     <Image source={DadSe} style={styles.image}/>
+                </View>
+
+                <View style={{position: 'absolute',
+                    top: hp('5%'),
+                    left: wp('2%'),
+                    height: hp('12%'),
+                    width: wp('10%'),}
+                }>
+                    <TouchableOpacity onPress={this.gotoHome}>
+                        <Image source={GnareIcon} style={{width: '100%',
+                            height: '100%',
+                            resizeMode: 'stretch'
+                        }}></Image>
+                    </TouchableOpacity>
                 </View>
             </ImageBackground>
         )
