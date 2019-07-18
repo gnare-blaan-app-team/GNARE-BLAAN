@@ -1,4 +1,4 @@
-import GameIntro_EN from '../IntroVideos/GameIntro_EN.mp4';
+import Slide2_EN from '../IntroVideos/Slide2.mp4';
 import Number_Intro from '../IntroVideos/Number_Intro.mp4';
 
 import React, { Component } from 'react';
@@ -9,14 +9,16 @@ import { withNavigation } from 'react-navigation';
 import Skip_icon from '../images/skip.png';
 import Replay_icon from '../images/replay.png';
 
+import Bang1Icon from './gameImages/bang1_icon.png';
+import Bang2Icon from './gameImages/12Icon_Bang2Lock.png';
+import Bang22Icon from './gameImages/bang2_icon.png';
+import Bang3Icon from './gameImages/12Icon_Bang3Lock.png';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 import { sound } from '../HomePage';
 
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import DadBatak from './gameImages/1Icon_DadBatak.png';
-import DadSe from './gameImages/1Icon_DadSe.png';
 
-class GameIntroScreen extends Component {
+class DadBatak_GameMenuIntro extends Component {
     static navigationOptions = {
         header: null,
     }
@@ -24,10 +26,8 @@ class GameIntroScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dadbatakTop: '5%',
-            dadseTop:'5%',
             paused: false,
-            source: GameIntro_EN,
+            source: Slide2_EN,
             progress: 0,
             volume: 1,
             duration: 0,
@@ -52,7 +52,7 @@ class GameIntroScreen extends Component {
             
         }
         this.setState({paused: true, volume: 0, muted: true});
-        this.props.navigation.replace('gameMenu', { openProfile: 'showProfile' });
+        this.props.navigation.replace('gameMenu',{showDadBatakBang:'show' });
     };
 
     gotoGameScreen = () => {
@@ -63,7 +63,7 @@ class GameIntroScreen extends Component {
             
         }
         this.setState({paused: true, volume: 0, muted: true});
-        this.props.navigation.replace('gameMenu', { openProfile: 'showProfile' });
+        this.props.navigation.replace('gameMenu', { showDadBatakBang: 'show' });
     }
 
     // replayVideo = () => {
@@ -93,12 +93,6 @@ class GameIntroScreen extends Component {
                         />
                 </View>
 
-                {/* <View style={[styles.sentenceIconContainer, {top: '80%', left: '88%'}]}>
-                    <TouchableOpacity onPress={this.replayVideo}>
-                        <Image source={Replay_icon} style={styles.home} />
-                    </TouchableOpacity>
-                </View> */}
-
                 <View style={styles.homeContainer}>
                     <TouchableOpacity onPress={this.gotoGameScreen}>
                         <Image source={Skip_icon} style={styles.home} />
@@ -107,26 +101,35 @@ class GameIntroScreen extends Component {
 
                 <View style={{
                     position: 'absolute',
-                    top:this.state.dadbatakTop,
-                    left: wp('10.5%'),
-                    height: hp('12%'),
-                    width: wp('33%'),
+                    top: hp('22%'),
+                    left: wp('63%'),
+                    height: hp('16%'),
+                    width: wp('28%'),
                 }}>
-                    <Image source={DadBatak} style={styles.image}/>
+                    <Image source={Bang1Icon} style={styles.image}></Image>
                 </View>
-
                 <View style={{
                     position: 'absolute',
-                    top:this.state.dadbatakTop,
-                    right: wp('10.5%'),
-                    height: hp('12%'),
-                    width: wp('33%'),
+                    left: wp('63%'),
+                    top: hp('40%'),
+                    height: hp('16%'),
+                    width: wp('28%'),
                 }}>
-                    <Image source={DadSe} style={styles.image}/>
+                    <Image source={Bang2Icon} style={styles.image}></Image>
                 </View>
+                <View style={{
+                    position: 'absolute',
+                    left: wp('63%'),
+                    top: hp('59%'),
+                    height: hp('16%'),
+                    width: wp('28%'),
+                }}>
+                    <Image source={Bang3Icon} style={styles.image}></Image>
+                </View>
+                
             </ImageBackground>
         )
     }
 }
 
-export default withNavigation(GameIntroScreen);
+export default withNavigation(DadBatak_GameMenuIntro);

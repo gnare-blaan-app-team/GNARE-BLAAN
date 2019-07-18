@@ -62,6 +62,8 @@ class Homescreen extends Component{
             duration: 0,
             muted: false,
             volume: 1,
+
+            animDuration: 4500,
         }
 
         // currentAppState = null;
@@ -95,7 +97,7 @@ class Homescreen extends Component{
     _moveAnimation = () => {
         Animated.timing(this.state.yValue, {
           toValue: hp('90%'),
-          duration: 4500,
+          duration: this.state.animDuration,
           easing: Easing.linear,
         }).start();
     
@@ -235,6 +237,11 @@ class Homescreen extends Component{
     }
 
     gotoMainMenu = () => {
+        if (this.state.animDuration == 4500) {
+            this.setState({
+                animDuration: 0,
+            })
+        }
         this.props.navigation.navigate('mainMenu');
         BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
         // this.backHandler.remove();

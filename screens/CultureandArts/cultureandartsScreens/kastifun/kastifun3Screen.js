@@ -165,14 +165,13 @@ class kastifun3Screen extends Component {
                             style={{ width: "100%", height: '100%' }}
                             resizeMode="stretch"
                             volume={this.state.volume}
-                            muted={this.state.muted}
+                            muted={false}
                             onLoad={this.handleLoad}
                             onProgress={this.handleProgress}
                             onEnd={this.handleEnd}
-                            onLoadStart={this.handleLoadStart}
                             ref={ref => {
-                            this.player = ref;
-                            }}
+                                this.player = ref;
+                                }}
                         />
                     </TouchableWithoutFeedback>
 
