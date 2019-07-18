@@ -736,7 +736,7 @@ class DadSeMarket extends Component {
 
                 <View style={{position: 'absolute',  left: '3%', 
                     bottom: '3%', width: '10%', height: '24%'}}>
-                    <Image source={GnareIcon} style={styles.image}></Image>
+                        <Image source={GnareIcon} style={styles.image}></Image>
                 </View>
 
 

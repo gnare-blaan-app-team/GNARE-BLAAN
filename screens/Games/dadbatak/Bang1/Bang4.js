@@ -603,7 +603,7 @@ class Bang4 extends Component {
         stageNumber.splice(randomizer,1);
         var random = use;
         if (Reach5 == 5){
-            this.props.navigation.push('gameMenu', { show: 'DadBatak' });
+            this.props.navigation.navigate('ending4');
             const stage2 = 'unlock';
             await AsyncStorage.removeItem(QuestionDone);
             await AsyncStorage.removeItem(DadbatakBang1);
