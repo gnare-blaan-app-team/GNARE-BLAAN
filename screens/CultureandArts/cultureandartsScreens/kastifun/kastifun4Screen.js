@@ -115,7 +115,6 @@ class kastifun4Screen extends Component {
     };
 
     handleLoad = meta => {
-        alert();
         this.setState({
             duration: meta.duration,
         });
@@ -170,9 +169,6 @@ class kastifun4Screen extends Component {
                             onLoad={this.handleLoad}
                             onProgress={this.handleProgress}
                             onEnd={this.handleEnd}
-                            onError={()=>{
-                                alert();
-                            }}
                             ref={ref => {
                                 this.player = ref;
                                 }}

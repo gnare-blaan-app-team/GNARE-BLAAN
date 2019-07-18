@@ -100,6 +100,7 @@ class GameMenu extends Component {
             playerNameLeft: '40%',
             getIndex:0,
             showdadse:'',
+            showdadbatak:'',
             get:'',
         }
     }
@@ -169,6 +170,20 @@ class GameMenu extends Component {
             });
             this.checkStage(1);
         }
+        if(this.state.showdadbatak == 'show'){
+            this.setState({
+                kaitoTop: '22%',
+                kaibeTop: '1000%',
+                dadbatakTop: '1000%',
+                dadseTop: '1000%',
+                tanbu1Top: '22%',
+                tanbu2Top: '40%',
+                tanbu3Top: '59%',
+                kastifunTop: '77%',
+                level: 'dadbatakPart'
+            });
+            this.checkStage(2);
+        }
         if (showIt == 'Dadse'){
             this.setState({
                 kaitoTop: '1000%',
@@ -237,18 +252,7 @@ class GameMenu extends Component {
         //         const cars = realm.objects('Player');
         //         alert(JSON.stringify(cars));
         //     });
-    
-    this.setState({
-            kaibeTop: '1000%',
-            dadbatakTop: '1000%',
-            dadseTop: '1000%',
-            tanbu1Top: '22%',
-            tanbu2Top: '40%',
-            tanbu3Top: '59%',
-            kastifunTop: '77%',
-            level:'dadbatakPart',
-        })
-        this.checkStage(2);
+        this.props.navigation.navigate('dadbatak_gameMenuIntro');
     }
 
     gotoDadSe = () => {
@@ -396,11 +400,13 @@ class GameMenu extends Component {
         const itemId3 = navigation.getParam('show3DB', 'NO-ID');
         const getParam = navigation.getParam('openProfile', 'NO-ID');
         const getParam2 = navigation.getParam('showDadseBang', 'NO-ID');
+        const getParam3 = navigation.getParam('showDadBatakBang', 'NO-ID');
         this.state.show = itemId;
         this.state.show3 = itemId2;
         this.state.show4 = itemId3;
         this.state.profile = getParam;
         this.state.showdadse = getParam2;
+        this.state.showdadbatak = getParam3;
         const animatedStyle  = {
             transform: [{scale:this.animatedValue}]
         }
