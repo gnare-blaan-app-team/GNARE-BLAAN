@@ -2,11 +2,15 @@ import React, { Component } from "react";
 import { StyleSheet, AsyncStorage, View, Image, ImageBackground, TouchableWithoutFeedback, TouchableOpacity} from "react-native";
 
 import Video from "react-native-video";
-import DSBang_Intro from '../IntroVideos/DSBang_Intro.mp4';
+import DadSe_FIL_Slide2 from '../IntroVideos/DadSe_FIL_Slide2.mp4';
 import { globalStyleSheet as styles } from '../globalStyleSheet/globalStyleSheet.js';
 import { withNavigation } from 'react-navigation'; 
 import { sound } from '../HomePage';
 import Skip_icon from '../images/skip.png';
+import Bang1Icon from './gameImages/bang1_icon.png';
+import Bang2Icon from './gameImages/12Icon_Bang2Lock.png';
+import Bang3Icon from './gameImages/12Icon_Bang3Lock.png';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const RandomKey = '@MyApp:RandomKey';
 const Stage2 = '@MyApp:Stage2';
@@ -57,7 +61,7 @@ class DSBangIntroScreen extends Component {
         } catch(error) {
             
         }
-        this.setState({paused: true, volume: 0, muted: true,});
+        this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.replace('gameMenu', { showDadseBang: 'show' });
     }
 
@@ -69,7 +73,7 @@ class DSBangIntroScreen extends Component {
                     <TouchableWithoutFeedback onPress={this.hideControl}>
                         <Video
                             paused={this.state.paused}
-                            source={DSBang_Intro}
+                            source={DadSe_FIL_Slide2}
                             
                             style={{ width: "100%", height: '100%' }}
                             resizeMode="stretch"
@@ -91,6 +95,35 @@ class DSBangIntroScreen extends Component {
                         <Image source={Skip_icon} style={styles.home} />
                     </TouchableOpacity>
                 </View>
+
+                <View style={{
+                    position: 'absolute',
+                    top: hp('22%'),
+                    left: wp('63%'),
+                    height: hp('16%'),
+                    width: wp('28%'),
+                }}>
+                    <Image source={Bang1Icon} style={styles.image}></Image>
+                </View>
+                <View style={{
+                    position: 'absolute',
+                    left: wp('63%'),
+                    top: hp('40%'),
+                    height: hp('16%'),
+                    width: wp('28%'),
+                }}>
+                    <Image source={Bang2Icon} style={styles.image}></Image>
+                </View>
+                <View style={{
+                    position: 'absolute',
+                    left: wp('63%'),
+                    top: hp('59%'),
+                    height: hp('16%'),
+                    width: wp('28%'),
+                }}>
+                    <Image source={Bang3Icon} style={styles.image}></Image>
+                </View>
+
             </ImageBackground>
         );
     }

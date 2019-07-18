@@ -62,11 +62,9 @@ class Homescreen extends Component{
             duration: 0,
             muted: false,
             volume: 1,
-        }
 
-        // currentAppState = null;
-        // this.backHandler = null;
-        
+            animDuration: 4500,
+        }
     }
 
     _storeData = async () => {
@@ -95,7 +93,7 @@ class Homescreen extends Component{
     _moveAnimation = () => {
         Animated.timing(this.state.yValue, {
           toValue: hp('90%'),
-          duration: 4500,
+          duration: this.state.animDuration,
           easing: Easing.linear,
         }).start();
     
@@ -111,10 +109,6 @@ class Homescreen extends Component{
             
         }
         AppState.addEventListener('change', this._handleAppStateChange);
-        // if (this.backHandler == null) {
-        //     this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress); 
-        //     // alert('test');
-        // }
         BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
     }
 
@@ -158,9 +152,10 @@ class Homescreen extends Component{
             this.state.changeScene = 1;
     };
 
-    // removeItem = () => {
-    //     AsyncStorage.removeItem('@MyApp:FreshOpen');
-    // }
+    removeItem = () => {
+        AsyncStorage.clear();
+        alert('Storage Cleared!');
+    }
 
     sceneShow() {
         if (this.state.changeScene == 0){
@@ -208,7 +203,7 @@ class Homescreen extends Component{
                                 </TouchableOpacity>
                             </View>
                             <View style={styles.HomePageItems} >
-                                <TouchableOpacity>
+                                <TouchableOpacity onPress={this.removeItem}>
                                     <Image style={styles.imageSizeStoryMenu} source={Share_icon} />
                                 </TouchableOpacity>
                             </View>
@@ -234,9 +229,13 @@ class Homescreen extends Component{
     }
 
     gotoMainMenu = () => {
+        if (this.state.animDuration == 4500) {
+            this.setState({
+                animDuration: 0,
+            })
+        }
         this.props.navigation.navigate('mainMenu');
         BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
-        // this.backHandler.remove();
     }
     gotoAbout = () => {
       this.props.navigation.navigate('about');

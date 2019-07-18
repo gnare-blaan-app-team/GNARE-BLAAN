@@ -215,7 +215,7 @@ class vocabulary2 extends Component {
         const clear = this.state.clearBackground;
         if (clear == 'goVocabMenu'){
 
-            this.props.navigation.navigate('vocabularyMenu')
+            this.props.navigation.goBack()
         }
         if (clear == 'clear'){
         this.stopSounds();
@@ -531,7 +531,7 @@ class vocabulary2 extends Component {
                             />
                         </TouchableOpacity>
                     </View>
-                    <View style={{ position: 'absolute', width: '15%', height: '35%', top: '41.47%', left: '68.06%',}}>
+                    <View style={{ position: 'absolute', width: '15%', height: '35%', top: '41.7%', left: '68.3%'}}>
                         <TouchableOpacity onPress={() => {
                             this.changeBackground(9, 9)
                         }}>
@@ -544,7 +544,7 @@ class vocabulary2 extends Component {
                             />
                         </TouchableOpacity>
                     </View>
-                    <View style={{ position: 'absolute',width: '8%', height: '10%', top: '75.30%', left: '73.92%', }}>
+                    <View style={{ position: 'absolute',width: '8%', height: '10%', top: '75.25%', left: '74.3%',}}>
                         <TouchableOpacity onPress={() => {
                             this.changeBackground(11, 11)
                         }}>
@@ -557,7 +557,7 @@ class vocabulary2 extends Component {
                             />
                         </TouchableOpacity>
                     </View>
-                    <View style={{ position: 'absolute', width: '8%', height: '10%', top: '77d%', left: '29.70%', }}>
+                    <View style={{ position: 'absolute', width: '8%', height: '10%', top: '77%', left: '29.70%', }}>
                         <TouchableOpacity onPress={() => {
                             this.changeBackground(11, 11)
                         }}>

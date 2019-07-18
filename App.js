@@ -84,6 +84,8 @@ import DadBatak from './screens/Games/dadbatak/DadBatak';
 import DadBatakProceed from './screens/Games/dadbatak/DadBatakProceed';
 import DadBatakMarket from './screens/Games/dadbatak/DadBatakMarket';
 
+import DadBatak_GameMenuIntro from './screens/Games/DadBatak_GameMenuIntro';
+
 //Dad Se - Bang 1
 import Bang from './screens/Games/DadSe/Bang1/Bang';
 import EndingVideo from './screens/Games/DadSe/Bang1/Ending';
@@ -97,6 +99,7 @@ import Bang3 from './screens/Games/DadSe/Bang3/Bang3';
 
 //Dad Batak - Bang 4
 import Bang4 from './screens/Games/dadbatak/Bang1/Bang4';
+import EndingVideo4 from './screens/Games/dadbatak/Bang1/Ending4';
 
 //Dad Batak - Bang 5
 import Bang5 from './screens/Games/dadbatak/Bang2/Bang5';
@@ -280,6 +283,8 @@ export default AppNavigator = createStackNavigator(
     gameIntro: GameIntroScreen,
     dsbangIntro: DSBangIntroScreen,
 
+    dadbatak_gameMenuIntro: DadBatak_GameMenuIntro,
+
     gameMenu: GameMenu,
     dadseProceed: DadSeProceed,
     dadseMarket: DadSeMarket,
@@ -293,6 +298,7 @@ export default AppNavigator = createStackNavigator(
 
     //Dad Batak - Bang 1
     bang4: Bang4,
+    ending4: EndingVideo4,
 
     //Dad Batak - Bang 2
     bang5: Bang5,

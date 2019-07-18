@@ -119,7 +119,7 @@ class Vocabulary3 extends Component {
             if (this.timeoutSound != null){
                 clearTimeout(this.timeoutSound);
             }
-            this.props.navigation.navigate('vocabularyMenu')
+            this.props.navigation.goBack()
         }
         if (clear == 'clear') {
             this.stopSounds();

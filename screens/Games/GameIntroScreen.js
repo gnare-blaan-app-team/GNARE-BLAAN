@@ -1,4 +1,4 @@
-import Game_Intro from '../IntroVideos/Game_Intro.mp4';
+import GameIntro_FIL from '../IntroVideos/GameIntro_FIL.mp4';
 import Number_Intro from '../IntroVideos/Number_Intro.mp4';
 
 import React, { Component } from 'react';
@@ -12,16 +12,23 @@ import Replay_icon from '../images/replay.png';
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 import { sound } from '../HomePage';
 
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import DadBatak from './gameImages/1Icon_DadBatak.png';
+import DadSe from './gameImages/1Icon_DadSe.png';
+import GnareIcon from './gameImages/GnareMain.png';
+
 class GameIntroScreen extends Component {
     static navigationOptions = {
         header: null,
     }
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
+            dadbatakTop: '5%',
+            dadseTop:'5%',
             paused: false,
-            source: Game_Intro,
+            source: GameIntro_FIL,
             progress: 0,
             volume: 1,
             duration: 0,
@@ -96,6 +103,40 @@ class GameIntroScreen extends Component {
                 <View style={styles.homeContainer}>
                     <TouchableOpacity onPress={this.gotoGameScreen}>
                         <Image source={Skip_icon} style={styles.home} />
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{
+                    position: 'absolute',
+                    top:this.state.dadbatakTop,
+                    left: wp('10.5%'),
+                    height: hp('12%'),
+                    width: wp('33%'),
+                }}>
+                    <Image source={DadBatak} style={styles.image}/>
+                </View>
+
+                <View style={{
+                    position: 'absolute',
+                    top:this.state.dadbatakTop,
+                    right: wp('10.5%'),
+                    height: hp('12%'),
+                    width: wp('33%'),
+                }}>
+                    <Image source={DadSe} style={styles.image}/>
+                </View>
+
+                <View style={{position: 'absolute',
+                    top: hp('5%'),
+                    left: wp('2%'),
+                    height: hp('12%'),
+                    width: wp('10%'),}
+                }>
+                    <TouchableOpacity onPress={this.gotoHome}>
+                        <Image source={GnareIcon} style={{width: '100%',
+                            height: '100%',
+                            resizeMode: 'stretch'
+                        }}></Image>
                     </TouchableOpacity>
                 </View>
             </ImageBackground>

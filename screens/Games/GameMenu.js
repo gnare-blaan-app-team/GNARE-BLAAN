@@ -121,6 +121,7 @@ class GameMenu extends Component {
             playerNameLeft: '40%',
             getIndex:0,
             showdadse:'',
+            showdadbatak:'',
             get:'',
             textInputTop: '1000%',//20%
             saveTop: '1000%', //35%
@@ -197,6 +198,20 @@ class GameMenu extends Component {
             });
             this.checkStage(1);
         }
+        if(this.state.showdadbatak == 'show'){
+            this.setState({
+                kaitoTop: '22%',
+                kaibeTop: '1000%',
+                dadbatakTop: '1000%',
+                dadseTop: '1000%',
+                tanbu1Top: '22%',
+                tanbu2Top: '40%',
+                tanbu3Top: '59%',
+                kastifunTop: '77%',
+                level: 'dadbatakPart'
+            });
+            this.checkStage(2);
+        }
         if (showIt == 'Dadse'){
             this.setState({
                 kaitoTop: '1000%',
@@ -250,9 +265,11 @@ class GameMenu extends Component {
     }
 
     gotoMainMenu = () => {
-      
         this.props.navigation.navigate('mainMenu');
-      
+    }
+
+    gotoCoinBank = () => {
+        this.props.navigation.navigate('dadseBank');
     }
 
     gotoHome = () => {
@@ -294,6 +311,7 @@ class GameMenu extends Component {
         })
         this.state.passIndex = index;
     }
+
     gotoBang = (index) => {
       const set = this.state.level;
       const passIndex = this.state.passIndex;
@@ -320,6 +338,10 @@ class GameMenu extends Component {
             }
         }
         
+    }
+
+    gotoKastifun = () => {
+        this.props.navigation.navigate('kastifunScreen');
     }
 
     goToProfile = () => {
@@ -462,11 +484,13 @@ class GameMenu extends Component {
         const itemId3 = navigation.getParam('show3DB', 'NO-ID');
         const getParam = navigation.getParam('openProfile', 'NO-ID');
         const getParam2 = navigation.getParam('showDadseBang', 'NO-ID');
+        const getParam3 = navigation.getParam('showDadBatakBang', 'NO-ID');
         this.state.show = itemId;
         this.state.show3 = itemId2;
         this.state.show4 = itemId3;
         this.state.profile = getParam;
         this.state.showdadse = getParam2;
+        this.state.showdadbatak = getParam3;
         const animatedStyle  = {
             transform: [{scale:this.animatedValue}]
         }
@@ -510,9 +534,18 @@ class GameMenu extends Component {
                         </Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.gnareIconStyle}>
+                <View style={[{
+                    position: 'absolute',
+                    left: '2%',
+                    top: '3%',
+                    width: '14%',
+                    height: '28%',}]}>
                     <TouchableOpacity onPress={this.gotoHome}>
-                        <Image source={GnareIcon} style={styles.image}></Image>
+                        <Image source={GnareIcon} style={[{
+                            width: '75%',
+                            height: '75%',
+                            resizeMode: 'contain',}]}>
+                        </Image>
                     </TouchableOpacity>
                 </View>
                 <View style={{
@@ -579,9 +612,7 @@ class GameMenu extends Component {
                     height: hp('16%'),
                     width: wp('28%'),
                 }}>
-                    <TouchableOpacity onPress={() => {
-                        this.gotoTanbu(4);
-                    }}>
+                    <TouchableOpacity onPress={this.gotoKastifun}>
                         <Image source={KastifunIcon} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>
@@ -626,7 +657,7 @@ class GameMenu extends Component {
                     height: hp('16%'),
                     width: wp('28%'),
                 }}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={this.gotoCoinBank}>
                         <Image source={CoinBank} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>
