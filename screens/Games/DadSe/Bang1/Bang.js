@@ -987,7 +987,7 @@ class Bang extends Component {
                         this.validate(1);
                     }}>
                         <Image source={show.choices1}
-                         style={{
+                          style={{
                             width: '100%',
                             height: '100%',
                             resizeMode: 'contain'

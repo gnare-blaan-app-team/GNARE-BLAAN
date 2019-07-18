@@ -99,7 +99,7 @@ class Mainmenu extends Component {
                 <View style={styles.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
-                            source={require('./images/GnareMain.png')}
+                            source={require('./Games/gameImages/GnareMain.png')}
                             style={styles.back}
                         ></Image>
                     </TouchableOpacity>

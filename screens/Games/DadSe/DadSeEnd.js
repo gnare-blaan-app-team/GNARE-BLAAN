@@ -19,6 +19,10 @@ class DadSeEnd extends Component {
         this.props.navigation.navigate('mainMenu')
     }
     
+    gotoHome = () =>{
+        this.props.navigation.navigate('home')
+    }
+    
     render() {
         return (
             <ImageBackground
@@ -45,6 +49,13 @@ class DadSeEnd extends Component {
 
 
 const styles = StyleSheet.create({
+    gnareIconStyle: {
+        position: 'absolute',
+        top: hp('5%'),
+        left: wp('2%'),
+        height: hp('12%'),
+        width: wp('10%'),
+    },
     image: {
         width: '100%',
         height: '100%',
