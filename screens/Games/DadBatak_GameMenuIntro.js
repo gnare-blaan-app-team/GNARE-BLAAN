@@ -1,21 +1,17 @@
-import Slide2_EN from '../IntroVideos/Slide2.mp4';
-import Number_Intro from '../IntroVideos/Number_Intro.mp4';
+import DadBatak_FIL_Slide2 from '../IntroVideos/DadBatak_FIL_Slide2.mp4';
 
 import React, { Component } from 'react';
 import Video from 'react-native-video';
 import { Image, View, TouchableOpacity , ImageBackground } from 'react-native';
 import { withNavigation } from 'react-navigation';
-
 import Skip_icon from '../images/skip.png';
-import Replay_icon from '../images/replay.png';
-
 import Bang1Icon from './gameImages/bang1_icon.png';
 import Bang2Icon from './gameImages/12Icon_Bang2Lock.png';
-import Bang22Icon from './gameImages/bang2_icon.png';
 import Bang3Icon from './gameImages/12Icon_Bang3Lock.png';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 import { sound } from '../HomePage';
+import GnareIcon from './gameImages/GnareMain.png';
 
 
 class DadBatak_GameMenuIntro extends Component {
@@ -27,7 +23,7 @@ class DadBatak_GameMenuIntro extends Component {
         super(props);
         this.state = {
             paused: false,
-            source: Slide2_EN,
+            source: DadBatak_FIL_Slide2,
             progress: 0,
             volume: 1,
             duration: 0,
@@ -64,6 +60,10 @@ class DadBatak_GameMenuIntro extends Component {
         }
         this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.replace('gameMenu', { showDadBatakBang: 'show' });
+    }
+
+    gotoHome = () => {
+        this.props.navigation.navigate('home');
     }
 
     // replayVideo = () => {
@@ -127,6 +127,20 @@ class DadBatak_GameMenuIntro extends Component {
                     <Image source={Bang3Icon} style={styles.image}></Image>
                 </View>
                 
+                <View style={{position: 'absolute',
+                    top: hp('5%'),
+                    left: wp('2%'),
+                    height: hp('12%'),
+                    width: wp('10%'),}
+                }>
+                    <TouchableOpacity onPress={this.gotoHome}>
+                        <Image source={GnareIcon} style={{width: '100%',
+                            height: '100%',
+                            resizeMode: 'stretch'
+                        }}></Image>
+                    </TouchableOpacity>
+                </View>
+
             </ImageBackground>
         )
     }
