@@ -508,6 +508,14 @@ class Bang extends Component {
     goBack = () => {
         this.props.navigation.push('gameMenu');
     }
+
+    goLamwa = () => {
+        this.props.navigation.replace('gameMenu', { showDadseBang: 'show' });
+    }
+
+    goGufadyan = () => {
+        this.props.navigation.navigate('dadseMarket');
+    }
     
     onLoad = async (index) => {
         const storedValue = await AsyncStorage.getItem(RandomKey);
@@ -1108,7 +1116,7 @@ class Bang extends Component {
                     left: '55%',
                     top: this.state.gufadyanTop
                 }}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={this.goGufadyan}>
                         <Image
                             style={{ width: '100%', height: '100%', resizeMode: 'contain' }}
                             source={GufadyanIcon} />
@@ -1121,7 +1129,7 @@ class Bang extends Component {
                     left: '36%',
                     top: this.state.lamwaTop
                 }}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={this.goLamwa}>
                         <Image
                             style={{ width: '100%', height: '100%', resizeMode: 'contain' }}
                             source={LamwaIcon} />

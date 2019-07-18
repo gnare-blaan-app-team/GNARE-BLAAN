@@ -215,7 +215,7 @@ class vocabulary2 extends Component {
         const clear = this.state.clearBackground;
         if (clear == 'goVocabMenu'){
 
-            this.props.navigation.navigate('vocabularyMenu')
+            this.props.navigation.goBack()
         }
         if (clear == 'clear'){
         this.stopSounds();

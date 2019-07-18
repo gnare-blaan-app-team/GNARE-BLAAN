@@ -237,9 +237,11 @@ class GameMenu extends Component {
     }
 
     gotoMainMenu = () => {
-      
         this.props.navigation.navigate('mainMenu');
-      
+    }
+
+    gotoCoinBank = () => {
+        this.props.navigation.navigate('dadseBank');
     }
 
     gotoHome = () => {
@@ -283,6 +285,7 @@ class GameMenu extends Component {
         })
         this.state.passIndex = index;
     }
+
     gotoBang = (index) => {
       const set = this.state.level;
       const passIndex = this.state.passIndex;
@@ -325,6 +328,10 @@ class GameMenu extends Component {
             }
         }
         
+    }
+
+    gotoKastifun = () => {
+        this.props.navigation.navigate('kastifunScreen');
     }
 
     goToProfile = () => {
@@ -519,9 +526,7 @@ class GameMenu extends Component {
                     height: hp('16%'),
                     width: wp('28%'),
                 }}>
-                    <TouchableOpacity onPress={() => {
-                        this.gotoTanbu(4);
-                    }}>
+                    <TouchableOpacity onPress={this.gotoKastifun}>
                         <Image source={KastifunIcon} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>
@@ -566,7 +571,7 @@ class GameMenu extends Component {
                     height: hp('16%'),
                     width: wp('28%'),
                 }}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={this.gotoCoinBank}>
                         <Image source={CoinBank} style={styles.image}></Image>
                     </TouchableOpacity>
                 </View>

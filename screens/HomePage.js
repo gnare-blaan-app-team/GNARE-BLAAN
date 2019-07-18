@@ -158,9 +158,10 @@ class Homescreen extends Component{
             this.state.changeScene = 1;
     };
 
-    // removeItem = () => {
-    //     AsyncStorage.removeItem('@MyApp:FreshOpen');
-    // }
+    removeItem = () => {
+        AsyncStorage.clear();
+        alert('Storage Cleared!');
+    }
 
     sceneShow() {
         if (this.state.changeScene == 0){
@@ -208,7 +209,7 @@ class Homescreen extends Component{
                                 </TouchableOpacity>
                             </View>
                             <View style={styles.HomePageItems} >
-                                <TouchableOpacity>
+                                <TouchableOpacity onPress={this.removeItem}>
                                     <Image style={styles.imageSizeStoryMenu} source={Share_icon} />
                                 </TouchableOpacity>
                             </View>
