@@ -328,6 +328,7 @@ class Bang extends Component {
         super(props);
         this.state={
             max: stageNumber.length,
+            showGameover: '',
             getChoice1Name:'',
             getChoice2Name: '',
             getChoice3Name: '',
@@ -360,6 +361,31 @@ class Bang extends Component {
         this.onLoad();
         this.minusStar();
         this.checkBalance();
+
+        const showIt = this.state.showGameover;
+        if (showIt == 'Gameover'){
+            
+            setTimeout(() => {
+                this.setState({
+                    star1Top: '1000%',
+                    emptyStar1Top: '1%',
+                    fadlugTop: '19%',
+                    gufadyanTop: '19%',
+                    lamwaTop: '56%',
+                    choice1Top: '1000%',//75%
+                    choice2Top: '1000%',//75%
+                    choice3Top: '1000%',//75%
+                    choice4Top: '1000%',//75%
+                    blackboardTop: '1000%',
+                    star1Top: '1000%',
+                    star2Top: '1000%',
+                    star3Top: '1000%',
+                    emptyStar1Top: '1000%',
+                    emptyStar2Top: '1000%',
+                    emptyStar3Top: '1000%',
+                })
+            },1000)
+        }
     }
 
     playChoiceGame = (index) => {
@@ -875,26 +901,28 @@ class Bang extends Component {
             }else{
                 if (storedValue3 == null) {
                     await AsyncStorage.setItem(Star3, wrong);
-                    setTimeout(() => {
-                        this.setState({
-                            star1Top: '1000%',
-                            emptyStar1Top: '1%',
-                            fadlugTop: '19%',
-                            gufadyanTop: '19%',
-                            lamwaTop: '56%',
-                            choice1Top: '1000%',//75%
-                            choice2Top: '1000%',//75%
-                            choice3Top: '1000%',//75%
-                            choice4Top: '1000%',//75%
-                            blackboardTop: '1000%',
-                            star1Top: '1000%',
-                            star2Top: '1000%',
-                            star3Top: '1000%',
-                            emptyStar1Top: '1000%',
-                            emptyStar2Top: '1000%',
-                            emptyStar3Top: '1000%',
-                        })
-                    },1000)
+                    this.props.navigation.navigate('gameover');
+                    // setTimeout(() => {
+                    //     // this.setState({
+                    //     //     star1Top: '1000%',
+                    //     //     emptyStar1Top: '1%',
+                    //     //     fadlugTop: '19%',
+                    //     //     gufadyanTop: '19%',
+                    //     //     lamwaTop: '56%',
+                    //     //     choice1Top: '1000%',//75%
+                    //     //     choice2Top: '1000%',//75%
+                    //     //     choice3Top: '1000%',//75%
+                    //     //     choice4Top: '1000%',//75%
+                    //     //     blackboardTop: '1000%',
+                    //     //     star1Top: '1000%',
+                    //     //     star2Top: '1000%',
+                    //     //     star3Top: '1000%',
+                    //     //     emptyStar1Top: '1000%',
+                    //     //     emptyStar2Top: '1000%',
+                    //     //     emptyStar3Top: '1000%',
+                    //     // })
+                      
+                    // },1000)
                 }
             }
         }
@@ -940,6 +968,10 @@ class Bang extends Component {
         this.state.getChoice4Name = convert4;
         const answer = show.answer;
         this.state.answer = answer;
+
+        const { navigation } = this.props;
+        const itemId = navigation.getParam('showGameover', 'NO-ID');
+        this.state.showGameover = itemId;
         return (
             <ImageBackground
                 source={GameBG}
