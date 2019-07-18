@@ -51,7 +51,6 @@ class GameIntroScreen extends Component {
         } catch(error) {
             
         }
-        alert('test');
         this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.replace('gameMenu', { openProfile: 'showProfile' });
     };

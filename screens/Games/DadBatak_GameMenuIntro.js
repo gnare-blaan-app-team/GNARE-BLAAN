@@ -9,6 +9,11 @@ import { withNavigation } from 'react-navigation';
 import Skip_icon from '../images/skip.png';
 import Replay_icon from '../images/replay.png';
 
+import Bang1Icon from './gameImages/bang1_icon.png';
+import Bang2Icon from './gameImages/12Icon_Bang2Lock.png';
+import Bang22Icon from './gameImages/bang2_icon.png';
+import Bang3Icon from './gameImages/12Icon_Bang3Lock.png';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 import { sound } from '../HomePage';
 
@@ -21,7 +26,6 @@ class DadBatak_GameMenuIntro extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            
             paused: false,
             source: Slide2_EN,
             progress: 0,
@@ -51,6 +55,17 @@ class DadBatak_GameMenuIntro extends Component {
         this.props.navigation.replace('gameMenu',{showDadBatakBang:'show' });
     };
 
+    gotoGameScreen = () => {
+        try {
+            sound.setVolume(0.2);
+            sound.play();
+        } catch(error) {
+            
+        }
+        this.setState({paused: true, volume: 0, muted: true});
+        this.props.navigation.replace('gameMenu', { showDadBatakBang: 'show' });
+    }
+
     // replayVideo = () => {
     //     this.setState({source: Number_Intro});
     //     setTimeout(()=>{
@@ -78,6 +93,39 @@ class DadBatak_GameMenuIntro extends Component {
                         />
                 </View>
 
+                <View style={styles.homeContainer}>
+                    <TouchableOpacity onPress={this.gotoGameScreen}>
+                        <Image source={Skip_icon} style={styles.home} />
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{
+                    position: 'absolute',
+                    top: hp('22%'),
+                    left: wp('63%'),
+                    height: hp('16%'),
+                    width: wp('28%'),
+                }}>
+                    <Image source={Bang1Icon} style={styles.image}></Image>
+                </View>
+                <View style={{
+                    position: 'absolute',
+                    left: wp('63%'),
+                    top: hp('40%'),
+                    height: hp('16%'),
+                    width: wp('28%'),
+                }}>
+                    <Image source={Bang2Icon} style={styles.image}></Image>
+                </View>
+                <View style={{
+                    position: 'absolute',
+                    left: wp('63%'),
+                    top: hp('59%'),
+                    height: hp('16%'),
+                    width: wp('28%'),
+                }}>
+                    <Image source={Bang3Icon} style={styles.image}></Image>
+                </View>
                 
             </ImageBackground>
         )
