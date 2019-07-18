@@ -1,9 +1,10 @@
 import GameIntro_FIL from '../IntroVideos/GameIntro_FIL.mp4';
+import GameIntro_EN from '../IntroVideos/GameIntro_EN.mp4';
 import Number_Intro from '../IntroVideos/Number_Intro.mp4';
 
 import React, { Component } from 'react';
 import Video from 'react-native-video';
-import { Image, View, TouchableOpacity , ImageBackground } from 'react-native';
+import { Text, Image, View, TouchableOpacity , ImageBackground } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
 import Skip_icon from '../images/skip.png';
@@ -33,6 +34,8 @@ class GameIntroScreen extends Component {
             volume: 1,
             duration: 0,
             muted: false,
+
+            subtitle: ' English',
         }
     }
 
@@ -103,6 +106,18 @@ class GameIntroScreen extends Component {
                         <Image source={Replay_icon} style={styles.home} />
                     </TouchableOpacity>
                 </View> */}
+
+                <View style={{position: 'absolute', top: '78%', left: '88%', height: '10%', justifyContent: 'center', alignItems: 'center'}}>
+                    <TouchableOpacity onPress={()=> {
+                        this.setState({
+                            source: this.state.source == GameIntro_FIL ? GameIntro_EN : GameIntro_FIL,
+                            subtitle: this.state.subtitle == ' English' ? ' Filipino' : ' English',
+                        });
+                        // this.handleProgressPress;
+                    }}>
+                        <Text style={{color: 'white', borderWidth: 2, borderColor: 'white', borderRadius: 5, padding: 3, fontSize: 18, backgroundColor: '#242424', shadowOpacity: 100}}>{this.state.subtitle}</Text>
+                    </TouchableOpacity>
+                </View>
 
                 <View style={styles.homeContainer}>
                     <TouchableOpacity onPress={this.gotoGameScreen}>
