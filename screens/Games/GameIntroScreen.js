@@ -55,7 +55,7 @@ class GameIntroScreen extends Component {
         } catch(error) {
             
         }
-        this.setState({paused: true, volume: 0, muted: true});
+        this.setState({paused: true, volume: 0, muted: true,});
         this.props.navigation.replace('gameMenu', { openProfile: 'showProfile' });
     };
 
@@ -68,10 +68,6 @@ class GameIntroScreen extends Component {
         }
         this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.replace('gameMenu', { openProfile: 'showProfile' });
-    }
-
-    gotoHome = () => {
-        this.props.navigation.navigate('home');
     }
 
     // replayVideo = () => {

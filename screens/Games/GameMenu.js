@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AsyncStorage, View, Image, StyleSheet, TouchableOpacity, ImageBackground, Animated, Text, TextInput } from 'react-native';
+import { AsyncStorage, View, Image, StyleSheet, TouchableOpacity, ImageBackground, Animated, Text, TextInput,ListView } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
@@ -20,30 +20,27 @@ import TanbuIcon from './gameImages/tanbu_icon.png';
 import NextLevel from './gameImages/nextlevel.png'; 
 import CoinBank from './gameImages/bangko.png'; 
 import Market from './gameImages/market.png';
-import blackboard from './gameImages/background.png'; 
+import blackboard from './gameImages/Hiwibackground.png'; 
 import kaito from './gameImages/kaitoGame.png'; 
 import kaibe from './gameImages/kaibeGame.png'; 
 import DadBatakBG from './gameImages/DadBatakBG.png';
 import player from './gameImages/player_icon.png';
 import back from '../images/Back_icon.png';
 
-// const Realm = require('realm');
-
-// const PlayerSchema = {
-//     name: 'Player',
-//     properties: {
-//         playername: 'string',
-//         randomKey: 'string',
-//     }
-// };
+var Realm = require('realm');
+let realm;
 
 const backgroundList = [BG,Slide1,DadseBG,DadBatakBG];
 
+playerList = [];
+
+const SessionPlayer = '@MyApp:SessionPlayer';
 
 const Stage2 = '@MyApp:Stage2';
 const Stage3 = '@MyApp:Stage3';
 const DadbatakStage2 = '@MyApp:DadbatakStage2';
 const DadbatakStage3 = '@MyApp:DadbatakStage3';
+
 
 
 class GameMenu extends Component {
@@ -54,7 +51,31 @@ class GameMenu extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
+        realm = new Realm({
+            path: 'PlayerDatabase.realm',
+            schema: [
+                {
+                    name: 'Players',
+                    properties: {
+                        playername:'string',
+                        dateCreated:'date',
+                        dadseBang1RandomKey:{type:'string',default:'null'},
+                        star1:{type:'string',default:'null'},
+                        star2: { type: 'string', default: 'null' },
+                        star3: { type: 'string', default: 'null' },
+                        coinBalance: {type:'string',default:'null'}
+                    },
+                },
+            ],
+        });
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        const ds = new ListView.DataSource({
+            rowHasChanged: (r1, r2) => r1 !== r2,
+        })
+        var getPlayers = realm.objects('Players');
+        this.state = {   
+            dataSource: ds.cloneWithRows(getPlayers),
+            text:'',
             BackgroundImage: backgroundList[0],
             clearBackground: 'gotoGameMenu',
             dadbatakTop: '7%',
@@ -102,6 +123,12 @@ class GameMenu extends Component {
             showdadse:'',
             showdadbatak:'',
             get:'',
+            textInputTop: '1000%',//20%
+            saveTop: '1000%', //35%
+            cancelTop: '1000%', //52%
+            createTop: '80%',//80%
+            playerListTop: '12%',
+            getPlayername:'',
         }
     }
 
@@ -147,6 +174,7 @@ class GameMenu extends Component {
     componentDidMount(){
         const showIt = this.state.show;
         const showProfile = this.state.profile;
+        const dadse = this.state.showdadse;
         if (showProfile == 'showProfile') {
             Animated.spring(this.animatedValue, {
                 toValue: 1
@@ -249,25 +277,23 @@ class GameMenu extends Component {
     }
 
     gotoDadBatak = () => {
-        // Realm.open({ schema: [PlayerSchema]})
-        //     .then(realm => {
-        //         const cars = realm.objects('Player');
-        //         alert(JSON.stringify(cars));
-        //     });
-        this.props.navigation.navigate('dadbatak_gameMenuIntro');
+       
+    
+    this.setState({
+            kaibeTop: '1000%',
+            dadbatakTop: '1000%',
+            dadseTop: '1000%',
+            tanbu1Top: '22%',
+            tanbu2Top: '40%',
+            tanbu3Top: '59%',
+            kastifunTop: '77%',
+            level:'dadbatakPart',
+        })
+        this.checkStage(2);
     }
 
     gotoDadSe = () => {
-        // Realm.open({ schema: [PlayerSchema] })
-        //     .then(realm => {
-        //         // Create Realm objects and write to local storage
-        //         realm.write(() => {
-        //             const myCar = realm.create('Player', {
-        //                 playername: 'Honda',
-        //                 randomKey: '1',
-        //             });
-        //         });
-        //     })
+        
         this.props.navigation.navigate('dsbangIntro');
     }
 
@@ -291,26 +317,10 @@ class GameMenu extends Component {
       const passIndex = this.state.passIndex;
       if(set == 'dadsePart'){
           if (passIndex == 1) {
-              this.props.navigation.push('bang',{
-                  getPass: this.state.pass1,
-                  getPass2: this.state.pass2,
-                  getPass3: this.state.pass3,
-                  getPass4: this.state.pass4,
-                  getPass5: this.state.pass5,
-                  getPass6: this.state.pass6,
-                  getPass7: this.state.pass7,
-                  getPass8: this.state.pass8,
-                  getPass9: this.state.pass9,
-              });
+              this.props.navigation.push('bang');
           }
           if (passIndex == 2) {
-              this.props.navigation.push('bang2',{
-                  getPass8: this.state.pass8,
-                  getPass2:this.state.pass2,
-                  getPass3: this.state.pass3,
-                  getPass4: this.state.pass4,
-                  getPass5: this.state.pass5,
-              });
+              this.props.navigation.push('bang2');
           }
           if (passIndex == 3) {
               this.props.navigation.push('bang3');
@@ -373,8 +383,8 @@ class GameMenu extends Component {
         this.state.getIndex = index;
     }
 
-    play = async () => {
-        const index = this.state.getIndex;
+    play = async (getPlayer) => {
+        await AsyncStorage.setItem(SessionPlayer, getPlayer);
           Animated.spring(this.animatedValue, {
             toValue: .0
         }).start();
@@ -383,7 +393,7 @@ class GameMenu extends Component {
                 profileTop: '1000%',
             })
             this.state.profile = 'none';
-        }, 1000);    
+        }, 1000); 
     }
 
     market = () => {
@@ -395,8 +405,75 @@ class GameMenu extends Component {
         } 
     }
 
-    addPlayer = () => {
-        
+
+    refreshPlayer =()=>{
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        const ds = new ListView.DataSource({
+            rowHasChanged: (r1, r2) => r1 !== r2,
+        })
+        var getPlayers = realm.objects('Players');
+        this.setState({
+            dataSource: ds.cloneWithRows(getPlayers),
+            textInputTop: '1000%',//20%
+            saveTop: '1000%', //35%
+            cancelTop: '1000%', //52%
+            createTop: '80%',//80%
+            playerListTop: '12%',
+            text:'',
+        })
+    }
+
+    cancel = () =>{
+        this.refreshPlayer();
+    }
+
+    save = () => {
+        const {text} = this.state;
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var player = 'player';
+        var date = new Date();
+        const ds = new ListView.DataSource({
+            rowHasChanged: (r1, r2) => r1 !== r2,
+        })
+        var getPlayers = realm.objects('Players');
+        if(getPlayers.length <= 4){
+            realm.write(() => {
+                const myCar = realm.create('Players', {
+                    playername: text,
+                    dateCreated: String(date),
+                });
+            })
+            this.refreshPlayer();
+        }else{
+            var getDate = realm.objects('Players');   
+            var tmp_dateHolder = [];
+            for(a=0;a<getDate.length;a++){
+                const con = parseInt(a);
+                const oldDate = getDate[con].dateCreated.getTime();
+                tmp_dateHolder.push(oldDate);
+            }
+            const getLowest = Math.min(...tmp_dateHolder);
+            const getIndex = tmp_dateHolder.indexOf(getLowest);
+                realm.write(() => {
+                    realm.delete(getDate[getIndex]);
+                    const myCar = realm.create('Players', {
+                        playername: text,
+                        dateCreated: String(date),
+                    });
+                })
+            this.refreshPlayer();
+        }
+      
+    }
+
+    create = () => {
+        this.setState({
+            createTop:'1000%',
+            playerListTop:'1000%',
+            textInputTop: '20%',//20%
+            saveTop: '35%', //35%
+            cancelTop: '52%', //52%
+        })
     }
 
     render() {
@@ -620,21 +697,75 @@ class GameMenu extends Component {
                          <Image source={blackboard} style={{resizeMode:'contain',width:'90%',height:'90%'}} />
                         <View style={{
                             position:'absolute',
-                            top:'20%',
-                            left:'50%',
-                            width:'43%',
-                            height:'70%',
+                            top:this.state.playerListTop,
+                            left:'34%',
+                            width:'33%',
+                            height:'65%',
                             borderColor:'white',
                             borderWidth:1
-                        }}></View>
+                        }}>
+                            <ListView
+                                dataSource={this.state.dataSource}
+                                renderRow={rowData => (
+                                    <View style={{ backgroundColor: 'white', padding: 20 }}>
+                                        <TouchableOpacity onPress={this.play.bind(this,rowData.playername)}>
+                                            <Text>Playername : {rowData.playername}</Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                )}
+                            />
+                        </View>
                         <View style={{
                             position:'absolute',
-                            top:'20%',
-                            left:'10%',
+                            width:'28%',
+                            height:'30%',
+                            top:this.state.textInputTop,
+                            left:'36.30%'
+                            }}>
+                            <TextInput
+                                style={{ backgroundColor: 'white', padding: 10,fontSize:20}}
+                                placeholder="Enter player name"
+                                autoCapitalize="none"
+                                onChangeText={(text) => this.setState({ text })} 
+                                value={this.state.text}
+                                />
+                        </View>
+                        <View style={{
+                            position: 'absolute',
+                            top:this.state.saveTop,
+                            left: '36%',
+                            width: '30%',
+                            height: '15%'
+                        }}>
+                            <TouchableOpacity onPress={this.save}>
+                                <Image source={player} style={{ height: '100%', width: '100%', resizeMode: 'contain' }} />
+                                <View style={{ position: 'absolute', left: '38%', top: '25%' }}>
+                                    <Text style={{ color: 'white', fontSize: 21, }}>SAVE</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{
+                            position: 'absolute',
+                            top:this.state.cancelTop,
+                            left: '36%',
+                            width: '30%',
+                            height: '15%'
+                        }}>
+                            <TouchableOpacity onPress={this.cancel}>
+                                <Image source={player} style={{ height: '100%', width: '100%', resizeMode: 'contain' }} />
+                                <View style={{ position: 'absolute', left: '33%', top: '25%' }}>
+                                    <Text style={{ color: 'white', fontSize: 21, }}>CANCEL</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{
+                            position:'absolute',
+                            top:this.state.createTop,
+                            left:'36%',
                             width:'30%',
                             height:'15%'
                         }}>
-                            <TouchableOpacity onPress={this.play}>
+                            <TouchableOpacity onPress={this.create}>
                             <Image source={player} style={{height:'100%',width:'100%',resizeMode:'contain'}}/>
                             <View style={{ position: 'absolute',left: '14%', top: '25%'}}>
                                     <Text style={{ color: 'white', fontSize: 21,}}>CREATE PLAYER</Text>
