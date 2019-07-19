@@ -277,19 +277,7 @@ class GameMenu extends Component {
     }
 
     gotoDadBatak = () => {
-       
-    
-    this.setState({
-            kaibeTop: '1000%',
-            dadbatakTop: '1000%',
-            dadseTop: '1000%',
-            tanbu1Top: '22%',
-            tanbu2Top: '40%',
-            tanbu3Top: '59%',
-            kastifunTop: '77%',
-            level:'dadbatakPart',
-        })
-        this.checkStage(2);
+        this.props.navigation.navigate('dadbatak_gameMenuIntro');
     }
 
     gotoDadSe = () => {
