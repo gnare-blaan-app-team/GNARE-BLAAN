@@ -89,6 +89,7 @@ import DadBatak_GameMenuIntro from './screens/Games/DadBatak_GameMenuIntro';
 //Dad Se - Bang 1
 import Bang from './screens/Games/DadSe/Bang1/Bang';
 import EndingVideo from './screens/Games/DadSe/Bang1/Ending';
+import Gameover from './screens/Games/DadSe/Bang1/Gameover';
 
 
 //Dad Se - Bang 2
@@ -309,6 +310,7 @@ export default AppNavigator = createStackNavigator(
     //Dad Se - Bang 1
     bang: Bang,
     ending: EndingVideo,
+    gameover: Gameover,
 
     //Dad Se - Bang 2
     bang2: Bang2,
