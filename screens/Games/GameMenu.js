@@ -65,7 +65,21 @@ class GameMenu extends Component {
                         star1:{type:'string',default:'null'},
                         star2: { type: 'string', default: 'null' },
                         star3: { type: 'string', default: 'null' },
-                        coinBalance: {type:'string',default:'null'}
+                        coinBalance: {type:'string',default:'null'},
+                        questionDoneBang1: {type:'string',default:'null'},
+                        DSbangStage2: { type: 'string', default: 'null' },
+                        dadseBang2RandomKey: { type: 'string', default: 'null' },
+                        questionDoneBang2: { type: 'string', default: 'null' },
+                        DSbangStage3: { type: 'string', default: 'null' },
+                        dadseBang3RandomKey: { type: 'string', default: 'null' },
+                        questionDoneBang3: { type: 'string', default: 'null' },
+                        gufadyan1: { type: 'int', default: 0 },
+                        gufadyan2: { type: 'int', default: 0 },
+                        gufadyan3: { type: 'int', default: 0 },
+                        gufadyan4: { type: 'int', default: 0 },
+                        gufadyan5: { type: 'int', default: 0 },
+                        gufadyan6: { type: 'int', default: 0 },
+                        gufadyan7: { type: 'int', default: 0 },
                     },
                 },
             ],
@@ -136,15 +150,25 @@ class GameMenu extends Component {
 
     checkStage = async (index) => {
        if(index == 1){
-           const storedValue = await AsyncStorage.getItem(Stage2);
-           const storedValue2 = await AsyncStorage.getItem(Stage3);
-               if (storedValue == 'unlock') {
+           realm = new Realm({ path: 'PlayerDatabase.realm' });
+           var getStage = realm.objects('Players');
+           const storedValue = await AsyncStorage.getItem(SessionPlayer);
+           var Dstage2 = '';
+           var Dstage3 = '';
+           for (a = 0; a < getStage.length; a++) {
+               const con = parseInt(a);
+               if (storedValue == getStage[con].playername) {
+                   Dstage2 = getStage[con].DSbangStage2
+                   Dstage3 = getStage[con].DSbangStage3
+               }
+           }
+           if (Dstage2 == 'unlock') {
                    this.setState({
                        tanbu2Top: '1000%',
                        Clickabletanbu2Top: '40%'
                    })
                }
-               if (storedValue2 == 'unlock') {
+           if (Dstage3 == 'unlock') {
                    this.setState({
                        tanbu3Top: '1000%',
                        Clickabletanbu3Top: '59%'
@@ -384,6 +408,10 @@ class GameMenu extends Component {
             })
             this.state.profile = 'none';
         }, 1000); 
+
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getPlayers = realm.objects('Players');
+        alert(JSON.stringify(getPlayers))
     }
 
     market = () => {
