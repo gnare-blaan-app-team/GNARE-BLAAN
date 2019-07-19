@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import { StyleSheet, AsyncStorage, View, Image, ImageBackground, TouchableWithoutFeedback, TouchableOpacity} from "react-native";
+import { StyleSheet, AsyncStorage, View, Image, ImageBackground, TouchableWithoutFeedback, TouchableOpacity, Text} from "react-native";
 
 import Video from "react-native-video";
-import EndingVideo from "../../gameImages/endingDB.mp4";
+import FIL_EndingVideo from "../../gameImages/FIL_endingDB.mp4";
+import EN_EndingVideo from "../../gameImages/EN_endingDB.mp4";
+
 import { sound } from '../../../HomePage';
 import { withNavigation } from 'react-navigation'; 
 
@@ -19,16 +21,18 @@ const Stage3 = '@MyApp:Stage3';
 
 class Ending4 extends Component {
     
-    constructor () {
-        super();
+    constructor (props) {
+        super(props);
         this.state = {
-
+            paused: false,
+            source: FIL_EndingVideo,
             opacityVideo: 1,
             paused: false,
             progress: 0,
             duration: 0,
             muted: false,
             volume: 1,
+            subtitle: ' English',
         };
     }
 
@@ -85,7 +89,7 @@ class Ending4 extends Component {
                     <TouchableWithoutFeedback onPress={this.hideControl}>
                         <Video
                             paused={this.state.paused}
-                            source={EndingVideo}
+                            source={this.state.source}
                             
                             style={{ width: "100%", height: '100%' }}
                             resizeMode="stretch"
@@ -147,6 +151,18 @@ class Ending4 extends Component {
                             height: '100%',
                             resizeMode: 'stretch'
                         }}></Image>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{position: 'absolute', top: '78%', left: '88%', height: '10%', justifyContent: 'center', alignItems: 'center'}}>
+                    <TouchableOpacity onPress={()=> {
+                        this.setState({
+                            source: this.state.source == FIL_EndingVideo ? EN_EndingVideo : FIL_EndingVideo,
+                            subtitle: this.state.subtitle == ' English' ? ' Filipino' : ' English',
+                        });
+                        // this.handleProgressPress;
+                    }}>
+                        <Text style={{color: 'white', borderWidth: 2, borderColor: 'white', borderRadius: 5, padding: 3, fontSize: 18, backgroundColor: '#242424', shadowOpacity: 100}}>{this.state.subtitle}</Text>
                     </TouchableOpacity>
                 </View>
 

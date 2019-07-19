@@ -24,7 +24,9 @@ import blackboard from './gameImages/Hiwibackground.png';
 import kaito from './gameImages/kaitoGame.png'; 
 import kaibe from './gameImages/kaibeGame.png'; 
 import DadBatakBG from './gameImages/DadBatakBG.png';
-import player from './gameImages/player_icon.png';
+import createplayer from './gameImages/createplayer.png';
+import save from './gameImages/save.png';
+import cancel from './gameImages/cancel.png';
 import back from '../images/Back_icon.png';
 
 var Realm = require('realm');
@@ -301,19 +303,7 @@ class GameMenu extends Component {
     }
 
     gotoDadBatak = () => {
-       
-    
-    this.setState({
-            kaibeTop: '1000%',
-            dadbatakTop: '1000%',
-            dadseTop: '1000%',
-            tanbu1Top: '22%',
-            tanbu2Top: '40%',
-            tanbu3Top: '59%',
-            kastifunTop: '77%',
-            level:'dadbatakPart',
-        })
-        this.checkStage(2);
+        this.props.navigation.navigate('dadbatak_gameMenuIntro');
     }
 
     gotoDadSe = () => {
@@ -766,10 +756,10 @@ class GameMenu extends Component {
                             height: '15%'
                         }}>
                             <TouchableOpacity onPress={this.save}>
-                                <Image source={player} style={{ height: '100%', width: '100%', resizeMode: 'contain' }} />
-                                <View style={{ position: 'absolute', left: '38%', top: '25%' }}>
+                                <Image source={save} style={{ height: '100%', width: '100%', resizeMode: 'contain' }} />
+                                {/* <View style={{ position: 'absolute', left: '38%', top: '25%' }}>
                                     <Text style={{ color: 'white', fontSize: 21, }}>SAVE</Text>
-                                </View>
+                                </View> */}
                             </TouchableOpacity>
                         </View>
                         <View style={{
@@ -780,10 +770,10 @@ class GameMenu extends Component {
                             height: '15%'
                         }}>
                             <TouchableOpacity onPress={this.cancel}>
-                                <Image source={player} style={{ height: '100%', width: '100%', resizeMode: 'contain' }} />
-                                <View style={{ position: 'absolute', left: '33%', top: '25%' }}>
+                                <Image source={cancel} style={{ height: '100%', width: '100%', resizeMode: 'contain' }} />
+                                {/* <View style={{ position: 'absolute', left: '33%', top: '25%' }}>
                                     <Text style={{ color: 'white', fontSize: 21, }}>CANCEL</Text>
-                                </View>
+                                </View> */}
                             </TouchableOpacity>
                         </View>
                         <View style={{
@@ -794,10 +784,10 @@ class GameMenu extends Component {
                             height:'15%'
                         }}>
                             <TouchableOpacity onPress={this.create}>
-                            <Image source={player} style={{height:'100%',width:'100%',resizeMode:'contain'}}/>
-                            <View style={{ position: 'absolute',left: '14%', top: '25%'}}>
+                            <Image source={createplayer} style={{height:'100%',width:'100%',resizeMode:'contain'}}/>
+                            {/* <View style={{ position: 'absolute',left: '14%', top: '25%'}}>
                                     <Text style={{ color: 'white', fontSize: 21,}}>CREATE PLAYER</Text>
-                                </View>
+                                </View> */}
                             </TouchableOpacity>
                         </View>
                     </View>
