@@ -1,26 +1,29 @@
 import React, { Component } from "react";
-import { StyleSheet, AsyncStorage, View, Image, ImageBackground, TouchableWithoutFeedback, TouchableOpacity} from "react-native";
+import { StyleSheet, AsyncStorage, View, Image, Text, ImageBackground, TouchableWithoutFeedback, TouchableOpacity} from "react-native";
 
 import Video from "react-native-video";
-import GameoverVideo from "../../gameImages/gameoverDS.mp4";
+import GameoverDS_FL from "../../gameImages/gameoverDS_FL.mp4";
+import GameoverDS_EN from "../../gameImages/gameoverDS_EN.mp4";
 import { sound } from '../../../HomePage';
 import { withNavigation } from 'react-navigation'; 
 
 const RandomKey = '@MyApp:RandomKey';
 const Stage2 = '@MyApp:Stage2';
 
-class Gameover extends Component {
+class GameoverDS extends Component {
     
     constructor () {
         super();
         this.state = {
-
+            pause: false,
+            source: GameoverDS_FL,
             opacityVideo: 1,
             paused: false,
             progress: 0,
             duration: 0,
             muted: false,
             volume: 1,
+            subtitle: ' English',
         };
     }
 
@@ -59,7 +62,7 @@ class Gameover extends Component {
                     <TouchableWithoutFeedback onPress={this.hideControl}>
                         <Video
                             paused={this.state.paused}
-                            source={GameoverVideo}
+                            source={this.state.source}
                             
                             style={{ width: "100%", height: '100%' }}
                             resizeMode="stretch"
@@ -74,6 +77,17 @@ class Gameover extends Component {
                             }}
                         />
                     </TouchableWithoutFeedback>
+                </View>
+                <View style={{position: 'absolute', top: '78%', left: '88%', height: '10%', justifyContent: 'center', alignItems: 'center'}}>
+                    <TouchableOpacity onPress={()=> {
+                        this.setState({
+                            source: this.state.source == GameoverDS_FL ? GameoverDS_EN : GameoverDS_FL,
+                            subtitle: this.state.subtitle == ' English' ? ' Filipino' : ' English',
+                        });
+                        // this.handleProgressPress;
+                    }}>
+                        <Text style={{color: 'white', borderWidth: 2, borderColor: 'white', borderRadius: 5, padding: 3, fontSize: 18, backgroundColor: '#242424', shadowOpacity: 100}}>{this.state.subtitle}</Text>
+                    </TouchableOpacity>
                 </View>
             </ImageBackground>
         );
@@ -94,4 +108,4 @@ const videoStyle = StyleSheet.create({
     },
 });
 
-export default withNavigation(Gameover);
+export default withNavigation(GameoverDS);
