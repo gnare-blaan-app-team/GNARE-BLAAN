@@ -38,11 +38,6 @@ playerList = [];
 
 const SessionPlayer = '@MyApp:SessionPlayer';
 
-const Stage2 = '@MyApp:Stage2';
-const Stage3 = '@MyApp:Stage3';
-const DadbatakStage2 = '@MyApp:DadbatakStage2';
-const DadbatakStage3 = '@MyApp:DadbatakStage3';
-
 
 
 class GameMenu extends Component {
@@ -73,6 +68,17 @@ class GameMenu extends Component {
                         DSbangStage3: { type: 'string', default: 'null' },
                         dadseBang3RandomKey: { type: 'string', default: 'null' },
                         questionDoneBang3: { type: 'string', default: 'null' },
+                        dadseBatak1RandomKey: { type: 'string', default: 'null' },
+                        questionDoneBang1Dadbatak: { type: 'string', default: 'null' },
+                        Dadbatakstar1: { type: 'string', default: 'null' },
+                        Dadbatakstar2: { type: 'string', default: 'null' },
+                        Dadbatakstar3: { type: 'string', default: 'null' },
+                        DBbangStage2: { type: 'string', default: 'null' },
+                        DBbangStage3: { type: 'string', default: 'null' },
+                        dadseBatak2RandomKey: { type: 'string', default: 'null' },
+                        questionDoneBang2Dadbatak: { type: 'string', default: 'null' },
+                        dadseBatak3RandomKey: { type: 'string', default: 'null' },
+                        questionDoneBang3Dadbatak: { type: 'string', default: 'null' },
                         gufadyan1: { type: 'int', default: 0 },
                         gufadyan2: { type: 'int', default: 0 },
                         gufadyan3: { type: 'int', default: 0 },
@@ -167,28 +173,54 @@ class GameMenu extends Component {
                        tanbu2Top: '1000%',
                        Clickabletanbu2Top: '40%'
                    })
+               }else{
+                    this.setState({
+                       tanbu2Top: '40%',
+                   })
                }
            if (Dstage3 == 'unlock') {
                    this.setState({
                        tanbu3Top: '1000%',
                        Clickabletanbu3Top: '59%'
                    })
+               }else{
+                this.setState({
+                    tanbu3Top: '59%',
+                })
                }
            }       
        if(index == 2){
-           const storedValue3 = await AsyncStorage.getItem(DadbatakStage2);
-               if (storedValue3 == 'unlock') {
+           realm = new Realm({ path: 'PlayerDatabase.realm' });
+           var getStage = realm.objects('Players');
+           const storedValue = await AsyncStorage.getItem(SessionPlayer);
+           var Dbtage2 = '';
+           var Dbtage3 = '';
+           for (a = 0; a < getStage.length; a++) {
+               const con = parseInt(a);
+               if (storedValue == getStage[con].playername) {
+                   Dbtage2 = getStage[con].DBbangStage2
+                   Dbtage3 = getStage[con].DBbangStage3
+               }
+           }
+           if (Dbtage2 == 'unlock') {
                    this.setState({
                        tanbu2Top: '1000%',
                        Clickabletanbu2Top: '40%'
                    })
+               }else{
+                   this.setState({
+                       tanbu2Top: '40%',
+                   })
                }
-               const storedValue4 = await AsyncStorage.getItem(DadbatakStage3);
-             if (storedValue4 == 'unlock') {
+           if (Dbtage3 == 'unlock') {
                    this.setState({
                        tanbu3Top: '1000%',
                        Clickabletanbu3Top: '59%'
                    })
+               }else{
+                 this.setState({
+                     tanbu3Top: '59%',
+                 })
                }
            }
     }
@@ -265,29 +297,20 @@ class GameMenu extends Component {
     }
 
     gotoNextLevel = () => {
-        const showIt = this.state.show3;
-        const showIt2 = this.state.show4;
+        const level = this.state.level;
         this.setState({
             nextLevelTop: '1000%',
             coinBankTop: '1000%',
             marketTop: '1000%',
             tanbu1Top: '22%',
-            Clickabletanbu2Top:'40%',
-            tanbu3Top: '59%',
+            kastifunTop:'77%'
         })
-        if(showIt == 'Dadse2'){
-            this.setState({
-                Clickabletanbu3Top: '59%',
-                tanbu3Top: '1000%',
-            })
+        if(level == 'dadsePart'){
+            this.checkStage(1)
         }
-        if (showIt2 == 'DadBatak2') {
-            this.setState({
-                Clickabletanbu3Top: '59%',
-                tanbu3Top: '1000%',
-            })
+        if (level == 'dadbatakPart') {
+            this.checkStage(2)
         }
-        this.checkStage();
     }
 
     gotoMainMenu = () => {
@@ -454,33 +477,37 @@ class GameMenu extends Component {
             rowHasChanged: (r1, r2) => r1 !== r2,
         })
         var getPlayers = realm.objects('Players');
-        if(getPlayers.length <= 4){
-            realm.write(() => {
-                const myCar = realm.create('Players', {
-                    playername: text,
-                    dateCreated: String(date),
-                });
-            })
-            this.refreshPlayer();
-        }else{
-            var getDate = realm.objects('Players');   
-            var tmp_dateHolder = [];
-            for(a=0;a<getDate.length;a++){
-                const con = parseInt(a);
-                const oldDate = getDate[con].dateCreated.getTime();
-                tmp_dateHolder.push(oldDate);
-            }
-            const getLowest = Math.min(...tmp_dateHolder);
-            const getIndex = tmp_dateHolder.indexOf(getLowest);
-                realm.write(() => {
-                    realm.delete(getDate[getIndex]);
-                    const myCar = realm.create('Players', {
-                        playername: text,
-                        dateCreated: String(date),
-                    });
-                })
-            this.refreshPlayer();
-        }
+       if(text != ''){
+           if (getPlayers.length <= 4) {
+               realm.write(() => {
+                   const myCar = realm.create('Players', {
+                       playername: text,
+                       dateCreated: String(date),
+                   });
+               })
+               this.refreshPlayer();
+           } else {
+               var getDate = realm.objects('Players');
+               var tmp_dateHolder = [];
+               for (a = 0; a < getDate.length; a++) {
+                   const con = parseInt(a);
+                   const oldDate = getDate[con].dateCreated.getTime();
+                   tmp_dateHolder.push(oldDate);
+               }
+               const getLowest = Math.min(...tmp_dateHolder);
+               const getIndex = tmp_dateHolder.indexOf(getLowest);
+               realm.write(() => {
+                   const myCar = realm.create('Players', {
+                       playername: text,
+                       dateCreated: String(date),
+                   });
+                   realm.delete(getDate[getIndex]);
+               })   
+               this.refreshPlayer();
+           }
+       }else{
+           alert('empty fields')
+       }
       
     }
 

@@ -61,7 +61,7 @@ class Ending extends Component {
         } catch(error) {
             
         }
-        this.props.navigation.push('gameMenu', { show: 'Dadse' });
+        this.props.navigation.replace('gameMenu', { show: 'Dadse' });
         realm = new Realm({ path: 'PlayerDatabase.realm' });
         var getPlayers = realm.objects('Players');
         const storedValue = await AsyncStorage.getItem(SessionPlayer);
@@ -83,7 +83,7 @@ class Ending extends Component {
             
         }
         this.setState({paused: true, volume: 0, muted: true});
-        this.props.navigation.replace('gameMenu', { showDadseBang: 'show' });
+        this.props.navigation.push('gameMenu', { show: 'Dadse' });
         realm = new Realm({ path: 'PlayerDatabase.realm' });
         var getPlayers = realm.objects('Players');
         const storedValue = await AsyncStorage.getItem(SessionPlayer);

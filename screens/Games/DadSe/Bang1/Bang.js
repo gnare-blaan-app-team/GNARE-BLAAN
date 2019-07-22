@@ -356,34 +356,32 @@ class Bang extends Component {
     }
 
    componentDidMount() {
-        // this.onLoad();
-        this.minusStar();
-        this.checkBalance();
-       this.load('check');
        const showIt = this.state.showGameover;
-        if (showIt == 'Gameover'){
-            
-            setTimeout(() => {
-                this.setState({
-                    star1Top: '1000%',
-                    emptyStar1Top: '1%',
-                    fadlugTop: '19%',
-                    gufadyanTop: '19%',
-                    lamwaTop: '56%',
-                    choice1Top: '1000%',//75%
-                    choice2Top: '1000%',//75%
-                    choice3Top: '1000%',//75%
-                    choice4Top: '1000%',//75%
-                    blackboardTop: '1000%',
-                    star1Top: '1000%',
-                    star2Top: '1000%',
-                    star3Top: '1000%',
-                    emptyStar1Top: '1000%',
-                    emptyStar2Top: '1000%',
-                    emptyStar3Top: '1000%',
-                })
-            },1000)
-        }
+       if (showIt == 'Gameover') {
+           setTimeout(() => {
+               this.setState({
+                   star1Top: '1000%',
+                   emptyStar1Top: '1%',
+                   fadlugTop: '19%',
+                   gufadyanTop: '19%',
+                   lamwaTop: '56%',
+                   choice1Top: '1000%',//75%
+                   choice2Top: '1000%',//75%
+                   choice3Top: '1000%',//75%
+                   choice4Top: '1000%',//75%
+                   blackboardTop: '1000%',
+                   star1Top: '1000%',
+                   star2Top: '1000%',
+                   star3Top: '1000%',
+                   emptyStar1Top: '1000%',
+                   emptyStar2Top: '1000%',
+                   emptyStar3Top: '1000%',
+               })
+           }, 1000)
+       }
+       this.load('check');
+       this.minusStar();
+        this.checkBalance();
 
     }
 
@@ -961,8 +959,22 @@ class Bang extends Component {
 
         if (star3 == 'wrong') {
             this.setState({
+                star1Top: '1000%',
+                emptyStar1Top: '1%',
+                fadlugTop: '19%',
+                gufadyanTop: '19%',
+                lamwaTop: '56%',
+                choice1Top: '1000%',//75%
+                choice2Top: '1000%',//75%
+                choice3Top: '1000%',//75%
+                choice4Top: '1000%',//75%
+                blackboardTop: '1000%',
+                star1Top: '1000%',
+                star2Top: '1000%',
                 star3Top: '1000%',
-                emptyStar3Top: '1%',
+                emptyStar1Top: '1000%',
+                emptyStar2Top: '1000%',
+                emptyStar3Top: '1000%',
             })
         }
 
@@ -1021,7 +1033,6 @@ class Bang extends Component {
         realm = new Realm({ path: 'PlayerDatabase.realm' });
         var getStars = realm.objects('Players');
         var id = 0;
-        
         for (a = 0; a < getStars.length; a++) {
             const con = parseInt(a);
             if (storedValue == getStars[con].playername) {
@@ -1041,11 +1052,6 @@ class Bang extends Component {
             emptyStar1Top: '1000%',
             emptyStar2Top: '1000%',
             emptyStar3Top: '1000%',
-            choice1Top: '75%',//75%
-            choice2Top: '75%',//75%
-            choice3Top: '75%',//75%
-            choice4Top: '75%',//75%
-            blackboardTop: '14%',
             fadlugTop:'1000%',
             gufadyanTop:'1000%',
             lamwaTop:'1000%',
