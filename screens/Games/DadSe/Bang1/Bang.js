@@ -551,7 +551,7 @@ class Bang extends Component {
     }
 
     gotoMarket = () =>{
-        this.props.navigation.navigate('dadseMarket');
+        this.props.navigation.navigate('dadbatakmarket');
     }
 
     gotoLamwa = () =>{

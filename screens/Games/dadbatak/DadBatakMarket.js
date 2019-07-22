@@ -3,6 +3,8 @@ import { Text, View, Image, StyleSheet, StatusBar, TouchableOpacity , Animated,
     ImageBackground, PanResponder, Dimensions, AsyncStorage} from 'react-native';
 import { withNavigation } from 'react-navigation';
 
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet';
 import GameBG from '../gameImages/GameBG.png';
 import Home_icon from '../../images/Home_icon.png';
@@ -411,7 +413,11 @@ class DadBatakMarket extends Component {
     }
 
     gotoDadSe = () =>{
-        this.props.navigation.navigate('dadse')
+        this.props.navigation.replace('gameMenu', { showGameover: 'Dadse' });
+    }
+
+    gotoHome = () =>{
+        this.props.navigation.navigate('home')
     }
 
     unFillProgressBar = () => {
@@ -763,17 +769,24 @@ class DadBatakMarket extends Component {
                     </TouchableOpacity>
                 </View>
                 
-                
-
-                <View style={{position: 'absolute',  left: '3%', 
+            
+                {/* <View style={{position: 'absolute',  left: '3%', 
                     bottom: '3%', width: '10%', height: '24%'}}>
-                    <Image source={GnareIcon} style={styles.image}></Image>
-                </View>
+                        <TouchableOpacity>
+                            <Image source={GnareIcon} style={styles.image}></Image>
+                        </TouchableOpacity>
+                </View> */}
 
 
                 <View style={styles.backContainer}>
                     <TouchableOpacity onPress={this.gotoDadSe}>
                         <Image source={Back_icon} style={styles.home}></Image>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={style.gnareIconStyle}>
+                    <TouchableOpacity onPress={this.gotoHome}>
+                        <Image source={GnareIcon} style={style.image}></Image>
                     </TouchableOpacity>
                 </View>
                 
@@ -786,6 +799,21 @@ class DadBatakMarket extends Component {
         )
     }
 }
+
+const style = StyleSheet.create({
+    gnareIconStyle: {
+        position: 'absolute',
+        bottom: hp('9%'),
+        left: wp('2%'),
+        height: hp('12%'),
+        width: wp('12%'),
+    },
+    image: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'contain'
+    }
+})
 
 
 export default withNavigation(DadBatakMarket);
