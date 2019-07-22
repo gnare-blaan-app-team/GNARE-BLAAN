@@ -72,12 +72,6 @@ import Answer8 from '../../gameImages/blackboard/bang1A8.png';
 import Answer9 from '../../gameImages/blackboard/bang1A9.png';
 import Answer10 from '../../gameImages/blackboard/bang1A10.png';
 
-const RandomKey = '@MyApp:RandomKey';
-const Star1 = '@MyApp:Star1';
-const Star2 = '@MyApp:Star2';
-const Star3 = '@MyApp:Star3';
-const CoinBalance = '@MyApp:CoinBalance';
-const QuestionDone = '@MyApp:QuestionDone';
 const SessionPlayer = '@MyApp:SessionPlayer';
 
 var Realm = require('realm');
@@ -362,34 +356,32 @@ class Bang extends Component {
     }
 
    componentDidMount() {
-        // this.onLoad();
-        this.minusStar();
-        this.checkBalance();
-       this.load('check');
        const showIt = this.state.showGameover;
-        if (showIt == 'Gameover'){
-            
-            setTimeout(() => {
-                this.setState({
-                    star1Top: '1000%',
-                    emptyStar1Top: '1%',
-                    fadlugTop: '19%',
-                    gufadyanTop: '19%',
-                    lamwaTop: '56%',
-                    choice1Top: '1000%',//75%
-                    choice2Top: '1000%',//75%
-                    choice3Top: '1000%',//75%
-                    choice4Top: '1000%',//75%
-                    blackboardTop: '1000%',
-                    star1Top: '1000%',
-                    star2Top: '1000%',
-                    star3Top: '1000%',
-                    emptyStar1Top: '1000%',
-                    emptyStar2Top: '1000%',
-                    emptyStar3Top: '1000%',
-                })
-            },1000)
-        }
+       if (showIt == 'Gameover') {
+           setTimeout(() => {
+               this.setState({
+                   star1Top: '1000%',
+                   emptyStar1Top: '1%',
+                   fadlugTop: '19%',
+                   gufadyanTop: '19%',
+                   lamwaTop: '56%',
+                   choice1Top: '1000%',//75%
+                   choice2Top: '1000%',//75%
+                   choice3Top: '1000%',//75%
+                   choice4Top: '1000%',//75%
+                   blackboardTop: '1000%',
+                   star1Top: '1000%',
+                   star2Top: '1000%',
+                   star3Top: '1000%',
+                   emptyStar1Top: '1000%',
+                   emptyStar2Top: '1000%',
+                   emptyStar3Top: '1000%',
+               })
+           }, 1000)
+       }
+       this.load('check');
+       this.minusStar();
+        this.checkBalance();
 
     }
 
@@ -522,7 +514,9 @@ class Bang extends Component {
         }
         if(coin == 'null'){
             const value = 0;
-            this.state.Balance = value; 
+            this.setState({
+                Balance: value,
+            })
         }else{
             this.setState({
                 Balance:coin
@@ -534,6 +528,9 @@ class Bang extends Component {
                 const value = 1;
                 realm.write(() => {
                     getCoin[id].coinBalance = String(value);
+                })
+                this.setState({
+                    Balance: value,
                 })
             }else{
                 const convertToNumber = Number(this.state.Balance);
@@ -566,7 +563,6 @@ class Bang extends Component {
     }
 
     load = async (index) =>{
-        var tmp_playerHolder = [];
         const storedValue = await AsyncStorage.getItem(SessionPlayer);
         realm = new Realm({ path: 'PlayerDatabase.realm' });
         var getPlayers = realm.objects('Players');
@@ -575,7 +571,28 @@ class Bang extends Component {
         const randomizer = Math.floor(Math.random() * stageNumber.length);
         var use = stageNumber[randomizer];
         stageNumber.splice(randomizer, 1);
+        var q ='';
+        for (a = 0; a < getPlayers.length; a++) {
+            const con = parseInt(a);
+            if (storedValue == getPlayers[con].playername) {
+                q = getPlayers[con].questionDoneBang1;
+            }
+        }
 
+        if(q == 5){
+            this.props.navigation.navigate('ending');
+            for (a = 0; a < getPlayers.length; a++) {
+                const con = parseInt(a);
+                if (storedValue == getPlayers[con].playername) {
+                    realm.write(() => {
+                        getPlayers[con].star1 = 'null';
+                        getPlayers[con].star2 = 'null';
+                        getPlayers[con].star3 = 'null';
+                        getPlayers[con].questionDoneBang1 = 'null';
+                    })
+                }
+            }
+        }
         if(index == 'check'){
             for (a = 0; a < getPlayers.length; a++) {
                 const con = parseInt(a);
@@ -874,13 +891,24 @@ class Bang extends Component {
     }
 
     correct = async (index) => {
-        this.playChoiceGame(1);
-
+        this.playChoiceGame(1)
         const add = 'addBalance';
         this.checkBalance(add);
         questionAnswered.push(1);
-        const value = JSON.stringify(questionAnswered.length);
-        await AsyncStorage.setItem(QuestionDone, value);
+        var value = JSON.stringify(questionAnswered.length);
+        const storedValue = await AsyncStorage.getItem(SessionPlayer);
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getPlayers = realm.objects('Players');
+        
+        for (a = 0; a < getPlayers.length; a++) {
+            const con = parseInt(a);
+            if (storedValue == getPlayers[con].playername) {
+                realm.write(() => {
+                    getPlayers[con].questionDoneBang1 = String(value);
+                })
+            }
+        }
+
         for (var a = 0; a <= answer.length; a++) {
             if (index == answer[a]) {
                 const get = a;
@@ -931,8 +959,22 @@ class Bang extends Component {
 
         if (star3 == 'wrong') {
             this.setState({
+                star1Top: '1000%',
+                emptyStar1Top: '1%',
+                fadlugTop: '19%',
+                gufadyanTop: '19%',
+                lamwaTop: '56%',
+                choice1Top: '1000%',//75%
+                choice2Top: '1000%',//75%
+                choice3Top: '1000%',//75%
+                choice4Top: '1000%',//75%
+                blackboardTop: '1000%',
+                star1Top: '1000%',
+                star2Top: '1000%',
                 star3Top: '1000%',
-                emptyStar3Top: '1%',
+                emptyStar1Top: '1000%',
+                emptyStar2Top: '1000%',
+                emptyStar3Top: '1000%',
             })
         }
 
@@ -991,7 +1033,6 @@ class Bang extends Component {
         realm = new Realm({ path: 'PlayerDatabase.realm' });
         var getStars = realm.objects('Players');
         var id = 0;
-        
         for (a = 0; a < getStars.length; a++) {
             const con = parseInt(a);
             if (storedValue == getStars[con].playername) {
@@ -1011,11 +1052,6 @@ class Bang extends Component {
             emptyStar1Top: '1000%',
             emptyStar2Top: '1000%',
             emptyStar3Top: '1000%',
-            choice1Top: '75%',//75%
-            choice2Top: '75%',//75%
-            choice3Top: '75%',//75%
-            choice4Top: '75%',//75%
-            blackboardTop: '14%',
             fadlugTop:'1000%',
             gufadyanTop:'1000%',
             lamwaTop:'1000%',

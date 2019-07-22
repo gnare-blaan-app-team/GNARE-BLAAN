@@ -15,8 +15,10 @@ import GnareIcon from '../../gameImages/GnareMain.png';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import {globalStyleSheet as styles} from '../../../globalStyleSheet/globalStyleSheet.js';
 
-const RandomKey = '@MyApp:RandomKey';
-const Stage2 = '@MyApp:Stage2';
+const SessionPlayer = '@MyApp:SessionPlayer';
+
+var Realm = require('realm');
+let realm;
 
 class Ending extends Component {
     
@@ -59,13 +61,21 @@ class Ending extends Component {
         } catch(error) {
             
         }
-        this.onSave();
-        this.props.navigation.push('gameMenu', { show: 'Dadse' });
-        const store = 'unlock';
-        await AsyncStorage.setItem(Stage2, store);
+        this.props.navigation.replace('gameMenu', { show: 'Dadse' });
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getPlayers = realm.objects('Players');
+        const storedValue = await AsyncStorage.getItem(SessionPlayer);
+        for (a = 0; a < getPlayers.length; a++) {
+            const con = parseInt(a);
+            if (storedValue == getPlayers[con].playername) {    
+                 realm.write(() => {
+                    getPlayers[con].DSbangStage2 = 'unlock'
+                })
+            }
+        }
     }
 
-    gotoGameScreen = () => {
+    gotoGameScreen = async () => {
         try {
             sound.setVolume(0.2);
             sound.play();
@@ -73,7 +83,18 @@ class Ending extends Component {
             
         }
         this.setState({paused: true, volume: 0, muted: true});
-        this.props.navigation.replace('gameMenu', { showDadseBang: 'show' });
+        this.props.navigation.push('gameMenu', { show: 'Dadse' });
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getPlayers = realm.objects('Players');
+        const storedValue = await AsyncStorage.getItem(SessionPlayer);
+        for (a = 0; a < getPlayers.length; a++) {
+            const con = parseInt(a);
+            if (storedValue == getPlayers[con].playername) {
+                realm.write(() => {
+                    getPlayers[con].DSbangStage2 = 'unlock'
+                })
+            }
+        }
     }
 
     gotoHome = () => {
