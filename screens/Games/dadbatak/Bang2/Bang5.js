@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, PanResponder, StyleSheet, TouchableOpacity, ImageBackground, AsyncStorage} from 'react-native';
+import { Text, View, Image, PanResponder, StyleSheet, TouchableOpacity, BackHandler, ImageBackground, AsyncStorage} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import GameBG from '../../gameImages/GameBG.png';
 import { globalStyleSheet } from '../../../globalStyleSheet/globalStyleSheet';
@@ -786,13 +786,27 @@ class Bang5 extends Component {
             lamwaTop:'1000%',
             Balance:0,
         }
+
+        //Sounds
+        answerAudio = null;
     }
 
     componentDidMount() {
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+
         this.load('check');
         this.minusStar();
         this.checkBalance();
     }
+
+    componentWillUnmount() {
+        this.backHandler.remove()
+      }
+    
+      handleBackPress = () => {
+        this.goBack(); 
+        return true;
+      }
 
     playChoiceGame = (index) => {
         this.choiceGame = new Sound(choiceGame[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
@@ -808,17 +822,23 @@ class Bang5 extends Component {
         for (var a = 0; a <= audio.length; a++) {
             if (index == audioIndex[a]) {
                 const set = a;
-                const answerAudio = new Sound(audio[set] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+                this.answerAudio = new Sound(audio[set] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                     if (error) {
                         alert('failed to load the sound', error);
                         return;
                     } else {
-                        answerAudio.play();
+                        this.answerAudio.play();
                     }
                 });
             }
         }
-  }
+    }
+
+    stopSounds = () => {
+        if (this.answerAudio != null){
+          this.answerAudio.stop();
+        }
+      }
 
     checkBalance = async (index) => {
         const storedValue = await AsyncStorage.getItem(SessionPlayer);
@@ -873,6 +893,7 @@ class Bang5 extends Component {
     }
 
     goBack = () => {
+        this.stopSounds();
         this.props.navigation.push('gameMenu');
     }
     

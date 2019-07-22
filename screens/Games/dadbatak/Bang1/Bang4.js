@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, PanResponder, StyleSheet, TouchableOpacity, ImageBackground, AsyncStorage} from 'react-native';
+import { Text, View, Image, PanResponder, StyleSheet, TouchableOpacity, BackHandler, ImageBackground, AsyncStorage} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import GameBG from '../../gameImages/GameBG.png';
 import { globalStyleSheet } from '../../../globalStyleSheet/globalStyleSheet';
@@ -529,10 +529,14 @@ class Bang4 extends Component {
             Balance:0,
             soundName:'',
         }
+
+        //Sound
+        answerAudio = null;
     }
 
     componentDidMount() {
         const showIt = this.state.showGameover;
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
 
         if(showIt == 'Gameover') {
             setTimeout(() => {
@@ -563,6 +567,15 @@ class Bang4 extends Component {
         this.checkBalance();
     }
 
+    componentWillUnmount() {
+        this.backHandler.remove()
+      }
+    
+      handleBackPress = () => {
+        this.goBack(); 
+        return true;
+      }
+
     playChoiceGame = (index) => {
         this.choiceGame = new Sound(choiceGame[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
         if (error) {
@@ -577,16 +590,22 @@ class Bang4 extends Component {
         for(var a = 0; a<=audio.length;a++){
             if(index == audioIndex[a]){
                 const set = a;
-                const answerAudio = new Sound(audio[set] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+                this.answerAudio = new Sound(audio[set] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                     if (error) {
                         alert('failed to load the sound', error);
                         return;
                     } else {
-                        answerAudio.play();
+                        this.answerAudio.play();
                     }
                 });
             }
         }
+  }
+
+  stopSounds = () => {
+    if (this.answerAudio != null){
+      this.answerAudio.stop();
+    }
   }
 
     checkBalance = async (index) => {
@@ -650,6 +669,7 @@ class Bang4 extends Component {
     }
 
     goBack = () => {
+        this.stopSounds();
         this.props.navigation.push('gameMenu');
     }
     
