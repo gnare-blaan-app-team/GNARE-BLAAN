@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, PanResponder, TouchableOpacity, ImageBackground, AsyncStorage} from 'react-native';
+import { Text, View, Image, PanResponder, StyleSheet, TouchableOpacity, ImageBackground, AsyncStorage} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import GameBG from '../../gameImages/GameBG.png';
 import { globalStyleSheet } from '../../../globalStyleSheet/globalStyleSheet';
@@ -11,8 +11,11 @@ import emptyStars from '../../gameImages/13Icon_EmptyStar.png';
 import FadlugIcon from '../../gameImages/fadlug_icon.png';
 import LamwaIcon from '../../gameImages/lamwa_icon.png';
 import GufadyanIcon from '../../gameImages/gufadyan_icon.png';
+import Gufadyan from '../../gameImages/gufadyan.png';
 import Coins from '../../gameImages/Coinbank.png';
 import Sound from 'react-native-sound';
+
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import choiceSatu from '../../gameImages/choices2/DSB2_satu.png';
 import choiceLwe from '../../gameImages/choices2/DSB2_iwe.png';
@@ -356,6 +359,7 @@ class Bang2 extends Component {
             emptyStar3Top:'1000%',
             fadlugTop:'1000%',
             gufadyanTop:'1000%',
+            marketBottom: '3%',
             lamwaTop:'1000%',
             Balance:0,
         }
@@ -541,7 +545,7 @@ class Bang2 extends Component {
     }
 
     goGufadyan = () => {
-        this.props.navigation.navigate('dadseMarket');
+        this.props.navigation.navigate('dadbatakmarket');
     }
     
     load = async (index) => {
@@ -647,6 +651,7 @@ class Bang2 extends Component {
                 choice3Top: '75%',//75%
                 choice4Top: '75%',//75%
                 blackboardTop: '14%',
+                marketBottom: '3%',
             });
         }
     }
@@ -987,6 +992,7 @@ class Bang2 extends Component {
                                 emptyStar1Top: '1000%',
                                 emptyStar2Top: '1000%',
                                 emptyStar3Top: '1000%',
+                                marketBottom: '1000%',
                             })
                         }, 1000)
                     }
@@ -1062,6 +1068,22 @@ class Bang2 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
+
+                <View style={{
+                     position: 'absolute',
+                     bottom: this.state.marketBottom,
+                     right: '8%',
+                     height: hp('9%'),
+                     width: wp('18%'),
+                }}>
+                    <TouchableOpacity onPress={this.goGufadyan}>
+                        <Image
+                            source={Gufadyan}
+                            style={styles.image}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+
                 <View style={{ position: 'absolute',width:'60%',height:'50%',top:this.state.blackboardTop}}> 
                     <Image source={show.blackboard}
                     style={{
@@ -1252,7 +1274,12 @@ class Bang2 extends Component {
     }
 }
 
-
-
+const styles = StyleSheet.create({
+    image: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'stretch'
+    }
+})
 
 export default withNavigation(Bang2);

@@ -439,10 +439,10 @@ class GameMenu extends Component {
 
     market = () => {
         if (this.state.level == 'dadsePart'){
-            this.props.navigation.navigate('dadseMarket');
+            this.props.navigation.navigate('dadbatakmarket');
         }     
         if (this.state.level == 'dadbatakPart'){
-            this.props.navigation.navigate('dadbatakmarket');
+            this.props.navigation.navigate('dadseMarket');
         } 
     }
 
@@ -827,8 +827,8 @@ class GameMenu extends Component {
 const styles = StyleSheet.create({
     gnareIconStyle: {
         position: 'absolute',
-        top: hp('5%'),
-        left: wp('2%'),
+        top: '5%',
+        left: '2%',
         height: hp('12%'),
         width: wp('10%'),
     },
