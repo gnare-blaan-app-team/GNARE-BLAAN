@@ -547,7 +547,7 @@ class Bang extends Component {
     }
 
     gotoMainMenu = () =>{
-        this.props.navigation.navigate('mainMenu');
+        this.props.navigation.replace('mainMenu');
     }
 
     gotoMarket = () =>{
@@ -580,7 +580,7 @@ class Bang extends Component {
         }
 
         if(q == 5){
-            this.props.navigation.navigate('ending');
+            this.props.navigation.replace('ending');
             for (a = 0; a < getPlayers.length; a++) {
                 const con = parseInt(a);
                 if (storedValue == getPlayers[con].playername) {
@@ -915,6 +915,10 @@ class Bang extends Component {
                 this.setState({
                     answerImage: correct[get],
                     answerTop: '51%',
+                    choice1Top: '1000%',
+                    choice2Top: '1000%',
+                    choice3Top: '1000%',
+                    choice4Top: '1000%'
                 })
                 setTimeout(() => {
                     this.setState({

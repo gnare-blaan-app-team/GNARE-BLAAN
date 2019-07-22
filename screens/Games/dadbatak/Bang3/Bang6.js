@@ -999,6 +999,10 @@ class Bang extends Component {
                 this.setState({
                     answerImage: correct[get],
                     answerTop: '53%',
+                    choice1Top: '1000%',
+                    choice2Top: '1000%',
+                    choice3Top: '1000%',
+                    choice4Top: '1000%'
                 })
                 setTimeout(() => {
                     this.setState({

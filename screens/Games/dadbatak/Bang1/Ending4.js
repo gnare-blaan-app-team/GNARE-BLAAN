@@ -88,7 +88,7 @@ class Ending4 extends Component {
             
         }
         this.setState({paused: true, volume: 0, muted: true});
-        this.props.navigation.replace('gameMenu', { showDadBatakBang: 'show' });
+        this.props.navigation.replace('gameMenu', { show: 'DadBatak' });
         realm = new Realm({ path: 'PlayerDatabase.realm' });
         var getPlayers = realm.objects('Players');
         const storedValue = await AsyncStorage.getItem(SessionPlayer);
