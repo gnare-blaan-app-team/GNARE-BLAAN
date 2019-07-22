@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { StyleSheet, AsyncStorage, View, Image, ImageBackground, TouchableWithoutFeedback, TouchableOpacity} from "react-native";
+import { StyleSheet, AsyncStorage, View, Image, ImageBackground, TouchableWithoutFeedback, TouchableOpacity, Text} from "react-native";
 
 import Video from "react-native-video";
 import DadSe_FIL_Slide2 from '../IntroVideos/DadSe_FIL_Slide2.mp4';
+import DadSe_EN_Slide2 from '../IntroVideos/DadSe_EN_Slide2.mp4';
 import { globalStyleSheet as styles } from '../globalStyleSheet/globalStyleSheet.js';
 import { withNavigation } from 'react-navigation'; 
 import { sound } from '../HomePage';
@@ -17,16 +18,18 @@ const Stage2 = '@MyApp:Stage2';
 
 class DSBangIntroScreen extends Component {
     
-    constructor () {
-        super();
+    constructor (props) {
+        super(props);
         this.state = {
-
+            paused: false,
+            source: DadSe_FIL_Slide2,
             opacityVideo: 1,
             paused: false,
             progress: 0,
             duration: 0,
             muted: false,
             volume: 1,
+            subtitle: ' English',
         };
     }
 
@@ -73,7 +76,7 @@ class DSBangIntroScreen extends Component {
                     <TouchableWithoutFeedback onPress={this.hideControl}>
                         <Video
                             paused={this.state.paused}
-                            source={DadSe_FIL_Slide2}
+                            source={this.state.source}
                             
                             style={{ width: "100%", height: '100%' }}
                             resizeMode="stretch"
@@ -124,6 +127,17 @@ class DSBangIntroScreen extends Component {
                     <Image source={Bang3Icon} style={styles.image}></Image>
                 </View>
 
+                <View style={{position: 'absolute', top: '78%', left: '88%', height: '10%', justifyContent: 'center', alignItems: 'center'}}>
+                    <TouchableOpacity onPress={()=> {
+                        this.setState({
+                            source: this.state.source == DadSe_FIL_Slide2 ? DadSe_EN_Slide2 : DadSe_FIL_Slide2,
+                            subtitle: this.state.subtitle == ' English' ? ' Filipino' : ' English',
+                        });
+                        // this.handleProgressPress;
+                    }}>
+                        <Text style={{color: 'white', borderWidth: 2, borderColor: 'white', borderRadius: 5, padding: 3, fontSize: 18, backgroundColor: '#242424', shadowOpacity: 100}}>{this.state.subtitle}</Text>
+                    </TouchableOpacity>
+                </View>
             </ImageBackground>
         );
     }
