@@ -446,7 +446,6 @@ class GameMenu extends Component {
         } 
     }
 
-
     refreshPlayer =()=>{
         realm = new Realm({ path: 'PlayerDatabase.realm' });
         const ds = new ListView.DataSource({
