@@ -501,6 +501,7 @@ class Bang4 extends Component {
             getChoice2Name: '',
             getChoice3Name: '',
             getChoice4Name: '',
+            showGameover: '',
             answer:'',
             choice1Top: '1000%',//75%
             choice2Top: '1000%',//75%
@@ -527,6 +528,31 @@ class Bang4 extends Component {
     }
 
     componentDidMount() {
+        const showIt = this.state.showGameover;
+
+        if(showIt == 'Gameover') {
+            setTimeout(() => {
+                this.setState({
+                    star1Top: '1000%',
+                    emptyStar1Top: '1%',
+                    fadlugTop: '19%',
+                    gufadyanTop: '19%',
+                    lamwaTop: '56%',
+                    choice1Top: '1000%',//75%
+                    choice2Top: '1000%',//75%
+                    choice3Top: '1000%',//75%
+                    choice4Top: '1000%',//75%
+                    blackboardTop: '1000%',
+                    star1Top: '1000%',
+                    star2Top: '1000%',
+                    star3Top: '1000%',
+                    emptyStar1Top: '1000%',
+                    emptyStar2Top: '1000%',
+                    emptyStar3Top: '1000%',
+                })
+            },1000)
+        }
+
         this.load('check');
         this.minusStar();
         this.checkBalance();
@@ -608,6 +634,14 @@ class Bang4 extends Component {
 
     gotoMainMenu = () =>{
         this.props.navigation.navigate('mainMenu');
+    }
+
+    gotoMarket = () =>{
+        this.props.navigation.navigate('dadseMarket');
+    }
+
+    gotoLamwa = () =>{
+        this.props.navigation.replace('gameMenu', { showGameover: 'DadBatak' });
     }
 
     goBack = () => {
@@ -1054,27 +1088,27 @@ class Bang4 extends Component {
                         realm.write(() => {
                             getStars[id].Dadbatakstar3  = 'wrong';
                         })
-                        // this.props.navigation.navigate('gameover');
-                            setTimeout(() => {
-                            this.setState({
-                                star1Top: '1000%',
-                                emptyStar1Top: '1%',
-                                fadlugTop: '19%',
-                                gufadyanTop: '19%',
-                                lamwaTop: '56%',
-                                choice1Top: '1000%',//75%
-                                choice2Top: '1000%',//75%
-                                choice3Top: '1000%',//75%
-                                choice4Top: '1000%',//75%
-                                blackboardTop: '1000%',
-                                star1Top: '1000%',
-                                star2Top: '1000%',
-                                star3Top: '1000%',
-                                emptyStar1Top: '1000%',
-                                emptyStar2Top: '1000%',
-                                emptyStar3Top: '1000%',
-                            })
-                        },1000)
+                        this.props.navigation.navigate('gameover4');
+                        //     setTimeout(() => {
+                        //     this.setState({
+                        //         star1Top: '1000%',
+                        //         emptyStar1Top: '1%',
+                        //         fadlugTop: '19%',
+                        //         gufadyanTop: '19%',
+                        //         lamwaTop: '56%',
+                        //         choice1Top: '1000%',//75%
+                        //         choice2Top: '1000%',//75%
+                        //         choice3Top: '1000%',//75%
+                        //         choice4Top: '1000%',//75%
+                        //         blackboardTop: '1000%',
+                        //         star1Top: '1000%',
+                        //         star2Top: '1000%',
+                        //         star3Top: '1000%',
+                        //         emptyStar1Top: '1000%',
+                        //         emptyStar2Top: '1000%',
+                        //         emptyStar3Top: '1000%',
+                        //     })
+                        // },1000)
                     }
                 }
             }
@@ -1125,6 +1159,10 @@ class Bang4 extends Component {
         this.state.answer = answer;
         const sound = show.sound;
         this.state.soundName = sound;
+
+        const { navigation } = this.props;
+        const itemId = navigation.getParam('showGameover', 'NO-ID');
+        this.state.showGameover = itemId;
         return (
             <ImageBackground
                 source={GameBG}
@@ -1290,7 +1328,7 @@ class Bang4 extends Component {
                     left: '55%',
                     top: this.state.gufadyanTop
                 }}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={this.gotoMarket}>
                         <Image
                             style={{ width: '100%', height: '100%', resizeMode: 'contain' }}
                             source={GufadyanIcon} />
@@ -1303,7 +1341,7 @@ class Bang4 extends Component {
                     left: '36%',
                     top: this.state.lamwaTop
                 }}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={this.gotoLamwa}>
                         <Image
                             style={{ width: '100%', height: '100%', resizeMode: 'contain' }}
                             source={LamwaIcon} />

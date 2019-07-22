@@ -70,6 +70,10 @@ class GameIntroScreen extends Component {
         this.props.navigation.replace('gameMenu', { openProfile: 'showProfile' });
     }
 
+    gotoHome = () => {
+        this.props.navigation.navigate('home');
+    }
+
     // replayVideo = () => {
     //     this.setState({source: Number_Intro});
     //     setTimeout(()=>{
