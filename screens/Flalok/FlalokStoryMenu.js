@@ -3,7 +3,7 @@ import { ImageBackground, TouchableOpacity, View, Image, Text} from 'react-nativ
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 
-import Back_icon from '../images/Back_icon.png';
+import GnareIcon from '../Games/gameImages/GnareMain.png'
 import Home_icon from '../images/Home_icon.png';
 import Story1 from './flalokImages/Story1.png';
 import Story2 from './flalokImages/Story2.png';
@@ -36,6 +36,10 @@ class FlalokStoryMenu extends Component {
             prevTop:'1000%',
             get:0,
         }
+    }
+
+    gotoHome = () => {
+        this.props.navigation.navigte('home');
     }
 
     gotoStory1 = () => {
@@ -123,6 +127,14 @@ class FlalokStoryMenu extends Component {
                 <ImageBackground style={styles.image}
                 source={require('../images/Flalok_BG.jpg')}
                 >
+                    <View style={styles.backContainer}>
+                        <TouchableOpacity onPress={this.gotoHome}>
+                            <Image
+                                source={GnareIcon}
+                                style={styles.back}
+                            ></Image>
+                        </TouchableOpacity>
+                    </View>
                     {/* <View style={styles.menuContainer}>
                         <MenuItem itemImage={Story1} goto={this.gotoStory1} />
                         <MenuItem itemImage={Story2} goto={this.gotoStory2} />
@@ -211,17 +223,6 @@ class FlalokStoryMenu extends Component {
                                     </TouchableOpacity>
                                 </View>
                             </View>
-
-
-
-                    <View style={styles.backContainer}>
-                        <TouchableOpacity onPress={this.goBack}>
-                            <Image
-                                source={Back_icon}
-                                style={styles.back}
-                            ></Image>
-                        </TouchableOpacity>
-                    </View>
 
                     <View style={styles.homeContainer}>
                         <TouchableOpacity onPress={this.gotoMainMenu}>

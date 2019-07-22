@@ -3,6 +3,7 @@ import { ImageBackground, TouchableOpacity, View, Image} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 
+import GnareIcon from '../Games/gameImages/GnareMain.png'
 import Back_icon from '../images/Back_icon.png';
 import Home_icon from '../images/Home_icon.png';
 import Chants_icon from './cultureandartsImages/Chants.png';
@@ -20,8 +21,8 @@ class cultureandartsMain extends Component {
         this.props.navigation.navigate('mainMenu');
     }
 
-    goBack = () => {
-        this.props.navigation.navigate('mainMenu');
+    gotoHome = () => {
+        this.props.navigation.navigate('home');
     }
 
     render(){
@@ -52,9 +53,9 @@ class cultureandartsMain extends Component {
                 </View>
                 
                 <View style={styles.backContainer}>
-                    <TouchableOpacity onPress={this.goBack}>
+                    <TouchableOpacity onPress={this.gotoHome}>
                         <Image
-                            source={Back_icon}
+                            source={GnareIcon}
                             style={styles.back}
                         ></Image>
                     </TouchableOpacity>

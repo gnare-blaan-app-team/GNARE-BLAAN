@@ -3,7 +3,7 @@ import { ImageBackground, TouchableOpacity, View, Image} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import Back_icon from '../images/Back_icon.png';
+import GnareIcon from '../Games/gameImages/GnareMain.png'
 import Home_icon from '../images/Home_icon.png';
 import MembersFamily_icon from './vocabularyMenuImages/Vocab1.png';
 import BodyParts_icon from './vocabularyMenuImages/Vocab2.png';
@@ -40,6 +40,9 @@ class vocabularyMenu extends Component {
 
     gotoMainMenu = () => {
         this.props.navigation.navigate('mainMenu');
+    }
+    gotoHome = () => {
+        this.props.navigation.navigate('home');
     }
     vocabulary1 = () => {
         this.props.navigation.push('vocabulary1');
@@ -135,6 +138,14 @@ class vocabularyMenu extends Component {
     render(){
         return(
                 <ImageBackground style={styles.image} source={require('../images/Flalok_BG.jpg')}>
+                <View style={styles.backContainer}>
+                    <TouchableOpacity onPress={this.gotoHome}>
+                        <Image
+                            source={GnareIcon}
+                            style={styles.back}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
                 <View style={{
                     justifyContent: 'center',
                     position: 'absolute',
@@ -193,14 +204,6 @@ class vocabularyMenu extends Component {
                     flexWrap: 'wrap',
                 }}>
                     <VocabularyItem itemImage={Kastifun_icon} goto={this.vocabulary10} />
-                </View>
-                <View style={styles.backContainer}>
-                    <TouchableOpacity onPress={this.goBack}>
-                        <Image
-                            source={Back_icon}
-                            style={styles.back}
-                        ></Image>
-                    </TouchableOpacity>
                 </View>
                 <View style={{
                     position: 'absolute',
