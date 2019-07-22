@@ -11,6 +11,7 @@ import Skip_icon from '../images/skip.png';
 import Bang1Icon from './gameImages/bang1_icon.png';
 import Bang2Icon from './gameImages/12Icon_Bang2Lock.png';
 import Bang3Icon from './gameImages/12Icon_Bang3Lock.png';
+import GnareIcon from './gameImages/GnareMain.png';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const RandomKey = '@MyApp:RandomKey';
@@ -68,6 +69,10 @@ class DSBangIntroScreen extends Component {
         this.props.navigation.replace('gameMenu', { showDadseBang: 'show' });
     }
 
+    gotoHome = () => {
+        this.props.navigation.navigate('home');
+    }
+
     render() {
 
         return (
@@ -91,6 +96,20 @@ class DSBangIntroScreen extends Component {
                             }}
                         />
                     </TouchableWithoutFeedback>
+                </View>
+
+                <View style={{position: 'absolute',
+                    top: hp('5%'),
+                    left: wp('2%'),
+                    height: hp('12%'),
+                    width: wp('10%'),}
+                }>
+                    <TouchableOpacity onPress={this.gotoHome}>
+                        <Image source={GnareIcon} style={{width: '100%',
+                            height: '100%',
+                            resizeMode: 'stretch'
+                        }}></Image>
+                    </TouchableOpacity>
                 </View>
 
                 <View style={styles.homeContainer}>
