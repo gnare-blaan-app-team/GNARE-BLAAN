@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, PanResponder, TouchableOpacity, ImageBackground, AsyncStorage} from 'react-native';
+import { Text, View, Image, PanResponder, StyleSheet, TouchableOpacity, BackHandler, ImageBackground, AsyncStorage} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import GameBG from '../../gameImages/GameBG.png';
 import { globalStyleSheet } from '../../../globalStyleSheet/globalStyleSheet';
@@ -11,9 +11,11 @@ import emptyStars from '../../gameImages/13Icon_EmptyStar.png';
 import FadlugIcon from '../../gameImages/fadlug_icon.png';
 import LamwaIcon from '../../gameImages/lamwa_icon.png';
 import GufadyanIcon from '../../gameImages/gufadyan_icon.png';
+import Gufadyan from '../../gameImages/gufadyan.png';
 import Coins from '../../gameImages/Coinbank.png';
 import Sound from 'react-native-sound';
 
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import correctSatu from '../../gameImages/choices/correctSatu.png';
 import correctLwe from '../../gameImages/choices/correctIwe.png';
@@ -290,18 +292,33 @@ class Bang3 extends Component {
             emptyStar3Top:'1000%',
             fadlugTop:'1000%',
             gufadyanTop:'1000%',
+            marketBottom: '3%',
             lamwaTop:'1000%',
             Balance:0,
             nextQuestion:0,
             pass:0,
         }
+
+        //Sound
+        answerAudio = null;
     }
 
     componentDidMount() {
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+
         this.load('check');
         this.minusStar();
         this.checkBalance();
     }
+
+    componentWillUnmount() {
+        this.backHandler.remove()
+      }
+    
+      handleBackPress = () => {
+        this.goBack(); 
+        return true;
+      }
 
     playChoiceGame = (index) => {
         this.choiceGame = new Sound(choiceGame[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
@@ -315,55 +332,61 @@ class Bang3 extends Component {
 
     playSound = (index) => {
         if (index == 'choiceFat') {
-            const answerAudio = new Sound(audio[0] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+            this.answerAudio = new Sound(audio[0] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
                     return;
                 } else {
-                    answerAudio.play();
+                    this.answerAudio.play();
                 }
             });
         }
         if (index == 'choiceLime') {
-            const answerAudio = new Sound(audio[1] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+            this.answerAudio = new Sound(audio[1] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
                     return;
                 } else {
-                    answerAudio.play();
+                    this.answerAudio.play();
                 }
             });
         }
         if (index == 'choiceNam') {
-            const answerAudio = new Sound(audio[2] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+            this.answerAudio = new Sound(audio[2] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
                     return;
                 } else {
-                    answerAudio.play();
+                    this.answerAudio.play();
                 }
             });
         }
         if (index == 'choiceFitu') {
-            const answerAudio = new Sound(audio[3] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+            this.answerAudio = new Sound(audio[3] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
                     return;
                 } else {
-                    answerAudio.play();
+                    this.answerAudio.play();
                 }
             });
         }
         if (index == 'choiceSyem') {
-            const answerAudio = new Sound(audio[4] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+            this.answerAudio = new Sound(audio[4] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
                     return;
                 } else {
-                    answerAudio.play();
+                    this.answerAudio.play();
                 }
             });
         }
+  }
+
+  stopSounds = () => {
+    if (this.answerAudio != null){
+      this.answerAudio.stop();
+    }
   }
 
     checkBalance = async (index) => {
@@ -416,11 +439,12 @@ class Bang3 extends Component {
     }
 
     gotoMainMenu = () =>{
-        this.props.navigation.navigate('mainMenu');
+        this.props.navigation.replace('mainMenu');
     }
 
     goBack = () => {
-        this.props.navigation.push('gameMenu');
+        this.stopSounds();
+        this.props.navigation.replace('gameMenu',{showDadseBang:'show'});
     }
 
     goLamwa = () => {
@@ -428,7 +452,7 @@ class Bang3 extends Component {
     }
 
     goGufadyan = () => {
-        this.props.navigation.navigate('dadseMarket');
+        this.props.navigation.replace('dadbatakmarket');
     }
     
     load = async (index) => {
@@ -892,6 +916,7 @@ class Bang3 extends Component {
                                 emptyStar1Top: '1000%',
                                 emptyStar2Top: '1000%',
                                 emptyStar3Top: '1000%',
+                                marketBottom: '1000%',
                             })
                         }, 1000)
                     }
@@ -933,6 +958,7 @@ class Bang3 extends Component {
             fadlugTop: '1000%',
             gufadyanTop: '1000%',
             lamwaTop: '1000%',
+            marketBottom: '3%',
         })
 
     }
@@ -968,6 +994,22 @@ class Bang3 extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
+
+                <View style={{
+                     position: 'absolute',
+                     bottom: this.state.marketBottom,
+                     right: '8%',
+                     height: hp('9%'),
+                     width: wp('18%'),
+                }}>
+                    <TouchableOpacity onPress={this.goGufadyan}>
+                        <Image
+                            source={Gufadyan}
+                            style={styles.image}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+
                 <View style={{ position: 'absolute',width:'60%',height:'50%',top:this.state.blackboardTop}}> 
                     <Image source={show.blackboard}
                     style={{
@@ -1158,7 +1200,12 @@ class Bang3 extends Component {
     }
 }
 
-
-
+const styles = StyleSheet.create({
+    image: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'stretch'
+    }
+})
 
 export default withNavigation(Bang3);

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, PanResponder, TouchableOpacity, ImageBackground, AsyncStorage} from 'react-native';
+import { Text, View, Image, PanResponder, StyleSheet, TouchableOpacity, BackHandler, ImageBackground, AsyncStorage} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import GameBG from '../../gameImages/GameBG.png';
 import { globalStyleSheet } from '../../../globalStyleSheet/globalStyleSheet';
@@ -11,8 +11,11 @@ import emptyStars from '../../gameImages/13Icon_EmptyStar.png';
 import FadlugIcon from '../../gameImages/fadlug_icon.png';
 import LamwaIcon from '../../gameImages/lamwa_icon.png';
 import GufadyanIcon from '../../gameImages/gufadyan_icon.png';
+import Gufadyan from '../../gameImages/gufadyan.png';
 import Coins from '../../gameImages/Coinbank.png';
 import Sound from 'react-native-sound';
+
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import Choicesboatman from '../../gameImages/DB_choices3/boatman.png';
 import Choicescariage from '../../gameImages/DB_choices3/cariage.png';
@@ -601,16 +604,31 @@ class Bang extends Component {
             emptyStar3Top:'1000%',
             fadlugTop:'1000%',
             gufadyanTop:'1000%',
+            marketBottom: '3%',
             lamwaTop:'1000%',
             Balance:0,
         }
+
+        //Sounds
+        answerAudio = null;
     }
 
     componentDidMount() {
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+
         this.load('check');
         this.minusStar();
         this.checkBalance();
     }
+
+    omponentWillUnmount() {
+        this.backHandler.remove()
+      }
+    
+      handleBackPress = () => {
+        this.goBack(); 
+        return true;
+      }
 
     playChoiceGame = (index) => {
         this.choiceGame = new Sound(choiceGame[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
@@ -626,16 +644,22 @@ class Bang extends Component {
         for (var a = 0; a <= audio.length; a++) {
             if (index == audioIndex[a]) {
                 const set = a;
-                const answerAudio = new Sound(audio[set] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+                this.answerAudio = new Sound(audio[set] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                     if (error) {
                         alert('failed to load the sound', error);
                         return;
                     } else {
-                        answerAudio.play();
+                        this.answerAudio.play();
                     }
                 });
             }
         }
+  }
+
+  stopSounds = () => {
+    if (this.answerAudio != null){
+      this.answerAudio.stop();
+    }
   }
 
     checkBalance = async (index) => {
@@ -687,11 +711,20 @@ class Bang extends Component {
     }
 
     gotoMainMenu = () =>{
-        this.props.navigation.navigate('mainMenu');
+        this.props.navigation.replace('mainMenu');
+    }
+
+    gotoMarket = () =>{
+        this.props.navigation.replace('dadseMarket');
+    }
+
+    gotoLamwa = () =>{
+        this.props.navigation.replace('gameMenu', { showDadBatakBang: 'show' });
     }
 
     goBack = () => {
-        this.props.navigation.push('gameMenu');
+        this.stopSounds();
+        this.props.navigation.replace('gameMenu', { showDadBatakBang: 'show' });
     }
     
     load = async (index) => {
@@ -1108,6 +1141,7 @@ class Bang extends Component {
                                 emptyStar1Top: '1000%',
                                 emptyStar2Top: '1000%',
                                 emptyStar3Top: '1000%',
+                                marketBottom: '1000%',
                             })
                         }, 1000)
                     }
@@ -1144,6 +1178,7 @@ class Bang extends Component {
             fadlugTop: '1000%',
             gufadyanTop: '1000%',
             lamwaTop: '1000%',
+            marketBottom: '3%',
         })
 
     }
@@ -1168,6 +1203,22 @@ class Bang extends Component {
                         <Image source={Home_icon} style={globalStyleSheet.home}></Image>
                     </TouchableOpacity>
                 </View>
+
+                <View style={{
+                     position: 'absolute',
+                     bottom: this.state.marketBottom,
+                     right: '8%',
+                     height: hp('9%'),
+                     width: wp('18%'),
+                }}>
+                    <TouchableOpacity onPress={this.gotoMarket}>
+                        <Image
+                            source={Gufadyan}
+                            style={styles.image}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+
                 <View style={globalStyleSheet.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
@@ -1317,7 +1368,7 @@ class Bang extends Component {
                     left: '36%',
                     top: this.state.lamwaTop
                 }}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={this.gotoLamwa}>
                         <Image
                             style={{ width: '100%', height: '100%', resizeMode: 'contain' }}
                             source={LamwaIcon} />
@@ -1348,6 +1399,14 @@ class Bang extends Component {
     }
 }
 
+
+const styles = StyleSheet.create({
+    image: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'stretch'
+    }
+})
 
 
 

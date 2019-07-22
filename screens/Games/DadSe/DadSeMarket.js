@@ -517,8 +517,8 @@ class DadSeMarket extends Component {
         this.props.navigation.navigate('mainMenu')
     }
 
-    gotoDadBatak = () =>{
-        this.props.navigation.replace('gameMenu', { showGameover: 'DadBatak' });
+    gotoBack = () =>{
+        this.props.navigation.replace('gameMenu', { showDadBatakBang: 'show' });
     }
 
     gotoHome = () => {
@@ -745,7 +745,7 @@ class DadSeMarket extends Component {
 
 
                 <View style={styles.backContainer}>
-                    <TouchableOpacity onPress={this.gotoDadBatak}>
+                    <TouchableOpacity onPress={this.gotoBack}>
                         <Image source={Back_icon} style={styles.home}></Image>
                     </TouchableOpacity>
                 </View>
@@ -770,8 +770,8 @@ class DadSeMarket extends Component {
 const style = StyleSheet.create({
     gnareIconStyle: {
         position: 'absolute',
-        bottom: hp('9%'),
-        left: wp('2%'),
+        bottom: '9%',
+        left: '2%',
         height: hp('12%'),
         width: wp('12%'),
     },

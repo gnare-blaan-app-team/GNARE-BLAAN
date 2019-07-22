@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, PanResponder, TouchableOpacity, ImageBackground, AsyncStorage} from 'react-native';
+import { Text, View, Image, PanResponder, StyleSheet, TouchableOpacity, BackHandler, ImageBackground, AsyncStorage} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import GameBG from '../../gameImages/GameBG.png';
 import { globalStyleSheet } from '../../../globalStyleSheet/globalStyleSheet';
@@ -11,8 +11,11 @@ import emptyStars from '../../gameImages/13Icon_EmptyStar.png';
 import FadlugIcon from '../../gameImages/fadlug_icon.png';
 import LamwaIcon from '../../gameImages/lamwa_icon.png';
 import GufadyanIcon from '../../gameImages/gufadyan_icon.png';
+import Gufadyan from '../../gameImages/gufadyan.png';
 import Coins from '../../gameImages/Coinbank.png';
 import Sound from 'react-native-sound';
+
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import choiceA from '../../gameImages/DB_choices1/a.png';
 import choiceA2ccent from '../../gameImages/DB_choices1/a2-accent.png';
@@ -73,7 +76,7 @@ import tranparentU from '../../gameImages/DB_choices1/tranparentU.png';
 import tranparentUAccent from '../../gameImages/DB_choices1/tranparentUAccent.png';
 import tranparentW from '../../gameImages/DB_choices1/tranparentW.png';
 
-import Empty from '../../gameImages/choices/emptyChoices.png';
+import Empty from '../../gameImages/DB_choices1/emptyChoice.png';
 
 import BlackBoard1 from '../../gameImages/DB_blackboard1/bang1Q1.png';
 import BlackBoard2 from '../../gameImages/DB_blackboard1/bang1Q2.png';
@@ -521,14 +524,19 @@ class Bang4 extends Component {
             emptyStar3Top:'1000%',
             fadlugTop:'1000%',
             gufadyanTop:'1000%',
+            marketBottom: '3%',
             lamwaTop:'1000%',
             Balance:0,
             soundName:'',
         }
+
+        //Sound
+        answerAudio = null;
     }
 
     componentDidMount() {
         const showIt = this.state.showGameover;
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
 
         if(showIt == 'Gameover') {
             setTimeout(() => {
@@ -549,6 +557,7 @@ class Bang4 extends Component {
                     emptyStar1Top: '1000%',
                     emptyStar2Top: '1000%',
                     emptyStar3Top: '1000%',
+                    marketBottom: '1000%',
                 })
             },1000)
         }
@@ -557,6 +566,15 @@ class Bang4 extends Component {
         this.minusStar();
         this.checkBalance();
     }
+
+    componentWillUnmount() {
+        this.backHandler.remove()
+      }
+    
+      handleBackPress = () => {
+        this.goBack(); 
+        return true;
+      }
 
     playChoiceGame = (index) => {
         this.choiceGame = new Sound(choiceGame[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
@@ -572,16 +590,22 @@ class Bang4 extends Component {
         for(var a = 0; a<=audio.length;a++){
             if(index == audioIndex[a]){
                 const set = a;
-                const answerAudio = new Sound(audio[set] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+                this.answerAudio = new Sound(audio[set] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                     if (error) {
                         alert('failed to load the sound', error);
                         return;
                     } else {
-                        answerAudio.play();
+                        this.answerAudio.play();
                     }
                 });
             }
         }
+  }
+
+  stopSounds = () => {
+    if (this.answerAudio != null){
+      this.answerAudio.stop();
+    }
   }
 
     checkBalance = async (index) => {
@@ -633,19 +657,20 @@ class Bang4 extends Component {
     }
 
     gotoMainMenu = () =>{
-        this.props.navigation.navigate('mainMenu');
+        this.props.navigation.replace('mainMenu');
     }
 
     gotoMarket = () =>{
-        this.props.navigation.navigate('dadseMarket');
+        this.props.navigation.replace('dadseMarket');
     }
 
     gotoLamwa = () =>{
-        this.props.navigation.replace('gameMenu', { showGameover: 'DadBatak' });
+        this.props.navigation.replace('gameMenu', { showDadBatakBang: 'show' });
     }
 
     goBack = () => {
-        this.props.navigation.push('gameMenu');
+        this.stopSounds();
+        this.props.navigation.replace('gameMenu', { showDadBatakBang: 'show' });
     }
     
     load = async (index) => {
@@ -750,6 +775,7 @@ class Bang4 extends Component {
                 choice3Top: '75%',//75%
                 choice4Top: '75%',//75%
                 blackboardTop: '14%',
+                marketBottom: '3%',
             });
         }
     }
@@ -1146,6 +1172,7 @@ class Bang4 extends Component {
             fadlugTop: '1000%',
             gufadyanTop: '1000%',
             lamwaTop: '1000%',
+            marketBottom: '3%'
         })
 
     }
@@ -1177,6 +1204,22 @@ class Bang4 extends Component {
                         <Image source={Home_icon} style={globalStyleSheet.home}></Image>
                     </TouchableOpacity>
                 </View>
+
+                <View style={{
+                     position: 'absolute',
+                     bottom: this.state.marketBottom,
+                     right: '8%',
+                     height: hp('9%'),
+                     width: wp('18%'),
+                }}>
+                    <TouchableOpacity onPress={this.gotoMarket}>
+                        <Image
+                            source={Gufadyan}
+                            style={styles.image}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+
                 <View style={globalStyleSheet.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
@@ -1376,7 +1419,13 @@ class Bang4 extends Component {
     }
 }
 
-
+const styles = StyleSheet.create({
+    image: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'stretch'
+    }
+})
 
 
 export default withNavigation(Bang4);

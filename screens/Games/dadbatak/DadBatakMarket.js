@@ -412,9 +412,14 @@ class DadBatakMarket extends Component {
         this.props.navigation.navigate('mainMenu')
     }
 
-    gotoDadSe = () =>{
-        this.props.navigation.replace('gameMenu', { showGameover: 'Dadse' });
+    // gotoDadSe = () =>{
+    //     this.props.navigation.replace('gameMenu', { showGameover: 'Dadse' });
+    // }
+
+    gotoBack = () =>{
+        this.props.navigation.replace('gameMenu', { showDadseBang: 'show' });
     }
+
 
     gotoHome = () =>{
         this.props.navigation.navigate('home')
@@ -779,7 +784,7 @@ class DadBatakMarket extends Component {
 
 
                 <View style={styles.backContainer}>
-                    <TouchableOpacity onPress={this.gotoDadSe}>
+                    <TouchableOpacity onPress={this.gotoBack}>
                         <Image source={Back_icon} style={styles.home}></Image>
                     </TouchableOpacity>
                 </View>
@@ -803,8 +808,8 @@ class DadBatakMarket extends Component {
 const style = StyleSheet.create({
     gnareIconStyle: {
         position: 'absolute',
-        bottom: hp('9%'),
-        left: wp('2%'),
+        bottom: '9%',
+        left: '2%',
         height: hp('12%'),
         width: wp('12%'),
     },
