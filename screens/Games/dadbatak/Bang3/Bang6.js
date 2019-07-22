@@ -711,11 +711,11 @@ class Bang extends Component {
     }
 
     gotoMainMenu = () =>{
-        this.props.navigation.navigate('mainMenu');
+        this.props.navigation.replace('mainMenu');
     }
 
     gotoMarket = () =>{
-        this.props.navigation.navigate('dadseMarket');
+        this.props.navigation.replace('dadseMarket');
     }
 
     gotoLamwa = () =>{
@@ -724,7 +724,7 @@ class Bang extends Component {
 
     goBack = () => {
         this.stopSounds();
-        this.props.navigation.push('gameMenu');
+        this.props.navigation.replace('gameMenu', { showDadBatakBang: 'show' });
     }
     
     load = async (index) => {

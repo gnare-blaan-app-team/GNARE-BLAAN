@@ -889,16 +889,16 @@ class Bang5 extends Component {
     }
 
     gotoMainMenu = () =>{
-        this.props.navigation.navigate('mainMenu');
+        this.props.navigation.replace('mainMenu');
     }
 
     goBack = () => {
         this.stopSounds();
-        this.props.navigation.push('gameMenu');
+        this.props.navigation.replace('gameMenu', { showDadBatakBang: 'show' });
     }
     
     gotoMarket = () =>{
-        this.props.navigation.navigate('dadseMarket');
+        this.props.navigation.replace('dadseMarket');
     }
 
     gotoLamwa = () =>{

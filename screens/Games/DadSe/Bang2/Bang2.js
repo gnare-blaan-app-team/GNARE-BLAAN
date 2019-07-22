@@ -553,12 +553,12 @@ class Bang2 extends Component {
     }
 
     gotoMainMenu = () => {
-        this.props.navigation.navigate('mainMenu');
+        this.props.navigation.replace('mainMenu');
     }
 
     goBack = () => {
         this.stopSounds();
-        this.props.navigation.push('gameMenu');
+        this.props.navigation.replace('gameMenu',{showDadseBang:'show'});
     }
 
     goLamwa = () => {
@@ -566,7 +566,7 @@ class Bang2 extends Component {
     }
 
     goGufadyan = () => {
-        this.props.navigation.navigate('dadbatakmarket');
+        this.props.navigation.replace('dadbatakmarket');
     }
     
     load = async (index) => {
