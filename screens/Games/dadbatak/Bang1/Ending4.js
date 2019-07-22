@@ -16,6 +16,11 @@ import GnareIcon from '../../gameImages/GnareMain.png';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import {globalStyleSheet as styles} from '../../../globalStyleSheet/globalStyleSheet.js';
 
+const SessionPlayer = '@MyApp:SessionPlayer';
+
+var Realm = require('realm');
+let realm;
+
 const RandomKey = '@MyApp:RandomKey';
 const Stage3 = '@MyApp:Stage3';
 
@@ -61,12 +66,21 @@ class Ending4 extends Component {
             
         }
         this.onSave();
-        this.props.navigation.push('gameMenu', { show: 'DadBatak' });
-        const store = 'unlock';
-        await AsyncStorage.setItem(Stage3, store);
+        this.props.navigation.replace('gameMenu', { show: 'DadBatak' });
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getPlayers = realm.objects('Players');
+        const storedValue = await AsyncStorage.getItem(SessionPlayer);
+        for (a = 0; a < getPlayers.length; a++) {
+            const con = parseInt(a);
+            if (storedValue == getPlayers[con].playername) {
+                realm.write(() => {
+                    getPlayers[con].DBbangStage2 = 'unlock'
+                })
+            }
+        }
     }
 
-    gotoGameScreen = () => {
+    gotoGameScreen = async () => {
         try {
             sound.setVolume(0.2);
             sound.play();
@@ -75,6 +89,17 @@ class Ending4 extends Component {
         }
         this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.replace('gameMenu', { showDadBatakBang: 'show' });
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getPlayers = realm.objects('Players');
+        const storedValue = await AsyncStorage.getItem(SessionPlayer);
+        for (a = 0; a < getPlayers.length; a++) {
+            const con = parseInt(a);
+            if (storedValue == getPlayers[con].playername) {
+                realm.write(() => {
+                    getPlayers[con].DBbangStage2 = 'unlock'
+                })
+            }
+        }
     }
 
     gotoHome = () => {
