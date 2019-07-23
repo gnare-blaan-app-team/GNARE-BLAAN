@@ -324,7 +324,7 @@ export default AppNavigator = createStackNavigator(
     
   },
 {
-  initialRouteName:"mainMenu",
+  initialRouteName:"numbers",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"
