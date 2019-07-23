@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, ImageBackground, TouchableOpacity} from 'react-native';
+import { View, Image, ImageBackground, TouchableOpacity, AsyncStorage} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import MenuItem from './LettersMenu';
 
@@ -11,7 +11,7 @@ import GlowA from './lettersGlow/GlowA.gif';
 import Glow_A from './lettersGlow/Glow_A.png';
 
 import { soundList, sentenceBGList, sentenceSubtitleList,
-        letterBGList, glowGIFList } from './letterImport';
+        letterBGList, glowGIFList, imageGIFList } from './letterImport';
 
     // Letter Components Imports
 import SentenceIcon from '../images/Letters_Info_Icon.png';
@@ -29,13 +29,17 @@ import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.j
 
 import { sound } from '../HomePage';
 
+import {letterTracingList} from './LetterTracing/tracingImport';
+
+import Logo from '../Games/gameImages/GnareMain.png';
+
     // Hiding Components
 const hideLeft = '-1000%';
 const hideRight = '1000%';
-const showPrev ='5%';
-const showNext = '83%';
-const showPencil = '20%';
-const showGlow = '20%';
+const showPrev ='6%';
+const showNext = '85%';
+const showPencil = '24%';
+const showGlow = '22.5%';
 const showSpeaker = '25%';
 const showSentence = '80%';
 
@@ -60,6 +64,14 @@ class Letters extends Component {
             showSubtitle: 0,
             sentenceScript: sentenceSubtitleList[0],
 
+            pencilPressed: false,
+            sentencePressed: false,
+            fromTracing: true,
+            backIcon: Logo,
+
+            tracing: letterTracingList[0],
+
+
             //Letter Menu State
             menuLetterHide: '22%',
 
@@ -73,7 +85,7 @@ class Letters extends Component {
             sentenceHide: hideRight,
             indexSound: 0,
 
-            glow: Glow_A,
+            glow: imageGIFList[0],
             hideLetterBG: '0%',
             prevBG: imageMainBG,
         },
@@ -91,7 +103,7 @@ class Letters extends Component {
 
     componentDidMount(){
         try {
-            sound.setVolume(0.2);
+            sound.setVolume(0.5);
             sound.play();
         } catch(error) {
             
@@ -104,11 +116,12 @@ class Letters extends Component {
                         prevHide: imageBG == letterBGList[0] ? hideLeft : showPrev,
                         imageBackground: imageBG, letterMainBG: imageBG != imageMainBG ? letterMainBG : imageMainBG,
                         nextHide: imageBG == imageMainBG ? hideRight : showNext,
+                        backIcon: imageBG == imageMainBG ? Logo : GoBackIcon,
                         glowHide: imageBG == imageMainBG ? hideLeft : showGlow,
                         speakerHide: imageBG == imageMainBG ? hideLeft : showSpeaker,
                         sentenceHide: imageBG == imageMainBG ? hideRight : showSentence,
                         pencilHide: imageBG == imageMainBG ? hideLeft : showPencil,
-                        indexSound: soundPlay, glow: glowGIFList[soundPlay],
+                        indexSound: soundPlay, glow: imageGIFList[soundPlay],
                         });
         if(imageBG != imageMainBG) {
             try {
@@ -119,13 +132,22 @@ class Letters extends Component {
             }
         } else {
             try {
-                sound.setVolume(0.2);
+                sound.setVolume(0.5);
                 sound.play();
             } catch(error) {
                 
             }
         }
-        this.autoPlaySound();
+        if(!this.state.pencilPressed) {
+            this.autoPlaySound();
+        } else {
+            try {
+                sound.setVolume(0.5);
+                sound.play();
+            } catch(error) {
+                
+            }
+        }
     }
 
     autoPlaySound = () => {
@@ -148,7 +170,7 @@ class Letters extends Component {
                 } else {
                     this.wordSound.play();
                 }});
-                this.setState({glow: Glow_A});
+                this.setState({glow: imageGIFList[this.state.indexSound]});
                 this.setState({glow: glowGIFList[this.state.indexSound]});
         }, 5000);
     }
@@ -167,8 +189,9 @@ class Letters extends Component {
         this.stopAutoPlaySound();
         this.setState({menuLetterHide: '-1000%', 
                         imageBackground: sentenceBGList[letterIndex],
+                        letterMainBG: imageMainBG,
                         sentenceScript: sentenceSubtitleList[letterIndex],
-                        showSubtitle: 1,
+                        showSubtitle: 1, sentencePressed: false,
                         prevHide: hideLeft, nextHide: hideRight,
                         glowHide: hideLeft, speakerHide: hideLeft,
                         speaker2Hide: showSpeaker, sentenceHide: hideRight,
@@ -209,6 +232,7 @@ class Letters extends Component {
                 alert('failed to load the sound', error);
                 return;
             } else {
+                this.letterSound.setVolume(2);
                 this.letterSound.play();
             }});
     }
@@ -221,15 +245,18 @@ class Letters extends Component {
             clearTimeout(this.timeoutSound);
         }
         this.stopAutoPlaySound();
-        this.sentenceSound = new Sound('sentence_letter_' + soundList[this.state.indexSound] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
-            if (error) {
-                alert('failed to load the sound', error);
-                return;
-            } else {
-                this.sentenceSound.play();
-                this.setState({sentenceScript: Glow_A});
-                this.setState({sentenceScript: sentenceSubtitleList[this.state.indexSound]});
-            }});
+        this.timeoutSound = setTimeout(()=> {
+            this.sentenceSound = new Sound('sentence_letter_' + soundList[this.state.indexSound] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+                if (error) {
+                    alert('failed to load the sound', error);
+                    return;
+                } else {
+                    this.sentenceSound.setVolume(2);
+                    this.sentenceSound.play();
+                    this.setState({sentenceScript: Glow_A});
+                    this.setState({sentenceScript: sentenceSubtitleList[this.state.indexSound]});
+                }});
+        }, 500);
     }
 
     playWordSound = () => {
@@ -242,8 +269,9 @@ class Letters extends Component {
                 alert('failed to load the sound', error);
                 return;
             } else {
+                this.wordSound.setVolume(2);
                 this.wordSound.play();
-                this.setState({glow: Glow_A});
+                this.setState({glow: imageGIFList[this.state.indexSound]});
                 this.setState({glow: glowGIFList[this.state.indexSound]});
             }});
     }
@@ -257,8 +285,9 @@ class Letters extends Component {
             } catch(error) {
                 
             }
-            const upperCase = soundList[this.state.indexSound].toUpperCase();
-            this.props.navigation.push('tracing' + upperCase);
+
+            this.setState({tracing: letterTracingList[this.state.indexSound],
+                fromTracing: false, pencilPressed: true, sentencePressed: false});
         } catch(error) {
             
         }
@@ -266,7 +295,7 @@ class Letters extends Component {
 
     gotoMainMenu = () => {
         this.handleBackPress();
-        this.props.navigation.navigate('mainMenu');
+        this.props.navigation.replace('mainMenu');
     }
 
     goNext = () => {
@@ -276,8 +305,10 @@ class Letters extends Component {
         this.stopAutoPlaySound();
         if(nextPage <= 17) {
             this.changeBackground(nextBG, nextPage);
+            this.setState({tracing: letterTracingList[nextPage]});
         } else {
             this.changeBackground(letterBGList[0], 0);
+            this.setState({tracing: letterTracingList[0]});
         }
     }
 
@@ -307,8 +338,10 @@ class Letters extends Component {
 
         if(prevPage > 0) {
             this.changeBackground(prevBG, prevPage);
+            this.setState({tracing: letterTracingList[prevPage]});
         } else {
             this.changeBackground(letterBGList[0], 0);
+            this.setState({tracing: letterTracingList[0]});
         }
     }
 
@@ -316,11 +349,11 @@ class Letters extends Component {
         if(this.state.prevBG == sentenceBGList[this.state.indexSound]) {
             this.stopAutoPlaySound();
             if(this.timeoutSound != null) {
-                clearTimeout(this.timeoutSound);
+                clearTimeout(this.timeoutSound);                                                               
             }
             this.setState({menuLetterHide: '-1000%', 
                     imageBackground: letterBGList[this.state.indexSound],
-                    showSubtitle: 0,
+                    showSubtitle: 0, sentencePressed: false,
                     prevHide: letterBGList[this.state.indexSound] == letterBGList[0] ? hideLeft : showPrev,
                     pencilHide: showPencil,
                     glowHide: showGlow,
@@ -330,19 +363,28 @@ class Letters extends Component {
                     speaker2Hide: hideLeft, prevBG: letterBGList[this.state.indexSound]});
                 
         } else {
-            if(this.state.imageBackground == imageMainBG) {
+            if(this.state.pencilPressed) {
+                this.setState({pencilPressed: false, fromTracing: true,});
+                try {
+                    sound.setVolume(0);
+                    sound.paused();
+                } catch(error) {
+
+                }
+             }
+             else if(this.state.imageBackground == imageMainBG) {
                 this.handleBackPress();
                 try {
-                    sound.setVolume(0.2);
+                    sound.setVolume(0.5);
                     sound.play();
                 } catch(error) {
                     
                 }
-                this.props.navigation.navigate('mainMenu');
+                this.props.navigation.navigate('home');
             } else {
                 this.stopAutoPlaySound();
                 try {
-                    sound.setVolume(0.2);
+                    sound.setVolume(0.5);
                     sound.play();
                 } catch(error) {
                     
@@ -354,102 +396,164 @@ class Letters extends Component {
                             glowHide: hideLeft,
                             speakerHide: hideLeft,
                             sentenceHide: hideRight,
-                            nextHide: hideRight,
+                            nextHide: hideRight, backIcon: Logo,
                             speaker2Hide: hideLeft});
                 }
             }
         }
 
     render() {
+
         return (
 
             <ImageBackground source={imageMainBG} style={{flex: 1, width: '100%', height: '100%', resizeMode: 'stretch'}}>
+
                 <View style={{position: 'absolute', top: '0%', width: '100%', height: '100%'}}>
-                    <Image source={this.state.letterMainBG} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
-                </View>
-                <View style={{position: 'absolute', top: this.state.hideLetterBG, width: '100%', height: '100%'}}>
-                    <Image source={this.state.imageBackground} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
+                    <Image source={imageMainBG} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
                 </View>
 
-                <View style={{position: 'absolute', top: '57.5%', left: '15%', opacity: this.state.showSubtitle,
-                    width: '70%', height: '27.5%', justifyContent: 'center', alignItems: 'center'}}>
-                    <Image source={black} style={{position: 'absolute', width: '100%', height: '100%', 
-                                top: '0%', resizeMode: 'stretch'}}></Image>                    
-                    <Image source={this.state.sentenceScript} style={{width: '130%', height: '70%',
-                            marginLeft:'-3%' ,resizeMode: 'stretch'}}></Image>
-                </View>
+                { 
+                    this.state.pencilPressed && 
+
+                    <View style={{flex: 1, width: '100%', height: '100%'}}>
+                        <this.state.tracing />
+                    </View>
+                }
 
 
-                {/* Start of Page Letters Code Part */}
-                {/* Sentence Button */}
-               <View style={{position: 'absolute', left: '80%', 
-                            top: this.state.sentenceHide, width: '14%', height: '28%',}} >
-                    <TouchableOpacity onPress={this.sentencePage}>
-                        <Image
-                            source={SentenceIcon}
-                            style={styles.sentenceIcon}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
+                { this.state.fromTracing && 
 
-                {/* Speaker 1 Container */}
-                <View style={{position: 'absolute', left: '42%', top: this.state.speakerHide, width: '6%', height: '10%',}} >
-                    <TouchableOpacity onPress={this.playLetterSound}>
-                        <Image
-                            source={SpeakerIcon}
-                            style={styles.containImage}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
+                    <View style={{flex: 1}}>
+                        <View style={{position: 'absolute', top: '0%', width: '100%', height: '100%'}}>
+                            <Image source={this.state.letterMainBG} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
+                        </View>
+                        <View style={{position: 'absolute', top: this.state.hideLetterBG, width: '100%', height: '100%'}}>
+                            <Image source={this.state.imageBackground} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
+                        </View>
+                        <View style={{position: 'absolute', top: '57.5%', left: '15%', opacity: this.state.showSubtitle,
+                            width: '70%', height: '27.5%', justifyContent: 'center', alignItems: 'center'}}>
+                            <Image source={black} style={{position: 'absolute', width: '100%', height: '100%', 
+                                        top: '0%', resizeMode: 'stretch'}}></Image>                    
+                            <Image source={this.state.sentenceScript} style={{width: '130%', height: '70%',
+                                    marginLeft:'-3%' ,resizeMode: 'stretch'}}></Image>
+                        </View>
 
-                {/* Speaker 2 Container */}
-                <View style={{position: 'absolute', left: '80%', top: this.state.speakerHide, width: '6%', height: '10%',}} >
-                    <TouchableOpacity onPress={this.playWordSound}>
-                        <Image
-                            source={SpeakerIcon}
-                            style={styles.containImage}
-                        ></Image>
 
-                    </TouchableOpacity>
-                </View>
+                        {/* Start of Page Letters Code Part */}
+                        {/* Sentence Button */}
+                        <View style={{position: 'absolute', left: '83%', 
+                                    top: this.state.sentenceHide, width: '14%', height: '28%',}} >
+                            <TouchableOpacity onPress={this.sentencePage}>
+                                <Image
+                                    source={SentenceIcon}
+                                    style={styles.sentenceIcon}
+                                ></Image>
+                            </TouchableOpacity>
+                        </View>
 
-                {/* Speaker Sentence 2 Container */}
-                <View style={{position: 'absolute', left: '80%', top: this.state.speaker2Hide, width: '6%', height: '10%',}} >
-                    <TouchableOpacity onPress={this.playSentenceSound}>
-                        <Image
-                            source={SpeakerIcon}
-                            style={styles.containImage}
-                        ></Image>
+                        {/* Speaker 1 Container */}
+                        <View style={{position: 'absolute', left: '42%', top: this.state.speakerHide, width: '6%', height: '10%',}} >
+                            <TouchableOpacity onPress={this.playLetterSound}>
+                                <Image
+                                    source={SpeakerIcon}
+                                    style={styles.containImage}
+                                ></Image>
+                            </TouchableOpacity>
+                        </View>
 
-                    </TouchableOpacity>
-                </View>
+                        {/* Speaker 2 Container */}
+                        <View style={{position: 'absolute', left: '80%', top: this.state.speakerHide, width: '6%', height: '10%',}} >
+                            <TouchableOpacity onPress={this.playWordSound}>
+                                <Image
+                                    source={SpeakerIcon}
+                                    style={styles.containImage}
+                                ></Image>
 
-                {/* Video Container */}
-                <View style={{position: 'absolute', left: '55%', /* borderWidth: 3, borderColor: 'red', */ top: this.state.glowHide, width: '20%', height: '40%',}} >
-                    <Image style={styles.Glow} source={this.state.glow}/>
-                </View>
+                            </TouchableOpacity>
+                        </View>
 
-                {/* Pencil Button */}
-                <View style={{position: 'absolute', left: '11%', 
-                top: this.state.pencilHide, width: '7%', height: '20%',}} >
-                    <TouchableOpacity onPress={this.letterTracing}>
-                        <Image
-                        source={PencilIcon}
-                            style={styles.containImage}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
+                        {/* Speaker Sentence 2 Container */}
+                        <View style={{position: 'absolute', left: '80%', top: this.state.speaker2Hide, width: '6%', height: '10%',}} >
+                            <TouchableOpacity onPress={this.playSentenceSound}>
+                                <Image
+                                    source={SpeakerIcon}
+                                    style={styles.containImage}
+                                ></Image>
 
-                 {/* Prev Button */}
+                            </TouchableOpacity>
+                        </View>
+
+                        {/* Video Container */}
+                        <View style={{position: 'absolute', left: '52.5%', /* borderWidth: 3, borderColor: 'red', */ top: this.state.glowHide, width: '27.5%', height: '40%',}} >                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+                            <Image style={styles.Glow} source={this.state.glow}/>
+                        </View>
+
+                        {/* Pencil Button */}
+                        <View style={{position: 'absolute', left: '13%', 
+                        top: this.state.pencilHide, width: '7%', height: '20%',}} >
+                            <TouchableOpacity onPress={this.letterTracing}>
+                                <Image
+                                source={PencilIcon}
+                                    style={styles.containImage}
+                                ></Image>
+                            </TouchableOpacity>
+                        </View>
+
+
+                        {/* Start of Letters Enum Code Part */}
+                        <View style={{position: 'absolute', top: this.state.menuLetterHide, left: '15%', width: '80%', height: '60%', flexDirection: 'row', flexWrap: 'wrap',}}>
+                            <MenuItem itemImage={require('./lettersImage/a.png')} goto={() => {
+                                                this.changeBackground(letterBGList[0], 0)}} />
+                            <MenuItem itemImage={require('./lettersImage/b.png')} goto={() => {
+                                                this.changeBackground(letterBGList[1], 1)}} />
+                            <MenuItem itemImage={require('./lettersImage/d.png')} goto={() => {
+                                                this.changeBackground(letterBGList[2], 2)}} />
+                            <MenuItem itemImage={require('./lettersImage/e_.png')} goto={() => {
+                                                this.changeBackground(letterBGList[3], 3)}} />
+                            <MenuItem itemImage={require('./lettersImage/f.png')} goto={() => {
+                                                this.changeBackground(letterBGList[4], 4)}} />
+                            <MenuItem itemImage={require('./lettersImage/g.png')} goto={() => {
+                                                this.changeBackground(letterBGList[5], 5)}} />
+                            <MenuItem itemImage={require('./lettersImage/h.png')} goto={() => {
+                                                this.changeBackground(letterBGList[6], 6)}} />
+                            <MenuItem itemImage={require('./lettersImage/i.png')} goto={() => {
+                                                this.changeBackground(letterBGList[7], 7)}} />
+                            <MenuItem itemImage={require('./lettersImage/k.png')} goto={() => {
+                                                this.changeBackground(letterBGList[8], 8)}} />
+                            <MenuItem itemImage={require('./lettersImage/l.png')} goto={() => {
+                                                this.changeBackground(letterBGList[9], 9)}} />
+                            <MenuItem itemImage={require('./lettersImage/m.png')} goto={() => {
+                                                this.changeBackground(letterBGList[10], 10)}} />
+                            <MenuItem itemImage={require('./lettersImage/n.png')} goto={() => {
+                                                this.changeBackground(letterBGList[11], 11)}} />
+                            <MenuItem itemImage={require('./lettersImage/o.png')} goto={() => {
+                                                this.changeBackground(letterBGList[12], 12)}} />
+                            <MenuItem itemImage={require('./lettersImage/s.png')} goto={() => {
+                                                this.changeBackground(letterBGList[13], 13)}} />
+                            <MenuItem itemImage={require('./lettersImage/t.png')} goto={() => {
+                                                this.changeBackground(letterBGList[14], 14)}} />
+                            <MenuItem itemImage={require('./lettersImage/u.png')} goto={() => {
+                                                this.changeBackground(letterBGList[15], 15)}} />
+                            <MenuItem itemImage={require('./lettersImage/w.png')} goto={() => {
+                                                this.changeBackground(letterBGList[16], 16)}} />
+                            <MenuItem itemImage={require('./lettersImage/y.png')} goto={() => {
+                                                this.changeBackground(letterBGList[17], 17)}} />
+                        </View>
+                        {/* End of Letters Enum Code Part */}
+                        </View>
+                }
+
+                
+                {/* Prev Button */}
                 <View style={{position: 'absolute', left: this.state.prevHide, 
-                            top: '46%', width: '12%', height: '24%',}}>
-                    <TouchableOpacity onPress={this.goPrev}>
-                        <Image
-                            source={PrevIcon}
-                            style={styles.prev}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
+                                top: '46%', width: '12%', height: '24%',}}>
+                        <TouchableOpacity onPress={this.goPrev}>
+                            <Image
+                                source={PrevIcon}
+                                style={styles.prev}
+                            ></Image>
+                        </TouchableOpacity>
+                    </View>
 
                 {/* Next Button */}
                 <View style={{position: 'absolute', left: this.state.nextHide, 
@@ -461,51 +565,6 @@ class Letters extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                {/* End of Page Letters Code Part */}
-
-
-
-                {/* Start of Letters Enum Code Part */}
-                <View style={{position: 'absolute', top: this.state.menuLetterHide, left: '15%', width: '80%', height: '60%', flexDirection: 'row', flexWrap: 'wrap',}}>
-                    <MenuItem itemImage={require('./lettersImage/a.png')} goto={() => {
-                                        this.changeBackground(letterBGList[0], 0)}} />
-                    <MenuItem itemImage={require('./lettersImage/b.png')} goto={() => {
-                                        this.changeBackground(letterBGList[1], 1)}} />
-                    <MenuItem itemImage={require('./lettersImage/d.png')} goto={() => {
-                                        this.changeBackground(letterBGList[2], 2)}} />
-                    <MenuItem itemImage={require('./lettersImage/e_.png')} goto={() => {
-                                        this.changeBackground(letterBGList[3], 3)}} />
-                    <MenuItem itemImage={require('./lettersImage/f.png')} goto={() => {
-                                        this.changeBackground(letterBGList[4], 4)}} />
-                    <MenuItem itemImage={require('./lettersImage/g.png')} goto={() => {
-                                        this.changeBackground(letterBGList[5], 5)}} />
-                    <MenuItem itemImage={require('./lettersImage/h.png')} goto={() => {
-                                        this.changeBackground(letterBGList[6], 6)}} />
-                    <MenuItem itemImage={require('./lettersImage/i.png')} goto={() => {
-                                        this.changeBackground(letterBGList[7], 7)}} />
-                    <MenuItem itemImage={require('./lettersImage/k.png')} goto={() => {
-                                        this.changeBackground(letterBGList[8], 8)}} />
-                    <MenuItem itemImage={require('./lettersImage/l.png')} goto={() => {
-                                        this.changeBackground(letterBGList[9], 9)}} />
-                    <MenuItem itemImage={require('./lettersImage/m.png')} goto={() => {
-                                        this.changeBackground(letterBGList[10], 10)}} />
-                    <MenuItem itemImage={require('./lettersImage/n.png')} goto={() => {
-                                        this.changeBackground(letterBGList[11], 11)}} />
-                    <MenuItem itemImage={require('./lettersImage/o.png')} goto={() => {
-                                        this.changeBackground(letterBGList[12], 12)}} />
-                    <MenuItem itemImage={require('./lettersImage/s.png')} goto={() => {
-                                        this.changeBackground(letterBGList[13], 13)}} />
-                    <MenuItem itemImage={require('./lettersImage/t.png')} goto={() => {
-                                        this.changeBackground(letterBGList[14], 14)}} />
-                    <MenuItem itemImage={require('./lettersImage/u.png')} goto={() => {
-                                        this.changeBackground(letterBGList[15], 15)}} />
-                    <MenuItem itemImage={require('./lettersImage/w.png')} goto={() => {
-                                        this.changeBackground(letterBGList[16], 16)}} />
-                    <MenuItem itemImage={require('./lettersImage/y.png')} goto={() => {
-                                        this.changeBackground(letterBGList[17], 17)}} />
-                </View>
-                {/* End of Letters Enum Code Part */}
-
 
                 <View style={{position: 'absolute',
                                 left: '2%',
@@ -513,7 +572,7 @@ class Letters extends Component {
                                 width: '14%',
                                 height: '28%'}}>
                     <TouchableOpacity onPress={this.goBack}>
-                        <Image source={GoBackIcon} style={styles.back}></Image>
+                        <Image source={this.state.backIcon} style={styles.back}></Image>
                     </TouchableOpacity>
                 </View>
 

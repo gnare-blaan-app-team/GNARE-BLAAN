@@ -2,7 +2,10 @@ import Letter_Intro from '../IntroVideos/Letter_Intro.mp4';
 import Number_Intro from '../IntroVideos/Number_Intro.mp4';
 
 import React, { Component } from 'react';
+//import Video from 'react-native-video';
+
 import Video from 'react-native-video';
+
 import { Image, View, TouchableOpacity , ImageBackground } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
@@ -33,7 +36,7 @@ class LetterIntroScreen extends Component {
     componentDidMount(){
         try {
             sound.setVolume(0);
-            sound.play();
+            sound.paused();
         } catch(error) {
             
         }
@@ -47,30 +50,30 @@ class LetterIntroScreen extends Component {
 
     handleEnd = () => {
         try {
-            sound.setVolume(0.2);
+            sound.setVolume(0.5);
             sound.play();
         } catch(error) {
             
         }
         this.setState({paused: true, volume: 0, muted: true});
-        this.props.navigation.navigate('letters');
+        this.props.navigation.replace('letters');
     };
 
     handleLoad = meta => {
         this.setState({
             duration: meta.duration,
-        });
+        });   
     };
 
     gotoLetterScreen = () => {
         try {
-            sound.setVolume(0.2);
+            sound.setVolume(0.5);
             sound.play();
         } catch(error) {
             
         }
         this.setState({paused: true, volume: 0, muted: true});
-        this.props.navigation.navigate('letters');
+        this.props.navigation.replace('letters');
     }
 
     replayVideo = () => {
@@ -90,26 +93,23 @@ class LetterIntroScreen extends Component {
         return (
             <ImageBackground style={styles.image}>
                 <View style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'black'}}>
-                    <Video
-                            paused={false}
-                            source={this.state.source}
-                            style={{ width: "100%", height: '100%' }}
-                            resizeMode="stretch"
-                            volume={this.state.volume}
-                            muted={this.state.muted}
-                            onLoad={this.handleLoad}
-                            onProgress={this.handleProgress}
-                            onEnd={this.handleEnd}
-                            ref={ref => {
-                                this.player = ref;
-                            }}
-                        />
+                <Video
+                    paused={false}
+                    source={this.state.source}
+                    style={{ width: "100%", height: '100%' }}
+                    resizeMode="stretch"
+                    volume={this.state.volume}
+                    muted={this.state.muted}
+                    onLoad={this.handleLoad}
+                    onProgress={this.handleProgress}
+                    onEnd={this.handleEnd}
+                />
                 </View>
 
                 <View style={[styles.sentenceIconContainer, {top: '80%', left: '88%'}]}>
                     <TouchableOpacity onPress={this.replayVideo}>
                         <Image source={Replay_icon} style={styles.home} />
-                    </TouchableOpacity>
+                    </TouchableOpacity> 
                 </View>
 
                 <View style={styles.homeContainer}>

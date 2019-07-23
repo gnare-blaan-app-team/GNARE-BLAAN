@@ -144,9 +144,9 @@ class SettingBG extends Component {
                             onValueChange={value => {this.setState({ value }); this.changeBGVolume()}}
                         />
                                     
-                    <Text>
+                    {/* <Text>
                     Value: {this.state.value*100}
-                    </Text>
+                    </Text> */}
                 </View>
 
                 <View style={{position: 'absolute',

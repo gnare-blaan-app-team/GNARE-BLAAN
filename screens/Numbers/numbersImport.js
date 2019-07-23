@@ -50,6 +50,33 @@ import Glow400 from './NumbersGlow/400.gif';
 import Glow500 from './NumbersGlow/500.gif';
 import Glow1000 from './NumbersGlow/1000.gif';
 
+
+
+import img1 from './NumbersGlow/1img.png';
+import img2 from './NumbersGlow/2img.png';
+import img3 from './NumbersGlow/3img.png';
+import img4 from './NumbersGlow/4img.png';
+import img5 from './NumbersGlow/5img.png';
+import img6 from './NumbersGlow/6img.png';
+import img7 from './NumbersGlow/7img.png';
+import img8 from './NumbersGlow/8img.png';
+import img9 from './NumbersGlow/9img.png';
+import img10 from './NumbersGlow/10img.png';
+import img20 from './NumbersGlow/20img.png';
+import img30 from './NumbersGlow/30img.png';
+import img40 from './NumbersGlow/40img.png';
+import img50 from './NumbersGlow/50img.png';
+import img60 from './NumbersGlow/60img.png';
+import img70 from './NumbersGlow/70img.png';
+import img80 from './NumbersGlow/80img.png';
+import img90 from './NumbersGlow/90img.png';
+import img100 from './NumbersGlow/100img.png';
+import img200 from './NumbersGlow/200img.png';
+import img300 from './NumbersGlow/300img.png';
+import img400 from './NumbersGlow/400img.png';
+import img500 from './NumbersGlow/500img.png';
+import img1000 from './NumbersGlow/1000img.png';
+
 import Sentence1 from './numberBackground/1.gif';
 import Sentence2 from './numberBackground/2.gif';
 import Sentence3 from './numberBackground/3.gif';
@@ -104,6 +131,11 @@ export const numberBGList = [Number1, Number2, Number3, Number4, Number5, Number
 export const numberGlowList = [Glow1, Glow2, Glow3, Glow4, Glow5, Glow6, Glow7, Glow8, Glow9, Glow10,
     Glow20, Glow30, Glow40, Glow50, Glow60, Glow70, Glow80, Glow90, Glow100,
     Glow200, Glow300, Glow400, Glow500, Glow1000];
+
+
+export const numberImageList = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10,
+    img20, img30, img40, img50, img60, img70, img80, img90, img100,
+    img200, img300, img400, img500, img1000];
 
 export const sentenceList = [Sentence1, Sentence2, Sentence3, Sentence4, Sentence5, Sentence6, Sentence7, Sentence8, Sentence9, Sentence10,
         Sentence20, Sentence30, Sentence40, Sentence50, Sentence60, Sentence70, Sentence80, Sentence90, Sentence100,

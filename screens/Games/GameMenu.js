@@ -432,9 +432,9 @@ class GameMenu extends Component {
             this.state.profile = 'none';
         }, 1000); 
 
-        realm = new Realm({ path: 'PlayerDatabase.realm' });
-        var getPlayers = realm.objects('Players');
-        alert(JSON.stringify(getPlayers))
+        // realm = new Realm({ path: 'PlayerDatabase.realm' });
+        // var getPlayers = realm.objects('Players');
+        // alert(JSON.stringify(getPlayers))
     }
 
     market = () => {

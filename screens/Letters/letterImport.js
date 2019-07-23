@@ -80,6 +80,25 @@ import U from './lettersGlow/U.gif';
 import W from './lettersGlow/W.gif';
 import Y from './lettersGlow/Y.gif';
 
+import imgA from './lettersGlow/Aimg.png';
+import imgB from './lettersGlow/Bimg.png';
+import imgD from './lettersGlow/Dimg.png';
+import imgE from './lettersGlow/Eimg.png';
+import imgF from './lettersGlow/Fimg.png';
+import imgG from './lettersGlow/Gimg.png';
+import imgH from './lettersGlow/Himg.png';
+import imgI from './lettersGlow/Iimg.png';
+import imgK from './lettersGlow/Kimg.png';
+import imgL from './lettersGlow/Limg.png';
+import imgM from './lettersGlow/Mimg.png';
+import imgN from './lettersGlow/Nimg.png';
+import imgO from './lettersGlow/Oimg.png';
+import imgS from './lettersGlow/Simg.png';
+import imgT from './lettersGlow/Timg.png';
+import imgU from './lettersGlow/Uimg.png';
+import imgW from './lettersGlow/Wimg.png';
+import imgY from './lettersGlow/Yimg.png';
+
 const screenWidth = Dimensions.get('screen').width;
 const screenHeight = Dimensions.get('screen').height;
 
@@ -97,7 +116,10 @@ export const scopeX = screenWidth * 0.04;
 export const scopeY = screenHeight * 0.05;
 export const trail = screenWidth * 0.025;
 export const velocityLimit = 1.2;
-export const velocityLimit2 = -1.5; 
+export const velocityLimit2 = -1.5;
+
+export const imageGIFList = [imgA, imgB, imgD, imgE, imgF, imgG, imgH, 
+    imgI, imgK, imgL, imgM, imgN, imgO, imgS, imgT, imgU, imgW, imgY];
 
 // Letter Sound List
 export const soundList = ['a', 'b', 'd', 'e', 'f', 'g', 'h', 'i', 'k', 'l', 'm', 'n', 'o', 's', 't',

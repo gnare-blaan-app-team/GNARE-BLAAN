@@ -8,7 +8,7 @@ import MenuItem from './NumbersMenu';
 import Sound from 'react-native-sound';
 
 import { numberBGList, sentenceList, soundList,
-        numberGlowList } from './numbersImport';
+        numberGlowList, numberImageList } from './numbersImport';
   
 import GoBackIcon from '../images/Back_icon.png';
 import HomeIcon from '../images/Home_icon.png';
@@ -32,13 +32,15 @@ import black from '../images/black.png';
 
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 import {sound} from '../HomePage';
+import { numberTracingList } from './NumberTracing/tracingImport';
+import Logo from '../Games/gameImages/GnareMain.png';
 
     // Hiding Components
 const hideLeft = '-1000%';
 const hideRight = '1000%';
-const showPrev ='5%';
+const showPrev ='6%';
 const showNext = '85%';
-const showPencil = '22%';
+const showPencil = '24%';
 const showGlow = '21%';
 const showSpeaker = '25%';
 const showSentence = '80%';
@@ -65,6 +67,15 @@ class NumberScreen extends Component {
             //Letter Menu State
             menuLetterHide: '22%',
 
+            pencilPressed: false,
+            sentencePressed: false,
+            fromTracing: true,
+
+
+            backIcon: Logo,
+
+            tracing: numberTracingList[0],
+
             //Letter State
             showSubtitle: 0,
             prevHide: hideLeft,
@@ -78,7 +89,7 @@ class NumberScreen extends Component {
             indexSound: 0,
             sentenceScript: sentenceList[0],
 
-            glow: Glow_A,
+            glow: numberImageList[0],
             hideLetterBG: '0%',
             prevBG: imageMainBG,
         },
@@ -92,7 +103,6 @@ class NumberScreen extends Component {
 
     componentDidMount(){
         try {
-            sound.setVolume(0.2);
             sound.play();
         } catch(error) {
             
@@ -105,6 +115,7 @@ class NumberScreen extends Component {
                         prevHide: imageBG == numberBGList[0] ? hideLeft : showPrev,
                         imageBackground: imageBG, numberMainBG: imageBG != imageMainBG ? numberMainBG : imageMainBG,
                         nextHide: imageBG == imageMainBG ? hideRight : showNext,
+                        backIcon: imageBG == imageMainBG ? Logo : GoBackIcon,
                         glowHide: imageBG == imageMainBG ? hideLeft : showGlow,
                         speakerHide: imageBG == imageMainBG ? hideLeft : showSpeaker,
                         sentenceHide: imageBG == imageMainBG ? hideRight : showSentence,
@@ -119,13 +130,22 @@ class NumberScreen extends Component {
             }
         } else {
             try {
-                sound.setVolume(0.2);
+                sound.setVolume(0.5);
                 sound.play();
             } catch(error) {
                 
             }
         }
-        this.autoPlaySound();
+        if(!this.state.pencilPressed) {
+            this.autoPlaySound();
+        } else {
+            try {
+                sound.setVolume(0.5);
+                sound.play();
+            } catch(error) {
+                
+            }
+        }
     }
 
     autoPlaySound = () => {
@@ -175,7 +195,7 @@ class NumberScreen extends Component {
                 return;
             } else {
                 this.numberSound.play();
-                this.setState({glow: Glow_A});
+                this.setState({glow: numberImageList[this.state.indexSound]});
                 this.setState({glow: numberGlowList[this.state.indexSound]});
             }});   
     }
@@ -189,9 +209,9 @@ class NumberScreen extends Component {
                 return;
             } else {
                 this.sentenceNumberSound.play();
-                this.setState({sentenceScript: Glow_A});
+                this.setState({sentenceScript: sentenceList[1]});
                 this.setState({sentenceScript: sentenceList[this.state.indexSound]});
-                this.setState({glow: Glow_A});
+                this.setState({glow: numberImageList[this.state.indexSound]});
                 this.setState({glow: numberGlowList[this.state.indexSound]});
             }});   
     }
@@ -200,12 +220,12 @@ class NumberScreen extends Component {
         try {
             this.handleBackPress();
             try {
-                sound.setVolume(0);
                 sound.paused();
             } catch(error) {
                 
             }
-            this.props.navigation.push('tracing' + soundList[this.state.indexSound]);
+            this.setState({tracing: numberTracingList[this.state.indexSound],
+                fromTracing: false, pencilPressed: true, sentencePressed: false});
         } catch(error) {
 
         }
@@ -225,8 +245,10 @@ class NumberScreen extends Component {
 
         if(nextPage < 24) {
             this.changeBackground(nextBG, nextPage);
+            this.setState({tracing: numberTracingList[nextPage]});
         } else {
             this.changeBackground(numberBGList[0], 0);
+            this.setState({tracing: numberTracingList[0]});
         }
     }
 
@@ -259,8 +281,10 @@ class NumberScreen extends Component {
 
         if(prevPage > 0) {
             this.changeBackground(prevBG, prevPage);
+            this.setState({tracing: numberTracingList[prevPage]});
         } else {
             this.changeBackground(numberBGList[0], 0);
+            this.setState({tracing: numberTracingList[0]});
         }
     }
 
@@ -275,7 +299,7 @@ class NumberScreen extends Component {
                     prevHide: numberBGList[this.state.indexSound] == numberBGList[0] ? hideLeft : showPrev,
                     pencilHide: showPencil,
                     glowHide: showGlow,
-                    sentenceScript: Glow_A,
+                    //sentenceScript: Glow_A,
                     speakerHide: showSpeaker,
                     sentenceHide: showSentence,
                     nextHide: showNext,
@@ -283,18 +307,28 @@ class NumberScreen extends Component {
                     sentenceObjectHide: hideLeft,
                     speaker2Hide: hideLeft, prevBG: numberBGList[this.state.indexSound]});
         } else {
-            if(this.state.imageBackground == imageMainBG) {
+
+            if(this.state.pencilPressed) {
+                this.setState({pencilPressed: false, fromTracing: true,});
+                try {
+                    sound.setVolume(0);
+                    sound.paused();
+                } catch(error) {
+
+                }
+            }
+            else if(this.state.imageBackground == imageMainBG) {
                 this.handleBackPress();
                 try {
-                    sound.setVolume(0.2);
+                    sound.setVolume(0.5);
                     sound.play();
                 } catch(error) {
                     
                 }
-                this.props.navigation.navigate('mainMenu');
+                this.props.navigation.navigate('home');
             } else {
                 try {
-                    sound.setVolume(0.2);
+                    sound.setVolume(0.5);
                     sound.play();
                 } catch(error) {
                     
@@ -307,7 +341,7 @@ class NumberScreen extends Component {
                             glowHide: hideLeft,
                             speakerHide: hideLeft,
                             sentenceHide: hideRight,
-                            nextHide: hideRight,
+                            nextHide: hideRight, backIcon: Logo,
                             speaker2Hide: hideLeft});
                 }
             }
@@ -317,81 +351,163 @@ class NumberScreen extends Component {
         return (
 
             <ImageBackground source={imageMainBG} style={{flex: 1, width: '100%', height: '100%', resizeMode: 'stretch'}}>
+                
                 <View style={{position: 'absolute', top: '0%', width: '100%', height: '100%'}}>
-                    <Image source={this.state.numberMainBG} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
+                    <Image source={imageMainBG} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
                 </View>
 
-                <View style={{position: 'absolute', top: this.state.hideLetterBG, width: '100%', height: '100%'}}>
-                    <Image source={this.state.imageBackground} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
-                </View>
+                { 
+                    this.state.pencilPressed && 
 
-                <View style={{position: 'absolute', top: '57.5%', left: '15%', opacity: this.state.showSubtitle,
-                    width: '70%', height: '27.5%', justifyContent: 'center', alignItems: 'center'}}>
-                    <Image source={black} style={{position: 'absolute', width: '100%', height: '100%', 
-                                top: '0%', resizeMode: 'stretch'}}></Image>                    
-                    <Image source={this.state.sentenceScript} style={{width: '130%', height: '70%',
-                            marginLeft:'-3%' ,resizeMode: 'stretch'}}></Image>
-                </View>
+                    <View style={{flex: 1, width: '100%', height: '100%'}}>
+                        <this.state.tracing />
+                    </View>
+                }
+                
+                {
+                    this.state.fromTracing && 
 
-                {/* Start of Page Letters Code Part */}
-                {/* Sentence Button */}
-               <View style={{position: 'absolute', left: '82%', top: this.state.sentenceHide, width: '14%', height: '28%',}} >
-                    <TouchableOpacity onPress={this.sentencePage}>
-                        <Image
-                            source={SentenceIcon}
-                            style={styles.sentenceIcon}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
+                    <View style={{flex: 1}}>
+                        <View style={{position: 'absolute', top: '0%', width: '100%', height: '100%'}}>
+                        <Image source={this.state.numberMainBG} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
+                    </View>
+                    <View style={{position: 'absolute', top: this.state.hideLetterBG, width: '100%', height: '100%'}}>
+                        <Image source={this.state.imageBackground} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
+                    </View>
 
-                {/* Speaker 2 Container */}
-                <View style={{position: 'absolute', left: '80%', top: this.state.speakerHide, width: '6%', height: '10%',}} >
-                    <TouchableOpacity onPress={this.playNumberSound}>
-                        <Image
-                            source={SpeakerIcon}
-                            style={styles.containImage}
-                        ></Image>
+                    <View style={{position: 'absolute', top: '57.5%', left: '15%', opacity: this.state.showSubtitle,
+                        width: '70%', height: '27.5%', justifyContent: 'center', alignItems: 'center'}}>
+                        <Image source={black} style={{position: 'absolute', width: '100%', height: '100%', 
+                                    top: '0%', resizeMode: 'stretch'}}></Image>                    
+                        <Image source={this.state.sentenceScript} style={{width: '130%', height: '70%',
+                                marginLeft:'-3%' ,resizeMode: 'stretch'}}></Image>
+                    </View>
 
-                    </TouchableOpacity>
-                </View>
+                    {/* Start of Page Letters Code Part */}
+                    {/* Sentence Button */}
+                    <View style={{position: 'absolute', left: '82%', top: this.state.sentenceHide, width: '14%', height: '28%',}} >
+                        <TouchableOpacity onPress={this.sentencePage}>
+                            <Image
+                                source={SentenceIcon}
+                                style={styles.sentenceIcon}
+                            ></Image>
+                        </TouchableOpacity>
+                    </View>
 
-                {/* Speaker Sentence 2 Container */}
-                <View style={{position: 'absolute', left: '80%', top: this.state.speaker2Hide, width: '6%', height: '10%',}} >
-                    <TouchableOpacity onPress={this.playSentenceSound}>
-                        <Image
-                            source={SpeakerIcon}
-                            style={styles.containImage}
-                        ></Image>
+                    {/* Speaker 2 Container */}
+                    <View style={{position: 'absolute', left: '80%', top: this.state.speakerHide, width: '6%', height: '10%',}} >
+                        <TouchableOpacity onPress={this.playNumberSound}>
+                            <Image
+                                source={SpeakerIcon}
+                                style={styles.containImage}
+                            ></Image>
+                        </TouchableOpacity>
+                    </View>
 
-                    </TouchableOpacity>
-                </View>
+                    {/* Speaker Sentence 2 Container */}
+                    <View style={{position: 'absolute', left: '80%', top: this.state.speaker2Hide, width: '6%', height: '10%',}} >
+                        <TouchableOpacity onPress={this.playSentenceSound}>
+                            <Image
+                                source={SpeakerIcon}
+                                style={styles.containImage}
+                            ></Image>
 
-                {/* Number Glow Container */}
-                <View style={{position: 'absolute', left: '51%', top: this.state.glowHide, width: '30%', height: '45%',}} >
-                    <Image style={styles.Glow} source={this.state.glow}/>
-                </View>
+                        </TouchableOpacity>
+                    </View>
 
-                {/* Pencil Button */}
-                <View style={{position: 'absolute', left: '11%', 
-                    top: this.state.pencilHide, width: '7%', height: '22%',}} >
-                    <TouchableOpacity onPress={this.letterTracing}>
-                        <Image
-                        source={PencilIcon}
-                            style={styles.containImage}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
+                    {/* Number Glow Container */}
+                    <View style={{position: 'absolute', left: '51%', top: this.state.glowHide, width: '30%', height: '45%',}} >
+                        <Image style={styles.Glow} source={this.state.glow}/>
+                    </View>
 
-                 {/* Prev Button */}
+                    {/* Pencil Button */}
+                    <View style={{position: 'absolute', left: '13%', 
+                        top: this.state.pencilHide, width: '7%', height: '20%',}} >
+                        <TouchableOpacity onPress={this.letterTracing}>
+                            <Image
+                            source={PencilIcon}
+                                style={styles.containImage}
+                            ></Image>
+                        </TouchableOpacity>
+                    </View>
+
+                    
+                    {/* End of Page Letters Code Part */}
+
+
+                    {/* Sentence Number Obejct Glow */}
+                    <View style={{position: 'absolute', left: '35%', top: this.state.sentenceObjectHide, width: '30%', height: '35%',}} >
+                        <Image style={styles.Glow} source={this.state.glow}/>
+                    </View>
+
+
+
+                    {/* Start of Letters Enum Code Part */}
+                    <View style={{position: 'absolute', top: this.state.menuLetterHide, left: '15%', width: '83%', height: '32%', flexDirection: 'row', flexWrap: 'wrap',}}>
+                        <MenuItem itemImage={require('./numbersImage/1.png')} goto={() => {
+                                            this.changeBackground(numberBGList[0], 0)}} />
+                        <MenuItem itemImage={require('./numbersImage/2.png')} goto={() => {
+                                            this.changeBackground(numberBGList[1], 1)}} />
+                        <MenuItem itemImage={require('./numbersImage/3.png')} goto={() => {
+                                            this.changeBackground(numberBGList[2], 2)}} />
+                        <MenuItem itemImage={require('./numbersImage/4.png')} goto={() => {
+                                            this.changeBackground(numberBGList[3], 3)}} />
+                        <MenuItem itemImage={require('./numbersImage/5.png')} goto={() => {
+                                            this.changeBackground(numberBGList[4], 4)}} />
+                        <MenuItem itemImage={require('./numbersImage/6.png')} goto={() => {
+                                            this.changeBackground(numberBGList[5], 5)}} />
+                        <MenuItem itemImage={require('./numbersImage/7.png')} goto={() => {
+                                            this.changeBackground(numberBGList[6], 6)}} />
+                        <MenuItem itemImage={require('./numbersImage/8.png')} goto={() => {
+                                            this.changeBackground(numberBGList[7], 7)}} />
+                        <MenuItem itemImage={require('./numbersImage/9(1).png')} goto={() => {
+                                            this.changeBackground(numberBGList[8], 8)}} />
+                        <MenuItem itemImage={require('./numbersImage/10.png')} goto={() => {
+                                            this.changeBackground(numberBGList[9], 9)}} />
+                        <MenuItem itemImage={require('./numbersImage/20(2).png')} goto={() => {
+                                            this.changeBackground(numberBGList[10], 10)}} />
+                        <MenuItem itemImage={require('./numbersImage/30.png')} goto={() => {
+                                            this.changeBackground(numberBGList[12], 11)}} />
+                        <MenuItem itemImage={require('./numbersImage/40.png')} goto={() => {
+                                            this.changeBackground(numberBGList[12], 12)}} />
+                        <MenuItem itemImage={require('./numbersImage/50.png')} goto={() => {
+                                            this.changeBackground(numberBGList[13], 13)}} />
+                        <MenuItem itemImage={require('./numbersImage/60.png')} goto={() => {
+                                            this.changeBackground(numberBGList[14], 14)}} />
+                        <MenuItem itemImage={require('./numbersImage/70.png')} goto={() => {
+                                            this.changeBackground(numberBGList[15], 15)}} />
+                        <MenuItem itemImage={require('./numbersImage/80.png')} goto={() => {
+                                            this.changeBackground(numberBGList[16], 16)}} />
+                        <MenuItem itemImage={require('./numbersImage/90.png')} goto={() => {
+                                            this.changeBackground(numberBGList[17], 17)}} />
+                        <MenuItem itemImage={require('./numbersImage/100.png')} goto={() => {
+                                            this.changeBackground(numberBGList[18], 18)}} />
+                        <MenuItem itemImage={require('./numbersImage/200.png')} goto={() => {
+                                            this.changeBackground(numberBGList[19], 19)}} />
+                        <MenuItem itemImage={require('./numbersImage/300.png')} goto={() => {
+                                            this.changeBackground(numberBGList[20], 20)}} />
+                        <MenuItem itemImage={require('./numbersImage/400.png')} goto={() => {
+                                            this.changeBackground(numberBGList[21], 21)}} />
+                        <MenuItem itemImage={require('./numbersImage/500.png')} goto={() => {
+                                            this.changeBackground(numberBGList[22], 22)}} />
+                        <MenuItem itemImage={require('./numbersImage/1000.png')} goto={() => {
+                                            this.changeBackground(numberBGList[23], 23)}} />
+                    </View>
+                    {/* End of Letters Enum Code Part */}
+                    </View>
+                }
+
+
+                {/* Prev Button */}
                 <View style={{position: 'absolute', left: this.state.prevHide, 
-                            top: '46%', width: '12%', height: '24%',}}>
-                    <TouchableOpacity onPress={this.goPrev}>
-                        <Image
-                            source={PrevIcon}
-                            style={styles.prev}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
+                                top: '46%', width: '12%', height: '24%',}}>
+                        <TouchableOpacity onPress={this.goPrev}>
+                            <Image
+                                source={PrevIcon}
+                                style={styles.prev}
+                            ></Image>
+                        </TouchableOpacity>
+                    </View>
 
                 {/* Next Button */}
                 <View style={{position: 'absolute', left: this.state.nextHide, 
@@ -403,68 +519,6 @@ class NumberScreen extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
-                {/* End of Page Letters Code Part */}
-
-
-                {/* Sentence Number Obejct Glow */}
-                <View style={{position: 'absolute', left: '35%', top: this.state.sentenceObjectHide, width: '30%', height: '35%',}} >
-                    <Image style={styles.Glow} source={this.state.glow}/>
-                </View>
-
-
-
-                {/* Start of Letters Enum Code Part */}
-                <View style={{position: 'absolute', top: this.state.menuLetterHide, left: '15%', width: '83%', height: '32%', flexDirection: 'row', flexWrap: 'wrap',}}>
-                    <MenuItem itemImage={require('./numbersImage/1.png')} goto={() => {
-                                        this.changeBackground(numberBGList[0], 0)}} />
-                    <MenuItem itemImage={require('./numbersImage/2.png')} goto={() => {
-                                        this.changeBackground(numberBGList[1], 1)}} />
-                    <MenuItem itemImage={require('./numbersImage/3.png')} goto={() => {
-                                        this.changeBackground(numberBGList[2], 2)}} />
-                    <MenuItem itemImage={require('./numbersImage/4.png')} goto={() => {
-                                        this.changeBackground(numberBGList[3], 3)}} />
-                    <MenuItem itemImage={require('./numbersImage/5.png')} goto={() => {
-                                        this.changeBackground(numberBGList[4], 4)}} />
-                    <MenuItem itemImage={require('./numbersImage/6.png')} goto={() => {
-                                        this.changeBackground(numberBGList[5], 5)}} />
-                    <MenuItem itemImage={require('./numbersImage/7.png')} goto={() => {
-                                        this.changeBackground(numberBGList[6], 6)}} />
-                    <MenuItem itemImage={require('./numbersImage/8.png')} goto={() => {
-                                        this.changeBackground(numberBGList[7], 7)}} />
-                    <MenuItem itemImage={require('./numbersImage/9(1).png')} goto={() => {
-                                        this.changeBackground(numberBGList[8], 8)}} />
-                    <MenuItem itemImage={require('./numbersImage/10.png')} goto={() => {
-                                        this.changeBackground(numberBGList[9], 9)}} />
-                    <MenuItem itemImage={require('./numbersImage/20(2).png')} goto={() => {
-                                        this.changeBackground(numberBGList[10], 10)}} />
-                    <MenuItem itemImage={require('./numbersImage/30.png')} goto={() => {
-                                        this.changeBackground(numberBGList[12], 11)}} />
-                    <MenuItem itemImage={require('./numbersImage/40.png')} goto={() => {
-                                        this.changeBackground(numberBGList[12], 12)}} />
-                    <MenuItem itemImage={require('./numbersImage/50.png')} goto={() => {
-                                        this.changeBackground(numberBGList[13], 13)}} />
-                    <MenuItem itemImage={require('./numbersImage/60.png')} goto={() => {
-                                        this.changeBackground(numberBGList[14], 14)}} />
-                    <MenuItem itemImage={require('./numbersImage/70.png')} goto={() => {
-                                        this.changeBackground(numberBGList[15], 15)}} />
-                    <MenuItem itemImage={require('./numbersImage/80.png')} goto={() => {
-                                        this.changeBackground(numberBGList[16], 16)}} />
-                    <MenuItem itemImage={require('./numbersImage/90.png')} goto={() => {
-                                        this.changeBackground(numberBGList[17], 17)}} />
-                    <MenuItem itemImage={require('./numbersImage/100.png')} goto={() => {
-                                        this.changeBackground(numberBGList[18], 18)}} />
-                    <MenuItem itemImage={require('./numbersImage/200.png')} goto={() => {
-                                        this.changeBackground(numberBGList[19], 19)}} />
-                    <MenuItem itemImage={require('./numbersImage/300.png')} goto={() => {
-                                        this.changeBackground(numberBGList[20], 20)}} />
-                    <MenuItem itemImage={require('./numbersImage/400.png')} goto={() => {
-                                        this.changeBackground(numberBGList[21], 21)}} />
-                    <MenuItem itemImage={require('./numbersImage/500.png')} goto={() => {
-                                        this.changeBackground(numberBGList[22], 22)}} />
-                    <MenuItem itemImage={require('./numbersImage/1000.png')} goto={() => {
-                                        this.changeBackground(numberBGList[23], 23)}} />
-                </View>
-                {/* End of Letters Enum Code Part */}
 
 
                 <View style={{position: 'absolute',
@@ -473,7 +527,7 @@ class NumberScreen extends Component {
                                 width: '14%',
                                 height: '28%'}}>
                     <TouchableOpacity onPress={this.goBack}>
-                        <Image source={GoBackIcon} style={styles.back}></Image>
+                        <Image source={this.state.backIcon} style={styles.back}></Image>
                     </TouchableOpacity>
                 </View>
 
