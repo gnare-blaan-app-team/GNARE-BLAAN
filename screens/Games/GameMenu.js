@@ -422,7 +422,8 @@ class GameMenu extends Component {
 
     play = async (getPlayer) => {
         await AsyncStorage.setItem(SessionPlayer, getPlayer);
-          Animated.spring(this.animatedValue, {
+        this.updateTime(getPlayer);
+        Animated.spring(this.animatedValue, {
             toValue: .0
         }).start();
         setTimeout(() => {
@@ -431,10 +432,21 @@ class GameMenu extends Component {
             })
             this.state.profile = 'none';
         }, 1000); 
+    }
 
-        // realm = new Realm({ path: 'PlayerDatabase.realm' });
-        // var getPlayers = realm.objects('Players');
-        // alert(JSON.stringify(getPlayers))
+    updateTime =  (index) => {
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getDate = realm.objects('Players');
+        var date = new Date();
+        for (a = 0; a < getDate.length; a++) {
+            const con = parseInt(a);
+            if (index == getDate[con].playername) {
+                realm.write(() => {
+                   getDate[con].dateCreated = String(date);
+                })
+            }
+        }
+      
     }
 
     market = () => {

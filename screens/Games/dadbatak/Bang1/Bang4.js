@@ -731,6 +731,7 @@ class Bang4 extends Component {
                             choice4Top: '75%',//75%
                             blackboardTop: '14%',
                         });
+                        stageNumber.splice(random, 1);
                     }
                 }
             }

@@ -621,7 +621,7 @@ class Bang extends Component {
         this.checkBalance();
     }
 
-    omponentWillUnmount() {
+    componentWillUnmount() {
         this.backHandler.remove()
       }
     
@@ -785,6 +785,7 @@ class Bang extends Component {
                             choice4Top: '75%',//75%
                             blackboardTop: '14%',
                         });
+                        stageNumber.splice(random, 1);
                     }
                 }
             }
