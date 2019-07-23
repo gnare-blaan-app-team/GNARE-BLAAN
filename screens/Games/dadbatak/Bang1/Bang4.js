@@ -691,7 +691,6 @@ class Bang4 extends Component {
         }
 
         if (q == 5) {
-            this.props.navigation.navigate('ending4');
             for (a = 0; a < getPlayers.length; a++) {
                 const con = parseInt(a);
                 if (storedValue == getPlayers[con].playername) {
@@ -703,6 +702,7 @@ class Bang4 extends Component {
                     })
                 }
             }
+            this.props.navigation.replace('ending4');
         }
         if (index == 'check') {
             for (a = 0; a < getPlayers.length; a++) {
@@ -731,6 +731,7 @@ class Bang4 extends Component {
                             choice4Top: '75%',//75%
                             blackboardTop: '14%',
                         });
+                        stageNumber.splice(random, 1);
                     }
                 }
             }
@@ -1028,6 +1029,10 @@ class Bang4 extends Component {
                 this.setState({
                     answerImage: correct[get],
                     answerTop: '51%',
+                    choice1Top: '1000%',
+                    choice2Top: '1000%',
+                    choice3Top: '1000%',
+                    choice4Top: '1000%'
                 })
                 setTimeout(() => {
                     this.setState({
@@ -1343,13 +1348,25 @@ class Bang4 extends Component {
                         resizeMode: 'contain',
                     }}></Image>
                 </Animatable.View>
-                <Animatable.View ref={this.handleViewRef} style={{ position: 'absolute', left: '25%', width: '20%', height: '12%', top: '2%', }}>
-                    <Image source={stars} style={{ resizeMode: 'contain', position: 'absolute', top: this.state.star1Top }} />
-                    <Image source={stars} style={{ resizeMode: 'contain', position: 'absolute', left: '34%', top: this.state.star2Top }} />
-                    <Image source={stars} style={{ resizeMode: 'contain', position: 'absolute', left: '69%', top: this.state.star3Top }} />
-                    <Image source={emptyStars} style={{ resizeMode: 'contain', position: 'absolute', top: this.state.emptyStar1Top }} />
-                    <Image source={emptyStars} style={{ resizeMode: 'contain', position: 'absolute', left: '34%', top: this.state.emptyStar2Top }} />
-                    <Image source={emptyStars} style={{ resizeMode: 'contain', position: 'absolute', left: '69%', top: this.state.emptyStar3Top }} />
+                <Animatable.View ref={this.handleViewRef} style={{ position: 'absolute', left: '16%', width: '20%', height: '12%', top: '2%', }}>
+                    <View style={{ position: 'absolute', width: '100%', height: '100%', top: this.state.star1Top }}>
+                        <Image source={stars} style={{ height: '100%', width: '100%', resizeMode: 'contain' }} />
+                    </View>
+                    <View style={{ position: 'absolute', width: '100%', height: '100%', left: '39%', top: this.state.star2Top }}>
+                        <Image source={stars} style={{ height: '100%', width: '100%', resizeMode: 'contain' }} />
+                    </View>
+                    <View style={{ position: 'absolute', width: '100%', height: '100%', left: '77%', top: this.state.star3Top }}>
+                        <Image source={stars} style={{ height: '100%', width: '100%', resizeMode: 'contain' }} />
+                    </View>
+                    <View style={{ position: 'absolute', width: '100%', height: '100%', top: this.state.emptyStar1Top }}>
+                        <Image source={emptyStars} style={{ height: '100%', width: '100%', resizeMode: 'contain' }} />
+                    </View>
+                    <View style={{ position: 'absolute', width: '100%', height: '100%', left: '39%', top: this.state.emptyStar2Top }}>
+                        <Image source={emptyStars} style={{ height: '100%', width: '100%', resizeMode: 'contain' }} />
+                    </View>
+                    <View style={{ position: 'absolute', width: '100%', height: '100%', left: '77%', top: this.state.emptyStar3Top }}>
+                        <Image source={emptyStars} style={{ height: '100%', width: '100%', resizeMode: 'contain' }} />
+                    </View>
                 </Animatable.View>
                <View style={{
                     position:'absolute',

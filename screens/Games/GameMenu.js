@@ -314,11 +314,11 @@ class GameMenu extends Component {
     }
 
     gotoMainMenu = () => {
-        this.props.navigation.navigate('mainMenu');
+        this.props.navigation.replace('mainMenu');
     }
 
     gotoCoinBank = () => {
-        this.props.navigation.navigate('dadseBank');
+        this.props.navigation.replace('dadseBank');
     }
 
     gotoHome = () => {
@@ -354,31 +354,31 @@ class GameMenu extends Component {
       const passIndex = this.state.passIndex;
       if(set == 'dadsePart'){
           if (passIndex == 1) {
-              this.props.navigation.push('bang');
+              this.props.navigation.replace('bang');
           }
           if (passIndex == 2) {
-              this.props.navigation.push('bang2');
+              this.props.navigation.replace('bang2');
           }
           if (passIndex == 3) {
-              this.props.navigation.push('bang3');
+              this.props.navigation.replace('bang3');
           }
       }
         if (set == 'dadbatakPart') {
             if (passIndex == 1) {
-                this.props.navigation.push('bang4');
+                this.props.navigation.replace('bang4');
             }
             if (passIndex == 2) {
-                this.props.navigation.push('bang5');
+                this.props.navigation.replace('bang5');
             }
             if (passIndex == 3) {
-                this.props.navigation.push('bang6');
+                this.props.navigation.replace('bang6');
             }
         }
         
     }
 
     gotoKastifun = () => {
-        this.props.navigation.navigate('kastifunScreen');
+        this.props.navigation.replace('kastifunScreen');
     }
 
     goToProfile = () => {
@@ -422,7 +422,8 @@ class GameMenu extends Component {
 
     play = async (getPlayer) => {
         await AsyncStorage.setItem(SessionPlayer, getPlayer);
-          Animated.spring(this.animatedValue, {
+        this.updateTime(getPlayer);
+        Animated.spring(this.animatedValue, {
             toValue: .0
         }).start();
         setTimeout(() => {
@@ -431,10 +432,21 @@ class GameMenu extends Component {
             })
             this.state.profile = 'none';
         }, 1000); 
+    }
 
-        // realm = new Realm({ path: 'PlayerDatabase.realm' });
-        // var getPlayers = realm.objects('Players');
-        // alert(JSON.stringify(getPlayers))
+    updateTime =  (index) => {
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getDate = realm.objects('Players');
+        var date = new Date();
+        for (a = 0; a < getDate.length; a++) {
+            const con = parseInt(a);
+            if (index == getDate[con].playername) {
+                realm.write(() => {
+                   getDate[con].dateCreated = String(date);
+                })
+            }
+        }
+      
     }
 
     market = () => {
@@ -445,7 +457,6 @@ class GameMenu extends Component {
             this.props.navigation.navigate('dadseMarket');
         } 
     }
-
 
     refreshPlayer =()=>{
         realm = new Realm({ path: 'PlayerDatabase.realm' });
@@ -784,9 +795,6 @@ class GameMenu extends Component {
                         }}>
                             <TouchableOpacity onPress={this.save}>
                                 <Image source={save} style={{ height: '100%', width: '100%', resizeMode: 'contain' }} />
-                                {/* <View style={{ position: 'absolute', left: '38%', top: '25%' }}>
-                                    <Text style={{ color: 'white', fontSize: 21, }}>SAVE</Text>
-                                </View> */}
                             </TouchableOpacity>
                         </View>
                         <View style={{
@@ -798,9 +806,6 @@ class GameMenu extends Component {
                         }}>
                             <TouchableOpacity onPress={this.cancel}>
                                 <Image source={cancel} style={{ height: '100%', width: '100%', resizeMode: 'contain' }} />
-                                {/* <View style={{ position: 'absolute', left: '33%', top: '25%' }}>
-                                    <Text style={{ color: 'white', fontSize: 21, }}>CANCEL</Text>
-                                </View> */}
                             </TouchableOpacity>
                         </View>
                         <View style={{
@@ -812,9 +817,6 @@ class GameMenu extends Component {
                         }}>
                             <TouchableOpacity onPress={this.create}>
                             <Image source={createplayer} style={{height:'100%',width:'100%',resizeMode:'contain'}}/>
-                            {/* <View style={{ position: 'absolute',left: '14%', top: '25%'}}>
-                                    <Text style={{ color: 'white', fontSize: 21,}}>CREATE PLAYER</Text>
-                                </View> */}
                             </TouchableOpacity>
                         </View>
                     </View>
