@@ -128,7 +128,7 @@ class Vocabulary6 extends Component {
     
     gotoMainMenu = () =>{
         try {
-            sound.setVolume(0.2);
+            // sound.setVolume(0.2);
             sound.play();
         } catch(error) {
             
@@ -142,7 +142,7 @@ class Vocabulary6 extends Component {
 
     goBack = () => {
         try {
-            sound.setVolume(0.2);
+            // sound.setVolume(0.2);
             sound.play();
         } catch(error) {
             
@@ -188,7 +188,7 @@ class Vocabulary6 extends Component {
     componentDidMount() {
         this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
         try {
-            sound.setVolume(0.2);
+            // sound.setVolume(0.2);
             sound.play();
         } catch(error) {
             

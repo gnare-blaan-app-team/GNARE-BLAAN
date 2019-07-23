@@ -60,8 +60,8 @@ class Story1Screen extends Component {
 
     componentDidMount(){
         try {
-            sound.setVolume(0);
-            sound.play();
+            // sound.setVolume(0);
+            sound.pause();
         } catch(error) {
             
         }
@@ -109,7 +109,7 @@ class Story1Screen extends Component {
 
     handleEnd = () => {
         try {
-            sound.setVolume(0.2);
+            // sound.setVolume(0.2);
             sound.play();
         } catch(error) {
             
@@ -128,7 +128,7 @@ class Story1Screen extends Component {
 
     goBack = () => {
         try {
-            sound.setVolume(0.2);
+            // sound.setVolume(0.2);
             sound.play();
         } catch(error) {
             
@@ -138,7 +138,7 @@ class Story1Screen extends Component {
 
     gotoMainMenu = () => {
         try {
-            sound.setVolume(0.2);
+            // sound.setVolume(0.2);
             sound.play();
         } catch(error) {
             
@@ -153,8 +153,8 @@ class Story1Screen extends Component {
 
     gotoVocabulary1 = () => {
         try {
-            sound.setVolume(0);
-            sound.play();
+            // sound.setVolume(0);
+            sound.pause();
         } catch(error) {
             
         }

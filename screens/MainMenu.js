@@ -6,6 +6,8 @@ import Sound from 'react-native-sound';
 
 import {sound} from './HomePage';
 
+import Icon from "react-native-vector-icons/FontAwesome";
+
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js'; 
 Sound.setCategory('Playback');
 
@@ -14,14 +16,14 @@ class Mainmenu extends Component {
         header: null,
     }
 
-    componentDidMount() {
-        try {
-            sound.setVolume(0.2);
-            sound.play();
-        } catch(error) {
+    // componentDidMount() {
+    //     try {
+    //         sound.setVolume(0.2);
+    //         sound.play();
+    //     } catch(error) {
 
-        }
-    }
+    //     }
+    // }
 
     gotoLetters = () => {
         this.props.navigation.push('letterIntro');
@@ -41,7 +43,7 @@ class Mainmenu extends Component {
 
     gotoMainMenu = () => {
        try {
-            sound.setVolume(0.2);
+            // sound.setVolume(0.2);
             sound.play();
         } catch(error) {
 
@@ -60,6 +62,10 @@ class Mainmenu extends Component {
 
     gotoGame = () => {
         this.props.navigation.push('gameIntro');
+    }
+
+    gotoSettings = () => {
+        this.props.navigation.navigate('settingBG');
     }
 
     playClickSound = () => {
@@ -104,7 +110,18 @@ class Mainmenu extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
+                <View style={{position: 'absolute',
+                                left: '90%',
+                                top: '3%',
+                                width: '14%',
+                                height: '28%',}}>
+                    <TouchableOpacity onPress={this.gotoSettings}>
+                                <Icon name={"cog"} size={85} color="#FFF" />
+                    </TouchableOpacity>
+                </View>
             </ImageBackground>
+
+            
         )
     }
 }

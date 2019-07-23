@@ -23,14 +23,32 @@ export let sound = new Sound('blaanbg.mp3', Sound.MAIN_BUNDLE, (error) => {
             sound.setVolume(0.2);
             sound.play();
             sound.setNumberOfLoops(-1);
-            setInterval(() => {
-                sound.setVolume(0.2);
-                sound.play();
-            }, (60 * 1000)*3);
+            // setInterval(() => {
+            //     sound.setVolume(0.2);
+            //     sound.play();
+            // }, (60 * 1000)*3);
         } catch(error) {
             
         }
 }});
+
+// export function increaseBGVolume() {
+//     if (sound.getVolume() < 1){
+//         sound.setVolume(sound.getVolume() + 0.1);
+//         alert('Volume: ' + sound.getVolume());
+//     } else if(sound.getVolume() >= 1) {
+//         alert('Volume is at Maximum! ' + sound.getVolume())
+//     }
+// }
+
+// export function decreaseBGVolume() {
+//     if (sound.getVolume() > 0){
+//         sound.setVolume(sound.getVolume() - 0.1);
+//         alert('Volume: ' + sound.getVolume());
+//     } else if(sound.getVolume() <= 0){
+//         alert('Volume is at Minimum! ' + sound.getVolume())
+//     }
+// }
 
 class Homescreen extends Component{
 
