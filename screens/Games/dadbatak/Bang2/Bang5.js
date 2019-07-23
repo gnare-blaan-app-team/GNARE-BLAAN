@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, PanResponder, TouchableOpacity, ImageBackground, AsyncStorage} from 'react-native';
+import { Text, View, Image, PanResponder, StyleSheet, TouchableOpacity, BackHandler, ImageBackground, AsyncStorage} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import GameBG from '../../gameImages/GameBG.png';
 import { globalStyleSheet } from '../../../globalStyleSheet/globalStyleSheet';
@@ -11,8 +11,11 @@ import emptyStars from '../../gameImages/13Icon_EmptyStar.png';
 import FadlugIcon from '../../gameImages/fadlug_icon.png';
 import LamwaIcon from '../../gameImages/lamwa_icon.png';
 import GufadyanIcon from '../../gameImages/gufadyan_icon.png';
+import Gufadyan from '../../gameImages/gufadyan.png';
 import Coins from '../../gameImages/Coinbank.png';
 import Sound from 'react-native-sound';
+
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import Choiceagnu from '../../gameImages/DB_choices2/agnu.png';
 import Choiceagong from '../../gameImages/DB_choices2/agong.png';
@@ -186,13 +189,10 @@ import Answer13 from '../../gameImages/DB_blackboard2/DB_bang2A13.png';
 import Answer14 from '../../gameImages/DB_blackboard2/DB_bang2A14.png';
 import Answer15 from '../../gameImages/DB_blackboard2/DB_bang2A15.png';
 
-const DadbatakBang2 = '@MyApp:DadbatakBang2';
-const DadbatakStar1 = '@MyApp:DadbatakStar1';
-const DadbatakStar2 = '@MyApp:DadbatakStar2';
-const DadbatakStar3 = '@MyApp:DadbatakStar3';
-const CoinBalance = '@MyApp:CoinBalance';
-const QuestionDone = '@MyApp:QuestionDone';
-const DadbatakStage3 = '@MyApp:DadbatakStage3';
+const SessionPlayer = '@MyApp:SessionPlayer';
+
+var Realm = require('realm');
+let realm;
 
 Sound.setCategory('Playback');
 
@@ -782,16 +782,31 @@ class Bang5 extends Component {
             emptyStar3Top:'1000%',
             fadlugTop:'1000%',
             gufadyanTop:'1000%',
+            marketBottom: '3%',
             lamwaTop:'1000%',
             Balance:0,
         }
+
+        //Sounds
+        answerAudio = null;
     }
 
     componentDidMount() {
-        this.onLoad();
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+
+        this.load('check');
         this.minusStar();
         this.checkBalance();
     }
+
+    componentWillUnmount() {
+        this.backHandler.remove()
+      }
+    
+      handleBackPress = () => {
+        this.goBack(); 
+        return true;
+      }
 
     playChoiceGame = (index) => {
         this.choiceGame = new Sound(choiceGame[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
@@ -807,126 +822,195 @@ class Bang5 extends Component {
         for (var a = 0; a <= audio.length; a++) {
             if (index == audioIndex[a]) {
                 const set = a;
-                const answerAudio = new Sound(audio[set] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+                this.answerAudio = new Sound(audio[set] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                     if (error) {
                         alert('failed to load the sound', error);
                         return;
                     } else {
-                        answerAudio.play();
+                        this.answerAudio.play();
                     }
                 });
             }
         }
-  }
+    }
+
+    stopSounds = () => {
+        if (this.answerAudio != null){
+          this.answerAudio.stop();
+        }
+      }
 
     checkBalance = async (index) => {
-        var storedValue = await AsyncStorage.getItem(CoinBalance);
-        if(storedValue == null){
-                    const value = 0;
-                    this.state.Balance = value;            
-        }else{
-            this.setState({
-                Balance:storedValue
-            })
-        }
-        if(index == 'addBalance'){
-            if(this.state.Balance == 0){
-                const value = 4;
-                const convertValue = JSON.stringify(value);
-                this.setState({Balance:convertValue});
-                await AsyncStorage.setItem(CoinBalance, convertValue); 
-            }else{
-                const convertToNumber = Number(this.state.Balance);
-                this.state.Balance = convertToNumber + 4;
-                const convertValue = JSON.stringify(this.state.Balance);
-                 await AsyncStorage.setItem(CoinBalance, convertValue); 
+        const storedValue = await AsyncStorage.getItem(SessionPlayer);
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getCoin = realm.objects('Players');
+
+        var id = 0;
+        var coin = '';
+        for (a = 0; a < getCoin.length; a++) {
+            const con = parseInt(a);
+            if (storedValue == getCoin[con].playername) {
+                coin = getCoin[con].coinBalance;
+                id = con;
             }
         }
-        
+        if (coin == 'null') {
+            const value = 0;
+            this.setState({
+                Balance: value,
+            })
+        } else {
+            this.setState({
+                Balance: coin
+            })
+        }
+
+        if (index == 'addBalance') {
+            if (this.state.Balance == 0) {
+                const value = 1;
+                realm.write(() => {
+                    getCoin[id].coinBalance = String(value);
+                })
+                this.setState({
+                    Balance: value,
+                })
+            } else {
+                const convertToNumber = Number(this.state.Balance);
+                this.state.Balance = convertToNumber + 1;
+                realm.write(() => {
+                    getCoin[id].coinBalance = String(this.state.Balance);
+                })
+                this.setState({
+                    Balance: this.state.Balance,
+                })
+            }
+        }
+
     }
 
     gotoMainMenu = () =>{
-        this.props.navigation.navigate('mainMenu');
+        this.props.navigation.replace('mainMenu');
     }
 
     goBack = () => {
-        this.props.navigation.push('gameMenu');
+        this.stopSounds();
+        this.props.navigation.replace('gameMenu', { showDadBatakBang: 'show' });
     }
     
-    onLoad = async (index) => {
-        const storedValue = await AsyncStorage.getItem(DadbatakBang2);
-        const Reach5 = await AsyncStorage.getItem(QuestionDone);
+    gotoMarket = () =>{
+        this.props.navigation.replace('dadseMarket');
+    }
+
+    gotoLamwa = () =>{
+        this.props.navigation.replace('gameMenu', { showDadBatakBang: 'show' });
+    }
+
+    load = async (index) => {
+        const storedValue = await AsyncStorage.getItem(SessionPlayer);
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getPlayers = realm.objects('Players');
+        var id = 0;
+        var random = 0;
         const randomizer = Math.floor(Math.random() * stageNumber.length);
-        const use = stageNumber[randomizer];
-        stageNumber.splice(randomizer,1);
-        var random = use;
-        if (Reach5 == 5){
-            this.props.navigation.push('gameMenu', { show: 'DadBatak' ,show3DB:'DadBatak2'});
-            const stage2 = 'unlock';
-            await AsyncStorage.removeItem(QuestionDone);
-            await AsyncStorage.removeItem(DadbatakBang2);
-            await AsyncStorage.setItem(DadbatakStage3, stage2);
-       } 
-            if(storedValue == null){
-                const store = JSON.stringify(random);
-                await AsyncStorage.setItem(DadbatakBang2, store);
-                this.setState({ 
-                    randomQuestion: random,
-                    choice1Top: '75%',//75%
-                    choice2Top: '75%',//75%
-                    choice3Top: '75%',//75%
-                    choice4Top: '75%',//75%
-                    blackboardTop: '14%',
-                });
-            }else{
-                this.setState({ 
-                    randomQuestion: storedValue,
-                    choice1Top: '75%',//75%
-                    choice2Top: '75%',//75%
-                    choice3Top: '75%',//75%
-                    choice4Top: '75%',//75%
-                    blackboardTop: '14%',
-                });
-            }
-            if(index == 'next'){
-                this.setState({
-                    choice1Top: '1000%',//75%
-                    choice2Top: '1000%',//75%
-                    choice3Top: '1000%',//75%
-                    choice4Top: '1000%',//75%
-                    blackboardTop: '1000%',
-                });
-                const store = JSON.stringify(random);
-                await AsyncStorage.setItem(DadbatakBang2, store);
-                this.setState({ 
-                    randomQuestion: random,
-                    choice1Top: '75%',//75%
-                    choice2Top: '75%',//75%
-                    choice3Top: '75%',//75%
-                    choice4Top: '75%',//75%
-                    blackboardTop: '14%',
-                });
-            }
-            if(index == 'retry'){
-                this.setState({
-                    choice1Top: '1000%',//75%
-                    choice2Top: '1000%',//75%
-                    choice3Top: '1000%',//75%
-                    choice4Top: '1000%',//75%
-                    blackboardTop: '1000%',
-                });
-                const store = JSON.stringify(random);
-                await AsyncStorage.setItem(DadbatakBang2, store);
-                this.setState({ 
-                    randomQuestion: random,
-                    choice1Top: '75%',//75%
-                    choice2Top: '75%',//75%
-                    choice3Top: '75%',//75%
-                    choice4Top: '75%',//75%
-                    blackboardTop: '14%',
-                });
+        var use = stageNumber[randomizer];
+        stageNumber.splice(randomizer, 1);
+        var q = '';
+        for (a = 0; a < getPlayers.length; a++) {
+            const con = parseInt(a);
+            if (storedValue == getPlayers[con].playername) {
+                q = getPlayers[con].questionDoneBang2Dadbatak;
             }
         }
+
+        if (q == 5) {
+            this.props.navigation.push('gameMenu', { show: 'DadBatak', show3DB: 'DadBatak2' });
+            for (a = 0; a < getPlayers.length; a++) {
+                const con = parseInt(a);
+                if (storedValue == getPlayers[con].playername) {
+                    realm.write(() => {
+                        getPlayers[con].Dadbatakstar1 = 'null';
+                        getPlayers[con].Dadbatakstar2 = 'null';
+                        getPlayers[con].Dadbatakstar3 = 'null';
+                        getPlayers[con].questionDoneBang2Dadbatak = 'null';
+                        getPlayers[con].DBbangStage3 = 'unlock'
+                    })
+                }
+            }
+        }
+        if (index == 'check') {
+            for (a = 0; a < getPlayers.length; a++) {
+                const con = parseInt(a);
+                if (storedValue == getPlayers[con].playername) {
+                    random = getPlayers[con].dadseBatak2RandomKey;
+                    id = con;
+                    if (random == 'null') {
+                        realm.write(() => {
+                            getPlayers[con].dadseBatak2RandomKey = String(use);
+                        })
+                        this.setState({
+                            randomQuestion: use,
+                            choice1Top: '75%',//75%
+                            choice2Top: '75%',//75%
+                            choice3Top: '75%',//75%
+                            choice4Top: '75%',//75%
+                            blackboardTop: '14%',
+                        });
+                    } else {
+                        this.setState({
+                            randomQuestion: random,
+                            choice1Top: '75%',//75%
+                            choice2Top: '75%',//75%
+                            choice3Top: '75%',//75%
+                            choice4Top: '75%',//75%
+                            blackboardTop: '14%',
+                        });
+                    }
+                }
+            }
+        }
+
+        if (index == 'next') {
+            this.setState({
+                choice1Top: '1000%',//75%
+                choice2Top: '1000%',//75%
+                choice3Top: '1000%',//75%
+                choice4Top: '1000%',//75%
+                blackboardTop: '1000%',
+            });
+            realm.write(() => {
+                getPlayers[id].dadseBatak2RandomKey = String(use);
+            })
+            this.setState({
+                randomQuestion: use,
+                choice1Top: '75%',//75%
+                choice2Top: '75%',//75%
+                choice3Top: '75%',//75%
+                choice4Top: '75%',//75%
+                blackboardTop: '14%',
+            });
+        }
+
+        if (index == 'retry') {
+            this.setState({
+                choice1Top: '1000%',//75%
+                choice2Top: '1000%',//75%
+                choice3Top: '1000%',//75%
+                choice4Top: '1000%',//75%
+                blackboardTop: '1000%',
+            });
+            realm.write(() => {
+                getPlayers[id].dadseBatak2RandomKey = String(use);
+            })
+            this.setState({
+                randomQuestion: use,
+                choice1Top: '75%',//75%
+                choice2Top: '75%',//75%
+                choice3Top: '75%',//75%
+                choice4Top: '75%',//75%
+                blackboardTop: '14%',
+            });
+        }
+    }
 
     validate = async (index) => {
        if(index == 1){
@@ -946,7 +1030,7 @@ class Bang5 extends Component {
                    });
                    setTimeout(() => {
                        const next = 'next';
-                       this.onLoad(next);
+                       this.load(next);
                        this.setState({
                            descriptionTop: '1000%',
                        });
@@ -996,7 +1080,7 @@ class Bang5 extends Component {
                     });
                     setTimeout(() => {
                         const next = 'next';
-                        this.onLoad(next);
+                        this.load(next);
                         this.setState({
                             descriptionTop: '1000%',
                         });
@@ -1046,7 +1130,7 @@ class Bang5 extends Component {
                     });
                     setTimeout(() => {
                         const next = 'next';
-                        this.onLoad(next);
+                        this.load(next);
                         this.setState({
                             descriptionTop: '1000%',
                         });
@@ -1101,11 +1185,24 @@ class Bang5 extends Component {
 
     correct = async (index) => {
         this.playChoiceGame(1);
+       
         const add = 'addBalance';
         this.checkBalance(add);
         questionAnswered.push(1);
-        const value = JSON.stringify(questionAnswered.length);
-        await AsyncStorage.setItem(QuestionDone, value);
+        var value = JSON.stringify(questionAnswered.length);
+        const storedValue = await AsyncStorage.getItem(SessionPlayer);
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getPlayers = realm.objects('Players');
+
+        for (a = 0; a < getPlayers.length; a++) {
+            const con = parseInt(a);
+            if (storedValue == getPlayers[con].playername) {
+                realm.write(() => {
+                    getPlayers[con].questionDoneBang2Dadbatak = String(value);
+                })
+            }
+        }
+        
         for (var a = 0; a <= answer.length; a++) {
             if (index == answer[a]) {
                 const get = a;
@@ -1123,80 +1220,126 @@ class Bang5 extends Component {
     }
 
     minusStar = async (index) => {
-        const storedValue1 = await AsyncStorage.getItem(DadbatakStar1);
-        const storedValue2 = await AsyncStorage.getItem(DadbatakStar2);
-        const storedValue3 = await AsyncStorage.getItem(DadbatakStar3);
-        var wrong = 'wrong';
-        if(storedValue1 == 'wrong'){
-            this.setState({
-               star3Top: '1000%',
-               emptyStar3Top: '1%',
-           })
-        }
-        if(storedValue2 == 'wrong'){
-            this.setState({
-               star2Top: '1000%',
-               emptyStar2Top: '1%',
-           })
-        }
-        if(storedValue3 == 'wrong'){
-            this.setState({
-               star3Top: '1000%',
-               emptyStar3Top: '1%',
-           })
-        
+        const storedValue = await AsyncStorage.getItem(SessionPlayer);
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getStars = realm.objects('Players');
+        var id = 0;
+        var star1 = '';
+        var star2 = '';
+        var star3 = '';
+        for (a = 0; a < getStars.length; a++) {
+            const con = parseInt(a);
+            if (storedValue == getStars[con].playername) {
+                star1 = getStars[con].Dadbatakstar1;
+                star2 = getStars[con].Dadbatakstar2;
+                star3 = getStars[con].Dadbatakstar3;
+                id = con;
 
-}
-        this.StarAnimation();
-        if(index == 'minus'){
-            if(storedValue1 == null){
-            await AsyncStorage.setItem(DadbatakStar1, wrong);
-           this.setState({
-               star3Top: '1000%',
-               emptyStar3Top: '1%',
-           })
-        }else{
-            if (storedValue2 == null) {
-                await AsyncStorage.setItem(DadbatakStar2, wrong);
-                this.setState({
-                    star2Top: '1000%',
-                    emptyStar2Top: '1%',
-                })
-            }else{
-                if (storedValue3 == null) {
-                    await AsyncStorage.setItem(DadbatakStar3, wrong);
-                    setTimeout(() => {
-                        this.setState({
-                            star1Top: '1000%',
-                            emptyStar1Top: '1%',
-                            fadlugTop: '19%',
-                            gufadyanTop: '19%',
-                            lamwaTop: '56%',
-                            choice1Top: '1000%',//75%
-                            choice2Top: '1000%',//75%
-                            choice3Top: '1000%',//75%
-                            choice4Top: '1000%',//75%
-                            blackboardTop: '1000%',
-                            star1Top: '1000%',
-                            star2Top: '1000%',
-                            star3Top: '1000%',
-                            emptyStar1Top: '1000%',
-                            emptyStar2Top: '1000%',
-                            emptyStar3Top: '1000%',
-                        })
-                    },1000)
-                }
             }
         }
+        if (star1 == 'wrong') {
+            this.setState({
+                star3Top: '1000%',
+                emptyStar3Top: '1%',
+            })
+        }
+
+        if (star2 == 'wrong') {
+            this.setState({
+                star2Top: '1000%',
+                emptyStar2Top: '1%',
+            })
+        }
+
+        if (star3 == 'wrong') {
+            this.setState({
+                star1Top: '1000%',
+                emptyStar1Top: '1%',
+                fadlugTop: '19%',
+                gufadyanTop: '19%',
+                lamwaTop: '56%',
+                choice1Top: '1000%',//75%
+                choice2Top: '1000%',//75%
+                choice3Top: '1000%',//75%
+                choice4Top: '1000%',//75%
+                blackboardTop: '1000%',
+                star1Top: '1000%',
+                star2Top: '1000%',
+                star3Top: '1000%',
+                emptyStar1Top: '1000%',
+                emptyStar2Top: '1000%',
+                emptyStar3Top: '1000%',
+            })
+        }
+
+        if (index == 'minus') {
+            if (star1 == 'null') {
+                realm.write(() => {
+                    getStars[id].Dadbatakstar1 = 'wrong';
+                })
+                this.setState({
+                    star3Top: '1000%',
+                    emptyStar3Top: '1%',
+                })
+            } else {
+                if (star2 == 'null') {
+                    realm.write(() => {
+                        getStars[id].Dadbatakstar2 = 'wrong';
+                    })
+                    this.setState({
+                        star2Top: '1000%',
+                        emptyStar2Top: '1%',
+                    })
+                } else {
+                    if (star3 == 'null') {
+                        realm.write(() => {
+                            getStars[id].Dadbatakstar3 = 'wrong';
+                        })
+                        // this.props.navigation.navigate('gameover');
+                        setTimeout(() => {
+                            this.setState({
+                                star1Top: '1000%',
+                                emptyStar1Top: '1%',
+                                fadlugTop: '19%',
+                                gufadyanTop: '19%',
+                                lamwaTop: '56%',
+                                choice1Top: '1000%',//75%
+                                choice2Top: '1000%',//75%
+                                choice3Top: '1000%',//75%
+                                choice4Top: '1000%',//75%
+                                blackboardTop: '1000%',
+                                star1Top: '1000%',
+                                star2Top: '1000%',
+                                star3Top: '1000%',
+                                emptyStar1Top: '1000%',
+                                emptyStar2Top: '1000%',
+                                emptyStar3Top: '1000%',
+                                marketBottom: '1000%',
+                            })
+                        }, 1000)
+                    }
+                }
+            }
         }
     }
 
     retry = async () => {
+        const storedValue = await AsyncStorage.getItem(SessionPlayer);
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getStars = realm.objects('Players');
+        var id = 0;
+        for (a = 0; a < getStars.length; a++) {
+            const con = parseInt(a);
+            if (storedValue == getStars[con].playername) {
+                realm.write(() => {
+                    getStars[con].Dadbatakstar1 = 'null';
+                    getStars[con].Dadbatakstar2 = 'null';
+                    getStars[con].Dadbatakstar3 = 'null';
+                })
+            }
+        }
         const retry = 'retry';
-        this.onLoad(retry);
-        await AsyncStorage.removeItem(DadbatakStar1);
-        await AsyncStorage.removeItem(DadbatakStar2);
-        await AsyncStorage.removeItem(DadbatakStar3);
+        this.load(retry);
         this.setState({
             star1Top: '1%',
             star2Top: '1%',
@@ -1204,18 +1347,14 @@ class Bang5 extends Component {
             emptyStar1Top: '1000%',
             emptyStar2Top: '1000%',
             emptyStar3Top: '1000%',
-            choice1Top: '75%',//75%
-            choice2Top: '75%',//75%
-            choice3Top: '75%',//75%
-            choice4Top: '75%',//75%
-            blackboardTop: '14%',
-            fadlugTop:'1000%',
-            gufadyanTop:'1000%',
-            lamwaTop:'1000%',
+            fadlugTop: '1000%',
+            gufadyanTop: '1000%',
+            lamwaTop: '1000%',
+            marketBottom: '3%',
         })
 
     }
-
+    
     render() {
         const show = combine[this.state.randomQuestion];
         const convert1 = show.choice1String;
@@ -1236,6 +1375,22 @@ class Bang5 extends Component {
                         <Image source={Home_icon} style={globalStyleSheet.home}></Image>
                     </TouchableOpacity>
                 </View>
+
+                <View style={{
+                     position: 'absolute',
+                     bottom: this.state.marketBottom,
+                     right: '8%',
+                     height: hp('9%'),
+                     width: wp('18%'),
+                }}>
+                    <TouchableOpacity onPress={this.gotoMarket}>
+                        <Image
+                            source={Gufadyan}
+                            style={styles.image}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+
                 <View style={globalStyleSheet.backContainer}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
@@ -1385,7 +1540,7 @@ class Bang5 extends Component {
                     left: '36%',
                     top: this.state.lamwaTop
                 }}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={this.gotoLamwa}>
                         <Image
                             style={{ width: '100%', height: '100%', resizeMode: 'contain' }}
                             source={LamwaIcon} />
@@ -1416,7 +1571,13 @@ class Bang5 extends Component {
     }
 }
 
-
+const styles = StyleSheet.create({
+    image: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'stretch'
+    }
+})
 
 
 export default withNavigation(Bang5);

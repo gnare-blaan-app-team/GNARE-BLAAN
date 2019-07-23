@@ -102,6 +102,7 @@ import Bang3 from './screens/Games/DadSe/Bang3/Bang3';
 //Dad Batak - Bang 4
 import Bang4 from './screens/Games/dadbatak/Bang1/Bang4';
 import EndingVideo4 from './screens/Games/dadbatak/Bang1/Ending4';
+import Gameover4 from './screens/Games/dadbatak/Bang1/Gameover4';
 
 //Dad Batak - Bang 5
 import Bang5 from './screens/Games/dadbatak/Bang2/Bang5';
@@ -302,6 +303,7 @@ export default AppNavigator = createStackNavigator(
     //Dad Batak - Bang 1
     bang4: Bang4,
     ending4: EndingVideo4,
+    gameover4: Gameover4,
 
     //Dad Batak - Bang 2
     bang5: Bang5,

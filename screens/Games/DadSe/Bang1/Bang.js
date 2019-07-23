@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, PanResponder, TouchableOpacity, ImageBackground, AsyncStorage} from 'react-native';
+import { Text, View, Image, PanResponder, StyleSheet, TouchableOpacity, BackHandler, ImageBackground, AsyncStorage} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import GameBG from '../../gameImages/GameBG.png';
 import { globalStyleSheet } from '../../../globalStyleSheet/globalStyleSheet';
@@ -11,8 +11,11 @@ import emptyStars from '../../gameImages/13Icon_EmptyStar.png';
 import FadlugIcon from '../../gameImages/fadlug_icon.png';
 import LamwaIcon from '../../gameImages/lamwa_icon.png';
 import GufadyanIcon from '../../gameImages/gufadyan_icon.png';
+import Gufadyan from '../../gameImages/gufadyan.png';
 import Coins from '../../gameImages/Coinbank.png';
 import Sound from 'react-native-sound';
+
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import choiceSatu from '../../gameImages/choices/satu.png';
 import choiceLwe from '../../gameImages/choices/lwe.png';
@@ -72,12 +75,6 @@ import Answer8 from '../../gameImages/blackboard/bang1A8.png';
 import Answer9 from '../../gameImages/blackboard/bang1A9.png';
 import Answer10 from '../../gameImages/blackboard/bang1A10.png';
 
-const RandomKey = '@MyApp:RandomKey';
-const Star1 = '@MyApp:Star1';
-const Star2 = '@MyApp:Star2';
-const Star3 = '@MyApp:Star3';
-const CoinBalance = '@MyApp:CoinBalance';
-const QuestionDone = '@MyApp:QuestionDone';
 const SessionPlayer = '@MyApp:SessionPlayer';
 
 var Realm = require('realm');
@@ -356,42 +353,56 @@ class Bang extends Component {
             emptyStar3Top:'1000%',
             fadlugTop:'1000%',
             gufadyanTop:'1000%',
+            marketBottom: '3%',
             lamwaTop:'1000%',
             Balance:0,
         }
+
+        //Sound
+        answerAudio = null;
     }
 
    componentDidMount() {
-        // this.onLoad();
-        this.minusStar();
-        this.checkBalance();
-       this.load('check');
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+
        const showIt = this.state.showGameover;
-        if (showIt == 'Gameover'){
-            
-            setTimeout(() => {
-                this.setState({
-                    star1Top: '1000%',
-                    emptyStar1Top: '1%',
-                    fadlugTop: '19%',
-                    gufadyanTop: '19%',
-                    lamwaTop: '56%',
-                    choice1Top: '1000%',//75%
-                    choice2Top: '1000%',//75%
-                    choice3Top: '1000%',//75%
-                    choice4Top: '1000%',//75%
-                    blackboardTop: '1000%',
-                    star1Top: '1000%',
-                    star2Top: '1000%',
-                    star3Top: '1000%',
-                    emptyStar1Top: '1000%',
-                    emptyStar2Top: '1000%',
-                    emptyStar3Top: '1000%',
-                })
-            },1000)
-        }
+       if (showIt == 'Gameover') {
+           setTimeout(() => {
+               this.setState({
+                   star1Top: '1000%',
+                   emptyStar1Top: '1%',
+                   fadlugTop: '19%',
+                   gufadyanTop: '19%',
+                   lamwaTop: '56%',
+                   choice1Top: '1000%',//75%
+                   choice2Top: '1000%',//75%
+                   choice3Top: '1000%',//75%
+                   choice4Top: '1000%',//75%
+                   blackboardTop: '1000%',
+                   star1Top: '1000%',
+                   star2Top: '1000%',
+                   star3Top: '1000%',
+                   emptyStar1Top: '1000%',
+                   emptyStar2Top: '1000%',
+                   emptyStar3Top: '1000%',
+                   marketBottom: '1000%',
+               })
+           }, 1000)
+       }
+       this.load('check');
+       this.minusStar();
+        this.checkBalance();
 
     }
+    
+  componentWillUnmount() {
+    this.backHandler.remove()
+  }
+
+  handleBackPress = () => {
+    this.goBack(); 
+    return true;
+  }
 
     playChoiceGame = (index) => {
         this.choiceGame = new Sound(choiceGame[index] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
@@ -405,105 +416,111 @@ class Bang extends Component {
 
     playSound = (index) => {
         if (index == 'choiceSatu') {
-            const answerAudio = new Sound(audio[0] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+            this.answerAudio = new Sound(audio[0] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
                     return;
                 } else {
-                    answerAudio.play();
+                    this.answerAudio.play();
                 }
             });
         }
         if (index == 'choiceLwe') {
-            const answerAudio = new Sound(audio[1] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+            this.answerAudio = new Sound(audio[1] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
                     return;
                 } else {
-                    answerAudio.play();
+                    this.answerAudio.play();
                 }
             });
         }
         if (index == 'choiceTlu') {
-            const answerAudio = new Sound(audio[2] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+            this.answerAudio = new Sound(audio[2] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
                     return;
                 } else {
-                    answerAudio.play();
+                    this.answerAudio.play();
                 }
             });
         }
         if (index == 'choiceFat') {
-            const answerAudio = new Sound(audio[3] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+            this.answerAudio = new Sound(audio[3] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
                     return;
                 } else {
-                    answerAudio.play();
+                    this.answerAudio.play();
                 }
             });
         }
         if (index == 'choiceLime') {
-            const answerAudio = new Sound(audio[4] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+            this.answerAudio = new Sound(audio[4] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
                     return;
                 } else {
-                    answerAudio.play();
+                    this.answerAudio.play();
                 }
             });
         }
         if (index == 'choiceNam') {
-            const answerAudio = new Sound(audio[5] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+            this.answerAudio = new Sound(audio[5] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
                     return;
                 } else {
-                    answerAudio.play();
+                    this.answerAudio.play();
                 }
             });
         }
         if (index == 'choiceFitu') {
-            const answerAudio = new Sound(audio[6] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+            this.answerAudio = new Sound(audio[6] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
                     return;
                 } else {
-                    answerAudio.play();
+                    this.answerAudio.play();
                 }
             });
         }
         if (index == 'choiceWalu') {
-            const answerAudio = new Sound(audio[7] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+            this.answerAudio = new Sound(audio[7] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
                     return;
                 } else {
-                    answerAudio.play();
+                    this.answerAudio.play();
                 }
             });
         }
         if (index == 'choiceSyem') {
-            const answerAudio = new Sound(audio[8] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+            this.answerAudio = new Sound(audio[8] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
                     return;
                 } else {
-                    answerAudio.play();
+                    this.answerAudio.play();
                 }
             });
         }
         if (index == 'choiceSfalo') {
-            const answerAudio = new Sound(audio[9] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
+            this.answerAudio = new Sound(audio[9] + '.mp3', Sound.MAIN_BUNDLE, (error) => {
                 if (error) {
                     alert('failed to load the sound', error);
                     return;
                 } else {
-                    answerAudio.play();
+                    this.answerAudio.play();
                 }
             });
         }
+  }
+
+  stopSounds = () => {
+    if (this.answerAudio != null){
+      this.answerAudio.stop();
+    }
   }
 
     checkBalance = async (index) => {
@@ -522,7 +539,9 @@ class Bang extends Component {
         }
         if(coin == 'null'){
             const value = 0;
-            this.state.Balance = value; 
+            this.setState({
+                Balance: value,
+            })
         }else{
             this.setState({
                 Balance:coin
@@ -534,6 +553,9 @@ class Bang extends Component {
                 const value = 1;
                 realm.write(() => {
                     getCoin[id].coinBalance = String(value);
+                })
+                this.setState({
+                    Balance: value,
                 })
             }else{
                 const convertToNumber = Number(this.state.Balance);
@@ -550,23 +572,23 @@ class Bang extends Component {
     }
 
     gotoMainMenu = () =>{
-        this.props.navigation.navigate('mainMenu');
+        this.props.navigation.replace('mainMenu');
     }
 
     gotoMarket = () =>{
-        this.props.navigation.navigate('dadseMarket');
+        this.props.navigation.replace('dadbatakmarket');
     }
 
     gotoLamwa = () =>{
-        this.props.navigation.replace('gameMenu', { showGameover: 'Dadse' });
+        this.props.navigation.replace('gameMenu', { showDadseBang: 'show' });
     }
 
     goBack = () => {
-        this.props.navigation.push('gameMenu');
+        this.stopSounds();
+        this.props.navigation.replace('gameMenu',{showDadseBang:'show'});
     }
 
     load = async (index) =>{
-        var tmp_playerHolder = [];
         const storedValue = await AsyncStorage.getItem(SessionPlayer);
         realm = new Realm({ path: 'PlayerDatabase.realm' });
         var getPlayers = realm.objects('Players');
@@ -575,7 +597,28 @@ class Bang extends Component {
         const randomizer = Math.floor(Math.random() * stageNumber.length);
         var use = stageNumber[randomizer];
         stageNumber.splice(randomizer, 1);
+        var q ='';
+        for (a = 0; a < getPlayers.length; a++) {
+            const con = parseInt(a);
+            if (storedValue == getPlayers[con].playername) {
+                q = getPlayers[con].questionDoneBang1;
+            }
+        }
 
+        if(q == 5){
+            this.props.navigation.navigate('ending');
+            for (a = 0; a < getPlayers.length; a++) {
+                const con = parseInt(a);
+                if (storedValue == getPlayers[con].playername) {
+                    realm.write(() => {
+                        getPlayers[con].star1 = 'null';
+                        getPlayers[con].star2 = 'null';
+                        getPlayers[con].star3 = 'null';
+                        getPlayers[con].questionDoneBang1 = 'null';
+                    })
+                }
+            }
+        }
         if(index == 'check'){
             for (a = 0; a < getPlayers.length; a++) {
                 const con = parseInt(a);
@@ -647,6 +690,7 @@ class Bang extends Component {
                 choice3Top: '75%',//75%
                 choice4Top: '75%',//75%
                 blackboardTop: '14%',
+                marketBottom: '3%',
             });
         }
     }
@@ -874,13 +918,24 @@ class Bang extends Component {
     }
 
     correct = async (index) => {
-        this.playChoiceGame(1);
-
+        this.playChoiceGame(1)
         const add = 'addBalance';
         this.checkBalance(add);
         questionAnswered.push(1);
-        const value = JSON.stringify(questionAnswered.length);
-        await AsyncStorage.setItem(QuestionDone, value);
+        var value = JSON.stringify(questionAnswered.length);
+        const storedValue = await AsyncStorage.getItem(SessionPlayer);
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getPlayers = realm.objects('Players');
+        
+        for (a = 0; a < getPlayers.length; a++) {
+            const con = parseInt(a);
+            if (storedValue == getPlayers[con].playername) {
+                realm.write(() => {
+                    getPlayers[con].questionDoneBang1 = String(value);
+                })
+            }
+        }
+
         for (var a = 0; a <= answer.length; a++) {
             if (index == answer[a]) {
                 const get = a;
@@ -931,8 +986,22 @@ class Bang extends Component {
 
         if (star3 == 'wrong') {
             this.setState({
+                star1Top: '1000%',
+                emptyStar1Top: '1%',
+                fadlugTop: '19%',
+                gufadyanTop: '19%',
+                lamwaTop: '56%',
+                choice1Top: '1000%',//75%
+                choice2Top: '1000%',//75%
+                choice3Top: '1000%',//75%
+                choice4Top: '1000%',//75%
+                blackboardTop: '1000%',
+                star1Top: '1000%',
+                star2Top: '1000%',
                 star3Top: '1000%',
-                emptyStar3Top: '1%',
+                emptyStar1Top: '1000%',
+                emptyStar2Top: '1000%',
+                emptyStar3Top: '1000%',
             })
         }
 
@@ -991,7 +1060,6 @@ class Bang extends Component {
         realm = new Realm({ path: 'PlayerDatabase.realm' });
         var getStars = realm.objects('Players');
         var id = 0;
-        
         for (a = 0; a < getStars.length; a++) {
             const con = parseInt(a);
             if (storedValue == getStars[con].playername) {
@@ -1011,14 +1079,10 @@ class Bang extends Component {
             emptyStar1Top: '1000%',
             emptyStar2Top: '1000%',
             emptyStar3Top: '1000%',
-            choice1Top: '75%',//75%
-            choice2Top: '75%',//75%
-            choice3Top: '75%',//75%
-            choice4Top: '75%',//75%
-            blackboardTop: '14%',
             fadlugTop:'1000%',
             gufadyanTop:'1000%',
             lamwaTop:'1000%',
+            marketBottom: '3%'
         })
 
     }
@@ -1044,6 +1108,7 @@ class Bang extends Component {
                 source={GameBG}
                 style={globalStyleSheet.image}
             >
+                
                 <View style={globalStyleSheet.homeContainer}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Image source={Home_icon} style={globalStyleSheet.home}></Image>
@@ -1057,6 +1122,21 @@ class Bang extends Component {
                         ></Image>
                     </TouchableOpacity>
                 </View>
+                <View style={{
+                     position: 'absolute',
+                     bottom: this.state.marketBottom,
+                     right: '8%',
+                     height: hp('9%'),
+                     width: wp('18%'),
+                }}>
+                    <TouchableOpacity onPress={this.gotoMarket}>
+                        <Image
+                            source={Gufadyan}
+                            style={styles.image}
+                        ></Image>
+                    </TouchableOpacity>
+                </View>
+
                 <View style={{ position: 'absolute',width:'60%',height:'50%',top:this.state.blackboardTop}}> 
                     <Image source={show.blackboard}
                     style={{
@@ -1253,6 +1333,7 @@ class Bang extends Component {
                         }}>{this.state.Balance}.00</Text>
                     </View>
                 </View>
+                
             </ImageBackground>
         )
            
@@ -1260,6 +1341,13 @@ class Bang extends Component {
 }
 
 
+const styles = StyleSheet.create({
+    image: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'stretch'
+    }
+})
 
 
 export default withNavigation(Bang);

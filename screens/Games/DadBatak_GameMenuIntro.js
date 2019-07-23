@@ -1,8 +1,9 @@
 import DadBatak_FIL_Slide2 from '../IntroVideos/DadBatak_FIL_Slide2.mp4';
+import DadBatak_EN_Slide2 from '../IntroVideos/DadBatak_EN_Slide2.mp4';
 
 import React, { Component } from 'react';
 import Video from 'react-native-video';
-import { Image, View, TouchableOpacity , ImageBackground } from 'react-native';
+import { Text, Image, View, TouchableOpacity , ImageBackground} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Skip_icon from '../images/skip.png';
 import Bang1Icon from './gameImages/bang1_icon.png';
@@ -28,6 +29,8 @@ class DadBatak_GameMenuIntro extends Component {
             volume: 1,
             duration: 0,
             muted: false,
+
+            subtitle: ' English',
         }
     }
 
@@ -138,6 +141,18 @@ class DadBatak_GameMenuIntro extends Component {
                             height: '100%',
                             resizeMode: 'stretch'
                         }}></Image>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{position: 'absolute', top: '78%', left: '88%', height: '10%', justifyContent: 'center', alignItems: 'center'}}>
+                    <TouchableOpacity onPress={()=> {
+                        this.setState({
+                            source: this.state.source == DadBatak_FIL_Slide2 ? DadBatak_EN_Slide2 : DadBatak_FIL_Slide2,
+                            subtitle: this.state.subtitle == ' English' ? ' Filipino' : ' English',
+                        });
+                        // this.handleProgressPress;
+                    }}>
+                        <Text style={{color: 'white', borderWidth: 2, borderColor: 'white', borderRadius: 5, padding: 3, fontSize: 18, backgroundColor: '#242424', shadowOpacity: 100}}>{this.state.subtitle}</Text>
                     </TouchableOpacity>
                 </View>
 

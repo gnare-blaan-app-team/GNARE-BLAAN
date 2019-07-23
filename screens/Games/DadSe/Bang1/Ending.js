@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { StyleSheet, AsyncStorage, View, Image, ImageBackground, TouchableWithoutFeedback, TouchableOpacity} from "react-native";
+import { StyleSheet, AsyncStorage, View, Image, ImageBackground, TouchableWithoutFeedback, TouchableOpacity, Text} from "react-native";
 
 import Video from "react-native-video";
-import EndingVideo from "../../gameImages/ending.mp4";
+import FIL_EndingVideo from "../../gameImages/FIL_endingDS.mp4";
+import EN_EndingVideo from "../../gameImages/EN_endingDS.mp4";
 import { sound } from '../../../HomePage';
 import { withNavigation } from 'react-navigation'; 
 
@@ -14,21 +15,25 @@ import GnareIcon from '../../gameImages/GnareMain.png';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import {globalStyleSheet as styles} from '../../../globalStyleSheet/globalStyleSheet.js';
 
-const RandomKey = '@MyApp:RandomKey';
-const Stage2 = '@MyApp:Stage2';
+const SessionPlayer = '@MyApp:SessionPlayer';
+
+var Realm = require('realm');
+let realm;
 
 class Ending extends Component {
     
-    constructor () {
-        super();
+    constructor (props) {
+        super(props);
         this.state = {
-
+            pause: false,
+            source: FIL_EndingVideo,
             opacityVideo: 1,
             paused: false,
             progress: 0,
             duration: 0,
             muted: false,
             volume: 1,
+            subtitle: ' English',
         };
     }
 
@@ -56,13 +61,21 @@ class Ending extends Component {
         } catch(error) {
             
         }
-        this.onSave();
-        this.props.navigation.push('gameMenu', { show: 'Dadse' });
-        const store = 'unlock';
-        await AsyncStorage.setItem(Stage2, store);
+        this.props.navigation.replace('gameMenu', { show: 'Dadse' });
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getPlayers = realm.objects('Players');
+        const storedValue = await AsyncStorage.getItem(SessionPlayer);
+        for (a = 0; a < getPlayers.length; a++) {
+            const con = parseInt(a);
+            if (storedValue == getPlayers[con].playername) {    
+                 realm.write(() => {
+                    getPlayers[con].DSbangStage2 = 'unlock'
+                })
+            }
+        }
     }
 
-    gotoGameScreen = () => {
+    gotoGameScreen = async () => {
         try {
             sound.setVolume(0.2);
             sound.play();
@@ -70,7 +83,18 @@ class Ending extends Component {
             
         }
         this.setState({paused: true, volume: 0, muted: true});
-        this.props.navigation.replace('gameMenu', { showDadseBang: 'show' });
+        this.props.navigation.push('gameMenu', { show: 'Dadse' });
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getPlayers = realm.objects('Players');
+        const storedValue = await AsyncStorage.getItem(SessionPlayer);
+        for (a = 0; a < getPlayers.length; a++) {
+            const con = parseInt(a);
+            if (storedValue == getPlayers[con].playername) {
+                realm.write(() => {
+                    getPlayers[con].DSbangStage2 = 'unlock'
+                })
+            }
+        }
     }
 
     gotoHome = () => {
@@ -85,7 +109,7 @@ class Ending extends Component {
                     <TouchableWithoutFeedback onPress={this.hideControl}>
                         <Video
                             paused={this.state.paused}
-                            source={EndingVideo}
+                            source={this.state.source}
                             
                             style={{ width: "100%", height: '100%' }}
                             resizeMode="stretch"
@@ -147,6 +171,18 @@ class Ending extends Component {
                             height: '100%',
                             resizeMode: 'stretch'
                         }}></Image>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{position: 'absolute', top: '78%', left: '88%', height: '10%', justifyContent: 'center', alignItems: 'center'}}>
+                    <TouchableOpacity onPress={()=> {
+                        this.setState({
+                            source: this.state.source == FIL_EndingVideo ? EN_EndingVideo : FIL_EndingVideo,
+                            subtitle: this.state.subtitle == ' English' ? ' Filipino' : ' English',
+                        });
+                        // this.handleProgressPress;
+                    }}>
+                        <Text style={{color: 'white', borderWidth: 2, borderColor: 'white', borderRadius: 5, padding: 3, fontSize: 18, backgroundColor: '#242424', shadowOpacity: 100}}>{this.state.subtitle}</Text>
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
