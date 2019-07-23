@@ -42,6 +42,7 @@ class vocabulary2 extends Component {
 
     constructor(props) {
         super(props);
+        global.BGVolume = "0.2",
         this.moveAnimation = new Animated.ValueXY({ x: 400, y: 100 })
         this.state = {
             BackgroundImage: BG,
@@ -193,7 +194,7 @@ class vocabulary2 extends Component {
 
     gotoMainMenu = () => {
         try {
-            sound.setVolume(0.2);
+            // sound.setVolume(0.2);
             sound.play();
         } catch(error) {
             
@@ -207,7 +208,7 @@ class vocabulary2 extends Component {
 
     goBack = () => {
         try {
-            sound.setVolume(0.2);
+            // sound.setVolume(0.2);
             sound.play();
         } catch(error) {
             
@@ -237,7 +238,7 @@ class vocabulary2 extends Component {
     componentDidMount() {
         this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
         try {
-            sound.setVolume(0.2);
+            // sound.setVolume(0.2);
             sound.play();
         } catch(error) {
             

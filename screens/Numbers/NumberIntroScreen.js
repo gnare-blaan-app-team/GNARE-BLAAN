@@ -33,9 +33,8 @@ class NumberIntroScreen extends Component {
     componentDidMount(){
         try {
             sound.setVolume(0);
-            sound.play();
+            sound.paused();
         } catch(error) {
-            
         }
     }
 
@@ -47,7 +46,7 @@ class NumberIntroScreen extends Component {
 
     handleEnd = () => {
         try {
-            sound.setVolume(0.2);
+            sound.setVolume(0.5);
             sound.play();
         } catch(error) {
             
@@ -64,7 +63,7 @@ class NumberIntroScreen extends Component {
 
     gotoNumberScreen = () => {
         try {
-            sound.setVolume(0.2);
+            sound.setVolume(0.5);
             sound.play();
         } catch(error) {
             

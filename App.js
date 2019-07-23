@@ -5,6 +5,7 @@ import MainMenu from './screens/MainMenu';
 import LetterScreen from './screens/Letters/letterScreen';
 import Numbers from './screens/Numbers/NumbersScreen';
 import About from './screens/About';
+import Settings from './screens/Settings';
 
 import NumberIntroScreen from './screens/Numbers/NumberIntroScreen';
 import LetterIntroScreen from './screens/Letters/LetterIntroScreen';
@@ -167,6 +168,7 @@ export default AppNavigator = createStackNavigator(
     letters: LetterScreen,
     numbers: Numbers,
     about: About,
+    settingBG: Settings,
 
 
     // Letters
