@@ -634,12 +634,12 @@ class Bang extends Component {
                             choice1Top: '75%',//75%
                             choice2Top: '75%',//75%
                             choice3Top: '75%',//75%
-                            choice4Top: '75%',//75%
+                            choice4Top: '75%',//75%s
                             blackboardTop: '14%',
                         });
                     } else {
                         this.setState({
-                            randomQuestion: 1,
+                            randomQuestion: random,
                             choice1Top: '75%',//75%
                             choice2Top: '75%',//75%
                             choice3Top: '75%',//75%
