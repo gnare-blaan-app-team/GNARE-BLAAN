@@ -606,7 +606,6 @@ class Bang extends Component {
         }
 
         if(q == 5){
-            this.props.navigation.replace('ending');
             for (a = 0; a < getPlayers.length; a++) {
                 const con = parseInt(a);
                 if (storedValue == getPlayers[con].playername) {
@@ -618,6 +617,7 @@ class Bang extends Component {
                     })
                 }
             }
+            this.props.navigation.replace('ending');
         }
         if(index == 'check'){
             for (a = 0; a < getPlayers.length; a++) {

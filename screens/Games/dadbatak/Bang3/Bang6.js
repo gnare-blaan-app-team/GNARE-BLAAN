@@ -745,7 +745,6 @@ class Bang extends Component {
         }
 
         if (q == 5) {
-            this.props.navigation.push('gameMenu', { show: 'DadBatak', show3DB: 'DadBatak2' });
             for (a = 0; a < getPlayers.length; a++) {
                 const con = parseInt(a);
                 if (storedValue == getPlayers[con].playername) {
@@ -757,6 +756,7 @@ class Bang extends Component {
                     })
                 }
             }
+            this.props.navigation.replace('gameMenu', { show: 'DadBatak', show3DB: 'DadBatak2' });
         }
         if (index == 'check') {
             for (a = 0; a < getPlayers.length; a++) {

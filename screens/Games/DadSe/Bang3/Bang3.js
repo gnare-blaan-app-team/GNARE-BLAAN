@@ -305,7 +305,6 @@ class Bang3 extends Component {
 
     componentDidMount() {
         this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
-
         this.load('check');
         this.minusStar();
         this.checkBalance();
@@ -470,7 +469,6 @@ class Bang3 extends Component {
         }
 
         if (questionAnswered.length == 5 || q == 5) {
-            this.props.navigation.push('gameMenu', { show: 'Dadse', show3: 'Dadse2' });
             for (a = 0; a < getPlayers.length; a++) {
                 const con = parseInt(a);
                 if (storedValue == getPlayers[con].playername) {
@@ -483,6 +481,7 @@ class Bang3 extends Component {
                     })
                 }
             }
+            this.props.navigation.replace('gameMenu', { show: 'Dadse', show3: 'Dadse2' });
         }
         if (index == 'check') {
             for (a = 0; a < getPlayers.length; a++) {

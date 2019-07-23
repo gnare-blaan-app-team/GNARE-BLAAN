@@ -691,7 +691,6 @@ class Bang4 extends Component {
         }
 
         if (q == 5) {
-            this.props.navigation.navigate('ending4');
             for (a = 0; a < getPlayers.length; a++) {
                 const con = parseInt(a);
                 if (storedValue == getPlayers[con].playername) {
@@ -703,6 +702,7 @@ class Bang4 extends Component {
                     })
                 }
             }
+            this.props.navigation.replace('ending4');
         }
         if (index == 'check') {
             for (a = 0; a < getPlayers.length; a++) {
