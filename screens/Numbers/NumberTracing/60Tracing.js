@@ -17,6 +17,7 @@ import trace2 from '../numberTracingGIF/0.gif';
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js'; 
 import { scopeX, scopeY, trail } from '../numbersImport';
 import {sound} from '../../HomePage';
+import RNSketchCanvas from '@terrylinla/react-native-sketch-canvas';
 
 const screenWidth = Dimensions.get('screen').width;
 const screenHeight = Dimensions.get('screen').height;
@@ -159,9 +160,9 @@ class SixtyTracing extends Component {
     ifTraced = () => {
         if(this.state.dot5) {
             if(this.state.dot9) {
-                this.setState({arrayMove: [], showTracing2: 1, tracing2: shaded_0});
+                this.setState({showTracing2: 1, tracing2: shaded_0});
             } else {
-                this.setState({arrayMove: [], tracing: shaded_6_1, dot7: false, dot8: false, showTracing2: 1,
+                this.setState({tracing: shaded_6_1, dot7: false, dot8: false, showTracing2: 1,
                     dot9: false, dot6: false, showTracing: 1, tracing2: trace2,});
             }
         } else {
@@ -171,7 +172,7 @@ class SixtyTracing extends Component {
     }
 
     clearBoard = () => {
-        this.setState({arrayMove: [], dot1: false, dot2: false, dot3: false, dot4: false, dot5: false, dot6: false,
+        this.setState({dot1: false, dot2: false, dot3: false, dot4: false, dot5: false, dot6: false,
             dot7: false, dot8: false, dot9: false, tracing: trace1, tracing2: traceZero,
             showTracing: 1, showShaded2: 0, showTracing2: 1, showShaded: 0});
     }

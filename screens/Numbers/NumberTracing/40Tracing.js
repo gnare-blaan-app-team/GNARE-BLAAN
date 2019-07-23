@@ -175,12 +175,12 @@ class FourtyTracing extends Component {
                             tracing2: tracingLine[3], showTracing2: 1, showTracing: 0,});
                     }
                 } else {
-                    this.setState({arrayMove: [], showShaded: 1, dot5: false, 
+                    this.setState({showShaded: 1, dot5: false, 
                         dot6: false, shaded: shadedLine[1],
                         tracing: tracingLine[2]});
                 }
             } else {
-                this.setState({arrayMove: [], showShaded: 1, dot4: false, 
+                this.setState({showShaded: 1, dot4: false, 
                     dot3: false, shaded: shadedLine[0],
                     tracing: tracingLine[1]});
             }
@@ -191,7 +191,7 @@ class FourtyTracing extends Component {
     }
 
     clearBoard = () => {
-        this.setState({arrayMove: [], dot1: false, dot2: false, dot3: false, dot4: false, dot5: false, dot6: false,
+        this.setState({dot1: false, dot2: false, dot3: false, dot4: false, dot5: false, dot6: false,
             dot7: false, dot8: false, dot9: false, dot10: false,
             showShaded: 0, shaded: shadedLine[0], tracing: tracingLine[0], showTracing: 1,
             showShaded2: 0, tracing2: traceZero, showTracing2: 1});
