@@ -184,20 +184,20 @@ class FiftyTracing extends Component {
             if(this.state.dot4) {
                 if(this.state.dot7) {
                     if(this.state.dot11) {
-                        this.setState({arrayMove: [], shaded2: shadedLine[3], showShaded2: 1,
+                        this.setState({shaded2: shadedLine[3], showShaded2: 1,
                         showTracing2: 1,  tracing2: shaded_0})
                     } else {
-                        this.setState({arrayMove: [], showShaded: 1, shaded: shadedLine[2], dot8: false, 
+                        this.setState({showShaded: 1, shaded: shadedLine[2], dot8: false, 
                             dot11: false, dot9: false, dot10: false, 
                             tracing2: tracingLine[3], showTracing2: 1, showTracing: 0,});
                     }
                 } else {
-                    this.setState({arrayMove: [], showShaded: 1,  dot5: false,  
+                    this.setState({showShaded: 1,  dot5: false,  
                         dot6: false, dot7: false, shaded: shadedLine[1],
                         tracing: tracingLine[2]});
                 }
             } else {
-                this.setState({arrayMove: [], showShaded: 1, dot4: false, 
+                this.setState({showShaded: 1, dot4: false, 
                     dot3: false, shaded: shadedLine[0], tracing: tracingLine[1]});
             }
         } else {
@@ -207,7 +207,7 @@ class FiftyTracing extends Component {
     }
 
     clearBoard = () => {
-        this.setState({arrayMove: [], dot1: false, dot2: false, dot3: false, dot4: false, dot5: false, dot6: false,
+        this.setState({dot1: false, dot2: false, dot3: false, dot4: false, dot5: false, dot6: false,
             dot7: false, dot8: false, dot9: false, dot10: false, dot11: false,
             showShaded: 0, shaded: shadedLine[0], tracing: tracingLine[0], showTracing: 1,
             showShaded2: 0, tracing2: traceZero, showTracing2: 1});
