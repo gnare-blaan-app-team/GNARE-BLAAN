@@ -1034,26 +1034,6 @@ class Bang extends Component {
                             getStars[id].star3 = 'wrong';
                         })
                         this.props.navigation.navigate('gameover');
-                    //     setTimeout(() => {
-                    //     this.setState({
-                    //         star1Top: '1000%',
-                    //         emptyStar1Top: '1%',
-                    //         fadlugTop: '19%',
-                    //         gufadyanTop: '19%',
-                    //         lamwaTop: '56%',
-                    //         choice1Top: '1000%',//75%
-                    //         choice2Top: '1000%',//75%
-                    //         choice3Top: '1000%',//75%
-                    //         choice4Top: '1000%',//75%
-                    //         blackboardTop: '1000%',
-                    //         star1Top: '1000%',
-                    //         star2Top: '1000%',
-                    //         star3Top: '1000%',
-                    //         emptyStar1Top: '1000%',
-                    //         emptyStar2Top: '1000%',
-                    //         emptyStar3Top: '1000%',
-                    //     })
-                    // },1000)
                 }
             }
         }

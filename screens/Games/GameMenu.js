@@ -25,6 +25,7 @@ import kaito from './gameImages/kaitoGame.png';
 import kaibe from './gameImages/kaibeGame.png'; 
 import DadBatakBG from './gameImages/DadBatakBG.png';
 import createplayer from './gameImages/createplayer.png';
+import playerContainer from './gameImages/2PlayerBlank1.png';
 import save from './gameImages/save.png';
 import cancel from './gameImages/cancel.png';
 import back from '../images/Back_icon.png';
@@ -79,6 +80,8 @@ class GameMenu extends Component {
                         questionDoneBang2Dadbatak: { type: 'string', default: 'null' },
                         dadseBatak3RandomKey: { type: 'string', default: 'null' },
                         questionDoneBang3Dadbatak: { type: 'string', default: 'null' },
+                        dadseintro: { type: 'string', default: 'null' },
+                        dadbatakintro: { type: 'string', default: 'null' },
                         gufadyan1: { type: 'int', default: 0 },
                         gufadyan2: { type: 'int', default: 0 },
                         gufadyan3: { type: 'int', default: 0 },
@@ -148,8 +151,8 @@ class GameMenu extends Component {
             textInputTop: '1000%',//20%
             saveTop: '1000%', //35%
             cancelTop: '1000%', //52%
-            createTop: '80%',//80%
-            playerListTop: '12%',
+            createTop: '85%',//80%
+            playerListTop: '9%',
             getPlayername:'',
         }
     }
@@ -325,13 +328,36 @@ class GameMenu extends Component {
         this.props.navigation.navigate('home');
     }
 
-    gotoDadBatak = () => {
-        this.props.navigation.navigate('dadbatak_gameMenuIntro');
+    gotoDadBatak = async () => {
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getStage = realm.objects('Players');
+        const storedValue = await AsyncStorage.getItem(SessionPlayer);
+        for (a = 0; a < getStage.length; a++) {
+            const con = parseInt(a);
+            if (storedValue == getStage[con].playername) {
+                if (getStage[con].dadseintro == 'done') {
+                    this.props.navigation.replace('gameMenu', { showDadBatakBang: 'show' });
+                } else {
+                    this.props.navigation.replace('dadbatak_gameMenuIntro');
+                }
+            }
+        }
     }
 
-    gotoDadSe = () => {
-        
-        this.props.navigation.navigate('dsbangIntro');
+    gotoDadSe = async () => {
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getStage = realm.objects('Players');
+        const storedValue = await AsyncStorage.getItem(SessionPlayer);
+        for (a = 0; a < getStage.length; a++) {
+            const con = parseInt(a);
+            if (storedValue == getStage[con].playername) {
+                if (getStage[con].dadseintro == 'done'){
+                    this.props.navigation.replace('gameMenu', { showDadseBang: 'show' });
+                }else{
+                    this.props.navigation.replace('dsbangIntro');
+                }
+            }
+        }
     }
 
     gotoTanbu = (index) => {
@@ -423,6 +449,9 @@ class GameMenu extends Component {
     play = async (getPlayer) => {
         await AsyncStorage.setItem(SessionPlayer, getPlayer);
         this.updateTime(getPlayer);
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getPlayers = realm.objects('Players');
+        alert(JSON.stringify(getPlayers))
         Animated.spring(this.animatedValue, {
             toValue: .0
         }).start();
@@ -431,7 +460,7 @@ class GameMenu extends Component {
                 profileTop: '1000%',
             })
             this.state.profile = 'none';
-        }, 1000); 
+        }, 1000);
     }
 
     updateTime =  (index) => {
@@ -469,8 +498,8 @@ class GameMenu extends Component {
             textInputTop: '1000%',//20%
             saveTop: '1000%', //35%
             cancelTop: '1000%', //52%
-            createTop: '80%',//80%
-            playerListTop: '12%',
+            createTop: '85%',//80%
+            playerListTop: '6%',
             text:'',
         })
     }
@@ -489,7 +518,8 @@ class GameMenu extends Component {
         })
         var getPlayers = realm.objects('Players');
        if(text != ''){
-           if (getPlayers.length <= 4) {
+          if(text.length <= 7){
+             if (getPlayers.length <= 4) {
                realm.write(() => {
                    const myCar = realm.create('Players', {
                        playername: text,
@@ -516,6 +546,12 @@ class GameMenu extends Component {
                })   
                this.refreshPlayer();
            }
+          }else{
+              alert('Name must be 7 characters only')
+              this.setState({
+                  text:'',
+              })
+          }
        }else{
            alert('empty fields')
        }
@@ -746,7 +782,7 @@ class GameMenu extends Component {
                     <View
                      style={{
                         margin:'2%',
-                         padding:'5%',
+                         padding:'2%',
                          left:'4%'
                      }}
                      >  
@@ -754,29 +790,37 @@ class GameMenu extends Component {
                         <View style={{
                             position:'absolute',
                             top:this.state.playerListTop,
-                            left:'34%',
-                            width:'33%',
-                            height:'65%',
-                            borderColor:'white',
-                            borderWidth:1
+                            left:'36.50%',
+                            width:'25%',
+                            height:'75%',
                         }}>
                             <ListView
+                                style={{ width: '100%', height: '100%',}}
                                 dataSource={this.state.dataSource}
                                 renderRow={rowData => (
-                                    <View style={{ backgroundColor: 'white', padding: 20 }}>
-                                        <TouchableOpacity onPress={this.play.bind(this,rowData.playername)}>
-                                            <Text>Playername : {rowData.playername}</Text>
+                                    <View>
+                                        <TouchableOpacity onPress={this.play.bind(this, rowData.playername)}>
+                                            <Image source={playerContainer} style={{resizeMode:'contain'}}/>
+                                            <View style={{
+                                                position:'absolute',
+                                                width:'80%',
+                                                alignItems:'center',
+                                                justifyContent:'center',
+                                                }}>
+                                                <Text style={{ fontSize: 28,}}>{rowData.playername}</Text>
+                                            </View>
                                         </TouchableOpacity>
+                                        <Text style={{ fontSize:5, }}> </Text>
                                     </View>
                                 )}
                             />
                         </View>
                         <View style={{
                             position:'absolute',
-                            width:'28%',
+                            width:'24%',
                             height:'30%',
                             top:this.state.textInputTop,
-                            left:'36.30%'
+                            left:'35%'
                             }}>
                             <TextInput
                                 style={{ backgroundColor: 'white', padding: 10,fontSize:20}}
@@ -789,7 +833,7 @@ class GameMenu extends Component {
                         <View style={{
                             position: 'absolute',
                             top:this.state.saveTop,
-                            left: '36%',
+                            left: '32%',
                             width: '30%',
                             height: '15%'
                         }}>
@@ -800,7 +844,7 @@ class GameMenu extends Component {
                         <View style={{
                             position: 'absolute',
                             top:this.state.cancelTop,
-                            left: '36%',
+                            left: '32%',
                             width: '30%',
                             height: '15%'
                         }}>
@@ -811,7 +855,7 @@ class GameMenu extends Component {
                         <View style={{
                             position:'absolute',
                             top:this.state.createTop,
-                            left:'36%',
+                            left:'32%',
                             width:'30%',
                             height:'15%'
                         }}>
