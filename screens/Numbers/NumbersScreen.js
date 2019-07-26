@@ -467,7 +467,7 @@ class NumberScreen extends Component {
                         <MenuItem itemImage={require('./numbersImage/20(2).png')} goto={() => {
                                             this.changeBackground(numberBGList[10], 10)}} />
                         <MenuItem itemImage={require('./numbersImage/30.png')} goto={() => {
-                                            this.changeBackground(numberBGList[12], 11)}} />
+                                            this.changeBackground(numberBGList[11], 11)}} />
                         <MenuItem itemImage={require('./numbersImage/40.png')} goto={() => {
                                             this.changeBackground(numberBGList[12], 12)}} />
                         <MenuItem itemImage={require('./numbersImage/50.png')} goto={() => {
