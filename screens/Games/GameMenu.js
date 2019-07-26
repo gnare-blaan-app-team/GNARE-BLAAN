@@ -8,7 +8,7 @@ import Slide1 from './gameImages/Slide1.png';
 import BG from './gameImages/GameBG.png';
 import DadBatak from './gameImages/1Icon_DadBatak.png';
 import DadSe from './gameImages/1Icon_DadSe.png';
-import GnareIcon from './gameImages/GnareMain.png';
+import BackIcon from '../images/Back_icon.png'
 import DadseBG from './gameImages/DadSeBG.png';
 import Bang1Icon from './gameImages/bang1_icon.png';
 import Bang2Icon from './gameImages/12Icon_Bang2Lock.png';
@@ -28,7 +28,7 @@ import createplayer from './gameImages/createplayer.png';
 import playerContainer from './gameImages/2PlayerBlank1.png';
 import save from './gameImages/save.png';
 import cancel from './gameImages/cancel.png';
-import back from '../images/Back_icon.png';
+import GnareIcon from './gameImages/GnareMain.png';
 
 var Realm = require('realm');
 let realm;
@@ -321,11 +321,20 @@ class GameMenu extends Component {
     }
 
     gotoCoinBank = () => {
-        this.props.navigation.replace('dadseBank');
+        if (this.state.level == 'dadsePart'){
+            this.props.navigation.navigate('dadseBank', {Bang: 'dadse'});
+        }     
+        if (this.state.level == 'dadbatakPart'){
+            this.props.navigation.navigate('dadseBank', {Bang: 'dadbatak'});
+        } 
+    }
+
+    goBack = () => {
+        this.props.navigation.replace('mainMenu');
     }
 
     gotoHome = () => {
-        this.props.navigation.navigate('home');
+        this.props.navigation.replace('home');
     }
 
     gotoDadBatak = async () => {
@@ -632,8 +641,8 @@ class GameMenu extends Component {
                     top: '3%',
                     width: '14%',
                     height: '28%',}]}>
-                    <TouchableOpacity onPress={this.gotoHome}>
-                        <Image source={GnareIcon} style={[{
+                    <TouchableOpacity onPress={this.goBack}>
+                        <Image source={BackIcon} style={[{
                             width: '75%',
                             height: '75%',
                             resizeMode: 'contain',}]}>
@@ -724,9 +733,9 @@ class GameMenu extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={globalStyleSheet.homeContainer}>
-                    <TouchableOpacity onPress={this.gotoMainMenu}>
+                    <TouchableOpacity onPress={this.gotoHome}>
                         <Image
-                            source={require('../images/Home_icon.png')}
+                            source={GnareIcon}
                             style={globalStyleSheet.home}
                         ></Image>
                     </TouchableOpacity>

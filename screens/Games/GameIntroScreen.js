@@ -16,7 +16,6 @@ import { sound } from '../HomePage';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import DadBatak from './gameImages/1Icon_DadBatak.png';
 import DadSe from './gameImages/1Icon_DadSe.png';
-import GnareIcon from './gameImages/GnareMain.png';
 
 const gameintro = '@MyApp:gameintro';
 
@@ -149,19 +148,6 @@ class GameIntroScreen extends Component {
                     <Image source={DadSe} style={styles.image}/>
                 </View>
 
-                <View style={{position: 'absolute',
-                    top: hp('5%'),
-                    left: wp('2%'),
-                    height: hp('12%'),
-                    width: wp('10%'),}
-                }>
-                    <TouchableOpacity onPress={this.gotoHome}>
-                        <Image source={GnareIcon} style={{width: '100%',
-                            height: '100%',
-                            resizeMode: 'stretch'
-                        }}></Image>
-                    </TouchableOpacity>
-                </View>
             </ImageBackground>
         )
     }

@@ -45,6 +45,7 @@ class DadSeBank extends Component {
             moneyTop1:'25%',
             moneyTop2: '25%',
             coin1Top: '28.5%',
+            bangBank: '',
         }
     }
 
@@ -68,8 +69,17 @@ class DadSeBank extends Component {
         this.props.navigation.replace('mainMenu')
     }
 
-    gotoHome = () =>{
-        this.props.navigation.replace('home')
+    goBack = () =>{
+        if (this.state.bangBank == 'dadse')
+        {
+            // alert(this.state.bangBank);
+            this.props.navigation.replace('gameMenu', { showDadseBang: 'show' });
+        }
+        if (this.state.bangBank == 'dadbatak')
+        {
+            // alert(this.state.bangBank);
+            this.props.navigation.replace('gameMenu', { showDadBatakBang: 'show' });
+        }
     }
 
     coinView = () => {
@@ -179,6 +189,10 @@ class DadSeBank extends Component {
 
     render() {
         console.disableYellowBox = true; 
+        const { navigation } = this.props;
+        const bangID = navigation.getParam('Bang', 'NO-ID');
+        this.state.bangBank = bangID;
+
         return (
             <ImageBackground
                 source={GameBG}
@@ -190,11 +204,14 @@ class DadSeBank extends Component {
                         <Image source={Home_icon} style={globalStyleSheet.home}></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.gnareIconStyle}>
-                    <TouchableOpacity onPress={this.gotoHome}>
-                        <Image source={GnareIcon} style={styles.image}></Image>
-                    </TouchableOpacity>
-                </View>
+                <View style={globalStyleSheet.backContainer}>
+                  <TouchableOpacity onPress={this.goBack}>
+                      <Image
+                          source={Back_icon}
+                          style={globalStyleSheet.back}
+                      ></Image>
+                  </TouchableOpacity>
+              </View>
                 <View style={{
                     position: 'absolute',
                     top: this.state.moneyTop1,

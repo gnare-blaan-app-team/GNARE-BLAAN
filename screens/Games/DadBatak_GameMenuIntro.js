@@ -12,7 +12,6 @@ import Bang3Icon from './gameImages/12Icon_Bang3Lock.png';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 import { sound } from '../HomePage';
-import GnareIcon from './gameImages/GnareMain.png';
 
 var Realm = require('realm');
 let realm;
@@ -155,19 +154,6 @@ class DadBatak_GameMenuIntro extends Component {
                     <Image source={Bang3Icon} style={styles.image}></Image>
                 </View>
                 
-                <View style={{position: 'absolute',
-                    top: hp('5%'),
-                    left: wp('2%'),
-                    height: hp('12%'),
-                    width: wp('10%'),}
-                }>
-                    <TouchableOpacity onPress={this.gotoHome}>
-                        <Image source={GnareIcon} style={{width: '100%',
-                            height: '100%',
-                            resizeMode: 'stretch'
-                        }}></Image>
-                    </TouchableOpacity>
-                </View>
 
                 <View style={{position: 'absolute', top: '78%', left: '88%', height: '10%', justifyContent: 'center', alignItems: 'center'}}>
                     <TouchableOpacity onPress={()=> {
