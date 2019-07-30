@@ -867,7 +867,7 @@ class Bang5 extends Component {
 
         if (index == 'addBalance') {
             if (this.state.Balance == 0) {
-                const value = 1;
+                const value = 4;
                 realm.write(() => {
                     getCoin[id].coinBalance = String(value);
                 })

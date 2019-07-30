@@ -689,7 +689,7 @@ class Bang extends Component {
 
         if (index == 'addBalance') {
             if (this.state.Balance == 0) {
-                const value = 1;
+                const value = 6;
                 realm.write(() => {
                     getCoin[id].coinBalance = String(value);
                 })
