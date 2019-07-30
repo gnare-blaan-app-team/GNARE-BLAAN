@@ -458,9 +458,9 @@ class GameMenu extends Component {
     play = async (getPlayer) => {
         await AsyncStorage.setItem(SessionPlayer, getPlayer);
         this.updateTime(getPlayer);
-        realm = new Realm({ path: 'PlayerDatabase.realm' });
-        var getPlayers = realm.objects('Players');
-        alert(JSON.stringify(getPlayers))
+        // realm = new Realm({ path: 'PlayerDatabase.realm' });
+        // var getPlayers = realm.objects('Players');
+        // alert(JSON.stringify(getPlayers))
         Animated.spring(this.animatedValue, {
             toValue: .0
         }).start();
@@ -810,17 +810,19 @@ class GameMenu extends Component {
                                     <View>
                                         <TouchableOpacity onPress={this.play.bind(this, rowData.playername)}>
                                             <Image source={playerContainer} style={{resizeMode:'contain'}}/>
-                                            <View style={{
-                                                position:'absolute',
-                                                width:'80%',
-                                                alignItems:'center',
-                                                justifyContent:'center',
-                                                }}>
-                                                <Text style={{ fontSize: 28,}}>{rowData.playername}</Text>
-                                            </View>
                                         </TouchableOpacity>
-                                        <Text style={{ fontSize:5, }}> </Text>
+                                        
+                                        <View style={{
+                                            position: 'absolute',
+                                            width: '80%',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                        }}>
+                                            <Text style={{ fontSize: 28, }}>{rowData.playername}</Text>
+                                        </View>
+                                        <Text style={{ fontSize: 5, }}> </Text>
                                     </View>
+                                    
                                 )}
                             />
                         </View>
