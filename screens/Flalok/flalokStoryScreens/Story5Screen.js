@@ -193,7 +193,8 @@ class Story5Screen extends Component {
                     </TouchableWithoutFeedback>
 
                     <View style={{position: 'absolute', justifyContent: 'center', top: this.state.controlHide, alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.8)', width: '100%', height: '15%'}}>
-                        <Text style={{color: 'white', fontSize: 25}}>Fun Bulu - Diyos ng Kabundukan</Text>
+                        {/*<Text style={{color: 'white', fontSize: 25}}>Fun Bulu - Diyos ng Kabundukan</Text>*/}
+                        <Image source={require('../flalokImages/title5.png')} style={{width:'70%', position: 'absolute', left:'15%'}}></Image>
                     </View>
 
                     <View style={{position: 'absolute', top: this.state.hideSub, left: '88%', height: '10%', justifyContent: 'center', alignItems: 'center'}}>

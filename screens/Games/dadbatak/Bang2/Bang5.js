@@ -956,6 +956,7 @@ class Bang5 extends Component {
                             blackboardTop: '14%',
                         });
                     } else {
+                        stageNumber.splice(random, 1);
                         this.setState({
                             randomQuestion: random,
                             choice1Top: '75%',//75%
@@ -964,7 +965,6 @@ class Bang5 extends Component {
                             choice4Top: '75%',//75%
                             blackboardTop: '14%',
                         });
-                        stageNumber.splice(random, 1);
                     }
                 }
             }

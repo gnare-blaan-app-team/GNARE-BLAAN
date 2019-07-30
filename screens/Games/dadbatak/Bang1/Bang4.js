@@ -635,7 +635,7 @@ class Bang4 extends Component {
 
         if (index == 'addBalance') {
             if (this.state.Balance == 0) {
-                const value = 1;
+                const value = 2;
                 realm.write(() => {
                     getCoin[id].coinBalance = String(value);
                 })
@@ -723,6 +723,7 @@ class Bang4 extends Component {
                             blackboardTop: '14%',
                         });
                     } else {
+                        stageNumber.splice(random, 1);
                         this.setState({
                             randomQuestion: random,
                             choice1Top: '75%',//75%
@@ -730,8 +731,7 @@ class Bang4 extends Component {
                             choice3Top: '75%',//75%
                             choice4Top: '75%',//75%
                             blackboardTop: '14%',
-                        });
-                        stageNumber.splice(random, 1);
+                        });   
                     }
                 }
             }

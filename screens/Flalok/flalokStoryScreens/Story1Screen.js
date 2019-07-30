@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Image, ImageBackground, TouchableWithoutFeedback, TouchableOpacity} from "react-native";
+import { StyleSheet, Text, View, Image, ImageBackground, 
+    Dimensions, TouchableWithoutFeedback, TouchableOpacity} from "react-native";
 
 import Video from "react-native-video";
 import ProgressBar from "react-native-progress/Bar";
@@ -19,6 +20,8 @@ import flalokAfterStory_BG from '../../Games/gameImages/DadSeBG.png';
 import {globalStyleSheet as styles} from '../../globalStyleSheet/globalStyleSheet.js';
 
 import { sound } from '../../HomePage';
+
+const screenWidth = Dimensions.get('screen').width;
 
 function secondsToTime(time) {
     return ~~(time / 60) + ":" + (time % 60 < 10 ? "0" : "") + time % 60;
@@ -200,7 +203,11 @@ class Story1Screen extends Component {
                     </TouchableWithoutFeedback>
 
                     <View style={{position: 'absolute', justifyContent: 'center', top: this.state.controlHide, alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.8)', width: '100%', height: '15%'}}>
+                    {/*
                         <Text style={{color: 'white', fontSize: 25}}>Dad Kafye Gwè di kat du - Biyaya sa bawat araw </Text>
+                    */}
+                        <Image source={require('../flalokImages/title1.png')} 
+                        style={{width:'70%', position: 'absolute', left:'15%', height: '100%'}}></Image>
                     </View>
 
                     <View style={{position: 'absolute', top: this.state.hideSub, left: '88%', height: '10%', justifyContent: 'center', alignItems: 'center'}}>
@@ -211,7 +218,8 @@ class Story1Screen extends Component {
                             });
                             this.handleProgressPress;
                         }}>
-                            <Text style={{color: 'white', borderWidth: 2, borderColor: 'white', borderRadius: 5, padding: 3, fontSize: 18}}>{this.state.subtitle}</Text>
+                            <Text style={{color: 'white', borderWidth: 2, borderColor: 'white', 
+                            borderRadius: 5, padding: 3, fontSize: 18}}>{this.state.subtitle}</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -230,7 +238,7 @@ class Story1Screen extends Component {
                             <Icon name={!this.state.paused ? "pause" : "play"} size={30} color="#FFF" />
                         </TouchableWithoutFeedback>
 
-                        <View style={{marginRight: '3%', marginLeft: '15%'}}>
+                        <View style={{marginRight: '3%', marginLeft: '10%'}}>
                             <TouchableWithoutFeedback onPress={this.handleBackward}>
                                 <Icon name={"backward"} size={25} color="#FFF" />
                             </TouchableWithoutFeedback>
@@ -247,13 +255,13 @@ class Story1Screen extends Component {
                                     />
                             </TouchableWithoutFeedback>
                         </View>
-                        <View style={{marginRight: '15%', marginLeft: '3%'}}>
+                        <View style={{marginRight: '10%', marginLeft: '3%'}}>
                             <TouchableWithoutFeedback onPress={this.handleForward}>
                                 <Icon name={"forward"} size={25} color="#FFF" />
                             </TouchableWithoutFeedback>
                         </View>
 
-                        <Text style={videoStyle.duration}>
+                        <Text style={{fontSize: screenWidth * 0.03, color: 'white'}}>
                             {secondsToTime(Math.floor(this.state.progress * this.state.duration))}
                         </Text>
                     </View>
@@ -324,6 +332,7 @@ const videoStyle = StyleSheet.create({
     duration: {
         color: "#FFF",
         marginLeft: 15,
+        fontSize: screenWidth * 0.01
     },
 });
 

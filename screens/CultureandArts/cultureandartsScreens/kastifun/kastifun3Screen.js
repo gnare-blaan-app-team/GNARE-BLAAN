@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Image, ImageBackground, TouchableWithoutFeedback, TouchableOpacity} from "react-native";
+import { StyleSheet, Text, View, Image, ImageBackground, 
+    Dimensions, TouchableWithoutFeedback, TouchableOpacity} from "react-native";
 
 import Video from "react-native-video";
 import ProgressBar from "react-native-progress/Bar";
 import { withNavigation } from 'react-navigation'; 
 import Icon from "react-native-vector-icons/FontAwesome";
 
-import Kastifun3_video from '../../cultureandartsVideos/Kastifun/blaanDance2.mp4';
+import Kastifun3_video from '../../cultureandartsVideos/Kastifun/blaanDance1.mp4';
 import Back_icon from '../../../images/Back_icon.png';
 import Home_icon from '../../../images/Home_icon.png';
 
@@ -14,7 +15,7 @@ import { sound } from '../../../HomePage';
 import cultureandarts_BG from '../../cultureandartsImages/cultureandarts_BG.jpg';
 
 import {globalStyleSheet as styles} from '../../../globalStyleSheet/globalStyleSheet.js';
-
+const screenWidth = Dimensions.get('screen').width;
 function secondsToTime(time) {
     return ~~(time / 60) + ":" + (time % 60 < 10 ? "0" : "") + time % 60;
 }
@@ -165,18 +166,20 @@ class kastifun3Screen extends Component {
                             style={{ width: "100%", height: '100%' }}
                             resizeMode="stretch"
                             volume={this.state.volume}
-                            muted={false}
+                            muted={this.state.muted}
                             onLoad={this.handleLoad}
                             onProgress={this.handleProgress}
                             onEnd={this.handleEnd}
+                            onLoadStart={this.handleLoadStart}
                             ref={ref => {
-                                this.player = ref;
-                                }}
+                            this.player = ref;
+                            }}
                         />
                     </TouchableWithoutFeedback>
 
                     <View style={{position: 'absolute', justifyContent: 'center', top: this.state.controlHide, alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.8)', width: '100%', height: '15%'}}>
-                        <Text style={{color: 'white', fontSize: 16}}>Aral Lwek Mahin, Tambèl, Slibot, Na Mlala Ngà - Sayaw ng Alon, Pagtahahi, Paglibot at Pag-aaruga ng Bata</Text>
+                        {/* <Text style={{color: 'white', fontSize: 25}}>I Faglung - Ang Faglung</Text> */}
+                        <Image source={require('../../cultureandartsImages/kastifun3.png')} style={{width:'70%', position: 'absolute', left:'15%'}}></Image>
                     </View>
 
 
@@ -195,7 +198,7 @@ class kastifun3Screen extends Component {
                             <Icon name={!this.state.paused ? "pause" : "play"} size={30} color="#FFF" />
                         </TouchableWithoutFeedback>
 
-                        <View style={{marginRight: '3%', marginLeft: '15%'}}>
+                        <View style={{marginRight: '3%', marginLeft: '10%'}}>
                             <TouchableWithoutFeedback onPress={this.handleBackward}>
                                 <Icon name={"backward"} size={25} color="#FFF" />
                             </TouchableWithoutFeedback>
@@ -212,13 +215,13 @@ class kastifun3Screen extends Component {
                                     />
                             </TouchableWithoutFeedback>
                         </View>
-                        <View style={{marginRight: '15%', marginLeft: '3%'}}>
+                        <View style={{marginRight: '10%', marginLeft: '3%'}}>
                             <TouchableWithoutFeedback onPress={this.handleForward}>
                                 <Icon name={"forward"} size={25} color="#FFF" />
                             </TouchableWithoutFeedback>
                         </View>
 
-                        <Text style={videoStyle.duration}>
+                        <Text style={{fontSize: screenWidth * 0.03, color: 'white'}}>
                             {secondsToTime(Math.floor(this.state.progress * this.state.duration))}
                         </Text>
                     </View>
