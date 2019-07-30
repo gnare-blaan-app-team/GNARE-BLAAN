@@ -644,7 +644,7 @@ class Bang4 extends Component {
                 })
             } else {
                 const convertToNumber = Number(this.state.Balance);
-                this.state.Balance = convertToNumber + 1;
+                this.state.Balance = convertToNumber + 2;
                 realm.write(() => {
                     getCoin[id].coinBalance = String(this.state.Balance);
                 })

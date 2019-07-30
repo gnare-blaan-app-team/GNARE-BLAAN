@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BackHandler,View, ImageBackground, Text, Image, PanResponder, TouchableOpacity, StatusBar, Animated } from 'react-native';
+import { BackHandler, View, ImageBackground, Text, Image, AsyncStorage, TouchableOpacity, StatusBar, Animated } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import MenuItem from './MenuItem';
 import Sound from 'react-native-sound';
@@ -10,6 +10,8 @@ import Icon from "react-native-vector-icons/FontAwesome";
 
 import {globalStyleSheet as styles} from './globalStyleSheet/globalStyleSheet.js'; 
 Sound.setCategory('Playback');
+
+const gameintro = '@MyApp:gameintro';
 
 class Mainmenu extends Component {
     static navigationOptions = {
@@ -60,8 +62,13 @@ class Mainmenu extends Component {
         this.props.navigation.navigate('home');
     }
 
-    gotoGame = () => {
-        this.props.navigation.push('gameIntro');
+    gotoGame = async () => {
+        const storedValue = await AsyncStorage.getItem(gameintro);
+        if(storedValue == 'close'){
+            this.props.navigation.replace('gameMenu', { openProfile: 'showProfile' });
+        }else{
+            this.props.navigation.replace('gameIntro');
+        }
     }
 
     gotoSettings = () => {
@@ -88,6 +95,7 @@ class Mainmenu extends Component {
     }
 
     render() {
+        console.disableYellowBox = true; 
         StatusBar.setHidden(true);
         return (
             <ImageBackground style={styles.image}

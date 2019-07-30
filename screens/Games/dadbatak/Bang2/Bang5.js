@@ -876,7 +876,7 @@ class Bang5 extends Component {
                 })
             } else {
                 const convertToNumber = Number(this.state.Balance);
-                this.state.Balance = convertToNumber + 1;
+                this.state.Balance = convertToNumber + 4;
                 realm.write(() => {
                     getCoin[id].coinBalance = String(this.state.Balance);
                 })
@@ -935,7 +935,7 @@ class Bang5 extends Component {
                     })
                 }
             }
-            this.props.navigation.replace('gameMenu', { show: 'DadBatak', show3DB: 'DadBatak2' });
+            this.props.navigation.replace('gameMenu', { show: 'DadBatak'});
         }
         if (index == 'check') {
             for (a = 0; a < getPlayers.length; a++) {

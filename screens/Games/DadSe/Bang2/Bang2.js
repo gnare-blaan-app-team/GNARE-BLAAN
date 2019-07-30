@@ -586,7 +586,7 @@ class Bang2 extends Component {
             }
         }
 
-        if (questionAnswered.length == 5 || q == 5) {
+        if (q == 5) {
             for (a = 0; a < getPlayers.length; a++) {
                 const con = parseInt(a);
                 if (storedValue == getPlayers[con].playername) {
@@ -599,7 +599,7 @@ class Bang2 extends Component {
                     })
                 }
             }
-            this.props.navigation.replace('gameMenu', { show: 'Dadse', show3: 'Dadse2' });
+            this.props.navigation.replace('gameMenu', { show: 'Dadse'});
         }
         if (index == 'check') {
             for (a = 0; a < getPlayers.length; a++) {
@@ -1228,7 +1228,7 @@ class Bang2 extends Component {
                         resizeMode: 'contain',
                     }}></Image>
                 </Animatable.View>
-                <Animatable.View ref={this.handleViewRef} style={{ position: 'absolute', left: '25%', width: '20%', height: '12%', top: '2%', }}>
+                <Animatable.View ref={this.handleViewRef} style={{ position: 'absolute', left: '16%', width: '20%', height: '12%', top: '2%', }}>
                     <View style={{ position: 'absolute', width: '100%', height: '100%', top: this.state.star1Top }}>
                         <Image source={stars} style={{ height: '100%', width: '100%', resizeMode: 'contain' }} />
                     </View>

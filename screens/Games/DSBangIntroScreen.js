@@ -11,11 +11,11 @@ import Skip_icon from '../images/skip.png';
 import Bang1Icon from './gameImages/bang1_icon.png';
 import Bang2Icon from './gameImages/12Icon_Bang2Lock.png';
 import Bang3Icon from './gameImages/12Icon_Bang3Lock.png';
-import GnareIcon from './gameImages/GnareMain.png';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-const RandomKey = '@MyApp:RandomKey';
-const Stage2 = '@MyApp:Stage2';
+var Realm = require('realm');
+let realm;
+const SessionPlayer = '@MyApp:SessionPlayer';
 
 class DSBangIntroScreen extends Component {
     
@@ -47,7 +47,7 @@ class DSBangIntroScreen extends Component {
         }
     }
 
-    handleEnd = () => {
+    handleEnd = async () => {
         try {
             sound.setVolume(0.2);
             sound.play();
@@ -56,9 +56,20 @@ class DSBangIntroScreen extends Component {
         }
         this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.replace('gameMenu',{showDadseBang:'show'});
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getStage = realm.objects('Players');
+        const storedValue = await AsyncStorage.getItem(SessionPlayer);
+        for (a = 0; a < getStage.length; a++) {
+            const con = parseInt(a);
+            if (storedValue == getStage[con].playername) {
+                realm.write(() => {
+                getStage[con].dadseintro = 'done';
+                })
+            }
+        }
     }
 
-    gotoBangScreen = () => {
+    gotoBangScreen = async () => {
         try {
             sound.setVolume(0.2);
             sound.play();
@@ -67,6 +78,17 @@ class DSBangIntroScreen extends Component {
         }
         this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.replace('gameMenu', { showDadseBang: 'show' });
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getStage = realm.objects('Players');
+        const storedValue = await AsyncStorage.getItem(SessionPlayer);
+        for (a = 0; a < getStage.length; a++) {
+            const con = parseInt(a);
+            if (storedValue == getStage[con].playername) {
+                realm.write(() => {
+                    getStage[con].dadseintro = 'done';
+                })
+            }
+        }
     }
 
     gotoHome = () => {
@@ -96,20 +118,6 @@ class DSBangIntroScreen extends Component {
                             }}
                         />
                     </TouchableWithoutFeedback>
-                </View>
-
-                <View style={{position: 'absolute',
-                    top: hp('5%'),
-                    left: wp('2%'),
-                    height: hp('12%'),
-                    width: wp('10%'),}
-                }>
-                    <TouchableOpacity onPress={this.gotoHome}>
-                        <Image source={GnareIcon} style={{width: '100%',
-                            height: '100%',
-                            resizeMode: 'stretch'
-                        }}></Image>
-                    </TouchableOpacity>
                 </View>
 
                 <View style={styles.homeContainer}>

@@ -246,7 +246,7 @@ const answer = [
     
 ];
 
-const questionAnswered = [];
+var questionAnswered = [];
 
 const choiceGame = ['game_wrong', 'game_correct'];
 const audio = ['dadse_4', 'dadse_5', 'dadse_6','dadse_7','dadse_9'];
@@ -439,14 +439,17 @@ class Bang3 extends Component {
 
     gotoMainMenu = () =>{
         this.props.navigation.replace('mainMenu');
+        questionAnswered = [];
     }
 
     goBack = () => {
         this.stopSounds();
+        questionAnswered = [];
         this.props.navigation.replace('gameMenu',{showDadseBang:'show'});
     }
 
     goLamwa = () => {
+        questionAnswered = [];
         this.props.navigation.replace('gameMenu', { showDadseBang: 'show' });
     }
 
@@ -460,29 +463,6 @@ class Bang3 extends Component {
         var getPlayers = realm.objects('Players');
         var id = 0;
         var random = 0;
-        var q = '';
-        for (a = 0; a < getPlayers.length; a++) {
-            const con = parseInt(a);
-            if (storedValue == getPlayers[con].playername) {
-                q = getPlayers[con].questionDoneBang2;
-            }
-        }
-
-        if (questionAnswered.length == 5 || q == 5) {
-            for (a = 0; a < getPlayers.length; a++) {
-                const con = parseInt(a);
-                if (storedValue == getPlayers[con].playername) {
-                    realm.write(() => {
-                        getPlayers[con].star1 = 'null';
-                        getPlayers[con].star2 = 'null';
-                        getPlayers[con].star3 = 'null';
-                        getPlayers[con].questionDoneBang3 = 'null';
-                        getPlayers[con].dadseBang3RandomKey = 'null';
-                    })
-                }
-            }
-            this.props.navigation.replace('gameMenu', { show: 'Dadse', show3: 'Dadse2' });
-        }
         if (index == 'check') {
             for (a = 0; a < getPlayers.length; a++) {
                 const con = parseInt(a);
@@ -524,20 +504,37 @@ class Bang3 extends Component {
               choice4Top: '1000%',//75%
               blackboardTop: '1000%',
           });
-
-          this.state.pass = this.state.pass + 1;
-          realm.write(() => {
-              getPlayers[id].dadseBang3RandomKey = String(this.state.pass);
-          })
-             this.setState({
-            nextQuestion: this.state.pass,
-              choice1Top: '75%',//75%
-              choice2Top: '75%',//75%
-              choice3Top: '75%',//75%
-              choice4Top: '75%',//75%
-              blackboardTop: '14%',
-          });
-        
+          for (a = 0; a < getPlayers.length; a++) {
+              const con = parseInt(a);
+              if (storedValue == getPlayers[con].playername) {
+                  var add = getPlayers[con].dadseBang3RandomKey;
+                  var convert = parseInt(add) + 1;
+                  if (getPlayers[con].dadseBang3RandomKey == 4) {
+                              questionAnswered = [];
+                              realm.write(() => {
+                                  getPlayers[con].questionDoneBang3 = 'null';
+                                  getPlayers[con].dadseBang3RandomKey = 'null';
+                                  getPlayers[con].star1 = 'null';
+                                  getPlayers[con].star2 = 'null';
+                                  getPlayers[con].star3 = 'null';
+                              })
+                      this.props.navigation.replace('gameMenu', { show: 'Dadse' });
+                  }else{
+                      realm.write(() => {
+                          getPlayers[con].dadseBang3RandomKey = String(convert);
+                      })
+                      this.setState({
+                          nextQuestion: convert,
+                          choice1Top: '75%',//75%
+                          choice2Top: '75%',//75%
+                          choice3Top: '75%',//75%
+                          choice4Top: '75%',//75%
+                          blackboardTop: '14%',
+                      });
+                  }
+                  }
+                  
+            }
     }
     if(index == 'retry'){
         this.setState({
@@ -1127,7 +1124,7 @@ class Bang3 extends Component {
                         resizeMode: 'contain',
                     }}></Image>
                 </Animatable.View>
-                <Animatable.View ref={this.handleViewRef} style={{ position: 'absolute', left: '25%', width: '20%', height: '12%', top: '2%', }}>
+                <Animatable.View ref={this.handleViewRef} style={{ position: 'absolute', left: '16%', width: '20%', height: '12%', top: '2%', }}>
                     <View style={{ position: 'absolute', width: '100%', height: '100%', top: this.state.star1Top }}>
                         <Image source={stars} style={{ height: '100%', width: '100%', resizeMode: 'contain' }} />
                     </View>
