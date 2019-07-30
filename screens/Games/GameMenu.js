@@ -79,13 +79,22 @@ class GameMenu extends Component {
                         questionDoneBang2Dadbatak: { type: 'string', default: 'null' },
                         dadseBatak3RandomKey: { type: 'string', default: 'null' },
                         questionDoneBang3Dadbatak: { type: 'string', default: 'null' },
-                        gufadyan1: { type: 'int', default: 0 },
-                        gufadyan2: { type: 'int', default: 0 },
-                        gufadyan3: { type: 'int', default: 0 },
-                        gufadyan4: { type: 'int', default: 0 },
-                        gufadyan5: { type: 'int', default: 0 },
-                        gufadyan6: { type: 'int', default: 0 },
-                        gufadyan7: { type: 'int', default: 0 },
+                        dadseCloth1: { type: 'int', default: 0 },
+                        dadseCloth2: { type: 'int', default: 0 },
+                        dadseCloth3: { type: 'int', default: 0 },
+                        dadseCloth4: { type: 'int', default: 0 },
+                        dadseCloth5: { type: 'int', default: 0 },
+                        dadseCloth6: { type: 'int', default: 0 },
+                        dadseCloth7: { type: 'int', default: 0 },
+                        dadseProgress: {type: 'int', default: 100},
+                        dadbatakCloth1: { type: 'int', default: 0 },
+                        dadbatakCloth2: { type: 'int', default: 0 },
+                        dadbatakCloth3: { type: 'int', default: 0 },
+                        dadbatakCloth4: { type: 'int', default: 0 },
+                        dadbatakCloth5: { type: 'int', default: 0 },
+                        dadbatakCloth6: { type: 'int', default: 0 },
+                        dadbatakCloth7: { type: 'int', default: 0 },
+                        dadbatakProgress: {type: 'int', default: 100},
                     },
                 },
             ],
@@ -422,7 +431,7 @@ class GameMenu extends Component {
 
     play = async (getPlayer) => {
         await AsyncStorage.setItem(SessionPlayer, getPlayer);
-        this.updateTime(getPlayer);
+        this.updateTime(getPlayer)
         Animated.spring(this.animatedValue, {
             toValue: .0
         }).start();
