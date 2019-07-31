@@ -65,7 +65,7 @@ class NumberScreen extends Component {
             imageBackground: imageMainBG,
             numberMainBG: numberMainBG,
             //Letter Menu State
-            menuLetterHide: '22%',
+            menuLetterHide: '25%',
 
             pencilPressed: false,
             sentencePressed: false,
@@ -150,6 +150,7 @@ class NumberScreen extends Component {
 
     autoPlaySound = () => {
         this.releaseSounds();
+        this.setState({glow: numberImageList[this.state.indexSound]});
         this.objectGlow = setTimeout(()=> {
             this.playNumberSound();
         }, 200);
@@ -243,12 +244,21 @@ class NumberScreen extends Component {
         let nextBG = numberBGList[nextPage];
         this.stopAutoPlaySound();
 
-        if(nextPage < 24) {
+        if(nextPage < numberBGList.length) {
             this.changeBackground(nextBG, nextPage);
             this.setState({tracing: numberTracingList[nextPage]});
         } else {
             this.changeBackground(numberBGList[0], 0);
             this.setState({tracing: numberTracingList[0]});
+        }
+        if(this.state.pencilPressed) {
+            this.setState({pencilPressed: false, fromTracing: true,});
+            try {
+                sound.setVolume(0);
+                sound.paused();
+            } catch(error) {
+
+            }
         }
     }
 
@@ -284,7 +294,16 @@ class NumberScreen extends Component {
             this.setState({tracing: numberTracingList[prevPage]});
         } else {
             this.changeBackground(numberBGList[0], 0);
-            this.setState({tracing: numberTracingList[0]});
+            this.setState({tracing: numberTracingList[prevPage]});
+        }
+        if(this.state.pencilPressed) {
+            this.setState({pencilPressed: false, fromTracing: true,});
+            try {
+                sound.setVolume(0);
+                sound.paused();
+            } catch(error) {
+
+            }
         }
     }
 
@@ -317,35 +336,35 @@ class NumberScreen extends Component {
 
                 }
             }
-            else if(this.state.imageBackground == imageMainBG) {
-                this.handleBackPress();
-                try {
-                    sound.setVolume(0.5);
-                    sound.play();
-                } catch(error) {
-                    
-                }
-                this.props.navigation.navigate('home');
-            } else {
-                try {
-                    sound.setVolume(0.5);
-                    sound.play();
-                } catch(error) {
-                    
-                }
-                this.stopAutoPlaySound();
-                this.setState({menuLetterHide: '22%', imageBackground: imageMainBG,
-                            numberMainBG: imageMainBG,
-                            prevHide: hideLeft,
-                            pencilHide: hideLeft,
-                            glowHide: hideLeft,
-                            speakerHide: hideLeft,
-                            sentenceHide: hideRight,
-                            nextHide: hideRight, backIcon: Logo,
-                            speaker2Hide: hideLeft});
-                }
+        else if(this.state.imageBackground == imageMainBG) {
+            this.handleBackPress();
+            try {
+                sound.setVolume(0.5);
+                sound.play();
+            } catch(error) {
+                
+            }
+            this.props.navigation.navigate('home');
+        } else {
+            try {
+                sound.setVolume(0.5);
+                sound.play();
+            } catch(error) {
+                
+            }
+            this.stopAutoPlaySound();
+            this.setState({menuLetterHide: '25%', imageBackground: imageMainBG,
+                        numberMainBG: imageMainBG,
+                        prevHide: hideLeft,
+                        pencilHide: hideLeft,
+                        glowHide: hideLeft,
+                        speakerHide: hideLeft,
+                        sentenceHide: hideRight,
+                        nextHide: hideRight, backIcon: Logo,
+                        speaker2Hide: hideLeft});
             }
         }
+    }
 
     render() {
         return (
@@ -443,55 +462,102 @@ class NumberScreen extends Component {
 
 
                     {/* Start of Letters Enum Code Part */}
-                    <View style={{position: 'absolute', top: this.state.menuLetterHide, left: '15%', width: '83%', height: '32%', flexDirection: 'row', flexWrap: 'wrap',}}>
-                        <MenuItem itemImage={require('./numbersImage/1.png')} goto={() => {
-                                            this.changeBackground(numberBGList[0], 0)}} />
-                        <MenuItem itemImage={require('./numbersImage/2.png')} goto={() => {
-                                            this.changeBackground(numberBGList[1], 1)}} />
-                        <MenuItem itemImage={require('./numbersImage/3.png')} goto={() => {
-                                            this.changeBackground(numberBGList[2], 2)}} />
-                        <MenuItem itemImage={require('./numbersImage/4.png')} goto={() => {
-                                            this.changeBackground(numberBGList[3], 3)}} />
-                        <MenuItem itemImage={require('./numbersImage/5.png')} goto={() => {
-                                            this.changeBackground(numberBGList[4], 4)}} />
-                        <MenuItem itemImage={require('./numbersImage/6.png')} goto={() => {
-                                            this.changeBackground(numberBGList[5], 5)}} />
-                        <MenuItem itemImage={require('./numbersImage/7.png')} goto={() => {
-                                            this.changeBackground(numberBGList[6], 6)}} />
-                        <MenuItem itemImage={require('./numbersImage/8.png')} goto={() => {
-                                            this.changeBackground(numberBGList[7], 7)}} />
-                        <MenuItem itemImage={require('./numbersImage/9(1).png')} goto={() => {
-                                            this.changeBackground(numberBGList[8], 8)}} />
-                        <MenuItem itemImage={require('./numbersImage/10.png')} goto={() => {
-                                            this.changeBackground(numberBGList[9], 9)}} />
-                        <MenuItem itemImage={require('./numbersImage/20(2).png')} goto={() => {
-                                            this.changeBackground(numberBGList[10], 10)}} />
-                        <MenuItem itemImage={require('./numbersImage/30.png')} goto={() => {
+                    <View style={{position: 'absolute', top: this.state.menuLetterHide, left: '15%', width: '70%', 
+                    height: '60%', flexDirection: 'row', flexWrap: 'wrap',}}>
+                        <View style={{height: '30%', width: '100%', flexDirection: 'row', 
+                                paddingTop: '3%'}}>
+                            <View style={{width: '20%', height: '100%',}}>
+                                <MenuItem itemImage={require('./numbersImage/1.png')} goto={() => {
+                                                this.changeBackground(numberBGList[0], 0)}} />
+                            </View>
+                            <View style={{width: '20%', height: '100%'}}>
+                                <MenuItem itemImage={require('./numbersImage/2.png')} goto={() => {
+                                                this.changeBackground(numberBGList[1], 1)}} />
+                            </View>
+                            <View style={{width: '20%', height: '100%'}}>
+                                <MenuItem itemImage={require('./numbersImage/3.png')} goto={() => {
+                                                this.changeBackground(numberBGList[2], 2)}} />
+                            </View>
+                            <View style={{width: '20%', height: '100%'}}>
+                                <MenuItem itemImage={require('./numbersImage/4.png')} goto={() => {
+                                                this.changeBackground(numberBGList[3], 3)}} />
+                            </View>
+                            <View style={{width: '20%', height: '100%'}}>
+                                <MenuItem itemImage={require('./numbersImage/5.png')} goto={() => {
+                                                this.changeBackground(numberBGList[4], 4)}} />
+                            </View>
+                        </View>
+
+                        <View style={{height: '30%', width: '100%', flexDirection: 'row', paddingTop: '3%'}}>
+                            <View style={{width: '20%', height: '100%',}}>
+                                <MenuItem itemImage={require('./numbersImage/6.png')} goto={() => {
+                                                this.changeBackground(numberBGList[5], 5)}} />
+                            </View>
+                            <View style={{width: '20%', height: '100%'}}>
+                                <MenuItem itemImage={require('./numbersImage/7.png')} goto={() => {
+                                                this.changeBackground(numberBGList[6], 6)}} />
+                            </View>
+                            <View style={{width: '20%', height: '100%'}}>
+                                <MenuItem itemImage={require('./numbersImage/8.png')} goto={() => {
+                                                this.changeBackground(numberBGList[7], 7)}} />
+                            </View>
+                            <View style={{width: '20%', height: '100%'}}>
+                                <MenuItem itemImage={require('./numbersImage/9(1).png')} goto={() => {
+                                                this.changeBackground(numberBGList[8], 8)}} />
+                            </View>
+                            <View style={{width: '20%', height: '100%'}}>
+                                <MenuItem itemImage={require('./numbersImage/10.png')} goto={() => {
+                                                this.changeBackground(numberBGList[9], 9)}} />
+                            </View>
+                        </View>
+
+                        <View style={{height: '30%', width: '100%', flexDirection: 'row', paddingTop: '3%'}}>
+                            <View style={{width: ((100/7) + '%'), height: '100%',}}>
+                                <MenuItem itemImage={require('./numbersImage/20(2).png')} goto={() => {
+                                                this.changeBackground(numberBGList[10], 10)}} />
+                            </View>
+                            <View style={{width: ((100/7) + '%'), height: '100%'}}>
+                                <MenuItem itemImage={require('./numbersImage/100.png')} goto={() => {
+                                                this.changeBackground(numberBGList[11], 11)}} />
+                            </View>
+                            <View style={{width: ((100/7) + '%'), height: '100%'}}>
+                                <MenuItem itemImage={require('./numbersImage/200.png')} goto={() => {
+                                                this.changeBackground(numberBGList[12], 12)}} />
+                            </View>
+                            <View style={{width: ((100/7) + '%'), height: '100%'}}>
+                                <MenuItem itemImage={require('./numbersImage/300.png')} goto={() => {
+                                                this.changeBackground(numberBGList[13], 13)}} />
+                            </View>
+                            <View style={{width: ((100/7) + '%'), height: '100%'}}>
+                                <MenuItem itemImage={require('./numbersImage/400.png')} goto={() => {
+                                                this.changeBackground(numberBGList[14], 14)}} />
+                            </View>
+                            <View style={{width: ((100/7) + '%'), height: '100%'}}>
+                                <MenuItem itemImage={require('./numbersImage/500.png')} goto={() => {
+                                                this.changeBackground(numberBGList[15], 15)}} />
+                            </View>
+                            <View style={{width: ((100/7) + '%'), height: '100%'}}>
+                                <MenuItem itemImage={require('./numbersImage/1000.png')} goto={() => {
+                                                this.changeBackground(numberBGList[16], 16)}} />
+                            </View>
+                        </View>
+                        
+                        {/*
+                            <MenuItem itemImage={require('./numbersImage/30.png')} goto={() => {
                                             this.changeBackground(numberBGList[11], 11)}} />
-                        <MenuItem itemImage={require('./numbersImage/40.png')} goto={() => {
-                                            this.changeBackground(numberBGList[12], 12)}} />
-                        <MenuItem itemImage={require('./numbersImage/50.png')} goto={() => {
-                                            this.changeBackground(numberBGList[13], 13)}} />
-                        <MenuItem itemImage={require('./numbersImage/60.png')} goto={() => {
-                                            this.changeBackground(numberBGList[14], 14)}} />
-                        <MenuItem itemImage={require('./numbersImage/70.png')} goto={() => {
-                                            this.changeBackground(numberBGList[15], 15)}} />
-                        <MenuItem itemImage={require('./numbersImage/80.png')} goto={() => {
-                                            this.changeBackground(numberBGList[16], 16)}} />
-                        <MenuItem itemImage={require('./numbersImage/90.png')} goto={() => {
-                                            this.changeBackground(numberBGList[17], 17)}} />
-                        <MenuItem itemImage={require('./numbersImage/100.png')} goto={() => {
-                                            this.changeBackground(numberBGList[18], 18)}} />
-                        <MenuItem itemImage={require('./numbersImage/200.png')} goto={() => {
-                                            this.changeBackground(numberBGList[19], 19)}} />
-                        <MenuItem itemImage={require('./numbersImage/300.png')} goto={() => {
-                                            this.changeBackground(numberBGList[20], 20)}} />
-                        <MenuItem itemImage={require('./numbersImage/400.png')} goto={() => {
-                                            this.changeBackground(numberBGList[21], 21)}} />
-                        <MenuItem itemImage={require('./numbersImage/500.png')} goto={() => {
-                                            this.changeBackground(numberBGList[22], 22)}} />
-                        <MenuItem itemImage={require('./numbersImage/1000.png')} goto={() => {
-                                            this.changeBackground(numberBGList[23], 23)}} />
+                            <MenuItem itemImage={require('./numbersImage/40.png')} goto={() => {
+                                                this.changeBackground(numberBGList[12], 12)}} />
+                            <MenuItem itemImage={require('./numbersImage/50.png')} goto={() => {
+                                                this.changeBackground(numberBGList[13], 13)}} />
+                            <MenuItem itemImage={require('./numbersImage/60.png')} goto={() => {
+                                                this.changeBackground(numberBGList[14], 14)}} />
+                            <MenuItem itemImage={require('./numbersImage/70.png')} goto={() => {
+                                                this.changeBackground(numberBGList[15], 15)}} />
+                            <MenuItem itemImage={require('./numbersImage/80.png')} goto={() => {
+                                                this.changeBackground(numberBGList[16], 16)}} />
+                            <MenuItem itemImage={require('./numbersImage/90.png')} goto={() => {
+                                                this.changeBackground(numberBGList[17], 17)}} />
+                        */}
                     </View>
                     {/* End of Letters Enum Code Part */}
                     </View>

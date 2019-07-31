@@ -24,5 +24,5 @@ import Tracing500 from './500Tracing';
 import Tracing1000 from './1000Tracing';
 
 export const numberTracingList = [Tracing1, Tracing2, Tracing3, Tracing4, Tracing5, Tracing6, Tracing7, Tracing8, Tracing9,
-    Tracing10, Tracing20, Tracing30, Tracing40, Tracing50, Tracing60, Tracing70, Tracing80, Tracing90, Tracing100, Tracing200,
+    Tracing10, Tracing20, /* Tracing30, Tracing40, Tracing50, Tracing60, Tracing70, Tracing80, Tracing90, */ Tracing100, Tracing200,
     Tracing300, Tracing400, Tracing500, Tracing1000];

@@ -3,7 +3,7 @@ import DadBatak_EN_Slide2 from '../IntroVideos/DadBatak_EN_Slide2.mp4';
 
 import React, { Component } from 'react';
 import Video from 'react-native-video';
-import { Text, Image, View, TouchableOpacity , ImageBackground} from 'react-native';
+import { Text, Image, View, TouchableOpacity, ImageBackground, AsyncStorage} from 'react-native';
 import { withNavigation } from 'react-navigation';
 import Skip_icon from '../images/skip.png';
 import Bang1Icon from './gameImages/bang1_icon.png';
@@ -12,8 +12,10 @@ import Bang3Icon from './gameImages/12Icon_Bang3Lock.png';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 import { sound } from '../HomePage';
-import GnareIcon from './gameImages/GnareMain.png';
 
+var Realm = require('realm');
+let realm;
+const SessionPlayer = '@MyApp:SessionPlayer';
 
 class DadBatak_GameMenuIntro extends Component {
     static navigationOptions = {
@@ -43,7 +45,7 @@ class DadBatak_GameMenuIntro extends Component {
         }
     }
 
-    handleEnd = () => {
+    handleEnd = async () => {
         try {
             sound.setVolume(0.2);
             sound.play();
@@ -52,9 +54,20 @@ class DadBatak_GameMenuIntro extends Component {
         }
         this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.replace('gameMenu',{showDadBatakBang:'show' });
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getStage = realm.objects('Players');
+        const storedValue = await AsyncStorage.getItem(SessionPlayer);
+        for (a = 0; a < getStage.length; a++) {
+            const con = parseInt(a);
+            if (storedValue == getStage[con].playername) {
+                realm.write(() => {
+                    getStage[con].dadbatakintro = 'done';
+                })
+            }
+        }
     };
 
-    gotoGameScreen = () => {
+    gotoGameScreen = async () => {
         try {
             sound.setVolume(0.2);
             sound.play();
@@ -63,6 +76,17 @@ class DadBatak_GameMenuIntro extends Component {
         }
         this.setState({paused: true, volume: 0, muted: true});
         this.props.navigation.replace('gameMenu', { showDadBatakBang: 'show' });
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getStage = realm.objects('Players');
+        const storedValue = await AsyncStorage.getItem(SessionPlayer);
+        for (a = 0; a < getStage.length; a++) {
+            const con = parseInt(a);
+            if (storedValue == getStage[con].playername) {
+                realm.write(() => {
+                    getStage[con].dadbatakintro = 'done';
+                })
+            }
+        }
     }
 
     gotoHome = () => {
@@ -130,19 +154,6 @@ class DadBatak_GameMenuIntro extends Component {
                     <Image source={Bang3Icon} style={styles.image}></Image>
                 </View>
                 
-                <View style={{position: 'absolute',
-                    top: hp('5%'),
-                    left: wp('2%'),
-                    height: hp('12%'),
-                    width: wp('10%'),}
-                }>
-                    <TouchableOpacity onPress={this.gotoHome}>
-                        <Image source={GnareIcon} style={{width: '100%',
-                            height: '100%',
-                            resizeMode: 'stretch'
-                        }}></Image>
-                    </TouchableOpacity>
-                </View>
 
                 <View style={{position: 'absolute', top: '78%', left: '88%', height: '10%', justifyContent: 'center', alignItems: 'center'}}>
                     <TouchableOpacity onPress={()=> {

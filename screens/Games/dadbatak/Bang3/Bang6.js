@@ -689,7 +689,7 @@ class Bang extends Component {
 
         if (index == 'addBalance') {
             if (this.state.Balance == 0) {
-                const value = 1;
+                const value = 6;
                 realm.write(() => {
                     getCoin[id].coinBalance = String(value);
                 })
@@ -698,7 +698,7 @@ class Bang extends Component {
                 })
             } else {
                 const convertToNumber = Number(this.state.Balance);
-                this.state.Balance = convertToNumber + 1;
+                this.state.Balance = convertToNumber + 6;
                 realm.write(() => {
                     getCoin[id].coinBalance = String(this.state.Balance);
                 })
@@ -756,7 +756,7 @@ class Bang extends Component {
                     })
                 }
             }
-            this.props.navigation.replace('gameMenu', { show: 'DadBatak', show3DB: 'DadBatak2' });
+            this.props.navigation.replace('gameMenu', { show: 'DadBatak'});
         }
         if (index == 'check') {
             for (a = 0; a < getPlayers.length; a++) {
@@ -777,6 +777,7 @@ class Bang extends Component {
                             blackboardTop: '14%',
                         });
                     } else {
+                        stageNumber.splice(random, 1);
                         this.setState({
                             randomQuestion: random,
                             choice1Top: '75%',//75%
@@ -785,7 +786,6 @@ class Bang extends Component {
                             choice4Top: '75%',//75%
                             blackboardTop: '14%',
                         });
-                        stageNumber.splice(random, 1);
                     }
                 }
             }

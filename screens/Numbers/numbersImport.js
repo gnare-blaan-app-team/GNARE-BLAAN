@@ -121,22 +121,26 @@ export const trail = screenWidth * 0.025;
 export const velocityLimit = 1.2;
 export const velocityLimit2 = -1.5; 
 
-export const soundList = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '20', '30', '40', '50', '60',
-'70', '80', '90', '100', '200', '300', '400', '500', '1000'];
+export const soundList = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '20', /*
+    '30', '40', '50', '60',
+'70', '80', '90',
+*/ '100', '200', '300', '400', '500', '1000'];
 
 export const numberBGList = [Number1, Number2, Number3, Number4, Number5, Number6, Number7, Number8, Number9, Number10,
-    Number20, Number30, Number40, Number50, Number60, Number70, Number80, Number90, Number100,
+    Number20, 
+    /* Number30, Number40, Number50, Number60, Number70, Number80, Number90,  */
+    Number100,
     Number200, Number300, Number400, Number500, Number1000];
     
 export const numberGlowList = [Glow1, Glow2, Glow3, Glow4, Glow5, Glow6, Glow7, Glow8, Glow9, Glow10,
-    Glow20, Glow30, Glow40, Glow50, Glow60, Glow70, Glow80, Glow90, Glow100,
+    Glow20, /*Glow30, Glow40, Glow50, Glow60, Glow70, Glow80, Glow90,*/ Glow100,
     Glow200, Glow300, Glow400, Glow500, Glow1000];
 
 
 export const numberImageList = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10,
-    img20, img30, img40, img50, img60, img70, img80, img90, img100,
+    img20, /*img30, img40, img50, img60, img70, img80, img90,*/ img100,
     img200, img300, img400, img500, img1000];
 
 export const sentenceList = [Sentence1, Sentence2, Sentence3, Sentence4, Sentence5, Sentence6, Sentence7, Sentence8, Sentence9, Sentence10,
-        Sentence20, Sentence30, Sentence40, Sentence50, Sentence60, Sentence70, Sentence80, Sentence90, Sentence100,
+        Sentence20, /* Sentence30, Sentence40, Sentence50, Sentence60, Sentence70, Sentence80, Sentence90, */ Sentence100,
         Sentence200, Sentence300, Sentence400, Sentence500, Sentence1000];
