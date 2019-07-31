@@ -39,7 +39,7 @@ class FlalokStoryMenu extends Component {
     }
 
     gotoHome = () => {
-        this.props.navigation.navigte('home');
+        this.props.navigation.navigate('home');
     }
 
     gotoStory1 = () => {
