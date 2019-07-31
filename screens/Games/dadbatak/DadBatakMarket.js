@@ -45,6 +45,7 @@ const screenHeight = Dimensions.get('screen').height;
 const clothWidth = screenWidth * 0.05;
 const clothHeight = screenHeight * 0.1;
 let fule = [];
+let balance = 0;
 let barStack = 0;
 
 const SessionPlayer = '@MyApp:SessionPlayer';
@@ -172,6 +173,7 @@ class DadBatakMarket extends Component {
                             this.setState({showSwatSlah: 1, showSwatSlah2: 0, 
                                 balance: this.state.balance - 5});
                             fule.push(DSSwatSalah);
+                            balance = balance - 5;
                         }
                     }
                 }
@@ -194,6 +196,7 @@ class DadBatakMarket extends Component {
                             this.setState({showLbung: 1, showUlel2: 0,
                                 balance: this.state.balance - 15});
                             fule.push(DSUlel);
+                            balance = balance - 15;
                         }
                     }
                 }
@@ -216,6 +219,7 @@ class DadBatakMarket extends Component {
                                 this.setState({showTlayong: 1, showLbung2: 0,
                                     balance: this.state.balance - 10});
                                 fule.push(DSLbung);
+                                balance = balance - 10;
                             }
                     }
                 }
@@ -238,7 +242,7 @@ class DadBatakMarket extends Component {
                             this.setState({showFalimak: 1, showTlayong2: 0, 
                                 balance: this.state.balance - 15});
                             fule.push(DSTlayong);
-                            
+                            balance = balance - 15;
                         }
                     }
                 }
@@ -261,6 +265,7 @@ class DadBatakMarket extends Component {
                             this.setState({showDafeng: 1, showDafeng2: 0,
                                 balance: this.state.balance - 15});
                             fule.push(DSDafeng);
+                            balance = balance - 15;
                         }
                     }
                 }
@@ -283,6 +288,7 @@ class DadBatakMarket extends Component {
                             this.setState({showKulangTana: 1, showKulangTana2: 0,
                                 balance: this.state.balance - 15});
                             fule.push(DSKulangTana);
+                            balance = balance - 15;
                         }
                     }
                 }
@@ -324,6 +330,7 @@ class DadBatakMarket extends Component {
                 this.setState({indexPlayer: num});
 
                 this.setState({CoinBalance: kaibi[num].coinBalance});
+                balance = kaibi[num].coinBalance;
                 this.setState({balance: kaibi[num].coinBalance});
 
                 this.setState({progress: kaibi[num].dadbatakProgress + '%'});
@@ -407,78 +414,66 @@ class DadBatakMarket extends Component {
         for(i = 0; i < fule.length; i++) {
             switch(fule[i]) {
                 case DSSwatSalah: {
+                    this.fillProgressBar();
                     realm.write(() => {
                         kaibi[this.state.indexPlayer].dadbatakCloth1 = parseInt(1);
-                        kaibi[this.state.indexPlayer].coinBalance = String(((this.state.CoinBalance - 5) + ''));
-                        kaibi[this.state.indexPlayer].dadbatakProgress = parseInt(this.fill - 20);
                     });
-                    this.setState({CoinBalance: this.state.CoinBalance - 5});
-                    this.fillProgressBar();
                     break;
                 };
                 case DSUlel: {
+                    this.fillProgressBar();
                     realm.write(() => {
                         kaibi[this.state.indexPlayer].dadbatakCloth2 = parseInt(1);
-                        kaibi[this.state.indexPlayer].coinBalance = String(((this.state.CoinBalance - 15) + ''));
-                        kaibi[this.state.indexPlayer].dadbatakProgress = parseInt(this.fill - 20);
                     });
-                    this.setState({CoinBalance: this.state.CoinBalance - 15});
-                    this.fillProgressBar();
                     break;
                 };
                 case DSLbung: {
+                    this.fillProgressBar();
                     realm.write(() => {
                         kaibi[this.state.indexPlayer].dadbatakCloth3 = parseInt(1);
-                        kaibi[this.state.indexPlayer].coinBalance = String(((this.state.CoinBalance - 10) + ''));
-                        kaibi[this.state.indexPlayer].dadbatakProgress = parseInt(this.fill - 20);
                     });
-                    this.setState({CoinBalance: this.state.CoinBalance - 10});
-                    this.fillProgressBar();
                     break;
                 };
                 case DSTlayong: {
                     realm.write(() => {
                         kaibi[this.state.indexPlayer].dadbatakCloth4 = parseInt(1);
-                        kaibi[this.state.indexPlayer].coinBalance = String(((this.state.CoinBalance - 15) + ''));
-                        kaibi[this.state.indexPlayer].dadbatakProgress = parseInt(this.fill - 20);
-                        this.setState({CoinBalance: this.state.CoinBalance - 15});
                     });
                     break;
                 };
                 case DSDafeng: {
+                    this.fillProgressBar();
                     realm.write(() => {
                         kaibi[this.state.indexPlayer].dadbatakCloth5 = parseInt(1);
-                        kaibi[this.state.indexPlayer].coinBalance = String(((this.state.CoinBalance - 15) + ''));
-                        kaibi[this.state.indexPlayer].dadbatakProgress = parseInt(this.fill - 20);
                     });
-                    this.setState({CoinBalance: this.state.CoinBalance - 15});
-                    this.fillProgressBar();
                     break;
                 };
                 case DSKulangTana: {
+                    this.fillProgressBar();
                     realm.write(() => {
                         kaibi[this.state.indexPlayer].dadbatakCloth6 = parseInt(1);
-                        kaibi[this.state.indexPlayer].coinBalance = String(((this.state.CoinBalance - 15) + ''));
-                        kaibi[this.state.indexPlayer].dadbatakProgress = parseInt(this.fill - 20);
                     });
-                    this.setState({CoinBalance: this.state.CoinBalance - 15});
-                    this.fillProgressBar();
                     break;
                 };
                 case DSSlah: {
                     realm.write(() => {
                         kaibi[this.state.indexPlayer].dadbatakCloth7 = parseInt(1);
-                        kaibi[this.state.indexPlayer].coinBalance = String(((this.state.CoinBalance - 10) + ''));
                     });
-                    this.setState({CoinBalance: this.state.CoinBalance - 10});
                     break;
                 };
             }
         }
+        this.setState({CoinBalance: parseInt(balance)});
+        let coins = parseInt(balance);
+        realm.write(() => {
+            kaibi[this.state.indexPlayer].coinBalance = String(coins);
+            kaibi[this.state.indexPlayer].dadseProgress = parseInt(this.state.progress);
+        });
         fule = [];
     }
 
     fillProgressBar = () => {
+        let realm = new Realm({ path: 'PlayerDatabase.realm'});;
+        let kaibi = realm.objects('Players');
         this.unFill = this.unFill + 20;
         if(this.progress == null) {
             this.progress = setInterval(()=> {
@@ -562,7 +557,8 @@ class DadBatakMarket extends Component {
                     <Image source={Coinbank} style={{width: '100%', height: '100%',
                     resizeMode: 'stretch'}}></Image>
                     <Text style={{position: 'absolute', top: '15%',
-                        left: '40%', fontSize: 15, color: '#ffea00'}}>{this.state.CoinBalance}.0</Text>
+                        left: '40%', fontSize: screenWidth * 0.02, color: '#ffea00'}}>
+                        {this.state.CoinBalance}.0</Text>
                 </View>
 
                 <View style={{position: 'absolute', top:'20%', right: '12%',

@@ -324,10 +324,11 @@ export default AppNavigator = createStackNavigator(
     
   },
 {
-  initialRouteName:"home",
+  initialRouteName:"dadseMarket",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"
   },
+
 }
 );
