@@ -508,9 +508,6 @@ class GameMenu extends Component {
 
     play = async (getPlayer) => {
         await AsyncStorage.setItem(SessionPlayer, getPlayer);
-        realm = new Realm({ path: 'PlayerDatabase.realm' });
-        var getPlayers = realm.objects('Players');
-        alert(JSON.stringify(getPlayers))
         this.updateTime(getPlayer);
         Animated.spring(this.animatedValue, {
             toValue: .0
@@ -540,10 +537,10 @@ class GameMenu extends Component {
 
     market = () => {
         if (this.state.level == 'dadsePart'){
-            this.props.navigation.navigate('dadbatakmarket');
+            this.props.navigation.replace('dadbatakmarket');
         }     
         if (this.state.level == 'dadbatakPart'){
-            this.props.navigation.navigate('dadseMarket');
+            this.props.navigation.replace('dadseMarket');
         } 
     }
 
