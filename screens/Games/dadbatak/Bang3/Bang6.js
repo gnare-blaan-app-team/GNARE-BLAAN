@@ -615,7 +615,6 @@ class Bang extends Component {
 
     componentDidMount() {
         this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
-
         this.load('check');
         this.minusStar();
         this.checkBalance();
