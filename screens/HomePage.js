@@ -235,6 +235,7 @@ class Homescreen extends Component{
                 </Animated.View>
         </ImageBackground>;
         }
+        sound.play();
     }
 
 

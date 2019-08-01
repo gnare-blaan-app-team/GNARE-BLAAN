@@ -45,6 +45,7 @@ const screenHeight = Dimensions.get('screen').height;
 const clothWidth = screenWidth * 0.05;
 const clothHeight = screenHeight * 0.1;
 let fule = [];
+let balance = 0;
 
 // let barStack = 0;
 // let bar = 100;
@@ -109,7 +110,7 @@ class DadSeMarket extends Component {
         };
 
         this.fill = 100;
-        this.toFill = 0;
+        this.prog = 0;
         this.unFill = 0;
         this.progress = null;
 
@@ -175,6 +176,7 @@ class DadSeMarket extends Component {
                                 this.setState({showSwatSlah: 1, showSwatSlah2: 0,
                                     balance: this.state.balance - 10});
                                     fule.push(DSSwatSalah);
+                                    balance = balance - 10;
                             }
                         }
                     }
@@ -199,6 +201,7 @@ class DadSeMarket extends Component {
                                 this.setState({showUlel: 1, showUlel2: 0,
                                     balance: this.state.balance + 5});
                                 fule.push(DSUlel);
+                                balance = balance - 5;
                             }
                         }
                     }
@@ -223,6 +226,7 @@ class DadSeMarket extends Component {
                                 this.setState({showLbung: 1, showLbung2: 0,
                                     balance: this.state.balance - 15});
                                 fule.push(DSLbung);
+                                balance = balance - 15;
                             }
                         }
                     }
@@ -247,6 +251,7 @@ class DadSeMarket extends Component {
                                 this.setState({showTlayong: 1, showTlayong2: 0,
                                     balance: this.state.balance - 15});
                                 fule.push(DSTlayong);
+                                balance = balance - 15;
                             }
                         }
                     }
@@ -271,6 +276,7 @@ class DadSeMarket extends Component {
                                 this.setState({showDafeng: 1, showDafeng2: 0,
                                     balance: this.state.balance - 15});
                                 fule.push(DSDafeng);
+                                balance = balance - 15;
                             }
                         }
                     }
@@ -295,6 +301,7 @@ class DadSeMarket extends Component {
                                 this.setState({showKulangTana: 1, showKulangTana2: 0, 
                                     balance: this.state.balance - 15});
                                 fule.push(DSKulangTana);
+                                balance = parseInt(balance) - parseInt(15);
                             }
                         }
                     }
@@ -319,6 +326,7 @@ class DadSeMarket extends Component {
                                 this.setState({showSlah: 1, showSlah2: 0,
                                     balance: this.state.balance - 10});
                                 fule.push(DSSlah);
+                                balance = parseInt(balance) - parseInt(10);
                             }
                         }
                         
@@ -332,16 +340,17 @@ class DadSeMarket extends Component {
 
     fillProgressBar = () => {
         this.unFill = this.unFill + 20;
+        
         if(this.progress == null) {
             this.progress = setInterval(()=> {
                 this.unFill = this.unFill - 2;
                 this.fill = this.fill - 2;
                 this.setState({progress: this.fill + '%'});
-                if(this.unFill == 0) {
+                if(this.unFill == 0) {          
                     clearInterval(this.progress);
                     this.progress = null;
                 }
-            }, 10);
+            }, 5);
         }
     }
 
@@ -391,7 +400,7 @@ class DadSeMarket extends Component {
             };
         }
     }
-    async componentWillMount() {
+    async componentDidMount() {
         let realm = new Realm({ path: 'PlayerDatabase.realm'});
         let kaito = realm.objects('Players');
         let storeValue = await AsyncStorage.getItem(SessionPlayer);
@@ -401,10 +410,12 @@ class DadSeMarket extends Component {
                 this.setState({indexPlayer: num});
 
                 this.setState({CoinBalance: kaito[num].coinBalance});
+                balance = kaito[num].coinBalance;
+                this.init(kaito[num].coinBalance);
                 this.setState({balance: kaito[num].coinBalance});
 
                 this.setState({progress: kaito[num].dadseProgress + '%'});
-                this.fill = kaito[num].dadseProgress;
+                this.fill = parseInt(kaito[num].dadseProgress);
 
                 this.setState({showSwatSlah: kaito[num].dadseCloth1});
                 this.setState({showSwatSlah2: this.state.showSwatSlah == 1 ? 0 : 1});
@@ -431,83 +442,74 @@ class DadSeMarket extends Component {
         }
     }
 
+    init = (coin) => {
+        this.setState({CoinBalance: coin});
+    }
+
     mayad = () => {
         let realm = new Realm({ path: 'PlayerDatabase.realm'});
         let kaito = realm.objects('Players');   
         for(i = 0; i < fule.length; i++) {
             switch(fule[i]) {
                 case DSSwatSalah: {
+                    this.fillProgressBar();
                     realm.write(() => {
                         kaito[this.state.indexPlayer].dadseCloth1 = parseInt(1);
-                        kaito[this.state.indexPlayer].coinBalance = String(((this.state.CoinBalance - 10) + ''));
-                        kaito[this.state.indexPlayer].dadseProgress = parseInt(this.fill - 20);
                     });
-                    this.setState({CoinBalance: this.state.CoinBalance - 10});
-                    this.fillProgressBar();
                     break;
                 };
                 case DSUlel: {
+                    this.fillProgressBar();
                     realm.write(() => {
                         kaito[this.state.indexPlayer].dadseCloth2 = parseInt(1);
-                        kaito[this.state.indexPlayer].coinBalance = String(((this.state.CoinBalance - 5) + ''));
-                        kaito[this.state.indexPlayer].dadseProgress = parseInt(this.fill - 20);
                     });
-                    this.setState({CoinBalance: this.state.CoinBalance - 5});
-                    this.fillProgressBar();
                     break;
                 };
                 case DSLbung: {
+                    this.fillProgressBar();
                     realm.write(() => {
                         kaito[this.state.indexPlayer].dadseCloth3 = parseInt(1);
-                        kaito[this.state.indexPlayer].coinBalance = String(((this.state.CoinBalance - 15) + ''));
-                        kaito[this.state.indexPlayer].dadseProgress = parseInt(this.fill - 20);
                     });
-                    this.setState({CoinBalance: this.state.CoinBalance - 15});
-                    this.fillProgressBar();
                     break;
                 };
                 case DSTlayong: {
+                    this.fillProgressBar();
                     realm.write(() => {
                         kaito[this.state.indexPlayer].dadseCloth4 = parseInt(1);
-                        kaito[this.state.indexPlayer].coinBalance = String(((this.state.CoinBalance - 15) + ''));
-                        kaito[this.state.indexPlayer].dadseProgress = parseInt(this.fill - 20);
                     });
-                    this.setState({CoinBalance: this.state.CoinBalance - 15});
-                    this.fillProgressBar();
+                    
                     break;
                 };
                 case DSDafeng: {
+                    this.fillProgressBar();
                     realm.write(() => {
                         kaito[this.state.indexPlayer].dadseCloth5 = parseInt(1);
-                        kaito[this.state.indexPlayer].coinBalance = String(((this.state.CoinBalance - 15) + ''));
-                        kaito[this.state.indexPlayer].dadseProgress = parseInt(this.fill - 20);
                     });
-                    this.setState({CoinBalance: this.state.CoinBalance - 15});
-                    this.fillProgressBar();
+                    
                     break;
                 };
                 case DSKulangTana: {
                     realm.write(() => {
                         kaito[this.state.indexPlayer].dadseCloth6 = parseInt(1);
-                        kaito[this.state.indexPlayer].coinBalance = String(((this.state.CoinBalance - 15) + ''));
-                        kaito[this.state.indexPlayer].dadseProgress = parseInt(this.fill - 20);
                     });
-                    this.setState({CoinBalance: this.state.CoinBalance - 15});
                     break;
                 };
                 case DSSlah: {
                     realm.write(() => {
                         kaito[this.state.indexPlayer].dadseCloth7 = parseInt(1);
-                        kaito[this.state.indexPlayer].coinBalance = String(((this.state.CoinBalance - 10) + ''));
-                        kaito[this.state.indexPlayer].dadseProgress = parseInt(this.fill - 20);
                     });
-                    this.setState({CoinBalance: this.state.CoinBalance - 10});
-                    break;
+                    break;                      
                 };
             }
         }
+        this.setState({CoinBalance: parseInt(balance)});
+        let coins = parseInt(balance);
+        realm.write(() => {    
+            kaito[this.state.indexPlayer].coinBalance = String(coins);
+            kaito[this.state.indexPlayer].dadseProgress = parseInt(this.fill);
+        });               
         fule = [];
-    }
+    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 
     gotoMainMenu = () => {
         this.props.navigation.navigate('gameMenu')
@@ -578,7 +580,7 @@ class DadSeMarket extends Component {
                     <Image source={Coinbank} style={{width: '100%', height: '100%',
                     resizeMode: 'stretch'}}></Image>
                     <Text style={{position: 'absolute', top: '15%',
-                        left: '40%', fontSize: 15, color: '#ffea00'}}>{this.state.CoinBalance}.0</Text>
+                        left: '40%', fontSize: screenWidth * 0.02, color: '#ffea00'}}>{this.state.CoinBalance}.0</Text>
                 </View>
 
                 <View style={{position: 'absolute', top:'20%', right: '12%',

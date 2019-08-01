@@ -329,5 +329,6 @@ export default AppNavigator = createStackNavigator(
     cardStyle: {
     backgroundColor:"transperent"
   },
+
 }
 );
