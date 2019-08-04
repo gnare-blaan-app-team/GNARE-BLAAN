@@ -701,7 +701,7 @@ const combine = [
     }
 ];
 
-const stageNumber = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+var stageNumber = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
 
 const questionAnswered = [];
 const choiceGame = ['game_wrong', 'game_correct'];
@@ -785,6 +785,8 @@ class Bang5 extends Component {
             marketBottom: '3%',
             lamwaTop:'1000%',
             Balance:0,
+            homeTop: '3%',
+            backTop: '3%',
         }
 
         //Sounds
@@ -988,6 +990,9 @@ class Bang5 extends Component {
                 choice3Top: '75%',//75%
                 choice4Top: '75%',//75%
                 blackboardTop: '14%',
+                homeTop: '3%',
+                backTop: '3%',
+                marketBottom: '3%',
             });
         }
 
@@ -1213,7 +1218,10 @@ class Bang5 extends Component {
                     choice1Top: '1000%',
                     choice2Top: '1000%',
                     choice3Top: '1000%',
-                    choice4Top: '1000%'
+                    choice4Top: '1000%',
+                    homeTop: '1000%',
+                    backTop: '1000%',
+                    marketBottom: '1000%',
                 })
                 setTimeout(() => {
                     this.setState({
@@ -1333,6 +1341,7 @@ class Bang5 extends Component {
         realm = new Realm({ path: 'PlayerDatabase.realm' });
         var getStars = realm.objects('Players');
         var id = 0;
+        stageNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
         for (a = 0; a < getStars.length; a++) {
             const con = parseInt(a);
             if (storedValue == getStars[con].playername) {
@@ -1375,9 +1384,29 @@ class Bang5 extends Component {
                 source={GameBG}
                 style={globalStyleSheet.image}
             >
-                <View style={globalStyleSheet.homeContainer}>
+                <View style={{
+                    position: 'absolute',
+                    left: '88%',
+                    top: this.state.homeTop,
+                    width: '14%',
+                    height: '28%',
+                }}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Image source={Home_icon} style={globalStyleSheet.home}></Image>
+                    </TouchableOpacity>
+                </View>
+                <View style={{
+                    position: 'absolute',
+                    left: '2%',
+                    top: this.state.backTop,
+                    width: '14%',
+                    height: '28%',
+                }}>
+                    <TouchableOpacity onPress={this.goBack}>
+                        <Image
+                            source={Back_icon}
+                            style={globalStyleSheet.back}
+                        ></Image>
                     </TouchableOpacity>
                 </View>
 
@@ -1396,14 +1425,6 @@ class Bang5 extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={globalStyleSheet.backContainer}>
-                    <TouchableOpacity onPress={this.goBack}>
-                        <Image
-                            source={Back_icon}
-                            style={globalStyleSheet.back}
-                        ></Image>
-                    </TouchableOpacity>
-                </View>
                 <View style={{ position: 'absolute',width:'60%',height:'50%',top:this.state.blackboardTop}}> 
                     <Image source={show.blackboard}
                     style={{

@@ -509,6 +509,9 @@ class GameMenu extends Component {
     play = async (getPlayer) => {
         await AsyncStorage.setItem(SessionPlayer, getPlayer);
         this.updateTime(getPlayer);
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getDate = realm.objects('Players');
+        alert(JSON.stringify(getDate));
         Animated.spring(this.animatedValue, {
             toValue: .0
         }).start();
