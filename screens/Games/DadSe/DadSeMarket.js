@@ -512,7 +512,7 @@ class DadSeMarket extends Component {
     }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 
     gotoMainMenu = () => {
-        this.props.navigation.navigate('gameMenu')
+        this.props.navigation.replace('gameMenu')
     }
 
     gotoBack = () =>{
