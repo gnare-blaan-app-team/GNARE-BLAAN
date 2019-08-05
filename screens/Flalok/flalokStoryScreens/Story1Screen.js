@@ -136,6 +136,7 @@ class Story1Screen extends Component {
         } catch(error) {
             
         }
+        this.setState({ paused: true});
         this.props.navigation.navigate('flalok');
     }
 

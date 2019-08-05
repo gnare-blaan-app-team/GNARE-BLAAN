@@ -324,7 +324,7 @@ export default AppNavigator = createStackNavigator(
     
   },
 {
-  initialRouteName:"dadseBank",
+  initialRouteName:"home",
     mode: 'card',
     cardStyle: {
     backgroundColor:"transperent"
