@@ -539,7 +539,7 @@ class Bang extends Component {
                 id=con;
             }
         }
-        if(coin == 'null'){
+        if(coin == '0'){
             const value = 0;
             this.setState({
                 Balance: value,

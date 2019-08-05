@@ -61,7 +61,7 @@ class GameMenu extends Component {
                         star1:{type:'string',default:'null'},
                         star2: { type: 'string', default: 'null' },
                         star3: { type: 'string', default: 'null' },
-                        coinBalance: {type:'string',default:'null'},
+                        coinBalance: {type:'string',default:'0'},
                         questionDoneBang1: {type:'string',default:'null'},
                         DSbangStage2: { type: 'string', default: 'null' },
                         dadseBang2RandomKey: { type: 'string', default: 'null' },
@@ -509,9 +509,9 @@ class GameMenu extends Component {
     play = async (getPlayer) => {
         await AsyncStorage.setItem(SessionPlayer, getPlayer);
         this.updateTime(getPlayer);
-        realm = new Realm({ path: 'PlayerDatabase.realm' });
-        var getDate = realm.objects('Players');
-        alert(JSON.stringify(getDate));
+        // realm = new Realm({ path: 'PlayerDatabase.realm' });
+        // var getDate = realm.objects('Players');
+        // alert(JSON.stringify(getDate));
         Animated.spring(this.animatedValue, {
             toValue: .0
         }).start();
