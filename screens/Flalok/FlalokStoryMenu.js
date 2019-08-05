@@ -39,39 +39,39 @@ class FlalokStoryMenu extends Component {
     }
 
     gotoHome = () => {
-        this.props.navigation.replace('home');
+        this.props.navigation.navigate('home');
     }
 
     gotoStory1 = () => {
-        this.props.navigation.replace('story1');
+        this.props.navigation.navigate('story1');
     }
 
     gotoStory2 = () => {
-        this.props.navigation.replace('story2');
+        this.props.navigation.navigate('story2');
     }
 
     gotoStory3 = () => {
-        this.props.navigation.replace('story3');
+        this.props.navigation.navigate('story3');
     }
 
     gotoStory4 = () => {
-        this.props.navigation.replace('story4');
+        this.props.navigation.navigate('story4');
     }
 
     gotoStory5 = () => {
-        this.props.navigation.replace('story5');
+        this.props.navigation.navigate('story5');
     }
                                                                                                                                                                               
     gotoStory6 = () => {
-        this.props.navigation.replace('story6');
+        this.props.navigation.navigate('story6');
     }
 
     gotoMainMenu = () => {
-        this.props.navigation.replace('mainMenu');
+        this.props.navigation.navigate('mainMenu');
     }
 
     goBack = () => {
-        this.props.navigation.replace('mainMenu');
+        this.props.navigation.navigate('mainMenu');
     }
 
     gotoNextPage = (index) => {

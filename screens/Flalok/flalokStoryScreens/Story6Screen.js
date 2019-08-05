@@ -133,6 +133,7 @@ class Story6Screen extends Component {
         } catch(error) {
             
         }
+        this.setState({ paused: true});
         this.props.navigation.navigate('flalok');
     }
 
@@ -195,7 +196,7 @@ class Story6Screen extends Component {
 
                     <View style={{position: 'absolute', justifyContent: 'center', top: this.state.controlHide, alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.8)', width: '100%', height: '15%'}}>
                         {/* <Text style={{color: 'white', fontSize: 25}}>Magtikeng Bnatel - Mahiwagang Ibon</Text> */}
-                        <Image source={require('../flalokImages/title5.png')} style={{width:'70%', position: 'absolute', left:'15%'}}></Image>
+                        <Image source={require('../flalokImages/title6.png')} style={{width:'70%', position: 'absolute', left:'15%'}}></Image>
                     </View>
 
                     <View style={{position: 'absolute', top: this.state.hideSub, left: '88%', height: '10%', justifyContent: 'center', alignItems: 'center'}}>

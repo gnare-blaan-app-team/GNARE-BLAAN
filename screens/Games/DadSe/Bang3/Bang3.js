@@ -297,6 +297,8 @@ class Bang3 extends Component {
             Balance:0,
             nextQuestion:0,
             pass:0,
+            homeTop: '3%',
+            backTop: '3%',
         }
 
         //Sound
@@ -530,6 +532,9 @@ class Bang3 extends Component {
                           choice3Top: '75%',//75%
                           choice4Top: '75%',//75%
                           blackboardTop: '14%',
+                          homeTop: '3%',
+                          backTop: '3%',
+                          marketBottom: '3%',
                       });
                   }
                   }
@@ -807,7 +812,10 @@ class Bang3 extends Component {
                     choice1Top: '1000%',
                     choice2Top: '1000%',
                     choice3Top: '1000%',
-                    choice4Top: '1000%'
+                    choice4Top: '1000%',
+                    homeTop: '1000%',
+                    backTop: '1000%',
+                    marketBottom: '1000%',
                 })
                 setTimeout(() => {
                     this.setState({
@@ -977,12 +985,24 @@ class Bang3 extends Component {
                 source={GameBG}
                 style={globalStyleSheet.image}
             >
-                <View style={globalStyleSheet.homeContainer}>
+                <View style={{
+                    position: 'absolute',
+                    left: '88%',
+                    top: this.state.homeTop,
+                    width: '14%',
+                    height: '28%',
+                }}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Image source={Home_icon} style={globalStyleSheet.home}></Image>
                     </TouchableOpacity>
                 </View>
-                <View style={globalStyleSheet.backContainer}>
+                <View style={{
+                    position: 'absolute',
+                    left: '2%',
+                    top: this.state.backTop,
+                    width: '14%',
+                    height: '28%',
+                }}>
                     <TouchableOpacity onPress={this.goBack}>
                         <Image
                             source={Back_icon}

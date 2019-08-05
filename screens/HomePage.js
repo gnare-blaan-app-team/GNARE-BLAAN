@@ -114,6 +114,7 @@ class Homescreen extends Component{
           duration: this.state.animDuration,
           easing: Easing.linear,
         }).start();
+        sound.play();
     
       }
 
@@ -126,6 +127,7 @@ class Homescreen extends Component{
         } catch(error) {
             
         }
+        sound.play();
         AppState.addEventListener('change', this._handleAppStateChange);
         BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
     }
@@ -235,6 +237,7 @@ class Homescreen extends Component{
                 </Animated.View>
         </ImageBackground>;
         }
+        // sound.play();
     }
 
 

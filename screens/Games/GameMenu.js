@@ -79,6 +79,8 @@ class GameMenu extends Component {
                         dadseBatak2RandomKey: { type: 'string', default: 'null' },
                         questionDoneBang2Dadbatak: { type: 'string', default: 'null' },
                         dadseBatak3RandomKey: { type: 'string', default: 'null' },
+                        dadseintro: { type: 'string', default: 'null' },
+                        dadbatakintro: { type: 'string', default: 'null' },
                         questionDoneBang3Dadbatak: { type: 'string', default: 'null' },
                         dadseCloth1: { type: 'int', default: 0 },
                         dadseCloth2: { type: 'int', default: 0 },
@@ -159,8 +161,9 @@ class GameMenu extends Component {
             saveTop: '1000%', //35%
             cancelTop: '1000%', //52%
             createTop: '85%',//80%
-            playerListTop: '9%',
+            playerListTop: '7%',
             getPlayername:'',
+            backState:'mainMenu'
         }
     }
 
@@ -262,7 +265,8 @@ class GameMenu extends Component {
                 tanbu2Top: '40%',
                 tanbu3Top: '59%',
                 kastifunTop: '77%',
-                level: 'dadsePart'
+                level: 'dadsePart',
+                backState:'gameMenu'
             });
             this.checkStage(1);
         }
@@ -276,7 +280,8 @@ class GameMenu extends Component {
                 tanbu2Top: '40%',
                 tanbu3Top: '59%',
                 kastifunTop: '77%',
-                level: 'dadbatakPart'
+                level: 'dadbatakPart',
+                backState: 'gameMenu'
             });
             this.checkStage(2);
         }
@@ -337,7 +342,45 @@ class GameMenu extends Component {
     }
 
     goBack = () => {
-        this.props.navigation.replace('mainMenu');
+        if(this.state.backState == 'mainMenu'){
+            this.props.navigation.replace('mainMenu');
+        }else if (this.state.backState == 'gameMenu')
+        {
+            this.props.navigation.replace('gameMenu');
+        }else if (this.state.backState == 'bang'){
+            if (this.state.level == 'dadsePart') {
+                this.setState({
+                    kaitoTop: '1000%',
+                    kaibeLeft: '15%',
+                    dadbatakTop: '1000%',
+                    dadseTop: '1000%',
+                    tanbu1Top: '22%',
+                    tanbu2Top: '40%',
+                    tanbu3Top: '59%',
+                    kastifunTop: '77%',
+                    level: 'dadsePart',
+                    backState: 'gameMenu',
+                    tanbuTop:'1000%'
+                });
+                this.checkStage(1);
+            }
+            if (this.state.level == 'dadbatakPart') {
+                this.setState({
+                    kaitoTop: '22%',
+                    kaibeTop: '1000%',
+                    dadbatakTop: '1000%',
+                    dadseTop: '1000%',
+                    tanbu1Top: '22%',
+                    tanbu2Top: '40%',
+                    tanbu3Top: '59%',
+                    kastifunTop: '77%',
+                    level: 'dadbatakPart',
+                    backState: 'gameMenu',
+                    tanbuTop: '1000%'
+                });
+                this.checkStage(2);
+            } 
+        }
     }
 
     gotoHome = () => {
@@ -387,11 +430,12 @@ class GameMenu extends Component {
             kastifunTop: '1000%',
             Clickabletanbu2Top: '1000%',
             Clickabletanbu3Top: '1000%',
+            backState:'bang'
         })
         this.state.passIndex = index;
     }
 
-    gotoBang = (index) => {
+    gotoBang = () => {
       const set = this.state.level;
       const passIndex = this.state.passIndex;
       if(set == 'dadsePart'){
@@ -465,6 +509,9 @@ class GameMenu extends Component {
     play = async (getPlayer) => {
         await AsyncStorage.setItem(SessionPlayer, getPlayer);
         this.updateTime(getPlayer);
+        realm = new Realm({ path: 'PlayerDatabase.realm' });
+        var getDate = realm.objects('Players');
+        alert(JSON.stringify(getDate));
         Animated.spring(this.animatedValue, {
             toValue: .0
         }).start();
@@ -493,10 +540,10 @@ class GameMenu extends Component {
 
     market = () => {
         if (this.state.level == 'dadsePart'){
-            this.props.navigation.navigate('dadbatakmarket');
+            this.props.navigation.replace('dadbatakmarket');
         }     
         if (this.state.level == 'dadbatakPart'){
-            this.props.navigation.navigate('dadseMarket');
+            this.props.navigation.replace('dadseMarket');
         } 
     }
 
@@ -512,7 +559,7 @@ class GameMenu extends Component {
             saveTop: '1000%', //35%
             cancelTop: '1000%', //52%
             createTop: '85%',//80%
-            playerListTop: '6%',
+            playerListTop: '7%',
             text:'',
         })
     }
@@ -800,36 +847,34 @@ class GameMenu extends Component {
                      }}
                      >  
                          <Image source={blackboard} style={{resizeMode:'contain',width:'90%',height:'90%'}} />
-                        <View style={{
-                            position:'absolute',
-                            top:this.state.playerListTop,
-                            left:'36.50%',
-                            width:'25%',
-                            height:'75%',
-                        }}>
                             <ListView
-                                style={{ width: '100%', height: '100%',}}
+                                style={{
+                                    position: 'absolute',
+                                    top: this.state.playerListTop,
+                                    left: '35%',
+                                    width: '24%',
+                                    height: '75%',
+                                    flexDirection: 'column',
+                                }}
                                 dataSource={this.state.dataSource}
                                 renderRow={rowData => (
-                                    <View>
-                                        <TouchableOpacity onPress={this.play.bind(this, rowData.playername)}>
-                                            <Image source={playerContainer} style={{resizeMode:'contain'}}/>
-                                        </TouchableOpacity>
-                                        
-                                        <View style={{
-                                            position: 'absolute',
-                                            width: '80%',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                        }}>
-                                            <Text style={{ fontSize: 28, }}>{rowData.playername}</Text>
-                                        </View>
-                                        <Text style={{ fontSize: 5, }}> </Text>
-                                    </View>
-                                    
+                                    <TouchableOpacity onPress={this.play.bind(this, rowData.playername)}>
+                                        <ImageBackground source={playerContainer} style={{ 
+                                            width: '100%',
+                                            height: 70, 
+                                            flex: 1, 
+                                            flexDirection: 'column', 
+                                            marginTop: 10,
+                                            justifyContent:'center',
+                                            alignItems:'center'
+                                            }}>
+                                            <View style={{position:'absolute',top:'5%'}}>
+                                                <Text style={{ fontSize: 28, }}>{rowData.playername}</Text>
+                                            </View>
+                                        </ImageBackground>
+                                    </TouchableOpacity>
                                 )}
                             />
-                        </View>
                         <View style={{
                             position:'absolute',
                             width:'24%',

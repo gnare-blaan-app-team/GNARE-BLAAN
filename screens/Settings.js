@@ -159,14 +159,14 @@ class SettingBG extends Component {
                     </TouchableOpacity>
                 </View>
 
-                <View style={{position: 'absolute',
+                {/* <View style={{position: 'absolute',
                                 left: '25%',
                                 top: '60%',
                                 width: '14%',
                                 height: '28%',
                                 }}>
                                 <Icon name={"music"} size={85} color="#FFF" />
-                </View>
+                </View> */}
 
 
             </ImageBackground>
