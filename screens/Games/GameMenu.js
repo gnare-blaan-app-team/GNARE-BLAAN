@@ -334,10 +334,10 @@ class GameMenu extends Component {
 
     gotoCoinBank = () => {
         if (this.state.level == 'dadsePart'){
-            this.props.navigation.navigate('dadseBank', {Bang: 'dadse'});
+            this.props.navigation.replace('dadseBank', {Bang: 'dadse'});
         }     
         if (this.state.level == 'dadbatakPart'){
-            this.props.navigation.navigate('dadseBank', {Bang: 'dadbatak'});
+            this.props.navigation.replace('dadseBank', {Bang: 'dadbatak'});
         } 
     }
 
