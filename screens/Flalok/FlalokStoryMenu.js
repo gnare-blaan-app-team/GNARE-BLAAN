@@ -5,6 +5,7 @@ import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.j
 
 import GnareIcon from '../Games/gameImages/GnareMain.png'
 import Home_icon from '../images/Home_icon.png';
+import Back_icon from '../images/Back_icon.png';
 import Story1 from './flalokImages/Story1.png';
 import Story2 from './flalokImages/Story2.png';
 import Story3 from './flalokImages/Story3.png';
@@ -128,9 +129,9 @@ class FlalokStoryMenu extends Component {
                 source={require('../images/Flalok_BG.jpg')}
                 >
                     <View style={styles.backContainer}>
-                        <TouchableOpacity onPress={this.gotoHome}>
+                        <TouchableOpacity onPress={this.gotoMainMenu}>
                             <Image
-                                source={GnareIcon}
+                                source={Back_icon}
                                 style={styles.back}
                             ></Image>
                         </TouchableOpacity>
@@ -157,9 +158,9 @@ class FlalokStoryMenu extends Component {
                         height: '90%',
                         
                     }} >
-                                    <TouchableOpacity  onPress={this.gotoStory1} >
-                                        <Image style={styles.imageSizeStoryMenu} source={Story1} />
-                                    </TouchableOpacity>
+                    <TouchableOpacity  onPress={this.gotoStory1} >
+                        <Image style={styles.imageSizeStoryMenu} source={Story1} />
+                    </TouchableOpacity>
                                 </View>
 
                     <View style={{
@@ -225,9 +226,9 @@ class FlalokStoryMenu extends Component {
                             </View>
 
                     <View style={styles.homeContainer}>
-                        <TouchableOpacity onPress={this.gotoMainMenu}>
+                        <TouchableOpacity onPress={this.gotoHome}>
                             <Image
-                                source={Home_icon}
+                                source={GnareIcon}
                                 style={styles.home}
                             ></Image>
                         </TouchableOpacity>

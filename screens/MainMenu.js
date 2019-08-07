@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { BackHandler, View, ImageBackground, Text, Image, AsyncStorage, TouchableOpacity, StatusBar, Animated } from 'react-native';
+import { View, ImageBackground, Image, AsyncStorage, 
+    TouchableOpacity, StatusBar } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import MenuItem from './MenuItem';
 import Sound from 'react-native-sound';
@@ -27,12 +28,12 @@ class Mainmenu extends Component {
     //     }
     // }
 
-    gotoLetters = () => {
-        this.props.navigation.push('letterIntro');
+    gotoLetters = async () => {
+        this.props.navigation.navigate('letterIntro');
     }
 
-    gotoNumbers = () => {
-        this.props.navigation.push('numberIntro');
+    gotoNumbers = async () => {
+        this.props.navigation.navigate('numberIntro');
     }
 
     gotoVocabulary = () => { 

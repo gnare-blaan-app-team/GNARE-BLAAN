@@ -67,38 +67,38 @@ class YTracing extends Component {
 
         // Dots Location
         this.line1 = [{
-            x: screenWidth * 0.298,
-            y: screenHeight * 0.31,
+            x: screenWidth * 0.3,
+            y: screenHeight * 0.28,
         }, {
             x: screenWidth * 0.34,
-            y: screenHeight * 0.415,
+            y: screenHeight * 0.37,
         }, {
-            x: screenWidth * 0.455,
-            y: screenHeight * 0.31,
+            x: screenWidth * 0.465,
+            y: screenHeight * 0.28,
         }, {
-            x: screenWidth * 0.415,
-            y: screenHeight * 0.415,
+            x: screenWidth * 0.425,
+            y: screenHeight * 0.37,
         }, {
-            x: screenWidth * 0.378,
-            y: screenHeight * 0.54,
+            x: screenWidth * 0.38,
+            y: screenHeight * 0.48,
         }, {
-            x: screenWidth * 0.378,
-            y: screenHeight * 0.64,
+            x: screenWidth * 0.38,
+            y: screenHeight * 0.58,
         }, {
-            x: screenWidth * 0.578,
-            y: screenHeight * 0.45,
+            x: screenWidth * 0.54,
+            y: screenHeight * 0.47,
         }, {
-            x: screenWidth * 0.62,
+            x: screenWidth * 0.587,
+            y: screenHeight * 0.58,
+        }, {
+            x: screenWidth * 0.69,
+            y: screenHeight * 0.47,
+        }, {
+            x: screenWidth * 0.64,
             y: screenHeight * 0.62,
         }, {
-            x: screenWidth * 0.71,
-            y: screenHeight * 0.45,
-        }, {
-            x: screenWidth * 0.63,
-            y: screenHeight * 0.76,
-        }, {
             x: screenWidth * 0.585,
-            y: screenHeight * 0.83,
+            y: screenHeight * 0.78,
         }, ];
     }
 
@@ -200,110 +200,123 @@ class YTracing extends Component {
 
         StatusBar.setHidden(true);
         return (
-            <View style={{position: 'absolute', 
+                <View style={{position: 'absolute', top: 0, width: '100%', height: '100%'}}>
+                    <View style={{position: 'absolute', 
                         width: boardDimension.width, height: boardDimension.height, 
                         top: '20%', left: '12.5%', backgroundColor: 'rgba(255, 255, 255, 0.000000001)'}}>
-                    <View style={{position: 'absolute', width: numberDimension.width, 
-                        opacity: this.state.showTracing,
-                        height: numberDimension.height, top: '-1%', left: '15%'}}>
-                        <Image source={this.state.tracing} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
-                    </View>
-                    <View style={{position: 'absolute', width: numberDimension.width,
-                        opacity: this.state.showShaded, 
-                        height: numberDimension.height, top: '-1%', left: '15%'}}>
-                        <Image source={this.state.shaded} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
-                    </View>
-                    <View style={{ flex: 1,
-                        flexDirection: 'row', justifyContent: 'center',
-                        alignItems: 'center'}} >
-                        <RNSketchCanvas
-                            containerStyle={{backgroundColor: 'transparent', flex: 1}}
-                            canvasStyle={{backgroundColor: 'transparent', flex: 1,}}
-                            defaultStrokeIndex={0}
-                            defaultStrokeWidth={screenWidth * 0.06}
-                            onStrokeChanged={(X, Y)=>{
-                                this.letterTrace(X, Y);
-                            }}
+                        <View style={{position: 'absolute', width: numberDimension.width, 
+                            opacity: this.state.showTracing,
+                            height: numberDimension.height, top: '-1%', left: '15%'}}>
+                            <Image source={this.state.tracing} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
+                        </View>
+                        <View style={{position: 'absolute', width: numberDimension.width,
+                            opacity: this.state.showShaded, 
+                            height: numberDimension.height, top: '-1%', left: '15%'}}>
+                            <Image source={this.state.shaded} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
+                        </View>
+                        <View style={{ flex: 1,
+                            flexDirection: 'row', justifyContent: 'center',
+                            alignItems: 'center'}} >
+                            <RNSketchCanvas
+                                containerStyle={{backgroundColor: 'transparent', flex: 1}}
+                                canvasStyle={{backgroundColor: 'transparent', flex: 1,}}
+                                defaultStrokeIndex={0}
+                                defaultStrokeWidth={screenWidth * 0.06}
+                                onStrokeChanged={(X, Y)=>{
+                                    this.letterTrace(X, Y);
+                                }}
 
-                            onStrokeEnd={()=>{
-                                this.ifTraced();
-                            }}
+                                onStrokeEnd={()=>{
+                                    this.ifTraced();
+                                }}
+                                
+                                    />
+                        </View>
+
+                        {/* Pencil Button */}
+                        <View style={{position: 'absolute',
+                            top: '4%', width: '8%', height: '30%',}} >
+                            <TouchableOpacity onPress={this.clearBoard}>
+                                <Image
+                                source={PencilIcon}
+                                    style={styles.containImage}
+                                ></Image>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    
+                        {/*
+                            <View style={[styles.dot,{top: screenHeight * 0.28,
+                                left: screenWidth * 0.3}]}></View>
+                            <View style={[styles.dot,{top: screenHeight * 0.37,
+                                left: screenWidth * 0.34}]}></View>
+
+                            <View style={[styles.dot,{top: screenHeight * 0.28,
+                                left: screenWidth * 0.465}]}></View>
+                            <View style={[styles.dot,{top: screenHeight * 0.37,
+                                left: screenWidth * 0.425}]}></View>
+
+                            <View style={[styles.dot,{top: screenHeight * 0.48,
+                                left: screenWidth * 0.38}]}></View>
+                            <View style={[styles.dot,{top: screenHeight * 0.58,
+                                left: screenWidth * 0.38}]}></View>
+                        */}
+
+                        {/*
+                            this.line1 = [{
+                                x: screenWidth * 0.3,
+                                y: screenHeight * 0.28,
+                            }, {
+                                x: screenWidth * 0.34,
+                                y: screenHeight * 0.37,
+                            }, {
+                                x: screenWidth * 0.465,
+                                y: screenHeight * 0.28,
+                            }, {
+                                x: screenWidth * 0.425,
+                                y: screenHeight * 0.37,
+                            }, {
+                                x: screenWidth * 0.38,
+                                y: screenHeight * 0.48,
+                            }, {
+                                x: screenWidth * 0.38,
+                                y: screenHeight * 0.58,
+                            }, 
                             
-                                />
-                    </View>
+                            {
+                                x: screenWidth * 0.54,
+                                y: screenHeight * 0.47,
+                            }, {
+                                x: screenWidth * 0.587,
+                                y: screenHeight * 0.58,
+                            }, {
+                                x: screenWidth * 0.69,
+                                y: screenHeight * 0.47,
+                            }, {
+                                x: screenWidth * 0.64,
+                                y: screenHeight * 0.62,
+                            }, {
+                                x: screenWidth * 0.585,
+                                y: screenHeight * 0.78,
+                            }, ];
+                        */}
 
-                    {/* Pencil Button */}
-                    <View style={{position: 'absolute',
-                        top: '4%', width: '8%', height: '30%',}} >
-                        <TouchableOpacity onPress={this.clearBoard}>
-                            <Image
-                            source={PencilIcon}
-                                style={styles.containImage}
-                            ></Image>
-                        </TouchableOpacity>
-                    </View>
+
+                    {/*
+                        <View style={[styles.dot,{top: screenHeight * 0.47,
+                            left: screenWidth * 0.54}]}></View>
+                        <View style={[styles.dot,{top: screenHeight * 0.58,
+                            left: screenWidth * 0.587}]}></View>
+
+                        <View style={[styles.dot,{top: screenHeight * 0.47,
+                            left: screenWidth * 0.69}]}></View>
+                        <View style={[styles.dot,{top: screenHeight * 0.62,
+                            left: screenWidth * 0.64}]}></View>
+                        <View style={[styles.dot,{top: screenHeight * 0.78,
+                            left: screenWidth * 0.585}]}></View>
+                    */}
                 </View>
 
-                // <View style={[styles.dot,{top: screenHeight * 0.31,
-                //     left: screenWidth * 0.298}]}></View>
-                // <View style={[styles.dot,{top: screenHeight * 0.415,
-                //     left: screenWidth * 0.34}]}></View>
-                // <View style={[styles.dot,{top: screenHeight * 0.31,
-                //     left: screenWidth * 0.455}]}></View>
-                // <View style={[styles.dot,{top: screenHeight * 0.415,
-                //     left: screenWidth * 0.415}]}></View>
-                // <View style={[styles.dot,{top: screenHeight * 0.54,
-                //     left: screenWidth * 0.378}]}></View>
-                // <View style={[styles.dot,{top: screenHeight * 0.64,
-                //     left: screenWidth * 0.378}]}></View>
-
-                // {/*
-                //     this.line1 = [{
-                //         x: screenWidth * 0.298,
-                //         y: screenHeight * 0.31,
-                //     }, {
-                //         x: screenWidth * 0.34,
-                //         y: screenHeight * 0.415,
-                //     }, {
-                //         x: screenWidth * 0.455,
-                //         y: screenHeight * 0.31,
-                //     }, {
-                //         x: screenWidth * 0.415,
-                //         y: screenHeight * 0.415,
-                //     }, {
-                //         x: screenWidth * 0.378,
-                //         y: screenHeight * 0.54,
-                //     }, {
-                //         x: screenWidth * 0.378,
-                //         y: screenHeight * 0.64,
-                //     }, {
-                //         x: screenWidth * 0.578,
-                //         y: screenHeight * 0.45,
-                //     }, {
-                //         x: screenWidth * 0.62,
-                //         y: screenHeight * 0.62,
-                //     }, {
-                //         x: screenWidth * 0.71,
-                //         y: screenHeight * 0.45,
-                //     }, {
-                //         x: screenWidth * 0.63,
-                //         y: screenHeight * 0.76,
-                //     }, {
-                //         x: screenWidth * 0.585,
-                //         y: screenHeight * 0.83,
-                //     }, ];
-                // */}
-
-                // <View style={[styles.dot,{top: screenHeight * 0.45,
-                //     left: screenWidth * 0.578}]}></View>
-                // <View style={[styles.dot,{top: screenHeight * 0.62,
-                //     left: screenWidth * 0.62}]}></View>
-                // <View style={[styles.dot,{top: screenHeight * 0.45,
-                //     left: screenWidth * 0.71}]}></View>
-                // <View style={[styles.dot,{top: screenHeight * 0.76,
-                //     left: screenWidth * 0.63}]}></View>
-                // <View style={[styles.dot,{top: screenHeight * 0.83,
-                //     left: screenWidth * 0.585}]}></View>
         )
     }
 }

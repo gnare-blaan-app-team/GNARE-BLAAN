@@ -91,6 +91,7 @@ class Homescreen extends Component{
     _storeData = async () => {
         try {
           await AsyncStorage.setItem('@MyApp:FreshOpen', 'I have watched the sponsor page');
+          
         } catch (error) {
           // Error saving data
         }
@@ -100,16 +101,15 @@ class Homescreen extends Component{
         try {
         const value = await AsyncStorage.getItem('@MyApp:FreshOpen');
         if (value !== null) {
-            this.setState({changeScene: 1});
+            this.setState({changeScene: 0});
         } else {
+            this.setState({changeScene: 1});
             this._storeData();
         }
         } catch (error) {
         // Error retrieving data
         }
     };
-
-    
 
     _moveAnimation = () => {
         Animated.timing(this.state.yValue, {
@@ -133,14 +133,6 @@ class Homescreen extends Component{
         sound.play();
         AppState.addEventListener('change', this._handleAppStateChange);
         BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
-        setTimeout(()=> {
-            this.setState({handGIF: handGIF});
-            this.setState({hideHand: 0});
-        }, 5000);
-        setTimeout(()=> {
-            this.setState({handGIF: About_icon });
-            this.setState({hideHand: 1000});
-        }, 6500);
     }
 
     handleBackPress = () => {
@@ -158,17 +150,7 @@ class Homescreen extends Component{
         if(currentAppState == "active") {
             sound.play();
         }
-      }
-
-
-    handleProgressPress = e => {
-        
-        let position = e.nativeEvent.locationX;
-        let progress = (position / 300) * this.state.duration;
-        this.player.seek(progress);
-    };
-
-
+    }
 
     handleProgress = progress => {
         this.setState({
@@ -180,92 +162,20 @@ class Homescreen extends Component{
         this.setState({ paused: true, opacityVideo: 0, opacityNext: 1, 
             hideVideo: 0, hideTabs: '15%', hideHome: '3%',
             hideStory: '-1000%'});
-            this.state.changeScene = 1;
+        this.setState({changeScene: 0});
+        setTimeout(()=> {
+            this.setState({handGIF: handGIF});
+            this.setState({hideHand: 0});
+        }, 5000);
+        setTimeout(()=> {
+            this.setState({handGIF: About_icon });
+            this.setState({hideHand: 1000});
+        }, 6500);
     };
 
     removeItem = () => {
         AsyncStorage.clear();
         alert('Storage Cleared!');
-    }
-
-    sceneShow() {
-        if (this.state.changeScene == 0){
-            return <ImageBackground style={videoStyle.container}>
-            <View>
-            <StatusBar hidden={true} />
-                <TouchableWithoutFeedback>
-                    <Video
-                        paused={this.state.paused}
-                        source={this.state.videoFile}
-                        
-                        style={{ width: "100%", height: '100%' }}
-                        resizeMode="stretch"
-                        volume={this.state.volume}
-                        muted={this.state.muted}
-                        onLoad={this.handleLoad}
-                        onProgress={this.handleProgress}
-                        onEnd={this.handleEnd}
-                        onLoadStart={this.handleLoadStart}
-                        ref={ref => {
-                        this.player = ref;
-                        }}
-                    />
-                </TouchableWithoutFeedback>
-            </View>
-        </ImageBackground>;
-        } else if (this.state.changeScene == 1) {
-            return <ImageBackground style={styles.image} source={HomepageBackground}>
-                
-                <View style={{width: '100%', height: '100%', position: 'absolute', top: this.state.hideHand,
-                    backgroundColor: 'rgba(0, 0, 0, 0.2)'}}>
-                    <View style={{position: 'absolute', top: '40%', left: '42.5%'}}>
-                        <Image source={this.state.handGIF} style={{width: '100%', height: '100%', 
-                            resizeMode: 'stretch'}}></Image>
-                    </View>
-                </View>
-                <View style={{position: "absolute", width:"100%", height:"100%"}}>
-                    <TouchableOpacity  onPress={this.gotoMainMenu}>
-                    <Text style={{width:"100%", height:"100%"}}></Text>
-                    </TouchableOpacity>
-                </View>
-                <Animated.View style={[{bottom: this.state.yValue}]}>
-                  <View style={{
-                  bottom: hp('-132%'),
-                  height: hp('30%'),
-                  left: wp('1.5%'),
-                  }}>
-                      {this._moveAnimation()}
-                        <View style={styles.row}>
-                            <View style={styles.HomePageItems} >
-                                <TouchableOpacity>
-                                    <Image style={styles.imageSizeStoryMenu} source={Like_icon} />
-                                </TouchableOpacity>
-                            </View>
-                            <View style={styles.HomePageItems} >
-                                <TouchableOpacity onPress={this.removeItem}>
-                                    <Image style={styles.imageSizeStoryMenu} source={Share_icon} />
-                                </TouchableOpacity>
-                            </View>
-                            <View style={styles.HomePageItems} >
-                                <TouchableOpacity  onPress={this.gotoAbout}>
-                                    <Image style={styles.imageSizeStoryMenu} source={About_icon} />
-                                </TouchableOpacity>
-                            </View>
-                        </View>
-                      </View>
-                </Animated.View>
-        </ImageBackground>;
-        }
-        // sound.play();
-    }
-
-
-    hideControl = () => {
-        this.setState({
-            controlHide: this.state.controlHide == 0 ? -1000 : 0,
-            vidSkip: this.state.vidSkip == '3%' ? '-1000%' : '3%',
-            hideSub: this.state.hideSub == '-1000%'  ? '3%' : '-1000%',
-        })
     }
 
     gotoMainMenu = () => {
@@ -284,24 +194,71 @@ class Homescreen extends Component{
     render(){
         console.disableYellowBox = true; 
         return(
-        this.sceneShow()
+            <ImageBackground style={styles.image} source={HomepageBackground}>
+                <View style={{position: "absolute", width:"100%", height:"100%"}}>
+                    <TouchableOpacity  onPress={this.gotoMainMenu}>
+                    <Text style={{width:"100%", height:"100%"}}></Text>
+                    </TouchableOpacity>
+                </View>
+                {this.state.changeScene == 1 && 
+                    <View style={{width: '100%', height: '100%', 
+                        position: 'absolute', opacity: this.state.changeScene,}}>
+                        <TouchableWithoutFeedback>
+                            <Video
+                                paused={this.state.paused}
+                                source={this.state.videoFile}
+                                
+                                style={{ width: "100%", height: '100%' }}
+                                resizeMode="stretch"
+                                volume={this.state.volume}
+                                muted={this.state.muted}
+                                onLoad={this.handleLoad}
+                                onProgress={this.handleProgress}
+                                onEnd={this.handleEnd}
+                                onLoadStart={this.handleLoadStart}
+                                ref={ref => {
+                                this.player = ref;
+                                }}
+                            />
+                        </TouchableWithoutFeedback>
+                    </View>
+                }
+                <View style={{width: '100%', height: '100%', position: 'absolute', top: this.state.hideHand,
+                    backgroundColor: 'rgba(0, 0, 0, 0.2)'}}>
+                    <View style={{position: 'absolute', top: '40%', left: '42.5%'}}>
+                        <Image source={this.state.handGIF} style={{width: '100%', height: '100%', 
+                            resizeMode: 'stretch'}}></Image>
+                    </View>
+                </View>
+                <Animated.View style={[{bottom: this.state.yValue}]}>
+                <View style={{
+                bottom: hp('-132%'),
+                height: hp('30%'),
+                left: wp('1.5%'),
+                }}>
+                    {this._moveAnimation()}
+                        <View style={styles.row}>
+                            <View style={styles.HomePageItems} >
+                                <TouchableOpacity>
+                                    <Image style={styles.imageSizeStoryMenu} source={Like_icon} />
+                                </TouchableOpacity>
+                            </View>
+                            <View style={styles.HomePageItems} >
+                                <TouchableOpacity onPress={this.removeItem}>
+                                    <Image style={styles.imageSizeStoryMenu} source={Share_icon} />
+                                </TouchableOpacity>
+                            </View>
+                            <View style={styles.HomePageItems} >
+                                <TouchableOpacity  onPress={this.gotoAbout}>
+                                    <Image style={styles.imageSizeStoryMenu} source={About_icon} />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </View>
+                </Animated.View>
+            </ImageBackground>
         );
     }
 }
-
-const videoStyle = StyleSheet.create({
-    container: {
-        flex: 1,
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'black',
-    },
-
-    duration: {
-        color: "#FFF",
-        marginLeft: 15,
-    },
-});
-
 
 export default withNavigation(Homescreen);

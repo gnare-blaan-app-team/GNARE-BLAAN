@@ -4,7 +4,7 @@ import { withNavigation } from 'react-navigation';
 import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.js';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import GnareIcon from '../Games/gameImages/GnareMain.png'
-import Home_icon from '../images/Home_icon.png';
+import Back_icon from '../images/Back_icon.png';
 import MembersFamily_icon from './vocabularyMenuImages/Vocab1.png';
 import BodyParts_icon from './vocabularyMenuImages/Vocab2.png';
 import FishingTools_icon from './vocabularyMenuImages/Vocab3.png';
@@ -139,9 +139,9 @@ class vocabularyMenu extends Component {
         return(
                 <ImageBackground style={styles.image} source={require('../images/Flalok_BG.jpg')}>
                 <View style={styles.backContainer}>
-                    <TouchableOpacity onPress={this.gotoHome}>
+                    <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Image
-                            source={GnareIcon}
+                            source={Back_icon}
                             style={styles.back}
                         ></Image>
                     </TouchableOpacity>
@@ -222,9 +222,9 @@ class vocabularyMenu extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.homeContainer}>
-                    <TouchableOpacity onPress={this.gotoMainMenu}>
+                    <TouchableOpacity onPress={this.gotoHome}>
                         <Image
-                            source={Home_icon}
+                            source={GnareIcon}
                             style={styles.home}
                         ></Image>
                     </TouchableOpacity>

@@ -28,7 +28,7 @@ export const globalStyleSheet = {
 
     dot: {
         position: 'absolute',
-        // backgroundColor: '#ffea00',
+        backgroundColor: '#ffea00',
         width: 20,
         height: 20,
         borderRadius: 20,

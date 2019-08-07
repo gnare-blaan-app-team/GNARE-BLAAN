@@ -5,7 +5,6 @@ import {globalStyleSheet as styles} from '../globalStyleSheet/globalStyleSheet.j
 
 import GnareIcon from '../Games/gameImages/GnareMain.png'
 import Back_icon from '../images/Back_icon.png';
-import Home_icon from '../images/Home_icon.png';
 import Chants_icon from './cultureandartsImages/Chants.png';
 import Kastifun_icon from './cultureandartsImages/Kastifun.png';
 import Prayers_icon from './cultureandartsImages/Prayers.png';
@@ -53,18 +52,18 @@ class cultureandartsMain extends Component {
                 </View>
                 
                 <View style={styles.backContainer}>
-                    <TouchableOpacity onPress={this.gotoHome}>
+                    <TouchableOpacity onPress={this.gotoMainMenu}>
                         <Image
-                            source={GnareIcon}
+                            source={Back_icon}
                             style={styles.back}
                         ></Image>
                     </TouchableOpacity>
                 </View>
 
                 <View style={styles.homeContainer}>
-                    <TouchableOpacity onPress={this.gotoMainMenu}>
+                    <TouchableOpacity onPress={this.gotoHome}>
                         <Image
-                            source={Home_icon}
+                            source={GnareIcon}
                             style={styles.home}
                         ></Image>
                     </TouchableOpacity>

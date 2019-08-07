@@ -115,7 +115,7 @@ class NumberScreen extends Component {
                         prevHide: imageBG == numberBGList[0] ? hideLeft : showPrev,
                         imageBackground: imageBG, numberMainBG: imageBG != imageMainBG ? numberMainBG : imageMainBG,
                         nextHide: imageBG == imageMainBG ? hideRight : showNext,
-                        backIcon: imageBG == imageMainBG ? Logo : GoBackIcon,
+                        backIcon: imageBG == imageMainBG ? Logo : HomeIcon,
                         glowHide: imageBG == imageMainBG ? hideLeft : showGlow,
                         speakerHide: imageBG == imageMainBG ? hideLeft : showSpeaker,
                         sentenceHide: imageBG == imageMainBG ? hideRight : showSentence,
@@ -235,7 +235,11 @@ class NumberScreen extends Component {
 
     gotoMainMenu = () => {
         this.handleBackPress();
-        this.props.navigation.navigate('mainMenu');
+        if(this.state.backIcon == HomeIcon) {
+            this.props.navigation.navigate('mainMenu');
+        } else {
+            this.props.navigation.navigate('home');
+        }
     }
 
     goNext = () => {
@@ -344,7 +348,7 @@ class NumberScreen extends Component {
             } catch(error) {
                 
             }
-            this.props.navigation.navigate('home');
+            this.props.navigation.navigate('mainMenu');
         } else {
             try {
                 sound.setVolume(0.5);
@@ -593,7 +597,7 @@ class NumberScreen extends Component {
                                 width: '14%',
                                 height: '28%'}}>
                     <TouchableOpacity onPress={this.goBack}>
-                        <Image source={this.state.backIcon} style={styles.back}></Image>
+                        <Image source={GoBackIcon} style={styles.back}></Image>
                     </TouchableOpacity>
                 </View>
 
@@ -603,7 +607,7 @@ class NumberScreen extends Component {
                                 width: '14%',
                                 height: '28%',}}>
                     <TouchableOpacity onPress={this.gotoMainMenu}>
-                        <Image source={HomeIcon} style={styles.home}></Image>
+                        <Image source={this.state.backIcon} style={styles.home}></Image>
                     </TouchableOpacity>
                 </View>
             </ImageBackground>

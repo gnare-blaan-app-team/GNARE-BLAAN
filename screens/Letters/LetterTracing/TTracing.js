@@ -82,23 +82,20 @@ class TTracing extends Component {
             x: screenWidth * 0.428,
             y: screenHeight * 0.7,
         }, {
-            x: screenWidth * 0.6,
-            y: screenHeight * 0.38,
+            x: screenWidth * 0.6175,
+            y: screenHeight * 0.31,
         }, {
-            x: screenWidth * 0.6,
-            y: screenHeight * 0.55,
+            x: screenWidth * 0.6175,
+            y: screenHeight * 0.5,
         }, {
-            x: screenWidth * 0.6,
-            y: screenHeight * 0.7,
-        }, {
-            x: screenWidth * 0.63,
-            y: screenHeight * 0.775,
+            x: screenWidth * 0.6175,
+            y: screenHeight * 0.65,
         }, {
             x: screenWidth * 0.58,
-            y: screenHeight * 0.445,
+            y: screenHeight * 0.39,
         }, {
-            x: screenWidth * 0.63,
-            y: screenHeight * 0.445,
+            x: screenWidth * 0.635,
+            y: screenHeight * 0.39,
         }, ];
     }
 
@@ -153,28 +150,23 @@ class TTracing extends Component {
                 ((X >= this.line1[9].x - scopeX && X <= this.line1[9].x + scopeX) && 
                 (Y >= this.line1[9].y - scopeY && Y <= this.line1[9].y + scopeY)) ? true : false});
         
-        } else if(this.state.dot10 && !this.state.dot11) {
-            this.setState({dot11: 
-                ((X >= this.line1[10].x - scopeX && X <= this.line1[10].x + scopeX) && 
-                (Y >= this.line1[10].y - scopeY && Y <= this.line1[10].y + scopeY)) ? true : false});
-        
-        } 
+        }
     }
     
     ifTraced = () => {
         if(this.state.dot3) {
             if(this.state.dot5) {
-                if(this.state.dot9) {
-                    if(this.state.dot11) {
+                if(this.state.dot8) {
+                    if(this.state.dot10) {
                         this.setState({
                             showShaded: 1, shaded: shadedLine[3], showTracing: 0,});
                     } else {
-                        this.setState({dot10: false, dot11: false,
+                        this.setState({dot10: false, dot9: false,
                             showShaded: 1, shaded: shadedLine[2], tracing: tracingLine[3]});
                     }
                 } else {
                     this.setState({dot7: false, dot8: false, dot6: false,
-                        dot9: false,
+                        
                         showShaded: 1, shaded: shadedLine[1], tracing: tracingLine[2]});
                 }
             } else {
@@ -188,7 +180,7 @@ class TTracing extends Component {
 
     clearBoard = () => {
         this.setState({dot1: false, dot2: false, dot3: false, dot4: false, dot5: false, dot6: false,
-            dot7: false, dot8: false, dot9: false, dot10: false, dot11: false,
+            dot7: false, dot8: false, dot9: false, dot10: false,
             showShaded: 0, shaded: shadedLine[0],
             tracing: tracingLine[0], showTracing: 1, tracing: tracingLine[0]});
     }
@@ -197,61 +189,79 @@ class TTracing extends Component {
 
         StatusBar.setHidden(true);
         return (
-            <View style={{position: 'absolute', 
-                        width: boardDimension.width, height: boardDimension.height, 
-                        top: '20%', left: '12.5%', backgroundColor: 'rgba(255, 255, 255, 0.000000001)'}}>
-                    <View style={{position: 'absolute', width: numberDimension.width, 
-                        opacity: this.state.showTracing,
-                        height: numberDimension.height, top: '5%', left: '25%'}}>
-                        <Image source={this.state.tracing} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
-                    </View>
-                    <View style={{position: 'absolute', width: numberDimension.width,
-                        opacity: this.state.showShaded, 
-                        height: numberDimension.height, top: '5%', left: '25%'}}>
-                        <Image source={this.state.shaded} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
-                    </View>
-                    <View style={{ flex: 1,
-                        flexDirection: 'row', justifyContent: 'center',
-                        alignItems: 'center'}} >
-                        <RNSketchCanvas
-                            containerStyle={{backgroundColor: 'transparent', flex: 1}}
-                            canvasStyle={{backgroundColor: 'transparent', flex: 1,}}
-                            defaultStrokeIndex={0}
-                            defaultStrokeWidth={screenWidth * 0.06}
-                            onStrokeChanged={(X, Y)=>{
-                                this.letterTrace(X, Y);
-                            }}
+                <View style={{position: 'absolute', top: 0, width: '100%', height: '100%'}}>
+                    <View style={{position: 'absolute', 
+                            width: boardDimension.width, height: boardDimension.height, 
+                            top: '20%', left: '12.5%', backgroundColor: 'rgba(255, 255, 255, 0.000000001)'}}>
+                        <View style={{position: 'absolute', width: numberDimension.width, 
+                            opacity: this.state.showTracing,
+                            height: numberDimension.height, top: '5%', left: '25%'}}>
+                            <Image source={this.state.tracing} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
+                        </View>
+                        <View style={{position: 'absolute', width: numberDimension.width,
+                            opacity: this.state.showShaded, 
+                            height: numberDimension.height, top: '5%', left: '25%'}}>
+                            <Image source={this.state.shaded} style={{width: '100%', height: '100%', resizeMode: 'stretch'}}></Image>
+                        </View>
+                        <View style={{ flex: 1,
+                            flexDirection: 'row', justifyContent: 'center',
+                            alignItems: 'center'}} >
+                            <RNSketchCanvas
+                                containerStyle={{backgroundColor: 'transparent', flex: 1}}
+                                canvasStyle={{backgroundColor: 'transparent', flex: 1,}}
+                                defaultStrokeIndex={0}
+                                defaultStrokeWidth={screenWidth * 0.06}
+                                onStrokeChanged={(X, Y)=>{
+                                    this.letterTrace(X, Y);
+                                }}
 
-                            onStrokeEnd={()=>{
-                                this.ifTraced();
-                            }}
-                            
-                                />
-                    </View>
+                                onStrokeEnd={()=>{
+                                    this.ifTraced();
+                                }}
+                                
+                                    />
+                        </View>
 
-                    {/* Pencil Button */}
-                    <View style={{position: 'absolute',
-                        top: '4%', width: '8%', height: '30%',}} >
-                        <TouchableOpacity onPress={this.clearBoard}>
-                            <Image
-                            source={PencilIcon}
-                                style={styles.containImage}
-                            ></Image>
-                        </TouchableOpacity>
+                        {/* Pencil Button */}
+                        <View style={{position: 'absolute',
+                            top: '4%', width: '8%', height: '30%',}} >
+                            <TouchableOpacity onPress={this.clearBoard}>
+                                <Image
+                                source={PencilIcon}
+                                    style={styles.containImage}
+                                ></Image>
+                            </TouchableOpacity>
+                        </View>
                     </View>
+                    {/*
+                        <View style={[styles.dot, {top: screenHeight * 0.3,
+                            left: screenWidth * 0.36}]}></View>
+                        <View style={[styles.dot, {top: screenHeight * 0.3,
+                            left: screenWidth * 0.428}]}></View>
+                        <View style={[styles.dot, {top: screenHeight * 0.3,
+                            left: screenWidth * 0.49}]}></View>
+
+                        <View style={[styles.dot, {top: screenHeight * 0.42,
+                            left: screenWidth * 0.428}]}></View>
+                        <View style={[styles.dot, {top: screenHeight * 0.7,
+                            left: screenWidth * 0.428}]}></View>
+
+
+                        <View style={[styles.dot, {top: screenHeight * 0.31,
+                            left: screenWidth * 0.6175}]}></View>
+                        <View style={[styles.dot, {top: screenHeight * 0.5,
+                            left: screenWidth * 0.6175}]}></View>
+                        <View style={[styles.dot, {top: screenHeight * 0.65,
+                            left: screenWidth * 0.6175}]}></View>
+
+                        <View style={[styles.dot, {top: screenHeight * 0.39,
+                            left: screenWidth * 0.58}]}></View>
+                        <View style={[styles.dot, {top: screenHeight * 0.39,
+                            left: screenWidth * 0.635}]}></View>
+                    */}
                 </View>
 
-                // <View style={[styles.dot, {top: screenHeight * 0.3,
-                //     left: screenWidth * 0.36}]}></View>
-                // <View style={[styles.dot, {top: screenHeight * 0.3,
-                //     left: screenWidth * 0.428}]}></View>
-                // <View style={[styles.dot, {top: screenHeight * 0.3,
-                //     left: screenWidth * 0.49}]}></View>
-
-                // <View style={[styles.dot, {top: screenHeight * 0.42,
-                //     left: screenWidth * 0.428}]}></View>
-                // <View style={[styles.dot, {top: screenHeight * 0.7,
-                //     left: screenWidth * 0.428}]}></View>
+                
 
                 
                 // {/*
@@ -291,19 +301,7 @@ class TTracing extends Component {
                 //     }, ];
                 // */}
                 
-                // <View style={[styles.dot, {top: screenHeight * 0.38,
-                //     left: screenWidth * 0.6}]}></View>
-                // <View style={[styles.dot, {top: screenHeight * 0.55,
-                //     left: screenWidth * 0.6}]}></View>
-                // <View style={[styles.dot, {top: screenHeight * 0.7,
-                //     left: screenWidth * 0.6}]}></View>
-                // <View style={[styles.dot, {top: screenHeight * 0.775,
-                //     left: screenWidth * 0.63}]}></View>
-
-                // <View style={[styles.dot, {top: screenHeight * 0.445,
-                //     left: screenWidth * 0.58}]}></View>
-                // <View style={[styles.dot, {top: screenHeight * 0.445,
-                //     left: screenWidth * 0.63}]}></View>
+                
 
                 // {/*
                 //     {
