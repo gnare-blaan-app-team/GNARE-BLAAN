@@ -140,8 +140,8 @@ class vocabulary2 extends Component {
         })
         this.autoPlaySound(Background);
         try {
-            sound.setVolume(0);
-            sound.play();
+            // sound.setVolume(0);
+            sound.pause();
         } catch(error) {
             
         }

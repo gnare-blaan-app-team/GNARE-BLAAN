@@ -73,8 +73,8 @@ class Vocabulary1 extends Component {
     })
     this.autoPlaySound(index);
     try {
-        sound.setVolume(0);
-        sound.play();
+        // sound.setVolume(0);
+        sound.pause();
     } catch(error) {
         
     }

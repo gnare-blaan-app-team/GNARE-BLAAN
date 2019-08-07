@@ -121,8 +121,8 @@ class Vocabulary9 extends Component {
         })
         this.autoPlaySound(soundPlay);
         try {
-            sound.setVolume(0);
-            sound.play();
+            // sound.setVolume(0);
+        sound.pause();
         } catch(error) {
             
         }
