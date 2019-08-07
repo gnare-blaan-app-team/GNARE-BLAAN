@@ -405,7 +405,7 @@ class Bang3 extends Component {
             }
         }
 
-        if (coin == 'null') {
+        if (coin == '0') {
             const value = 0;
             this.setState({
                 Balance: value,
