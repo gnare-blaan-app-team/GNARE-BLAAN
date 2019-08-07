@@ -12,6 +12,8 @@ import sponsorVid_video from './IntroVideos/Sponsor_Intro.mp4';
 
 import Sound from 'react-native-sound';
 
+import handGIF from './images/hand.gif';
+
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export let sound = new Sound('blaanbg.mp3', Sound.MAIN_BUNDLE, (error) => {
@@ -70,9 +72,10 @@ class Homescreen extends Component{
             hideHome: '-1000%',
             hideStory: '0%',
             hideSub: '-1000%',
-
+            hideHand: 1000,
             controlHide: '-1000%',
             vidSkip: '-1000%',
+            handGIF: About_icon,
             
             progressHeight: 48,
             paused: false,
@@ -97,7 +100,7 @@ class Homescreen extends Component{
         try {
         const value = await AsyncStorage.getItem('@MyApp:FreshOpen');
         if (value !== null) {
-            this.state.changeScene = 1;
+            this.setState({changeScene: 1});
         } else {
             this._storeData();
         }
@@ -130,6 +133,14 @@ class Homescreen extends Component{
         sound.play();
         AppState.addEventListener('change', this._handleAppStateChange);
         BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+        setTimeout(()=> {
+            this.setState({handGIF: handGIF});
+            this.setState({hideHand: 0});
+        }, 5000);
+        setTimeout(()=> {
+            this.setState({handGIF: About_icon });
+            this.setState({hideHand: 1000});
+        }, 6500);
     }
 
     handleBackPress = () => {
@@ -204,10 +215,18 @@ class Homescreen extends Component{
         </ImageBackground>;
         } else if (this.state.changeScene == 1) {
             return <ImageBackground style={styles.image} source={HomepageBackground}>
-            <View style={{position: "absolute", width:"100%", height:"100%"}}>
-                <TouchableOpacity  onPress={this.gotoMainMenu}>
-                   <Text style={{width:"100%", height:"100%"}}></Text>
-                </TouchableOpacity>
+                
+                <View style={{width: '100%', height: '100%', position: 'absolute', top: this.state.hideHand,
+                    backgroundColor: 'rgba(0, 0, 0, 0.2)'}}>
+                    <View style={{position: 'absolute', top: '40%', left: '42.5%'}}>
+                        <Image source={this.state.handGIF} style={{width: '100%', height: '100%', 
+                            resizeMode: 'stretch'}}></Image>
+                    </View>
+                </View>
+                <View style={{position: "absolute", width:"100%", height:"100%"}}>
+                    <TouchableOpacity  onPress={this.gotoMainMenu}>
+                    <Text style={{width:"100%", height:"100%"}}></Text>
+                    </TouchableOpacity>
                 </View>
                 <Animated.View style={[{bottom: this.state.yValue}]}>
                   <View style={{

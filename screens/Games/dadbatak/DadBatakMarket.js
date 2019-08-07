@@ -409,66 +409,69 @@ class DadBatakMarket extends Component {
     }
 
     mayad = () => {
-        let realm = new Realm({ path: 'PlayerDatabase.realm'});;
-        let kaibi = realm.objects('Players');
-        for(i = 0; i < fule.length; i++) {
-            switch(fule[i]) {
-                case DSSwatSalah: {
-                    this.fillProgressBar();
-                    realm.write(() => {
-                        kaibi[this.state.indexPlayer].dadbatakCloth1 = parseInt(1);
-                    });
-                    break;
-                };
-                case DSUlel: {
-                    this.fillProgressBar();
-                    realm.write(() => {
-                        kaibi[this.state.indexPlayer].dadbatakCloth2 = parseInt(1);
-                    });
-                    break;
-                };
-                case DSLbung: {
-                    this.fillProgressBar();
-                    realm.write(() => {
-                        kaibi[this.state.indexPlayer].dadbatakCloth3 = parseInt(1);
-                    });
-                    break;
-                };
-                case DSTlayong: {
-                    realm.write(() => {
-                        kaibi[this.state.indexPlayer].dadbatakCloth4 = parseInt(1);
-                    });
-                    break;
-                };
-                case DSDafeng: {
-                    this.fillProgressBar();
-                    realm.write(() => {
-                        kaibi[this.state.indexPlayer].dadbatakCloth5 = parseInt(1);
-                    });
-                    break;
-                };
-                case DSKulangTana: {
-                    this.fillProgressBar();
-                    realm.write(() => {
-                        kaibi[this.state.indexPlayer].dadbatakCloth6 = parseInt(1);
-                    });
-                    break;
-                };
-                case DSSlah: {
-                    realm.write(() => {
-                        kaibi[this.state.indexPlayer].dadbatakCloth7 = parseInt(1);
-                    });
-                    break;
-                };
+        if(fule.length != 0) {
+            let realm = new Realm({ path: 'PlayerDatabase.realm'});;
+            let kaibi = realm.objects('Players');
+            for(i = 0; i < fule.length; i++) {
+                switch(fule[i]) {
+                    case DSSwatSalah: {
+                        this.fillProgressBar();
+                        realm.write(() => {
+                            kaibi[this.state.indexPlayer].dadbatakCloth1 = parseInt(1);
+                        });
+                        break;
+                    };
+                    case DSUlel: {
+                        this.fillProgressBar();
+                        realm.write(() => {
+                            kaibi[this.state.indexPlayer].dadbatakCloth2 = parseInt(1);
+                        });
+                        break;
+                    };
+                    case DSLbung: {
+                        this.fillProgressBar();
+                        realm.write(() => {
+                            kaibi[this.state.indexPlayer].dadbatakCloth3 = parseInt(1);
+                        });
+                        break;
+                    };
+                    case DSTlayong: {
+                        realm.write(() => {
+                            kaibi[this.state.indexPlayer].dadbatakCloth4 = parseInt(1);
+                        });
+                        break;
+                    };
+                    case DSDafeng: {
+                        this.fillProgressBar();
+                        realm.write(() => {
+                            kaibi[this.state.indexPlayer].dadbatakCloth5 = parseInt(1);
+                        });
+                        break;
+                    };
+                    case DSKulangTana: {
+                        this.fillProgressBar();
+                        realm.write(() => {
+                            kaibi[this.state.indexPlayer].dadbatakCloth6 = parseInt(1);
+                        });
+                        break;
+                    };
+                    case DSSlah: {
+                        realm.write(() => {
+                            kaibi[this.state.indexPlayer].dadbatakCloth7 = parseInt(1);
+                        });
+                        break;
+                    };
+                }
             }
+            this.setState({CoinBalance: parseInt(balance)});
+            let coins = parseInt(balance);
+            this.setState({balance: coins});
+            realm.write(() => {
+                kaibi[this.state.indexPlayer].coinBalance = String(coins);
+                kaibi[this.state.indexPlayer].dadseProgress = parseInt(this.state.progress);
+            });
+            fule = [];
         }
-        this.setState({CoinBalance: parseInt(balance)});
-        let coins = parseInt(balance);
-        realm.write(() => {
-            kaibi[this.state.indexPlayer].coinBalance = String(coins);
-            kaibi[this.state.indexPlayer].dadseProgress = parseInt(this.state.progress);
-        });
-        fule = [];
     }
 
     fillProgressBar = () => {

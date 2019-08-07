@@ -310,6 +310,15 @@ class Letters extends Component {
             this.changeBackground(letterBGList[0], 0);
             this.setState({tracing: letterTracingList[0]});
         }
+        if(this.state.pencilPressed) {
+            this.setState({pencilPressed: false, fromTracing: true,});
+            try {
+                sound.setVolume(0);
+                sound.paused();
+            } catch(error) {
+
+            }
+        }
     }
 
     stopSounds = () => {
@@ -342,6 +351,15 @@ class Letters extends Component {
         } else {
             this.changeBackground(letterBGList[0], 0);
             this.setState({tracing: letterTracingList[0]});
+        }
+        if(this.state.pencilPressed) {
+            this.setState({pencilPressed: false, fromTracing: true,});
+            try {
+                sound.setVolume(0);
+                sound.paused();
+            } catch(error) {
+
+            }
         }
     }
 

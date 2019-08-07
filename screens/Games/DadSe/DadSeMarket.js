@@ -447,68 +447,71 @@ class DadSeMarket extends Component {
     }
 
     mayad = () => {
-        let realm = new Realm({ path: 'PlayerDatabase.realm'});
-        let kaito = realm.objects('Players');   
-        for(i = 0; i < fule.length; i++) {
-            switch(fule[i]) {
-                case DSSwatSalah: {
-                    this.fillProgressBar();
-                    realm.write(() => {
-                        kaito[this.state.indexPlayer].dadseCloth1 = parseInt(1);
-                    });
-                    break;
-                };
-                case DSUlel: {
-                    this.fillProgressBar();
-                    realm.write(() => {
-                        kaito[this.state.indexPlayer].dadseCloth2 = parseInt(1);
-                    });
-                    break;
-                };
-                case DSLbung: {
-                    this.fillProgressBar();
-                    realm.write(() => {
-                        kaito[this.state.indexPlayer].dadseCloth3 = parseInt(1);
-                    });
-                    break;
-                };
-                case DSTlayong: {
-                    this.fillProgressBar();
-                    realm.write(() => {
-                        kaito[this.state.indexPlayer].dadseCloth4 = parseInt(1);
-                    });
-                    
-                    break;
-                };
-                case DSDafeng: {
-                    this.fillProgressBar();
-                    realm.write(() => {
-                        kaito[this.state.indexPlayer].dadseCloth5 = parseInt(1);
-                    });
-                    
-                    break;
-                };
-                case DSKulangTana: {
-                    realm.write(() => {
-                        kaito[this.state.indexPlayer].dadseCloth6 = parseInt(1);
-                    });
-                    break;
-                };
-                case DSSlah: {
-                    realm.write(() => {
-                        kaito[this.state.indexPlayer].dadseCloth7 = parseInt(1);
-                    });
-                    break;                      
-                };
+        if(fule.length != 0) {
+            let realm = new Realm({ path: 'PlayerDatabase.realm'});
+            let kaito = realm.objects('Players');   
+            for(i = 0; i < fule.length; i++) {
+                switch(fule[i]) {
+                    case DSSwatSalah: {
+                        this.fillProgressBar();
+                        realm.write(() => {
+                            kaito[this.state.indexPlayer].dadseCloth1 = parseInt(1);
+                        });
+                        break;
+                    };
+                    case DSUlel: {
+                        this.fillProgressBar();
+                        realm.write(() => {
+                            kaito[this.state.indexPlayer].dadseCloth2 = parseInt(1);
+                        });
+                        break;
+                    };
+                    case DSLbung: {
+                        this.fillProgressBar();
+                        realm.write(() => {
+                            kaito[this.state.indexPlayer].dadseCloth3 = parseInt(1);
+                        });
+                        break;
+                    };
+                    case DSTlayong: {
+                        this.fillProgressBar();
+                        realm.write(() => {
+                            kaito[this.state.indexPlayer].dadseCloth4 = parseInt(1);
+                        });
+                        
+                        break;
+                    };
+                    case DSDafeng: {
+                        this.fillProgressBar();
+                        realm.write(() => {
+                            kaito[this.state.indexPlayer].dadseCloth5 = parseInt(1);
+                        });
+                        
+                        break;
+                    };
+                    case DSKulangTana: {
+                        realm.write(() => {
+                            kaito[this.state.indexPlayer].dadseCloth6 = parseInt(1);
+                        });
+                        break;
+                    };
+                    case DSSlah: {
+                        realm.write(() => {
+                            kaito[this.state.indexPlayer].dadseCloth7 = parseInt(1);
+                        });
+                        break;                      
+                    };
+                }
             }
+            this.setState({CoinBalance: parseInt(balance)});
+            let coins = parseInt(balance);
+            this.setState({balance: coins});
+            realm.write(() => {    
+                kaito[this.state.indexPlayer].coinBalance = String(coins);
+                kaito[this.state.indexPlayer].dadseProgress = parseInt(this.fill);
+            });               
+            fule = [];
         }
-        this.setState({CoinBalance: parseInt(balance)});
-        let coins = parseInt(balance);
-        realm.write(() => {    
-            kaito[this.state.indexPlayer].coinBalance = String(coins);
-            kaito[this.state.indexPlayer].dadseProgress = parseInt(this.fill);
-        });               
-        fule = [];
     }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 
     gotoMainMenu = () => {
